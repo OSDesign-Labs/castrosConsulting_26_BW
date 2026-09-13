@@ -1,0 +1,7 @@
+.sobre-nos__img {
+  aspect-ratio: 1 / 1;
+  max-height: 410px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
