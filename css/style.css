@@ -1,7 +1,63 @@
 .sobre-nos__img {
   aspect-ratio: 1 / 1;
-  max-height: 410px;
+  max-height: 650px;
   width: 100%;
   object-fit: cover;
-  border-radius: 8px;
+  /* border-radius: 8px; */
+}
+
+
+body {
+  margin: 0 2rem !important;
+  background-color: aliceblue !important;
+}
+
+/* ABOUT SECTION */
+#about {
+  align-content: center;
+
+  /* Left Main Column */
+  .container-fluid {
+    .index {
+      font-size: 14px !important;
+    }
+
+    /* background-color: aliceblue; */
+    h2.title {
+      font-size: 45px !important;
+    }
+
+    p {
+      font-size: 16px;
+    }
+
+    .row.g-4.mb-4 {
+      .col-12.col-sm-6 {
+        h3.subtitle {
+          font-size: 18px !important;
+          font-weight: bolder;
+        }
+      }
+
+      p {
+        font-size: 14px;
+        text-align: justify;
+        margin-right: 2.2rem
+      }
+    }
+
+    .btn.btn-link {
+      text-decoration: none;
+      color: #212529;
+      font-size: 1.1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+
+      .arrowRight {
+        display: inline-block;
+      }
+
+    }
+  }
 }
