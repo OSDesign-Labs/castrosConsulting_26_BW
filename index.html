@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Castro's Consultoria</title>
-    
+
     <!-- CSS External Stylesheet Link -->
     <link rel="stylesheet" href="css/style.css">
     <!-- BOOTSTRAP 5 CDN Link -->
@@ -18,128 +18,475 @@
 
 <body>
 
-    <!-- 01.1- NAVBAR — Francisco's Section -->
+    <!-- 01.1- NAVBAR -->
+    <!-- Header Content -->
+    <header>
+        <!-- Navbar Section -->
+        <nav id="mainNavbar" class="main-navbar">
+            <div class="container-fluid">
+                <!-- LOGO -->
+                <a class="navbar-brand" href="#">
+                    Castros Consultoria
+                </a>
+                <!-- DESKTOP NAVIGATION -->
+                <div class="desktop-navbar d-none d-lg-grid">
+                    <!-- Navigation -->
+                    <ul class="navbar-nav">
+                        <!-- Início -->
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">
+                                Início
+                            </a>
+                        </li>
+                        <!-- Sobre -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="../Html/about.html">
+                                Sobre nós
+                            </a>
+                        </li>
+                        <!-- Serviços -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Serviços
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item" href="../Html/atendimento.html">
+                                        Atendimento
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="../Html/consultoria.html">
+                                        Consultoria
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="../Html/formacoes.html">
+                                        Formações
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="../Html/palestras.html">
+                                        Palestras
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="../HTML/treinamento.html">
+                                        Treinamento
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- Eventos -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="#events">
+                                Eventos
+                            </a>
+                        </li>
+                        <!-- Contacto -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">
+                                Contacto
+                            </a>
+                        </li>
+                    </ul>
 
-    <!-- 01.2- HERO — Francisco's Section -->
-    <section id="home">
-    </section>
-    <!-- 01.3- ABOUT US -->
-    <section id="about" class="py-3 py-md-5">
-        <div class="container-fluid">
-            <div class="row align-items-start g-5">
-                <!-- WHO ARE WE SECTION -->
-                <div class="col-lg-6" data-aos="fade-right">
-                    <p class="index fw-bold small mb-3">Sobre Nós</p>
-                    <h2 class="title display-5 fw-bolder mb-3">Conheça a equipa que impulsiona o seu crescimento</h2>
-                    <p class="text-secondary mb-4">
-                        Acreditamos que o desenvolvimento de uma organização começa pelas suas
-                        pessoas. A nossa abordagem combina experiência prática, escuta ativa e
-                        um compromisso genuíno com resultados sustentáveis.
-                    </p>
-
-                    <div class="row g-4 mb-4">
-                        <div class="col-12 col-sm-6">
-                            <h3 class="subtitle h6 mb-2">Quem somos</h3>
-                            <p class="small text-secondary">
-                                Uma organização focada em desenvolvimento humano e organizacional,
-                                com presença próxima e abordagem personalizada.
-                            </p>
-                        </div>
-                        <div class="col-12 col-sm-6">
-                            <h3 class="subtitle h6 mb-2">Fundadores</h3>
-                            <p class="small text-secondary">
-                                Profissionais com vasta experiência em consultoria, formação e
-                                gestão de equipas, unidos por uma visão comum.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="d-flex flex-row gap-3">
-                        <a href="#contacto" class="btn btn-outline-dark rounded-0">Saber mais</a>
-                        <a href="#equipa"
-                            class="btn btn-link text-dark text-decoration-none p-0 d-flex align-items-center">Equipa
-                            <span class="arrowRight">&gt;</span>
-                        </a>
-                    </div>
+                    <!-- CTA -->
+                    <a href="#contact" class="btn btn-primary navbar-cta">
+                        Contato
+                    </a>
                 </div>
 
-                <div class="col-lg-6" data-aos="fade-left">
-                    <img src="https://placehold.co/600x800" class="img-fluid rounded sobre-nos__img"
-                        alt="Equipa Castro's Consultoria">
-                </div>
 
+                <!-- MOBILE / TABLET HAMBURGER  -->
+                <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#mobileNavbar" aria-controls="mobileNavbar" aria-label="Abrir menu">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
             </div>
+        </nav>
 
-            <!-- OUR TEAM SECTION -->
-            <div class="container-fluid py-5">
-                <div class="text-center mb-5">
-                    <h2 class="fw-bold">As pessoas</h2>
-                    <p class="text-secondary">
-                        Profissionais que trabalham lado a lado consigo, todos os dias.
-                    </p>
-                </div>
-                <div class="row g-4 justify-content-center">
-                    <div class="col-md-4 text-center">
-                        <img src="https://placehold.co/400x300" class="img-fluid rounded mb-3" alt="">
-                        <h3 class="h6 mb-0">Elizabeth Castro</h3>
-                        <p class="small text-secondary">Fundadora</p>
-                        <p class="small text-secondary">
-                            Vinte anos a ouvir organizações e a transformar desafios em planos claros de ação.
-                        </p>
-                        <div class="d-flex justify-content-center gap-3 mt-2">
-                            <a href="#" class="text-dark"><i class="bi bi-linkedin"></i></a>
-                            <a href="#" class="text-dark"><i class="bi bi-twitter"></i></a>
-                            <a href="#" class="text-dark"><i class="bi bi-facebook"></i></a>
-                        </div>
-                    </div>
-                    <div class="col-md-4 text-center">
-                        <img src="https://placehold.co/400x300" class="img-fluid rounded mb-3" alt="">
-                        <h3 class="h6 mb-0">Cleiber Tinga</h3>
-                        <p class="small text-secondary">Marketing Manager</p>
-                        <p class="small text-secondary">
-                            Vinte anos a ouvir organizações e a transformar desafios em planos claros de ação.
-                        </p>
-                        <div class="d-flex justify-content-center gap-3 mt-2">
-                            <a href="#" class="text-dark"><i class="bi bi-linkedin"></i></a>
-                            <a href="#" class="text-dark"><i class="bi bi-twitter"></i></a>
-                            <a href="#" class="text-dark"><i class="bi bi-facebook"></i></a>
-                        </div>
-                    </div>
-                    <div class="col-md-4 text-center">
-                        <img src="https://placehold.co/400x300" class="img-fluid rounded mb-3" alt="">
-                        <h3 class="h6 mb-0">Milena Mendes</h3>
-                        <p class="small text-secondary">Recursos Humanos</p>
-                        <p class="small text-secondary">
-                            Vinte anos a ouvir organizações e a transformar desafios em planos claros de ação.
-                        </p>
-                        <div class="d-flex justify-content-center gap-3 mt-2">
-                            <a href="#" class="text-dark"><i class="bi bi-linkedin"></i></a>
-                            <a href="#" class="text-dark"><i class="bi bi-twitter"></i></a>
-                            <a href="#" class="text-dark"><i class="bi bi-facebook"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="row align-items-center mt-5 pt-4 border-top">
-                    <div class="col-md-4 mb-3 mb-md-0">
-                        <p class="fw-bold mb-0">Used by the world's leading companies</p>
-                    </div>
-                    <div class="col-md-8 d-flex flex-wrap gap-4 justify-content-center">
-                        <span class="text-secondary fw-bold">Webflow</span>
-                        <span class="text-secondary fw-bold">Relume</span>
-                        <span class="text-secondary fw-bold">Webflow</span>
-                        <span class="text-secondary fw-bold">Relume</span>
-                        <span class="text-secondary fw-bold">Webflow</span>
-                    </div>
+
+        <!-- Mobile / Tablet Offcanvas -->
+        <div class="offcanvas offcanvas-end mobile-offcanvas" tabindex="-1" id="mobileNavbar"
+            aria-labelledby="mobileNavbarLabel">
+            <!-- OFFCANVAS HEADER -->
+            <div class="offcanvas-header">
+                <a href="#" class="offcanvas-title" id="mobileNavbarLabel">
+                    Castros Consultoria
+                </a>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Fechar"></button>
+            </div>
+            <!-- OFFCANVAS BODY -->
+            <div class="offcanvas-body">
+                <ul class="mobile-nav">
+                    <!-- Início -->
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#" data-bs-dismiss="offcanvas">
+                            Início
+                        </a>
+                    </li>
+                    <!-- Sobre -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="../Html/about.html">
+                            Sobre nós
+                        </a>
+                    </li>
+
+
+                    <!-- SERVIÇOS -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="mobileServicesDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Serviços
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item" href="../Html/atendimento.html">
+                                    Atendimento
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="../Html/consultoria.html">
+                                    Consultoria
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="../Html/formacoes.html">
+                                    Formações
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="../Html/palestras.html">
+                                    Palestras
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="../HTML/treinamento.html">
+                                    Treinamento
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- Eventos -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#events">
+                            Eventos
+                        </a>
+                    </li>
+
+
+                    <!-- Contacto -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">
+                            Contacto
+                        </a>
+                    </li>
+                </ul>
+
+
+
+                <!-- Mobile CTA -->
+
+                <div class="mobile-cta-wrapper">
+                    <a href="#contact" class="btn btn-primary" data-bs-dismiss="offcanvas">
+                        Contato
+                    </a>
                 </div>
             </div>
         </div>
-    </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init();
-    </script>
+
+        <!-- 01.2- HERO -->
+        <main>
+            <section class="hero">
+                <div class="container-fluid" id="overlayGradient" style="margin: 0 2rem; background-image: url(assets/consultingnoturious.jpg); background-size: cover; border-radius: 18px !important;" >
+                    <div class="row align-items-center g-5">
+                        <div class="col-lg-6">
+                            <div class="hero-copy">
+                                <h1>Desenvolvemos Pessoas Impulsionamos Organizações</h1>
+                                <p>Somos uma organização dedicada ao crescimento profissional e organizacional.
+                                    Trabalhamos com pessoas reais, em contextos reais, para criar impacto duradouro.</p>
+                                <div class="hero-actions d-flex flex-wrap gap-2">
+                                    <a href="#spaces" class="btn btn-outline-light">Conhecer Espaços Corporativos</a>
+                                    <a href="#services" class="btn btn-light">Explorar Serviços de Consultoria</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 hero-visual">
+                            <div class="row g-2 metrics-grid">
+
+                                <div class="col-7">
+                                    <div class="metric-card metric-featured h-100">
+                                        <div>
+                                            <span class="metric-value">+100</span>
+
+                                            <span class="metric-label">
+                                                Empresas<br>
+                                                impulsionadas
+                                            </span>
+                                        </div>
+
+                                        <span class="metric-index">01</span>
+                                    </div>
+                                </div>
+
+                                <div class="col-5">
+                                    <div class="row g-2 h-100">
+
+                                        <div class="col-12">
+                                            <div class="metric-card h-100">
+                                                <span class="metric-value">+25</span>
+
+                                                <span class="metric-label">
+                                                    Líderes<br>
+                                                    formados
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <div class="metric-card h-100">
+                                                <span class="metric-value">+15</span>
+
+                                                <span class="metric-label">
+                                                    Workshops
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="metric-card metric-wide">
+                                        <span class="metric-value">+20</span>
+
+                                        <span class="metric-label">
+                                            Colaboradores
+                                        </span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- 01.3- ABOUT US -->
+        <section id="about" class="py-3 py-md-5">
+            <div class="container-fluid">
+                <div class="row align-items-start g-5">
+                    <!-- WHO ARE WE SECTION -->
+                    <div class="col-lg-6" data-aos="fade-right">
+                        <p class="index fw-bold small mb-3">Sobre Nós</p>
+                        <h2 class="title display-5 fw-bolder mb-3">Conheça a equipa que impulsiona o seu crescimento
+                        </h2>
+                        <p class="text-secondary mb-4">
+                            Acreditamos que o desenvolvimento de uma organização começa pelas suas
+                            pessoas. A nossa abordagem combina experiência prática, escuta ativa e
+                            um compromisso genuíno com resultados sustentáveis.
+                        </p>
+
+                        <div class="row g-4 mb-4">
+                            <div class="col-12 col-sm-6">
+                                <h3 class="subtitle h6 mb-2">Quem somos</h3>
+                                <p class="small text-secondary">
+                                    Uma organização focada em desenvolvimento humano e organizacional,
+                                    com presença próxima e abordagem personalizada.
+                                </p>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <h3 class="subtitle h6 mb-2">Fundadores</h3>
+                                <p class="small text-secondary">
+                                    Profissionais com vasta experiência em consultoria, formação e
+                                    gestão de equipas, unidos por uma visão comum.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="d-flex flex-row gap-3">
+                            <a href="#contacto" class="btn btn-outline-dark rounded-0">Saber mais</a>
+                            <a href="#equipa"
+                                class="btn btn-link text-dark text-decoration-none p-0 d-flex align-items-center">Equipa
+                                <span class="arrowRight">&gt;</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6" data-aos="fade-left">
+                        <img src="https://placehold.co/600x800" class="img-fluid rounded sobre-nos__img"
+                            alt="Equipa Castro's Consultoria">
+                    </div>
+
+                </div>
+
+                <!-- OUR TEAM SECTION  -->
+                <div class="container-fluid py-5">
+                    <div class="text-center mb-5">
+                        <h2 class="fw-bold">As pessoas</h2>
+                        <p class="text-secondary">
+                            Profissionais que trabalham lado a lado consigo, todos os dias.
+                        </p>
+                    </div>
+                    <div class="row g-4 justify-content-center">
+                        <div class="col-md-4 text-center">
+                            <img src="https://placehold.co/400x300" class="img-fluid rounded mb-3" alt="">
+                            <h3 class="h6 mb-0">Elizabeth Castro</h3>
+                            <p class="small text-secondary">Fundadora</p>
+                            <p class="small text-secondary">
+                                Vinte anos a ouvir organizações e a transformar desafios em planos claros de ação.
+                            </p>
+                            <div class="d-flex justify-content-center gap-3 mt-2">
+                                <a href="#" class="text-dark"><i class="bi bi-linkedin"></i></a>
+                                <a href="#" class="text-dark"><i class="bi bi-twitter"></i></a>
+                                <a href="#" class="text-dark"><i class="bi bi-facebook"></i></a>
+                            </div>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <img src="https://placehold.co/400x300" class="img-fluid rounded mb-3" alt="">
+                            <h3 class="h6 mb-0">Cleiber Tinga</h3>
+                            <p class="small text-secondary">Marketing Manager</p>
+                            <p class="small text-secondary">
+                                Vinte anos a ouvir organizações e a transformar desafios em planos claros de ação.
+                            </p>
+                            <div class="d-flex justify-content-center gap-3 mt-2">
+                                <a href="#" class="text-dark"><i class="bi bi-linkedin"></i></a>
+                                <a href="#" class="text-dark"><i class="bi bi-twitter"></i></a>
+                                <a href="#" class="text-dark"><i class="bi bi-facebook"></i></a>
+                            </div>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <img src="https://placehold.co/400x300" class="img-fluid rounded mb-3" alt="">
+                            <h3 class="h6 mb-0">Milena Mendes</h3>
+                            <p class="small text-secondary">Recursos Humanos</p>
+                            <p class="small text-secondary">
+                                Vinte anos a ouvir organizações e a transformar desafios em planos claros de ação.
+                            </p>
+                            <div class="d-flex justify-content-center gap-3 mt-2">
+                                <a href="#" class="text-dark"><i class="bi bi-linkedin"></i></a>
+                                <a href="#" class="text-dark"><i class="bi bi-twitter"></i></a>
+                                <a href="#" class="text-dark"><i class="bi bi-facebook"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row align-items-center mt-5 pt-4 border-top">
+                        <div class="col-md-4 mb-3 mb-md-0">
+                            <p class="fw-bold mb-0">Used by the world's leading companies</p>
+                        </div>
+                        <div class="col-md-8 d-flex flex-wrap gap-4 justify-content-center">
+                            <span class="text-secondary fw-bold">Webflow</span>
+                            <span class="text-secondary fw-bold">Relume</span>
+                            <span class="text-secondary fw-bold">Webflow</span>
+                            <span class="text-secondary fw-bold">Relume</span>
+                            <span class="text-secondary fw-bold">Webflow</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BOOTSTRAP 5 JS CDN Link -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- AOS CDN Link -->
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <!-- AOS Initializes function -->
+        <script>
+            AOS.init();
+        </script>
+        <!-- NAVBAR BEHAVIOR  -->
+        <script>
+            const navbar = document.getElementById("mainNavbar");
+            let lastScrollPosition = window.scrollY;
+            let hideTimer = null;
+            // After how many pixels should the navbar hide 
+            const hideAfter = 120;
+            const visibleDuration = 4000;
+
+            let isMouseOverNavbar = false;
+
+            navbar.addEventListener("mouseenter", () => {
+                isMouseOverNavbar = true;
+                clearTimeout(hideTimer);
+                navbar.classList.remove("navbar-hidden");
+                navbar.classList.add("navbar-hovered");
+            });
+
+
+            navbar.addEventListener("mouseleave", () => {
+                isMouseOverNavbar = false;
+                navbar.classList.remove("navbar-hovered");
+                if (window.scrollY > hideAfter) {
+                    startHideTimer();
+                }
+            });
+
+
+            function startHideTimer() {
+                clearTimeout(hideTimer);
+                hideTimer = setTimeout(() => {
+
+                    if (
+                        !isMouseOverNavbar &&
+                        window.scrollY > hideAfter
+                    ) {
+                        navbar.classList.remove("navbar-hovered");
+                        navbar.classList.add("navbar-hidden");
+                    }
+                }, visibleDuration);
+            }
+
+
+            window.addEventListener(
+                "scroll",
+                () => {
+
+                    const currentScrollPosition = window.scrollY;
+
+                    if (currentScrollPosition <= 20) {
+                        clearTimeout(hideTimer);
+                        navbar.classList.remove("navbar-hidden");
+                        navbar.classList.add("navbar-hovered");
+                        lastScrollPosition = currentScrollPosition;
+                        return;
+                    }
+
+                    if (
+                        currentScrollPosition > lastScrollPosition &&
+                        currentScrollPosition > hideAfter
+                    ) {
+
+
+                        if (!isMouseOverNavbar) {
+                            clearTimeout(hideTimer)
+                            navbar.classList.remove("navbar-hovered");
+                            navbar.classList.add("navbar-hidden");
+                        }
+
+                    } else if (
+                        currentScrollPosition < lastScrollPosition
+                    ) {
+
+                        clearTimeout(hideTimer);
+                        navbar.classList.remove("navbar-hidden");
+                        navbar.classList.add("navbar-hovered");
+
+                        if (!isMouseOverNavbar) {
+                            startHideTimer();
+                        }
+                    }
+
+                    lastScrollPosition = currentScrollPosition;
+
+                }, {
+                    passive: true
+                }
+            );
+        </script>
 </body>
 
 </html>
