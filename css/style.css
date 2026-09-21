@@ -81,3 +81,13 @@ body {
   border-radius: 8px;
   display: block;
 }
+
+/* BENEFITS SECTION */
+#benefits {
+  .benefit-img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+}
