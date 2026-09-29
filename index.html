@@ -1,1183 +1,1189 @@
 <!DOCTYPE html>
+
 <html lang="pt-MZ">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Castro's Consultoria</title>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Castros Consultoria</title>
 
-    <!-- CSS External Stylesheet Link -->
-    <link rel="stylesheet" href="css/style.css">
-    <!-- BOOTSTRAP 5 CDN Link -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- AOS CDN Link -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <!-- Bootstrap Icons CDN Link -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-
-    <!-- Google FOnts CDN Link -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@200..800&family=Quicksand:wght@300..700&display=swap"
-        rel="stylesheet">
+  <!-- CSS External Stylesheet Link -->
+  <link rel="stylesheet" href="css/finalstyle.css">
+  <!-- BOOTSTRAP 5 CDN Link -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- AOS CDN Link -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <!-- Bootstrap Icons CDN Link -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <!-- Google FOnts CDN Link -->
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&amp;family=Manrope:wght@200..800&amp;family=Quicksand:wght@300..700&amp;display=swap"
+    rel="stylesheet" />
 </head>
-
 <body>
 
-    <!-- 01.1- NAVBAR -->
-    <!-- Header Content -->
-    <header>
-        <!-- Navbar Section -->
-        <nav id="mainNavbar" class="main-navbar">
-            <div class="container-fluid">
-                <!-- LOGO -->
-                <a class="navbar-brand" href="#">
-                    Castros Consultoria
+  <header>
+    <!-- Navbar Section -->
+    <nav class="main-navbar" id="mainNavbar">
+      <div class="container-fluid">
+        <!-- LOGO -->
+        <a class="navbar-brand" href="#">
+          Castros Consultoria
+        </a>
+        <!-- DESKTOP NAVIGATION -->
+        <div class="desktop-navbar d-none d-lg-grid">
+          <!-- Navigation -->
+          <ul class="navbar-nav">
+            <!-- Início -->
+            <li class="nav-item">
+              <a class="nav-link active" href="#">
+                Início
+              </a>
+            </li>
+            <!-- Sobre -->
+            <li class="nav-item">
+              <a class="nav-link" href="../Html/about.html">
+                Sobre nós
+              </a>
+            </li>
+            <!-- Serviços -->
+            <li class="nav-item dropdown">
+              <a aria-expanded="false" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#"
+                id="servicesDropdown" role="button">
+                Serviços
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="../Html/atendimento.html">
+                    Atendimento
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="../Html/consultoria.html">
+                    Consultoria
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="../Html/formacoes.html">
+                    Formações
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="../Html/palestras.html">
+                    Palestras
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="../HTML/treinamento.html">
+                    Treinamento
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <!-- Eventos -->
+            <li class="nav-item">
+              <a class="nav-link" href="#events">
+                Eventos
+              </a>
+            </li>
+            <!-- Contacto -->
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">
+                Contacto
+              </a>
+            </li>
+          </ul>
+          <!-- CTA -->
+          <a class="btn btn-primary navbar-cta" href="#contact">
+            Contato
+          </a>
+        </div>
+        <!-- MOBILE / TABLET HAMBURGER  -->
+        <button aria-controls="mobileNavbar" aria-label="Abrir menu" class="navbar-toggler d-lg-none"
+          data-bs-target="#mobileNavbar" data-bs-toggle="offcanvas" type="button">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </nav>
+    <!-- Mobile / Tablet Offcanvas -->
+    <div aria-labelledby="mobileNavbarLabel" class="offcanvas offcanvas-end mobile-offcanvas" id="mobileNavbar"
+      tabindex="-1">
+      <!-- OFFCANVAS HEADER -->
+      <div class="offcanvas-header">
+        <a class="offcanvas-title" href="#" id="mobileNavbarLabel">
+          Castros Consultoria
+        </a>
+        <button aria-label="Fechar" class="btn-close" data-bs-dismiss="offcanvas" type="button"></button>
+      </div>
+      <!-- OFFCANVAS BODY -->
+      <div class="offcanvas-body">
+        <ul class="mobile-nav">
+          <!-- Início -->
+          <li class="nav-item">
+            <a class="nav-link active" data-bs-dismiss="offcanvas" href="#">
+              Início
+            </a>
+          </li>
+          <!-- Sobre -->
+          <li class="nav-item">
+            <a class="nav-link" href="../Html/about.html">
+              Sobre nós
+            </a>
+          </li>
+          <!-- SERVIÇOS -->
+          <li class="nav-item dropdown">
+            <a aria-expanded="false" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#"
+              id="mobileServicesDropdown" role="button">
+              Serviços
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="../Html/atendimento.html">
+                  Atendimento
                 </a>
-                <!-- DESKTOP NAVIGATION -->
-                <div class="desktop-navbar d-none d-lg-grid">
-                    <!-- Navigation -->
-                    <ul class="navbar-nav">
-                        <!-- Início -->
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#">
-                                Início
-                            </a>
-                        </li>
-                        <!-- Sobre -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="../Html/about.html">
-                                Sobre nós
-                            </a>
-                        </li>
-                        <!-- Serviços -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                Serviços
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a class="dropdown-item" href="../Html/atendimento.html">
-                                        Atendimento
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="../Html/consultoria.html">
-                                        Consultoria
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="../Html/formacoes.html">
-                                        Formações
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="../Html/palestras.html">
-                                        Palestras
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="../HTML/treinamento.html">
-                                        Treinamento
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <!-- Eventos -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="#events">
-                                Eventos
-                            </a>
-                        </li>
-                        <!-- Contacto -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="#contact">
-                                Contacto
-                            </a>
-                        </li>
-                    </ul>
-
-                    <!-- CTA -->
-                    <a href="#contact" class="btn btn-primary navbar-cta">
-                        Contato
-                    </a>
-                </div>
-
-
-                <!-- MOBILE / TABLET HAMBURGER  -->
-                <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="offcanvas"
-                    data-bs-target="#mobileNavbar" aria-controls="mobileNavbar" aria-label="Abrir menu">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-            </div>
-        </nav>
-
-
-        <!-- Mobile / Tablet Offcanvas -->
-        <div class="offcanvas offcanvas-end mobile-offcanvas" tabindex="-1" id="mobileNavbar"
-            aria-labelledby="mobileNavbarLabel">
-            <!-- OFFCANVAS HEADER -->
-            <div class="offcanvas-header">
-                <a href="#" class="offcanvas-title" id="mobileNavbarLabel">
-                    Castros Consultoria
+              </li>
+              <li>
+                <a class="dropdown-item" href="../Html/consultoria.html">
+                  Consultoria
                 </a>
-                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Fechar"></button>
-            </div>
-            <!-- OFFCANVAS BODY -->
-            <div class="offcanvas-body">
-                <ul class="mobile-nav">
-                    <!-- Início -->
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#" data-bs-dismiss="offcanvas">
-                            Início
-                        </a>
-                    </li>
-                    <!-- Sobre -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="../Html/about.html">
-                            Sobre nós
-                        </a>
-                    </li>
-
-
-                    <!-- SERVIÇOS -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="mobileServicesDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Serviços
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a class="dropdown-item" href="../Html/atendimento.html">
-                                    Atendimento
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="../Html/consultoria.html">
-                                    Consultoria
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="../Html/formacoes.html">
-                                    Formações
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="../Html/palestras.html">
-                                    Palestras
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="../HTML/treinamento.html">
-                                    Treinamento
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <!-- Eventos -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="#events">
-                            Eventos
-                        </a>
-                    </li>
-
-
-                    <!-- Contacto -->
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">
-                            Contacto
-                        </a>
-                    </li>
-                </ul>
-
-
-
-                <!-- Mobile CTA -->
-
-                <div class="mobile-cta-wrapper">
-                    <a href="#contact" class="btn btn-primary" data-bs-dismiss="offcanvas">
-                        Contato
-                    </a>
-                </div>
-            </div>
+              </li>
+              <li>
+                <a class="dropdown-item" href="../Html/formacoes.html">
+                  Formações
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="../Html/palestras.html">
+                  Palestras
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="../HTML/treinamento.html">
+                  Treinamento
+                </a>
+              </li>
+            </ul>
+          </li>
+          <!-- Eventos -->
+          <li class="nav-item">
+            <a class="nav-link" href="#events">
+              Eventos
+            </a>
+          </li>
+          <!-- Contacto -->
+          <li class="nav-item">
+            <a class="nav-link" href="#contact">
+              Contacto
+            </a>
+          </li>
+        </ul>
+        <!-- Mobile CTA -->
+        <div class="mobile-cta-wrapper">
+          <a class="btn btn-primary" data-bs-dismiss="offcanvas" href="#contact">
+            Contato
+          </a>
         </div>
-    </header>
+      </div>
+    </div>
+  </header>
 
-    <main>
-        <!-- 01.2- HERO -->
-        <section class="hero">
-            <div class="container-fluid" id="overlayGradient"
-                style="background-image: url(assets/consultingnoturious.jpg); background-size: cover; border-radius: 18px !important;">
-                <div class="row align-items-center g-5">
-                    <div class="col-lg-6">
-                        <div class="hero-copy">
-                            <h1>Desenvolvemos Pessoas Impulsionamos Organizações</h1>
-                            <p>Somos uma organização dedicada ao crescimento profissional e organizacional.
-                                Trabalhamos com pessoas reais, em contextos reais, para criar impacto duradouro.</p>
-                            <div class="hero-actions d-flex flex-wrap gap-2">
-                                <a href="#spaces" class="btn btn-outline-light">Conhecer Espaços Corporativos</a>
-                                <a href="#services" class="btn btn-light">Explorar Serviços de Consultoria</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 hero-visual">
-                        <div class="row g-2 metrics-grid">
+  <main>
 
-                            <div class="col-7">
-                                <div class="metric-card metric-featured h-100">
-                                    <div>
-                                        <span class="metric-value">+100</span>
+    <!-- 01.2- HERO -->
 
-                                        <span class="metric-label">
-                                            Empresas<br>
-                                            impulsionadas
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-5">
-                                <div class="row g-2 h-100">
-
-                                    <div class="col-12">
-                                        <div class="metric-card h-100">
-                                            <span class="metric-value">+25</span>
-
-                                            <span class="metric-label">
-                                                Líderes<br>
-                                                formados
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-12">
-                                        <div class="metric-card h-100">
-                                            <span class="metric-value">+15</span>
-
-                                            <span class="metric-label">
-                                                Workshops
-                                            </span>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <div class="col-12">
-                                <div class="metric-card metric-wide">
-                                    <span class="metric-value">+20</span>
-
-                                    <span class="metric-label">
-                                        Colaboradores
-                                    </span>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                </div>
+    <section class="hero">
+      <div class="container-fluid" id="overlayGradient"
+        style="background-image: url(assets/consultingnoturious.jpg); background-size: cover; border-radius: 18px !important;">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-6">
+            <div class="hero-copy">
+              <h1>Desenvolvemos Pessoas Impulsionamos Organizações</h1>
+              <p>Somos uma organização dedicada ao crescimento profissional e organizacional.
+                Trabalhamos com pessoas reais, em contextos reais, para criar impacto duradouro.</p>
+              <div class="hero-actions d-flex flex-wrap gap-2">
+                <a class="btn btn-outline-light" href="#spaces">Conhecer Espaços Corporativos</a>
+                <a class="btn btn-light" href="#services">Explorar Serviços de Consultoria</a>
+              </div>
             </div>
-        </section>
-
-        <!-- 01.3- ABOUT US -->
+          </div>
+          <div class="col-lg-6 hero-visual">
+            <div class="row g-2 metrics-grid">
+              <div class="col-7">
+                <div class="metric-card metric-featured h-100">
+                  <div>
+                    <span class="metric-value">+100</span>
+                    <span class="metric-label">
+                      Empresas<br />
+                      impulsionadas
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-5">
+                <div class="row g-2 h-100">
+                  <div class="col-12">
+                    <div class="metric-card h-100">
+                      <span class="metric-value">+25</span>
+                      <span class="metric-label">
+                        Líderes<br />
+                        formados
+                      </span>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="metric-card h-100">
+                      <span class="metric-value">+15</span>
+                      <span class="metric-label">
+                        Workshops
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="metric-card metric-wide">
+                  <span class="metric-value">+20</span>
+                  <span class="metric-label">
+                    Colaboradores
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+    </section>
 
-        <!-- SOBRE NÓS -->
-        <section class="section bg-alt-c" id="sobre">
-            <div class="container">
-                <div class="row g-5 align-items-center">
-                    <div class="col-lg-6 reveal">
-                        <span class="eyebrow">Sobre Nós</span>
-                        <h2 class="mb-3" style="font-size:clamp(1.9rem,3.6vw,2.6rem);max-width:16ch">Conheça a equipa
-                            que impulsiona o
-                            seu crescimento</h2>
-                        <p class="mb-4">Acreditamos que o desenvolvimento de uma organização começa pelas suas pessoas.
-                            A nossa
-                            abordagem combina experiência prática, escuta ativa e um compromisso genuíno com resultados
-                            sustentáveis.
-                        </p>
-                        <div class="row g-4 mb-4">
-                            <div class="col-6">
-                                <h4 class="h6 fw-bold" style="color:var(--ink)">Quem somos</h4>
-                                <p class="small">Uma iniciativa empresarial de prestação de serviços focada no
-                                    desenvolvimento humano e
-                                    organizacional, com presença e abordagem personalizada.</p>
-                            </div>
-                            <div class="col-6">
-                                <h4 class="h6 fw-bold" style="color:var(--ink)">Fundadores</h4>
-                                <p class="small">Profissionais com vasta experiência em consultoria, formação e gestão
-                                    de equipas, unidos
-                                    por uma visão comum.</p>
-                            </div>
-                        </div>
-                        <div class="d-flex align-items-center gap-4">
-                            <a href="#" class="btn btn-outline-c px-4 py-2">Saber mais</a>
-                            <a href="#equipa" class="link-arrow">Equipa <svg class="bi">
-                                    <use xlink:href="#i-arrow" />
-                                </svg></a>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 reveal">
-                        <div class="ph about-img" style="aspect-ratio:1/1"><svg class="bi">
-                                <use xlink:href="#i-image" />
-                            </svg></div>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <!-- 01.3- ABOUT US -->
 
-        <!-- EQUIPA -->
-        <section class="section" id="equipa">
-            <div class="container">
-                <div class="text-center mx-auto reveal" style="max-width:640px">
-                    <span class="eyebrow">Equipa</span>
-                    <h2 style="font-size:clamp(1.9rem,3.6vw,2.6rem)">As Pessoas</h2>
-                    <p class="mt-3">Profissionais que trabalham lado a lado consigo, todos os dias.</p>
-                </div>
-                <div class="row g-4 mt-4 reveal-stagger reveal">
-                    <div class="col-md-4 stagger-item">
-                        <div class="card-c h-100 overflow-hidden">
-                            <div class="ph team-photo" style="aspect-ratio:4/3;border-radius:0"><svg class="bi"
-                                    style="font-size:2.6rem">
-                                    <use xlink:href="#i-person" />
-                                </svg></div>
-                            <div class="p-4 text-center">
-                                <h3 class="h5 fw-bold mb-0" style="color:var(--ink);font-family:'Inter',sans-serif">
-                                    Elizabeth Castros</h3>
-                                <p class="role">Fundadora</p>
-                                <p class="small mb-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                    Suspendisse varius enim in
-                                    eros.</p>
-                                <div class="d-flex justify-content-center gap-3">
-                                    <a href="#" class="social-ic"><svg class="bi" style="font-size:1.1rem">
-                                            <use xlink:href="#i-linkedin" />
-                                        </svg></a>
-                                    <a href="#" class="social-ic"><svg class="bi" style="font-size:1.1rem">
-                                            <use xlink:href="#i-x" />
-                                        </svg></a>
-                                    <a href="#" class="social-ic"><svg class="bi" style="font-size:1.1rem">
-                                            <use xlink:href="#i-dribbble" />
-                                        </svg></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 stagger-item">
-                        <div class="card-c h-100 overflow-hidden">
-                            <div class="ph team-photo" style="aspect-ratio:4/3;border-radius:0"><svg class="bi"
-                                    style="font-size:2.6rem">
-                                    <use xlink:href="#i-person" />
-                                </svg></div>
-                            <div class="p-4 text-center">
-                                <h3 class="h5 fw-bold mb-0" style="color:var(--ink);font-family:'Inter',sans-serif">
-                                    Cleyber Mendes</h3>
-                                <p class="role">Consultor Senior</p>
-                                <p class="small mb-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                    Suspendisse varius enim in
-                                    eros.</p>
-                                <div class="d-flex justify-content-center gap-3">
-                                    <a href="#" class="social-ic"><svg class="bi" style="font-size:1.1rem">
-                                            <use xlink:href="#i-linkedin" />
-                                        </svg></a>
-                                    <a href="#" class="social-ic"><svg class="bi" style="font-size:1.1rem">
-                                            <use xlink:href="#i-x" />
-                                        </svg></a>
-                                    <a href="#" class="social-ic"><svg class="bi" style="font-size:1.1rem">
-                                            <use xlink:href="#i-dribbble" />
-                                        </svg></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 stagger-item">
-                        <div class="card-c h-100 overflow-hidden">
-                            <div class="ph team-photo" style="aspect-ratio:4/3;border-radius:0"><svg class="bi"
-                                    style="font-size:2.6rem">
-                                    <use xlink:href="#i-person" />
-                                </svg></div>
-                            <div class="p-4 text-center">
-                                <h3 class="h5 fw-bold mb-0" style="color:var(--ink);font-family:'Inter',sans-serif">
-                                    Carlos Mendes</h3>
-                                <p class="role">Formador</p>
-                                <p class="small mb-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                    Suspendisse varius enim in
-                                    eros.</p>
-                                <div class="d-flex justify-content-center gap-3">
-                                    <a href="#" class="social-ic"><svg class="bi" style="font-size:1.1rem">
-                                            <use xlink:href="#i-linkedin" />
-                                        </svg></a>
-                                    <a href="#" class="social-ic"><svg class="bi" style="font-size:1.1rem">
-                                            <use xlink:href="#i-x" />
-                                        </svg></a>
-                                    <a href="#" class="social-ic"><svg class="bi" style="font-size:1.1rem">
-                                            <use xlink:href="#i-dribbble" />
-                                        </svg></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <section class="section bg-alt-c" id="sobre">
+      <div class="container-fluid">
+        <div class="row g-5 align-items-center">
+          <div class="col-lg-6 reveal">
+            <span class="eyebrow">Sobre Nós</span>
+            <h2 class="mb-3" style="font-size:clamp(1.9rem,3.6vw,2.6rem);max-width:28ch; text-align: left;">Conheça a equipa
+              que impulsiona o
+              seu crescimento</h2>
+            <p class="mb-4">Acreditamos que o desenvolvimento de uma organização começa pelas suas pessoas.
+              A nossa
+              abordagem combina experiência prática, escuta ativa e um compromisso genuíno com resultados
+              sustentáveis.
+            </p>
+            <div class="row g-4 mb-4">
+              <div class="col-6">
+                <h4 class="h6 fw-bold" style="color:var(--ink)">Quem somos</h4>
+                <p class="small">Uma iniciativa empresarial de prestação de serviços focada no
+                  desenvolvimento humano e
+                  organizacional, com presença e abordagem personalizada.</p>
+              </div>
+              <div class="col-6">
+                <h4 class="h6 fw-bold" style="color:var(--ink)">Fundadores</h4>
+                <p class="small">Profissionais com vasta experiência em consultoria, formação e gestão
+                  de equipas, unidos
+                  por uma visão comum.</p>
+              </div>
             </div>
-        </section>
-
-        <!-- MARCAS -->
-        <section class="bg-alt-c py-5">
-            <div class="container d-flex flex-wrap justify-content-between align-items-center gap-4 reveal">
-                <p class="mb-0 fw-medium" style="max-width:24ch;color:var(--ash)">Marcas que escolheram crescer com a
-                    nossa
-                    estratégia e espaços</p>
-                <div class="d-flex flex-wrap gap-5 align-items-center">
-                    <span class="d-flex align-items-center gap-2 fw-bold" style="color:var(--slate);opacity:.85"><svg
-                            class="bi">
-                            <use xlink:href="#i-box" />
-                        </svg>Relume</span>
-                    <span class="d-flex align-items-center gap-2 fw-bold" style="color:var(--slate);opacity:.85"><svg
-                            class="bi">
-                            <use xlink:href="#i-graph" />
-                        </svg>Webflow</span>
-                    <span class="d-flex align-items-center gap-2 fw-bold" style="color:var(--slate);opacity:.85"><svg
-                            class="bi">
-                            <use xlink:href="#i-box" />
-                        </svg>Relume</span>
-                    <span class="d-flex align-items-center gap-2 fw-bold" style="color:var(--slate);opacity:.85"><svg
-                            class="bi">
-                            <use xlink:href="#i-graph" />
-                        </svg>Webflow</span>
-                </div>
+            <div class="d-flex align-items-center gap-4">
+              <a class="btn btn-outline-c px-4 py-2" href="https://wa.me/848665180">Saber mais</a>
+              <a class="link-arrow" href="#equipa">Equipa <svg class="bi">
+                  <use xlink:href="#i-arrow"></use>
+                </svg></a>
             </div>
-        </section>
-
-        <!-- SERVIÇOS (accordion horizontal, fiel ao wireframe) -->
-        <section class="section" id="servicos">
-            <div class="container">
-                <div class="mb-5 reveal" style="max-width:640px">
-                    <span class="eyebrow">Serviços</span>
-                    <h2 class="mb-3" style="font-size:clamp(1.9rem,3.6vw,2.6rem)">Soluções para cada necessidade</h2>
-                    <p>Cinco formas de trabalhar consigo, sempre com o mesmo rigor.</p>
-                </div>
-
-                <div class="tabs-h reveal" id="servicesTabs">
-                    <button class="tab-item active" data-index="0" aria-expanded="true">
-                        <div class="tab-strip"><span class="t-num">01</span><span class="t-label">Atendimento ao
-                                Cliente</span></div>
-                        <div class="tab-full">
-                            <span class="t-eyebrow-num">01</span>
-                            <h3>Atendimento ao Cliente</h3>
-                            <p>Desenvolvimento de diretrizes de governança e suporte no fortalecimento de uma cultura
-                                corporativa
-                                pautada na integridade, transparência e liderança de alto impacto.</p>
-                            <div class="ph tab-img"><svg class="bi" style="font-size:2.2rem">
-                                    <use xlink:href="#i-image" />
-                                </svg></div>
-                        </div>
-                    </button>
-                    <button class="tab-item" data-index="1" aria-expanded="false">
-                        <div class="tab-strip"><span class="t-num">02</span><span class="t-label">Consultoria Ética e
-                                Liderança
-                                Organizacional</span></div>
-                        <div class="tab-full">
-                            <span class="t-eyebrow-num">02</span>
-                            <h3>Consultoria Ética e Liderança Organizacional</h3>
-                            <p>Programas à medida para fortalecer a cultura ética e a capacidade de liderança das
-                                equipas de gestão, com
-                                foco em integridade e decisões consistentes.</p>
-                            <div class="ph tab-img"><svg class="bi" style="font-size:2.2rem">
-                                    <use xlink:href="#i-image" />
-                                </svg></div>
-                        </div>
-                    </button>
-                    <button class="tab-item" data-index="2" aria-expanded="false">
-                        <div class="tab-strip"><span class="t-num">03</span><span class="t-label">Palestras, Workshops e
-                                Formação</span></div>
-                        <div class="tab-full">
-                            <span class="t-eyebrow-num">03</span>
-                            <h3>Palestras, Workshops e Formação</h3>
-                            <p>Sessões práticas e dinâmicas, desenhadas para gerar competências aplicáveis desde o
-                                primeiro dia, com
-                                métodos participativos e foco em resultados.</p>
-                            <div class="ph tab-img"><svg class="bi" style="font-size:2.2rem">
-                                    <use xlink:href="#i-image" />
-                                </svg></div>
-                        </div>
-                    </button>
-                    <button class="tab-item" data-index="3" aria-expanded="false">
-                        <div class="tab-strip"><span class="t-num">04</span><span class="t-label">Treinamento
-                                Corporativo
-                                Personalizado</span></div>
-                        <div class="tab-full">
-                            <span class="t-eyebrow-num">04</span>
-                            <h3>Treinamento Corporativo Personalizado</h3>
-                            <p>Planos de treino ajustados à realidade e aos objetivos específicos de cada organização,
-                                acompanhando a
-                                evolução das equipas ao longo do tempo.</p>
-                            <div class="ph tab-img"><svg class="bi" style="font-size:2.2rem">
-                                    <use xlink:href="#i-image" />
-                                </svg></div>
-                        </div>
-                    </button>
-                </div>
-            </div>
-        </section>
-
-        <!-- BENEFÍCIOS -->
-        <section class="section bg-alt-c">
-            <div class="container">
-                <div class="text-center mx-auto reveal" style="max-width:640px">
-                    <span class="eyebrow">Benefícios</span>
-                    <h2 style="font-size:clamp(1.9rem,3.6vw,2.6rem)">O que ganha connosco</h2>
-                    <p class="mt-3">Resultados reais para pessoas e organizações que querem crescer.</p>
-                </div>
-                <div class="bento mt-5 reveal">
-                    <div class="card-c b-a">
-                        <span class="tag">Crescimento</span>
-                        <h3>Desenvolvimento profissional</h3>
-                        <p class="small">Crescer exige método, prática e as pessoas certas ao lado. É isso que
-                            oferecemos.</p>
-                        <a href="#" class="link-arrow">Começar agora <svg class="bi">
-                                <use xlink:href="#i-arrow" />
-                            </svg></a>
-                        <div class="ph"><svg class="bi">
-                                <use xlink:href="#i-image" />
-                            </svg></div>
-                    </div>
-                    <div class="card-c b-b">
-                        <div class="ph"><svg class="bi">
-                                <use xlink:href="#i-image" />
-                            </svg></div>
-                        <div>
-                            <span class="tag">Networking</span>
-                            <h3>Ligações que importam</h3>
-                            <p class="small">Ligações reais com pessoas e organizações que fazem acontecer.</p>
-                            <a href="#" class="link-arrow">Conectar <svg class="bi">
-                                    <use xlink:href="#i-arrow" />
-                                </svg></a>
-                        </div>
-                    </div>
-                    <div class="card-c b-c">
-                        <span class="tag">Resultados</span>
-                        <h3>Resultados que ficam</h3>
-                        <p class="small">Mudanças que permanecem muito depois de terminarmos o trabalho. Sem fórmulas
-                            vazias.</p>
-                        <a href="#" class="link-arrow">Saber mais <svg class="bi">
-                                <use xlink:href="#i-arrow" />
-                            </svg></a>
-                        <div class="ph"><svg class="bi">
-                                <use xlink:href="#i-image" />
-                            </svg></div>
-                    </div>
-                    <div class="card-c b-1">
-                        <div class="icon-box"><svg class="bi">
-                                <use xlink:href="#i-box" />
-                            </svg></div>
-                        <h3>Conhecimento Prático</h3>
-                        <p class="small">Competências que se usam no dia seguinte, não em teoria.</p>
-                        <a href="#" class="link-arrow">Saber mais <svg class="bi">
-                                <use xlink:href="#i-arrow" />
-                            </svg></a>
-                    </div>
-                    <div class="card-c b-2">
-                        <div class="icon-box"><svg class="bi">
-                                <use xlink:href="#i-mortarboard" />
-                            </svg></div>
-                        <h3>Orientação especializada</h3>
-                        <p class="small">Orientação direta de quem já esteve no terreno.</p>
-                        <a href="#" class="link-arrow">Começar agora <svg class="bi">
-                                <use xlink:href="#i-arrow" />
-                            </svg></a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- PORQUE NÓS -->
-        <section class="section">
-            <div class="container">
-                <div class="row g-5 reveal">
-                    <div class="col-lg-7">
-                        <span class="eyebrow">Porque nós?</span>
-                        <h2 style="font-size:clamp(1.9rem,3.6vw,2.6rem);max-width:16ch">A diferença está na forma como
-                            trabalhamos
-                        </h2>
-                    </div>
-                    <div class="col-lg-5 d-flex align-items-start">
-                        <p class="pt-lg-3">Não vendemos fórmulas. Construímos relações de confiança e entregamos
-                            trabalho sério. Cada
-                            projeto começa com uma escuta atenta e termina com resultados que se medem.</p>
-                    </div>
-                </div>
-                <div class="row g-4 mt-3 reveal-stagger reveal">
-                    <div class="col-6 col-lg-3 feature stagger-item">
-                        <div class="icon-box"><svg class="bi">
-                                <use xlink:href="#i-award" />
-                            </svg></div>
-                        <h3 class="h6 fw-bold" style="color:var(--ink);font-family:'Inter',sans-serif">Experiência que
-                            fala por si
-                        </h3>
-                        <p class="small">Anos de trabalho no terreno com organizações de diferentes setores e dimensões.
-                        </p>
-                    </div>
-                    <div class="col-6 col-lg-3 feature stagger-item">
-                        <div class="icon-box"><svg class="bi">
-                                <use xlink:href="#i-shield" />
-                            </svg></div>
-                        <h3 class="h6 fw-bold" style="color:var(--ink);font-family:'Inter',sans-serif">Profissionalismo
-                            em cada
-                            detalhe</h3>
-                        <p class="small">Rigor, pontualidade e transparência em todas as fases do projeto.</p>
-                    </div>
-                    <div class="col-6 col-lg-3 feature stagger-item">
-                        <div class="icon-box"><svg class="bi">
-                                <use xlink:href="#i-people" />
-                            </svg></div>
-                        <h3 class="h6 fw-bold" style="color:var(--ink);font-family:'Inter',sans-serif">Abordagem
-                            personalizada</h3>
-                        <p class="small">Cada organização é única. O nosso trabalho reflete essa singularidade.</p>
-                    </div>
-                    <div class="col-6 col-lg-3 feature stagger-item">
-                        <div class="icon-box"><svg class="bi">
-                                <use xlink:href="#i-hearts" />
-                            </svg></div>
-                        <h3 class="h6 fw-bold" style="color:var(--ink);font-family:'Inter',sans-serif">Compromisso com
-                            as pessoas</h3>
-                        <p class="small">Acreditamos que o crescimento sustentável começa sempre pelas pessoas.</p>
-                    </div>
-                </div>
-                <div class="d-flex align-items-center gap-4 mt-4 reveal">
-                    <a href="#cta" class="btn btn-outline-c px-4 py-2">Conectar</a>
-                    <a href="#equipa" class="link-arrow">Equipa <svg class="bi">
-                            <use xlink:href="#i-arrow" />
-                        </svg></a>
-                </div>
-            </div>
-        </section>
-
-        <!-- CTA FINAL -->
-        <section class="section bg-dark-c text-center position-relative overflow-hidden" id="cta">
-            <div class="glow glow-cyan"
-                style="width:38rem;height:22rem;top:-4rem;left:50%;transform:translateX(-50%);animation:pulseGlow 5s ease-in-out infinite">
-            </div>
-            <div class="container position-relative reveal" style="z-index:1">
-                <h2 style="font-size:clamp(2rem,4.4vw,3rem)" class="mb-3">Pronto para começar?<br>Fale connosco</h2>
-                <p class="mx-auto mb-4" style="max-width:44ch">O primeiro passo é uma conversa. Conte-nos o que a sua
-                    organização
-                    precisa e nós tratamos do resto.</p>
-                <div class="d-flex flex-wrap justify-content-center gap-3">
-                    <a href="#" class="btn btn-cyan px-4 py-3">Contacto</a>
-                    <a href="#servicos" class="btn btn-outline-light-c px-4 py-3">Serviços</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- EVENTOS -->
-        <section class="section" id="eventos">
-            <div class="container">
-                <div class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-5 reveal">
-                    <div>
-                        <span class="eyebrow">Eventos</span>
-                        <h2 style="font-size:clamp(1.8rem,3.4vw,2.4rem);max-width:20ch">Encontros que Transformam
-                            Realidades</h2>
-                    </div>
-                    <a href="#" class="btn btn-outline-c px-4 py-2">Ver todos</a>
-                </div>
-                <div class="row g-4 reveal-stagger reveal">
-                    <div class="col-lg-4 stagger-item">
-                        <div class="card-c h-100 overflow-hidden">
-                            <div class="ph event-thumb position-relative" style="aspect-ratio:16/10;border-radius:0">
-                                <span class="badge-c">Liderança</span>
-                                <svg class="bi" style="font-size:2.4rem">
-                                    <use xlink:href="#i-image" />
-                                </svg>
-                            </div>
-                            <div class="p-4">
-                                <div class="d-flex gap-3 event-meta mb-3">
-                                    <span class="d-flex align-items-center gap-1"><svg class="bi">
-                                            <use xlink:href="#i-calendar" />
-                                        </svg>Sex 09 Março 2026</span>
-                                    <span class="d-flex align-items-center gap-1"><svg class="bi">
-                                            <use xlink:href="#i-geo" />
-                                        </svg>Maputo</span>
-                                </div>
-                                <h3 class="h5 fw-bold mb-2" style="color:var(--ink);font-family:'Inter',sans-serif">
-                                    Liderança prática</h3>
-                                <p class="small mb-3">Um dia intensivo para líderes que querem equipas mais fortes e
-                                    autónomas.</p>
-                                <a href="#" class="link-arrow">Ver evento <svg class="bi">
-                                        <use xlink:href="#i-arrow" />
-                                    </svg></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 stagger-item">
-                        <div class="card-c h-100 overflow-hidden">
-                            <div class="ph event-thumb position-relative" style="aspect-ratio:16/10;border-radius:0">
-                                <span class="badge-c">Comunicação</span>
-                                <svg class="bi" style="font-size:2.4rem">
-                                    <use xlink:href="#i-image" />
-                                </svg>
-                            </div>
-                            <div class="p-4">
-                                <div class="d-flex gap-3 event-meta mb-3">
-                                    <span class="d-flex align-items-center gap-1"><svg class="bi">
-                                            <use xlink:href="#i-calendar" />
-                                        </svg>Ter 12 Fev 2026</span>
-                                    <span class="d-flex align-items-center gap-1"><svg class="bi">
-                                            <use xlink:href="#i-geo" />
-                                        </svg>Beira</span>
-                                </div>
-                                <h3 class="h5 fw-bold mb-2" style="color:var(--ink);font-family:'Inter',sans-serif">
-                                    Comunicação com
-                                    impacto</h3>
-                                <p class="small mb-3">Como falar de forma clara e mobilizar pessoas para a ação.</p>
-                                <a href="#" class="link-arrow">Ver evento <svg class="bi">
-                                        <use xlink:href="#i-arrow" />
-                                    </svg></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 stagger-item">
-                        <div class="card-c h-100 overflow-hidden">
-                            <div class="ph event-thumb position-relative" style="aspect-ratio:16/10;border-radius:0">
-                                <span class="badge-c">Estratégia</span>
-                                <svg class="bi" style="font-size:2.4rem">
-                                    <use xlink:href="#i-image" />
-                                </svg>
-                            </div>
-                            <div class="p-4">
-                                <div class="d-flex gap-3 event-meta mb-3">
-                                    <span class="d-flex align-items-center gap-1"><svg class="bi">
-                                            <use xlink:href="#i-calendar" />
-                                        </svg>Seg 11 Fev 2026</span>
-                                    <span class="d-flex align-items-center gap-1"><svg class="bi">
-                                            <use xlink:href="#i-geo" />
-                                        </svg>Online</span>
-                                </div>
-                                <h3 class="h5 fw-bold mb-2" style="color:var(--ink);font-family:'Inter',sans-serif">
-                                    Decidir com clareza
-                                </h3>
-                                <p class="small mb-3">Ferramentas simples para tomar decisões difíceis com dados e
-                                    convicção.</p>
-                                <a href="#" class="link-arrow">Ver evento <svg class="bi">
-                                        <use xlink:href="#i-arrow" />
-                                    </svg></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <div style="height:56px;background:var(--navy)"></div>
-
-        <!-- TESTEMUNHO (Bootstrap Carousel funcional) -->
-        <section class="section">
-            <div class="container reveal">
-                <div id="testiCarousel" class="carousel slide testi-carousel" data-bs-ride="carousel">
-                    <div class="carousel-indicators position-static mb-4">
-                        <button type="button" data-bs-target="#testiCarousel" data-bs-slide-to="0"
-                            class="active"></button>
-                        <button type="button" data-bs-target="#testiCarousel" data-bs-slide-to="1"></button>
-                    </div>
-                    <div class="carousel-inner text-center">
-                        <div class="carousel-item active">
-                            <p class="fw-bold mb-4" style="color:var(--slate)">Webflow</p>
-                            <blockquote>"A consultoria mudou a forma como a nossa equipa trabalha. Resultados visíveis
-                                em poucas
-                                semanas."</blockquote>
-                            <div class="avatar-c"><svg class="bi">
-                                    <use xlink:href="#i-person" />
-                                </svg></div>
-                            <p class="fw-bold mb-0" style="color:var(--ink)">Mariana Costa</p>
-                            <p class="small">Diretora Comercial, Kululu</p>
-                        </div>
-                        <div class="carousel-item">
-                            <p class="fw-bold mb-4" style="color:var(--slate)">NovaTech</p>
-                            <blockquote>"Ganhámos clareza estratégica e uma equipa mais alinhada em apenas um
-                                trimestre."</blockquote>
-                            <div class="avatar-c"><svg class="bi">
-                                    <use xlink:href="#i-person" />
-                                </svg></div>
-                            <p class="fw-bold mb-0" style="color:var(--ink)">João Fernandes</p>
-                            <p class="small">CEO, NovaTech</p>
-                        </div>
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#testiCarousel"
-                        data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon"></span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#testiCarousel"
-                        data-bs-slide="next">
-                        <span class="carousel-control-next-icon"></span>
-                    </button>
-                </div>
-            </div>
-        </section>
-
-        <div style="height:56px;background:var(--navy)"></div>
-
-        <!-- GALERIA -->
-        <section class="section">
-            <div class="container">
-                <div class="text-center mx-auto mb-5 reveal" style="max-width:640px">
-                    <h2 style="font-size:clamp(1.9rem,3.6vw,2.6rem)">Galeria</h2>
-                    <p class="mt-3">Momentos reais de trabalho, aprendizagem e partilha de nossos serviços.</p>
-                </div>
-                <div class="row g-3 reveal">
-                    <div class="col-md-7">
-                        <div class="ph g-main" style="aspect-ratio:1/1"><svg class="bi" style="font-size:2.4rem">
-                                <use xlink:href="#i-image" />
-                            </svg></div>
-                    </div>
-                    <div class="col-md-5 d-flex flex-column gap-3">
-                        <div class="ph" style="flex:1;border-radius:18px"><svg class="bi" style="font-size:2.2rem">
-                                <use xlink:href="#i-image" />
-                            </svg></div>
-                        <div class="ph" style="flex:1;border-radius:18px"><svg class="bi" style="font-size:2.2rem">
-                                <use xlink:href="#i-image" />
-                            </svg></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-    <!-- FOOTER -->
-    <footer class="pt-5 pb-4">
-        <div class="container">
-            <div class="row g-4 pb-4">
-                <div class="col-lg-6">
-                    <span class="navbar-brand" style="color:#fff!important">Castros</span>
-                    <div class="mt-4">
-                        <h5>Localização</h5>
-                        <p class="foot-p mb-0 d-flex align-items-center gap-2"><svg class="bi">
-                                <use xlink:href="#i-geo" />
-                            </svg>Rua do Palmar, nº 35</p>
-                    </div>
-                    <div class="mt-3">
-                        <h5>Contact</h5>
-                        <a href="#" class="d-flex align-items-center gap-2 mb-1"><svg class="bi">
-                                <use xlink:href="#i-phone" />
-                            </svg>84 123 4567</a>
-                        <a href="#" class="d-flex align-items-center gap-2"><svg class="bi">
-                                <use xlink:href="#i-envelope" />
-                            </svg>email@example.com</a>
-                    </div>
-                    <div class="d-flex gap-3 mt-3">
-                        <a href="#" class="social-ic"><svg class="bi">
-                                <use xlink:href="#i-facebook" />
-                            </svg></a>
-                        <a href="#" class="social-ic"><svg class="bi">
-                                <use xlink:href="#i-instagram" />
-                            </svg></a>
-                        <a href="#" class="social-ic"><svg class="bi">
-                                <use xlink:href="#i-x" />
-                            </svg></a>
-                        <a href="#" class="social-ic"><svg class="bi">
-                                <use xlink:href="#i-linkedin" />
-                            </svg></a>
-                        <a href="#" class="social-ic"><svg class="bi">
-                                <use xlink:href="#i-youtube" />
-                            </svg></a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-6">
-                    <h5>Menu</h5>
-                    <a href="#hero" class="d-block mb-2">Início</a>
-                    <a href="#sobre" class="d-block mb-2">Sobre Nós</a>
-                    <a href="#servicos" class="d-block mb-2">Serviços</a>
-                    <a href="#eventos" class="d-block mb-2">Eventos</a>
-                    <a href="#cta" class="d-block mb-2">Contacto</a>
-                </div>
-                <div class="col-lg-3 col-6">
-                    <h5>Legal</h5>
-                    <a href="#" class="d-block mb-2">Privacy Policy</a>
-                    <a href="#" class="d-block mb-2">Terms of Service</a>
-                    <a href="#" class="d-block mb-2">Cookies Settings</a>
-                </div>
-            </div>
-            <p class="wordmark">Castros Consultoria</p>
-            <div class="d-flex flex-wrap justify-content-between gap-2 pt-3 foot-bottom">
-                <span>© 2026 Castros Consultoria. All rights reserved.</span>
-            </div>
+          </div>
+          <div class="col-lg-6 reveal">
+            <div class="ph about-img" style="aspect-ratio:1/1"></div>
+          </div>
         </div>
-    </footer>
+      </div>
+    </section>
 
-    <!-- back to top -->
-    <button id="backTop" aria-label="Voltar ao topo"><svg class="bi" style="font-size:1.2rem">
-            <use xlink:href="#i-chevronup" />
-        </svg></button>
+    <!-- 02- EQUIPA -->
 
+    <section class="section" id="equipa">
+      <div class="container">
+        <div class="text-center mx-auto reveal" style="max-width:640px">
+          <span class="eyebrow">Equipa</span>
+          <h2 style="font-size:clamp(1.9rem,3.6vw,2.6rem); color:var(--white)">As Pessoas</h2>
+          <p style="color:var(--ash-soft)" class="mt-3">Profissionais que trabalham lado a lado consigo, todos os dias.</p>
+        </div>
+        <div class="row g-4 mt-4 reveal-stagger reveal">
+          <div class="col-md-4 stagger-item">
+            <div class="card-c h-100 overflow-hidden">
+              <div class="ph team-photo" style="aspect-ratio:4/3;border-radius:0"><svg class="bi"
+                  style="font-size:2.6rem">
+                  <use xlink:href="#i-person"></use>
+                </svg></div>
+              <div class="p-4 text-center">
+                <h3 class="h5 fw-bold mb-0" style="color:var(--ink);font-family:'Inter',sans-serif">Elizabeth Castros
+                </h3>
+                <p class="role">Fundadora</p>
+                <p class="small mb-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim
+                  in
+                  eros.</p>
+                <div class="d-flex justify-content-center gap-3">
+                  <a class="social-ic" href="#"><svg class="bi" style="font-size:1.1rem">
+                      <use xlink:href="#i-linkedin"></use>
+                    </svg></a>
+                  <a class="social-ic" href="#"><svg class="bi" style="font-size:1.1rem">
+                      <use xlink:href="#i-x"></use>
+                    </svg></a>
+                  <a class="social-ic" href="#"><svg class="bi" style="font-size:1.1rem">
+                      <use xlink:href="#i-dribbble"></use>
+                    </svg></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 stagger-item">
+            <div class="card-c h-100 overflow-hidden">
+              <div class="ph team-photo" style="aspect-ratio:4/3;border-radius:0"><svg class="bi"
+                  style="font-size:2.6rem">
+                  <use xlink:href="#i-person"></use>
+                </svg></div>
+              <div class="p-4 text-center">
+                <h3 class="h5 fw-bold mb-0" style="color:var(--ink);font-family:'Inter',sans-serif">Cleyber Mendes</h3>
+                <p class="role">Consultor Senior</p>
+                <p class="small mb-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim
+                  in
+                  eros.</p>
+                <div class="d-flex justify-content-center gap-3">
+                  <a class="social-ic" href="#"><svg class="bi" style="font-size:1.1rem">
+                      <use xlink:href="#i-linkedin"></use>
+                    </svg></a>
+                  <a class="social-ic" href="#"><svg class="bi" style="font-size:1.1rem">
+                      <use xlink:href="#i-x"></use>
+                    </svg></a>
+                  <a class="social-ic" href="#"><svg class="bi" style="font-size:1.1rem">
+                      <use xlink:href="#i-dribbble"></use>
+                    </svg></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 stagger-item">
+            <div class="card-c h-100 overflow-hidden">
+              <div class="ph team-photo" style="aspect-ratio:4/3;border-radius:0"><svg class="bi"
+                  style="font-size:2.6rem">
+                  <use xlink:href="#i-person"></use>
+                </svg></div>
+              <div class="p-4 text-center">
+                <h3 class="h5 fw-bold mb-0" style="color:var(--ink);font-family:'Inter',sans-serif">Carlos Mendes</h3>
+                <p class="role">Formador</p>
+                <p class="small mb-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim
+                  in
+                  eros.</p>
+                <div class="d-flex justify-content-center gap-3">
+                  <a class="social-ic" href="#"><svg class="bi" style="font-size:1.1rem">
+                      <use xlink:href="#i-linkedin"></use>
+                    </svg></a>
+                  <a class="social-ic" href="#"><svg class="bi" style="font-size:1.1rem">
+                      <use xlink:href="#i-x"></use>
+                    </svg></a>
+                  <a class="social-ic" href="#"><svg class="bi" style="font-size:1.1rem">
+                      <use xlink:href="#i-dribbble"></use>
+                    </svg></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <!-- 03- MARCAS / PARCEIROS -->
+    <section class="bg-alt-c py-5">
+      <div class="container d-flex flex-wrap justify-content-between align-items-center gap-4 reveal">
+        <p class="mb-0 fw-medium" style="max-width:24ch;color:var(--black)">Marcas que escolheram crescer com a
+          nossa
+          estratégia e espaços</p>
+        <div class="d-flex flex-wrap gap-5 align-items-center">
+          <span class="d-flex align-items-center gap-2 fw-bold" style="color:var(--slate);opacity:.85">Business.Creator</span>
+          <span class="d-flex align-items-center gap-2 fw-bold" style="color:var(--slate);opacity:.85">Xiluva Mulher</span>
+          <span class="d-flex align-items-center gap-2 fw-bold" style="color:var(--slate);opacity:.85">WH Impact</span>
+          <span class="d-flex align-items-center gap-2 fw-bold" style="color:var(--slate);opacity:.85">AEESJ</span>
+          <span class="d-flex align-items-center gap-2 fw-bold" style="color:var(--slate);opacity:.85">Business Touch Holding</span>
+          <span class="d-flex align-items-center gap-2 fw-bold" style="color:var(--slate);opacity:.85">MoneyMakers Forex Academy</span>
+        </div>
+      </div>
+    </section>
 
+    <!-- 04- SERVIÇOS-->
+    <section class="section" id="servicos">
+      <div class="container">
+        <div class="mb-5 reveal" style="max-width:640px">
+          <span class="eyebrow">Serviços</span>
+          <h2 class="mb-3" style="font-size:clamp(1.9rem,3.6vw,2.6rem); color:var(--white)">Soluções para cada necessidade</h2>
+          <p style="color: var(--ash-soft);">Cinco formas de trabalhar consigo, sempre com o mesmo rigor.</p>
+        </div>
+        <div class="tabs-h reveal" id="servicesTabs">
+          <!-- First Service -->
+          <button aria-expanded="true" class="tab-item active" data-index="0">
+            <div class="tab-strip"><span class="t-num">01</span><span class="t-label">Atendimento ao Cliente</span>
+            </div>
+            <div class="tab-full">
+              <h3>Atendimento ao Cliente</h3>
+              <p>Desenvolvimento de diretrizes de governança e suporte no fortalecimento de uma cultura corporativa
+                pautada na integridade, transparência e liderança de alto impacto.</p>
+              <div class="ph tab-img" style="background-image: url(assets/atendimento.jpg); background-size: cover; background-position: center;"></div>
+            </div>
+          </button>
+          <!-- Second Sevice -->
+          <button aria-expanded="false" class="tab-item" data-index="1">
+            <div class="tab-strip"><span class="t-num">02</span><span class="t-label">Consultoria Ética e Liderança
+                Organizacional</span></div>
+            <div class="tab-full">
+              <h3>Consultoria Ética e Liderança Organizacional</h3>
+              <p>Programas à medida para fortalecer a cultura ética e a capacidade de liderança das equipas de gestão,
+                com
+                foco em integridade e decisões consistentes.</p>
+              <div class="ph tab-img" style="background-image: url(assets/blackconslt.jpg); background-size: cover; background-position: center;"></div>
+            </div>
+          </button>
+          <!-- Third Section -->
+          <button aria-expanded="false" class="tab-item" data-index="2">
+            <div class="tab-strip"><span class="t-num">03</span><span class="t-label">Palestras, Workshops e
+                Formação</span></div>
+            <div class="tab-full">
+              <h3>Palestras, Workshops e Formação</h3>
+              <p>Sessões práticas e dinâmicas, desenhadas para gerar competências aplicáveis desde o primeiro dia, com
+                métodos participativos e foco em resultados.</p>
+              <div class="ph tab-img" style="background-image: url(assets/workshop.jpg); background-size: cover; background-position: center;"></div>
+            </div>
+          </button>
+          <!-- Fourth Section -->
+          <button aria-expanded="false" class="tab-item" data-index="3">
+            <div class="tab-strip"><span class="t-num">04</span><span class="t-label">Treinamento Corporativo
+                Personalizado</span></div>
+            <div class="tab-full">
+              <h3>Treinamento Corporativo Personalizado</h3>
+              <p>Planos de treino ajustados à realidade e aos objetivos específicos de cada organização, acompanhando a
+                evolução das equipas ao longo do tempo.</p>
+              <div class="ph tab-img" style="background-image: url(assets/office.jpg); background-size: cover; background-position: center;"></div>
+            </div>
+          </button>
+        </div>
+      </div>
+    </section>
 
-    <!-- SVG SPRITE (Bootstrap Icons) -->
-    <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
-        <symbol id="i-arrow" viewBox="0 0 16 16">
-            <path fill-rule="evenodd"
-                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8" />
-        </symbol>
-        <symbol id="i-chevrondown" viewBox="0 0 16 16">
-            <path fill-rule="evenodd"
-                d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708" />
-        </symbol>
-        <symbol id="i-chevronup" viewBox="0 0 16 16">
-            <path fill-rule="evenodd"
-                d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708z" />
-        </symbol>
-        <symbol id="i-image" viewBox="0 0 16 16">
-            <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0" />
-            <path
-                d="M2.002 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zm12 1a1 1 0 0 1 1 1v6.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12V3a1 1 0 0 1 1-1z" />
-        </symbol>
-        <symbol id="i-person" viewBox="0 0 16 16">
-            <path fill-rule="evenodd"
-                d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
-            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
-        </symbol>
-        <symbol id="i-linkedin" viewBox="0 0 16 16">
-            <path
-                d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z" />
-        </symbol>
-        <symbol id="i-x" viewBox="0 0 16 16">
-            <path
-                d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z" />
-        </symbol>
-        <symbol id="i-dribbble" viewBox="0 0 16 16">
-            <path fill-rule="evenodd"
-                d="M8 0C3.584 0 0 3.584 0 8s3.584 8 8 8c4.408 0 8-3.584 8-8s-3.592-8-8-8m5.284 3.688a6.8 6.8 0 0 1 1.545 4.251c-.226-.043-2.482-.503-4.755-.217-.052-.112-.096-.234-.148-.355-.139-.33-.295-.668-.451-.99 2.516-1.023 3.662-2.498 3.81-2.69zM8 1.18c1.735 0 3.323.65 4.53 1.718-.122.174-1.155 1.553-3.584 2.464-1.12-2.056-2.36-3.74-2.551-4A7 7 0 0 1 8 1.18m-2.907.642A43 43 0 0 1 7.627 5.77c-3.193.85-6.013.833-6.317.833a6.87 6.87 0 0 1 3.783-4.78zM1.163 8.01V7.8c.295.01 3.61.053 7.02-.971.199.381.381.772.555 1.162l-.27.078c-3.522 1.137-5.396 4.243-5.553 4.504a6.82 6.82 0 0 1-1.752-4.564zM8 14.837a6.8 6.8 0 0 1-4.19-1.44c.12-.252 1.509-2.924 5.361-4.269.018-.009.026-.009.044-.017a28.3 28.3 0 0 1 1.457 5.18A6.7 6.7 0 0 1 8 14.837m3.81-1.171c-.07-.417-.435-2.412-1.328-4.868 2.143-.338 4.017.217 4.251.295a6.77 6.77 0 0 1-2.924 4.573z" />
-        </symbol>
-        <symbol id="i-facebook" viewBox="0 0 16 16">
-            <path
-                d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951" />
-        </symbol>
-        <symbol id="i-instagram" viewBox="0 0 16 16">
-            <path
-                d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942.038-.853.048-1.125.048-3.299s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334" />
-        </symbol>
-        <symbol id="i-youtube" viewBox="0 0 16 16">
-            <path
-                d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.01 2.01 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052a423 423 0 0 1-.428-.02c-1.11-.049-2.167-.128-2.654-.26a2.01 2.01 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31 31 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.01 2.01 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A100 100 0 0 1 7.858 2zM6.4 5.209v4.818l4.157-2.408z" />
-        </symbol>
-        <symbol id="i-award" viewBox="0 0 16 16">
-            <path
-                d="m8 0 1.669.864 1.858.282.842 1.68 1.337 1.32L13.4 6l.306 1.854-1.337 1.32-.842 1.68-1.858.282L8 12l-1.669-.864-1.858-.282-.842-1.68-1.337-1.32L2.6 6l-.306-1.854 1.337-1.32.842-1.68L6.331.864z" />
-            <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1z" />
-        </symbol>
-        <symbol id="i-shield" viewBox="0 0 16 16">
-            <path
-                d="M5.338 1.59a61 61 0 0 0-2.837.856.48.48 0 0 0-.328.39c-.554 4.157.726 7.19 2.253 9.188a10.7 10.7 0 0 0 2.287 2.233c.346.244.652.42.893.533q.18.085.293.118a1 1 0 0 0 .101.025 1 1 0 0 0 .1-.025q.114-.034.294-.118c.24-.113.547-.29.893-.533a10.7 10.7 0 0 0 2.287-2.233c1.527-1.997 2.807-5.031 2.253-9.188a.48.48 0 0 0-.328-.39c-.651-.213-1.75-.56-2.837-.855C9.552 1.29 8.531 1.067 8 1.067c-.53 0-1.552.223-2.662.524zM5.072.56C6.157.265 7.31 0 8 0s1.843.265 2.928.56c1.11.3 2.229.655 2.887.87a1.54 1.54 0 0 1 1.044 1.262c.596 4.477-.787 7.795-2.465 9.99a11.8 11.8 0 0 1-2.517 2.453 7 7 0 0 1-1.048.625c-.28.132-.581.24-.829.24s-.548-.108-.829-.24a7 7 0 0 1-1.048-.625 11.8 11.8 0 0 1-2.517-2.453C1.928 10.487.545 7.169 1.141 2.692A1.54 1.54 0 0 1 2.185 1.43 63 63 0 0 1 5.072.56" />
-            <path
-                d="M10.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0" />
-        </symbol>
-        <symbol id="i-people" viewBox="0 0 16 16">
-            <path
-                d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5" />
-        </symbol>
-        <symbol id="i-hearts" viewBox="0 0 16 16">
-            <path fill-rule="evenodd"
-                d="M4.931.481c1.627-1.671 5.692 1.254 0 5.015-5.692-3.76-1.626-6.686 0-5.015m6.84 1.794c1.084-1.114 3.795.836 0 3.343-3.795-2.507-1.084-4.457 0-3.343M7.84 7.642c2.71-2.786 9.486 2.09 0 8.358-9.487-6.268-2.71-11.144 0-8.358" />
-        </symbol>
-        <symbol id="i-box" viewBox="0 0 16 16">
-            <path fill-rule="evenodd"
-                d="M15.528 2.973a.75.75 0 0 1 .472.696v8.662a.75.75 0 0 1-.472.696l-7.25 2.9a.75.75 0 0 1-.557 0l-7.25-2.9A.75.75 0 0 1 0 12.331V3.669a.75.75 0 0 1 .471-.696L7.443.184l.01-.003.268-.108a.75.75 0 0 1 .558 0l.269.108.01.003zM10.404 2 4.25 4.461 1.846 3.5 1 3.839v.4l6.5 2.6v7.922l.5.2.5-.2V6.84l6.5-2.6v-.4l-.846-.339L8 5.961 5.596 5l6.154-2.461z" />
-        </symbol>
-        <symbol id="i-mortarboard" viewBox="0 0 16 16">
-            <path
-                d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917z" />
-            <path
-                d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466z" />
-        </symbol>
-        <symbol id="i-graph" viewBox="0 0 16 16">
-            <path fill-rule="evenodd"
-                d="M0 0h1v15h15v1H0zm10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4.9l-3.613 4.417a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61L13.445 4H10.5a.5.5 0 0 1-.5-.5" />
-        </symbol>
-        <symbol id="i-calendar" viewBox="0 0 16 16">
-            <path
-                d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2M1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857z" />
-            <path
-                d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2" />
-        </symbol>
-        <symbol id="i-geo" viewBox="0 0 16 16">
-            <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6" />
-        </symbol>
-        <symbol id="i-phone" viewBox="0 0 16 16">
-            <path fill-rule="evenodd"
-                d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z" />
-        </symbol>
-        <symbol id="i-envelope" viewBox="0 0 16 16">
-            <path
-                d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414zM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586zm3.436-.586L16 11.801V4.697z" />
-        </symbol>
-    </svg>
+    <!-- 05- BENEFÍCIOS-->
+    <section class="section bg-alt-c">
+      <div class="container">
+        <div class="text-center mx-auto reveal" style="max-width:640px">
+          <span class="eyebrow">Benefícios</span>
+          <h2 style="font-size:clamp(1.9rem,3.6vw,2.6rem)">O que ganha connosco</h2>
+          <p class="mt-3">Resultados reais para pessoas e organizações que querem crescer.</p>
+        </div>
+        <div class="bento mt-5 reveal">
+          <div class="card-c b-a">
+            <span class="tag">Crescimento</span>
+            <h3>Desenvolvimento profissional</h3>
+            <p class="small">Crescer exige método, prática e as pessoas certas ao lado. É isso que oferecemos.</p>
+            <a class="link-arrow" href="#">Começar agora <svg class="bi">
+                <use xlink:href="#i-arrow"></use>
+              </svg></a>
+            <div class="ph"><svg class="bi">
+                <use xlink:href="#i-image"></use>
+              </svg></div>
+          </div>
+          <div class="card-c b-b">
+            <div class="ph"><svg class="bi">
+                <use xlink:href="#i-image"></use>
+              </svg></div>
+            <div>
+              <span class="tag">Networking</span>
+              <h3>Ligações que importam</h3>
+              <p class="small">Ligações reais com pessoas e organizações que fazem acontecer.</p>
+              <a class="link-arrow" href="#">Conectar <svg class="bi">
+                  <use xlink:href="#i-arrow"></use>
+                </svg></a>
+            </div>
+          </div>
+          <div class="card-c b-c">
+            <span class="tag">Resultados</span>
+            <h3>Resultados que ficam</h3>
+            <p class="small">Mudanças que permanecem muito depois de terminarmos o trabalho. Sem fórmulas vazias.</p>
+            <a class="link-arrow" href="#">Saber mais <svg class="bi">
+                <use xlink:href="#i-arrow"></use>
+              </svg></a>
+            <div class="ph"><svg class="bi">
+                <use xlink:href="#i-image"></use>
+              </svg></div>
+          </div>
+          <div class="card-c b-1">
+            <div class="icon-box"><svg class="bi">
+                <use xlink:href="#i-box"></use>
+              </svg></div>
+            <h3>Conhecimento Prático</h3>
+            <p class="small">Competências que se usam no dia seguinte, não em teoria.</p>
+            <a class="link-arrow" href="#">Saber mais <svg class="bi">
+                <use xlink:href="#i-arrow"></use>
+              </svg></a>
+          </div>
+          <div class="card-c b-2">
+            <div class="icon-box"><svg class="bi">
+                <use xlink:href="#i-mortarboard"></use>
+              </svg></div>
+            <h3>Orientação especializada</h3>
+            <p class="small">Orientação direta de quem já esteve no terreno.</p>
+            <a class="link-arrow" href="#">Começar agora <svg class="bi">
+                <use xlink:href="#i-arrow"></use>
+              </svg></a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <!-- Custom Script -->
-    <script>
-        (function () {
-            var nav = document.getElementById('mainNav');
-            var backTop = document.getElementById('backTop');
-            window.addEventListener('scroll', function () {
-                var y = window.scrollY;
-                nav.classList.toggle('scrolled', y > 12);
-                backTop.classList.toggle('show', y > 500);
-            });
-            backTop.addEventListener('click', function () {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            });
+    <!-- 06- PORQUE NÓS | integrated from 83b09 -->
+    <section class="section">
+      <div class="container">
+        <div class="row g-5 reveal">
+          <div class="col-lg-7">
+            <span class="eyebrow">Porque nós?</span>
+            <h2 style="font-size:clamp(1.9rem,3.6vw,2.6rem);max-width:16ch; color:var(--white)">A diferença está na forma como trabalhamos
+            </h2>
+          </div>
+          <div class="col-lg-5 d-flex align-items-start">
+          <p class="pt-lg-3" style="color: var(--aqua);">Não vendemos fórmulas. Construímos relações de confiança e entregamos trabalho sério.
+              Cada
+              projeto começa com uma escuta atenta e termina com resultados que se medem.</p>
+          </div>
+        </div>
+        <div class="row g-4 mt-3 reveal-stagger reveal">
+          <div class="col-6 col-lg-3 feature stagger-item">
+            <div class="icon-box"><svg class="bi">
+                <use xlink:href="#i-award"></use>
+              </svg></div>
+            <h3 class="h6 fw-bold" style="color:var(--white);font-family:'Inter',sans-serif">Experiência que fala por si
+            </h3>
+            <p class="small" style="color: var(--ash-soft)">Anos de trabalho no terreno com organizações de diferentes setores e dimensões.</p>
+          </div>
+          <div class="col-6 col-lg-3 feature stagger-item">
+            <div class="icon-box"><svg class="bi">
+                <use xlink:href="#i-shield"></use>
+              </svg></div>
+            <h3 class="h6 fw-bold" style="color:var(--white);font-family:'Inter',sans-serif">Profissionalismo em cada
+              detalhe</h3>
+            <p class="small" style="color: var(--ash-soft)">Rigor, pontualidade e transparência em todas as fases do projeto.</p>
+          </div>
+          <div class="col-6 col-lg-3 feature stagger-item">
+            <div class="icon-box"><svg class="bi">
+                <use xlink:href="#i-people"></use>
+              </svg></div>
+            <h3 class="h6 fw-bold" style="color:var(--white);font-family:'Inter',sans-serif">Abordagem personalizada</h3>
+            <p class="small" style="color: var(--ash-soft)">Cada organização é única. O nosso trabalho reflete essa singularidade.</p>
+          </div>
+          <div class="col-6 col-lg-3 feature stagger-item">
+            <div class="icon-box"><svg class="bi">
+                <use xlink:href="#i-hearts"></use>
+              </svg></div>
+            <h3 class="h6 fw-bold" style="color:var(--white);font-family:'Inter',sans-serif">Compromisso com as pessoas
+            </h3>
+            <p class="small" style="color: var(--ash-soft)">Acreditamos que o crescimento sustentável começa sempre pelas pessoas.</p>
+          </div>
+        </div>
+        <div class="d-flex align-items-center gap-4 mt-4 reveal">
+          <a class="btn btn-outline-c px-4 py-2" href="#cta" style="border: cyan solid 2px; color: var(--cyan)">Conectar</a>
+          <a class="link-arrow" href="#equipa">Equipa <svg class="bi">
+              <use xlink:href="#i-arrow"></use>
+            </svg></a>
+        </div>
+      </div>
+    </section>
 
-            var tabsWrap = document.getElementById('servicesTabs');
-            if (tabsWrap) {
-                tabsWrap.addEventListener('click', function (e) {
-                    var btn = e.target.closest('.tab-item');
-                    if (!btn || btn.classList.contains('active')) return;
-                    tabsWrap.querySelectorAll('.tab-item').forEach(function (t) {
-                        t.classList.remove('active');
-                        t.setAttribute('aria-expanded', 'false');
-                    });
-                    btn.classList.add('active');
-                    btn.setAttribute('aria-expanded', 'true');
-                });
-            }
+    <!-- 07- CTA FINAL | integrated from 83b09 -->
 
-            var io = new IntersectionObserver(function (entries) {
-                entries.forEach(function (e) {
-                    if (e.isIntersecting) {
-                        e.target.classList.add('is-visible');
-                        io.unobserve(e.target);
-                    }
-                });
-            }, {
-                threshold: .15
-            });
-            document.querySelectorAll('.reveal').forEach(function (el) {
-                io.observe(el);
-            });
+    <section class="section bg-dark-c text-center position-relative overflow-hidden" id="cta">
+      <div class="glow glow-cyan"
+        style="width:38rem;height:22rem;top:-4rem;left:50%;transform:translateX(-50%);animation:pulseGlow 5s ease-in-out infinite">
+      </div>
+      <div class="container position-relative reveal" style="z-index:1">
+        <h2 class="mb-3" style="font-size:clamp(2rem,4.4vw,3rem)">Pronto para começar?<br />Fale connosco</h2>
+        <p class="mx-auto mb-4" style="max-width:44ch">O primeiro passo é uma conversa. Conte-nos o que a sua
+          organização
+          precisa e nós tratamos do resto.</p>
+        <div class="d-flex flex-wrap justify-content-center gap-3">
+          <a class="btn btn-cyan px-4 py-3" href="#">Contacto</a>
+          <a class="btn btn-outline-light-c px-4 py-3" href="#servicos">Serviços</a>
+        </div>
+      </div>
+    </section>
 
-            var counted = false;
+    <!-- 08- EVENTOS | integrated from 83b09 -->
 
-            function animateCounters() {
-                if (counted) return;
-                counted = true;
-                document.querySelectorAll('[data-count]').forEach(function (el) {
-                    var target = parseInt(el.getAttribute('data-count'), 10);
-                    var start = null;
-                    var dur = 1300;
+    <section class="section" id="eventos">
+      <div class="container">
+        <div class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-5 reveal">
+          <div>
+            <span class="eyebrow">Eventos</span>
+            <h2 style="font-size:clamp(1.8rem,3.4vw,2.4rem); max-width:35ch; color: var(--white);">Encontros que Transformam Realidades</h2>
+          </div>
+          <a class="btn btn-outline-c px-4 py-2" href="#" style="color: var(--ash-soft)">Ver todos</a>
+        </div>
+        <div class="row g-4 reveal-stagger reveal">
+          <div class="col-lg-4 stagger-item">
+            <div class="card-c h-100 overflow-hidden">
+              <div class="ph event-thumb position-relative" style="aspect-ratio:16/10;border-radius:0; background-image: url(assets/suit.jpg); background-size: cover;">
+                <span class="badge-c" style="color: var(--pearl)">Liderança</span>
+                <svg class="bi" style="font-size:2.4rem">
+                </svg>
+              </div>
+              <div class="p-4">
+                <div class="d-flex gap-3 event-meta mb-3">
+                  <span class="d-flex align-items-center gap-1"><svg class="bi" style="color: var(--cyan);">
+                      <use xlink:href="#i-calendar"></use>
+                    </svg>Sex 09 Março 2026</span>
+                  <span class="d-flex align-items-center gap-1"><svg class="bi" style="color: var(--cyan);">
+                      <use xlink:href="#i-geo"></use>
+                    </svg>Maputo</span>
+                </div>
+                <h3 class="h5 fw-bold mb-2" style="color:var(--ink);font-family:'Inter',sans-serif">Liderança prática
+                </h3>
+                <p class="small mb-3">Um dia intensivo para líderes que querem equipas mais fortes e autónomas.</p>
+                <a class="link-arrow" href="#">Ver evento <svg class="bi" style="color: var(--cyan);">
+                    <use xlink:href="#i-arrow"></use>
+                  </svg></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 stagger-item">
+            <div class="card-c h-100 overflow-hidden">
+              <div class="ph event-thumb position-relative" style="aspect-ratio:16/10;border-radius:0; background-image: url(assets/suit.jpg); background-size: cover;">
+                <span class="badge-c" style="color: var(--pearl)">Comunicação</span>
+                <svg class="bi" style="font-size:2.4rem"></svg>
+              </div>
+              <div class="p-4">
+                <div class="d-flex gap-3 event-meta mb-3">
+                  <span class="d-flex align-items-center gap-1"><svg class="bi" style="color: var(--cyan)">
+                      <use xlink:href="#i-calendar"></use>
+                    </svg>Ter 12 Fev 2026</span>
+                  <span class="d-flex align-items-center gap-1"><svg class="bi" style="color: var(--cyan);">
+                      <use xlink:href="#i-geo"></use>
+                    </svg>Beira</span>
+                </div>
+                <h3 class="h5 fw-bold mb-2" style="color:var(--ink);font-family:'Inter',sans-serif">Comunicação com
+                  impacto</h3>
+                <p class="small mb-3">Como falar de forma clara e mobilizar pessoas para a ação.</p>
+                <a class="link-arrow" href="#">Ver evento <svg class="bi">
+                    <use xlink:href="#i-arrow"></use>
+                  </svg></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 stagger-item">
+            <div class="card-c h-100 overflow-hidden">
+              <div class="ph event-thumb position-relative" style="aspect-ratio:16/10;border-radius:0; background-image: url(assets/persons.jpg); background-size: cover;">
+                <span class="badge-c" style="color: var(--pearl)">Estratégia</span>
+                <svg class="bi" style="font-size:2.4rem"></svg>
+              </div>
+              <div class="p-4">
+                <div class="d-flex gap-3 event-meta mb-3">
+                  <span class="d-flex align-items-center gap-1"><svg class="bi" style="color: var(--cyan)">
+                      <use xlink:href="#i-calendar"></use>
+                    </svg>Seg 11 Fev 2026</span>
+                  <span class="d-flex align-items-center gap-1"><svg class="bi" style="color: var(--cyan);">
+                      <use xlink:href="#i-geo"></use>
+                    </svg>Online</span>
+                </div>
+                <h3 class="h5 fw-bold mb-2" style="color:var(--ink);font-family:'Inter',sans-serif">Decidir com clareza
+                </h3>
+                <p class="small mb-3">Ferramentas simples para tomar decisões difíceis com dados e convicção.</p>
+                <a class="link-arrow" href="#">Ver evento <svg class="bi">
+                    <use xlink:href="#i-arrow"></use>
+                  </svg></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-                    function step(ts) {
-                        if (!start) start = ts;
-                        var p = Math.min((ts - start) / dur, 1);
-                        var eased = 1 - Math.pow(1 - p, 3);
-                        el.textContent = '+' + Math.round(eased * target);
-                        if (p < 1) requestAnimationFrame(step);
-                    }
-                    requestAnimationFrame(step);
-                });
-            }
-            setTimeout(animateCounters, 500);
-        })(); <
-        /script <
-        !--BOOTSTRAP 5 JS CDN Link-- >
-        <
-        script src = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" >
-    </script>
-    <!-- AOS CDN Link -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <!-- AOS Initializes function -->
-    <script>
-        AOS.init();
-    </script>
-    <!-- NAVBAR BEHAVIOR  -->
-    <script>
-        const navbar = document.getElementById("mainNavbar");
-        let lastScrollPosition = window.scrollY;
-        let hideTimer = null;
-        // After how many pixels should the navbar hide 
-        const hideAfter = 120;
-        const visibleDuration = 4000;
+    <!-- 09- TESTEMUNHO | integrated from 83b09 -->
 
-        let isMouseOverNavbar = false;
+    <!-- <section class="section">
+      <div class="container reveal">
+        <div class="carousel slide testi-carousel" data-bs-ride="carousel" id="testiCarousel">
+          <div class="carousel-indicators position-static mb-4">
+            <button class="active" data-bs-slide-to="0" data-bs-target="#testiCarousel" type="button"></button>
+            <button data-bs-slide-to="1" data-bs-target="#testiCarousel" type="button"></button>
+          </div>
+          <div class="carousel-inner text-center">
+            <div class="carousel-item active">
+              <p class="fw-bold mb-4" style="color:var(--slate)">Webflow</p>
+              <blockquote>"A consultoria mudou a forma como a nossa equipa trabalha. Resultados visíveis em poucas
+                semanas."</blockquote>
+              <div class="avatar-c"><svg class="bi">
+                  <use xlink:href="#i-person"></use>
+                </svg></div>
+              <p class="fw-bold mb-0" style="color:var(--ink)">Mariana Costa</p>
+              <p class="small">Diretora Comercial, Kululu</p>
+            </div>
+            <div class="carousel-item">
+              <p class="fw-bold mb-4" style="color:var(--slate)">NovaTech</p>
+              <blockquote>"Ganhámos clareza estratégica e uma equipa mais alinhada em apenas um trimestre."</blockquote>
+              <div class="avatar-c"><svg class="bi">
+                  <use xlink:href="#i-person"></use>
+                </svg></div>
+              <p class="fw-bold mb-0" style="color:var(--ink)">João Fernandes</p>
+              <p class="small">CEO, NovaTech</p>
+            </div>
+          </div>
+          <button class="carousel-control-prev" data-bs-slide="prev" data-bs-target="#testiCarousel" type="button">
+            <span class="carousel-control-prev-icon"></span>
+          </button>
+          <button class="carousel-control-next" data-bs-slide="next" data-bs-target="#testiCarousel" type="button">
+            <span class="carousel-control-next-icon"></span>
+          </button>
+        </div>
+      </div>
+    </section> -->
+    <section id="testimonials">
+      <h6 class="index mb-3">Testemunhos</h6>
+      <div id="testCarousel" class="carousel slide" data-bs-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-bs-target="#testCarousel" data-bs-slide-to="0" class="active" aria-current="true"
+            aria-label="First slide"></li>
+          <li data-bs-target="#testCarousel" data-bs-slide-to="1" aria-label="Second slide"></li>
+          <li data-bs-target="#testCarousel" data-bs-slide-to="2" aria-label="Third slide"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div data-bs-interval="10000" class="carousel-item active">
+            <div class="carousel-caption d-md-block">
+              <h3>"A qualidade do produto que adquiri superou as minhas expectativas, e a entrega foi rápida e sem
+                complicações!"</h3>
+              <img src="assets/testimonial3.jpg" class="w-100 d-block" alt="First slide" />
+              <h6 class="name">
+                Marcos Terra
+              </h6>
+              <p class="local">
+                Maputo, Sommerchield II
+              </p>
+            </div>
+          </div>
+          <div data-bs-interval="10000" class="carousel-item">
+            <div class="carousel-caption d-md-block">
+              <h3>"Continuo a recorrer à SelfXpress sempre que preciso de algo para os meus AirBnBs"</h3>
+              <img src="assets/testimonial5.jpg" class="w-100 d-block" alt="" />
+              <h6 class="name">
+                Camila Tesouro
+              </h6>
+              <p class="local">
+                Matola, Matola Rio
+              </p>
+            </div>
+          </div>
+          <div data-bs-interval="10000" class="carousel-item">
+            <div class="carousel-caption d-md-block">
+              <h3>"Os meus amigos recomendaram-me a SelfXpress e, desde então, é a quem recorro sempre."</h3>
+              <img src="assets/testimonial-2.jpg" class="w-100 d-block" alt="" />
+              <h6 class="name">
+                José BaCosta
+              </h6>
+              <p class="local">
+                Maputo, Xinamanquila - Bairro C
+              </p>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#testCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#testCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
 
-        navbar.addEventListener("mouseenter", () => {
-            isMouseOverNavbar = true;
-            clearTimeout(hideTimer);
-            navbar.classList.remove("navbar-hidden");
-            navbar.classList.add("navbar-hovered");
-        });
+    </section>
 
+    <!-- Contact Us Section -->
+    <section id="contact">
+      <div class="heading">
+        <div class="index mb-3">Contacto</div>
+        <h1 class="title">
+          Fale Connosco
+        </h1>
+        <p class="description">
+          Teremos todo o gosto dem ouvir de si!
+        </p>
+      </div>
+      <div class="container">
+        <div class="mb-3">
+          <label for="" class="form-label">Nome</label>
+          <input type="text" name="" id="userName" class="form-control" placeholder="" />
+        </div>
+        <div class="mb-3">
+          <label for="" class="form-label">Email</label>
+          <input type="email" class="form-control" name="" id="userEmail" placeholder="" />
+        </div>
+        <div class="mb-1">
+          <label for="" class="form-label">Mensagem</label>
+          <textarea class="form-control" name="" id="" rows="3" placeholder="Type your message">
+            </textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" id="submit">
+          Submeter
+        </button>
+      </div>
+    </section>
 
-        navbar.addEventListener("mouseleave", () => {
-            isMouseOverNavbar = false;
-            navbar.classList.remove("navbar-hovered");
-            if (window.scrollY > hideAfter) {
-                startHideTimer();
-            }
-        });
+    <!-- 10- GALERIA | integrated from 83b09 -->
 
+    <section class="section">
+      <div class="container">
+        <div class="text-center mx-auto mb-5 reveal" style="max-width:640px">
+          <h2 style="font-size:clamp(1.9rem,3.6vw,2.6rem)">Galeria</h2>
+          <p class="mt-3">Momentos reais de trabalho, aprendizagem e partilha de nossos serviços.</p>
+        </div>
+        <div class="row g-3 reveal">
+          <div class="col-md-7">
+            <div class="ph g-main" style="aspect-ratio:1/1"><svg class="bi" style="font-size:2.4rem">
+                <use xlink:href="#i-image"></use>
+              </svg></div>
+          </div>
+          <div class="col-md-5 d-flex flex-column gap-3">
+            <div class="ph" style="flex:1;border-radius:18px"><svg class="bi" style="font-size:2.2rem">
+                <use xlink:href="#i-image"></use>
+              </svg></div>
+            <div class="ph" style="flex:1;border-radius:18px"><svg class="bi" style="font-size:2.2rem">
+                <use xlink:href="#i-image"></use>
+              </svg></div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        function startHideTimer() {
-            clearTimeout(hideTimer);
-            hideTimer = setTimeout(() => {
+  </main>
 
-                if (
-                    !isMouseOverNavbar &&
-                    window.scrollY > hideAfter
-                ) {
-                    navbar.classList.remove("navbar-hovered");
-                    navbar.classList.add("navbar-hidden");
-                }
-            }, visibleDuration);
+  <!-- FOOTER -->
+
+  <footer class="pt-5 pb-4">
+    <div class="container">
+      <div class="row g-4 pb-4">
+        <div class="col-lg-6">
+          <span class="navbar-brand" style="color:#fff!important">Castros</span>
+          <div class="mt-4">
+            <h5>Localização</h5>
+            <p class="foot-p mb-0 d-flex align-items-center gap-2"><svg class="bi">
+                <use xlink:href="#i-geo"></use>
+              </svg>Rua do Palmar, nº 35</p>
+          </div>
+          <div class="mt-3">
+            <h5>Contact</h5>
+            <a class="d-flex align-items-center gap-2 mb-1" href="#"><svg class="bi">
+                <use xlink:href="#i-phone"></use>
+              </svg>84 123 4567</a>
+            <a class="d-flex align-items-center gap-2" href="#"><svg class="bi">
+                <use xlink:href="#i-envelope"></use>
+              </svg>email@example.com</a>
+          </div>
+          <div class="d-flex gap-3 mt-3">
+            <a class="social-ic" href="#"><svg class="bi">
+                <use xlink:href="#i-facebook"></use>
+              </svg></a>
+            <a class="social-ic" href="#"><svg class="bi">
+                <use xlink:href="#i-instagram"></use>
+              </svg></a>
+            <a class="social-ic" href="#"><svg class="bi">
+                <use xlink:href="#i-x"></use>
+              </svg></a>
+            <a class="social-ic" href="#"><svg class="bi">
+                <use xlink:href="#i-linkedin"></use>
+              </svg></a>
+            <a class="social-ic" href="#"><svg class="bi">
+                <use xlink:href="#i-youtube"></use>
+              </svg></a>
+          </div>
+        </div>
+        <div class="col-lg-3 col-6">
+          <h5>Menu</h5>
+          <a class="d-block mb-2" href="#hero">Início</a>
+          <a class="d-block mb-2" href="#sobre">Sobre Nós</a>
+          <a class="d-block mb-2" href="#servicos">Serviços</a>
+          <a class="d-block mb-2" href="#eventos">Eventos</a>
+          <a class="d-block mb-2" href="#cta">Contacto</a>
+        </div>
+        <div class="col-lg-3 col-6">
+          <h5>Legal</h5>
+          <a class="d-block mb-2" href="#">Privacy Policy</a>
+          <a class="d-block mb-2" href="#">Terms of Service</a>
+          <a class="d-block mb-2" href="#">Cookies Settings</a>
+        </div>
+      </div>
+      <p class="wordmark">Castros Consultoria</p>
+      <div class="d-flex flex-wrap justify-content-between gap-2 pt-3 foot-bottom">
+        <span>© 2026 Castros Consultoria. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <button aria-label="Voltar ao topo" id="backTop"><svg class="bi" style="font-size:1.2rem">
+      <use xlink:href="#i-chevronup"></use>
+    </svg></button>
+
+  <svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="i-arrow" viewbox="0 0 16 16">
+      <path
+        d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8"
+        fill-rule="evenodd"></path>
+    </symbol>
+    <symbol id="i-chevrondown" viewbox="0 0 16 16">
+      <path
+        d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"
+        fill-rule="evenodd"></path>
+    </symbol>
+    <symbol id="i-chevronup" viewbox="0 0 16 16">
+      <path d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708z"
+        fill-rule="evenodd"></path>
+    </symbol>
+    <symbol id="i-image" viewbox="0 0 16 16">
+      <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"></path>
+      <path
+        d="M2.002 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zm12 1a1 1 0 0 1 1 1v6.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12V3a1 1 0 0 1 1-1z">
+      </path>
+    </symbol>
+    <symbol id="i-person" viewbox="0 0 16 16">
+      <path
+        d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"
+        fill-rule="evenodd"></path>
+      <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"></path>
+    </symbol>
+    <symbol id="i-linkedin" viewbox="0 0 16 16">
+      <path
+        d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z">
+      </path>
+    </symbol>
+    <symbol id="i-x" viewbox="0 0 16 16">
+      <path
+        d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z">
+      </path>
+    </symbol>
+    <symbol id="i-dribbble" viewbox="0 0 16 16">
+      <path
+        d="M8 0C3.584 0 0 3.584 0 8s3.584 8 8 8c4.408 0 8-3.584 8-8s-3.592-8-8-8m5.284 3.688a6.8 6.8 0 0 1 1.545 4.251c-.226-.043-2.482-.503-4.755-.217-.052-.112-.096-.234-.148-.355-.139-.33-.295-.668-.451-.99 2.516-1.023 3.662-2.498 3.81-2.69zM8 1.18c1.735 0 3.323.65 4.53 1.718-.122.174-1.155 1.553-3.584 2.464-1.12-2.056-2.36-3.74-2.551-4A7 7 0 0 1 8 1.18m-2.907.642A43 43 0 0 1 7.627 5.77c-3.193.85-6.013.833-6.317.833a6.87 6.87 0 0 1 3.783-4.78zM1.163 8.01V7.8c.295.01 3.61.053 7.02-.971.199.381.381.772.555 1.162l-.27.078c-3.522 1.137-5.396 4.243-5.553 4.504a6.82 6.82 0 0 1-1.752-4.564zM8 14.837a6.8 6.8 0 0 1-4.19-1.44c.12-.252 1.509-2.924 5.361-4.269.018-.009.026-.009.044-.017a28.3 28.3 0 0 1 1.457 5.18A6.7 6.7 0 0 1 8 14.837m3.81-1.171c-.07-.417-.435-2.412-1.328-4.868 2.143-.338 4.017.217 4.251.295a6.77 6.77 0 0 1-2.924 4.573z"
+        fill-rule="evenodd"></path>
+    </symbol>
+    <symbol id="i-facebook" viewbox="0 0 16 16">
+      <path
+        d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951">
+      </path>
+    </symbol>
+    <symbol id="i-instagram" viewbox="0 0 16 16">
+      <path
+        d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942.038-.853.048-1.125.048-3.299s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334">
+      </path>
+    </symbol>
+    <symbol id="i-youtube" viewbox="0 0 16 16">
+      <path
+        d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.01 2.01 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052a423 423 0 0 1-.428-.02c-1.11-.049-2.167-.128-2.654-.26a2.01 2.01 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31 31 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.01 2.01 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A100 100 0 0 1 7.858 2zM6.4 5.209v4.818l4.157-2.408z">
+      </path>
+    </symbol>
+    <symbol id="i-award" viewbox="0 0 16 16">
+      <path
+        d="m8 0 1.669.864 1.858.282.842 1.68 1.337 1.32L13.4 6l.306 1.854-1.337 1.32-.842 1.68-1.858.282L8 12l-1.669-.864-1.858-.282-.842-1.68-1.337-1.32L2.6 6l-.306-1.854 1.337-1.32.842-1.68L6.331.864z">
+      </path>
+      <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1z"></path>
+    </symbol>
+    <symbol id="i-shield" viewbox="0 0 16 16">
+      <path
+        d="M5.338 1.59a61 61 0 0 0-2.837.856.48.48 0 0 0-.328.39c-.554 4.157.726 7.19 2.253 9.188a10.7 10.7 0 0 0 2.287 2.233c.346.244.652.42.893.533q.18.085.293.118a1 1 0 0 0 .101.025 1 1 0 0 0 .1-.025q.114-.034.294-.118c.24-.113.547-.29.893-.533a10.7 10.7 0 0 0 2.287-2.233c1.527-1.997 2.807-5.031 2.253-9.188a.48.48 0 0 0-.328-.39c-.651-.213-1.75-.56-2.837-.855C9.552 1.29 8.531 1.067 8 1.067c-.53 0-1.552.223-2.662.524zM5.072.56C6.157.265 7.31 0 8 0s1.843.265 2.928.56c1.11.3 2.229.655 2.887.87a1.54 1.54 0 0 1 1.044 1.262c.596 4.477-.787 7.795-2.465 9.99a11.8 11.8 0 0 1-2.517 2.453 7 7 0 0 1-1.048.625c-.28.132-.581.24-.829.24s-.548-.108-.829-.24a7 7 0 0 1-1.048-.625 11.8 11.8 0 0 1-2.517-2.453C1.928 10.487.545 7.169 1.141 2.692A1.54 1.54 0 0 1 2.185 1.43 63 63 0 0 1 5.072.56">
+      </path>
+      <path
+        d="M10.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0">
+      </path>
+    </symbol>
+    <symbol id="i-people" viewbox="0 0 16 16">
+      <path
+        d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5">
+      </path>
+    </symbol>
+    <symbol id="i-hearts" viewbox="0 0 16 16">
+      <path
+        d="M4.931.481c1.627-1.671 5.692 1.254 0 5.015-5.692-3.76-1.626-6.686 0-5.015m6.84 1.794c1.084-1.114 3.795.836 0 3.343-3.795-2.507-1.084-4.457 0-3.343M7.84 7.642c2.71-2.786 9.486 2.09 0 8.358-9.487-6.268-2.71-11.144 0-8.358"
+        fill-rule="evenodd"></path>
+    </symbol>
+    <symbol id="i-box" viewbox="0 0 16 16">
+      <path
+        d="M15.528 2.973a.75.75 0 0 1 .472.696v8.662a.75.75 0 0 1-.472.696l-7.25 2.9a.75.75 0 0 1-.557 0l-7.25-2.9A.75.75 0 0 1 0 12.331V3.669a.75.75 0 0 1 .471-.696L7.443.184l.01-.003.268-.108a.75.75 0 0 1 .558 0l.269.108.01.003zM10.404 2 4.25 4.461 1.846 3.5 1 3.839v.4l6.5 2.6v7.922l.5.2.5-.2V6.84l6.5-2.6v-.4l-.846-.339L8 5.961 5.596 5l6.154-2.461z"
+        fill-rule="evenodd"></path>
+    </symbol>
+    <symbol id="i-mortarboard" viewbox="0 0 16 16">
+      <path
+        d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917z">
+      </path>
+      <path
+        d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466z">
+      </path>
+    </symbol>
+    <symbol id="i-graph" viewbox="0 0 16 16">
+      <path
+        d="M0 0h1v15h15v1H0zm10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4.9l-3.613 4.417a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61L13.445 4H10.5a.5.5 0 0 1-.5-.5"
+        fill-rule="evenodd"></path>
+    </symbol>
+    <symbol id="i-calendar" viewbox="0 0 16 16">
+      <path
+        d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2M1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857z">
+      </path>
+      <path
+        d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2">
+      </path>
+    </symbol>
+    <symbol id="i-geo" viewbox="0 0 16 16">
+      <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"></path>
+    </symbol>
+    <symbol id="i-phone" viewbox="0 0 16 16">
+      <path
+        d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"
+        fill-rule="evenodd"></path>
+    </symbol>
+    <symbol id="i-envelope" viewbox="0 0 16 16">
+      <path
+        d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414zM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586zm3.436-.586L16 11.801V4.697z">
+      </path>
+    </symbol>
+  </svg>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    /* ======================================================
+   JAVASCRIPT | Navigation, interactions and animations
+   ====================================================== */
+    (function () {
+      /* NAVBAR SCROLL BEHAVIOUR */
+      const navbar = document.getElementById("mainNavbar");
+      let lastScrollPosition = window.scrollY;
+      let hideTimer = null;
+
+      function showNavbar() {
+        if (!navbar) return;
+        navbar.classList.remove("navbar-hidden");
+        navbar.classList.add("navbar-hovered");
+      }
+
+      function hideNavbar() {
+        if (!navbar || window.scrollY <= 40) return;
+        navbar.classList.add("navbar-hidden");
+        navbar.classList.remove("navbar-hovered");
+      }
+
+      window.addEventListener("scroll", function () {
+        const currentScrollPosition = window.scrollY;
+
+        if (currentScrollPosition < lastScrollPosition || currentScrollPosition <= 40) {
+          showNavbar();
+        } else if (currentScrollPosition > lastScrollPosition + 8) {
+          clearTimeout(hideTimer);
+          hideTimer = setTimeout(hideNavbar, 150);
         }
 
+        lastScrollPosition = currentScrollPosition;
 
-        window.addEventListener(
-            "scroll",
-            () => {
+        const backTop = document.getElementById("backTop");
+        if (backTop) backTop.classList.toggle("show", currentScrollPosition > 500);
+      }, {
+        passive: true
+      });
 
-                const currentScrollPosition = window.scrollY;
+      if (navbar) {
+        navbar.addEventListener("mouseenter", showNavbar);
+        navbar.addEventListener("focusin", showNavbar);
+      }
 
-                if (currentScrollPosition <= 20) {
-                    clearTimeout(hideTimer);
-                    navbar.classList.remove("navbar-hidden");
-                    navbar.classList.add("navbar-hovered");
-                    lastScrollPosition = currentScrollPosition;
-                    return;
-                }
+      const backTop = document.getElementById("backTop");
+      if (backTop) {
+        backTop.addEventListener("click", function () {
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+          });
+        });
+      }
 
-                if (
-                    currentScrollPosition > lastScrollPosition &&
-                    currentScrollPosition > hideAfter
-                ) {
+      /* SERVICES ACCORDION */
+      const tabsWrap = document.getElementById("servicesTabs");
+      if (tabsWrap) {
+        tabsWrap.addEventListener("click", function (event) {
+          const button = event.target.closest(".tab-item");
+          if (!button || button.classList.contains("active")) return;
 
+          tabsWrap.querySelectorAll(".tab-item").forEach(function (tab) {
+            tab.classList.remove("active");
+            tab.setAttribute("aria-expanded", "false");
+          });
 
-                    if (!isMouseOverNavbar) {
-                        clearTimeout(hideTimer)
-                        navbar.classList.remove("navbar-hovered");
-                        navbar.classList.add("navbar-hidden");
-                    }
+          button.classList.add("active");
+          button.setAttribute("aria-expanded", "true");
+        });
+      }
 
-                } else if (
-                    currentScrollPosition < lastScrollPosition
-                ) {
-
-                    clearTimeout(hideTimer);
-                    navbar.classList.remove("navbar-hidden");
-                    navbar.classList.add("navbar-hovered");
-
-                    if (!isMouseOverNavbar) {
-                        startHideTimer();
-                    }
-                }
-
-                lastScrollPosition = currentScrollPosition;
-
-            }, {
-                passive: true
+      /* REVEAL ANIMATIONS */
+      const revealElements = document.querySelectorAll(".reveal");
+      if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
             }
-        );
-    </script>
+          });
+        }, {
+          threshold: 0.15
+        });
+
+        revealElements.forEach(function (element) {
+          observer.observe(element);
+        });
+      } else {
+        revealElements.forEach(function (element) {
+          element.classList.add("is-visible");
+        });
+      }
+
+      /* COUNTERS */
+      let counted = false;
+
+      function animateCounters() {
+        if (counted) return;
+        counted = true;
+
+        document.querySelectorAll("[data-count]").forEach(function (element) {
+          const target = parseInt(element.getAttribute("data-count"), 10);
+          let start = null;
+          const duration = 1300;
+
+          function step(timestamp) {
+            if (!start) start = timestamp;
+
+            const progress = Math.min((timestamp - start) / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+
+            element.textContent = "+" + Math.round(eased * target);
+
+            if (progress < 1) requestAnimationFrame(step);
+          }
+
+          requestAnimationFrame(step);
+        });
+      }
+
+      setTimeout(animateCounters, 500);
+    })();
+  </script>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    /* AOS INITIALIZATION */
+    if (window.AOS) {
+      AOS.init({
+        duration: 700,
+        once: true,
+        offset: 80
+      });
+    }
+  </script>
 
 </body>
 
