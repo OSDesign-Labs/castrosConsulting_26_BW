@@ -587,7 +587,7 @@ main {
 /* ABOUT US SECTION */
 #about {
   align-content: center;
-  
+
   /* .gradient-blur {
     height: 500px;
     width: 600px;
@@ -601,16 +601,18 @@ main {
     /* About Us First Row */
     .row.align-items-start.g-5 {
       height: 650px;
-
+      
       /* Left Column */
       .index {
-        font-size: 14px !important;
+        font-size: 12px !important;
         color: #04bfcd;
+        font-family: "DM Serif Display";
+        letter-spacing: 1.68px;
       }
 
       h2.title {
         font-size: 45px !important;
-        /* font-family: ; */
+        font-family: "DM Serif Display";
       }
 
       p {
@@ -642,12 +644,12 @@ main {
         font-size: 15px !important;
         font-weight: bold;
         border-radius: 5px !important;
-      
+
         transition: all 0.3s ease;
       }
-      
+
       /* Hover */
-      
+
       a.btn-more:hover {
         color: #04bfcd;
         border: #04bfcd solid 2px !important;
@@ -655,9 +657,9 @@ main {
         transform: translateY(-2px);
         box-shadow: 0 6px 20px rgba(4, 191, 205, 0.15);
       }
-      
+
       /* Second Button */
-      
+
       .btn.btn-link {
         padding: 5px 1rem 5px 1rem !important;
         text-align: center;
@@ -669,49 +671,49 @@ main {
         display: inline-flex;
         align-items: center;
         gap: 6px;
-      
+
         transition: all 0.3s ease;
       }
-      
+
       /* Hover */
-      
+
       a.btn-link:hover {
         border: #04bfcd solid 2px !important;
         transform: translateY(-2px);
         box-shadow: 0 5px 18px rgba(4, 191, 205, 0.12);
       }
-      
+
       /* Arrow */
-      
+
       .btn.btn-link .arrowRight {
         display: inline-block;
         animation: arrowLoop 1.8s ease-in-out infinite;
       }
-      
+
       /* Arrow animation */
-      
+
       @keyframes arrowLoop {
         0% {
           transform: translateX(0);
         }
-      
+
         35% {
           transform: translateX(7px);
         }
-      
+
         50% {
           transform: translateX(10px);
         }
-      
+
         65% {
           transform: translateX(7px);
         }
-      
+
         100% {
           transform: translateX(0);
         }
       }
-      
+
       a.btn-link:hover .arrowRight {
         animation-duration: 0.9s;
       }
@@ -726,8 +728,57 @@ main {
           width: 100%;
           object-fit: cover;
         }
+
+      }
+
+      #overlayAboutGradient::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 24px;
+        width: 92.8%;
+        height: 90%;
+        background: linear-gradient(167deg, #000d3600 0.000%, #82f0c742 2%, #00369e45 50.000%, #123e7199 75.000%, #1571b2 100.000%);
+        z-index: 3;
+        pointer-events: none;
+        border-radius: 18px;
+      }
+
+      #overlayAboutGradient>[class*="rounded image"] {
+        position: relative;
+        z-index: 0;
+        object-position: -100px;
+        border-radius: 18px !important;
       }
     }
   }
 
+
+
+  /* OUR TEAM SECTION */
+  .container-fluid {
+    .text-center {
+      h2 {
+        font-size: 42px;
+        font-weight: 600;
+      }
+
+    }
+    .row {
+      .col-md-4.text-center {
+        height: 350px;
+
+        img.img-fluid {
+        object-fit: cover;
+        background-color: white;
+        height: 100%;
+        width: 88%;
+        object-position: center -24px;
+        }
+      }
+    }
+    .row.align-items-center.mt-5{
+      margin-top: 10rem !important;
+    }
+  }
 }

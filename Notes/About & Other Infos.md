@@ -15,5 +15,3 @@
 #### Consultoria Ética
 
 #### Palestras, Workshops e Formação
-
-## PRICING
