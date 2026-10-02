@@ -1,11 +1,4 @@
-/*
- * CASTROS CONSULTORIA
- * CONTACT FORM
- *
- * The UI is ready for a future email/WhatsApp backend.
- * For now, submission is simulated so the complete interaction
- * can be tested without a server.
- */
+/* CONTACT FORM */
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -228,30 +221,42 @@ document.addEventListener("DOMContentLoaded", () => {
         };
     }
 
-    /*
-     * BACKEND INTEGRATION POINT
-     *
-     * Later, replace the simulated delay with:
-     *
-     * fetch("/api/contact", {
-     *     method: "POST",
-     *     headers: { "Content-Type": "application/json" },
-     *     body: JSON.stringify(data)
-     * });
-     */
+    /* SEND TO FORMSPREE */
+
+    const FORMSPREE_ENDPOINT = "https://formspree.io/f/mwlpzyva";
 
     async function sendContactData(data) {
 
-        console.log("Contact data ready for backend:", data);
+        const payload = new FormData();
+        Object.entries(data).forEach(([key, value]) => payload.append(key, value));
 
-        await new Promise((resolve) => {
-            setTimeout(resolve, 1800);
-        });
+        payload.append("subject", `Novo contacto pelo site: ${data.service || "Geral"}`);
+        payload.append("_gotcha", form.querySelector('[name="_gotcha"]').value);
 
-        return { success: true };
+        // Give up after 15s so a bad connection doesn't spin forever
+        const controller = new AbortController();
+        const timer = setTimeout(() => controller.abort(), 15000);
+
+        try {
+            const response = await fetch(FORMSPREE_ENDPOINT, {
+                method: "POST",
+                body: payload,
+                headers: { Accept: "application/json" },
+                signal: controller.signal
+            });
+            return { success: response.ok };
+        } finally {
+            clearTimeout(timer);
+        }
     }
 
     /* BOOTSTRAP ALERT */
+    // Bootstrap's close button deletes the alert from the page.
+    // Just hide it instead, so it can be shown again on the next submit.
+    alertElement.addEventListener("close.bs.alert", (event) => {
+       event.preventDefault();
+       alertElement.classList.remove("show");
+    });
 
     function showAlert(success = true) {
 
@@ -277,7 +282,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 "Ocorreu um problema. Verifique os dados e tente novamente.";
         }
 
-        bootstrap.Alert.getOrCreateInstance(alertElement).show();
+        alertElement.classList.add("show");
     }
 
     /* SUCCESS STATE */
@@ -301,7 +306,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 </h2>
 
                 <p class="form-step-description mx-auto mb-4">
-                    A sua mensagem foi preparada com sucesso.
+                    A sua mensagem foi enviada com sucesso.
                     A nossa equipa entrará em contacto consigo.
                 </p>
 

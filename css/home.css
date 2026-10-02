@@ -401,12 +401,12 @@ section {
     border-radius: 26px;
     aspect-ratio: 16/8.2;
     min-height: 520px;
-    margin: 4rem 2rem 0;
+    margin: 5rem 2rem 0;
     box-shadow: var(--shadow-lg);
 
     .hero-inner {
         position: relative;
-        z-index: 1;
+        z-indx: 1;
         height: 100%;
         padding: clamp(1.8rem, 4vw, 3.2rem);
         display: flex;
