@@ -239,14 +239,38 @@
         <section id="depoimentos" class="section">
             <div class="container">
                 <div id="servicosTestimonial" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-inner text-center" style="max-width: 700px; margin: 0 auto;">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#servicosTestimonial" data-bs-slide-to="0" class="active"
+                            aria-current="true" aria-label="Testemunho 1"></button>
+                        <button type="button" data-bs-target="#servicosTestimonial" data-bs-slide-to="1"
+                            aria-label="Testemunho 2"></button>
+                        <button type="button" data-bs-target="#servicosTestimonial" data-bs-slide-to="2"
+                            aria-label="Testemunho 3"></button>
+                    </div>
+                    <div class="carousel-inner text-center pb-5" style="max-width: 700px; margin: 0 auto;">
                         <div class="carousel-item active">
                             <p class="testi-quote mb-4">
-                                "A Castros Consultoria trouxe clareza onde havia ruído. Em poucas semanas,
-                                a equipa estava alinhada e a avançar com confiança."
+                                "A consultoria nos ajudou a transformar nossa cultura interna, hoje temos líderes
+                                mais conscientes e equipes mais engajadas."
                             </p>
-                            <p class="testi-name mb-0">João Pereira</p>
-                            <p class="small text-secondary">Diretor Geral, Empresa X</p>
+                            <p class="testi-name mb-0">Diretora de RH</p>
+                            <p class="small text-secondary">Setor financeiro</p>
+                        </div>
+                        <div class="carousel-item">
+                            <p class="testi-quote mb-4">
+                                "Depois dos workshops sobre ética, conseguimos reduzir conflitos internos e
+                                fortalecer a confiança entre gestores e colaboradores."
+                            </p>
+                            <p class="testi-name mb-0">CEO</p>
+                            <p class="small text-secondary">Setor industrial</p>
+                        </div>
+                        <div class="carousel-item">
+                            <p class="testi-quote mb-4">
+                                "O programa de liderança ética foi um divisor de águas na forma como nossos
+                                gestores tomam decisões."
+                            </p>
+                            <p class="testi-name mb-0">Gerente de Pessoas</p>
+                            <p class="small text-secondary">Setor de tecnologia</p>
                         </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#servicosTestimonial" data-bs-slide="prev">
@@ -256,7 +280,6 @@
                         <span class="carousel-control-next-icon"></span>
                     </button>
                 </div>
-                <!-- TODO: only one real testimonial here — add more slides once available -->
             </div>
         </section>
 
