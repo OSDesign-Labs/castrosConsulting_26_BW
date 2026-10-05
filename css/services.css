@@ -972,46 +972,48 @@ section {
     opacity: 1;
 }
 
+/* ======================================================
+       13. FOOTER
+       ====================================================== */
+
 footer {
     background: var(--navy);
-}
 
-.wordmark {
-    font-family: "DM Serif Display", serif;
-    font-weight: 800;
-    font-size: clamp(2.6rem, 9vw, 6.2rem);
-    color: var(--white);
-    opacity: 0.95;
-    line-height: 1;
-    letter-spacing: -0.02em;
-    border-top: 1px solid rgba(255, 255, 255, 0.14);
-    padding-top: 1.8rem;
-    margin-top: 0.5rem;
-}
+    .wordmark {
+        font-family: "DM Serif Display", serif;
+        font-weight: 900;
+        font-size: clamp(2.6rem, 9vw, 8.2rem);
+        color: var(--white);
+        line-height: 1;
+        letter-spacing: -0.02em;
+        border-top: 1px solid rgba(255, 255, 255, 0.14);
+        padding-top: 1.8rem;
+        margin-top: 0.5rem;
+    }
 
-footer h5 {
-    color: var(--pearl);
-    font-size: 0.72rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: 0.6rem;
-}
+    h5 {
+        color: var(--pearl);
+        font-size: 0.72rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-bottom: 0.6rem;
+    }
 
-footer a,
-.foot-p {
-    color: var(--ash-soft);
-    font-size: 0.9rem;
-}
+    .foot-p {
+        color: var(--ash-soft);
+        font-size: 0.9rem;
+    }
 
-footer a:hover {
-    color: var(--pearl);
-}
+    a:hover {
+        color: var(--pearl);
+    }
 
-.foot-bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.14);
-    color: var(--ash-soft);
-    font-size: 0.82rem;
+    .foot-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.14);
+        color: var(--ash-soft);
+        font-size: 0.82rem;
+    }
 }
 
 /* ======================================================
