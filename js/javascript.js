@@ -1,5 +1,157 @@
-/* CONTACT FORM */
+/* JAVASCRIPT | Navigation, interactions and animations */
+(function () {
+    /* ==========================================================
+       NAVBAR AUTO-HIDE (after 4s of inactivity)
+       ========================================================== */
+    const navbar = document.getElementById("mainNavbar");
+    const offcanvasEl = document.getElementById("mobileNavbar");
+    const backTop = document.getElementById("backTop");
+    const HIDE_DELAY = 4000;
+    let hideTimer = null;
 
+    let inHero = true; // true while the hero is on screen
+    
+    // True when the user is interacting with the navbar / menus
+    function isBusy() {
+        if (!navbar) return false;
+        return Boolean(
+            inHero ||                                                  // keep navbar visible inside the hero
+            (offcanvasEl && offcanvasEl.classList.contains("show")) || // mobile menu open
+            navbar.querySelector(".dropdown-menu.show") ||             // dropdown open
+            navbar.matches(":hover") ||                                // pointer over navbar
+            navbar.contains(document.activeElement)                    // keyboard focus inside
+        );
+    }
+
+    function hideNavbar() {
+        if (!navbar) return;
+        navbar.classList.add("navbar-hidden");
+    }
+
+    function startHideTimer() {
+        clearTimeout(hideTimer);
+        hideTimer = setTimeout(function check() {
+            if (isBusy()) {
+                hideTimer = setTimeout(check, 1000); // check again in 1s
+                return;
+            }
+            hideNavbar();
+        }, HIDE_DELAY);
+    }
+
+    function showNavbar() {
+        if (!navbar) return;
+        navbar.classList.remove("navbar-hidden");
+        startHideTimer();
+    }
+
+    // Any activity shows the navbar and restarts the 4s countdown
+    ["mousemove", "touchstart", "keydown", "click", "scroll"].forEach(function (evt) {
+        window.addEventListener(evt, showNavbar, { passive: true });
+    });
+
+    showNavbar(); // start the timer on page load
+
+    /* SECONDARY NAVBAR + HERO STATE */
+    const heroSection = document.querySelector("main > .hero");
+    if (navbar && heroSection && "IntersectionObserver" in window) {
+      new IntersectionObserver(function (entries) {
+        inHero = entries[0].isIntersecting;
+        navbar.classList.toggle("topbar-collapsed", !inHero);
+        if (inHero) showNavbar(); // make sure it is visible when you scroll back into the hero
+      }, { rootMargin: "-110px 0px 0px 0px", threshold: 0 }).observe(heroSection);
+    }
+
+    
+    /* ==========================================================
+       BACK TO TOP
+       ========================================================== */
+    window.addEventListener("scroll", function () {
+        if (backTop) backTop.classList.toggle("show", window.scrollY > 500);
+    }, { passive: true });
+
+    if (backTop) {
+        backTop.addEventListener("click", function () {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+    }
+
+    /* ==========================================================
+       SERVICES ACCORDION
+       ========================================================== */
+    const tabsWrap = document.getElementById("servicesTabs");
+    if (tabsWrap) {
+        tabsWrap.addEventListener("click", function (event) {
+            const button = event.target.closest(".tab-item");
+            if (!button || button.classList.contains("active")) return;
+
+            tabsWrap.querySelectorAll(".tab-item").forEach(function (tab) {
+                tab.classList.remove("active");
+                tab.setAttribute("aria-expanded", "false");
+            });
+
+            button.classList.add("active");
+            button.setAttribute("aria-expanded", "true");
+        });
+    }
+
+    /* ==========================================================
+       REVEAL ANIMATIONS
+       ========================================================== */
+    const revealElements = document.querySelectorAll(".reveal");
+    if ("IntersectionObserver" in window) {
+        const revealObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("is-visible");
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        revealElements.forEach(function (element) {
+            revealObserver.observe(element);
+        });
+    } else {
+        revealElements.forEach(function (element) {
+            element.classList.add("is-visible");
+        });
+    }
+
+    /* ==========================================================
+       COUNTERS
+       ========================================================== */
+    let counted = false;
+
+    function animateCounters() {
+        if (counted) return;
+        counted = true;
+
+        document.querySelectorAll("[data-count]").forEach(function (element) {
+            const target = parseInt(element.getAttribute("data-count"), 10);
+            const duration = 1300;
+            let start = null;
+
+            function step(timestamp) {
+                if (!start) start = timestamp;
+
+                const progress = Math.min((timestamp - start) / duration, 1);
+                const eased = 1 - Math.pow(1 - progress, 3);
+
+                element.textContent = "+" + Math.round(eased * target);
+
+                if (progress < 1) requestAnimationFrame(step);
+            }
+
+            requestAnimationFrame(step);
+        });
+    }
+
+    setTimeout(animateCounters, 500);
+})();
+
+
+/* CONTACT FORM */
 document.addEventListener("DOMContentLoaded", () => {
 
     /* FORM REFERENCES */
@@ -83,27 +235,20 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     /* SHOW STEP */
-
-    function showStep(step) {
+    function showStep(step, shouldFocus = true) {
 
         currentStep = step;
 
         formSteps.forEach((item) => {
-            item.classList.toggle(
-                "active",
-                Number(item.dataset.formStep) === step
-            );
+            item.classList.toggle("active", Number(item.dataset.formStep) === step);
         });
 
         updateProgress(step);
 
-        const activeStep = document.querySelector(
-            `[data-form-step="${step}"]`
-        );
+        if (!shouldFocus) return;   // <-- no focus on initial load
 
-        const firstField = activeStep?.querySelector(
-            "input, select, textarea"
-        );
+        const activeStep = document.querySelector(`[data-form-step="${step}"]`);
+        const firstField = activeStep?.querySelector("input, select, textarea");
 
         if (firstField) {
             setTimeout(() => firstField.focus(), 120);
@@ -254,8 +399,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // Bootstrap's close button deletes the alert from the page.
     // Just hide it instead, so it can be shown again on the next submit.
     alertElement.addEventListener("close.bs.alert", (event) => {
-       event.preventDefault();
-       alertElement.classList.remove("show");
+        event.preventDefault();
+        alertElement.classList.remove("show");
     });
 
     function showAlert(success = true) {
@@ -365,8 +510,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     /* INITIAL STATE */
-
-    showStep(1);
+    showStep(1, false);
 });
 
 
