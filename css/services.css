@@ -1021,7 +1021,7 @@ footer {
        ====================================================== */
 #backTop {
     position: fixed;
-    right: 1.4rem;
+    left: 1.4rem;
     bottom: 1.4rem;
     width: 46px;
     height: 46px;
@@ -2114,6 +2114,29 @@ main>.hero #overlayGradient>[class*="col-lg-6"] {
     .subpage main .btn {
         transition: none;
     }
+}
+
+/* ======================================================
+       WHATSAPP BUTTON
+       ====================================================== */
+
+#whatsappBtn {
+    position: fixed;
+    right: 1.4rem;
+    bottom: 1.4rem;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: #25D366;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    box-shadow: 0 10px 26px -8px rgba(37, 211, 102, 0.6);
+    z-index: 1000;
+    transition: transform 0.2s ease;
+    line-height: 1;
 }
 
 /* ======================================================
