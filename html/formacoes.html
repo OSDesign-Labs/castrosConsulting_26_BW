@@ -288,6 +288,241 @@
             </div>
         </section>
 
+<!-- 11- CONTACT — pasted from index.html, untouched (ids and data-attributes drive js/javascript.js) -->
+        <section class="contact-section py-5" id="contact">
+            <div class="container py-lg-5">
+
+                <!-- CONTACT HEADER -->
+                <div class="row justify-content-center text-center mb-5">
+                    <div class="col-lg-8">
+                        <span class="contact-eyebrow">Contacto</span>
+                        <h1 class="contact-title">Vamos conversar sobre o seu próximo passo.</h1>
+                        <p class="contact-intro">
+                            Conte-nos um pouco sobre o que procura. A nossa equipa analisará a sua necessidade
+                            e entrará em contacto consigo.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- CONTACT INFORMATION -->
+                <div class="contact-information mb-5">
+                    <div class="row g-3 justify-content-center">
+
+                        <div class="col-6 col-md-4 col-lg-2">
+                            <span class="contact-info-icon"><i class="bi bi-geo-alt"></i></span>
+                            <a href="#" class="contact-info-item">
+                                <span class="contact-info-content"><small>Localização</small><strong>Maputo</strong></span>
+                            </a>
+                        </div>
+
+                        <div class="col-6 col-md-4 col-lg-2">
+                            <span class="contact-info-icon"><i class="bi bi-envelope"></i></span>
+                            <a href="mailto:contacto@castrosconsultoria.com" class="contact-info-item">
+                                <span
+                                    class="contact-info-content"><small>Email</small><strong>castrosconsultoria@gmail.com</strong></span>
+                            </a>
+                        </div>
+
+                        <div class="col-6 col-md-4 col-lg-2">
+                            <span class="contact-info-icon"><i class="bi bi-whatsapp"></i></span>
+                            <a href="#" class="contact-info-item">
+                                <span class="contact-info-content"><small>WhatsApp</small><strong>+258 87 866 5180</strong></span>
+                            </a>
+                        </div>
+
+                        <div class="col-6 col-md-4 col-lg-2">
+                            <span class="contact-info-icon"><i class="bi bi-instagram"></i></span>
+                            <a href="https://www.instagram.com/castros.consultoria/" class="contact-info-item">
+                                <span class="contact-info-content"><small>Instagram</small><strong>castros.consultoria</strong></span>
+                            </a>
+                        </div>
+
+                        <div class="col-6 col-md-4 col-lg-2">
+                            <span class="contact-info-icon"><i class="bi bi-tiktok"></i></span>
+                            <a href="https://www.instagram.com/castros.consultoria/" class="contact-info-item">
+                                <span class="contact-info-content"><small>TikTok</small><strong>@castros.consultria.mz</strong></span>
+                            </a>
+                        </div>
+
+                        <div class="col-6 col-md-4 col-lg-2">
+                            <span class="contact-info-icon"><i class="bi bi-telephone"></i></span>
+                            <a href="tel:+258000000000" class="contact-info-item">
+                                <span class="contact-info-content"><small>Telefone</small><strong>+258 ...</strong></span>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- CONTACT MAIN AREA -->
+                <div class="row g-4 g-xl-5 align-items-stretch">
+
+                    <!-- IMAGE -->
+                    <div class="col-lg-5">
+                        <div class="contact-image-card h-100">
+                            <div class="contact-image-overlay"></div>
+                            <div class="contact-image-content">
+                                <span class="contact-image-label">Estamos disponíveis para ouvir.</span>
+                                <h2>Pessoas reais.<br>Contextos reais.<br>Soluções relevantes.</h2>
+                                <p>Partilhe connosco o desafio ou oportunidade que pretende desenvolver.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FORM -->
+                    <div class="col-lg-7">
+                        <div class="contact-form-card">
+
+                            <!-- FORM PROGRESS -->
+                            <div class="form-progress" aria-label="Progresso do formulário">
+                                <div class="progress-step active" data-progress-step="1"><span>1</span></div>
+                                <div class="progress-line"></div>
+                                <div class="progress-step" data-progress-step="2"><span>2</span></div>
+                                <div class="progress-line"></div>
+                                <div class="progress-step" data-progress-step="3"><span>3</span></div>
+                            </div>
+
+                            <div class="progress-labels">
+                                <span>Informação</span>
+                                <span>Necessidade</span>
+                                <span>Mensagem</span>
+                            </div>
+
+                            <form id="contactForm" novalidate>
+                                <input type="text" name="_gotcha" class="d-none" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+                                <!-- STEP 1 -->
+                                <div class="form-step active" data-form-step="1">
+                                    <div class="mb-4">
+                                        <span class="form-step-number">01</span>
+                                        <h2 class="form-step-title">Vamos começar.</h2>
+                                        <p class="form-step-description">Diga-nos como podemos entrar em contacto consigo.</p>
+                                    </div>
+
+                                    <div class="row g-3">
+                                        <div class="col-12">
+                                            <label for="name" class="form-label">Nome <span>*</span></label>
+                                            <input type="text" class="form-control" id="name" name="name" placeholder="O seu nome completo"
+                                                autocomplete="name" required>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label for="email" class="form-label">Email <span>*</span></label>
+                                            <input type="email" class="form-control" id="email" name="email" placeholder="nome@empresa.com"
+                                                autocomplete="email" required>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label for="organization" class="form-label">Organização</label>
+                                            <input type="text" class="form-control" id="organization" name="organization"
+                                                placeholder="Empresa / Organização" autocomplete="organization">
+                                        </div>
+
+                                        <div class="col-12">
+                                            <label for="phone" class="form-label">WhatsApp / Telefone</label>
+                                            <input type="tel" class="form-control" id="phone" name="phone" placeholder="+258 ___ ___ ___"
+                                                autocomplete="tel">
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex justify-content-end mt-4">
+                                        <button type="button" class="btn btn-contact-primary" data-next-step>
+                                            Continuar <i class="bi bi-arrow-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- STEP 2 -->
+                                <div class="form-step" data-form-step="2">
+                                    <div class="mb-4">
+                                        <span class="form-step-number">02</span>
+                                        <h2 class="form-step-title">Como podemos ajudar?</h2>
+                                        <p class="form-step-description">
+                                            Selecione o serviço que melhor corresponde à sua necessidade.
+                                        </p>
+                                    </div>
+
+                                    <div class="row g-3">
+                                        <div class="col-12">
+                                            <label for="service" class="form-label">Serviço <span>*</span></label>
+                                            <select class="form-select" id="service" name="service" required>
+                                                <option value="" selected disabled>Selecione um serviço</option>
+                                                <option>Consultoria</option>
+                                                <option>Formação</option>
+                                                <option>Treinamento</option>
+                                                <option>Palestras</option>
+                                                <option>Eventos</option>
+                                                <option>Outro</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <label for="interest" class="form-label">Área de interesse <span>*</span></label>
+                                            <select class="form-select" id="interest" name="interest" disabled required>
+                                                <option value="" selected disabled>Primeiro selecione um serviço</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex justify-content-between gap-2 mt-4">
+                                        <button type="button" class="btn btn-contact-secondary" data-prev-step>
+                                            <i class="bi bi-arrow-left"></i> Voltar
+                                        </button>
+                                        <button type="button" class="btn btn-contact-primary" data-next-step>
+                                            Continuar <i class="bi bi-arrow-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- STEP 3 -->
+                                <div class="form-step" data-form-step="3">
+                                    <div class="mb-4">
+                                        <span class="form-step-number">03</span>
+                                        <h2 class="form-step-title">Conte-nos mais.</h2>
+                                        <p class="form-step-description">
+                                            Partilhe brevemente a sua necessidade, desafio ou projecto.
+                                        </p>
+                                    </div>
+
+                                    <label for="message" class="form-label">Mensagem <span>*</span></label>
+                                    <textarea class="form-control message-field" id="message" name="message" rows="6"
+                                        placeholder="Conte-nos brevemente sobre a sua necessidade, desafio ou projecto..."
+                                        required></textarea>
+
+                                    <div class="d-flex justify-content-between gap-2 mt-4">
+                                        <button type="button" class="btn btn-contact-secondary" data-prev-step>
+                                            <i class="bi bi-arrow-left"></i> Voltar
+                                        </button>
+
+                                        <button type="submit" class="btn btn-contact-primary" id="submitButton">
+                                            <span class="submit-label">Enviar mensagem <i class="bi bi-send"></i></span>
+                                            <span class="submit-loading d-none">
+                                                <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+                                                A processar...
+                                            </span>
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BOOTSTRAP ALERT -->
+            <div id="contactAlert" class="alert alert-dismissible fade contact-alert" role="alert" aria-live="polite">
+                <div class="d-flex align-items-start gap-3">
+                    <i class="bi bi-check-circle-fill contact-alert-icon"></i>
+                    <div>
+                        <strong class="d-block" id="alertTitle">Mensagem enviada</strong>
+                        <span id="alertMessage">Obrigado por contactar a Castros Consultoria.</span>
+                    </div>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>
+            </div>
+        </section>
+
     </main>
 
     <!-- ======================================================
@@ -331,6 +566,7 @@
         </div>
     </div>
 
+    <script src="../js/javascript.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
