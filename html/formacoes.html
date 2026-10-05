@@ -143,99 +143,8 @@
             </div>
         </section>
 
-        <!-- PROCESS — converted from custom horizontal tabs to a standard Bootstrap accordion -->
-        <section id="processo" class="section section-band">
-            <div class="container">
-                <div class="mb-5" style="max-width: 560px;">
-                    <span class="eyebrow">Processo</span>
-                    <h2>Como funciona o nosso trabalho</h2>
-                    <p class="text-secondary">Um caminho direto da conversa inicial ao acompanhamento contínuo.</p>
-                </div>
-
-                <div class="accordion" id="processAccordion">
-                    <div class="accordion-item">
-                        <h3 class="accordion-header">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#step1">
-                                01 — Entendemos o seu contexto
-                            </button>
-                        </h3>
-                        <div id="step1" class="accordion-collapse collapse show" data-bs-parent="#processAccordion">
-                            <div class="accordion-body text-secondary">
-                                Começamos por ouvir. Compreendemos as necessidades, os objetivos e os desafios
-                                da sua organização antes de propor qualquer coisa.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h3 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#step2">
-                                02 — Diagnóstico claro do desafio
-                            </button>
-                        </h3>
-                        <div id="step2" class="accordion-collapse collapse" data-bs-parent="#processAccordion">
-                            <div class="accordion-body text-secondary">
-                                Apresentamos um diagnóstico direto dos bloqueios e das oportunidades
-                                identificadas na conversa inicial.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h3 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#step3">
-                                03 — Proposta desenhada à medida
-                            </button>
-                        </h3>
-                        <div id="step3" class="accordion-collapse collapse" data-bs-parent="#processAccordion">
-                            <div class="accordion-body text-secondary">
-                                Definimos um caminho prático, com prazos e passos claros, ajustado à
-                                realidade da sua organização.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h3 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#step4">
-                                04 — Acompanhamento contínuo
-                            </button>
-                        </h3>
-                        <div id="step4" class="accordion-collapse collapse" data-bs-parent="#processAccordion">
-                            <div class="accordion-body text-secondary">
-                                Ficamos ao lado da sua equipa durante a implementação, até a mudança
-                                acontecer de facto.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ABOUT — reuses the two-column text/image pattern from index.html's About section -->
-        <section id="sobre" class="section">
-            <div class="container">
-                <div class="row align-items-center g-5">
-                    <div class="col-lg-6">
-                        <span class="eyebrow">Sobre</span>
-                        <h2 class="mb-3">A Castros Consultoria existe para simplificar o complexo</h2>
-                        <p class="text-secondary mb-4">
-                            Somos uma consultoria que acredita em orientação prática, não em relatórios
-                            que ficam na gaveta. Trabalhamos com organizações e líderes que querem ver
-                            resultados reais, não apenas boas intenções.
-                        </p>
-                        <div class="d-flex flex-row gap-3">
-                            <a href="#contato" class="btn btn-outline-c px-4 py-2">Começar</a>
-                            <a href="#perguntas" class="link-arrow">
-                                Mais <span class="arrowRight">&gt;</span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <img src="https://placehold.co/600x450" class="about-photo w-100" alt="Sobre a Castros Consultoria">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- TESTIMONIAL — Bootstrap carousel, matching pattern used elsewhere in the site -->
+        <!-- TESTEMUNHOS — this page's existing carousel (styled in services.css #depoimentos),
+             now with the 3 real quotes from the company profile PDF instead of the placeholder -->
         <section id="depoimentos" class="section">
             <div class="container">
                 <div id="servicosTestimonial" class="carousel slide" data-bs-ride="carousel">
@@ -282,7 +191,7 @@
                 </div>
             </div>
         </section>
-
+   
         <!-- FAQ — Bootstrap accordion -->
         <section id="perguntas" class="section section-band">
             <div class="container">
@@ -378,11 +287,6 @@
                 </div>
             </div>
         </section>
-
-        <!-- 03- FOOTER -->
-        <!-- Francisco's component — not duplicated here on purpose.
-             Needs the same physical copy-in treatment as the navbar once
-             his footer is built, across every page in html/. -->
 
     </main>
 
