@@ -309,28 +309,66 @@
             </div>
         </section>
 
-        <!-- TESTIMONIAL — Bootstrap carousel, matching pattern used elsewhere in the site -->
-        <section id="depoimentos" class="section">
-            <div class="container">
-                <div id="servicosTestimonial" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-inner text-center" style="max-width: 700px; margin: 0 auto;">
-                        <div class="carousel-item active">
-                            <p class="testi-quote mb-4">
-                                "A Castros Consultoria trouxe clareza onde havia ruído. Em poucas semanas,
-                                a equipa estava alinhada e a avançar com confiança."
+        <!-- 09- TESTEMUNHO -->
+        <section id="testimonials">
+            <h6 class="index">Testemunhos</h6>
+            <div id="testCarousel" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                <div class="glow glow-cyan"
+                  style="width:38rem;height:22rem;top:-4rem;left:50%;transform:translateX(-50%);animation:pulseGlow 5s ease-in-out infinite">
+                </div>
+                <ul class="carousel-indicators">
+                    <li data-bs-target="#testCarousel" data-bs-slide-to="0" class="active" aria-current="true"
+                      aria-label="First slide"></li>
+                    <li data-bs-target="#testCarousel" data-bs-slide-to="1" aria-label="Second slide"></li>
+                    <li data-bs-target="#testCarousel" data-bs-slide-to="2" aria-label="Third slide"></li>
+                </ul>
+                <div class="carousel-inner">
+                    <div data-bs-interval="10000" class="carousel-item active">
+                        <div class="carousel-caption d-md-block">
+                            <h3>"A qualidade do produto que adquiri superou as minhas expectativas, e a entrega foi rápida e sem
+                              complicações!"</h3>
+                            <img src="../assets/testimonial3.jpg" class="w-100 d-block" alt="First slide" />
+                            <h6 class="name">
+                              Marcos Terra
+                            </h6>
+                            <p class="local">
+                              Maputo, Sommerchield II
                             </p>
-                            <p class="testi-name mb-0">João Pereira</p>
-                            <p class="small text-secondary">Diretor Geral, Empresa X</p>
                         </div>
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#servicosTestimonial" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon"></span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#servicosTestimonial" data-bs-slide="next">
-                        <span class="carousel-control-next-icon"></span>
-                    </button>
+                    <div data-bs-interval="10000" class="carousel-item">
+                        <div class="carousel-caption d-md-block">
+                            <h3>"Continuo a recorrer à SelfXpress sempre que preciso de algo para os meus AirBnBs"</h3>
+                            <img src="../assets/testimonial5.jpg" class="w-100 d-block" alt="" />
+                            <h6 class="name">
+                              Camila Tesouro
+                            </h6>
+                            <p class="local">
+                              Matola, Matola Rio
+                            </p>
+                        </div>
+                    </div>
+                    <div data-bs-interval="10000" class="carousel-item">
+                        <div class="carousel-caption d-md-block">
+                            <h3>"Os meus amigos recomendaram-me a SelfXpress e, desde então, é a quem recorro sempre."</h3>
+                            <img src="../assets/testimonial-2.jpg" class="w-100 d-block" alt="" />
+                            <h6 class="name">
+                              José BaCosta
+                            </h6>
+                            <p class="local">
+                              Maputo, Xinamanquila - Bairro C
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                <!-- TODO: only one real testimonial here — add more slides once available -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#testCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#testCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
             </div>
         </section>
 

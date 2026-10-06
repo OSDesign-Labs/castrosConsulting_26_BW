@@ -3001,3 +3001,91 @@ main>.hero #overlayGradient>[class*="col-lg-6"] {
 .contact-alert:not(.show) {
     pointer-events: none;
 }
+
+/* ======================================================
+       11. TESTEMUNHOS | Final Section
+       ====================================================== */
+
+#testimonials {
+    height: 60vh;
+    margin: 10rem  0 1rem;
+
+    h6.index {
+        font-family: "Manrope";
+        text-align: center !important;
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--cyan);
+        margin-bottom: 0.7rem;
+        display: block;
+
+    }
+    
+    h3 {
+        color: rgb(0, 0, 0);
+        font-family: "DM Serif Display", serif;
+        font-weight: 500;
+        letter-spacing: -0.269425px;
+    }
+
+    h6 {
+        color: var(--ink);
+        font-family: "Manrope";
+    }
+
+    p {
+        line-height: 21px;
+    }
+    #testCarousel {
+        height: 100%;
+            
+        .carousel-indicators {
+            list-style: none;
+        }
+
+        .carousel-inner {
+            height: 100%;
+            /* background-image: url(../assets/workshop2.jpg); */
+            background-color: var(--white) !important;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            filter: contrast(1.2) !important;
+
+            .carousel-item {
+                height: 100%;
+                margin-top: -3rem;
+
+                .carousel-caption {
+                    color: black;
+                    h3.comment {
+                        font-family: "Manrope";
+                        margin-bottom: 0;
+                        padding-bottom: 0;
+                        filter: brightness(1) !important;
+                    }
+
+                    img.d-block {
+                        width: 115px !important;
+                        height: 115px;
+                        object-fit: cover;
+                        margin: 2rem auto 5px;
+                        border-radius: 150px;
+                    }
+
+                    h6.name {
+                        font-family: "DM Serif Display";
+                        font-weight: 600;
+                    }
+
+                    p.local {
+                        font-size: 14px;
+                        font-family: "Manrope";
+                    }
+                }
+            }
+        }
+    }
+}
