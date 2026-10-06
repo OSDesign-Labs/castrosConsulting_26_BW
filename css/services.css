@@ -10,11 +10,19 @@
     --ash-soft: #8a97a0;
     --cyan: #04bfcd;
     --pearl: #72dcdc;
+    --slate-grey: #70818e;
+    --icy-aqua: #a9eae4;
+    --white: #ffffff;
+    --surface: #f7f9fa;
+    --border: rgba(112, 129, 142, 0.22);
+    --shadow-c: 0 20px 60px rgba(3, 3, 22, 0.10);
+    --radius-lg: 24px;
+    --radius-md: 16px;
     --border: rgba(112, 129, 142, 0.28);
     --shadow: 0 10px 30px -14px rgba(1, 9, 48, 0.14);
     --shadow-lg: 0 24px 60px -20px rgba(1, 9, 48, 0.22);
-}
 
+}
 * {
     box-sizing: border-box;
 }
@@ -23,11 +31,12 @@ html {
     scroll-behavior: smooth;
 }
 
+
 body {
     margin: 0;
     background: var(--white);
     color: var(--ash);
-    font-family: "Manrope", sans-serif;
+    font-family: "Poppins", sans-serif;
     line-height: 1.65;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
@@ -39,6 +48,7 @@ body {
             rgba(4, 191, 205, 0.28) 100%),
         radial-gradient(120% 130% at 75% 15%, #123a55 0%, #0a2138 42%, #04101f 100%);
 }
+
 
 h1,
 h2,
@@ -1611,15 +1621,6 @@ main>.hero #overlayGradient>[class*="col-lg-6"] {
     margin-bottom: 0.9rem;
 }
 
-/* headings secundários — Manrope 600 */
-.subpage main h3,
-.subpage main h4 {
-    font-family: "Manrope", sans-serif;
-    font-weight: 600;
-    color: var(--sp-heading-2);
-    letter-spacing: 0;
-}
-
 .subpage main p {
     line-height: 1.7;
 }
@@ -1867,124 +1868,7 @@ main>.hero #overlayGradient>[class*="col-lg-6"] {
     border: 1px solid var(--sp-border);
 }
 
-/* ---------- 14.7 Accordions (Processo + Perguntas) ---------- */
-.subpage main .accordion {
-    --bs-accordion-color: var(--sp-body);
-    --bs-accordion-bg: var(--sp-surface);
-    --bs-accordion-border-color: var(--sp-border);
-    --bs-accordion-border-radius: 16px;
-    --bs-accordion-inner-border-radius: 15px;
-    --bs-accordion-btn-padding-x: 1.4rem;
-    --bs-accordion-btn-padding-y: 1.15rem;
-    --bs-accordion-btn-color: #ffffff;
-    --bs-accordion-btn-bg: var(--sp-surface);
-    --bs-accordion-btn-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23a8bdbd' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.6'%3e%3cpath d='M2 5L8 11L14 5'/%3e%3c/svg%3e");
-    --bs-accordion-btn-active-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%2304bfcd' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.6'%3e%3cpath d='M2 5L8 11L14 5'/%3e%3c/svg%3e");
-    --bs-accordion-btn-focus-box-shadow: inset 0 0 0 2px rgba(4, 191, 205, 0.45);
-    --bs-accordion-body-padding-x: 1.4rem;
-    --bs-accordion-body-padding-y: 0.2rem;
-    --bs-accordion-active-color: var(--sp-accent);
-    --bs-accordion-active-bg: rgba(4, 191, 205, 0.06);
-}
 
-.subpage main .accordion .accordion-item {
-    margin-bottom: 0.8rem;
-    border: 1px solid var(--sp-border);
-    border-radius: 16px;
-    overflow: hidden;
-    transition: border-color 0.25s ease;
-}
-
-.subpage main .accordion .accordion-item:has(.accordion-button:not(.collapsed)) {
-    border-color: rgba(4, 191, 205, 0.5);
-}
-
-.subpage main .accordion .accordion-button {
-    font-family: "Manrope", sans-serif;
-    font-weight: 600;
-    font-size: 1rem;
-}
-
-.subpage main .accordion .accordion-button:not(.collapsed) {
-    box-shadow: none;
-}
-
-.subpage main .accordion .accordion-body {
-    padding-bottom: 1.3rem;
-    line-height: 1.7;
-}
-
-/* ---------- 14.8 Sobre ---------- */
-.subpage main #sobre h2 {
-    text-align: left;
-}
-
-.subpage main .about-photo {
-    display: block;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
-    border-radius: var(--sp-radius);
-    border: 1px solid var(--sp-border);
-    box-shadow: var(--sp-shadow), var(--sp-shadow-glow);
-}
-
-/* ---------- 14.9 Testemunho ---------- */
-.subpage main #depoimentos .carousel-inner {
-    padding: 0 3.5rem;
-}
-
-.subpage main #depoimentos .carousel-inner::before {
-    content: "\201C";
-    display: block;
-    font-family: "DM Serif Display", serif;
-    font-size: 4.5rem;
-    line-height: 1;
-    height: 2.6rem;
-    color: var(--sp-accent);
-}
-
-.subpage main .testi-quote {
-    font-family: "DM Serif Display", serif;
-    font-style: italic;
-    font-size: clamp(1.35rem, 2.6vw, 1.85rem);
-    line-height: 1.4;
-    color: var(--sp-heading);
-}
-
-.subpage main .testi-name {
-    font-weight: 700;
-    color: var(--sp-heading-2);
-}
-
-.subpage main #depoimentos .carousel-control-prev,
-.subpage main #depoimentos .carousel-control-next {
-    top: 50%;
-    width: 44px;
-    height: 44px;
-    transform: translateY(-50%);
-    border-radius: 50%;
-    background: var(--sp-surface);
-    border: 1px solid var(--sp-border);
-    opacity: 1;
-    transition: border-color 0.2s ease;
-}
-
-.subpage main #depoimentos .carousel-control-prev:hover,
-.subpage main #depoimentos .carousel-control-next:hover {
-    border-color: var(--sp-accent);
-}
-
-.subpage main #depoimentos .carousel-control-prev-icon,
-.subpage main #depoimentos .carousel-control-next-icon {
-    width: 1rem;
-    height: 1rem;
-}
-
-/* one slide only → hide the arrows until more testimonials exist */
-.subpage main .carousel:has(.carousel-item:only-child) .carousel-control-prev,
-.subpage main .carousel:has(.carousel-item:only-child) .carousel-control-next {
-    display: none;
-}
 
 /* ---------- 14.10 CTA final ---------- */
 .subpage main .cta-panel {
@@ -3385,4 +3269,92 @@ a.topbar-item:hover {
     padding-top: clamp(5rem, 10vw, 10.5rem);
 
 
+}
+
+
+
+/* ======================================================
+       11. TESTEMUNHOS | Final Section
+       ====================================================== */
+
+#testimonials {
+    height: 60vh;
+    margin: 10rem 0 1rem;
+
+    h6.index {
+        font-family: "Manrope";
+        text-align: center !important;
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--cyan);
+        margin-bottom: 0.7rem;
+        display: block;
+
+    }
+
+    #testCarousel {
+        height: 100%;
+
+        .carousel-indicators {
+            list-style: none;
+        }
+
+        .carousel-inner {
+            height: 100%;
+            /* background-image: url(../assets/workshop2.jpg); */
+            background-color: var(--white) !important;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            filter: contrast(1.2) !important;
+
+            .carousel-item {
+                height: 100%;
+                margin-top: -3rem;
+
+                .carousel-caption {
+                    color: black;
+
+                    h3.comment {
+                        font-family: "Manrope";
+                        margin-bottom: 0;
+                        padding-bottom: 0;
+                        filter: brightness(1) !important;
+                    }
+
+                    img.d-block {
+                        width: 115px !important;
+                        height: 115px;
+                        object-fit: cover;
+                        margin: 2rem auto 5px;
+                        border-radius: 150px;
+                    }
+
+                    h6.name {
+                        font-family: "DM Serif Display";
+                        font-weight: 600;
+                    }
+
+                    p.local {
+                        font-size: 14px;
+                        font-family: "Manrope";
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+.carousel-caption.d-md-block {
+
+    h3,
+    h6 {
+        color: var(--ink-black);
+    }
 }
