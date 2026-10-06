@@ -2996,3 +2996,8 @@ main>.hero #overlayGradient>[class*="col-lg-6"] {
 .subpage main .fm-card:hover .arrowRight {
     transform: translateX(4px);
 }
+
+/* the hidden contact alert must not catch clicks */
+.contact-alert:not(.show) {
+    pointer-events: none;
+}
