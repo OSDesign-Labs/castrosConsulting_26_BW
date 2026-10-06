@@ -301,65 +301,6 @@ section {
 }
 
 /* ======================================================
-       NAVBAR SECTION
-       Main Navbar | Base Component
-       ====================================================== */
-.navbar-c {
-    position: sticky;
-    top: 0;
-    z-index: 1050;
-    background: rgba(255, 255, 255, 0.86);
-    backdrop-filter: blur(14px);
-    border-bottom: 1px solid var(--border);
-    transition:
-        box-shadow 0.3s ease,
-        padding 0.3s ease;
-}
-
-.navbar-c.scrolled {
-    box-shadow: 0 8px 24px -16px rgba(1, 9, 48, 0.25);
-}
-
-.navbar-c .navbar-brand {
-    font-family: "DM Serif Display", serif;
-    font-style: italic;
-    font-weight: 700;
-    color: var(--ink) !important;
-    font-size: 1.4rem;
-}
-
-.navbar-c .nav-link {
-    color: var(--ash) !important;
-    font-weight: 500;
-    font-size: 0.9rem;
-    display: flex;
-    align-items: center;
-    gap: 0.3rem;
-}
-
-.navbar-c .nav-link:hover {
-    color: var(--cyan) !important;
-}
-
-.navbar-c .dropdown-menu {
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    box-shadow: var(--shadow-lg);
-    padding: 0.5rem;
-}
-
-.navbar-c .dropdown-item {
-    border-radius: 8px;
-    font-size: 0.88rem;
-    padding: 0.55rem 0.8rem;
-}
-
-.navbar-c .dropdown-item:hover {
-    background: rgba(4, 191, 205, 0.1);
-    color: var(--cyan);
-}
-
-/* ======================================================
        HERO SECTION
        ====================================================== */
 .hero-wrap {
@@ -1796,13 +1737,13 @@ main>.hero #overlayGradient>[class*="col-lg-6"] {
 }
 
 /* ---------- 14.4 Navbar on sub-pages (no hero image behind it) ---------- */
-.subpage .main-navbar {
+/* .subpage .main-navbar {
     padding-bottom: 1rem;
     background: rgba(3, 3, 22, 0.72);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     border-bottom: 1px solid rgba(112, 129, 142, 0.18);
-}
+} */
 
 /* ---------- 14.5 Sections ---------- */
 .subpage main > section {
@@ -1828,7 +1769,7 @@ main>.hero #overlayGradient>[class*="col-lg-6"] {
     position: absolute;
     z-index: -1;
     left: 50%;
-    top: 3rem;
+    top: -2rem;
     width: min(46rem, 110vw);
     height: 24rem;
     transform: translateX(-50%);
@@ -2675,7 +2616,7 @@ main>.hero #overlayGradient>[class*="col-lg-6"] {
     background: #0a2138;
     text-align: left;
     cursor: pointer;
-    box-shadow: 0 24px 60px -20px rgba(1, 9, 48, 0.5);
+    box-shadow: 0px 0px 10px 0px rgba(4, 206, 253, 0.42);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -2995,4 +2936,453 @@ main>.hero #overlayGradient>[class*="col-lg-6"] {
 
 .subpage main .fm-card:hover .arrowRight {
     transform: translateX(4px);
+}
+
+
+/* ======================================================
+   SECONDARY NAVBAR
+   ====================================================== */
+.main-navbar .topbar {
+    max-width: 1600px;
+    margin: 0 auto 0.6rem;
+    padding-bottom: 0.55rem;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.75);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+    max-height: 60px;
+    overflow: hidden;
+    transition:
+        max-height 0.4s ease,
+        opacity 0.3s ease,
+        margin 0.4s ease,
+        padding 0.4s ease,
+        border-color 0.4s ease;
+}
+
+/* Collapsed once the hero is scrolled past */
+.main-navbar.topbar-collapsed .topbar {
+    max-height: 0;
+    opacity: 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-color: transparent;
+}
+
+.topbar-left,
+.topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.topbar-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: inherit;
+    white-space: nowrap;
+}
+
+.topbar-item .bi {
+    color: var(--cyan);
+}
+
+.topbar-divider {
+    width: 1px;
+    height: 14px;
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.topbar-social {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    font-size: 0.95rem;
+}
+
+.topbar-social a {
+    color: inherit;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.topbar-social a:hover,
+a.topbar-item:hover {
+    color: var(--pearl);
+}
+
+.topbar-social a:hover {
+    transform: translateY(-2px);
+}
+
+/* Hero must clear the taller navbar (desktop only, the bar is hidden below lg) */
+@media (min-width: 992px) {
+    main>.hero {
+        margin-top: 7rem;
+    }
+}
+
+/* Mobile menu info block */
+.mobile-info {
+    display: grid;
+    gap: 0.6rem;
+    margin-top: 1.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.85rem;
+    color: var(--ash);
+}
+
+.mobile-info span,
+.mobile-info a {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: inherit;
+}
+
+.mobile-info .bi {
+    color: var(--cyan);
+}
+
+.mobile-info a:hover {
+    color: var(--cyan);
+}
+
+.mobile-social {
+    display: flex !important;
+    gap: 1rem !important;
+    margin-top: 0.3rem;
+    font-size: 1.15rem;
+}
+
+
+
+/* ======================================================
+   CONTACT CHIPS (hover to reveal)
+   ====================================================== */
+.contact-section .contact-chips {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.9rem;
+}
+
+.contact-section .contact-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.35rem;
+    color: var(--ink);
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.contact-section .contact-chip:hover,
+.contact-section .contact-chip:focus-visible {
+    transform: translateY(-2px);
+    background: var(--white);
+    border-color: rgba(169, 234, 228, 0.9);
+    box-shadow: 0 10px 24px rgba(3, 3, 22, 0.08);
+    outline: none;
+}
+
+.contact-chip-icon {
+    display: grid;
+    flex: 0 0 38px;
+    width: 38px;
+    height: 38px;
+    place-items: center;
+    color: var(--navy);
+    background: rgba(169, 234, 228, 0.42);
+    border-radius: 50%;
+    font-size: 1rem;
+
+    i {
+        position: relative;
+        top: -4px;
+    }
+}
+
+.contact-chip-info {
+    display: flex;
+    flex-direction: column;
+    max-width: 0;
+    opacity: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    line-height: 1.25;
+    transition: max-width 0.35s ease, opacity 0.25s ease, margin 0.35s ease;
+}
+
+.contact-chip:hover .contact-chip-info,
+.contact-chip:focus-visible .contact-chip-info {
+    max-width: 240px;
+    opacity: 1;
+    margin: 0 0.8rem 0 0.7rem;
+}
+
+.contact-chip-info small {
+    color: var(--slate-grey);
+    font-size: 0.66rem;
+    font-weight: 600;
+}
+
+.contact-chip-info strong {
+    color: var(--ink);
+    font-size: 0.76rem;
+    font-weight: 700;
+}
+
+/* Touch screens have no hover, so keep the details visible there */
+@media (hover: none) {
+    .contact-chip-info {
+        max-width: 240px;
+        opacity: 1;
+        margin: 0 0.8rem 0 0.7rem;
+    }
+}
+
+
+/* ======================================================
+   MOBILE OFFCANVAS | Fullscreen
+   ====================================================== */
+.mobile-offcanvas {
+    --bs-offcanvas-width: 100vw;
+    width: 100vw !important;       /* overrides the old 90vw rule */
+    max-width: 100%;
+    z-index: 1060;                 /* above the navbar */
+    background:
+        radial-gradient(120% 90% at 80% 0%, #123a55 0%, #0a2138 45%, #04101f 100%);
+    color: var(--white);
+}
+
+.mobile-offcanvas .offcanvas-header {
+    padding: 1rem 1.5rem;
+    justify-content: space-between;
+}
+
+.mobile-offcanvas .offcanvas-title {
+    font-family: "DM Serif Display", serif;
+    font-style: italic;
+    font-size: 1.35rem;
+    color: var(--white);
+    text-decoration: none;
+}
+
+.mobile-offcanvas .btn-close {
+    opacity: 1;
+    padding: 0.9rem;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    filter: invert(1) grayscale(1) brightness(2);
+}
+
+.mobile-offcanvas .offcanvas-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0.5rem 1.5rem 2rem;
+}
+
+.mobile-offcanvas .mobile-nav {
+    list-style: none;
+    margin: 4rem 0 0;              /* auto top margin centres nav + button vertically */
+    padding: 0;
+    width: 100%;
+}
+
+.mobile-offcanvas .mobile-nav .nav-link {
+    display: block;
+    padding: 0.7rem 0;
+    font-family: "DM Serif Display", serif;
+    font-size: clamp(1.7rem, 7vw, 2.4rem);
+    line-height: 1.15;
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.mobile-offcanvas .mobile-nav .nav-link:hover,
+.mobile-offcanvas .mobile-nav .nav-link.active {
+    color: var(--pearl);
+}
+
+/* Services dropdown opens in place, centred */
+.mobile-offcanvas .mobile-nav .dropdown-menu {
+    position: static !important;
+    transform: none !important;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    padding: 0;
+    margin: 0 0 0.6rem;
+    text-align: center;
+}
+
+.mobile-offcanvas .mobile-nav .dropdown-item {
+    padding: 0.5rem 0;
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.7);
+    background: transparent;
+    text-decoration: none;
+}
+
+.mobile-offcanvas .mobile-nav .dropdown-item:hover {
+    color: var(--cyan);
+}
+
+
+.mobile-offcanvas .mobile-cta-wrapper {
+    width: 100%;
+    margin-top: 1.5rem;
+}
+
+.mobile-offcanvas .mobile-cta-wrapper .btn {
+    display: block;
+    width: 100%;
+    padding: 0.9rem 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--white);
+    text-align: center;
+    text-decoration: none;
+    border: 0;
+    border-radius: 18px;
+    background-image: linear-gradient(109.6deg,
+            rgba(34, 211, 238, 1) 11.2%,
+            rgba(79, 57, 246, 1) 100.2%);
+}
+
+.mobile-offcanvas .mobile-info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    margin-top: auto;              /* pushes the block to the bottom */
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    position: relative;
+    top: -5rem;
+}
+
+
+.mobile-offcanvas .mobile-info > span,
+.mobile-offcanvas .mobile-info > a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.45rem 0.9rem;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 999px;
+}
+
+.mobile-offcanvas .mobile-info .bi {
+    color: var(--cyan);
+}
+
+.mobile-offcanvas .mobile-info > a:hover {
+    color: var(--pearl);
+    border-color: rgba(114, 220, 220, 0.5);
+}
+
+.mobile-offcanvas .mobile-social {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    width: 100%;
+    margin-top: 0.6rem;
+}
+
+.mobile-offcanvas .mobile-social a {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    font-size: 1.1rem;
+    color: var(--white);
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 50%;
+    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.mobile-offcanvas .mobile-social a:hover {
+    color: var(--ink);
+    background: var(--pearl);
+    transform: translateY(-2px);
+}
+
+/* NAVBAR BASE COMPONENT */
+.navbar-c {
+    position: sticky;
+    top: 0;
+    z-index: 1050;
+    background: rgba(255, 255, 255, 0.86);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+    transition:
+        box-shadow 0.3s ease,
+        padding 0.3s ease;
+
+    &.scrolled {
+        box-shadow: 0 8px 24px -16px rgba(1, 9, 48, 0.25);
+    }
+
+    .navbar-brand {
+        font-family: "DM Serif Display", serif;
+        font-style: italic;
+        font-weight: 700;
+        color: var(--ink) !important;
+        font-size: 1.4rem;
+    }
+
+    .nav-link {
+        color: var(--ash) !important;
+        font-weight: 500;
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
+
+        &:hover {
+            color: var(--cyan) !important;
+        }
+    }
+
+    .dropdown-menu {
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        box-shadow: var(--shadow-lg);
+        padding: 0.5rem;
+    }
+
+    .dropdown-item {
+        border-radius: 8px;
+        font-size: 0.88rem;
+        padding: 0.55rem 0.8rem;
+
+        &:hover {
+            background: rgba(4, 191, 205, 0.1);
+            color: var(--cyan);
+        }
+    }
+}
+
+/* SERVICES CARDS */
+/* First Service */
+#formacoes {
+    padding-top: clamp(5rem, 10vw, 10.5rem);
+
+
 }
