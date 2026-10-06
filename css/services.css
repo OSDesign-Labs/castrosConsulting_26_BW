@@ -3358,3 +3358,11 @@ a.topbar-item:hover {
         color: var(--ink-black);
     }
 }
+
+p { 
+    font-family: "Poppins";
+}
+
+.accordion-button.collapsed {
+    color: var(--ink) !important;
+}
