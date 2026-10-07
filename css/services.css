@@ -991,6 +991,10 @@ footer {
         margin-top: 0.5rem;
     }
 
+    a {
+        color: var(--ash-soft);
+    }
+
     h5 {
         color: var(--pearl);
         font-size: 0.72rem;
