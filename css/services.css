@@ -3013,6 +3013,7 @@ main>.hero #overlayGradient>[class*="col-lg-6"] {
 #testimonials {
     height: 60vh;
     margin: 10rem  0 1rem;
+    overflow: clip;
 
     h6.index {
         font-family: "Manrope";
