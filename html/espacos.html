@@ -177,255 +177,87 @@
     <main>
 
         <!-- HERO — simple centered header, not full-height (this is a sub-page, not the homepage) -->
-        <section class="section page-hero">
+        <section id="espacos" class="section page-hero">
             <div class="container text-center">
-                <span class="eyebrow" data-i18n="consultoria.hero.consultoria">Consultoria</span>
-                <h1 class="mb-3" data-i18n="consultoria.hero.estrategia-que-transforma">Estratégia que transforma</h1>
-                <p class="text-secondary mx-auto" style="max-width: 600px;" data-i18n="consultoria.hero.ajudamos-organizacoes-e-lideres-a-ver">
-                    Ajudamos organizações e líderes a ver o que não veem. Orientação prática
-                    para transformar desafios em decisões claras.
+                <span class="eyebrow" data-i18n="espacos.hero.servicos">Serviços</span>
+                <h1 class="mb-3" data-i18n="espacos.hero.espacos-e-podcasts">Espaços e Podcasts</h1>
+                <p class="text-secondary mx-auto" style="max-width: 620px;" data-i18n="espacos.hero.um-espaco-em-maputo-preparado-para">
+                    Um espaço em Maputo preparado para formações, reuniões, workshops e eventos — e para gravar
+                    podcasts e conversas. Com o equipamento e o apoio da nossa equipa, do início ao fim.
                 </p>
-                <div class="d-flex flex-row gap-3 justify-content-center mt-4">
-                    <a href="#contato" class="btn btn-cyan px-4 py-2" data-i18n="consultoria.hero.comecar">Começar</a>
-                    <a href="#processo" class="btn btn-outline-light-c px-4 py-2" data-i18n="consultoria.hero.saber-mais">Saber mais</a>
-                </div>
             </div>
         </section>
 
-        <!-- SERVICES GRID -->
-        <section id="servicos" class="section">
+        <!-- ENTRY CARDS — each one opens its modal (same pattern as formacoes.html) -->
+        <section id="programas" class="section pt-0">
             <div class="container">
-                <div class="text-center mb-5">
-                    <span class="eyebrow" data-i18n="consultoria.services.servicos">Serviços</span>
-                    <h2 data-i18n="consultoria.services.o-que-fazemos">O que fazemos</h2>
-                    <p class="text-secondary" data-i18n="consultoria.services.tres-areas-de-intervencao-para-organizacoes">Três áreas de intervenção para organizações que querem avançar.</p>
-                </div>
-
-                <div class="row g-4">
-                    <div class="col-md-6 col-lg-3">
-                        <div class="service-card h-100 d-flex flex-column">
-                            <i class="bi bi-diagram-3 icon-chip mb-4"></i>
-                            <h3 class="mb-2" data-i18n="consultoria.services.estrategia-e-orientacao-para-decisoes-dificeis">Estratégia e orientação para decisões difíceis</h3>
-                            <p class="small text-secondary flex-grow-1" data-i18n="consultoria.services.analisamos-o-contexto-identificamos-bloqueios-e">
-                                Analisamos o contexto, identificamos bloqueios e desenhamos caminhos
-                                práticos para a sua organização crescer com intenção.
-                            </p>
-                            <a href="#processo" class="link-arrow">
-                                <span data-i18n="consultoria.services.saber-mais">Saber mais</span> <span class="arrowRight">&gt;</span>
-                            </a>
-                        </div>
+                <div class="row g-4 justify-content-center">
+                    <div class="col-md-6 col-lg-5">
+                        <button type="button" class="fm-card" data-bs-toggle="modal" data-bs-target="#modalEspacos">
+                            <img src="../assets/services/espacos.webp" alt="" loading="lazy">
+                            <span class="fm-card-body">
+                                <span class="fm-card-title" data-i18n="espacos.programs.espacos">Espaços</span>
+                                <span class="link-arrow"><span data-i18n="espacos.programs.ver-detalhes">Ver detalhes</span> <span class="arrowRight">&gt;</span></span>
+                            </span>
+                        </button>
                     </div>
-                    <div class="col-md-6 col-lg-3">
-                        <div class="service-card h-100 d-flex flex-column">
-                            <i class="bi bi-diagram-3 icon-chip mb-4"></i>
-                            <h3 class="mb-2" data-i18n="consultoria.services.formacao-e-desenvolvimento-de-equipas">Formação e desenvolvimento de equipas</h3>
-                            <p class="small text-secondary flex-grow-1" data-i18n="consultoria.services.programas-praticos-para-lideres-e-equipas">
-                                Programas práticos para líderes e equipas que precisam de ferramentas novas.
-                            </p>
-                            <a href="#processo" class="link-arrow">
-                                <span data-i18n="consultoria.services.mais">Mais</span> <span class="arrowRight">&gt;</span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                        <div class="service-card h-100 d-flex flex-column">
-                            <i class="bi bi-diagram-3 icon-chip mb-4"></i>
-                            <h3 class="mb-2" data-i18n="consultoria.services.acompanhamento-de-processos-e-mudanca">Acompanhamento de processos e mudança</h3>
-                            <p class="small text-secondary flex-grow-1" data-i18n="consultoria.services.ficamos-ao-lado-da-implementacao-para">
-                                Ficamos ao lado da implementação para garantir que a mudança acontece.
-                            </p>
-                            <a href="#processo" class="link-arrow">
-                                <span data-i18n="consultoria.services.mais">Mais</span> <span class="arrowRight">&gt;</span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                        <div class="service-card h-100 d-flex flex-column">
-                            <i class="bi bi-diagram-3 icon-chip mb-4"></i>
-                            <h3 class="mb-2" data-i18n="consultoria.services.tres-frentes-de-trabalho-para-avancar">Três frentes de trabalho para avançar</h3>
-                            <p class="small text-secondary flex-grow-1" data-i18n="consultoria.services.intervencoes-diretas-para-organizacoes-que-precisam">
-                                Intervenções diretas para organizações que precisam de clareza e movimento.
-                            </p>
-                            <a href="#processo" class="link-arrow">
-                                <span data-i18n="consultoria.services.saber-mais">Saber mais</span> <span class="arrowRight">&gt;</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Feature panel: 4 sub-items + image, same border-box pattern as Benefícios -->
-                <div class="feature-panel mt-5">
-                    <div class="row g-4">
-                        <div class="col-lg-6">
-                            <div class="row g-4">
-                                <div class="col-6">
-                                    <i class="bi bi-box icon-chip mb-3"></i>
-                                    <h4 class="mb-2" data-i18n="consultoria.services.entendemos-o-seu-contexto">Entendemos o seu contexto</h4>
-                                    <p class="small text-secondary" data-i18n="consultoria.services.comecamos-por-ouvir-compreendemos-as-necessidades">Comecamos por ouvir. Compreendemos as necessidades, os objetivos e os desafios da sua organizacao antes de propor qualquer coisa.</p>
-                                </div>
-                                <div class="col-6">
-                                    <i class="bi bi-box icon-chip mb-3"></i>
-                                    <h4 class="mb-2" data-i18n="consultoria.services.diagnostico-claro-do-desafio">Diagnóstico claro do desafio</h4>
-                                    <p class="small text-secondary" data-i18n="consultoria.services.apresentamos-um-diagnostico-direto-dos-bloqueios">Apresentamos um diagnóstico direto dos bloqueios e das oportunidades identificadas na conversa inicial. </p>
-                                </div>
-                                <div class="col-6">
-                                    <i class="bi bi-box icon-chip mb-3"></i>
-                                    <h4 class="mb-2" data-i18n="consultoria.services.proposta-desenhada-a-medida">Proposta desenhada a medida</h4>
-                                    <p class="small text-secondary" data-i18n="consultoria.services.definimos-um-caminho-pratico-com-prazos">Definimos um caminho prático, com prazos e passos claros, ajustado à realidade da sua organização. </p>
-                                </div>
-                                <div class="col-6">
-                                    <i class="bi bi-box icon-chip mb-3"></i>
-                                    <h4 class="mb-2" data-i18n="consultoria.services.acompanhamento-continuo">Acompanhamento contínuo</h4>
-                                    <p class="small text-secondary" data-i18n="consultoria.services.ficamos-ao-lado-da-sua-equipa">Ficamos ao lado da sua equipa durante a implementação, até a mudança acontecer de facto. </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <img src="https://placehold.co/600x400" class="service-feature-img" alt="Serviços" data-i18n-attr="alt:consultoria.services.servicos">
-                        </div>
+                    <div class="col-md-6 col-lg-5">
+                        <button type="button" class="fm-card" data-bs-toggle="modal" data-bs-target="#modalPodcasts">
+                            <img src="../assets/hero/podcast.webp" alt="" loading="lazy">
+                            <span class="fm-card-body">
+                                <span class="fm-card-title">Podcasts</span>
+                                <span class="link-arrow"><span data-i18n="espacos.programs.ver-detalhes">Ver detalhes</span> <span class="arrowRight">&gt;</span></span>
+                            </span>
+                        </button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 09- TESTEMUNHO -->
-        <section id="testimonials">
-            <h6 class="index" data-i18n="testimonials.testemunhos">Testemunhos</h6>
-            <div id="testCarousel" class="carousel carousel-dark slide" data-bs-ride="carousel">
-                <div class="glow glow-cyan"
-                  style="width:38rem;height:22rem;top:-4rem;left:50%;transform:translateX(-50%);animation:pulseGlow 5s ease-in-out infinite">
-                </div>
-                <ul class="carousel-indicators">
-                    <li data-bs-target="#testCarousel" data-bs-slide-to="0" class="active" aria-current="true"
-                      aria-label="Testemunho 1" data-i18n-attr="aria-label:testimonials.testemunho-1"></li>
-                    <li data-bs-target="#testCarousel" data-bs-slide-to="1" aria-label="Testemunho 2" data-i18n-attr="aria-label:testimonials.testemunho-2"></li>
-                    <li data-bs-target="#testCarousel" data-bs-slide-to="2" aria-label="Testemunho 3" data-i18n-attr="aria-label:testimonials.testemunho-3"></li>
-                </ul>
-                <div class="carousel-inner">
-                    <div data-bs-interval="10000" class="carousel-item active">
-                        <div class="carousel-caption d-md-block">
-                            <h3 data-i18n="testimonials.a-qualidade-do-produto-que-adquiri">"A qualidade do produto que adquiri superou as minhas expectativas, e a entrega foi rápida e sem
-                              complicações!"</h3>
-                            <img src="../assets/testimonial3.jpg" class="w-100 d-block" alt="Fotografia do testemunho"  data-i18n-attr="alt:testimonials.fotografia-do-testemunho"/>
-                            <h6 class="name">
-                              Marcos Terra
-                            </h6>
-                            <p class="local">
-                              Maputo, Sommerchield II
-                            </p>
-                        </div>
-                    </div>
-                    <div data-bs-interval="10000" class="carousel-item">
-                        <div class="carousel-caption d-md-block">
-                            <h3 data-i18n="testimonials.continuo-a-recorrer-a-selfxpress-sempre">"Continuo a recorrer à SelfXpress sempre que preciso de algo para os meus AirBnBs"</h3>
-                            <img src="../assets/testimonial5.jpg" class="w-100 d-block" alt="" />
-                            <h6 class="name">
-                              Camila Tesouro
-                            </h6>
-                            <p class="local">
-                              Matola, Matola Rio
-                            </p>
-                        </div>
-                    </div>
-                    <div data-bs-interval="10000" class="carousel-item">
-                        <div class="carousel-caption d-md-block">
-                            <h3 data-i18n="testimonials.os-meus-amigos-recomendaram-me-a">"Os meus amigos recomendaram-me a SelfXpress e, desde então, é a quem recorro sempre."</h3>
-                            <img src="../assets/testimonial-2.jpg" class="w-100 d-block" alt="" />
-                            <h6 class="name">
-                              José BaCosta
-                            </h6>
-                            <p class="local">
-                              Maputo, Xinamanquila - Bairro C
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#testCarousel" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden" data-i18n="testimonials.anterior">Anterior</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#testCarousel" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden" data-i18n="testimonials.seguinte">Seguinte</span>
-                </button>
-            </div>
-        </section>
-
-        <!-- FAQ — Bootstrap accordion -->
-        <section id="perguntas" class="section section-band">
+        <!-- TESTEMUNHOS — the 3 real quotes from the company profile (same as formacoes.html) -->
+        <section id="depoimentos" class="section">
             <div class="container">
-                <div class="text-center mb-5">
-                    <h2 data-i18n="faq.perguntas">Perguntas</h2>
-                    <p class="text-secondary" data-i18n="faq.respostas-diretas-para-as-duvidas-mais">Respostas diretas para as dúvidas mais comuns antes de começar.</p>
-                </div>
-
-                <div class="accordion mx-auto" id="faqAccordion" style="max-width: 800px;">
-                    <div class="accordion-item">
-                        <h3 class="accordion-header">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" data-i18n="faq.quem-pode-contratar">
-                                Quem pode contratar?
-                            </button>
-                        </h3>
-                        <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body text-secondary" data-i18n="faq.empresas-organizacoes-lideres-e-equipas-que">
-                                Empresas, organizações, líderes e equipas que enfrentam decisões difíceis ou
-                                precisam de novas ferramentas. O serviço adapta-se ao tamanho e ao setor de
-                                cada organização.
-                            </div>
+                <div id="servicosTestimonial" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#servicosTestimonial" data-bs-slide-to="0" class="active"
+                            aria-current="true" aria-label="Testemunho 1" data-i18n-attr="aria-label:espacos.testimonials.testemunho-1"></button>
+                        <button type="button" data-bs-target="#servicosTestimonial" data-bs-slide-to="1"
+                            aria-label="Testemunho 2" data-i18n-attr="aria-label:espacos.testimonials.testemunho-2"></button>
+                        <button type="button" data-bs-target="#servicosTestimonial" data-bs-slide-to="2"
+                            aria-label="Testemunho 3" data-i18n-attr="aria-label:espacos.testimonials.testemunho-3"></button>
+                    </div>
+                    <div class="carousel-inner text-center pb-5" style="max-width: 700px; margin: 0 auto;">
+                        <div class="carousel-item active">
+                            <p class="testi-quote mb-4" data-i18n="espacos.testimonials.a-consultoria-nos-ajudou-a-transformar">
+                                "A consultoria nos ajudou a transformar nossa cultura interna, hoje temos líderes
+                                mais conscientes e equipes mais engajadas."
+                            </p>
+                            <p class="testi-name mb-0" data-i18n="espacos.testimonials.diretora-de-rh">Diretora de RH</p>
+                            <p class="small text-secondary" data-i18n="espacos.testimonials.setor-financeiro">Setor financeiro</p>
+                        </div>
+                        <div class="carousel-item">
+                            <p class="testi-quote mb-4" data-i18n="espacos.testimonials.depois-dos-workshops-sobre-etica-conseguimos">
+                                "Depois dos workshops sobre ética, conseguimos reduzir conflitos internos e
+                                fortalecer a confiança entre gestores e colaboradores."
+                            </p>
+                            <p class="testi-name mb-0">CEO</p>
+                            <p class="small text-secondary" data-i18n="espacos.testimonials.setor-industrial">Setor industrial</p>
+                        </div>
+                        <div class="carousel-item">
+                            <p class="testi-quote mb-4" data-i18n="espacos.testimonials.o-programa-de-lideranca-etica-foi">
+                                "O programa de liderança ética foi um divisor de águas na forma como nossos
+                                gestores tomam decisões."
+                            </p>
+                            <p class="testi-name mb-0" data-i18n="espacos.testimonials.gerente-de-pessoas">Gerente de Pessoas</p>
+                            <p class="small text-secondary" data-i18n="espacos.testimonials.setor-de-tecnologia">Setor de tecnologia</p>
                         </div>
                     </div>
-                    <div class="accordion-item">
-                        <h3 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" data-i18n="faq.o-servico-e-personalizado">
-                                O serviço é personalizado?
-                            </button>
-                        </h3>
-                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body text-secondary" data-i18n="faq.sim-cada-intervencao-comeca-com-uma">
-                                Sim. Cada intervenção começa com uma conversa para entender o seu contexto.
-                                O diagnóstico e a proposta são desenhados à medida da sua realidade.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h3 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" data-i18n="faq.quanto-tempo-dura">
-                                Quanto tempo dura?
-                            </button>
-                        </h3>
-                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body text-secondary" data-i18n="faq.depende-da-complexidade-do-desafio-alguns">
-                                Depende da complexidade do desafio. Alguns processos terminam em semanas,
-                                outros exigem acompanhamento contínuo. Definimos prazos claros na proposta.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h3 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" data-i18n="faq.onde-e-realizado">
-                                Onde é realizado?
-                            </button>
-                        </h3>
-                        <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body text-secondary" data-i18n="faq.trabalhamos-presencialmente-na-sua-organizacao-em">
-                                Trabalhamos presencialmente na sua organização, em Maputo ou online. O
-                                formato é definido de acordo com a sua preferência e necessidade.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h3 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5" data-i18n="faq.como-comeca-o-processo">
-                                Como começa o processo?
-                            </button>
-                        </h3>
-                        <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body text-secondary" data-i18n="faq.com-uma-conversa-inicial-ouvimos-o">
-                                Com uma conversa inicial. Ouvimos o seu contexto, identificamos os bloqueios
-                                e apresentamos um caminho prático antes de qualquer compromisso.
-                            </div>
-                        </div>
-                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#servicosTestimonial" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#servicosTestimonial" data-bs-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </button>
                 </div>
             </div>
         </section>
@@ -443,6 +275,83 @@
                 <div class="d-flex flex-row gap-3 justify-content-center">
                     <a href="mailto:contacto@castrosconsultoria.co.mz" class="btn btn-cyan px-4 py-3" data-i18n="page-cta.comecar">Começar</a>
                     <a href="#processo" class="btn btn-outline-light-c px-4 py-3" data-i18n="page-cta.processo">Processo</a>
+                </div>
+            </div>
+        </section>
+   
+        <!-- FAQ — Bootstrap accordion -->
+        <section id="perguntas" class="section section-band">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 data-i18n="faq.perguntas">Perguntas</h2>
+                    <p class="text-secondary" data-i18n="faq.respostas-diretas-para-as-duvidas-mais">Respostas diretas para as dúvidas mais comuns antes de começar.</p>
+                </div>
+
+                <div class="accordion mx-auto" id="faqAccordion" style="max-width: 800px;">
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" data-i18n="faq.que-tipo-de-sessoes-posso-fazer">
+                                Que tipo de sessões posso fazer no espaço?
+                            </button>
+                        </h3>
+                        <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-secondary" data-i18n="faq.formacoes-workshops-reunioes-sessoes-de-trabalho">
+                                Formações, workshops, reuniões, sessões de trabalho e pequenos eventos — e também gravações de
+                                podcast e entrevistas.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" data-i18n="faq.como-reservo-o-espaco">
+                                Como reservo o espaço?
+                            </button>
+                        </h3>
+                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-secondary" data-i18n="faq.envie-nos-a-data-o-horario">
+                                Envie-nos a data, o horário e o número de participantes pelo formulário ou pelo WhatsApp.
+                                Confirmamos a disponibilidade e enviamos o orçamento.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" data-i18n="faq.quanto-custa">
+                                Quanto custa?
+                            </button>
+                        </h3>
+                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-secondary" data-i18n="faq.o-preco-depende-da-duracao-e">
+                                O preço depende da duração e do que a sua sessão precisa. Envie-nos os detalhes e respondemos com
+                                um orçamento.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" data-i18n="faq.posso-gravar-o-meu-podcast-no">
+                                Posso gravar o meu podcast no vosso espaço?
+                            </button>
+                        </h3>
+                        <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-secondary" data-i18n="faq.sim-o-espaco-tambem-recebe-gravacoes">
+                                Sim. O espaço também recebe gravações de podcasts e entrevistas. Diga-nos o formato e preparamos
+                                a sala.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5" data-i18n="faq.a-vossa-equipa-acompanha-a-sessao">
+                                A vossa equipa acompanha a sessão?
+                            </button>
+                        </h3>
+                        <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-secondary" data-i18n="faq.sim-a-nossa-equipa-ajuda-a">
+                                Sim. A nossa equipa ajuda a preparar a sala e dá apoio durante a sessão, do início ao fim.
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -684,7 +593,7 @@
 
     </main>
 
-<!-- FOOTER — pasted from index.html. Only the "Menu" link targets changed, so they work from html/ -->
+    <!-- FOOTER — pasted from index.html. Only the "Menu" link targets changed, so they work from html/ -->
     <footer class="pt-5 pb-4">
       <div class="container">
         <div class="row g-4 pb-4">
@@ -744,6 +653,192 @@
         </div>
       </div>
     </footer>
+
+    <button aria-label="Voltar ao topo" id="backTop" data-i18n-attr="aria-label:common.voltar-ao-topo">
+        <svg class="bi" style="font-size:1.2rem">
+          <use xlink:href="#i-chevronup"></use>
+        </svg>
+    </button>
+
+    <a href="https://wa.me/258848665180" target="_blank" rel="noopener" id="whatsappBtn" aria-label="Falar no WhatsApp" data-i18n-attr="aria-label:common.falar-no-whatsapp">
+        <i class="bi bi-whatsapp"></i>
+    </a>
+
+    <!-- ======================================================
+         MODAL — ESPAÇOS (same structure as the Formações modal in formacoes.html)
+         left: description + what it's for | right: benefícios + how to book
+         bottom: Bastidores gallery. Photos are stock placeholders until the client's own arrive.
+         ====================================================== -->
+    <div class="modal fade" id="modalEspacos" tabindex="-1" aria-labelledby="modalEspacosLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="modalEspacosLabel" data-i18n="espacos.modal-spaces.espacos">Espaços</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar" data-i18n-attr="aria-label:espacos.modal-spaces.fechar"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row g-5">
+                        <!-- LEFT: description + list -->
+                        <div class="col-lg-6">
+                            <p class="fm-lede" data-i18n="espacos.modal-spaces.um-espaco-em-maputo-preparado-para">
+                                Um espaço em Maputo preparado para receber a sua sessão: formações, workshops, reuniões e
+                                pequenos eventos. Trate do conteúdo — nós cuidamos da sala, do equipamento e do apoio
+                                no dia.
+                            </p>
+                            <h4 class="mb-3" data-i18n="espacos.modal-spaces.ideal-para">Ideal para</h4>
+                            <ul class="course-list">
+                                <li><i class="bi bi-check2-circle"></i><span data-i18n="espacos.modal-spaces.formacoes-e-workshops">Formações e workshops</span></li>
+                                <li><i class="bi bi-check2-circle"></i><span data-i18n="espacos.modal-spaces.reunioes-e-sessoes-de-trabalho">Reuniões e sessões de trabalho</span></li>
+                                <li><i class="bi bi-check2-circle"></i><span data-i18n="espacos.modal-spaces.lancamentos-e-pequenos-eventos">Lançamentos e pequenos eventos</span></li>
+                            </ul>
+                        </div>
+
+                        <!-- RIGHT: benefícios + highlight card -->
+                        <div class="col-lg-6">
+                            <h4 class="mb-3" data-i18n="espacos.modal-spaces.beneficios">Benefícios</h4>
+                            <div class="benefit-row">
+                                <div class="benefit-item">
+                                    <div class="icon-box"><svg class="bi">
+                                            <use xlink:href="#i-geo"></use>
+                                        </svg></div>
+                                    <p data-i18n="espacos.modal-spaces.localizacao-em-maputo">Localização em Maputo</p>
+                                </div>
+                                <div class="benefit-item">
+                                    <div class="icon-box"><svg class="bi">
+                                            <use xlink:href="#i-box"></use>
+                                        </svg></div>
+                                    <p data-i18n="espacos.modal-spaces.equipamento-disponivel">Equipamento disponível</p>
+                                </div>
+                                <div class="benefit-item">
+                                    <div class="icon-box"><svg class="bi">
+                                            <use xlink:href="#i-people"></use>
+                                        </svg></div>
+                                    <p data-i18n="espacos.modal-spaces.apoio-da-nossa-equipa">Apoio da nossa equipa</p>
+                                </div>
+                                <div class="benefit-item">
+                                    <div class="icon-box"><svg class="bi">
+                                            <use xlink:href="#i-calendar"></use>
+                                        </svg></div>
+                                    <p data-i18n="espacos.modal-spaces.reserva-por-marcacao">Reserva por marcação</p>
+                                </div>
+                            </div>
+
+                            <div class="highlight-card mt-4">
+                                <span class="eyebrow" data-i18n="espacos.modal-spaces.reservas">Reservas</span>
+                                <h4 class="mb-3" data-i18n="espacos.modal-spaces.como-reservar">Como reservar</h4>
+                                <ul class="upcoming-list">
+                                    <li>
+                                        <span class="upcoming-title" data-i18n="espacos.modal-spaces.indique-a-data-o-horario-e">Indique a data, o horário e o número de participantes</span>
+                                    </li>
+                                    <li>
+                                        <span class="upcoming-title" data-i18n="espacos.modal-spaces.confirmamos-a-disponibilidade-e-enviamos-o">Confirmamos a disponibilidade e enviamos o orçamento</span>
+                                    </li>
+                                </ul>
+                                <a class="link-arrow" href="#contact-form"><span data-i18n="espacos.modal-spaces.pedir-disponibilidade">Pedir disponibilidade</span> <span
+                                        class="arrowRight">&gt;</span></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BASTIDORES -->
+                    <div class="mt-5">
+                        <h4 class="mb-3" data-i18n="espacos.modal-spaces.bastidores">Bastidores</h4>
+                        <div class="modal-gallery">
+                            <div class="mg-a"><img src="../assets/hero/inicio-2.webp" alt="Sala de formação luminosa, com participantes sentados em círculo" loading="lazy" data-i18n-attr="alt:espacos.modal-spaces.sala-de-formacao-luminosa-com-participantes"></div>
+                            <div class="mg-b"><img src="../assets/services/espacos.webp" alt="Cadeiras alinhadas numa sala preparada para um evento" loading="lazy" data-i18n-attr="alt:espacos.modal-spaces.cadeiras-alinhadas-numa-sala-preparada-para"></div>
+                            <div class="mg-c"><img src="../assets/events/oratoria-comunicacao-impacto.webp" alt="Auditório com plateia e apresentação no ecrã" loading="lazy" data-i18n-attr="alt:espacos.modal-spaces.auditorio-com-plateia-e-apresentacao-no"></div>
+                            <div class="mg-d"><img src="../assets/hero/eventos-poster.webp" alt="Sala de conferências com mesas e participantes" loading="lazy" data-i18n-attr="alt:espacos.modal-spaces.sala-de-conferencias-com-mesas-e"></div>
+                            <div class="mg-e"><img src="../assets/hero/podcast.webp" alt="Estúdio de podcast com dois cadeirões e microfones" loading="lazy" data-i18n-attr="alt:espacos.modal-spaces.estudio-de-podcast-com-dois-cadeiroes"></div>
+                            <div class="mg-f"><img src="../assets/morepeople.jpg" alt="Reunião de equipa à mesa, com portáteis" loading="lazy" data-i18n-attr="alt:espacos.modal-spaces.reuniao-de-equipa-a-mesa-com"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ======================================================
+         MODAL — PODCASTS (same structure as the Treinamento modal in formacoes.html)
+         top: media block (1 square + 2 wide) | 3 columns: Grave connosco / Conversas / Convidados
+         then Reservas banner, then Bastidores gallery. Photos are stock placeholders.
+         ====================================================== -->
+    <div class="modal fade" id="modalPodcasts" tabindex="-1" aria-labelledby="modalPodcastsLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="modalPodcastsLabel">Podcasts</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar" data-i18n-attr="aria-label:espacos.modal-podcasts.fechar"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- MEDIA FEATURE: 1 square + 2 stacked wide -->
+                    <div class="media-trio mb-5">
+                        <div class="mt-a"><img src="../assets/hero/podcast.webp"
+                                alt="Estúdio de podcast com dois cadeirões, microfones e um ecrã" loading="lazy" data-i18n-attr="alt:espacos.modal-podcasts.estudio-de-podcast-com-dois-cadeiroes"></div>
+                        <div class="mt-b"><img src="../assets/hero/inicio-1.webp"
+                                alt="Duas pessoas em conversa à frente de um portátil" loading="lazy" data-i18n-attr="alt:espacos.modal-podcasts.duas-pessoas-em-conversa-a-frente"></div>
+                        <div class="mt-c"><img src="../assets/services/consultoria.webp"
+                                alt="Conversa entre dois profissionais num sofá" loading="lazy" data-i18n-attr="alt:espacos.modal-podcasts.conversa-entre-dois-profissionais-num-sofa"></div>
+                    </div>
+
+                    <!-- 3 COLUMNS -->
+                    <div class="service-columns row g-4 mb-5">
+                        <div class="col-md-4">
+                            <h4 data-i18n="espacos.modal-podcasts.grave-connosco">Grave connosco</h4>
+                            <p class="small text-secondary" data-i18n="espacos.modal-podcasts.um-espaco-preparado-para-gravar-o">Um espaço preparado para gravar o seu podcast, entrevistas ou conversas em vídeo,
+                                com o apoio da nossa equipa.</p>
+                            <a class="link-arrow" href="#eventoPodcast"><span data-i18n="espacos.modal-podcasts.saber-mais">Saber mais</span> <span
+                                    class="arrowRight">&gt;</span></a>
+                        </div>
+                        <div class="col-md-4">
+                            <h4 data-i18n="espacos.modal-podcasts.conversas">Conversas</h4>
+                            <p class="small text-secondary" data-i18n="espacos.modal-podcasts.conversas-com-lideres-gestores-e-especialistas">Conversas com líderes, gestores e especialistas sobre o que funciona no dia a dia das
+                                organizações em Moçambique.</p>
+                            <a class="link-arrow" href="#contact-form"><span data-i18n="espacos.modal-podcasts.saber-mais">Saber mais</span> <span
+                                    class="arrowRight">&gt;</span></a>
+                        </div>
+                        <div class="col-md-4">
+                            <h4 data-i18n="espacos.modal-podcasts.convidados">Convidados</h4>
+                            <p class="small text-secondary" data-i18n="espacos.modal-podcasts.tem-uma-experiencia-que-vale-a">Tem uma experiência que vale a pena partilhar? Proponha-se como convidado de uma
+                                próxima conversa.</p>
+                            <a class="link-arrow" href="#contact-form"><span data-i18n="espacos.modal-podcasts.saber-mais">Saber mais</span> <span
+                                    class="arrowRight">&gt;</span></a>
+                        </div>
+                    </div>
+
+                    <!-- BANNER -->
+                    <div class="event-banner mb-5" id="eventoPodcast">
+                        <div>
+                            <span class="eyebrow" data-i18n="espacos.modal-podcasts.reservas">Reservas</span>
+                            <h4 class="mb-1" data-i18n="espacos.modal-podcasts.grave-o-seu-podcast-no-nosso">Grave o seu podcast no nosso espaço</h4>
+                            <span class="d-flex gap-3 event-meta">
+                                <span class="d-flex align-items-center gap-1"><svg class="bi">
+                                        <use xlink:href="#i-calendar"></use>
+                                    </svg><span data-i18n="espacos.modal-podcasts.por-marcacao">Por marcação</span></span>
+                                <span class="d-flex align-items-center gap-1"><svg class="bi">
+                                        <use xlink:href="#i-geo"></use>
+                                    </svg>Maputo</span>
+                            </span>
+                        </div>
+                        <a class="btn btn-cyan px-4 py-2" href="#contact-form" data-i18n="espacos.modal-podcasts.pedir-disponibilidade">Pedir disponibilidade</a>
+                    </div>
+
+                    <!-- BASTIDORES -->
+                    <div>
+                        <h4 class="mb-3" data-i18n="espacos.modal-podcasts.bastidores">Bastidores</h4>
+                        <div class="modal-gallery">
+                            <div class="mg-a"><img src="../assets/events/atendimento-ao-cliente.webp" alt="Três profissionais em conversa, um deles com um tablet" loading="lazy" data-i18n-attr="alt:espacos.modal-podcasts.tres-profissionais-em-conversa-um-deles"></div>
+                            <div class="mg-b"><img src="../assets/services/formacoes-treinamentos.webp" alt="Dois profissionais a rever notas num tablet" loading="lazy" data-i18n-attr="alt:espacos.modal-podcasts.dois-profissionais-a-rever-notas-num"></div>
+                            <div class="mg-c"><img src="../assets/events/comunicacao-com-impacto.webp" alt="Oradora a falar em palco perante a plateia" loading="lazy" data-i18n-attr="alt:espacos.modal-podcasts.oradora-a-falar-em-palco-perante"></div>
+                            <div class="mg-d"><img src="../assets/events/decidir-com-clareza.webp" alt="Aperto de mão entre dois profissionais" loading="lazy" data-i18n-attr="alt:espacos.modal-podcasts.aperto-de-mao-entre-dois-profissionais"></div>
+                            <div class="mg-e"><img src="../assets/hero/inicio-3.webp" alt="Equipa a celebrar em conjunto" loading="lazy" data-i18n-attr="alt:espacos.modal-podcasts.equipa-a-celebrar-em-conjunto"></div>
+                            <div class="mg-f"><img src="../assets/hero/formacao-poster.webp" alt="Participantes a aplaudir no fim de uma sessão" loading="lazy" data-i18n-attr="alt:espacos.modal-podcasts.participantes-a-aplaudir-no-fim-de"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <svg style="display:none" xmlns="http://www.w3.org/2000/svg">
         <symbol id="i-arrow" viewbox="0 0 16 16">
@@ -869,7 +964,7 @@
 
     <script src="../js/javascript.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-        <script>
+    <script>
         /* JAVASCRIPT | Navigation, interactions and animations */
         (function () {
             /* NAVBAR SCROLL BEHAVIOUR */
