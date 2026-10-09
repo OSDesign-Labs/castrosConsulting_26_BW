@@ -21,6 +21,7 @@
   <!-- PT/EN: js/i18n.js fetches js/translations.json -->
   <script src="js/i18n.js" defer></script>
   <script src="js/site-loader.js" defer></script>
+  <script src="js/topbar.js" defer></script>
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
   <title>Castros Consultoria</title>
 
@@ -56,6 +57,26 @@
   <header>
     <!-- Navbar Section -->
     <nav class="main-navbar" id="mainNavbar">
+      <!-- SECONDARY NAVBAR (desktop only; phones get the same info at the bottom of the menu). Folds away once
+           the first section is scrolled past: js/topbar.js -->
+      <div class="topbar d-none d-lg-flex">
+        <div class="topbar-left">
+          <span class="topbar-item"><i class="bi bi-geo-alt" aria-hidden="true"></i><span data-i18n="topbar.maputo-mocambique">Maputo, Moçambique</span></span>
+          <span class="topbar-divider" aria-hidden="true"></span>
+          <span class="topbar-item"><i class="bi bi-clock" aria-hidden="true"></i><span data-i18n="topbar.seg-sex-08-00-17-00">Seg – Sex · 08:00 – 17:00</span></span>
+        </div>
+        <div class="topbar-right">
+          <a class="topbar-item" href="tel:+258878665180"><i class="bi bi-telephone" aria-hidden="true"></i>+258 87 866 5180</a>
+          <span class="topbar-divider" aria-hidden="true"></span>
+          <div class="topbar-social">
+            <a href="https://www.facebook.com/" aria-label="Facebook"><i class="bi bi-facebook"></i></a> <!-- EDIT URL -->
+            <a href="https://www.instagram.com/castros.consultoria/" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="https://wa.me/258878665180" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+            <a href="https://www.linkedin.com/" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a> <!-- EDIT URL -->
+            <a href="mailto:castrosconsultoria@gmail.com" aria-label="Email"><i class="bi bi-envelope"></i></a>
+          </div>
+        </div>
+      </div>
       <div class="container-fluid">
         <!-- LOGO -->
         <a class="navbar-brand brand-lockup" href="index.html" aria-label="Castros Consultoria, página inicial" data-i18n-attr="aria-label:nav.castros-consultoria-pagina-inicial">
@@ -217,6 +238,19 @@
           </a>
         </div>
       </div>
+      <!-- Mobile info (replaces the secondary navbar on small screens) -->
+      <div class="mobile-info">
+        <span><i class="bi bi-geo-alt" aria-hidden="true"></i><span data-i18n="topbar.maputo-mocambique">Maputo, Moçambique</span></span>
+        <span><i class="bi bi-clock" aria-hidden="true"></i><span data-i18n="topbar.seg-sex-08-00-17-00">Seg – Sex · 08:00 – 17:00</span></span>
+        <a href="tel:+258878665180"><i class="bi bi-telephone" aria-hidden="true"></i>+258 87 866 5180</a>
+        <div class="mobile-social">
+          <a href="https://www.facebook.com/" aria-label="Facebook"><i class="bi bi-facebook"></i></a> <!-- EDIT URL -->
+          <a href="https://www.instagram.com/castros.consultoria/" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+          <a href="https://wa.me/258878665180" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+          <a href="https://www.linkedin.com/" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a> <!-- EDIT URL -->
+          <a href="mailto:castrosconsultoria@gmail.com" aria-label="Email"><i class="bi bi-envelope"></i></a>
+        </div>
+      </div>
     </div>
   </header>
 
@@ -226,7 +260,7 @@
          01.2- HERO | Carousel: Início · Formação · Eventos · Podcast
          Replaces the whole old "01.2- HERO" <section> in index.html.
          Keep it as the FIRST child of <main> with class "hero":
-         js/javascript.js looks for "main > .hero" (navbar topbar state).
+         js/topbar.js looks for "main > .hero" (navbar topbar state).
 
          Timing lives in data-duration on each slide (milliseconds):
          Início 8000 (its 3 background photos share those 8 s), the others 3500.

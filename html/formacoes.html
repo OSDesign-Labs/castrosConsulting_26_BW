@@ -20,6 +20,7 @@
     <!-- PT/EN: ../js/i18n.js fetches ../js/translations.json -->
     <script src="../js/i18n.js" defer></script>
     <script src="../js/site-loader.js" defer></script>
+    <script src="../js/topbar.js" defer></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="meta.servicos-castro-s-consultoria">Serviços — Castro's Consultoria</title>
 
@@ -57,6 +58,26 @@
          a real maintenance problem. -->
     <header>
         <nav id="mainNavbar" class="main-navbar">
+            <!-- SECONDARY NAVBAR (desktop only; phones get the same info at the bottom of the menu). Folds away once
+                 the first section is scrolled past: js/topbar.js -->
+            <div class="topbar d-none d-lg-flex">
+              <div class="topbar-left">
+                <span class="topbar-item"><i class="bi bi-geo-alt" aria-hidden="true"></i><span data-i18n="topbar.maputo-mocambique">Maputo, Moçambique</span></span>
+                <span class="topbar-divider" aria-hidden="true"></span>
+                <span class="topbar-item"><i class="bi bi-clock" aria-hidden="true"></i><span data-i18n="topbar.seg-sex-08-00-17-00">Seg – Sex · 08:00 – 17:00</span></span>
+              </div>
+              <div class="topbar-right">
+                <a class="topbar-item" href="tel:+258878665180"><i class="bi bi-telephone" aria-hidden="true"></i>+258 87 866 5180</a>
+                <span class="topbar-divider" aria-hidden="true"></span>
+                <div class="topbar-social">
+                  <a href="https://www.facebook.com/" aria-label="Facebook"><i class="bi bi-facebook"></i></a> <!-- EDIT URL -->
+                  <a href="https://www.instagram.com/castros.consultoria/" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                  <a href="https://wa.me/258878665180" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+                  <a href="https://www.linkedin.com/" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a> <!-- EDIT URL -->
+                  <a href="mailto:castrosconsultoria@gmail.com" aria-label="Email"><i class="bi bi-envelope"></i></a>
+                </div>
+              </div>
+            </div>
             <div class="container-fluid">
                 <a class="navbar-brand brand-lockup" href="../index.html" aria-label="Castros Consultoria, página inicial" data-i18n-attr="aria-label:nav.castros-consultoria-pagina-inicial">
                     <img class="brand-mark" src="../assets/brand/castros-mark.webp" width="528" height="640" alt="">
@@ -136,6 +157,19 @@
                 <div class="mobile-cta-wrapper">
                     <a href="#contact-form" class="btn btn-primary" data-i18n="nav.cta">Contacto</a>
                 </div>
+            </div>
+            <!-- Mobile info (replaces the secondary navbar on small screens) -->
+            <div class="mobile-info">
+              <span><i class="bi bi-geo-alt" aria-hidden="true"></i><span data-i18n="topbar.maputo-mocambique">Maputo, Moçambique</span></span>
+              <span><i class="bi bi-clock" aria-hidden="true"></i><span data-i18n="topbar.seg-sex-08-00-17-00">Seg – Sex · 08:00 – 17:00</span></span>
+              <a href="tel:+258878665180"><i class="bi bi-telephone" aria-hidden="true"></i>+258 87 866 5180</a>
+              <div class="mobile-social">
+                <a href="https://www.facebook.com/" aria-label="Facebook"><i class="bi bi-facebook"></i></a> <!-- EDIT URL -->
+                <a href="https://www.instagram.com/castros.consultoria/" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                <a href="https://wa.me/258878665180" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+                <a href="https://www.linkedin.com/" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a> <!-- EDIT URL -->
+                <a href="mailto:castrosconsultoria@gmail.com" aria-label="Email"><i class="bi bi-envelope"></i></a>
+              </div>
             </div>
         </div>
     </header>

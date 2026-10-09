@@ -376,7 +376,9 @@
     "contact.interest.workshop": "Workshop",
     "contact.interest.conferencia": "Conferência",
     "contact.interest.evento-corporativo": "Evento Corporativo",
-    "contact.interest.team-building": "Team Building"
+    "contact.interest.team-building": "Team Building",
+    "topbar.maputo-mocambique": "Maputo, Moçambique",
+    "topbar.seg-sex-08-00-17-00": "Seg – Sex · 08:00 – 17:00"
   },
   "en": {
     "nav.castros-consultoria-pagina-inicial": "Castros Consultoria, home page",
@@ -797,6 +799,8 @@
       "Turning values into everyday behaviour",
       "Deciding when the right thing and the easy thing differ",
       "Building a culture of trust"
-    ]
+    ],
+    "topbar.maputo-mocambique": "Maputo, Mozambique",
+    "topbar.seg-sex-08-00-17-00": "Mon – Fri · 08:00 – 17:00"
   }
 }

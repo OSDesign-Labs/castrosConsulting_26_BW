@@ -3494,3 +3494,104 @@ main>.hero #overlayGradient>[class*="col-lg-6"] {
         font-size: 1.2rem;
     }
 }
+
+/* ======================================================
+       SECONDARY NAVBAR (top bar) | from Francisco's branch
+       Desktop only (.d-lg-flex in the HTML). Folds away once the
+       first section is scrolled past: js/topbar.js adds
+       .topbar-collapsed to the navbar.
+   ====================================================== */
+.main-navbar .topbar {
+    max-width: 1600px;
+    margin: 0 auto 0.6rem;
+    padding-bottom: 0.55rem;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.75);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+    max-height: 60px;
+    overflow: hidden;
+    transition:
+        max-height 0.4s ease,
+        opacity 0.3s ease,
+        margin 0.4s ease,
+        padding 0.4s ease,
+        border-color 0.4s ease;
+}
+
+.main-navbar.topbar-collapsed .topbar {
+    max-height: 0;
+    opacity: 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-color: transparent;
+    border-bottom-width: 0;
+}
+
+.topbar-left,
+.topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.topbar-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: inherit;
+    white-space: nowrap;
+    text-decoration: none;
+}
+
+.topbar-item .bi {
+    color: var(--cyan);
+}
+
+.topbar-divider {
+    width: 1px;
+    height: 14px;
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.topbar-social {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    font-size: 0.95rem;
+}
+
+.topbar-social a {
+    color: inherit;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.topbar-social a:hover,
+a.topbar-item:hover {
+    color: var(--pearl);
+}
+
+.topbar-social a:hover {
+    transform: translateY(-2px);
+}
+
+.topbar a:focus-visible {
+    outline: 2px solid var(--pearl);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+/* phone menu: the social icons sit in one row */
+.offcanvas.mobile-offcanvas .mobile-social {
+    display: flex;
+    gap: 0.75rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .main-navbar .topbar,
+    .topbar-social a {
+        transition: none;
+    }
+}
