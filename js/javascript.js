@@ -22,6 +22,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let currentStep = 1;
 
+    /* LANGUAGE (js/i18n.js): text in the current language, the Portuguese here is the fallback.
+       Service / interest VALUES stay in Portuguese (that's what the form submits). */
+    const T = (key, fallback) => (window.CastrosI18n ? window.CastrosI18n.t(key, fallback) : fallback);
+    const slugify = (s) => (s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().match(/[a-z0-9]+/g) || []).join("-");
+    const interestLabel = (value) => T("contact.interest." + slugify(value), value);
+    let lastAlertSuccess = null;
+    let successShown = false;
+
     /* DYNAMIC AREAS OF INTEREST */
 
     const interests = {
@@ -84,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /* SHOW STEP */
 
-    function showStep(step) {
+    function showStep(step, moveFocus = true) {
 
         currentStep = step;
 
@@ -105,7 +113,9 @@ document.addEventListener("DOMContentLoaded", () => {
             "input, select, textarea"
         );
 
-        if (firstField) {
+        // only when the user moves between steps; on page load this
+        // focus scrolled the whole page down to the contact form
+        if (firstField && moveFocus) {
             setTimeout(() => firstField.focus(), 120);
         }
     }
@@ -170,18 +180,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const options = interests[serviceSelect.value] || [];
 
-        interestSelect.innerHTML = `
-            <option value="" selected disabled>
-                Selecione uma área
-            </option>
-        `;
+        interestSelect.innerHTML = "";
+        const placeholder = document.createElement("option");
+        placeholder.value = "";
+        placeholder.selected = true;
+        placeholder.disabled = true;
+        placeholder.textContent = T("contact.select-area", "Selecione uma área");
+        interestSelect.appendChild(placeholder);
 
         options.forEach((interest) => {
 
             const option = document.createElement("option");
 
-            option.value = interest;
-            option.textContent = interest;
+            option.value = interest;                       // submitted in Portuguese
+            option.textContent = interestLabel(interest);  // shown in the current language
 
             interestSelect.appendChild(option);
         });
@@ -260,6 +272,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function showAlert(success = true) {
 
+        lastAlertSuccess = success;
+
         alertElement.classList.remove(
             "alert-success",
             "alert-danger"
@@ -269,17 +283,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
             alertElement.classList.add("alert-success");
 
-            alertTitle.textContent = "Mensagem enviada";
-            alertMessage.textContent =
-                "Obrigado por contactar a Castros Consultoria. Entraremos em contacto consigo.";
+            alertTitle.textContent = T("contact.alert.success-title", "Mensagem enviada");
+            alertMessage.textContent = T("contact.alert.success-text",
+                "Obrigado por contactar a Castros Consultoria. Entraremos em contacto consigo.");
 
         } else {
 
             alertElement.classList.add("alert-danger");
 
-            alertTitle.textContent = "Não foi possível enviar";
-            alertMessage.textContent =
-                "Ocorreu um problema. Verifique os dados e tente novamente.";
+            alertTitle.textContent = T("contact.alert.error-title", "Não foi possível enviar");
+            alertMessage.textContent = T("contact.alert.error-text",
+                "Ocorreu um problema. Verifique os dados e tente novamente.");
         }
 
         alertElement.classList.add("show");
@@ -290,6 +304,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function showSuccessState() {
 
         const card = document.querySelector(".contact-form-card");
+        successShown = true;
 
         card.innerHTML = `
             <div class="form-success">
@@ -298,20 +313,19 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
 
                 <span class="contact-eyebrow">
-                    Pedido recebido
+                    ${T("contact.success.eyebrow", "Pedido recebido")}
                 </span>
 
                 <h2 class="form-step-title mb-3">
-                    Obrigado pelo contacto.
+                    ${T("contact.success.title", "Obrigado pelo contacto.")}
                 </h2>
 
                 <p class="form-step-description mx-auto mb-4">
-                    A sua mensagem foi enviada com sucesso.
-                    A nossa equipa entrará em contacto consigo.
+                    ${T("contact.success.text", "A sua mensagem foi enviada com sucesso. A nossa equipa entrará em contacto consigo.")}
                 </p>
 
                 <button type="button" class="btn btn-contact-secondary" id="newContactButton">
-                    Enviar outra mensagem
+                    ${T("contact.success.again", "Enviar outra mensagem")}
                 </button>
             </div>
         `;
@@ -322,6 +336,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 window.location.reload();
             });
     }
+
+    /* LANGUAGE SWITCH: text this script created itself */
+    document.addEventListener("i18n:change", () => {
+        Array.from(interestSelect.options).forEach((option) => {
+            if (option.value) option.textContent = interestLabel(option.value);
+            else if (!option.hasAttribute("data-i18n")) option.textContent = T("contact.select-area", "Selecione uma área");
+        });
+        if (lastAlertSuccess !== null && alertElement.classList.contains("show")) showAlert(lastAlertSuccess);
+        if (successShown) showSuccessState();
+    });
 
     /* SUBMIT */
 
@@ -366,7 +390,77 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /* INITIAL STATE */
 
-    showStep(1);
+    showStep(1, false);
 });
 
 
+/* ==========================================================
+   LINKS TO THE CONTACT FORM (and other same-page anchors)
+   - Contact links point at #contact-form, the form card itself.
+   - Links in the mobile menu: close the menu first, then scroll.
+     (data-bs-dismiss on an <a> makes Bootstrap cancel the link,
+     which is why the mobile "Contacto" button did nothing.)
+   - Arriving from another page (index.html#contact-form): once
+     everything has loaded, line the target up again; images and
+     fonts loading above it can push it down.
+   ========================================================== */
+(function () {
+    "use strict";
+
+    var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    function findTarget(hash) {
+        if (!hash || hash.length < 2) return null;
+        try { return document.getElementById(decodeURIComponent(hash.slice(1))); } catch (e) { return null; }
+    }
+
+    function jumpTo(target, smooth) {
+        var html = document.documentElement;
+        var before = html.style.scrollBehavior;
+        if (!smooth) html.style.scrollBehavior = "auto";          // the CSS sets smooth for the whole page
+        target.scrollIntoView({ behavior: smooth && !reduceMotion ? "smooth" : "auto", block: "start" });
+        if (!smooth) html.style.scrollBehavior = before;
+    }
+
+    // mobile menu → same-page section
+    document.addEventListener("click", function (event) {
+        if (event.defaultPrevented || event.button !== 0 ||
+            event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+        var link = event.target.closest && event.target.closest(".offcanvas a[href*='#']");
+        if (!link || !window.bootstrap) return;
+        var menu = link.closest(".offcanvas");
+        var url = new URL(link.getAttribute("href"), window.location.href);
+        if (url.pathname !== window.location.pathname || url.search !== window.location.search) return;  // other page
+        var target = findTarget(url.hash);
+        if (!target || !menu.classList.contains("show")) return;
+
+        event.preventDefault();
+        menu.addEventListener("hidden.bs.offcanvas", function () {
+            if (window.history && history.pushState && window.location.hash !== url.hash) {
+                history.pushState(null, "", url.hash);
+                // pushState doesn't fire hashchange; listeners (e.g. the services accordion) need it
+                window.dispatchEvent(new HashChangeEvent("hashchange"));
+            }
+            jumpTo(target, true);
+        }, { once: true });
+        bootstrap.Offcanvas.getOrCreateInstance(menu).hide();
+    });
+
+    // arrived with a #hash: re-align after load, unless the visitor already scrolled
+    var userScrolled = false;
+    ["wheel", "touchmove", "keydown"].forEach(function (type) {
+        window.addEventListener(type, function () { userScrolled = true; }, { once: true, passive: true });
+    });
+
+    function realign() {
+        var target = findTarget(window.location.hash);
+        if (!target || userScrolled) return;
+        var margin = parseFloat(getComputedStyle(target).scrollMarginTop) || 0;
+        if (Math.abs(target.getBoundingClientRect().top - margin) > 2) jumpTo(target, false);
+    }
+
+    window.addEventListener("load", function () {
+        realign();
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(realign);
+    }, { once: true });
+})();

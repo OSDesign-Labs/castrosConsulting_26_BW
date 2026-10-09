@@ -3094,3 +3094,403 @@ main>.hero #overlayGradient>[class*="col-lg-6"] {
         }
     }
 }
+
+/* ======================================================
+   MOBILE OFFCANVAS | Fullscreen, centred, responsive
+   Replaces the whole old "MOBILE OFFCANVAS | Fullscreen" section
+   (from that comment banner down to the end of home.css,
+   i.e. through `.mobile-offcanvas .mobile-social a:hover`).
+
+   Works with the markup as it is today, no HTML edits:
+
+     .offcanvas.mobile-offcanvas
+       ├─ .offcanvas-header      (close button, + brand on subpages)
+       ├─ .offcanvas-body        (.mobile-nav + .mobile-cta-wrapper)
+       └─ .mobile-info           (pills + .mobile-social)   <- sibling of the body, not inside it
+
+   The panel itself is the flex column: body gets margin-top:auto,
+   .mobile-info gets margin-bottom:auto, so nav + CTA + pills + social
+   centre as ONE group in the space under the header. If the group is
+   taller than the screen the margins collapse to 0 and the panel scrolls.
+
+   Two-class selectors (.offcanvas.mobile-offcanvas) are deliberate:
+   Bootstrap loads AFTER this file, so a single-class rule ties with
+   Bootstrap's own and loses.
+   ====================================================== */
+
+/* ---------- Shell ---------- */
+.offcanvas.mobile-offcanvas {
+    --bs-offcanvas-zindex: 1060;
+    z-index: 1060;                 /* above the fixed navbar (1050) */
+    width: 100% !important;        /* beats the old "width: 90vw !important" in the 575px media query; delete that rule, then this !important can go */
+    max-width: 100%;
+    overflow-y: auto;              /* whole panel scrolls on very short screens */
+    padding-bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px));
+    border: 0;
+    color: var(--white);
+    background:
+        radial-gradient(120% 90% at 80% 0%, #123a55 0%, #0a2138 45%, #04101f 100%);
+}
+
+/* ---------- Header: close button always on the right (brand, when present, on the left) ---------- */
+.offcanvas.mobile-offcanvas .offcanvas-header {
+    flex: 0 0 auto;
+    justify-content: space-between;
+    padding: calc(0.9rem + env(safe-area-inset-top, 0px)) 1.5rem 0.9rem;
+}
+
+.offcanvas.mobile-offcanvas .offcanvas-title {
+    font-family: "DM Serif Display", serif;
+    font-style: italic;
+    font-size: 1.35rem;
+    color: var(--white);
+    text-decoration: none;
+}
+
+/* 44px tap target. The invert filter turns the black X white. */
+.offcanvas.mobile-offcanvas .btn-close {
+    box-sizing: border-box;
+    width: 44px;
+    height: 44px;
+    margin: 0 0 0 auto;
+    padding: 0;
+    opacity: 1;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.2);
+    background-size: 14px;
+    filter: invert(1) grayscale(1) brightness(2);
+}
+
+/* ---------- Body: nav + CTA, centred horizontally; margin-top:auto centres the group vertically ---------- */
+.offcanvas.mobile-offcanvas .offcanvas-body {
+    flex: 0 0 auto;                /* Bootstrap gives it flex-grow:1, which would eat the free space we want to centre with */
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(1rem, 3.5vh, 1.75rem);
+    padding: 0.5rem 1.5rem 0;
+    overflow: visible;
+    text-align: center;
+}
+
+/* Same column width on phones and tablets, so the group stays centred on wide screens */
+.offcanvas.mobile-offcanvas .offcanvas-body > * {
+    width: 100%;
+    max-width: 420px;
+}
+
+/* Pages with no .mobile-info (subpages today): the body is the last child, so it takes the bottom auto margin and still centres */
+.offcanvas.mobile-offcanvas .offcanvas-body:last-child {
+    margin-bottom: auto;
+}
+
+/* ---------- Links ---------- */
+.offcanvas.mobile-offcanvas .mobile-nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.offcanvas.mobile-offcanvas .mobile-nav .nav-link {
+    display: block;
+    padding: clamp(0.3rem, 1.3vh, 0.7rem) 0;
+    font-family: "DM Serif Display", serif;
+    font-size: clamp(1.5rem, min(7vw, 4.6vh), 2.3rem);   /* scales with width AND height, so short screens don't overflow */
+    line-height: 1.15;
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.offcanvas.mobile-offcanvas .mobile-nav .nav-link:hover,
+.offcanvas.mobile-offcanvas .mobile-nav .nav-link.active {
+    color: var(--pearl);
+}
+
+/* Serviços opens in place, centred */
+.offcanvas.mobile-offcanvas .mobile-nav .dropdown-menu {
+    position: static !important;
+    transform: none !important;
+    margin: 0 0 0.6rem;
+    padding: 0;
+    text-align: center;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+}
+
+.offcanvas.mobile-offcanvas .mobile-nav .dropdown-item {
+    padding: 0.5rem 0;
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    background: transparent;
+}
+
+.offcanvas.mobile-offcanvas .mobile-nav .dropdown-item:hover {
+    color: var(--cyan);
+}
+
+/* ---------- CTA button ---------- */
+.offcanvas.mobile-offcanvas .mobile-cta-wrapper {
+    margin: 0;
+}
+
+.offcanvas.mobile-offcanvas .mobile-cta-wrapper .btn {
+    display: block;
+    width: 100%;
+    padding: 0.9rem 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--white);
+    text-align: center;
+    text-decoration: none;
+    border: 0;
+    border-radius: 18px;
+    background-image: linear-gradient(109.6deg,
+            rgba(34, 211, 238, 1) 11.2%,
+            rgba(79, 57, 246, 1) 100.2%);
+}
+
+/* ---------- Info pills + social (sibling of .offcanvas-body) ---------- */
+.offcanvas.mobile-offcanvas .mobile-info {
+    flex: 0 0 auto;
+    align-self: center;
+    width: min(420px, calc(100% - 3rem));    /* same column as the nav and the CTA */
+    margin: clamp(1rem, 3.5vh, 1.75rem) 0 auto;   /* gap above; auto below = vertical centring */
+    padding: clamp(1rem, 3vh, 1.5rem) 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    position: static;              /* the old "position: relative; top: -5rem" dragged this block up over the Contato button */
+    top: auto;
+}
+
+.offcanvas.mobile-offcanvas .mobile-info > span,
+.offcanvas.mobile-offcanvas .mobile-info > a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.45rem 0.9rem;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 999px;
+}
+
+.offcanvas.mobile-offcanvas .mobile-info .bi {
+    color: var(--cyan);
+}
+
+.offcanvas.mobile-offcanvas .mobile-info > a:hover {
+    color: var(--pearl);
+    border-color: rgba(114, 220, 220, 0.5);
+}
+
+.offcanvas.mobile-offcanvas .mobile-social {
+    justify-content: center;
+    width: 100%;
+    margin-top: 0.6rem;
+}
+
+.offcanvas.mobile-offcanvas .mobile-social a {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    font-size: 1.1rem;
+    color: var(--white);
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 50%;
+    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.offcanvas.mobile-offcanvas .mobile-social a:hover {
+    color: var(--ink);
+    background: var(--pearl);
+    transform: translateY(-2px);
+}
+
+/* ---------- Short screens (small phones with browser toolbars, landscape): tighter, scrolls if still too tall ---------- */
+@media (max-height: 640px) {
+    .offcanvas.mobile-offcanvas .offcanvas-header {
+        padding-top: calc(0.5rem + env(safe-area-inset-top, 0px));
+        padding-bottom: 0.25rem;
+    }
+
+    .offcanvas.mobile-offcanvas .offcanvas-body {
+        gap: 0.75rem;
+        padding-top: 0;
+    }
+
+    .offcanvas.mobile-offcanvas .mobile-nav .nav-link {
+        padding: 0.2rem 0;
+    }
+
+    .offcanvas.mobile-offcanvas .mobile-cta-wrapper .btn {
+        padding: 0.7rem 1rem;
+    }
+
+    .offcanvas.mobile-offcanvas .mobile-info {
+        margin-top: 0.75rem;
+        padding-top: 0.75rem;
+    }
+
+    .offcanvas.mobile-offcanvas .mobile-social {
+        margin-top: 0.3rem;
+    }
+
+    .offcanvas.mobile-offcanvas .mobile-social a {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+
+/* ======================================================
+       CONTACT LINKS land on the form card itself
+       (clear of the fixed navbar)
+   ====================================================== */
+.contact-form-card {
+    scroll-margin-top: 96px;
+}
+
+
+/* ======================================================
+       LANGUAGE SWITCH (PT / EN) | behaviour: js/i18n.js
+       Desktop: next to the CTA. Phones/tablets: top bar.
+       Same block as css/home.css (sub-pages load this file instead).
+   ====================================================== */
+.main-navbar .nav-actions {
+    grid-column: 3;
+    justify-self: end;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.lang-switch {
+    display: inline-flex;
+    flex: none;
+    align-items: center;
+    gap: 2px;
+    padding: 3px;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 999px;
+    background: rgba(1, 9, 48, 0.45);
+    backdrop-filter: blur(8px);
+}
+
+.lang-switch__btn {
+    min-width: 2.4rem;
+    height: 1.9rem;
+    padding: 0 0.55rem;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.78);
+    font: 700 0.75rem/1 "Manrope", sans-serif;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.lang-switch__btn:hover {
+    color: #fff;
+}
+
+.lang-switch__btn.is-active {
+    background: var(--cyan);
+    color: #02181c;
+    cursor: default;
+}
+
+.lang-switch__btn:focus-visible {
+    outline: 2px solid var(--pearl);
+    outline-offset: 2px;
+}
+
+.lang-switch.is-busy {
+    opacity: 0.7;
+    pointer-events: none;                  /* no double clicks while the JSON loads */
+}
+
+/* phones / tablets: same box as the hamburger button */
+.main-navbar .lang-switch--bar {
+    height: 46px;
+    margin-left: auto;
+    padding: 4px;
+    border: 1px solid rgba(3, 3, 22, 0.18);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: 0 8px 24px rgba(3, 3, 22, 0.14);
+}
+
+.main-navbar .lang-switch--bar .lang-switch__btn {
+    height: 36px;
+    min-width: 2.5rem;
+    border-radius: 8px;
+    color: var(--ash);
+}
+
+.main-navbar .lang-switch--bar .lang-switch__btn.is-active {
+    background: var(--navy);
+    color: #fff;
+}
+
+.main-navbar .lang-switch--bar + .navbar-toggler {
+    margin-left: 0.5rem;
+}
+
+.main-navbar .lang-switch--bar,
+.main-navbar .navbar-toggler {
+    flex: none;                            /* never squeezed by a long logo */
+}
+
+/* very small phones (< 375px): logo + name, switch and menu button must share 288px */
+@media (max-width: 374.98px) {
+    .main-navbar .navbar-brand.brand-lockup {
+        font-size: 0.8rem;
+    }
+
+    .main-navbar .lang-switch--bar {
+        height: 42px;
+        padding: 3px;
+    }
+
+    .main-navbar .lang-switch--bar .lang-switch__btn {
+        height: 34px;
+        min-width: 2.1rem;
+        padding: 0 0.4rem;
+    }
+
+    .main-navbar .navbar-toggler {
+        width: 42px;
+        height: 42px;
+    }
+
+    .main-navbar .lang-switch--bar + .navbar-toggler {
+        margin-left: 0.4rem;
+    }
+}
+
+/* the "message sent" alert opens under the navbar (max ~77px tall),
+   so it never covers the language switch or the CTA */
+.contact-section .contact-alert {
+    top: 88px;
+}
+
+/* tablets (768-991px): the Training modal is 500px wide, so its three columns are ~135px:
+   one-word headings ("Atendimento", "Programmes") must still fit */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .subpage .modal-body .service-columns h4 {
+        font-size: 1.2rem;
+    }
+}

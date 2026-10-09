@@ -585,109 +585,251 @@ section {
 }
 
 /* ======================================================
-       06. SERVIÇOS | Horizontal Accordion
+       06. SERVIÇOS | Accordion
+       Desktop (>= 768px): horizontal, the open service fills the row.
+       Phones  (<  768px): normal vertical accordion.
+       Behaviour: "SERVICES ACCORDION" script in index.html.
        ====================================================== */
 
 .tabs-h {
     display: flex;
     align-items: stretch;
+    min-height: 460px;
+    overflow: hidden;
+    overflow: clip;                         /* clips the corners like hidden, but isn't a scroll container,
+                                               so #servico-... jumps keep their scroll-margin */
     border: 1px solid var(--border);
     border-radius: 18px;
-    overflow: hidden;
     background: var(--white);
     box-shadow: var(--shadow);
-    min-height: 460px;
+}
 
-    .tab-item {
-        position: relative;
-        display: flex;
-        border: 0;
-        border-right: 1px solid var(--border);
-        background: var(--white);
-        padding: 0;
-        text-align: left;
+.tabs-h .tab-item {
+    position: relative;
+    display: flex;
+    flex: 0 0 68px;
+    min-width: 0;
+    border-right: 1px solid var(--border);
+    background: var(--white);
+    transition: flex-grow 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    scroll-margin-top: 110px;              /* links like #servico-espacos clear the navbar */
+}
+
+.tabs-h .tab-item:last-child {
+    border-right: 0;
+}
+
+.tabs-h .tab-item.active {
+    flex: 1 1 auto;
+}
+
+/* the header: a vertical strip on desktop, a row on phones */
+.tabs-h .tab-strip {
+    display: flex;
+    flex: 0 0 68px;
+    flex-direction: column;
+    align-items: center;
+    width: 68px;
+    padding: 1.6rem 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.tabs-h .tab-item.active .tab-strip {
+    cursor: default;
+}
+
+@media (hover: hover) {                    /* no "stuck" hover colour after a tap on touch screens */
+    .tabs-h .tab-item:not(.active) .tab-strip:hover {
+        background: rgba(4, 191, 205, 0.06);
+    }
+
+    .tabs-h .tab-item:not(.active) .tab-strip:hover .t-label {
+        color: var(--cyan);
+    }
+}
+
+.tabs-h .tab-strip:focus-visible {
+    outline: 2px solid var(--cyan);
+    outline-offset: -4px;
+    border-radius: 12px;
+}
+
+.tabs-h .t-num {
+    flex-shrink: 0;
+    color: var(--cyan);
+    font-family: "Inter", sans-serif;
+    font-size: 0.82rem;
+    font-weight: 800;
+}
+
+.tabs-h .t-label {
+    margin-top: 1.4rem;
+    color: var(--ash);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    transition: color 0.3s ease;
+}
+
+.tabs-h .t-chevron {
+    display: none;                          /* phones only */
+}
+
+/* the panel */
+.tabs-h .tab-full {
+    display: none;
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.tabs-h .tab-item.active .tab-full {
+    display: flex;
+}
+
+.tabs-h .tab-body {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    min-width: 0;
+    padding: clamp(1.6rem, 3vw, 2.4rem);
+}
+
+.tabs-h .tab-body h3 {
+    margin-bottom: 0.9rem;
+    color: var(--ink);
+    font-family: "Inter", sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.tabs-h .tab-body p {
+    max-width: 58ch;
+    color: var(--ash);
+    font-size: 0.95rem;
+}
+
+.tabs-h .tab-img {
+    flex: 1;
+    min-height: 200px;
+    margin-top: 1.3rem;
+    border-radius: 12px;
+    background-position: center;
+    background-size: cover;
+}
+
+/* ---------- phones: normal accordion ---------- */
+@media (max-width: 767.98px) {
+    .tabs-h {
+        flex-direction: column;
+        min-height: 0;
+    }
+
+    .tabs-h .tab-item,
+    .tabs-h .tab-item.active {
+        display: block;
+        flex: none;
+        border-right: 0;
+        border-bottom: 1px solid var(--border);
+        transition: none;
+    }
+
+    .tabs-h .tab-item:last-child {
+        border-bottom: 0;
+    }
+
+    .tabs-h .tab-strip,
+    .tabs-h .tab-item.active .tab-strip {
+        flex-direction: row;
+        gap: 0.9rem;
+        width: 100%;
+        padding: 1.1rem 1.25rem;
         cursor: pointer;
-        transition: flex-grow 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        &:last-child {
-            border-right: 0;
-        }
-        &.active {
-            flex: 1 1 auto;
-            cursor: default;
-        }
-        &:not(.active):hover .tab-strip {
-            background: rgba(4, 191, 205, 0.06);
-        }
-        &:not(.active):hover .tab-strip .t-label {
-            color: var(--cyan);
-        }
-        &.active .tab-full {
-            display: flex;
-        }
     }
 
-    .tab-item {
-        flex: 0 0 68px;
+    .tabs-h .t-label {
+        flex: 1;
+        margin: 0;
+        color: var(--ink);
+        font-size: 1rem;
+        white-space: normal;
+        writing-mode: horizontal-tb;
+        transform: none;
     }
 
-    .tab-strip {
-        flex: 0 0 68px;
-        width: 68px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 1.6rem 0;
-        transition: background 0.3s ease;
-        .t-num {
-            font-family: "Inter", sans-serif;
-            font-weight: 800;
-            color: var(--cyan);
-            font-size: 0.82rem;
-            flex-shrink: 0;
-        }
-        .t-label {
-            writing-mode: vertical-rl;
-            transform: rotate(180deg);
-            font-weight: 700;
-            font-size: 0.85rem;
-            color: var(--ash);
-            letter-spacing: 0.01em;
-            margin-top: 1.4rem;
-            white-space: nowrap;
-        }
+    .tabs-h .tab-item.active .t-label {
+        color: var(--cyan);
     }
 
-    .tab-full {
-        flex: 1 1 auto;
-        display: none;
-        padding: clamp(1.6rem, 3vw, 2.4rem);
-        flex-direction: column;
-        min-width: 0;
-        .t-eyebrow-num {
-            color: var(--cyan);
-            font-weight: 800;
-            font-size: 0.85rem;
-            display: block;
-            margin-bottom: 0.6rem;
-        }
-        h3 {
-            font-family: "Inter", sans-serif;
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--ink);
-            margin-bottom: 0.9rem;
-        }
-        p {
-            font-size: 0.95rem;
-            max-width: 58ch;
-            color: var(--ash);
-        }
-        .tab-img {
-            flex: 1;
-            margin-top: 1.3rem;
-            border-radius: 12px;
-            min-height: 200px;
-        }
+    .tabs-h .t-chevron {
+        display: block;
+        flex: none;
+        color: var(--cyan);
+        transition: transform 0.35s ease;
+    }
+
+    .tabs-h .tab-item.active .t-chevron {
+        transform: rotate(180deg);
+    }
+
+    /* height animation: the panel's single grid row goes from 0fr to 1fr */
+    .tabs-h .tab-full,
+    .tabs-h .tab-item.active .tab-full {
+        display: grid;
+    }
+
+    .tabs-h .tab-full {
+        grid-template-rows: 0fr;
+        visibility: hidden;
+        transition: grid-template-rows 0.35s ease, visibility 0s linear 0.35s;
+    }
+
+    .tabs-h .tab-item.active .tab-full {
+        grid-template-rows: 1fr;
+        visibility: visible;
+        transition: grid-template-rows 0.35s ease, visibility 0s linear 0s;
+    }
+
+    .tabs-h .tab-body {
+        display: block;
+        min-height: 0;
+        overflow: hidden;
+        padding: 0 1.25rem;                 /* no vertical padding: it would stop the panel collapsing to 0 */
+    }
+
+    .tabs-h .tab-body h3 {
+        display: none;                      /* the header already shows the name */
+    }
+
+    .tabs-h .tab-body p {
+        margin: 0 0 1rem;
+    }
+
+    .tabs-h .tab-img {
+        min-height: 0;
+        aspect-ratio: 16 / 9;
+        margin: 0 0 1.25rem;
+    }
+
+    .tabs-h.is-jumping .tab-full,
+    .tabs-h.is-jumping .t-chevron {
+        transition: none !important;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .tabs-h .tab-item,
+    .tabs-h .tab-full,
+    .tabs-h .t-chevron {
+        transition: none !important;
     }
 }
 
@@ -1407,6 +1549,19 @@ main > .hero {
     }
 }
 
+/* phones / tablets: 9rem on every side squeezed the text into a ~100px column */
+@media (max-width: 991.98px) {
+    #cta {
+        padding: 6rem 2rem;
+    }
+}
+
+@media (max-width: 575.98px) {
+    #cta {
+        padding: 4.5rem 1rem;
+    }
+}
+
 /* ======================================================
        10. EVENTOS | Final Refinements
        ====================================================== */
@@ -1954,46 +2109,6 @@ a.btn-outline-c.px-4.py-2 {
     }
 }
 
-@media (max-width: 760px) {
-    .tabs-h {
-        flex-direction: column;
-        min-height: auto;
-    }
-
-    .tab-item {
-        flex: 0 0 auto;
-        border-right: 0;
-        border-bottom: 1px solid var(--border);
-    }
-
-    .tab-item:last-child {
-        border-bottom: 0;
-    }
-
-    .tab-item.active {
-        flex: 0 0 auto;
-    }
-
-    .tab-strip {
-        flex-direction: row;
-        width: 100%;
-        flex: 0 0 auto;
-        padding: 1rem 1.25rem;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .tab-strip .t-label {
-        writing-mode: horizontal-tb;
-        transform: none;
-        margin-top: 0;
-    }
-
-    .tab-full {
-        padding: 0 1.25rem 1.5rem;
-    }
-}
-
 @media (max-width: 900px) {
     .bento {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -2201,3 +2316,393 @@ a.btn-outline-c.px-4.py-2 {
     }
 }
 
+
+/* ======================================================
+   MOBILE OFFCANVAS | Fullscreen, centred, responsive
+   Replaces the whole old "MOBILE OFFCANVAS | Fullscreen" section
+   (from that comment banner down to the end of home.css,
+   i.e. through `.mobile-offcanvas .mobile-social a:hover`).
+
+   Works with the markup as it is today, no HTML edits:
+
+     .offcanvas.mobile-offcanvas
+       ├─ .offcanvas-header      (close button, + brand on subpages)
+       ├─ .offcanvas-body        (.mobile-nav + .mobile-cta-wrapper)
+       └─ .mobile-info           (pills + .mobile-social)   <- sibling of the body, not inside it
+
+   The panel itself is the flex column: body gets margin-top:auto,
+   .mobile-info gets margin-bottom:auto, so nav + CTA + pills + social
+   centre as ONE group in the space under the header. If the group is
+   taller than the screen the margins collapse to 0 and the panel scrolls.
+
+   Two-class selectors (.offcanvas.mobile-offcanvas) are deliberate:
+   Bootstrap loads AFTER this file, so a single-class rule ties with
+   Bootstrap's own and loses.
+   ====================================================== */
+
+/* ---------- Shell ---------- */
+.offcanvas.mobile-offcanvas {
+    --bs-offcanvas-zindex: 1060;
+    z-index: 1060;                 /* above the fixed navbar (1050) */
+    width: 100% !important;        /* beats the old "width: 90vw !important" in the 575px media query; delete that rule, then this !important can go */
+    max-width: 100%;
+    overflow-y: auto;              /* whole panel scrolls on very short screens */
+    padding-bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px));
+    border: 0;
+    color: var(--white);
+    background:
+        radial-gradient(120% 90% at 80% 0%, #123a55 0%, #0a2138 45%, #04101f 100%);
+}
+
+/* ---------- Header: close button always on the right (brand, when present, on the left) ---------- */
+.offcanvas.mobile-offcanvas .offcanvas-header {
+    flex: 0 0 auto;
+    justify-content: space-between;
+    padding: calc(0.9rem + env(safe-area-inset-top, 0px)) 1.5rem 0.9rem;
+}
+
+.offcanvas.mobile-offcanvas .offcanvas-title {
+    font-family: "DM Serif Display", serif;
+    font-style: italic;
+    font-size: 1.35rem;
+    color: var(--white);
+    text-decoration: none;
+}
+
+/* 44px tap target. The invert filter turns the black X white. */
+.offcanvas.mobile-offcanvas .btn-close {
+    box-sizing: border-box;
+    width: 44px;
+    height: 44px;
+    margin: 0 0 0 auto;
+    padding: 0;
+    opacity: 1;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.2);
+    background-size: 14px;
+    filter: invert(1) grayscale(1) brightness(2);
+}
+
+/* ---------- Body: nav + CTA, centred horizontally; margin-top:auto centres the group vertically ---------- */
+.offcanvas.mobile-offcanvas .offcanvas-body {
+    flex: 0 0 auto;                /* Bootstrap gives it flex-grow:1, which would eat the free space we want to centre with */
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(1rem, 3.5vh, 1.75rem);
+    padding: 0.5rem 1.5rem 0;
+    overflow: visible;
+    text-align: center;
+}
+
+/* Same column width on phones and tablets, so the group stays centred on wide screens */
+.offcanvas.mobile-offcanvas .offcanvas-body > * {
+    width: 100%;
+    max-width: 420px;
+}
+
+/* Pages with no .mobile-info (subpages today): the body is the last child, so it takes the bottom auto margin and still centres */
+.offcanvas.mobile-offcanvas .offcanvas-body:last-child {
+    margin-bottom: auto;
+}
+
+/* ---------- Links ---------- */
+.offcanvas.mobile-offcanvas .mobile-nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.offcanvas.mobile-offcanvas .mobile-nav .nav-link {
+    display: block;
+    padding: clamp(0.3rem, 1.3vh, 0.7rem) 0;
+    font-family: "DM Serif Display", serif;
+    font-size: clamp(1.5rem, min(7vw, 4.6vh), 2.3rem);   /* scales with width AND height, so short screens don't overflow */
+    line-height: 1.15;
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.offcanvas.mobile-offcanvas .mobile-nav .nav-link:hover,
+.offcanvas.mobile-offcanvas .mobile-nav .nav-link.active {
+    color: var(--pearl);
+}
+
+/* Serviços opens in place, centred */
+.offcanvas.mobile-offcanvas .mobile-nav .dropdown-menu {
+    position: static !important;
+    transform: none !important;
+    margin: 0 0 0.6rem;
+    padding: 0;
+    text-align: center;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+}
+
+.offcanvas.mobile-offcanvas .mobile-nav .dropdown-item {
+    padding: 0.5rem 0;
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    background: transparent;
+}
+
+.offcanvas.mobile-offcanvas .mobile-nav .dropdown-item:hover {
+    color: var(--cyan);
+}
+
+/* ---------- CTA button ---------- */
+.offcanvas.mobile-offcanvas .mobile-cta-wrapper {
+    margin: 0;
+}
+
+.offcanvas.mobile-offcanvas .mobile-cta-wrapper .btn {
+    display: block;
+    width: 100%;
+    padding: 0.9rem 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--white);
+    text-align: center;
+    text-decoration: none;
+    border: 0;
+    border-radius: 18px;
+    background-image: linear-gradient(109.6deg,
+            rgba(34, 211, 238, 1) 11.2%,
+            rgba(79, 57, 246, 1) 100.2%);
+}
+
+/* ---------- Info pills + social (sibling of .offcanvas-body) ---------- */
+.offcanvas.mobile-offcanvas .mobile-info {
+    flex: 0 0 auto;
+    align-self: center;
+    width: min(420px, calc(100% - 3rem));    /* same column as the nav and the CTA */
+    margin: clamp(1rem, 3.5vh, 1.75rem) 0 auto;   /* gap above; auto below = vertical centring */
+    padding: clamp(1rem, 3vh, 1.5rem) 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    position: static;              /* the old "position: relative; top: -5rem" dragged this block up over the Contato button */
+    top: auto;
+}
+
+.offcanvas.mobile-offcanvas .mobile-info > span,
+.offcanvas.mobile-offcanvas .mobile-info > a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.45rem 0.9rem;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 999px;
+}
+
+.offcanvas.mobile-offcanvas .mobile-info .bi {
+    color: var(--cyan);
+}
+
+.offcanvas.mobile-offcanvas .mobile-info > a:hover {
+    color: var(--pearl);
+    border-color: rgba(114, 220, 220, 0.5);
+}
+
+.offcanvas.mobile-offcanvas .mobile-social {
+    justify-content: center;
+    width: 100%;
+    margin-top: 0.6rem;
+}
+
+.offcanvas.mobile-offcanvas .mobile-social a {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    font-size: 1.1rem;
+    color: var(--white);
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 50%;
+    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.offcanvas.mobile-offcanvas .mobile-social a:hover {
+    color: var(--ink);
+    background: var(--pearl);
+    transform: translateY(-2px);
+}
+
+/* ---------- Short screens (small phones with browser toolbars, landscape): tighter, scrolls if still too tall ---------- */
+@media (max-height: 640px) {
+    .offcanvas.mobile-offcanvas .offcanvas-header {
+        padding-top: calc(0.5rem + env(safe-area-inset-top, 0px));
+        padding-bottom: 0.25rem;
+    }
+
+    .offcanvas.mobile-offcanvas .offcanvas-body {
+        gap: 0.75rem;
+        padding-top: 0;
+    }
+
+    .offcanvas.mobile-offcanvas .mobile-nav .nav-link {
+        padding: 0.2rem 0;
+    }
+
+    .offcanvas.mobile-offcanvas .mobile-cta-wrapper .btn {
+        padding: 0.7rem 1rem;
+    }
+
+    .offcanvas.mobile-offcanvas .mobile-info {
+        margin-top: 0.75rem;
+        padding-top: 0.75rem;
+    }
+
+    .offcanvas.mobile-offcanvas .mobile-social {
+        margin-top: 0.3rem;
+    }
+
+    .offcanvas.mobile-offcanvas .mobile-social a {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+
+/* ======================================================
+       CONTACT LINKS land on the form card itself
+       (clear of the fixed navbar)
+   ====================================================== */
+.contact-form-card {
+    scroll-margin-top: 96px;
+}
+
+/* ======================================================
+       LANGUAGE SWITCH (PT / EN) | behaviour: js/i18n.js
+       Desktop: next to the CTA. Phones/tablets: top bar.
+   ====================================================== */
+.main-navbar .nav-actions {
+    grid-column: 3;
+    justify-self: end;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.lang-switch {
+    display: inline-flex;
+    flex: none;
+    align-items: center;
+    gap: 2px;
+    padding: 3px;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 999px;
+    background: rgba(1, 9, 48, 0.45);
+    backdrop-filter: blur(8px);
+}
+
+.lang-switch__btn {
+    min-width: 2.4rem;
+    height: 1.9rem;
+    padding: 0 0.55rem;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.78);
+    font: 700 0.75rem/1 "Manrope", sans-serif;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.lang-switch__btn:hover {
+    color: #fff;
+}
+
+.lang-switch__btn.is-active {
+    background: var(--cyan);
+    color: #02181c;
+    cursor: default;
+}
+
+.lang-switch__btn:focus-visible {
+    outline: 2px solid var(--pearl);
+    outline-offset: 2px;
+}
+
+.lang-switch.is-busy {
+    opacity: 0.7;
+    pointer-events: none;                  /* no double clicks while the JSON loads */
+}
+
+/* phones / tablets: same box as the hamburger button */
+.main-navbar .lang-switch--bar {
+    height: 46px;
+    margin-left: auto;
+    padding: 4px;
+    border: 1px solid rgba(3, 3, 22, 0.18);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: 0 8px 24px rgba(3, 3, 22, 0.14);
+}
+
+.main-navbar .lang-switch--bar .lang-switch__btn {
+    height: 36px;
+    min-width: 2.5rem;
+    border-radius: 8px;
+    color: var(--ash);
+}
+
+.main-navbar .lang-switch--bar .lang-switch__btn.is-active {
+    background: var(--navy);
+    color: #fff;
+}
+
+.main-navbar .lang-switch--bar + .navbar-toggler {
+    margin-left: 0.5rem;
+}
+
+.main-navbar .lang-switch--bar,
+.main-navbar .navbar-toggler {
+    flex: none;                            /* never squeezed by a long logo */
+}
+
+/* very small phones (< 375px): logo + name, switch and menu button must share 288px */
+@media (max-width: 374.98px) {
+    .main-navbar .navbar-brand.brand-lockup {
+        font-size: 0.8rem;
+    }
+
+    .main-navbar .lang-switch--bar {
+        height: 42px;
+        padding: 3px;
+    }
+
+    .main-navbar .lang-switch--bar .lang-switch__btn {
+        height: 34px;
+        min-width: 2.1rem;
+        padding: 0 0.4rem;
+    }
+
+    .main-navbar .navbar-toggler {
+        width: 42px;
+        height: 42px;
+    }
+
+    .main-navbar .lang-switch--bar + .navbar-toggler {
+        margin-left: 0.4rem;
+    }
+}
+
+/* the "message sent" alert opens under the navbar (max ~77px tall),
+   so it never covers the language switch or the CTA */
+.contact-section .contact-alert {
+    top: 88px;
+}

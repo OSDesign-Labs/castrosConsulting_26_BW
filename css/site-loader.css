@@ -1,0 +1,198 @@
+/* ==========================================================
+   SITE LOADER
+   Logo intro on every page load, then the logo + "Castros"
+   fly into the navbar and become the real nav logo.
+
+   Same lockup markup in the loader and in the navbar, sized in
+   em, so the loader copy is an exact scaled-up twin of the nav
+   logo. That is what makes the hand-off invisible.
+
+   Load this file FIRST in <head> so the loader is part of the
+   very first paint.
+   ========================================================== */
+
+/* Montserrat, served from the repo: Latin subset of
+   assets/Typeface/Montserrat/Montserrat-VariableFont_wght.ttf
+   (31 KB instead of 688 KB, every weight 100-900) */
+@font-face {
+    font-family: "Montserrat";
+    src: url("../assets/Typeface/Montserrat/web/Montserrat-latin-var.woff2") format("woff2");
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+:root {
+    --loader-bg: #010930;                     /* --prussian */
+    --loader-glow: rgba(4, 191, 205, 0.20);   /* --cyan, soft */
+    --loader-ink: #ffffff;                    /* "Castros" colour on the loader */
+    --brand-mark-h: 2em;                      /* logo height, relative to the name size */
+    --brand-gap: 0.32em;                      /* space between logo and name */
+}
+
+/* ---------- the lockup (navbar AND loader) ---------- */
+.brand-lockup {
+    display: inline-flex;
+    align-items: center;
+    line-height: 1;
+    text-decoration: none;
+}
+
+.brand-lockup .brand-mark {
+    display: block;
+    flex: none;
+    height: var(--brand-mark-h);
+    width: auto;
+}
+
+/* the name sits in a clipping window; in the loader the window
+   starts at 0 px wide, so the name looks tucked behind the logo */
+.brand-lockup .brand-name-clip {
+    display: block;
+    overflow: hidden;
+}
+
+.brand-lockup .brand-name {
+    display: block;
+    width: max-content;
+    padding: 0.1em 0.04em 0.1em var(--brand-gap);
+    font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+}
+
+/* ---------- navbar size ---------- */
+.main-navbar .navbar-brand.brand-lockup {
+    position: relative;
+    z-index: 1;                 /* .desktop-navbar has margin-left:-8rem and was covering the logo (unclickable) */
+    font-size: 1rem;            /* name size; the logo is 2x this */
+    font-weight: 600;
+}
+
+@media (max-width: 575.98px) {
+    .main-navbar .navbar-brand.brand-lockup {
+        font-size: 0.9rem;
+    }
+}
+
+/* ---------- the overlay ---------- */
+.site-loader {
+    display: none;
+}
+
+html.is-loading .site-loader,
+.site-loader.is-active {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;              /* above navbar (1050), offcanvas and modals */
+    display: flex;              /* flex centring overflows evenly on both sides (grid would push it right) */
+    align-items: center;
+    justify-content: center;
+    color: var(--loader-ink);
+    pointer-events: auto;
+}
+
+.site-loader[hidden] {
+    display: none !important;
+}
+
+.site-loader__bg {
+    position: absolute;
+    inset: 0;
+    background: var(--loader-bg);
+}
+
+/* slow glow behind the logo while the page loads */
+.site-loader__bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(38% 34% at 50% 50%, var(--loader-glow), transparent 70%);
+    animation: loaderGlow 2.6s ease-in-out infinite;
+}
+
+.site-loader__lockup {
+    position: relative;
+    flex: none;
+    font-size: min(13vh, 13vw);  /* logo ≈ 26vh tall on desktop, ≈ 26vw on phones */
+    transform-origin: 50% 50%;   /* JS switches to 0 0 for the flight */
+    will-change: transform;
+}
+
+/* name starts hidden behind the logo */
+.site-loader .brand-name-clip {
+    width: 0;
+}
+
+.site-loader .brand-name {
+    opacity: 0;
+    transform: translateX(-100%);
+}
+
+/* first paint of a fresh visit: logo fades/scales in.
+   Skipped when we arrive from another page of the site
+   (that page already showed the logo centred). */
+html.is-loading:not(.loader-handoff) .site-loader__lockup .brand-mark {
+    animation: loaderIn 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ---------- the navbar while loading ---------- */
+html.is-loading .main-navbar {
+    transform: none !important;     /* keep it in place so we can measure where the logo lands */
+    opacity: 1 !important;
+    visibility: visible !important;
+    transition: none !important;
+}
+
+html.is-loading .main-navbar .navbar-brand {
+    visibility: hidden;             /* the loader's copy stands in for it */
+}
+
+/* ---------- reduced motion: no flight, just a short fade ---------- */
+html.loader-reduced .site-loader .brand-name-clip {
+    width: auto;
+}
+
+html.loader-reduced .site-loader .brand-name {
+    opacity: 1;
+    transform: none;
+}
+
+html.loader-reduced .site-loader__bg::after,
+html.loader-reduced .site-loader__lockup .brand-mark {
+    animation: none !important;
+}
+
+/* ---------- failsafe: if site-loader.js never runs, get out of the way ---------- */
+html.is-loading .site-loader {
+    animation: loaderFailsafeHide 0s 12s forwards;
+}
+
+html.is-loading .main-navbar .navbar-brand {
+    animation: loaderFailsafeShow 0s 12s forwards;
+}
+
+@keyframes loaderIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to   { opacity: 1; transform: none; }
+}
+
+@keyframes loaderGlow {
+    0%, 100% { opacity: 0.55; transform: scale(0.96); }
+    50%      { opacity: 1;    transform: scale(1.04); }
+}
+
+@keyframes loaderFailsafeHide {
+    to { visibility: hidden; opacity: 0; }
+}
+
+@keyframes loaderFailsafeShow {
+    to { visibility: visible; }
+}
+
+/* reduced motion shows logo + full name without the fit animation: size it to fit */
+html.loader-reduced .site-loader__lockup {
+    font-size: min(13vh, 6.8vw);
+}

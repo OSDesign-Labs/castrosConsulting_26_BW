@@ -4,6 +4,23 @@
 
 <head>
   <meta charset="utf-8" />
+  <!-- SITE LOADER: first in <head> so it is part of the first paint (css/site-loader.css, js/site-loader.js) -->
+  <link rel="stylesheet" href="css/site-loader.css">
+  <link rel="preload" as="image" href="assets/brand/castros-mark.webp">
+  <link rel="preload" as="font" type="font/woff2" href="assets/Typeface/Montserrat/web/Montserrat-latin-var.woff2" crossorigin>
+  <script>
+    (function (r) {
+      if (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) r.classList.add("loader-reduced");
+      try {
+        if (r.getAttribute("data-loader") === "session" && sessionStorage.getItem("cc-loader-seen")) return;
+        if (sessionStorage.getItem("cc-loader-handoff")) r.classList.add("loader-handoff");
+      } catch (e) {}
+      r.classList.add("is-loading");
+    })(document.documentElement);
+  </script>
+  <!-- PT/EN: js/i18n.js fetches js/translations.json -->
+  <script src="js/i18n.js" defer></script>
+  <script src="js/site-loader.js" defer></script>
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
   <title>Castros Consultoria</title>
 
@@ -21,17 +38,29 @@
   <link
     href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&amp;family=Manrope:wght@200..800&amp;family=Quicksand:wght@300..700&amp;display=swap"
     rel="stylesheet" />
+  <link rel="stylesheet" href="css/hero-carousel.css">
+  <link rel="stylesheet" href="css/events.css">
 </head>
 
 <body>
+
+  <!-- SITE LOADER -->
+  <div class="site-loader" id="siteLoader" aria-hidden="true">
+    <div class="site-loader__bg"></div>
+    <div class="brand-lockup site-loader__lockup">
+      <img class="brand-mark" src="assets/brand/castros-mark.webp" width="528" height="640" alt="">
+      <span class="brand-name-clip"><span class="brand-name">Castros Consultoria</span></span>
+    </div>
+  </div>
 
   <header>
     <!-- Navbar Section -->
     <nav class="main-navbar" id="mainNavbar">
       <div class="container-fluid">
         <!-- LOGO -->
-        <a class="navbar-brand" href="#">
-          Castros Consultoria
+        <a class="navbar-brand brand-lockup" href="index.html" aria-label="Castros Consultoria, página inicial" data-i18n-attr="aria-label:nav.castros-consultoria-pagina-inicial">
+          <img class="brand-mark" src="assets/brand/castros-mark.webp" width="528" height="640" alt="">
+          <span class="brand-name-clip"><span class="brand-name">Castros Consultoria</span></span>
         </a>
         <!-- DESKTOP NAVIGATION -->
         <div class="desktop-navbar d-none d-lg-grid">
@@ -39,71 +68,77 @@
           <ul class="navbar-nav">
             <!-- Início -->
             <li class="nav-item">
-              <a class="nav-link active" href="#">
+              <a class="nav-link active" href="#" data-i18n="nav.inicio">
                 Início
               </a>
             </li>
             <!-- Sobre -->
             <li class="nav-item">
-              <a class="nav-link" href="html/about.html">
+              <a class="nav-link" href="index.html#sobre" data-i18n="nav.sobre-nos">
                 Sobre nós
               </a>
             </li>
             <!-- Serviços -->
             <li class="nav-item dropdown">
               <a aria-expanded="false" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#"
-                id="servicesDropdown" role="button">
+                id="servicesDropdown" role="button" data-i18n="nav.servicos">
                 Serviços
               </a>
               <ul class="dropdown-menu">
                 <li>
-                  <a class="dropdown-item" href="html/atendimento.html">
-                    Atendimento
-                  </a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="html/consultoria.html">
+                  <a class="dropdown-item" href="html/consultoria.html" data-i18n="nav.consultoria">
                     Consultoria
                   </a>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="html/formacoes.html">
-                    Formações
+                  <a class="dropdown-item" href="html/formacoes.html" data-i18n="nav.formacoes-e-treinamento">
+                    Formações e Treinamento
                   </a>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="html/palestras.html">
-                    Palestras
+                  <a class="dropdown-item" href="html/palestras.html" data-i18n="nav.palestras-e-workshops">
+                    Palestras e Workshops
                   </a>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="html/treinamento.html">
-                    Treinamento
+                  <a class="dropdown-item" href="#servico-espacos" data-i18n="nav.espacos-e-podcasts">
+                    Espaços e Podcasts
                   </a>
                 </li>
               </ul>
             </li>
             <!-- Eventos -->
             <li class="nav-item">
-              <a class="nav-link" href="#events">
+              <a class="nav-link" href="#eventos" data-i18n="nav.eventos">
                 Eventos
               </a>
             </li>
             <!-- Contacto -->
             <li class="nav-item">
-              <a class="nav-link" href="#contact">
+              <a class="nav-link" href="#contact-form" data-i18n="nav.contacto">
                 Contacto
               </a>
             </li>
           </ul>
-          <!-- CTA -->
-          <a class="btn btn-primary navbar-cta" href="#contact">
-            Contato
-          </a>
+          <!-- LANGUAGE + CTA -->
+          <div class="nav-actions">
+            <div class="lang-switch" role="group" aria-label="Idioma" data-i18n-attr="aria-label:lang.group">
+              <button type="button" class="lang-switch__btn is-active" data-lang="pt" aria-pressed="true" lang="pt" aria-label="Português">PT</button>
+              <button type="button" class="lang-switch__btn" data-lang="en" aria-pressed="false" lang="en" aria-label="English">EN</button>
+            </div>
+            <a class="btn btn-primary navbar-cta" href="#contact-form" data-i18n="nav.cta">
+              Contacto
+            </a>
+          </div>
+        </div>
+        <!-- MOBILE / TABLET LANGUAGE -->
+        <div class="lang-switch lang-switch--bar d-lg-none" role="group" aria-label="Idioma" data-i18n-attr="aria-label:lang.group">
+          <button type="button" class="lang-switch__btn is-active" data-lang="pt" aria-pressed="true" lang="pt" aria-label="Português">PT</button>
+          <button type="button" class="lang-switch__btn" data-lang="en" aria-pressed="false" lang="en" aria-label="English">EN</button>
         </div>
         <!-- MOBILE / TABLET HAMBURGER  -->
         <button aria-controls="mobileNavbar" aria-label="Abrir menu" class="navbar-toggler d-lg-none"
-          data-bs-target="#mobileNavbar" data-bs-toggle="offcanvas" type="button">
+          data-bs-target="#mobileNavbar" data-bs-toggle="offcanvas" type="button" data-i18n-attr="aria-label:nav.abrir-menu">
           <span class="navbar-toggler-icon"></span>
         </button>
       </div>
@@ -116,69 +151,69 @@
         <a class="offcanvas-title" href="#" id="mobileNavbarLabel">
           Castros Consultoria
         </a>
-        <button aria-label="Fechar" class="btn-close" data-bs-dismiss="offcanvas" type="button"></button>
+        <button aria-label="Fechar" class="btn-close" data-bs-dismiss="offcanvas" type="button" data-i18n-attr="aria-label:nav.fechar"></button>
       </div>
       <!-- OFFCANVAS BODY -->
       <div class="offcanvas-body">
         <ul class="mobile-nav">
           <!-- Início -->
           <li class="nav-item">
-            <a class="nav-link active" data-bs-dismiss="offcanvas" href="#">
+            <a class="nav-link active" data-bs-dismiss="offcanvas" href="#" data-i18n="nav.inicio">
               Início
             </a>
           </li>
           <!-- Sobre -->
           <li class="nav-item">
-            <a class="nav-link" href="html/about.html">
+            <a class="nav-link" href="index.html#sobre" data-i18n="nav.sobre-nos">
               Sobre nós
             </a>
           </li>
           <!-- Serviços -->
           <li class="nav-item dropdown">
             <a aria-expanded="false" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#"
-              id="servicesDropdown" role="button">
+              id="mobileServicesDropdown" role="button" data-i18n="nav.servicos">
               Serviços
             </a>
             <ul class="dropdown-menu">
               <li>
-                <a class="dropdown-item" href="html/consultoria.html">
+                <a class="dropdown-item" href="html/consultoria.html" data-i18n="nav.consultoria">
                   Consultoria
                 </a>
               </li>
               <li>
-                <a class="dropdown-item" href="html/formacoes.html">
+                <a class="dropdown-item" href="html/formacoes.html" data-i18n="nav.formacoes-e-treinamento">
                   Formações e Treinamento
                 </a>
               </li>
               <li>
-                <a class="dropdown-item" href="html/workshops.html">
-                  Workshops e Palestras
+                <a class="dropdown-item" href="html/palestras.html" data-i18n="nav.palestras-e-workshops">
+                  Palestras e Workshops
                 </a>
               </li>
               <li>
-                <a class="dropdown-item" href="html/espacos.html">
-                  Espacos e Podcasts
+                <a class="dropdown-item" href="#servico-espacos" data-i18n="nav.espacos-e-podcasts">
+                  Espaços e Podcasts
                 </a>
               </li>
             </ul>
           </li>
           <!-- Eventos -->
           <li class="nav-item">
-            <a class="nav-link" href="#events">
+            <a class="nav-link" href="#eventos" data-i18n="nav.eventos">
               Eventos
             </a>
           </li>
           <!-- Contacto -->
           <li class="nav-item">
-            <a class="nav-link" href="#contact">
+            <a class="nav-link" href="#contact-form" data-i18n="nav.contacto">
               Contacto
             </a>
           </li>
         </ul>
         <!-- Mobile CTA -->
         <div class="mobile-cta-wrapper">
-          <a class="btn btn-primary" data-bs-dismiss="offcanvas" href="#contact">
-            Contato
+          <a class="btn btn-primary" href="#contact-form" data-i18n="nav.cta">
+            Contacto
           </a>
         </div>
       </div>
@@ -187,108 +222,237 @@
 
   <main>
 
-    <!-- 01.2- HERO -->
+    <!-- ======================================================
+         01.2- HERO | Carousel: Início · Formação · Eventos · Podcast
+         Replaces the whole old "01.2- HERO" <section> in index.html.
+         Keep it as the FIRST child of <main> with class "hero":
+         js/javascript.js looks for "main > .hero" (navbar topbar state).
 
-    <section class="hero">
-      <div class="container-fluid" id="overlayGradient"
-        style="background-image: url(assets/consultingnoturious.jpg); background-size: cover; border-radius: 18px !important;">
-        <div class="row align-items-center g-5">
-          <div class="col-lg-6">
-            <div class="hero-copy">
-              <h1>Desenvolvemos Pessoas Impulsionamos Organizações</h1>
-              <p>Somos uma organização dedicada ao crescimento profissional e organizacional.
-                Trabalhamos com pessoas reais, em contextos reais, para criar impacto duradouro.</p>
-              <div class="hero-actions d-flex flex-wrap gap-2">
-                <a class="btn btn-outline-light" href="#spaces">Conhecer Espaços Corporativos</a>
-                <a class="btn btn-light" href="#services">Explorar Serviços de Consultoria</a>
+         Timing lives in data-duration on each slide (milliseconds):
+         Início 8000 (its 3 background photos share those 8 s), the others 3500.
+         Lines marked EDIT are placeholder copy/links to confirm.
+         ====================================================== -->
+    <section class="hero hero-carousel" aria-roledescription="carrossel" aria-label="Destaques" data-i18n-attr="aria-label:hero.destaques;aria-roledescription:hero.carrossel">
+      <div id="heroCarousel" class="carousel slide carousel-fade">
+        <div class="carousel-inner" aria-live="off">
+
+          <!-- SLIDE 1 — Início: same content and cards, background is now 3 photos that cross-fade -->
+          <div class="carousel-item active" data-duration="8000" aria-roledescription="slide"
+            aria-label="1 de 4: Início" data-i18n-attr="aria-label:hero.1-de-4-inicio">
+            <div class="container-fluid" id="overlayGradient">
+              <!-- background photos: no buttons, no dots; the JS splits the slide's 8 s into 3 equal parts -->
+              <div class="hero-bg" aria-hidden="true">
+                <img class="is-on" src="assets/hero/inicio-1.webp" alt="" decoding="async" fetchpriority="high"
+                  width="1920" height="1080">
+                <img src="assets/hero/inicio-2.webp" alt="" decoding="async" width="1920" height="1280">
+                <img src="assets/hero/inicio-3.webp" alt="" decoding="async" width="1920" height="1440">
+              </div>
+              <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                  <div class="hero-copy">
+                    <h1 class="hs-anim" data-i18n="hero.desenvolvemos-pessoas-impulsionamos-organizacoes">Desenvolvemos Pessoas Impulsionamos Organizações</h1>
+                    <p class="hs-anim" data-i18n="hero.somos-uma-organizacao-dedicada-ao-crescimento">Somos uma organização dedicada ao crescimento profissional e organizacional.
+                      Trabalhamos com pessoas reais, em contextos reais, para criar impacto duradouro.</p>
+                    <div class="hero-actions d-flex flex-wrap gap-2 hs-anim">
+                      <a class="btn btn-outline-light" href="#spaces" data-i18n="hero.conhecer-espacos-corporativos">Conhecer Espaços Corporativos</a>
+                      <a class="btn btn-light" href="#services" data-i18n="hero.explorar-servicos-de-consultoria">Explorar Serviços de Consultoria</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6 hero-visual hs-anim">
+                  <!-- numbers count up from 0 each time this slide appears (data-count = final value) -->
+                  <div class="row g-2 metrics-grid">
+                    <div class="col-7">
+                      <div class="metric-card metric-featured h-100">
+                        <div>
+                          <span class="metric-value" data-count="15">+15</span>
+                          <span class="metric-label" data-i18n-html="hero.empresas-impulsionadas">
+                            Empresas<br />
+                            impulsionadas
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-5">
+                      <div class="row g-2 h-100">
+                        <div class="col-12">
+                          <div class="metric-card h-100">
+                            <span class="metric-value" data-count="10">+10</span>
+                            <span class="metric-label" data-i18n-html="hero.lideres-formados">
+                              Líderes<br />
+                              formados
+                            </span>
+                          </div>
+                        </div>
+                        <div class="col-12">
+                          <div class="metric-card h-100">
+                            <span class="metric-value" data-count="20">+20</span>
+                            <span class="metric-label">
+                              Workshops
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="metric-card metric-wide">
+                        <span class="metric-value" data-count="5">+5</span>
+                        <span class="metric-label" data-i18n="hero.parceiros">
+                          Parceiros
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-          <div class="col-lg-6 hero-visual">
-            <div class="row g-2 metrics-grid">
-              <div class="col-7">
-                <div class="metric-card metric-featured h-100">
-                  <div>
-                    <span class="metric-value">+100</span>
-                    <span class="metric-label">
-                      Empresas<br />
-                      impulsionadas
-                    </span>
-                  </div>
+
+          <!-- SLIDE 2 — Formação: video with curved edge + pattern | title, text, 2 buttons -->
+          <div class="carousel-item" data-duration="3500" aria-roledescription="slide" aria-label="2 de 4: Formação" data-i18n-attr="aria-label:hero.2-de-4-formacao">
+            <div class="hs hs-formacao">
+              <div class="hs-media hs-pattern">
+                <!-- VIDEO (muted, loops, plays only while this slide is on screen) -->
+                <video class="hs-video" muted loop playsinline preload="metadata"
+                  poster="assets/hero/formacao-poster.webp" aria-label="Participantes a aplaudir numa formação" data-i18n-attr="aria-label:hero.participantes-a-aplaudir-numa-formacao">
+                  <source src="assets/hero/formacao.mp4" type="video/mp4">
+                  <source src="assets/hero/formacao.webm" type="video/webm"> <!-- fallback for browsers without H.264 -->
+                </video>
+                <!-- IMAGE option: delete the <video> above and uncomment this line
+                <img src="assets/hero/formacao.webp" alt="Participantes numa sessão de formação" loading="lazy"
+                  decoding="async" width="1600" height="1067">
+                -->
+              </div>
+              <div class="hs-copy hero-copy">
+                <span class="eyebrow hs-anim" data-i18n="hero.formacoes-e-treinamento">Formações e Treinamento</span>
+                <h2 class="hs-title hs-anim" data-i18n="hero.competencias-que-se-aplicam-no-dia">Competências que se aplicam no dia seguinte</h2>
+                <p class="hs-anim" data-i18n="hero.sessoes-praticas-e-dinamicas-desenhadas-para">Sessões práticas e dinâmicas, desenhadas para líderes e equipas, com orientação
+                  direta de quem já esteve no terreno.</p> <!-- EDIT -->
+                <div class="hero-actions hs-anim">
+                  <a class="btn btn-outline-light" href="html/formacoes.html" data-i18n="hero.saber-mais">Saber mais</a>
+                  <a class="btn btn-light" href="#contact-form" data-prefill-service="Formação" data-i18n="hero.inscrever-me">Inscrever-me</a>
                 </div>
               </div>
-              <div class="col-5">
-                <div class="row g-2 h-100">
-                  <div class="col-12">
-                    <div class="metric-card h-100">
-                      <span class="metric-value">+25</span>
-                      <span class="metric-label">
-                        Líderes<br />
-                        formados
-                      </span>
-                    </div>
-                  </div>
-                  <div class="col-12">
-                    <div class="metric-card h-100">
-                      <span class="metric-value">+15</span>
-                      <span class="metric-label">
-                        Workshops
-                      </span>
-                    </div>
-                  </div>
+            </div>
+          </div>
+
+          <!-- SLIDE 3 — Eventos: title + text | video inside a blob | info + Inscrever (radial gradient bg) -->
+          <div class="carousel-item" data-duration="3500" aria-roledescription="slide" aria-label="3 de 4: Eventos" data-i18n-attr="aria-label:hero.3-de-4-eventos">
+            <div class="hs hs-eventos">
+              <div class="hs-copy hero-copy">
+                <span class="eyebrow hs-anim" data-i18n="hero.proximo-evento">Próximo evento</span>
+                <h2 class="hs-title hs-anim" data-i18n="hero.oratoria-e-comunicacao-com-impacto">Oratória e Comunicação com Impacto</h2> <!-- EDIT -->
+                <p class="hs-anim" data-i18n="hero.como-falar-de-forma-clara-ganhar">Como falar de forma clara, ganhar confiança em palco e mobilizar pessoas para a
+                  ação.</p> <!-- EDIT -->
+              </div>
+              <div class="hs-stage">
+                <span class="hs-blob hs-pattern" aria-hidden="true"></span>
+                <!-- VIDEO (muted, loops, plays only while this slide is on screen) -->
+                <video class="hs-video" muted loop playsinline preload="metadata"
+                  poster="assets/hero/eventos-poster.webp" aria-label="Momentos do Youth Investment Summit 2026" data-i18n-attr="aria-label:hero.momentos-do-youth-investment-summit-2026">
+                  <source src="assets/hero/eventos.mp4" type="video/mp4">
+                  <source src="assets/hero/eventos.webm" type="video/webm"> <!-- fallback for browsers without H.264 -->
+                </video>
+                <!-- IMAGE option: delete the <video> above and uncomment this line
+                <img src="assets/hero/eventos.webp" alt="Oradora em palco durante um evento" loading="lazy"
+                  decoding="async" width="1400" height="786">
+                -->
+              </div>
+              <div class="hs-info hero-copy">
+                <ul class="hs-meta hs-anim">
+                  <li><i class="bi bi-calendar-event" aria-hidden="true"></i><span data-i18n="hero.ter-13-out-2026">Ter, 13 Out 2026</span></li> <!-- EDIT -->
+                  <li><i class="bi bi-geo-alt" aria-hidden="true"></i>Maputo</li> <!-- EDIT -->
+                  <li><i class="bi bi-people" aria-hidden="true"></i><span data-i18n="hero.presencial-vagas-limitadas">Presencial · Vagas limitadas</span></li> <!-- EDIT -->
+                </ul>
+                <div class="hero-actions hs-anim">
+                  <a class="btn btn-light" href="#contact-form" data-prefill-service="Eventos" data-i18n="hero.inscrever-me">Inscrever-me</a>
+                  <a class="hs-link" href="#eventos" data-events-all><span data-i18n="hero.ver-todos-os-eventos">Ver todos os eventos</span> <i class="bi bi-arrow-right"
+                      aria-hidden="true"></i></a>
                 </div>
               </div>
-              <div class="col-12">
-                <div class="metric-card metric-wide">
-                  <span class="metric-value">+20</span>
-                  <span class="metric-label">
-                    Colaboradores
-                  </span>
+            </div>
+          </div>
+
+          <!-- SLIDE 4 — Podcast: title, text, 2 buttons | diagonal image with arc + pattern -->
+          <div class="carousel-item" data-duration="3500" aria-roledescription="slide" aria-label="4 de 4: Podcast" data-i18n-attr="aria-label:hero.4-de-4-podcast">
+            <div class="hs hs-podcast">
+              <div class="hs-media hs-pattern">
+                <span class="hs-wave" aria-hidden="true"></span>
+                <span class="hs-wave hs-wave-2" aria-hidden="true"></span>
+                <img src="assets/hero/podcast.webp" alt="Estúdio de podcast com cadeiras e microfones" loading="lazy"
+                  decoding="async" width="900" height="600" data-i18n-attr="alt:hero.estudio-de-podcast-com-cadeiras-e"> <!-- EDIT: photo of your own studio -->
+              </div>
+              <div class="hs-copy hero-copy">
+                <span class="eyebrow hs-anim">Podcast</span>
+                <h2 class="hs-title hs-anim" data-i18n="hero.conversas-que-desenvolvem-pessoas">Conversas que desenvolvem pessoas</h2> <!-- EDIT -->
+                <p class="hs-anim" data-i18n="hero.lideres-gestores-e-especialistas-partilham-o">Líderes, gestores e especialistas partilham o que funciona no dia a dia das
+                  organizações em Moçambique.</p> <!-- EDIT -->
+                <div class="hero-actions hs-anim">
+                  <a class="btn btn-light" href="#" data-i18n="hero.ouvir-episodios">Ouvir episódios</a> <!-- EDIT: Spotify / YouTube link -->
+                  <a class="btn btn-outline-light" href="#contact-form" data-i18n="hero.falar-connosco">Falar connosco</a>
                 </div>
               </div>
             </div>
           </div>
         </div>
+
+        <!-- Slide picker: the line under the active label is the timer -->
+        <!-- AOS only on the picker: the hero itself is never hidden waiting for AOS to load -->
+        <div class="hero-tabs" data-aos="fade-up" data-aos-offset="0" data-aos-delay="300">
+          <button type="button" class="hero-tab active" data-bs-target="#heroCarousel" data-bs-slide-to="0"
+            aria-current="true" aria-label="Início" data-i18n-attr="aria-label:hero.inicio"><span data-i18n="hero.inicio">Início</span><span class="ht-bar"><i></i></span></button>
+          <button type="button" class="hero-tab" data-bs-target="#heroCarousel" data-bs-slide-to="1"
+            aria-label="Formação" data-i18n-attr="aria-label:hero.formacao"><span data-i18n="hero.formacao">Formação</span><span class="ht-bar"><i></i></span></button>
+          <button type="button" class="hero-tab" data-bs-target="#heroCarousel" data-bs-slide-to="2"
+            aria-label="Eventos" data-i18n-attr="aria-label:hero.eventos"><span data-i18n="hero.eventos">Eventos</span><span class="ht-bar"><i></i></span></button>
+          <button type="button" class="hero-tab" data-bs-target="#heroCarousel" data-bs-slide-to="3"
+            aria-label="Podcast"><span>Podcast</span><span class="ht-bar"><i></i></span></button>
+          <button type="button" class="hero-pause" aria-label="Pausar destaques" aria-pressed="false">
+            <i class="bi bi-pause-fill hp-pause" aria-hidden="true"></i>
+            <i class="bi bi-play-fill hp-play" aria-hidden="true"></i>
+          </button>
+        </div>
       </div>
     </section>
+
 
     <!-- 01.3- ABOUT US -->
     <section class="section bg-alt-c" id="sobre">
       <div class="container-fluid">
         <div class="row g-5 align-items-center">
-          <div class="col-lg-6 reveal">
-            <span class="eyebrow">Sobre Nós</span>
-            <h2 class="mb-3" style="font-size:clamp(1.9rem,3.6vw,2.6rem);max-width:28ch; text-align: left;">Conheça a
+          <div class="col-lg-6" data-aos="fade-up">
+            <span class="eyebrow" data-i18n="about.sobre-nos">Sobre Nós</span>
+            <h2 class="mb-3" style="font-size:clamp(1.9rem,3.6vw,2.6rem);max-width:28ch; text-align: left;" data-i18n="about.conheca-a-equipa-que-impulsiona-o">Conheça a
               equipa
               que impulsiona o
               seu crescimento</h2>
-            <p class="mb-4">Acreditamos que o desenvolvimento de uma organização começa pelas suas pessoas.
+            <p class="mb-4" data-i18n="about.acreditamos-que-o-desenvolvimento-de-uma">Acreditamos que o desenvolvimento de uma organização começa pelas suas pessoas.
               A nossa
               abordagem combina experiência prática, escuta ativa e um compromisso genuíno com resultados
               sustentáveis.
             </p>
             <div class="row g-4 mb-4">
               <div class="col-6">
-                <h4 class="h6 fw-bold" style="color:var(--ink)">Quem somos</h4>
-                <p class="small">Uma iniciativa empresarial de prestação de serviços focada no
+                <h4 class="h6 fw-bold" style="color:var(--ink)" data-i18n="about.quem-somos">Quem somos</h4>
+                <p class="small" data-i18n="about.uma-iniciativa-empresarial-de-prestacao-de">Uma iniciativa empresarial de prestação de serviços focada no
                   desenvolvimento humano e
                   organizacional, com presença e abordagem personalizada.</p>
               </div>
               <div class="col-6">
-                <h4 class="h6 fw-bold" style="color:var(--ink)">Fundadores</h4>
-                <p class="small">Profissionais com vasta experiência em consultoria, formação e gestão
+                <h4 class="h6 fw-bold" style="color:var(--ink)" data-i18n="about.fundadores">Fundadores</h4>
+                <p class="small" data-i18n="about.profissionais-com-vasta-experiencia-em-consultoria">Profissionais com vasta experiência em consultoria, formação e gestão
                   de equipas, unidos
                   por uma visão comum.</p>
               </div>
             </div>
             <div class="d-flex align-items-center gap-4">
-              <a class="btn btn-outline-c px-4 py-2" href="https://wa.me/848665180">Saber mais</a>
-              <a class="link-arrow" href="#equipa">Equipa <svg class="bi">
+              <a class="btn btn-outline-c px-4 py-2" href="https://wa.me/848665180" data-i18n="about.saber-mais">Saber mais</a>
+              <a class="link-arrow" href="#equipa"><span data-i18n="about.equipa">Equipa</span> <svg class="bi">
                   <use xlink:href="#i-arrow"></use>
                 </svg></a>
             </div>
           </div>
-          <div class="col-lg-6 reveal">
+          <div class="col-lg-6" data-aos="fade-up">
             <div class="ph about-img" style="aspect-ratio:1/1"></div>
           </div>
         </div>
@@ -298,14 +462,14 @@
     <!-- 02- EQUIPA -->
     <section class="section" id="equipa">
       <div class="container">
-        <div class="text-center mx-auto reveal" style="max-width:640px">
-          <span class="eyebrow">Equipa</span>
-          <h2 style="font-size:clamp(1.9rem,3.6vw,2.6rem); color:var(--white)">As Pessoas</h2>
-          <p style="color:var(--ash-soft)" class="mt-3">Profissionais que trabalham lado a lado consigo, todos os dias.
+        <div class="text-center mx-auto" data-aos="fade-up" style="max-width:640px">
+          <span class="eyebrow" data-i18n="team.equipa">Equipa</span>
+          <h2 style="font-size:clamp(1.9rem,3.6vw,2.6rem); color:var(--white)" data-i18n="team.as-pessoas">As Pessoas</h2>
+          <p style="color:var(--ash-soft)" class="mt-3" data-i18n="team.profissionais-que-trabalham-lado-a-lado">Profissionais que trabalham lado a lado consigo, todos os dias.
           </p>
         </div>
-        <div class="row g-4 mt-4 reveal-stagger reveal">
-          <div class="col-md-4 stagger-item">
+        <div class="row g-4 mt-4">
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="0">
             <div class="card-c h-100 overflow-hidden">
               <div class="ph team-photo" style="aspect-ratio:4/3;border-radius:0"><svg class="bi"
                   style="font-size:2.6rem">
@@ -314,7 +478,7 @@
               <div class="p-4 text-center">
                 <h3 class="h5 fw-bold mb-0" style="color:var(--ink);font-family:'Inter',sans-serif">Elizabeth Castros
                 </h3>
-                <p class="role">Fundadora</p>
+                <p class="role" data-i18n="team.fundadora">Fundadora</p>
                 <p class="small mb-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim
                   in
                   eros.</p>
@@ -332,7 +496,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-4 stagger-item">
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
             <div class="card-c h-100 overflow-hidden">
               <div class="ph team-photo" style="aspect-ratio:4/3;border-radius:0"><svg class="bi"
                   style="font-size:2.6rem">
@@ -340,7 +504,7 @@
                 </svg></div>
               <div class="p-4 text-center">
                 <h3 class="h5 fw-bold mb-0" style="color:var(--ink);font-family:'Inter',sans-serif">Cleyber Mendes</h3>
-                <p class="role">Consultor Senior</p>
+                <p class="role" data-i18n="team.consultor-senior">Consultor Senior</p>
                 <p class="small mb-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim
                   in
                   eros.</p>
@@ -358,7 +522,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-4 stagger-item">
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
             <div class="card-c h-100 overflow-hidden">
               <div class="ph team-photo" style="aspect-ratio:4/3;border-radius:0"><svg class="bi"
                   style="font-size:2.6rem">
@@ -366,7 +530,7 @@
                 </svg></div>
               <div class="p-4 text-center">
                 <h3 class="h5 fw-bold mb-0" style="color:var(--ink);font-family:'Inter',sans-serif">Carlos Mendes</h3>
-                <p class="role">Formador</p>
+                <p class="role" data-i18n="team.formador">Formador</p>
                 <p class="small mb-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim
                   in
                   eros.</p>
@@ -390,8 +554,8 @@
 
     <!-- 03- MARCAS / PARCEIROS -->
     <section class="bg-alt-c py-5">
-      <div class="container d-flex flex-wrap justify-content-between align-items-center gap-4 reveal">
-        <p class="mb-0 fw-medium" style="max-width:24ch;color:var(--black)">Marcas que escolheram crescer com a
+      <div class="container d-flex flex-wrap justify-content-between align-items-center gap-4" data-aos="fade-up">
+        <p class="mb-0 fw-medium" style="max-width:24ch;color:var(--black)" data-i18n="partners.marcas-que-escolheram-crescer-com-a">Marcas que escolheram crescer com a
           nossa
           estratégia e espaços</p>
         <div class="d-flex flex-wrap gap-5 align-items-center">
@@ -412,66 +576,92 @@
     <!-- 04- SERVIÇOS-->
     <section class="section" id="servicos">
       <div class="container">
-        <div class="mb-5 reveal" style="max-width:640px">
-          <span class="eyebrow">Serviços</span>
-          <h2 class="mb-3" style="font-size:clamp(1.9rem,3.6vw,2.6rem); color:var(--white)">Soluções para cada
+        <div class="mb-5" data-aos="fade-up" style="max-width:640px">
+          <span class="eyebrow" data-i18n="services.servicos">Serviços</span>
+          <h2 class="mb-3" style="font-size:clamp(1.9rem,3.6vw,2.6rem); color:var(--white)" data-i18n="services.solucoes-para-cada-necessidade">Soluções para cada
             necessidade</h2>
-          <p style="color: var(--ash-soft);">Cinco formas de trabalhar consigo, sempre com o mesmo rigor.</p>
+          <p style="color: var(--ash-soft);" data-i18n="services.cinco-formas-de-trabalhar-consigo-sempre">Cinco formas de trabalhar consigo, sempre com o mesmo rigor.</p>
         </div>
-        <div class="tabs-h reveal" id="servicesTabs">
-          <!-- First Service -->
-          <button aria-expanded="true" class="tab-item active" data-index="0">
-            <div class="tab-strip"><span class="t-num">01</span><span class="t-label">Atendimento ao Cliente</span>
-            </div>
-            <div class="tab-full">
-              <h3>Atendimento ao Cliente</h3>
-              <p>Desenvolvimento de diretrizes de governança e suporte no fortalecimento de uma cultura corporativa
-                pautada na integridade, transparência e liderança de alto impacto.</p>
-              <div class="ph tab-img"
-                style="background-image: url(assets/atendimento.jpg); background-size: cover; background-position: center;">
+        <!-- Desktop: horizontal accordion, one service always open.
+             Phones (< 768px): normal accordion, tap a header to open/close.
+             Behaviour: "SERVICES ACCORDION" in the script at the end of the page.
+             Each item has an id (servico-...) so links can open it: index.html#servico-espacos -->
+        <div class="tabs-h" data-aos="fade" id="servicesTabs">
+          <!-- 01 Consultoria -->
+          <div class="tab-item active" id="servico-consultoria">
+            <button type="button" class="tab-strip" id="svc-btn-1" aria-expanded="true" aria-controls="svc-panel-1">
+              <span class="t-num">01</span><span class="t-label" data-i18n="services.consultoria">Consultoria</span>
+              <i class="bi bi-chevron-down t-chevron" aria-hidden="true"></i>
+            </button>
+            <div class="tab-full" id="svc-panel-1" role="region" aria-labelledby="svc-btn-1">
+              <div class="tab-body">
+                <h3 data-i18n="services.consultoria">Consultoria</h3>
+                <p data-i18n="services.desenvolvimento-de-diretrizes-de-governanca-e">Desenvolvimento de diretrizes de governança e suporte no fortalecimento de uma cultura corporativa
+                    pautada na integridade, transparência e liderança de alto impacto.</p>
+                <div class="ph tab-img" style="background-image: url(assets/services/consultoria.webp);"></div>
               </div>
             </div>
-          </button>
-          <!-- Second Sevice -->
-          <button aria-expanded="false" class="tab-item" data-index="1">
-            <div class="tab-strip"><span class="t-num">02</span><span class="t-label">Consultoria Ética e Liderança
-                Organizacional</span></div>
-            <div class="tab-full">
-              <h3>Consultoria Ética e Liderança Organizacional</h3>
-              <p>Programas à medida para fortalecer a cultura ética e a capacidade de liderança das equipas de gestão,
-                com
-                foco em integridade e decisões consistentes.</p>
-              <div class="ph tab-img"
-                style="background-image: url(assets/blackconslt.jpg); background-size: cover; background-position: center;">
+          </div>
+          <!-- 02 Formações e Treinamentos -->
+          <div class="tab-item" id="servico-formacoes-treinamentos">
+            <button type="button" class="tab-strip" id="svc-btn-2" aria-expanded="false" aria-controls="svc-panel-2">
+              <span class="t-num">02</span><span class="t-label" data-i18n="services.formacoes-e-treinamentos">Formações e Treinamentos</span>
+              <i class="bi bi-chevron-down t-chevron" aria-hidden="true"></i>
+            </button>
+            <div class="tab-full" id="svc-panel-2" role="region" aria-labelledby="svc-btn-2">
+              <div class="tab-body">
+                <h3 data-i18n="services.formacoes-e-treinamentos">Formações e Treinamentos</h3>
+                <p data-i18n="services.formacoes-praticas-e-planos-de-treino">Formações práticas e planos de treino ajustados à realidade e aos objetivos de cada organização,
+                    acompanhando a evolução das equipas ao longo do tempo.</p> <!-- EDIT -->
+                <div class="ph tab-img" style="background-image: url(assets/services/formacoes-treinamentos.webp);"></div>
               </div>
             </div>
-          </button>
-          <!-- Third Section -->
-          <button aria-expanded="false" class="tab-item" data-index="2">
-            <div class="tab-strip"><span class="t-num">03</span><span class="t-label">Palestras, Workshops e
-                Formação</span></div>
-            <div class="tab-full">
-              <h3>Palestras, Workshops e Formação</h3>
-              <p>Sessões práticas e dinâmicas, desenhadas para gerar competências aplicáveis desde o primeiro dia, com
-                métodos participativos e foco em resultados.</p>
-              <div class="ph tab-img"
-                style="background-image: url(assets/workshop.jpg); background-size: cover; background-position: center;">
+          </div>
+          <!-- 03 Palestras e Workshops -->
+          <div class="tab-item" id="servico-palestras-workshops">
+            <button type="button" class="tab-strip" id="svc-btn-3" aria-expanded="false" aria-controls="svc-panel-3">
+              <span class="t-num">03</span><span class="t-label" data-i18n="services.palestras-e-workshops">Palestras e Workshops</span>
+              <i class="bi bi-chevron-down t-chevron" aria-hidden="true"></i>
+            </button>
+            <div class="tab-full" id="svc-panel-3" role="region" aria-labelledby="svc-btn-3">
+              <div class="tab-body">
+                <h3 data-i18n="services.palestras-e-workshops">Palestras e Workshops</h3>
+                <p data-i18n="services.sessoes-praticas-e-dinamicas-desenhadas-para">Sessões práticas e dinâmicas, desenhadas para gerar competências aplicáveis desde o primeiro dia, com
+                    métodos participativos e foco em resultados.</p>
+                <div class="ph tab-img" style="background-image: url(assets/services/palestras-workshops.webp);"></div>
               </div>
             </div>
-          </button>
-          <!-- Fourth Section -->
-          <button aria-expanded="false" class="tab-item" data-index="3">
-            <div class="tab-strip"><span class="t-num">04</span><span class="t-label">Treinamento Corporativo
-                Personalizado</span></div>
-            <div class="tab-full">
-              <h3>Treinamento Corporativo Personalizado</h3>
-              <p>Planos de treino ajustados à realidade e aos objetivos específicos de cada organização, acompanhando a
-                evolução das equipas ao longo do tempo.</p>
-              <div class="ph tab-img"
-                style="background-image: url(assets/office.jpg); background-size: cover; background-position: center;">
+          </div>
+          <!-- 04 Espaços -->
+          <div class="tab-item" id="servico-espacos">
+            <button type="button" class="tab-strip" id="svc-btn-4" aria-expanded="false" aria-controls="svc-panel-4">
+              <span class="t-num">04</span><span class="t-label" data-i18n="services.espacos">Espaços</span>
+              <i class="bi bi-chevron-down t-chevron" aria-hidden="true"></i>
+            </button>
+            <div class="tab-full" id="svc-panel-4" role="region" aria-labelledby="svc-btn-4">
+              <div class="tab-body">
+                <h3 data-i18n="services.espacos">Espaços</h3>
+                <p data-i18n="services.espacos-preparados-para-formacoes-reunioes-workshops">Espaços preparados para formações, reuniões, workshops e eventos, com o equipamento e o apoio da nossa
+                    equipa do início ao fim.</p> <!-- EDIT -->
+                <div class="ph tab-img" style="background-image: url(assets/services/espacos.webp);"></div>
               </div>
             </div>
-          </button>
+          </div>
+          <!-- 05 Podcasts -->
+          <div class="tab-item" id="servico-podcasts">
+            <button type="button" class="tab-strip" id="svc-btn-5" aria-expanded="false" aria-controls="svc-panel-5">
+              <span class="t-num">05</span><span class="t-label">Podcasts</span>
+              <i class="bi bi-chevron-down t-chevron" aria-hidden="true"></i>
+            </button>
+            <div class="tab-full" id="svc-panel-5" role="region" aria-labelledby="svc-btn-5">
+              <div class="tab-body">
+                <h3>Podcasts</h3>
+                <p data-i18n="services.conversas-com-lideres-gestores-e-especialistas">Conversas com líderes, gestores e especialistas que partilham o que funciona no dia a dia das
+                    organizações em Moçambique.</p> <!-- EDIT -->
+                <div class="ph tab-img" style="background-image: url(assets/hero/podcast.webp);"></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -479,17 +669,17 @@
     <!-- 05- BENEFÍCIOS-->
     <section class="section bg-alt-c">
       <div class="container">
-        <div class="text-center mx-auto reveal" style="max-width:640px">
-          <span class="eyebrow">Benefícios</span>
-          <h2 style="font-size:clamp(1.9rem,3.6vw,2.6rem)">O que ganha connosco</h2>
-          <p class="mt-3">Resultados reais para pessoas e organizações que querem crescer.</p>
+        <div class="text-center mx-auto" data-aos="fade-up" style="max-width:640px">
+          <span class="eyebrow" data-i18n="benefits.beneficios">Benefícios</span>
+          <h2 style="font-size:clamp(1.9rem,3.6vw,2.6rem)" data-i18n="benefits.o-que-ganha-connosco">O que ganha connosco</h2>
+          <p class="mt-3" data-i18n="benefits.resultados-reais-para-pessoas-e-organizacoes">Resultados reais para pessoas e organizações que querem crescer.</p>
         </div>
-        <div class="bento mt-5 reveal">
+        <div class="bento mt-5" data-aos="fade-up">
           <div class="card-c b-a">
-            <span class="tag">Crescimento</span>
-            <h3>Desenvolvimento profissional</h3>
-            <p class="small">Crescer exige método, prática e as pessoas certas ao lado. É isso que oferecemos.</p>
-            <a class="link-arrow" href="#">Começar agora <svg class="bi">
+            <span class="tag" data-i18n="benefits.crescimento">Crescimento</span>
+            <h3 data-i18n="benefits.desenvolvimento-profissional">Desenvolvimento profissional</h3>
+            <p class="small" data-i18n="benefits.crescer-exige-metodo-pratica-e-as">Crescer exige método, prática e as pessoas certas ao lado. É isso que oferecemos.</p>
+            <a class="link-arrow" href="#"><span data-i18n="benefits.comecar-agora">Começar agora</span> <svg class="bi">
                 <use xlink:href="#i-arrow"></use>
               </svg></a>
             <div class="ph"><svg class="bi">
@@ -502,18 +692,18 @@
               </svg></div>
             <div>
               <span class="tag">Networking</span>
-              <h3>Ligações que importam</h3>
-              <p class="small">Ligações reais com pessoas e organizações que fazem acontecer.</p>
-              <a class="link-arrow" href="#">Conectar <svg class="bi">
+              <h3 data-i18n="benefits.ligacoes-que-importam">Ligações que importam</h3>
+              <p class="small" data-i18n="benefits.ligacoes-reais-com-pessoas-e-organizacoes">Ligações reais com pessoas e organizações que fazem acontecer.</p>
+              <a class="link-arrow" href="#"><span data-i18n="benefits.conectar">Conectar</span> <svg class="bi">
                   <use xlink:href="#i-arrow"></use>
                 </svg></a>
             </div>
           </div>
           <div class="card-c b-c">
-            <span class="tag">Resultados</span>
-            <h3>Resultados que ficam</h3>
-            <p class="small">Mudanças que permanecem muito depois de terminarmos o trabalho. Sem fórmulas vazias.</p>
-            <a class="link-arrow" href="#">Saber mais <svg class="bi">
+            <span class="tag" data-i18n="benefits.resultados">Resultados</span>
+            <h3 data-i18n="benefits.resultados-que-ficam">Resultados que ficam</h3>
+            <p class="small" data-i18n="benefits.mudancas-que-permanecem-muito-depois-de">Mudanças que permanecem muito depois de terminarmos o trabalho. Sem fórmulas vazias.</p>
+            <a class="link-arrow" href="#"><span data-i18n="benefits.saber-mais">Saber mais</span> <svg class="bi">
                 <use xlink:href="#i-arrow"></use>
               </svg></a>
             <div class="ph"><svg class="bi">
@@ -524,9 +714,9 @@
             <div class="icon-box"><svg class="bi">
                 <use xlink:href="#i-box"></use>
               </svg></div>
-            <h3>Conhecimento Prático</h3>
-            <p class="small">Competências que se usam no dia seguinte, não em teoria.</p>
-            <a class="link-arrow" href="#">Saber mais <svg class="bi">
+            <h3 data-i18n="benefits.conhecimento-pratico">Conhecimento Prático</h3>
+            <p class="small" data-i18n="benefits.competencias-que-se-usam-no-dia">Competências que se usam no dia seguinte, não em teoria.</p>
+            <a class="link-arrow" href="#"><span data-i18n="benefits.saber-mais">Saber mais</span> <svg class="bi">
                 <use xlink:href="#i-arrow"></use>
               </svg></a>
           </div>
@@ -534,9 +724,9 @@
             <div class="icon-box"><svg class="bi">
                 <use xlink:href="#i-mortarboard"></use>
               </svg></div>
-            <h3>Orientação especializada</h3>
-            <p class="small">Orientação direta de quem já esteve no terreno.</p>
-            <a class="link-arrow" href="#">Começar agora <svg class="bi">
+            <h3 data-i18n="benefits.orientacao-especializada">Orientação especializada</h3>
+            <p class="small" data-i18n="benefits.orientacao-direta-de-quem-ja-esteve">Orientação direta de quem já esteve no terreno.</p>
+            <a class="link-arrow" href="#"><span data-i18n="benefits.comecar-agora">Começar agora</span> <svg class="bi">
                 <use xlink:href="#i-arrow"></use>
               </svg></a>
           </div>
@@ -547,62 +737,62 @@
     <!-- 06- PORQUE NÓS -->
     <section class="section">
       <div class="container">
-        <div class="class="row g-4 g-lg-5 reveal">
+        <div class="row g-4 g-lg-5" data-aos="fade-up">
           <div class="col-lg-7">
-            <span class="eyebrow">Porque nós?</span>
-            <h2 style="font-size:clamp(1.9rem,3.6vw,2.6rem);max-width:16ch; color:var(--white)">A diferença está na
+            <span class="eyebrow" data-i18n="why.porque-nos">Porque nós?</span>
+            <h2 style="font-size:clamp(1.9rem,3.6vw,2.6rem);max-width:16ch; color:var(--white)" data-i18n="why.a-diferenca-esta-na-forma-como">A diferença está na
               forma como trabalhamos
             </h2>
           </div>
           <div class="col-lg-5 d-flex align-items-start">
-            <p class="pt-lg-3" style="color: var(--aqua);">Não vendemos fórmulas. Construímos relações de confiança e
+            <p class="pt-lg-3" style="color: var(--aqua);" data-i18n="why.nao-vendemos-formulas-construimos-relacoes-de">Não vendemos fórmulas. Construímos relações de confiança e
               entregamos trabalho sério.
               Cada
               projeto começa com uma escuta atenta e termina com resultados que se medem.</p>
           </div>
         </div>
-        <div class="row g-4 mt-3 reveal-stagger reveal">
-          <div class="col-6 col-lg-3 feature stagger-item">
+        <div class="row g-4 mt-3">
+          <div class="col-6 col-lg-3 feature" data-aos="fade-up" data-aos-delay="0">
             <div class="icon-box"><svg class="bi">
                 <use xlink:href="#i-award"></use>
               </svg></div>
-            <h3 class="h6 fw-bold" style="color:var(--white);font-family:'Inter',sans-serif">Experiência que fala por si
+            <h3 class="h6 fw-bold" style="color:var(--white);font-family:'Inter',sans-serif" data-i18n="why.experiencia-que-fala-por-si">Experiência que fala por si
             </h3>
-            <p class="small" style="color: var(--ash-soft)">Anos de trabalho no terreno com organizações de diferentes
+            <p class="small" style="color: var(--ash-soft)" data-i18n="why.anos-de-trabalho-no-terreno-com">Anos de trabalho no terreno com organizações de diferentes
               setores e dimensões.</p>
           </div>
-          <div class="col-6 col-lg-3 feature stagger-item">
+          <div class="col-6 col-lg-3 feature" data-aos="fade-up" data-aos-delay="100">
             <div class="icon-box"><svg class="bi">
                 <use xlink:href="#i-shield"></use>
               </svg></div>
-            <h3 class="h6 fw-bold" style="color:var(--white);font-family:'Inter',sans-serif">Profissionalismo em cada
+            <h3 class="h6 fw-bold" style="color:var(--white);font-family:'Inter',sans-serif" data-i18n="why.profissionalismo-em-cada-detalhe">Profissionalismo em cada
               detalhe</h3>
-            <p class="small" style="color: var(--ash-soft)">Rigor, pontualidade e transparência em todas as fases do
+            <p class="small" style="color: var(--ash-soft)" data-i18n="why.rigor-pontualidade-e-transparencia-em-todas">Rigor, pontualidade e transparência em todas as fases do
               projeto.</p>
           </div>
-          <div class="col-6 col-lg-3 feature stagger-item">
+          <div class="col-6 col-lg-3 feature" data-aos="fade-up" data-aos-delay="200">
             <div class="icon-box"><svg class="bi">
                 <use xlink:href="#i-people"></use>
               </svg></div>
-            <h3 class="h6 fw-bold" style="color:var(--white);font-family:'Inter',sans-serif">Abordagem personalizada
+            <h3 class="h6 fw-bold" style="color:var(--white);font-family:'Inter',sans-serif" data-i18n="why.abordagem-personalizada">Abordagem personalizada
             </h3>
-            <p class="small" style="color: var(--ash-soft)">Cada organização é única. O nosso trabalho reflete essa
+            <p class="small" style="color: var(--ash-soft)" data-i18n="why.cada-organizacao-e-unica-o-nosso">Cada organização é única. O nosso trabalho reflete essa
               singularidade.</p>
           </div>
-          <div class="col-6 col-lg-3 feature stagger-item">
+          <div class="col-6 col-lg-3 feature" data-aos="fade-up" data-aos-delay="300">
             <div class="icon-box"><svg class="bi">
                 <use xlink:href="#i-hearts"></use>
               </svg></div>
-            <h3 class="h6 fw-bold" style="color:var(--white);font-family:'Inter',sans-serif">Compromisso com as pessoas
+            <h3 class="h6 fw-bold" style="color:var(--white);font-family:'Inter',sans-serif" data-i18n="why.compromisso-com-as-pessoas">Compromisso com as pessoas
             </h3>
-            <p class="small" style="color: var(--ash-soft)">Acreditamos que o crescimento sustentável começa sempre
+            <p class="small" style="color: var(--ash-soft)" data-i18n="why.acreditamos-que-o-crescimento-sustentavel-comeca">Acreditamos que o crescimento sustentável começa sempre
               pelas pessoas.</p>
           </div>
         </div>
-        <div class="d-flex align-items-center gap-4 mt-4 reveal">
-          <a class="btn btn-outline-c px-4 py-2" href="#cta"
-            style="border: cyan solid 2px; color: var(--cyan)">Conectar</a>
-          <a class="link-arrow" href="#equipa">Equipa <svg class="bi">
+        <div class="d-flex align-items-center gap-4 mt-4" data-aos="fade-up">
+          <a class="btn btn-outline-c px-4 py-2" href="#contact-form"
+            style="border: cyan solid 2px; color: var(--cyan)" data-i18n="why.conectar">Conectar</a>
+          <a class="link-arrow" href="#equipa"><span data-i18n="why.equipa">Equipa</span> <svg class="bi">
               <use xlink:href="#i-arrow"></use>
             </svg></a>
         </div>
@@ -614,19 +804,19 @@
       <div class="glow glow-cyan"
         style="width:38rem;height:22rem;top:-4rem;left:50%;transform:translateX(-50%);animation:pulseGlow 5s ease-in-out infinite">
       </div>
-      <div class="container position-relative reveal" style="z-index:1">
+      <div class="container position-relative" style="z-index:1">
         <h2 class="mb-3" style="font-size:clamp(2rem,4.4vw,3rem)" data-aos="slide-right" data-aos-duration="4000"
-          data-aos="ease-in-out">Pronto para começar?</h2>
+          data-aos-easing="ease-in-out" data-i18n="cta.pronto-para-comecar">Pronto para começar?</h2>
         <h2 class="mb-3" style="font-size:clamp(2rem,4.4vw,3rem)" data-aos="slide-left" data-aos-duration="4000"
-          data-aos="ease-in-out">
+          data-aos-easing="ease-in-out" data-i18n="cta.fale-connosco">
           Fale connosco
         </h2>
-        <p class="mx-auto mb-4" style="max-width:44ch">O primeiro passo é uma conversa. Conte-nos o que a sua
+        <p class="mx-auto mb-4" style="max-width:44ch" data-aos="fade-up" data-aos-delay="200" data-i18n="cta.o-primeiro-passo-e-uma-conversa">O primeiro passo é uma conversa. Conte-nos o que a sua
           organização
           precisa e nós tratamos do resto.</p>
-        <div class="d-flex flex-wrap justify-content-center gap-3">
-          <a class="btn btn-cyan px-4 py-2" href="#">Contacto</a>
-          <a class="btn btn-outline-light-c px-4 py-2" href="#servicos">Serviços</a>
+        <div class="d-flex flex-wrap justify-content-center gap-3" data-aos="fade-up" data-aos-delay="300">
+          <a class="btn btn-cyan px-4 py-2" href="#contact-form" data-i18n="cta.contacto">Contacto</a>
+          <a class="btn btn-outline-light-c px-4 py-2" href="#servicos" data-i18n="cta.servicos">Serviços</a>
         </div>
       </div>
     </section>
@@ -634,114 +824,39 @@
     <!-- 08- EVENTOS  -->
     <section class="section" id="eventos">
       <div class="container">
-        <div class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-5 reveal">
+        <div class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-5" data-aos="fade-up">
           <div>
-            <span class="eyebrow">Eventos</span>
-            <h2 style="font-size:clamp(1.8rem,3.4vw,2.4rem); max-width:25ch; color: var(--white);">Encontros que
+            <span class="eyebrow" data-i18n="events.eventos">Eventos</span>
+            <h2 style="font-size:clamp(1.8rem,3.4vw,2.4rem); max-width:25ch; color: var(--white);" data-i18n="events.encontros-que-transformam-realidades">Encontros que
               Transformam Realidades</h2>
           </div>
-          <a class="btn btn-outline-c px-4 py-2" href="#" style="color: var(--ash-soft)">Ver todos</a>
+          <button type="button" class="btn btn-outline-c px-4 py-2" data-events-all aria-haspopup="dialog"
+            style="color: var(--ash-soft)" data-i18n="events.ver-todos">Ver todos</button>
         </div>
-        <div class="row g-4 reveal-stagger reveal">
-          <div class="col-lg-4 stagger-item">
-            <div class="card-c h-100 overflow-hidden">
-              <div class="ph event-thumb position-relative"
-                style="aspect-ratio:16/10;border-radius:0; background-image: url(assets/suit.jpg); background-size: cover;">
-                <span class="badge-c" style="color: var(--pearl)">Liderança</span>
-                <svg class="bi" style="font-size:2.4rem">
-                </svg>
-              </div>
-              <div class="p-4">
-                <div class="d-flex gap-3 event-meta mb-3">
-                  <span class="d-flex align-items-center gap-1"><svg class="bi" style="color: var(--cyan);">
-                      <use xlink:href="#i-calendar"></use>
-                    </svg>Sex 09 Março 2026</span>
-                  <span class="d-flex align-items-center gap-1"><svg class="bi" style="color: var(--cyan);">
-                      <use xlink:href="#i-geo"></use>
-                    </svg>Maputo</span>
-                </div>
-                <h3 class="h5 fw-bold mb-2" style="color:var(--ink);font-family:'Inter',sans-serif">Liderança prática
-                </h3>
-                <p class="small mb-3">Um dia intensivo para líderes que querem equipas mais fortes e autónomas.</p>
-                <a class="link-arrow" href="#">Ver evento <svg class="bi" style="color: var(--cyan);">
-                    <use xlink:href="#i-arrow"></use>
-                  </svg></a>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 stagger-item">
-            <div class="card-c h-100 overflow-hidden">
-              <div class="ph event-thumb position-relative"
-                style="aspect-ratio:16/10;border-radius:0; background-image: url(assets/oradora.jpg); background-size: cover;">
-                <span class="badge-c" style="color: var(--pearl)">Comunicação</span>
-                <svg class="bi" style="font-size:2.4rem"></svg>
-              </div>
-              <div class="p-4">
-                <div class="d-flex gap-3 event-meta mb-3">
-                  <span class="d-flex align-items-center gap-1"><svg class="bi" style="color: var(--cyan)">
-                      <use xlink:href="#i-calendar"></use>
-                    </svg>Ter 12 Fev 2026</span>
-                  <span class="d-flex align-items-center gap-1"><svg class="bi" style="color: var(--cyan);">
-                      <use xlink:href="#i-geo"></use>
-                    </svg>Beira</span>
-                </div>
-                <h3 class="h5 fw-bold mb-2" style="color:var(--ink);font-family:'Inter',sans-serif">Comunicação com
-                  impacto</h3>
-                <p class="small mb-3">Como falar de forma clara e mobilizar pessoas para a ação.</p>
-                <a class="link-arrow" href="#">Ver evento <svg class="bi">
-                    <use xlink:href="#i-arrow"></use>
-                  </svg></a>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 stagger-item">
-            <div class="card-c h-100 overflow-hidden">
-              <div class="ph event-thumb position-relative"
-                style="aspect-ratio:16/10;border-radius:0; background-image: url(assets/persons.jpg); background-size: cover;">
-                <span class="badge-c" style="color: var(--pearl)">Estratégia</span>
-                <svg class="bi" style="font-size:2.4rem"></svg>
-              </div>
-              <div class="p-4">
-                <div class="d-flex gap-3 event-meta mb-3">
-                  <span class="d-flex align-items-center gap-1"><svg class="bi" style="color: var(--cyan)">
-                      <use xlink:href="#i-calendar"></use>
-                    </svg>Seg 11 Fev 2026</span>
-                  <span class="d-flex align-items-center gap-1"><svg class="bi" style="color: var(--cyan);">
-                      <use xlink:href="#i-geo"></use>
-                    </svg>Online</span>
-                </div>
-                <h3 class="h5 fw-bold mb-2" style="color:var(--ink);font-family:'Inter',sans-serif">Decidir com clareza
-                </h3>
-                <p class="small mb-3">Ferramentas simples para tomar decisões difíceis com dados e convicção.</p>
-                <a class="link-arrow" href="#">Ver evento <svg class="bi">
-                    <use xlink:href="#i-arrow"></use>
-                  </svg></a>
-              </div>
-            </div>
-          </div>
-        </div>
+        <!-- Cards: rendered from the EVENTS list in js/events.js (same template as "Ver todos") -->
+        <div class="row g-4" id="eventsGrid"></div>
       </div>
     </section>
 
     <!-- 09- TESTEMUNHO -->
     <section id="testimonials">
-      <h6 class="index">Testemunhos</h6>
-      <div id="testCarousel" class="carousel carousel-dark slide" data-bs-ride="carousel">
+      <h6 class="index" data-aos="fade-up" data-i18n="testimonials.testemunhos">Testemunhos</h6>
+      <div id="testCarousel" class="carousel carousel-dark slide" data-bs-ride="carousel" data-aos="fade-up" data-aos-delay="100">
         <div class="glow glow-cyan"
           style="width:38rem;height:22rem;top:-4rem;left:50%;transform:translateX(-50%);animation:pulseGlow 5s ease-in-out infinite">
         </div>
         <ul class="carousel-indicators">
           <li data-bs-target="#testCarousel" data-bs-slide-to="0" class="active" aria-current="true"
-            aria-label="First slide"></li>
-          <li data-bs-target="#testCarousel" data-bs-slide-to="1" aria-label="Second slide"></li>
-          <li data-bs-target="#testCarousel" data-bs-slide-to="2" aria-label="Third slide"></li>
+            aria-label="Testemunho 1" data-i18n-attr="aria-label:testimonials.testemunho-1"></li>
+          <li data-bs-target="#testCarousel" data-bs-slide-to="1" aria-label="Testemunho 2" data-i18n-attr="aria-label:testimonials.testemunho-2"></li>
+          <li data-bs-target="#testCarousel" data-bs-slide-to="2" aria-label="Testemunho 3" data-i18n-attr="aria-label:testimonials.testemunho-3"></li>
         </ul>
         <div class="carousel-inner">
           <div data-bs-interval="10000" class="carousel-item active">
             <div class="carousel-caption d-md-block">
-              <h3>"A qualidade do produto que adquiri superou as minhas expectativas, e a entrega foi rápida e sem
+              <h3 data-i18n="testimonials.a-qualidade-do-produto-que-adquiri">"A qualidade do produto que adquiri superou as minhas expectativas, e a entrega foi rápida e sem
                 complicações!"</h3>
-              <img src="assets/testimonial3.jpg" class="w-100 d-block" alt="First slide" />
+              <img src="assets/testimonial3.jpg" class="w-100 d-block" alt="Fotografia do testemunho"  data-i18n-attr="alt:testimonials.fotografia-do-testemunho"/>
               <h6 class="name">
                 Marcos Terra
               </h6>
@@ -752,7 +867,7 @@
           </div>
           <div data-bs-interval="10000" class="carousel-item">
             <div class="carousel-caption d-md-block">
-              <h3>"Continuo a recorrer à SelfXpress sempre que preciso de algo para os meus AirBnBs"</h3>
+              <h3 data-i18n="testimonials.continuo-a-recorrer-a-selfxpress-sempre">"Continuo a recorrer à SelfXpress sempre que preciso de algo para os meus AirBnBs"</h3>
               <img src="assets/testimonial5.jpg" class="w-100 d-block" alt="" />
               <h6 class="name">
                 Camila Tesouro
@@ -764,7 +879,7 @@
           </div>
           <div data-bs-interval="10000" class="carousel-item">
             <div class="carousel-caption d-md-block">
-              <h3>"Os meus amigos recomendaram-me a SelfXpress e, desde então, é a quem recorro sempre."</h3>
+              <h3 data-i18n="testimonials.os-meus-amigos-recomendaram-me-a">"Os meus amigos recomendaram-me a SelfXpress e, desde então, é a quem recorro sempre."</h3>
               <img src="assets/testimonial-2.jpg" class="w-100 d-block" alt="" />
               <h6 class="name">
                 José BaCosta
@@ -777,11 +892,11 @@
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#testCarousel" data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
+          <span class="visually-hidden" data-i18n="testimonials.anterior">Anterior</span>
         </button>
         <button class="carousel-control-next" type="button" data-bs-target="#testCarousel" data-bs-slide="next">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
+          <span class="visually-hidden" data-i18n="testimonials.seguinte">Seguinte</span>
         </button>
       </div>
 
@@ -792,11 +907,11 @@
       <div class="container py-lg-5">
 
         <!-- CONTACT HEADER -->
-        <div class="row justify-content-center text-center mb-5">
+        <div class="row justify-content-center text-center mb-5" data-aos="fade-up">
           <div class="col-lg-8">
-            <span class="contact-eyebrow">Contacto</span>
-            <h1 class="contact-title">Vamos conversar sobre o seu próximo passo.</h1>
-            <p class="contact-intro">
+            <span class="contact-eyebrow" data-i18n="contact.contacto">Contacto</span>
+            <h1 class="contact-title" data-i18n="contact.vamos-conversar-sobre-o-seu-proximo">Vamos conversar sobre o seu próximo passo.</h1>
+            <p class="contact-intro" data-i18n="contact.conte-nos-um-pouco-sobre-o">
               Conte-nos um pouco sobre o que procura. A nossa equipa analisará a sua necessidade
               e entrará em contacto consigo.
             </p>
@@ -807,14 +922,14 @@
         <div class="contact-information mb-5">
           <div class="row g-3 justify-content-center">
 
-            <div class="col-6 col-md-4 col-lg-2">
+            <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="0">
               <span class="contact-info-icon"><i class="bi bi-geo-alt"></i></span>
               <a href="#" class="contact-info-item">
-                <span class="contact-info-content"><small>Localização</small><strong>Maputo</strong></span>
+                <span class="contact-info-content"><small data-i18n="contact.localizacao">Localização</small><strong>Maputo</strong></span>
               </a>
             </div>
 
-            <div class="col-6 col-md-4 col-lg-2">
+            <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="60">
               <span class="contact-info-icon"><i class="bi bi-envelope"></i></span>
               <a href="mailto:contacto@castrosconsultoria.com" class="contact-info-item">
                 <span
@@ -822,31 +937,31 @@
               </a>
             </div>
 
-            <div class="col-6 col-md-4 col-lg-2">
+            <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="120">
               <span class="contact-info-icon"><i class="bi bi-whatsapp"></i></span>
               <a href="#" class="contact-info-item">
                 <span class="contact-info-content"><small>WhatsApp</small><strong>+258 87 866 5180</strong></span>
               </a>
             </div>
 
-            <div class="col-6 col-md-4 col-lg-2">
+            <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="180">
               <span class="contact-info-icon"><i class="bi bi-instagram"></i></span>
               <a href="https://www.instagram.com/castros.consultoria/" class="contact-info-item">
                 <span class="contact-info-content"><small>Instagram</small><strong>castros.consultoria</strong></span>
               </a>
             </div>
 
-            <div class="col-6 col-md-4 col-lg-2">
+            <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="240">
               <span class="contact-info-icon"><i class="bi bi-tiktok"></i></span>
               <a href="https://www.instagram.com/castros.consultoria/" class="contact-info-item">
                 <span class="contact-info-content"><small>TikTok</small><strong>@castros.consultria.mz</strong></span>
               </a>
             </div>
 
-            <div class="col-6 col-md-4 col-lg-2">
+            <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="300">
               <span class="contact-info-icon"><i class="bi bi-telephone"></i></span>
               <a href="tel:+258000000000" class="contact-info-item">
-                <span class="contact-info-content"><small>Telefone</small><strong>+258 ...</strong></span>
+                <span class="contact-info-content"><small data-i18n="contact.telefone">Telefone</small><strong>+258 ...</strong></span>
               </a>
             </div>
 
@@ -857,23 +972,23 @@
         <div class="row g-4 g-xl-5 align-items-stretch">
 
           <!-- IMAGE -->
-          <div class="col-lg-5">
+          <div class="col-lg-5" data-aos="fade-up">
             <div class="contact-image-card h-100">
               <div class="contact-image-overlay"></div>
               <div class="contact-image-content">
-                <span class="contact-image-label">Estamos disponíveis para ouvir.</span>
-                <h2>Pessoas reais.<br>Contextos reais.<br>Soluções relevantes.</h2>
-                <p>Partilhe connosco o desafio ou oportunidade que pretende desenvolver.</p>
+                <span class="contact-image-label" data-i18n="contact.estamos-disponiveis-para-ouvir">Estamos disponíveis para ouvir.</span>
+                <h2 data-i18n-html="contact.pessoas-reais-contextos-reais-solucoes-relevantes">Pessoas reais.<br>Contextos reais.<br>Soluções relevantes.</h2>
+                <p data-i18n="contact.partilhe-connosco-o-desafio-ou-oportunidade">Partilhe connosco o desafio ou oportunidade que pretende desenvolver.</p>
               </div>
             </div>
           </div>
 
           <!-- FORM -->
-          <div class="col-lg-7">
-            <div class="contact-form-card">
+          <div class="col-lg-7" data-aos="fade" data-aos-delay="150"> <!-- fade only: a moving parent would make #contact-form jumps land off target -->
+            <div class="contact-form-card" id="contact-form">
 
               <!-- FORM PROGRESS -->
-              <div class="form-progress" aria-label="Progresso do formulário">
+              <div class="form-progress" aria-label="Progresso do formulário" data-i18n-attr="aria-label:contact.progresso-do-formulario">
                 <div class="progress-step active" data-progress-step="1"><span>1</span></div>
                 <div class="progress-line"></div>
                 <div class="progress-step" data-progress-step="2"><span>2</span></div>
@@ -882,9 +997,9 @@
               </div>
 
               <div class="progress-labels">
-                <span>Informação</span>
-                <span>Necessidade</span>
-                <span>Mensagem</span>
+                <span data-i18n="contact.informacao">Informação</span>
+                <span data-i18n="contact.necessidade">Necessidade</span>
+                <span data-i18n="contact.mensagem">Mensagem</span>
               </div>
 
               <form id="contactForm" novalidate>
@@ -894,31 +1009,31 @@
                 <div class="form-step active" data-form-step="1">
                   <div class="mb-4">
                     <span class="form-step-number">01</span>
-                    <h2 class="form-step-title">Vamos começar.</h2>
-                    <p class="form-step-description">Diga-nos como podemos entrar em contacto consigo.</p>
+                    <h2 class="form-step-title" data-i18n="contact.vamos-comecar">Vamos começar.</h2>
+                    <p class="form-step-description" data-i18n="contact.diga-nos-como-podemos-entrar-em">Diga-nos como podemos entrar em contacto consigo.</p>
                   </div>
 
                   <div class="row g-3">
                     <div class="col-12">
-                      <label for="name" class="form-label">Nome <span>*</span></label>
+                      <label for="name" class="form-label"><span data-i18n="contact.nome">Nome</span> <span>*</span></label>
                       <input type="text" class="form-control" id="name" name="name" placeholder="O seu nome completo"
-                        autocomplete="name" required>
+                        autocomplete="name" required data-i18n-attr="placeholder:contact.o-seu-nome-completo">
                     </div>
 
                     <div class="col-md-6">
                       <label for="email" class="form-label">Email <span>*</span></label>
                       <input type="email" class="form-control" id="email" name="email" placeholder="nome@empresa.com"
-                        autocomplete="email" required>
+                        autocomplete="email" required data-i18n-attr="placeholder:contact.nome-empresa-com">
                     </div>
 
                     <div class="col-md-6">
-                      <label for="organization" class="form-label">Organização</label>
+                      <label for="organization" class="form-label" data-i18n="contact.organizacao">Organização</label>
                       <input type="text" class="form-control" id="organization" name="organization"
-                        placeholder="Empresa / Organização" autocomplete="organization">
+                        placeholder="Empresa / Organização" autocomplete="organization" data-i18n-attr="placeholder:contact.empresa-organizacao">
                     </div>
 
                     <div class="col-12">
-                      <label for="phone" class="form-label">WhatsApp / Telefone</label>
+                      <label for="phone" class="form-label" data-i18n="contact.whatsapp-telefone">WhatsApp / Telefone</label>
                       <input type="tel" class="form-control" id="phone" name="phone" placeholder="+258 ___ ___ ___"
                         autocomplete="tel">
                     </div>
@@ -926,7 +1041,7 @@
 
                   <div class="d-flex justify-content-end mt-4">
                     <button type="button" class="btn btn-contact-primary" data-next-step>
-                      Continuar <i class="bi bi-arrow-right"></i>
+                      <span data-i18n="contact.continuar">Continuar</span> <i class="bi bi-arrow-right"></i>
                     </button>
                   </div>
                 </div>
@@ -935,40 +1050,40 @@
                 <div class="form-step" data-form-step="2">
                   <div class="mb-4">
                     <span class="form-step-number">02</span>
-                    <h2 class="form-step-title">Como podemos ajudar?</h2>
-                    <p class="form-step-description">
+                    <h2 class="form-step-title" data-i18n="contact.como-podemos-ajudar">Como podemos ajudar?</h2>
+                    <p class="form-step-description" data-i18n="contact.selecione-o-servico-que-melhor-corresponde">
                       Selecione o serviço que melhor corresponde à sua necessidade.
                     </p>
                   </div>
 
                   <div class="row g-3">
                     <div class="col-12">
-                      <label for="service" class="form-label">Serviço <span>*</span></label>
+                      <label for="service" class="form-label"><span data-i18n="contact.servico">Serviço</span> <span>*</span></label>
                       <select class="form-select" id="service" name="service" required>
-                        <option value="" selected disabled>Selecione um serviço</option>
-                        <option>Consultoria</option>
-                        <option>Formação</option>
-                        <option>Treinamento</option>
-                        <option>Palestras</option>
-                        <option>Eventos</option>
-                        <option>Outro</option>
+                        <option value="" selected disabled data-i18n="contact.selecione-um-servico">Selecione um serviço</option>
+                        <option value="Consultoria" data-i18n="contact.consultoria">Consultoria</option>
+                        <option value="Formação" data-i18n="contact.formacao">Formação</option>
+                        <option value="Treinamento" data-i18n="contact.treinamento">Treinamento</option>
+                        <option value="Palestras" data-i18n="contact.palestras">Palestras</option>
+                        <option value="Eventos" data-i18n="contact.eventos">Eventos</option>
+                        <option value="Outro" data-i18n="contact.outro">Outro</option>
                       </select>
                     </div>
 
                     <div class="col-12">
-                      <label for="interest" class="form-label">Área de interesse <span>*</span></label>
+                      <label for="interest" class="form-label"><span data-i18n="contact.area-de-interesse">Área de interesse</span> <span>*</span></label>
                       <select class="form-select" id="interest" name="interest" disabled required>
-                        <option value="" selected disabled>Primeiro selecione um serviço</option>
+                        <option value="" selected disabled data-i18n="contact.primeiro-selecione-um-servico">Primeiro selecione um serviço</option>
                       </select>
                     </div>
                   </div>
 
                   <div class="d-flex justify-content-between gap-2 mt-4">
                     <button type="button" class="btn btn-contact-secondary" data-prev-step>
-                      <i class="bi bi-arrow-left"></i> Voltar
+                      <i class="bi bi-arrow-left"></i> <span data-i18n="contact.voltar">Voltar</span>
                     </button>
                     <button type="button" class="btn btn-contact-primary" data-next-step>
-                      Continuar <i class="bi bi-arrow-right"></i>
+                      <span data-i18n="contact.continuar">Continuar</span> <i class="bi bi-arrow-right"></i>
                     </button>
                   </div>
                 </div>
@@ -977,27 +1092,27 @@
                 <div class="form-step" data-form-step="3">
                   <div class="mb-4">
                     <span class="form-step-number">03</span>
-                    <h2 class="form-step-title">Conte-nos mais.</h2>
-                    <p class="form-step-description">
-                      Partilhe brevemente a sua necessidade, desafio ou projecto.
+                    <h2 class="form-step-title" data-i18n="contact.conte-nos-mais">Conte-nos mais.</h2>
+                    <p class="form-step-description" data-i18n="contact.partilhe-brevemente-a-sua-necessidade-desafio">
+                      Partilhe brevemente a sua necessidade, desafio ou projeto.
                     </p>
                   </div>
 
-                  <label for="message" class="form-label">Mensagem <span>*</span></label>
+                  <label for="message" class="form-label"><span data-i18n="contact.mensagem">Mensagem</span> <span>*</span></label>
                   <textarea class="form-control message-field" id="message" name="message" rows="6"
-                    placeholder="Conte-nos brevemente sobre a sua necessidade, desafio ou projecto..."
-                    required></textarea>
+                    placeholder="Conte-nos brevemente sobre a sua necessidade, desafio ou projeto..."
+                    required data-i18n-attr="placeholder:contact.conte-nos-brevemente-sobre-a-sua"></textarea>
 
                   <div class="d-flex justify-content-between gap-2 mt-4">
                     <button type="button" class="btn btn-contact-secondary" data-prev-step>
-                      <i class="bi bi-arrow-left"></i> Voltar
+                      <i class="bi bi-arrow-left"></i> <span data-i18n="contact.voltar">Voltar</span>
                     </button>
 
                     <button type="submit" class="btn btn-contact-primary" id="submitButton">
-                      <span class="submit-label">Enviar mensagem <i class="bi bi-send"></i></span>
+                      <span class="submit-label"><span data-i18n="contact.enviar-mensagem">Enviar mensagem</span> <i class="bi bi-send"></i></span>
                       <span class="submit-loading d-none">
                         <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
-                        A processar...
+                        <span data-i18n="contact.a-processar">A processar...</span>
                       </span>
                     </button>
                   </div>
@@ -1014,29 +1129,29 @@
         <div class="d-flex align-items-start gap-3">
           <i class="bi bi-check-circle-fill contact-alert-icon"></i>
           <div>
-            <strong class="d-block" id="alertTitle">Mensagem enviada</strong>
-            <span id="alertMessage">Obrigado por contactar a Castros Consultoria.</span>
+            <strong class="d-block" id="alertTitle" data-i18n="contact.mensagem-enviada">Mensagem enviada</strong>
+            <span id="alertMessage" data-i18n="contact.obrigado-por-contactar-a-castros-consultoria">Obrigado por contactar a Castros Consultoria.</span>
           </div>
         </div>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar" data-i18n-attr="aria-label:contact.fechar"></button>
       </div>
     </section>
 
     <!-- 10- GALERIA -->
     <section class="section">
       <div class="container">
-        <div class="text-center mx-auto mb-5 reveal" style="max-width:640px">
-          <h2 style="font-size:clamp(1.9rem,3.6vw,2.6rem); color: var(--white)">Galeria</h2>
-          <p class="mt-3" style="color: var(--ash-soft)">Momentos reais de trabalho, aprendizagem e partilha de nossos
+        <div class="text-center mx-auto mb-5" data-aos="fade-up" style="max-width:640px">
+          <h2 style="font-size:clamp(1.9rem,3.6vw,2.6rem); color: var(--white)" data-i18n="gallery.galeria">Galeria</h2>
+          <p class="mt-3" style="color: var(--ash-soft)" data-i18n="gallery.momentos-reais-de-trabalho-aprendizagem-e">Momentos reais de trabalho, aprendizagem e partilha de nossos
             serviços.</p>
         </div>
-        <div class="row g-3 reveal">
-          <div class="col-md-7">
+        <div class="row g-3">
+          <div class="col-md-7" data-aos="fade-up">
             <div class="ph g-main"
               style="aspect-ratio:1/1; background-image: url(assets/workshop2.jpg); background-size: cover; background-position: center;">
             </div>
           </div>
-          <div class="col-md-5 d-flex flex-column gap-3">
+          <div class="col-md-5 d-flex flex-column gap-3" data-aos="fade-up" data-aos-delay="150">
             <div class="ph"
               style="flex:1;border-radius:18px; background-image: url(assets/morepeople.jpg); background-size: cover; background-position: center;">
             </div>
@@ -1053,16 +1168,16 @@
   <footer class="pt-5 pb-4">
     <div class="container">
       <div class="row g-4 pb-4">
-        <div class="col-lg-6">
+        <div class="col-lg-6" data-aos="fade-up">
           <span class="navbar-brand" style="color:#fff!important">Castros</span>
           <div class="mt-4">
-            <h5>Localização</h5>
+            <h5 data-i18n="footer.localizacao">Localização</h5>
             <p class="foot-p mb-0 d-flex align-items-center gap-2"><svg class="bi">
                 <use xlink:href="#i-geo"></use>
               </svg>Rua do Palmar, nº 35</p>
           </div>
           <div class="mt-3">
-            <h5>Contact</h5>
+            <h5 data-i18n="footer.contacto">Contacto</h5>
             <a class="d-flex align-items-center gap-2 mb-1" href="#"><svg class="bi">
                 <use xlink:href="#i-phone"></use>
               </svg>84 123 4567</a>
@@ -1088,35 +1203,88 @@
               </svg></a>
           </div>
         </div>
-        <div class="col-lg-3 col-6">
+        <div class="col-lg-3 col-6" data-aos="fade-up" data-aos-delay="100">
           <h5>Menu</h5>
-          <a class="d-block mb-2" href="#hero">Início</a>
-          <a class="d-block mb-2" href="#sobre">Sobre Nós</a>
-          <a class="d-block mb-2" href="#servicos">Serviços</a>
-          <a class="d-block mb-2" href="#eventos">Eventos</a>
-          <a class="d-block mb-2" href="#cta">Contacto</a>
+          <a class="d-block mb-2" href="#hero" data-i18n="footer.inicio">Início</a>
+          <a class="d-block mb-2" href="#sobre" data-i18n="footer.sobre-nos">Sobre Nós</a>
+          <a class="d-block mb-2" href="#servicos" data-i18n="footer.servicos">Serviços</a>
+          <a class="d-block mb-2" href="#eventos" data-i18n="footer.eventos">Eventos</a>
+          <a class="d-block mb-2" href="#contact-form" data-i18n="footer.contacto">Contacto</a>
         </div>
-        <div class="col-lg-3 col-6">
+        <div class="col-lg-3 col-6" data-aos="fade-up" data-aos-delay="200">
           <h5>Legal</h5>
-          <a class="d-block mb-2" href="#">Privacy Policy</a>
-          <a class="d-block mb-2" href="#">Terms of Service</a>
-          <a class="d-block mb-2" href="#">Cookies Settings</a>
+          <a class="d-block mb-2" href="#" data-i18n="footer.politica-de-privacidade">Política de Privacidade</a>
+          <a class="d-block mb-2" href="#" data-i18n="footer.termos-de-servico">Termos de Serviço</a>
+          <a class="d-block mb-2" href="#" data-i18n="footer.definicoes-de-cookies">Definições de Cookies</a>
         </div>
       </div>
-      <p class="wordmark">Castros Consultoria</p>
+      <p class="wordmark" data-aos="fade-up" data-aos-offset="0">Castros Consultoria</p>
       <div class="d-flex flex-wrap justify-content-between gap-2 pt-3 foot-bottom">
-        <span>© 2026 Castros Consultoria. All rights reserved.</span>
+        <span data-i18n="footer.2026-castros-consultoria-todos-os-direitos">© 2026 Castros Consultoria. Todos os direitos reservados.</span>
       </div>
     </div>
   </footer>
 
-  <button aria-label="Voltar ao topo" id="backTop">
+  <!-- EVENTOS | detail modal: filled by js/events.js for whichever card was clicked -->
+  <div class="modal fade event-modal" id="eventModal" tabindex="-1" aria-labelledby="eventModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable modal-fullscreen-sm-down">
+      <div class="modal-content">
+        <div class="event-modal-media">
+          <img data-field="image" src="" alt="" width="1200" height="525">
+          <span class="badge-c event-badge" data-field="category"></span>
+          <span class="event-status" data-field="status" hidden><i class="bi bi-check2-circle" aria-hidden="true"></i><span data-i18n="events.realizado">Realizado</span></span>
+          <button type="button" class="btn-close event-modal-close" data-bs-dismiss="modal" aria-label="Fechar" data-i18n-attr="aria-label:events.fechar"></button>
+        </div>
+        <div class="modal-body">
+          <h2 class="event-modal-title" id="eventModalTitle" data-field="title"></h2>
+          <ul class="event-facts">
+            <li><i class="bi bi-calendar-event" aria-hidden="true"></i><div><small data-i18n="events.data">Data</small><span data-field="date"></span></div></li>
+            <li data-row="time"><i class="bi bi-clock" aria-hidden="true"></i><div><small data-i18n="events.horario">Horário</small><span data-field="time"></span></div></li>
+            <li><i class="bi bi-geo-alt" aria-hidden="true"></i><div><small data-i18n="events.local">Local</small><span data-field="city"></span></div></li>
+            <li data-row="format"><i class="bi bi-people" aria-hidden="true"></i><div><small data-i18n="events.formato">Formato</small><span data-field="format"></span></div></li>
+          </ul>
+          <p class="event-modal-lead" data-field="description"></p>
+          <div data-row="highlights">
+            <h3 class="event-modal-sub" data-i18n="events.o-que-vai-levar">O que vai levar</h3>
+            <ul class="event-highlights" data-field="highlights"></ul>
+          </div>
+          <p class="event-past-note" data-row="pastNote"><i class="bi bi-info-circle" aria-hidden="true"></i>
+            <span data-i18n="events.este-evento-ja-foi-realizado-deixe">Este evento já foi realizado. Deixe-nos o seu contacto e avisamos quando houver uma nova edição.</span></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-link event-back" data-row="back" data-event-action="back">
+            <i class="bi bi-arrow-left" aria-hidden="true"></i><span data-i18n="events.todos-os-eventos">Todos os eventos</span></button>
+          <button type="button" class="btn btn-cyan px-4 py-2 event-cta" data-field="cta" data-event-action="register" data-i18n="events.inscrever-me">Inscrever-me</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EVENTOS | "Ver todos": every event, same card template, rendered by js/events.js -->
+  <div class="modal fade events-all-modal" id="eventsAllModal" tabindex="-1" aria-labelledby="eventsAllTitle" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable modal-fullscreen-lg-down">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div>
+            <span class="eyebrow" data-i18n="events.eventos">Eventos</span>
+            <h2 class="modal-title" id="eventsAllTitle" data-i18n="events.todos-os-eventos">Todos os eventos</h2>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar" data-i18n-attr="aria-label:events.fechar"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row g-4" id="eventsAllGrid"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button aria-label="Voltar ao topo" id="backTop" data-i18n-attr="aria-label:common.voltar-ao-topo">
     <svg class="bi" style="font-size:1.2rem">
       <use xlink:href="#i-chevronup"></use>
     </svg>
   </button>
 
-  <a href="https://wa.me/258848665180" target="_blank" rel="noopener" id="whatsappBtn" aria-label="Falar no WhatsApp">
+  <a href="https://wa.me/258848665180" target="_blank" rel="noopener" id="whatsappBtn" aria-label="Falar no WhatsApp" data-i18n-attr="aria-label:common.falar-no-whatsapp">
     <i class="bi bi-whatsapp"></i>
   </a>
 
@@ -1246,8 +1414,12 @@
   <!-- EXTERNAL JS LINK  -->
   <script src="js/javascript.js"></script>
 
+  <script src="js/hero-carousel.js"></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Eventos: cards + modals (must run before AOS starts) -->
+  <script src="js/events.js"></script>
 
   <script>
     /* JAVASCRIPT | Navigation, interactions and animations */
@@ -1302,21 +1474,52 @@
         });
       }
 
-      /* SERVICES ACCORDION */
+      /* SERVICES ACCORDION
+         Desktop: horizontal, one service always open (clicking the open one does nothing).
+         Phones (< 768px, same breakpoint as the CSS): normal accordion; tap a header to
+         open it, tap it again to close it; opening one closes the others.
+         index.html#servico-espacos (e.g. from the navbar) opens that service. */
       const tabsWrap = document.getElementById("servicesTabs");
       if (tabsWrap) {
+        const items = Array.from(tabsWrap.querySelectorAll(".tab-item"));
+        const phone = window.matchMedia("(max-width: 767.98px)");
+
+        const setOpen = function (item, open) {
+          item.classList.toggle("active", open);
+          item.querySelector(".tab-strip").setAttribute("aria-expanded", String(open));
+        };
+        const openOnly = function (target) {
+          items.forEach(function (item) { setOpen(item, item === target); });
+        };
+
         tabsWrap.addEventListener("click", function (event) {
-          const button = event.target.closest(".tab-item");
-          if (!button || button.classList.contains("active")) return;
-
-          tabsWrap.querySelectorAll(".tab-item").forEach(function (tab) {
-            tab.classList.remove("active");
-            tab.setAttribute("aria-expanded", "false");
-          });
-
-          button.classList.add("active");
-          button.setAttribute("aria-expanded", "true");
+          const strip = event.target.closest(".tab-strip");
+          if (!strip) return;
+          const item = strip.closest(".tab-item");
+          if (item.classList.contains("active")) {
+            if (phone.matches) setOpen(item, false);       // phones: tap again to close
+            return;
+          }
+          openOnly(item);
         });
+
+        // back to the desktop layout with everything closed: open the first service
+        const keepOneOpen = function () {
+          if (!phone.matches && !items.some(function (i) { return i.classList.contains("active"); })) openOnly(items[0]);
+        };
+        if (phone.addEventListener) phone.addEventListener("change", keepOneOpen);
+
+        // #servico-... in the address: open that service (no animation, so the page doesn't shift while scrolling)
+        const fromHash = function () {
+          const target = window.location.hash ? document.getElementById(window.location.hash.slice(1)) : null;
+          if (!target || items.indexOf(target) === -1) return;
+          tabsWrap.classList.add("is-jumping");
+          openOnly(target);
+          void tabsWrap.offsetHeight;
+          requestAnimationFrame(function () { tabsWrap.classList.remove("is-jumping"); });
+        };
+        fromHash();
+        window.addEventListener("hashchange", fromHash);
       }
 
       /* REVEAL ANIMATIONS */
@@ -1377,12 +1580,29 @@
 
   <script>
     /* AOS INITIALIZATION */
-    if (window.AOS) {
+    function startAOS() {
+      if (!window.AOS) return;
       AOS.init({
         duration: 700,
-        offset: 80
+        offset: 80,
+        easing: "ease-out-cubic",
+        once: true,                                   // animate on the way in, don't replay on every scroll
+        disable: function () {                        // respect "reduce motion"
+          return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        }
       });
+      // tabs, the multi-step form, the testimonials etc. change the page height:
+      // recalculate where each element is so animations still fire at the right moment
+      if ("ResizeObserver" in window) {
+        var t;
+        new ResizeObserver(function () {
+          clearTimeout(t);
+          t = setTimeout(function () { AOS.refresh(); }, 200);
+        }).observe(document.querySelector("main") || document.body);
+      }
     }
+    if (window.siteLoaderDone || !document.documentElement.classList.contains("is-loading")) startAOS();
+    else document.addEventListener("site-loader:done", startAOS, { once: true });
   </script>
 
 </body>

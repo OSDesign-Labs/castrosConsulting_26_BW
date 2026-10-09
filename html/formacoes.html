@@ -3,8 +3,25 @@
 
 <head>
     <meta charset="UTF-8">
+    <!-- SITE LOADER: first in <head> so it is part of the first paint (css/site-loader.css, js/site-loader.js) -->
+    <link rel="stylesheet" href="../css/site-loader.css">
+    <link rel="preload" as="image" href="../assets/brand/castros-mark.webp">
+    <link rel="preload" as="font" type="font/woff2" href="../assets/Typeface/Montserrat/web/Montserrat-latin-var.woff2" crossorigin>
+    <script>
+      (function (r) {
+        if (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) r.classList.add("loader-reduced");
+        try {
+          if (r.getAttribute("data-loader") === "session" && sessionStorage.getItem("cc-loader-seen")) return;
+          if (sessionStorage.getItem("cc-loader-handoff")) r.classList.add("loader-handoff");
+        } catch (e) {}
+        r.classList.add("is-loading");
+      })(document.documentElement);
+    </script>
+    <!-- PT/EN: ../js/i18n.js fetches ../js/translations.json -->
+    <script src="../js/i18n.js" defer></script>
+    <script src="../js/site-loader.js" defer></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Serviços — Castro's Consultoria</title>
+    <title data-i18n="meta.servicos-castro-s-consultoria">Serviços — Castro's Consultoria</title>
 
     <!-- CSS External Stylesheet Link (same file + same load order as index.html) -->
     <link rel="stylesheet" href="../css/services.css">
@@ -24,6 +41,15 @@
 
 <body class="subpage">
 
+    <!-- SITE LOADER -->
+    <div class="site-loader" id="siteLoader" aria-hidden="true">
+        <div class="site-loader__bg"></div>
+        <div class="brand-lockup site-loader__lockup">
+            <img class="brand-mark" src="../assets/brand/castros-mark.webp" width="528" height="640" alt="">
+            <span class="brand-name-clip"><span class="brand-name">Castros Consultoria</span></span>
+        </div>
+    </div>
+
     <!-- 01.1- NAVBAR -->
     <!-- Copied verbatim from index.html — Francisco's Section.
          Static multi-page site has no include system, so this must be
@@ -32,41 +58,53 @@
     <header>
         <nav id="mainNavbar" class="main-navbar">
             <div class="container-fluid">
-                <a class="navbar-brand" href="../index.html">
-                    Castros Consultoria
+                <a class="navbar-brand brand-lockup" href="../index.html" aria-label="Castros Consultoria, página inicial" data-i18n-attr="aria-label:nav.castros-consultoria-pagina-inicial">
+                    <img class="brand-mark" src="../assets/brand/castros-mark.webp" width="528" height="640" alt="">
+                    <span class="brand-name-clip"><span class="brand-name">Castros Consultoria</span></span>
                 </a>
                 <div class="desktop-navbar d-none d-lg-grid">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="../index.html">Início</a>
+                            <a class="nav-link" href="../index.html" data-i18n="nav.inicio">Início</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../index.html#about">Sobre nós</a>
+                            <a class="nav-link" href="../index.html#sobre" data-i18n="nav.sobre-nos">Sobre nós</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle active" href="#" id="servicesDropdown" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
+                                data-bs-toggle="dropdown" aria-expanded="false" data-i18n="nav.servicos">
                                 Serviços
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="atendimento.html">Atendimento</a></li>
-                                <li><a class="dropdown-item" href="consultoria.html">Consultoria</a></li>
-                                <li><a class="dropdown-item" href="formacoes.html">Formações</a></li>
-                                <li><a class="dropdown-item" href="palestras.html">Palestras</a></li>
-                                <li><a class="dropdown-item" href="treinamento.html">Treinamento</a></li>
+                                <li><a class="dropdown-item" href="consultoria.html" data-i18n="nav.consultoria">Consultoria</a></li>
+                                <li><a class="dropdown-item" href="formacoes.html" data-i18n="nav.formacoes-e-treinamento">Formações e Treinamento</a></li>
+                                <li><a class="dropdown-item" href="palestras.html" data-i18n="nav.palestras-e-workshops">Palestras e Workshops</a></li>
+                                <li><a class="dropdown-item" href="../index.html#servico-espacos" data-i18n="nav.espacos-e-podcasts">Espaços e Podcasts</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../index.html#events">Eventos</a>
+                            <a class="nav-link" href="../index.html#eventos" data-i18n="nav.eventos">Eventos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../index.html#contact">Contacto</a>
+                            <a class="nav-link" href="#contact-form" data-i18n="nav.contacto">Contacto</a>
                         </li>
                     </ul>
-                    <a href="../index.html#contact" class="btn btn-primary navbar-cta">Contato</a>
+                    <!-- LANGUAGE + CTA -->
+                    <div class="nav-actions">
+                        <div class="lang-switch" role="group" aria-label="Idioma" data-i18n-attr="aria-label:lang.group">
+                          <button type="button" class="lang-switch__btn is-active" data-lang="pt" aria-pressed="true" lang="pt" aria-label="Português">PT</button>
+                          <button type="button" class="lang-switch__btn" data-lang="en" aria-pressed="false" lang="en" aria-label="English">EN</button>
+                        </div>
+                        <a href="#contact-form" class="btn btn-primary navbar-cta" data-i18n="nav.cta">Contacto</a>
+                    </div>
+                </div>
+                <!-- MOBILE / TABLET LANGUAGE -->
+                <div class="lang-switch lang-switch--bar d-lg-none" role="group" aria-label="Idioma" data-i18n-attr="aria-label:lang.group">
+                  <button type="button" class="lang-switch__btn is-active" data-lang="pt" aria-pressed="true" lang="pt" aria-label="Português">PT</button>
+                  <button type="button" class="lang-switch__btn" data-lang="en" aria-pressed="false" lang="en" aria-label="English">EN</button>
                 </div>
                 <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="offcanvas"
-                    data-bs-target="#mobileNavbar" aria-controls="mobileNavbar" aria-label="Abrir menu">
+                    data-bs-target="#mobileNavbar" aria-controls="mobileNavbar" aria-label="Abrir menu" data-i18n-attr="aria-label:nav.abrir-menu">
                     <span class="navbar-toggler-icon"></span>
                 </button>
             </div>
@@ -76,28 +114,27 @@
             aria-labelledby="mobileNavbarLabel">
             <div class="offcanvas-header">
                 <a href="../index.html" class="offcanvas-title" id="mobileNavbarLabel">Castros Consultoria</a>
-                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Fechar"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Fechar" data-i18n-attr="aria-label:nav.fechar"></button>
             </div>
             <div class="offcanvas-body">
                 <ul class="mobile-nav">
-                    <li class="nav-item"><a class="nav-link" href="../index.html" data-bs-dismiss="offcanvas">Início</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../index.html#about" data-bs-dismiss="offcanvas">Sobre nós</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../index.html" data-i18n="nav.inicio">Início</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../index.html#sobre" data-i18n="nav.sobre-nos">Sobre nós</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle active" href="#" id="mobileServicesDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">Serviços</a>
+                            data-bs-toggle="dropdown" aria-expanded="false" data-i18n="nav.servicos">Serviços</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="atendimento.html">Atendimento</a></li>
-                            <li><a class="dropdown-item" href="consultoria.html">Consultoria</a></li>
-                            <li><a class="dropdown-item" href="formacoes.html">Formações</a></li>
-                            <li><a class="dropdown-item" href="palestras.html">Palestras</a></li>
-                            <li><a class="dropdown-item" href="treinamento.html">Treinamento</a></li>
+                            <li><a class="dropdown-item" href="consultoria.html" data-i18n="nav.consultoria">Consultoria</a></li>
+                            <li><a class="dropdown-item" href="formacoes.html" data-i18n="nav.formacoes-e-treinamento">Formações e Treinamento</a></li>
+                            <li><a class="dropdown-item" href="palestras.html" data-i18n="nav.palestras-e-workshops">Palestras e Workshops</a></li>
+                            <li><a class="dropdown-item" href="../index.html#servico-espacos" data-i18n="nav.espacos-e-podcasts">Espaços e Podcasts</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="../index.html#events" data-bs-dismiss="offcanvas">Eventos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../index.html#contact" data-bs-dismiss="offcanvas">Contacto</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../index.html#eventos" data-i18n="nav.eventos">Eventos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact-form" data-i18n="nav.contacto">Contacto</a></li>
                 </ul>
                 <div class="mobile-cta-wrapper">
-                    <a href="../index.html#contact" class="btn btn-primary" data-bs-dismiss="offcanvas">Contato</a>
+                    <a href="#contact-form" class="btn btn-primary" data-i18n="nav.cta">Contacto</a>
                 </div>
             </div>
         </div>
@@ -108,9 +145,9 @@
         <!-- HERO — simple centered header, not full-height (this is a sub-page, not the homepage) -->
         <section id="formacoes" class="section page-hero">
             <div class="container text-center">
-                <span class="eyebrow">Serviços</span>
-                <h1 class="mb-3">Formações e Treinamento</h1>
-                <p class="text-secondary mx-auto" style="max-width: 620px;">
+                <span class="eyebrow" data-i18n="formacoes.hero.servicos">Serviços</span>
+                <h1 class="mb-3" data-i18n="formacoes.hero.formacoes-e-treinamento">Formações e Treinamento</h1>
+                <p class="text-secondary mx-auto" style="max-width: 620px;" data-i18n="formacoes.hero.sessoes-praticas-e-dinamicas-desenhadas-para">
                     Sessões práticas e dinâmicas, desenhadas para gerar competências aplicáveis desde o
                     primeiro dia, com orientação direta de quem já esteve no terreno.
                 </p>
@@ -125,8 +162,8 @@
                         <button type="button" class="fm-card" data-bs-toggle="modal" data-bs-target="#modalFormacoes">
                             <img src="../assets/workshop.jpg" alt="" loading="lazy">
                             <span class="fm-card-body">
-                                <span class="fm-card-title">Formações</span>
-                                <span class="link-arrow">Ver detalhes <span class="arrowRight">&gt;</span></span>
+                                <span class="fm-card-title" data-i18n="formacoes.programs.formacoes">Formações</span>
+                                <span class="link-arrow"><span data-i18n="formacoes.programs.ver-detalhes">Ver detalhes</span> <span class="arrowRight">&gt;</span></span>
                             </span>
                         </button>
                     </div>
@@ -134,8 +171,8 @@
                         <button type="button" class="fm-card" data-bs-toggle="modal" data-bs-target="#modalTreinamento">
                             <img src="../assets/office.jpg" alt="" loading="lazy">
                             <span class="fm-card-body">
-                                <span class="fm-card-title">Treinamento</span>
-                                <span class="link-arrow">Ver detalhes <span class="arrowRight">&gt;</span></span>
+                                <span class="fm-card-title" data-i18n="formacoes.programs.treinamento">Treinamento</span>
+                                <span class="link-arrow"><span data-i18n="formacoes.programs.ver-detalhes">Ver detalhes</span> <span class="arrowRight">&gt;</span></span>
                             </span>
                         </button>
                     </div>
@@ -150,36 +187,36 @@
                 <div id="servicosTestimonial" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-indicators">
                         <button type="button" data-bs-target="#servicosTestimonial" data-bs-slide-to="0" class="active"
-                            aria-current="true" aria-label="Testemunho 1"></button>
+                            aria-current="true" aria-label="Testemunho 1" data-i18n-attr="aria-label:formacoes.testimonials.testemunho-1"></button>
                         <button type="button" data-bs-target="#servicosTestimonial" data-bs-slide-to="1"
-                            aria-label="Testemunho 2"></button>
+                            aria-label="Testemunho 2" data-i18n-attr="aria-label:formacoes.testimonials.testemunho-2"></button>
                         <button type="button" data-bs-target="#servicosTestimonial" data-bs-slide-to="2"
-                            aria-label="Testemunho 3"></button>
+                            aria-label="Testemunho 3" data-i18n-attr="aria-label:formacoes.testimonials.testemunho-3"></button>
                     </div>
                     <div class="carousel-inner text-center pb-5" style="max-width: 700px; margin: 0 auto;">
                         <div class="carousel-item active">
-                            <p class="testi-quote mb-4">
+                            <p class="testi-quote mb-4" data-i18n="formacoes.testimonials.a-consultoria-nos-ajudou-a-transformar">
                                 "A consultoria nos ajudou a transformar nossa cultura interna, hoje temos líderes
                                 mais conscientes e equipes mais engajadas."
                             </p>
-                            <p class="testi-name mb-0">Diretora de RH</p>
-                            <p class="small text-secondary">Setor financeiro</p>
+                            <p class="testi-name mb-0" data-i18n="formacoes.testimonials.diretora-de-rh">Diretora de RH</p>
+                            <p class="small text-secondary" data-i18n="formacoes.testimonials.setor-financeiro">Setor financeiro</p>
                         </div>
                         <div class="carousel-item">
-                            <p class="testi-quote mb-4">
+                            <p class="testi-quote mb-4" data-i18n="formacoes.testimonials.depois-dos-workshops-sobre-etica-conseguimos">
                                 "Depois dos workshops sobre ética, conseguimos reduzir conflitos internos e
                                 fortalecer a confiança entre gestores e colaboradores."
                             </p>
                             <p class="testi-name mb-0">CEO</p>
-                            <p class="small text-secondary">Setor industrial</p>
+                            <p class="small text-secondary" data-i18n="formacoes.testimonials.setor-industrial">Setor industrial</p>
                         </div>
                         <div class="carousel-item">
-                            <p class="testi-quote mb-4">
+                            <p class="testi-quote mb-4" data-i18n="formacoes.testimonials.o-programa-de-lideranca-etica-foi">
                                 "O programa de liderança ética foi um divisor de águas na forma como nossos
                                 gestores tomam decisões."
                             </p>
-                            <p class="testi-name mb-0">Gerente de Pessoas</p>
-                            <p class="small text-secondary">Setor de tecnologia</p>
+                            <p class="testi-name mb-0" data-i18n="formacoes.testimonials.gerente-de-pessoas">Gerente de Pessoas</p>
+                            <p class="small text-secondary" data-i18n="formacoes.testimonials.setor-de-tecnologia">Setor de tecnologia</p>
                         </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#servicosTestimonial" data-bs-slide="prev">
@@ -195,16 +232,16 @@
         <!-- FINAL CTA — same pattern as index.html's Promo section -->
         <section id="contato" class="section">
             <div class="text-center cta-panel">
-                <h2 class="mb-3">
+                <h2 class="mb-3" data-i18n-html="page-cta.pronto-para-transformar-a-sua-organizacao">
                     Pronto para transformar<br>a sua organização?
                 </h2>
-                <p class="text-secondary mb-4">
+                <p class="text-secondary mb-4" data-i18n="page-cta.comece-com-uma-conversa-entendemos-o">
                     Comece com uma conversa. Entendemos o seu contexto e mostramos o caminho
                     prático para avançar.
                 </p>
                 <div class="d-flex flex-row gap-3 justify-content-center">
-                    <a href="mailto:contacto@castrosconsultoria.co.mz" class="btn btn-cyan px-4 py-3">Começar</a>
-                    <a href="#processo" class="btn btn-outline-light-c px-4 py-3">Processo</a>
+                    <a href="mailto:contacto@castrosconsultoria.co.mz" class="btn btn-cyan px-4 py-3" data-i18n="page-cta.comecar">Começar</a>
+                    <a href="#processo" class="btn btn-outline-light-c px-4 py-3" data-i18n="page-cta.processo">Processo</a>
                 </div>
             </div>
         </section>
@@ -213,19 +250,19 @@
         <section id="perguntas" class="section section-band">
             <div class="container">
                 <div class="text-center mb-5">
-                    <h2>Perguntas</h2>
-                    <p class="text-secondary">Respostas diretas para as dúvidas mais comuns antes de começar.</p>
+                    <h2 data-i18n="faq.perguntas">Perguntas</h2>
+                    <p class="text-secondary" data-i18n="faq.respostas-diretas-para-as-duvidas-mais">Respostas diretas para as dúvidas mais comuns antes de começar.</p>
                 </div>
 
                 <div class="accordion mx-auto" id="faqAccordion" style="max-width: 800px;">
                     <div class="accordion-item">
                         <h3 class="accordion-header">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" data-i18n="faq.quem-pode-contratar">
                                 Quem pode contratar?
                             </button>
                         </h3>
                         <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body text-secondary">
+                            <div class="accordion-body text-secondary" data-i18n="faq.empresas-organizacoes-lideres-e-equipas-que">
                                 Empresas, organizações, líderes e equipas que enfrentam decisões difíceis ou
                                 precisam de novas ferramentas. O serviço adapta-se ao tamanho e ao setor de
                                 cada organização.
@@ -234,12 +271,12 @@
                     </div>
                     <div class="accordion-item">
                         <h3 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" data-i18n="faq.o-servico-e-personalizado">
                                 O serviço é personalizado?
                             </button>
                         </h3>
                         <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body text-secondary">
+                            <div class="accordion-body text-secondary" data-i18n="faq.sim-cada-intervencao-comeca-com-uma">
                                 Sim. Cada intervenção começa com uma conversa para entender o seu contexto.
                                 O diagnóstico e a proposta são desenhados à medida da sua realidade.
                             </div>
@@ -247,12 +284,12 @@
                     </div>
                     <div class="accordion-item">
                         <h3 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" data-i18n="faq.quanto-tempo-dura">
                                 Quanto tempo dura?
                             </button>
                         </h3>
                         <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body text-secondary">
+                            <div class="accordion-body text-secondary" data-i18n="faq.depende-da-complexidade-do-desafio-alguns">
                                 Depende da complexidade do desafio. Alguns processos terminam em semanas,
                                 outros exigem acompanhamento contínuo. Definimos prazos claros na proposta.
                             </div>
@@ -260,12 +297,12 @@
                     </div>
                     <div class="accordion-item">
                         <h3 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" data-i18n="faq.onde-e-realizado">
                                 Onde é realizado?
                             </button>
                         </h3>
                         <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body text-secondary">
+                            <div class="accordion-body text-secondary" data-i18n="faq.trabalhamos-presencialmente-na-sua-organizacao-em">
                                 Trabalhamos presencialmente na sua organização, em Maputo ou online. O
                                 formato é definido de acordo com a sua preferência e necessidade.
                             </div>
@@ -273,12 +310,12 @@
                     </div>
                     <div class="accordion-item">
                         <h3 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5" data-i18n="faq.como-comeca-o-processo">
                                 Como começa o processo?
                             </button>
                         </h3>
                         <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body text-secondary">
+                            <div class="accordion-body text-secondary" data-i18n="faq.com-uma-conversa-inicial-ouvimos-o">
                                 Com uma conversa inicial. Ouvimos o seu contexto, identificamos os bloqueios
                                 e apresentamos um caminho prático antes de qualquer compromisso.
                             </div>
@@ -295,9 +332,9 @@
                 <!-- CONTACT HEADER -->
                 <div class="row justify-content-center text-center mb-5">
                     <div class="col-lg-8">
-                        <span class="contact-eyebrow">Contacto</span>
-                        <h1 class="contact-title">Vamos conversar sobre o seu próximo passo.</h1>
-                        <p class="contact-intro">
+                        <span class="contact-eyebrow" data-i18n="contact.contacto">Contacto</span>
+                        <h1 class="contact-title" data-i18n="contact.vamos-conversar-sobre-o-seu-proximo">Vamos conversar sobre o seu próximo passo.</h1>
+                        <p class="contact-intro" data-i18n="contact.conte-nos-um-pouco-sobre-o">
                             Conte-nos um pouco sobre o que procura. A nossa equipa analisará a sua necessidade
                             e entrará em contacto consigo.
                         </p>
@@ -311,7 +348,7 @@
                         <div class="col-6 col-md-4 col-lg-2">
                             <span class="contact-info-icon"><i class="bi bi-geo-alt"></i></span>
                             <a href="#" class="contact-info-item">
-                                <span class="contact-info-content"><small>Localização</small><strong>Maputo</strong></span>
+                                <span class="contact-info-content"><small data-i18n="contact.localizacao">Localização</small><strong>Maputo</strong></span>
                             </a>
                         </div>
 
@@ -347,7 +384,7 @@
                         <div class="col-6 col-md-4 col-lg-2">
                             <span class="contact-info-icon"><i class="bi bi-telephone"></i></span>
                             <a href="tel:+258000000000" class="contact-info-item">
-                                <span class="contact-info-content"><small>Telefone</small><strong>+258 ...</strong></span>
+                                <span class="contact-info-content"><small data-i18n="contact.telefone">Telefone</small><strong>+258 ...</strong></span>
                             </a>
                         </div>
 
@@ -362,19 +399,19 @@
                         <div class="contact-image-card h-100">
                             <div class="contact-image-overlay"></div>
                             <div class="contact-image-content">
-                                <span class="contact-image-label">Estamos disponíveis para ouvir.</span>
-                                <h2>Pessoas reais.<br>Contextos reais.<br>Soluções relevantes.</h2>
-                                <p>Partilhe connosco o desafio ou oportunidade que pretende desenvolver.</p>
+                                <span class="contact-image-label" data-i18n="contact.estamos-disponiveis-para-ouvir">Estamos disponíveis para ouvir.</span>
+                                <h2 data-i18n-html="contact.pessoas-reais-contextos-reais-solucoes-relevantes">Pessoas reais.<br>Contextos reais.<br>Soluções relevantes.</h2>
+                                <p data-i18n="contact.partilhe-connosco-o-desafio-ou-oportunidade">Partilhe connosco o desafio ou oportunidade que pretende desenvolver.</p>
                             </div>
                         </div>
                     </div>
 
                     <!-- FORM -->
                     <div class="col-lg-7">
-                        <div class="contact-form-card">
+                        <div class="contact-form-card" id="contact-form">
 
                             <!-- FORM PROGRESS -->
-                            <div class="form-progress" aria-label="Progresso do formulário">
+                            <div class="form-progress" aria-label="Progresso do formulário" data-i18n-attr="aria-label:contact.progresso-do-formulario">
                                 <div class="progress-step active" data-progress-step="1"><span>1</span></div>
                                 <div class="progress-line"></div>
                                 <div class="progress-step" data-progress-step="2"><span>2</span></div>
@@ -383,9 +420,9 @@
                             </div>
 
                             <div class="progress-labels">
-                                <span>Informação</span>
-                                <span>Necessidade</span>
-                                <span>Mensagem</span>
+                                <span data-i18n="contact.informacao">Informação</span>
+                                <span data-i18n="contact.necessidade">Necessidade</span>
+                                <span data-i18n="contact.mensagem">Mensagem</span>
                             </div>
 
                             <form id="contactForm" novalidate>
@@ -395,31 +432,31 @@
                                 <div class="form-step active" data-form-step="1">
                                     <div class="mb-4">
                                         <span class="form-step-number">01</span>
-                                        <h2 class="form-step-title">Vamos começar.</h2>
-                                        <p class="form-step-description">Diga-nos como podemos entrar em contacto consigo.</p>
+                                        <h2 class="form-step-title" data-i18n="contact.vamos-comecar">Vamos começar.</h2>
+                                        <p class="form-step-description" data-i18n="contact.diga-nos-como-podemos-entrar-em">Diga-nos como podemos entrar em contacto consigo.</p>
                                     </div>
 
                                     <div class="row g-3">
                                         <div class="col-12">
-                                            <label for="name" class="form-label">Nome <span>*</span></label>
+                                            <label for="name" class="form-label"><span data-i18n="contact.nome">Nome</span> <span>*</span></label>
                                             <input type="text" class="form-control" id="name" name="name" placeholder="O seu nome completo"
-                                                autocomplete="name" required>
+                                                autocomplete="name" required data-i18n-attr="placeholder:contact.o-seu-nome-completo">
                                         </div>
 
                                         <div class="col-md-6">
                                             <label for="email" class="form-label">Email <span>*</span></label>
                                             <input type="email" class="form-control" id="email" name="email" placeholder="nome@empresa.com"
-                                                autocomplete="email" required>
+                                                autocomplete="email" required data-i18n-attr="placeholder:contact.nome-empresa-com">
                                         </div>
 
                                         <div class="col-md-6">
-                                            <label for="organization" class="form-label">Organização</label>
+                                            <label for="organization" class="form-label" data-i18n="contact.organizacao">Organização</label>
                                             <input type="text" class="form-control" id="organization" name="organization"
-                                                placeholder="Empresa / Organização" autocomplete="organization">
+                                                placeholder="Empresa / Organização" autocomplete="organization" data-i18n-attr="placeholder:contact.empresa-organizacao">
                                         </div>
 
                                         <div class="col-12">
-                                            <label for="phone" class="form-label">WhatsApp / Telefone</label>
+                                            <label for="phone" class="form-label" data-i18n="contact.whatsapp-telefone">WhatsApp / Telefone</label>
                                             <input type="tel" class="form-control" id="phone" name="phone" placeholder="+258 ___ ___ ___"
                                                 autocomplete="tel">
                                         </div>
@@ -427,7 +464,7 @@
 
                                     <div class="d-flex justify-content-end mt-4">
                                         <button type="button" class="btn btn-contact-primary" data-next-step>
-                                            Continuar <i class="bi bi-arrow-right"></i>
+                                            <span data-i18n="contact.continuar">Continuar</span> <i class="bi bi-arrow-right"></i>
                                         </button>
                                     </div>
                                 </div>
@@ -436,40 +473,40 @@
                                 <div class="form-step" data-form-step="2">
                                     <div class="mb-4">
                                         <span class="form-step-number">02</span>
-                                        <h2 class="form-step-title">Como podemos ajudar?</h2>
-                                        <p class="form-step-description">
+                                        <h2 class="form-step-title" data-i18n="contact.como-podemos-ajudar">Como podemos ajudar?</h2>
+                                        <p class="form-step-description" data-i18n="contact.selecione-o-servico-que-melhor-corresponde">
                                             Selecione o serviço que melhor corresponde à sua necessidade.
                                         </p>
                                     </div>
 
                                     <div class="row g-3">
                                         <div class="col-12">
-                                            <label for="service" class="form-label">Serviço <span>*</span></label>
+                                            <label for="service" class="form-label"><span data-i18n="contact.servico">Serviço</span> <span>*</span></label>
                                             <select class="form-select" id="service" name="service" required>
-                                                <option value="" selected disabled>Selecione um serviço</option>
-                                                <option>Consultoria</option>
-                                                <option>Formação</option>
-                                                <option>Treinamento</option>
-                                                <option>Palestras</option>
-                                                <option>Eventos</option>
-                                                <option>Outro</option>
+                                                <option value="" selected disabled data-i18n="contact.selecione-um-servico">Selecione um serviço</option>
+                                                <option value="Consultoria" data-i18n="contact.consultoria">Consultoria</option>
+                                                <option value="Formação" data-i18n="contact.formacao">Formação</option>
+                                                <option value="Treinamento" data-i18n="contact.treinamento">Treinamento</option>
+                                                <option value="Palestras" data-i18n="contact.palestras">Palestras</option>
+                                                <option value="Eventos" data-i18n="contact.eventos">Eventos</option>
+                                                <option value="Outro" data-i18n="contact.outro">Outro</option>
                                             </select>
                                         </div>
 
                                         <div class="col-12">
-                                            <label for="interest" class="form-label">Área de interesse <span>*</span></label>
+                                            <label for="interest" class="form-label"><span data-i18n="contact.area-de-interesse">Área de interesse</span> <span>*</span></label>
                                             <select class="form-select" id="interest" name="interest" disabled required>
-                                                <option value="" selected disabled>Primeiro selecione um serviço</option>
+                                                <option value="" selected disabled data-i18n="contact.primeiro-selecione-um-servico">Primeiro selecione um serviço</option>
                                             </select>
                                         </div>
                                     </div>
 
                                     <div class="d-flex justify-content-between gap-2 mt-4">
                                         <button type="button" class="btn btn-contact-secondary" data-prev-step>
-                                            <i class="bi bi-arrow-left"></i> Voltar
+                                            <i class="bi bi-arrow-left"></i> <span data-i18n="contact.voltar">Voltar</span>
                                         </button>
                                         <button type="button" class="btn btn-contact-primary" data-next-step>
-                                            Continuar <i class="bi bi-arrow-right"></i>
+                                            <span data-i18n="contact.continuar">Continuar</span> <i class="bi bi-arrow-right"></i>
                                         </button>
                                     </div>
                                 </div>
@@ -478,27 +515,27 @@
                                 <div class="form-step" data-form-step="3">
                                     <div class="mb-4">
                                         <span class="form-step-number">03</span>
-                                        <h2 class="form-step-title">Conte-nos mais.</h2>
-                                        <p class="form-step-description">
-                                            Partilhe brevemente a sua necessidade, desafio ou projecto.
+                                        <h2 class="form-step-title" data-i18n="contact.conte-nos-mais">Conte-nos mais.</h2>
+                                        <p class="form-step-description" data-i18n="contact.partilhe-brevemente-a-sua-necessidade-desafio">
+                                            Partilhe brevemente a sua necessidade, desafio ou projeto.
                                         </p>
                                     </div>
 
-                                    <label for="message" class="form-label">Mensagem <span>*</span></label>
+                                    <label for="message" class="form-label"><span data-i18n="contact.mensagem">Mensagem</span> <span>*</span></label>
                                     <textarea class="form-control message-field" id="message" name="message" rows="6"
-                                        placeholder="Conte-nos brevemente sobre a sua necessidade, desafio ou projecto..."
-                                        required></textarea>
+                                        placeholder="Conte-nos brevemente sobre a sua necessidade, desafio ou projeto..."
+                                        required data-i18n-attr="placeholder:contact.conte-nos-brevemente-sobre-a-sua"></textarea>
 
                                     <div class="d-flex justify-content-between gap-2 mt-4">
                                         <button type="button" class="btn btn-contact-secondary" data-prev-step>
-                                            <i class="bi bi-arrow-left"></i> Voltar
+                                            <i class="bi bi-arrow-left"></i> <span data-i18n="contact.voltar">Voltar</span>
                                         </button>
 
                                         <button type="submit" class="btn btn-contact-primary" id="submitButton">
-                                            <span class="submit-label">Enviar mensagem <i class="bi bi-send"></i></span>
+                                            <span class="submit-label"><span data-i18n="contact.enviar-mensagem">Enviar mensagem</span> <i class="bi bi-send"></i></span>
                                             <span class="submit-loading d-none">
                                                 <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
-                                                A processar...
+                                                <span data-i18n="contact.a-processar">A processar...</span>
                                             </span>
                                         </button>
                                     </div>
@@ -515,11 +552,11 @@
                 <div class="d-flex align-items-start gap-3">
                     <i class="bi bi-check-circle-fill contact-alert-icon"></i>
                     <div>
-                        <strong class="d-block" id="alertTitle">Mensagem enviada</strong>
-                        <span id="alertMessage">Obrigado por contactar a Castros Consultoria.</span>
+                        <strong class="d-block" id="alertTitle" data-i18n="contact.mensagem-enviada">Mensagem enviada</strong>
+                        <span id="alertMessage" data-i18n="contact.obrigado-por-contactar-a-castros-consultoria">Obrigado por contactar a Castros Consultoria.</span>
                     </div>
                 </div>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar" data-i18n-attr="aria-label:contact.fechar"></button>
             </div>
         </section>
 
@@ -532,13 +569,13 @@
           <div class="col-lg-6">
             <span class="navbar-brand" style="color:#fff!important">Castros</span>
             <div class="mt-4">
-              <h5>Localização</h5>
+              <h5 data-i18n="footer.localizacao">Localização</h5>
               <p class="foot-p mb-0 d-flex align-items-center gap-2"><svg class="bi">
                   <use xlink:href="#i-geo"></use>
                 </svg>Rua do Palmar, nº 35</p>
             </div>
             <div class="mt-3">
-              <h5>Contact</h5>
+              <h5 data-i18n="footer.contacto">Contacto</h5>
               <a class="d-flex align-items-center gap-2 mb-1" href="#"><svg class="bi">
                   <use xlink:href="#i-phone"></use>
                 </svg>84 123 4567</a>
@@ -566,33 +603,33 @@
           </div>
           <div class="col-lg-3 col-6">
             <h5>Menu</h5>
-            <a class="d-block mb-2" href="../index.html">Início</a>
-            <a class="d-block mb-2" href="../index.html#sobre">Sobre Nós</a>
-            <a class="d-block mb-2" href="../index.html#servicos">Serviços</a>
-            <a class="d-block mb-2" href="../index.html#eventos">Eventos</a>
-            <a class="d-block mb-2" href="#contact">Contacto</a>
+            <a class="d-block mb-2" href="../index.html" data-i18n="footer.inicio">Início</a>
+            <a class="d-block mb-2" href="../index.html#sobre" data-i18n="footer.sobre-nos">Sobre Nós</a>
+            <a class="d-block mb-2" href="../index.html#servicos" data-i18n="footer.servicos">Serviços</a>
+            <a class="d-block mb-2" href="../index.html#eventos" data-i18n="footer.eventos">Eventos</a>
+            <a class="d-block mb-2" href="#contact-form" data-i18n="footer.contacto">Contacto</a>
           </div>
           <div class="col-lg-3 col-6">
             <h5>Legal</h5>
-            <a class="d-block mb-2" href="#">Privacy Policy</a>
-            <a class="d-block mb-2" href="#">Terms of Service</a>
-            <a class="d-block mb-2" href="#">Cookies Settings</a>
+            <a class="d-block mb-2" href="#" data-i18n="footer.politica-de-privacidade">Política de Privacidade</a>
+            <a class="d-block mb-2" href="#" data-i18n="footer.termos-de-servico">Termos de Serviço</a>
+            <a class="d-block mb-2" href="#" data-i18n="footer.definicoes-de-cookies">Definições de Cookies</a>
           </div>
         </div>
         <p class="wordmark">Castros Consultoria</p>
         <div class="d-flex flex-wrap justify-content-between gap-2 pt-3 foot-bottom">
-          <span>© 2026 Castros Consultoria. All rights reserved.</span>
+          <span data-i18n="footer.2026-castros-consultoria-todos-os-direitos">© 2026 Castros Consultoria. Todos os direitos reservados.</span>
         </div>
       </div>
     </footer>
 
-    <button aria-label="Voltar ao topo" id="backTop">
+    <button aria-label="Voltar ao topo" id="backTop" data-i18n-attr="aria-label:common.voltar-ao-topo">
         <svg class="bi" style="font-size:1.2rem">
           <use xlink:href="#i-chevronup"></use>
         </svg>
     </button>
 
-    <a href="https://wa.me/258848665180" target="_blank" rel="noopener" id="whatsappBtn" aria-label="Falar no WhatsApp">
+    <a href="https://wa.me/258848665180" target="_blank" rel="noopener" id="whatsappBtn" aria-label="Falar no WhatsApp" data-i18n-attr="aria-label:common.falar-no-whatsapp">
         <i class="bi bi-whatsapp"></i>
     </a>
 
@@ -606,84 +643,84 @@
         <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h2 class="modal-title" id="modalFormacoesLabel">Formações</h2>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                    <h2 class="modal-title" id="modalFormacoesLabel" data-i18n="formacoes.modal-courses.formacoes">Formações</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar" data-i18n-attr="aria-label:formacoes.modal-courses.fechar"></button>
                 </div>
                 <div class="modal-body">
                     <div class="row g-5">
                         <!-- LEFT: description + course list -->
                         <div class="col-lg-6">
-                            <p class="fm-lede">
+                            <p class="fm-lede" data-i18n="formacoes.modal-courses.formacoes-praticas-e-dinamicas-desenhadas-para">
                                 Formações práticas e dinâmicas, desenhadas para dar ferramentas que se aplicam já no
                                 dia seguinte — da comunicação à liderança ética. Sessões conduzidas por quem já
                                 viveu, no terreno, os desafios que as equipas enfrentam.
                             </p>
-                            <h4 class="mb-3">O que vai aprender</h4>
+                            <h4 class="mb-3" data-i18n="formacoes.modal-courses.o-que-vai-aprender">O que vai aprender</h4>
                             <ul class="course-list">
-                                <li><i class="bi bi-check2-circle"></i>Oratória e comunicação com impacto</li>
-                                <li><i class="bi bi-check2-circle"></i>Liderança ética e tomada de decisão</li>
-                                <li><i class="bi bi-check2-circle"></i>Gestão de equipas e resolução de conflitos</li>
+                                <li><i class="bi bi-check2-circle"></i><span data-i18n="formacoes.modal-courses.oratoria-e-comunicacao-com-impacto">Oratória e comunicação com impacto</span></li>
+                                <li><i class="bi bi-check2-circle"></i><span data-i18n="formacoes.modal-courses.lideranca-etica-e-tomada-de-decisao">Liderança ética e tomada de decisão</span></li>
+                                <li><i class="bi bi-check2-circle"></i><span data-i18n="formacoes.modal-courses.gestao-de-equipas-e-resolucao-de">Gestão de equipas e resolução de conflitos</span></li>
                             </ul>
                         </div>
 
                         <!-- RIGHT: benefícios + próximas formações -->
                         <div class="col-lg-6">
-                            <h4 class="mb-3">Benefícios</h4>
+                            <h4 class="mb-3" data-i18n="formacoes.modal-courses.beneficios">Benefícios</h4>
                             <div class="benefit-row">
                                 <div class="benefit-item">
                                     <div class="icon-box"><svg class="bi">
                                             <use xlink:href="#i-mortarboard"></use>
                                         </svg></div>
-                                    <p>Aprendizagem prática</p>
+                                    <p data-i18n="formacoes.modal-courses.aprendizagem-pratica">Aprendizagem prática</p>
                                 </div>
                                 <div class="benefit-item">
                                     <div class="icon-box"><svg class="bi">
                                             <use xlink:href="#i-people"></use>
                                         </svg></div>
-                                    <p>Grupos reduzidos</p>
+                                    <p data-i18n="formacoes.modal-courses.grupos-reduzidos">Grupos reduzidos</p>
                                 </div>
                                 <div class="benefit-item">
                                     <div class="icon-box"><svg class="bi">
                                             <use xlink:href="#i-award"></use>
                                         </svg></div>
-                                    <p>Certificado de participação</p>
+                                    <p data-i18n="formacoes.modal-courses.certificado-de-participacao">Certificado de participação</p>
                                 </div>
                                 <div class="benefit-item">
                                     <div class="icon-box"><svg class="bi">
                                             <use xlink:href="#i-graph"></use>
                                         </svg></div>
-                                    <p>Resultados mensuráveis</p>
+                                    <p data-i18n="formacoes.modal-courses.resultados-mensuraveis">Resultados mensuráveis</p>
                                 </div>
                             </div>
 
                             <div class="highlight-card mt-4">
-                                <span class="eyebrow">Calendário</span>
-                                <h4 class="mb-3">Próximas Formações</h4>
+                                <span class="eyebrow" data-i18n="formacoes.modal-courses.calendario">Calendário</span>
+                                <h4 class="mb-3" data-i18n="formacoes.modal-courses.proximas-formacoes">Próximas Formações</h4>
                                 <ul class="upcoming-list">
                                     <li>
-                                        <span class="upcoming-title">Oratória e Comunicação com Impacto</span>
+                                        <span class="upcoming-title" data-i18n="formacoes.modal-courses.oratoria-e-comunicacao-com-impacto-2">Oratória e Comunicação com Impacto</span>
                                         <span class="d-flex gap-3 event-meta">
                                             <span class="d-flex align-items-center gap-1"><svg class="bi">
                                                     <use xlink:href="#i-calendar"></use>
-                                                </svg>14 Mar 2026</span>
+                                                </svg><span data-i18n="formacoes.modal-courses.14-mar-2026">14 Mar 2026</span></span>
                                             <span class="d-flex align-items-center gap-1"><svg class="bi">
                                                     <use xlink:href="#i-geo"></use>
                                                 </svg>Maputo</span>
                                         </span>
                                     </li>
                                     <li>
-                                        <span class="upcoming-title">Liderança Ética e Tomada de Decisão</span>
+                                        <span class="upcoming-title" data-i18n="formacoes.modal-courses.lideranca-etica-e-tomada-de-decisao-2">Liderança Ética e Tomada de Decisão</span>
                                         <span class="d-flex gap-3 event-meta">
                                             <span class="d-flex align-items-center gap-1"><svg class="bi">
                                                     <use xlink:href="#i-calendar"></use>
-                                                </svg>28 Mar 2026</span>
+                                                </svg><span data-i18n="formacoes.modal-courses.28-mar-2026">28 Mar 2026</span></span>
                                             <span class="d-flex align-items-center gap-1"><svg class="bi">
                                                     <use xlink:href="#i-geo"></use>
                                                 </svg>Online</span>
                                         </span>
                                     </li>
                                 </ul>
-                                <a class="link-arrow" href="../index.html#contact">Inscrever-se <span
+                                <a class="link-arrow" href="#contact-form"><span data-i18n="formacoes.modal-courses.inscrever-se">Inscrever-se</span> <span
                                         class="arrowRight">&gt;</span></a>
                             </div>
                         </div>
@@ -691,20 +728,20 @@
 
                     <!-- BASTIDORES -->
                     <div class="mt-5">
-                        <h4 class="mb-3">Bastidores</h4>
+                        <h4 class="mb-3" data-i18n="formacoes.modal-courses.bastidores">Bastidores</h4>
                         <div class="modal-gallery">
                             <div class="mg-a"><img src="../assets/workshop.jpg" alt="Sessão de formação em grupo"
-                                    loading="lazy"></div>
+                                    loading="lazy" data-i18n-attr="alt:formacoes.modal-courses.sessao-de-formacao-em-grupo"></div>
                             <div class="mg-b"><img src="../assets/oradora.jpg"
-                                    alt="Formadora a conduzir uma sessão de oratória" loading="lazy"></div>
+                                    alt="Formadora a conduzir uma sessão de oratória" loading="lazy" data-i18n-attr="alt:formacoes.modal-courses.formadora-a-conduzir-uma-sessao-de"></div>
                             <div class="mg-c"><img src="../assets/flyerteam.jpg" alt="Equipa reunida numa formação"
-                                    loading="lazy"></div>
+                                    loading="lazy" data-i18n-attr="alt:formacoes.modal-courses.equipa-reunida-numa-formacao"></div>
                             <div class="mg-d"><img src="../assets/people.jpg" alt="Participantes em dinâmica de grupo"
-                                    loading="lazy"></div>
+                                    loading="lazy" data-i18n-attr="alt:formacoes.modal-courses.participantes-em-dinamica-de-grupo"></div>
                             <div class="mg-e"><img src="../assets/meeting.jpg"
-                                    alt="Discussão em grupo durante a formação" loading="lazy"></div>
+                                    alt="Discussão em grupo durante a formação" loading="lazy" data-i18n-attr="alt:formacoes.modal-courses.discussao-em-grupo-durante-a-formacao"></div>
                             <div class="mg-f"><img src="../assets/workshop2.jpg"
-                                    alt="Momento de prática durante o workshop" loading="lazy"></div>
+                                    alt="Momento de prática durante o workshop" loading="lazy" data-i18n-attr="alt:formacoes.modal-courses.momento-de-pratica-durante-o-workshop"></div>
                         </div>
                     </div>
                 </div>
@@ -723,41 +760,41 @@
         <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h2 class="modal-title" id="modalTreinamentoLabel">Treinamento</h2>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                    <h2 class="modal-title" id="modalTreinamentoLabel" data-i18n="formacoes.modal-training.treinamento">Treinamento</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar" data-i18n-attr="aria-label:formacoes.modal-training.fechar"></button>
                 </div>
                 <div class="modal-body">
                     <!-- MEDIA FEATURE: 1 square + 2 stacked wide -->
                     <div class="media-trio mb-5">
                         <div class="mt-a"><img src="../assets/office.jpg" alt="Sessão de treinamento corporativo"
-                                loading="lazy"></div>
+                                loading="lazy" data-i18n-attr="alt:formacoes.modal-training.sessao-de-treinamento-corporativo"></div>
                         <div class="mt-b"><img src="../assets/atendimento.jpg"
-                                alt="Equipa em formação de atendimento" loading="lazy"></div>
+                                alt="Equipa em formação de atendimento" loading="lazy" data-i18n-attr="alt:formacoes.modal-training.equipa-em-formacao-de-atendimento"></div>
                         <div class="mt-c"><img src="../assets/blackconslt.jpg"
-                                alt="Consultor a apresentar numa sessão corporativa" loading="lazy"></div>
+                                alt="Consultor a apresentar numa sessão corporativa" loading="lazy" data-i18n-attr="alt:formacoes.modal-training.consultor-a-apresentar-numa-sessao-corporativa"></div>
                     </div>
 
                     <!-- 3 COLUMNS -->
                     <div class="service-columns row g-4 mb-5">
                         <div class="col-md-4">
-                            <h4>Atendimento</h4>
-                            <p class="small text-secondary">Equipas preparadas para um atendimento atento,
+                            <h4 data-i18n="formacoes.modal-training.atendimento">Atendimento</h4>
+                            <p class="small text-secondary" data-i18n="formacoes.modal-training.equipas-preparadas-para-um-atendimento-atento">Equipas preparadas para um atendimento atento,
                                 consistente e alinhado com a imagem da sua organização.</p>
-                            <a class="link-arrow" href="atendimento.html">Saber mais <span
+                            <a class="link-arrow" href="atendimento.html"><span data-i18n="formacoes.modal-training.saber-mais">Saber mais</span> <span
                                     class="arrowRight">&gt;</span></a>
                         </div>
                         <div class="col-md-4">
                             <h4>Corporate</h4>
-                            <p class="small text-secondary">Programas à medida para empresas que querem desenvolver
+                            <p class="small text-secondary" data-i18n="formacoes.modal-training.programas-a-medida-para-empresas-que">Programas à medida para empresas que querem desenvolver
                                 lideranças e fortalecer a cultura interna.</p>
-                            <a class="link-arrow" href="../index.html#contact">Saber mais <span
+                            <a class="link-arrow" href="#contact-form"><span data-i18n="formacoes.modal-training.saber-mais">Saber mais</span> <span
                                     class="arrowRight">&gt;</span></a>
                         </div>
                         <div class="col-md-4">
-                            <h4>Programas</h4>
-                            <p class="small text-secondary">Percursos estruturados, com acompanhamento contínuo, para
+                            <h4 data-i18n="formacoes.modal-training.programas">Programas</h4>
+                            <p class="small text-secondary" data-i18n="formacoes.modal-training.percursos-estruturados-com-acompanhamento-continuo-para">Percursos estruturados, com acompanhamento contínuo, para
                                 equipas que precisam de resultados duradouros.</p>
-                            <a class="link-arrow" href="#eventoTreinamento">Saber mais <span
+                            <a class="link-arrow" href="#eventoTreinamento"><span data-i18n="formacoes.modal-training.saber-mais">Saber mais</span> <span
                                     class="arrowRight">&gt;</span></a>
                         </div>
                     </div>
@@ -765,36 +802,36 @@
                     <!-- PRÓXIMO EVENTO -->
                     <div class="event-banner mb-5" id="eventoTreinamento">
                         <div>
-                            <span class="eyebrow">Próximo Evento</span>
-                            <h4 class="mb-1">Treinamento Corporativo: Atendimento com Propósito</h4>
+                            <span class="eyebrow" data-i18n="formacoes.modal-training.proximo-evento">Próximo Evento</span>
+                            <h4 class="mb-1" data-i18n="formacoes.modal-training.treinamento-corporativo-atendimento-com-proposito">Treinamento Corporativo: Atendimento com Propósito</h4>
                             <span class="d-flex gap-3 event-meta">
                                 <span class="d-flex align-items-center gap-1"><svg class="bi">
                                         <use xlink:href="#i-calendar"></use>
-                                    </svg>09 Abr 2026</span>
+                                    </svg><span data-i18n="formacoes.modal-training.09-abr-2026">09 Abr 2026</span></span>
                                 <span class="d-flex align-items-center gap-1"><svg class="bi">
                                         <use xlink:href="#i-geo"></use>
                                     </svg>Maputo</span>
                             </span>
                         </div>
-                        <a class="btn btn-cyan px-4 py-2" href="../index.html#contact">Inscrever-se</a>
+                        <a class="btn btn-cyan px-4 py-2" href="#contact-form" data-i18n="formacoes.modal-training.inscrever-se">Inscrever-se</a>
                     </div>
 
                     <!-- BASTIDORES -->
                     <div>
-                        <h4 class="mb-3">Bastidores</h4>
+                        <h4 class="mb-3" data-i18n="formacoes.modal-training.bastidores">Bastidores</h4>
                         <div class="modal-gallery">
                             <div class="mg-a"><img src="../assets/chairs.jpg" alt="Sala preparada para o treinamento"
-                                    loading="lazy"></div>
+                                    loading="lazy" data-i18n-attr="alt:formacoes.modal-training.sala-preparada-para-o-treinamento"></div>
                             <div class="mg-b"><img src="../assets/consultingnoturious.jpg"
-                                    alt="Sessão de treinamento em curso" loading="lazy"></div>
+                                    alt="Sessão de treinamento em curso" loading="lazy" data-i18n-attr="alt:formacoes.modal-training.sessao-de-treinamento-em-curso"></div>
                             <div class="mg-c"><img src="../assets/handshake.jpg"
-                                    alt="Aperto de mão entre consultor e participante" loading="lazy"></div>
+                                    alt="Aperto de mão entre consultor e participante" loading="lazy" data-i18n-attr="alt:formacoes.modal-training.aperto-de-mao-entre-consultor-e"></div>
                             <div class="mg-d"><img src="../assets/morepeople.jpg"
-                                    alt="Grupo de participantes do treinamento" loading="lazy"></div>
+                                    alt="Grupo de participantes do treinamento" loading="lazy" data-i18n-attr="alt:formacoes.modal-training.grupo-de-participantes-do-treinamento"></div>
                             <div class="mg-e"><img src="../assets/persons.jpg"
-                                    alt="Equipa durante dinâmica corporativa" loading="lazy"></div>
+                                    alt="Equipa durante dinâmica corporativa" loading="lazy" data-i18n-attr="alt:formacoes.modal-training.equipa-durante-dinamica-corporativa"></div>
                             <div class="mg-f"><img src="../assets/team.jpg" alt="Equipa reunida após o treinamento"
-                                    loading="lazy"></div>
+                                    loading="lazy" data-i18n-attr="alt:formacoes.modal-training.equipa-reunida-apos-o-treinamento"></div>
                         </div>
                     </div>
                 </div>
@@ -1051,7 +1088,11 @@
     </script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init();
+        function startAOS() {
+            if (window.AOS) AOS.init();
+        }
+        if (window.siteLoaderDone || !document.documentElement.classList.contains("is-loading")) startAOS();
+        else document.addEventListener("site-loader:done", startAOS, { once: true });
     </script>
 </body>
 

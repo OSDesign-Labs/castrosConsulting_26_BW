@@ -1,0 +1,164 @@
+    <!-- ======================================================
+         01.2- HERO | Carousel: Início · Formação · Eventos · Podcast
+         Replaces the whole old "01.2- HERO" <section> in index.html.
+         Keep it as the FIRST child of <main> with class "hero":
+         js/javascript.js looks for "main > .hero" (navbar topbar state).
+         Lines marked EDIT are placeholder copy/links to confirm.
+         ====================================================== -->
+    <section class="hero hero-carousel" aria-roledescription="carrossel" aria-label="Destaques">
+      <div id="heroCarousel" class="carousel slide carousel-fade">
+        <div class="carousel-inner" aria-live="off">
+
+          <!-- SLIDE 1 — Início (the existing hero, same content and cards) -->
+          <div class="carousel-item active" aria-roledescription="slide" aria-label="1 de 4: Início">
+            <div class="container-fluid" id="overlayGradient"
+              style="background-image: url(assets/consultingnoturious.jpg); background-size: cover;">
+              <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                  <div class="hero-copy">
+                    <h1 class="hs-anim">Desenvolvemos Pessoas Impulsionamos Organizações</h1>
+                    <p class="hs-anim">Somos uma organização dedicada ao crescimento profissional e organizacional.
+                      Trabalhamos com pessoas reais, em contextos reais, para criar impacto duradouro.</p>
+                    <div class="hero-actions d-flex flex-wrap gap-2 hs-anim">
+                      <a class="btn btn-outline-light" href="#spaces">Conhecer Espaços Corporativos</a>
+                      <a class="btn btn-light" href="#services">Explorar Serviços de Consultoria</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6 hero-visual hs-anim">
+                  <div class="row g-2 metrics-grid">
+                    <div class="col-7">
+                      <div class="metric-card metric-featured h-100">
+                        <div>
+                          <span class="metric-value">+100</span>
+                          <span class="metric-label">
+                            Empresas<br />
+                            impulsionadas
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-5">
+                      <div class="row g-2 h-100">
+                        <div class="col-12">
+                          <div class="metric-card h-100">
+                            <span class="metric-value">+25</span>
+                            <span class="metric-label">
+                              Líderes<br />
+                              formados
+                            </span>
+                          </div>
+                        </div>
+                        <div class="col-12">
+                          <div class="metric-card h-100">
+                            <span class="metric-value">+15</span>
+                            <span class="metric-label">
+                              Workshops
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="metric-card metric-wide">
+                        <span class="metric-value">+20</span>
+                        <span class="metric-label">
+                          Colaboradores
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SLIDE 2 — Formação: image with curved edge + pattern | title, text, 2 buttons -->
+          <div class="carousel-item" aria-roledescription="slide" aria-label="2 de 4: Formação">
+            <div class="hs hs-formacao">
+              <div class="hs-media hs-pattern">
+                <img src="assets/hero/formacao.webp" alt="Participantes numa sessão de formação" loading="lazy"
+                  decoding="async" width="1600" height="1067">
+              </div>
+              <div class="hs-copy hero-copy">
+                <span class="eyebrow hs-anim">Formações e Treinamento</span>
+                <h2 class="hs-title hs-anim">Competências que se aplicam no dia seguinte</h2>
+                <p class="hs-anim">Sessões práticas e dinâmicas, desenhadas para líderes e equipas, com orientação
+                  direta de quem já esteve no terreno.</p> <!-- EDIT -->
+                <div class="hero-actions hs-anim">
+                  <a class="btn btn-outline-light" href="html/formacoes.html">Saber mais</a>
+                  <a class="btn btn-light" href="#contact" data-prefill-service="Formação">Inscrever-me</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SLIDE 3 — Eventos: title + text | image inside a blob | info + Inscrever (radial gradient bg) -->
+          <div class="carousel-item" aria-roledescription="slide" aria-label="3 de 4: Eventos">
+            <div class="hs hs-eventos">
+              <div class="hs-copy hero-copy">
+                <span class="eyebrow hs-anim">Próximo evento</span>
+                <h2 class="hs-title hs-anim">Oratória e Comunicação com Impacto</h2> <!-- EDIT -->
+                <p class="hs-anim">Como falar de forma clara, ganhar confiança em palco e mobilizar pessoas para a
+                  ação.</p> <!-- EDIT -->
+              </div>
+              <div class="hs-stage">
+                <span class="hs-blob hs-pattern" aria-hidden="true"></span>
+                <img src="assets/hero/eventos.webp" alt="Oradora em palco durante um evento" loading="lazy"
+                  decoding="async" width="1400" height="786">
+              </div>
+              <div class="hs-info hero-copy">
+                <ul class="hs-meta hs-anim">
+                  <li><i class="bi bi-calendar-event" aria-hidden="true"></i>Ter, 13 Out 2026</li> <!-- EDIT -->
+                  <li><i class="bi bi-geo-alt" aria-hidden="true"></i>Maputo</li> <!-- EDIT -->
+                  <li><i class="bi bi-people" aria-hidden="true"></i>Presencial · Vagas limitadas</li> <!-- EDIT -->
+                </ul>
+                <div class="hero-actions hs-anim">
+                  <a class="btn btn-light" href="#contact" data-prefill-service="Eventos">Inscrever-me</a>
+                  <a class="hs-link" href="#events">Ver todos os eventos <i class="bi bi-arrow-right"
+                      aria-hidden="true"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SLIDE 4 — Podcast: title, text, 2 buttons | diagonal image with arc + pattern -->
+          <div class="carousel-item" aria-roledescription="slide" aria-label="4 de 4: Podcast">
+            <div class="hs hs-podcast">
+              <div class="hs-media hs-pattern">
+                <span class="hs-wave" aria-hidden="true"></span>
+                <span class="hs-wave hs-wave-2" aria-hidden="true"></span>
+                <img src="assets/hero/podcast.webp" alt="Conversa entre três profissionais" loading="lazy"
+                  decoding="async" width="1600" height="900"> <!-- EDIT: podcast photo -->
+              </div>
+              <div class="hs-copy hero-copy">
+                <span class="eyebrow hs-anim">Podcast</span>
+                <h2 class="hs-title hs-anim">Conversas que desenvolvem pessoas</h2> <!-- EDIT -->
+                <p class="hs-anim">Líderes, gestores e especialistas partilham o que funciona no dia a dia das
+                  organizações em Moçambique.</p> <!-- EDIT -->
+                <div class="hero-actions hs-anim">
+                  <a class="btn btn-light" href="#">Ouvir episódios</a> <!-- EDIT: Spotify / YouTube link -->
+                  <a class="btn btn-outline-light" href="#contact">Falar connosco</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide picker: labels from the wireframe; the line under the active label is the timer -->
+        <!-- AOS only on the picker: the hero itself is never hidden waiting for AOS to load -->
+        <div class="hero-tabs" data-aos="fade-up" data-aos-offset="0" data-aos-delay="300">
+          <button type="button" class="hero-tab active" data-bs-target="#heroCarousel" data-bs-slide-to="0"
+            aria-current="true" aria-label="Início"><span>Início</span><span class="ht-bar"><i></i></span></button>
+          <button type="button" class="hero-tab" data-bs-target="#heroCarousel" data-bs-slide-to="1"
+            aria-label="Formação"><span>Formação</span><span class="ht-bar"><i></i></span></button>
+          <button type="button" class="hero-tab" data-bs-target="#heroCarousel" data-bs-slide-to="2"
+            aria-label="Eventos"><span>Eventos</span><span class="ht-bar"><i></i></span></button>
+          <button type="button" class="hero-tab" data-bs-target="#heroCarousel" data-bs-slide-to="3"
+            aria-label="Podcast"><span>Podcast</span><span class="ht-bar"><i></i></span></button>
+          <button type="button" class="hero-pause" aria-label="Pausar destaques" aria-pressed="false">
+            <i class="bi bi-pause-fill" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+    </section>

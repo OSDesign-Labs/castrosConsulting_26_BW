@@ -1,0 +1,811 @@
+/* ======================================================
+   HERO CAROUSEL | Início · Formação · Eventos · Podcast
+   Link this file AFTER bootstrap.min.css in index.html,
+   so it wins ties with Bootstrap's carousel rules.
+   Everything is scoped to .hero-carousel: nothing else on the site changes.
+   ====================================================== */
+
+/* ---------- 1) Frame: same place and size as the old hero on desktop ---------- */
+main > .hero.hero-carousel {
+    --hero-h: clamp(600px, calc(100vh - 8.5rem), 720px);
+    --hero-radius: 18px;
+    --hero-pad-x: clamp(2rem, 4vw, 4rem);
+    --hero-tabs-space: 5.5rem;          /* room kept free at the bottom for the slide picker */
+    --hero-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+    --pattern-line: rgba(114, 220, 220, 0.3);
+
+    position: relative;
+    height: var(--hero-h);
+    min-height: 0;
+    aspect-ratio: auto;                 /* the old .hero rule forced 16/8.2 */
+    padding: 0;
+    margin-bottom: 4rem;                /* keeps the old distance to "Sobre nós" (see notes) */
+    border-radius: var(--hero-radius);
+    overflow: hidden;
+    isolation: isolate;
+    color: var(--white);
+}
+
+/* Slides stack on top of each other in one grid cell, so the hero never changes height between slides */
+.hero-carousel .carousel,
+.hero-carousel .carousel-inner {
+    height: 100%;
+}
+
+.hero-carousel .carousel-inner {
+    display: grid;
+    grid-template-rows: minmax(0, 1fr); /* fills the frame (and a min-height on phones); a tall video can't stretch it */
+    border-radius: inherit;
+}
+
+.hero-carousel .carousel-item {
+    display: grid;                      /* the slide inside always stretches to the full height */
+    float: none;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    grid-area: 1 / 1;
+    visibility: hidden;
+    transition-duration: 0.7s;
+}
+
+.hero-carousel .carousel-item.active,
+.hero-carousel .carousel-item-next,
+.hero-carousel .carousel-item-prev {
+    visibility: visible;
+}
+
+/* ---------- 2) Slide 1: the existing hero, filling the frame ---------- */
+.hero-carousel #overlayGradient {
+    position: relative;
+    display: grid;
+    align-content: center;
+    height: 100%;
+    padding-bottom: 2.5rem;
+    overflow: hidden;
+    isolation: isolate;
+    border-radius: var(--hero-radius);
+    background: #0a2138;
+}
+
+.hero-carousel #overlayGradient > .row {
+    position: relative;
+    z-index: 2;
+}
+
+/* Background: 3 photos stacked. The new one fades in ON TOP of the old one,
+   and the old one only disappears after that, so there is never a dark dip. */
+.hero-carousel .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    border-radius: inherit;
+}
+
+.hero-carousel .hero-bg img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    z-index: 0;
+    transform: scale(var(--z, 1.08));      /* slow zoom-out, driven by the JS clock */
+    transition: opacity 0s linear 1.2s;    /* outgoing photo stays visible until the new one is in */
+    will-change: opacity, transform;
+}
+
+.hero-carousel .hero-bg img.is-on {
+    opacity: 1;
+    z-index: 1;
+    transition: opacity 1.2s ease;
+}
+
+/* Shade on the text side so white text stays readable on light photos */
+.hero-carousel #overlayGradient::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: linear-gradient(90deg,
+            rgba(1, 9, 48, 0.62) 0%,
+            rgba(1, 9, 48, 0.28) 45%,
+            rgba(1, 9, 48, 0) 72%);
+}
+
+/* ---------- 3) Shared slide pieces ---------- */
+.hero-carousel .hs {
+    position: relative;
+    display: grid;
+    grid-template-rows: minmax(0, 1fr);
+    height: 100%;
+    overflow: hidden;
+    border-radius: var(--hero-radius);
+    background: radial-gradient(120% 120% at 85% 10%, #123a55 0%, #0a2138 45%, #04101f 100%);
+}
+
+.hero-carousel .hs-copy,
+.hero-carousel .hs-info {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: none;
+    padding: 3rem var(--hero-pad-x) var(--hero-tabs-space);
+}
+
+.hero-carousel .hs-title {
+    margin: 0.6rem 0 1.25rem;
+    font-family: "DM Serif Display", serif;
+    font-size: clamp(2.4rem, 3.7vw, 4rem);
+    font-weight: 700;                   /* same treatment as the slide 1 h1 */
+    line-height: 0.98;
+    letter-spacing: -0.03em;
+    color: var(--white);
+}
+
+.hero-carousel .hs-copy p {
+    max-width: 46ch;
+}
+
+.hero-carousel .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+/* Diagonal lines, same idea as pattern.css "diagonal-lines-sm", without the extra library */
+.hero-carousel .hs-pattern {
+    background-color: #071a2e;
+    background-image: repeating-linear-gradient(135deg,
+            var(--pattern-line) 0 1px,
+            transparent 1px 11px);
+}
+
+.hero-carousel .hs-media {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-carousel .hs-media img,
+.hero-carousel .hs-media video,
+.hero-carousel .hs-stage img,
+.hero-carousel .hs-stage video {
+    display: block;
+    object-fit: cover;
+}
+
+/* ---------- 4) Slide 2: Formação ---------- */
+.hero-carousel .hs-formacao {
+    grid-template-columns: 1fr 1fr;
+}
+
+/* Image covers the top of the left half; its bottom-right corner is one big curve, the pattern shows below it */
+.hero-carousel .hs-formacao .hs-media img,
+.hero-carousel .hs-formacao .hs-media video {
+    position: absolute;
+    inset: 0 0 auto 0;
+    width: 100%;
+    height: 82%;
+    border-bottom-right-radius: 100% 100%;
+}
+
+.hero-carousel .hs-formacao .hs-copy {
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ---------- 5) Slide 3: Eventos ---------- */
+.hero-carousel .hs-eventos {
+    grid-template-columns: 1fr 1.15fr 0.85fr;
+    background:
+        radial-gradient(55% 70% at 14% 45%, rgba(4, 191, 205, 0.24) 0%, rgba(4, 191, 205, 0) 70%),
+        radial-gradient(120% 120% at 85% 10%, #123a55 0%, #0a2138 45%, #04101f 100%);
+}
+
+.hero-carousel .hs-eventos .hs-copy {
+    padding-right: 1.5rem;
+}
+
+.hero-carousel .hs-eventos .hs-copy .hs-title {
+    font-size: clamp(2.2rem, 3.2vw, 3.5rem);
+}
+
+.hero-carousel .hs-stage {
+    --stage-pad: clamp(1.25rem, 2.6vw, 2.5rem);
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    padding: 0 var(--stage-pad);
+}
+
+/* The blob: a hatched dome behind the image, its curved sides show left and right of the photo */
+.hero-carousel .hs-blob {
+    position: absolute;
+    inset: 7% 0 -6% 0;
+    border-radius: 46% 54% 0 0 / 24% 22% 0 0;
+    animation: hsBlob 14s ease-in-out infinite alternate;
+}
+
+.hero-carousel .hs-stage img,
+.hero-carousel .hs-stage video {
+    position: absolute;
+    left: var(--stage-pad);
+    bottom: 0;
+    width: calc(100% - 2 * var(--stage-pad));
+    height: 72%;
+    border-radius: 14px 14px 0 0;
+    box-shadow: 0 -20px 60px -20px rgba(1, 9, 48, 0.6);
+}
+
+.hero-carousel .hs-info {
+    padding-left: 1.5rem;
+}
+
+.hero-carousel .hs-meta {
+    display: grid;
+    gap: 0.6rem;
+    margin: 0 0 1.75rem;
+    padding: 0;
+    list-style: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.hero-carousel .hs-meta li {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.hero-carousel .hs-meta .bi {
+    color: var(--cyan);
+}
+
+.hero-carousel .hs-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.hero-carousel .hs-link .bi {
+    transition: transform 0.2s ease;
+}
+
+.hero-carousel .hs-link:hover {
+    color: var(--pearl);
+}
+
+.hero-carousel .hs-link:hover .bi {
+    transform: translateX(4px);
+}
+
+/* ---------- 6) Slide 4: Podcast ---------- */
+.hero-carousel .hs-podcast {
+    grid-template-columns: 1fr;
+}
+
+.hero-carousel .hs-podcast .hs-copy {
+    justify-content: flex-end;
+    width: min(42%, 560px);
+    padding-bottom: calc(var(--hero-tabs-space) + 1rem);
+}
+
+/* Right side cut by one diagonal: from 32% (top) to ~62% (bottom) of the slide */
+.hero-carousel .hs-podcast .hs-media {
+    position: absolute;
+    inset: 0 0 0 32%;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 44% 100%);
+}
+
+/* The photo's top edge is one wide arc; the pattern shows above it */
+.hero-carousel .hs-podcast .hs-media img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-mask-image: radial-gradient(70% 80% at 58% 100%, #000 99.4%, transparent 100%);
+    mask-image: radial-gradient(70% 80% at 58% 100%, #000 99.4%, transparent 100%);
+}
+
+/* Two thin arcs above the photo, like sound waves */
+.hero-carousel .hs-wave {
+    position: absolute;
+    left: -12%;                         /* same ellipse as the photo mask: 70% × 80% around (58%, 100%) */
+    top: 20%;
+    width: 140%;
+    height: 160%;
+    border: 1px solid rgba(114, 220, 220, 0.55);
+    border-radius: 50%;
+    transform: scale(1.04);
+    pointer-events: none;
+}
+
+.hero-carousel .hs-wave-2 {
+    border-color: rgba(114, 220, 220, 0.25);
+    transform: scale(1.085);
+}
+
+/* ---------- 7) Slide picker (glass, like the metric cards) ---------- */
+.hero-carousel .hero-tabs {
+    position: absolute;
+    z-index: 5;
+    left: clamp(1.25rem, 3vw, 2.75rem);
+    bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.15rem;
+    padding: 0.3rem;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 999px;
+    background: rgba(4, 16, 31, 0.45);   /* darker than the metric cards: labels stay readable over light photos */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.hero-carousel .hero-tab {
+    position: relative;
+    padding: 0.6rem 1rem 0.8rem;
+    font-family: "Poppins", sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1;
+    color: rgba(255, 255, 255, 0.65);
+    background: transparent;
+    border: 0;
+    border-radius: 999px;
+    transition: color 0.25s ease, background-color 0.25s ease;
+}
+
+.hero-carousel .hero-tab:hover {
+    color: var(--white);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.hero-carousel .hero-tab.active {
+    color: var(--white);
+}
+
+.hero-carousel .hero-tab:focus-visible,
+.hero-carousel .hero-pause:focus-visible {
+    outline: 2px solid var(--pearl);
+    outline-offset: 2px;
+}
+
+/* Timer line: fills while the slide is on screen; when it is full, the JS moves to the next slide */
+.hero-carousel .ht-bar {
+    position: absolute;
+    left: 1rem;
+    right: 1rem;
+    bottom: 0.4rem;
+    height: 2px;
+    overflow: hidden;
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 0.16);
+}
+
+.hero-carousel .ht-bar i {
+    position: absolute;
+    inset: 0;
+    transform: scaleX(0);                  /* the JS clock sets this every frame */
+    transform-origin: left;
+    background: linear-gradient(90deg, rgba(34, 211, 238, 1), rgba(79, 57, 246, 1));
+}
+
+.hero-carousel .hero-pause {
+    display: grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    margin-left: 0.15rem;
+    padding: 0;
+    font-size: 1rem;
+    color: var(--white);
+    background: rgba(255, 255, 255, 0.08);
+    border: 0;
+    border-radius: 50%;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.hero-carousel .hero-pause:hover {
+    background: rgba(255, 255, 255, 0.18);
+    transform: scale(1.06);
+}
+
+/* icon follows the state: pause icon while playing, play icon while paused */
+.hero-carousel .hero-pause .hp-play,
+.hero-carousel.is-paused .hero-pause .hp-pause {
+    display: none;
+}
+
+.hero-carousel.is-paused .hero-pause .hp-play {
+    display: inline-block;
+}
+
+.hero-carousel.is-paused .hero-pause {
+    color: var(--ink);
+    background: var(--pearl);
+}
+
+/* ---------- 8) Micro-interactions ---------- */
+/* Text comes in line by line when its slide becomes active (the JS adds .is-ready and .is-current) */
+.hero-carousel.is-ready .hs-anim {
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+        opacity 0.6s var(--hero-ease),
+        transform 0.6s var(--hero-ease);
+}
+
+.hero-carousel.is-ready .carousel-item.is-current .hs-anim {
+    opacity: 1;
+    transform: none;
+    transition-delay: calc(var(--i, 0) * 90ms + 150ms);
+}
+
+/* Photos settle from a slight zoom */
+.hero-carousel.is-ready .hs img,
+.hero-carousel.is-ready .hs video {
+    transform: scale(1.06);
+    transition: transform 1.4s var(--hero-ease);
+}
+
+.hero-carousel.is-ready .carousel-item.is-current .hs img,
+.hero-carousel.is-ready .carousel-item.is-current .hs video {
+    transform: none;
+}
+
+.hero-carousel .hero-actions .btn {
+    transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.hero-carousel .hero-actions .btn:hover {
+    transform: translateY(-2px);
+}
+
+@keyframes hsBlob {
+    to {
+        border-radius: 56% 44% 0 0 / 20% 27% 0 0;
+    }
+}
+
+/* ======================================================
+   RESPONSIVE: below 992px the hero is full width and full height
+   ====================================================== */
+@media (max-width: 991.98px) {
+    main > .hero.hero-carousel {
+        --hero-pad-x: 1.5rem;
+        --hero-tabs-space: calc(5.25rem + env(safe-area-inset-bottom, 0px));
+        --hero-top: calc(5rem + env(safe-area-inset-top, 0px));    /* clears the fixed navbar */
+
+        height: auto;
+        min-height: 100vh;
+        min-height: 100svh;
+        margin: 0 -1rem 3rem;           /* cancels main's side margin → edge to edge */
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .hero-carousel .carousel,
+    .hero-carousel .carousel-inner {
+        height: auto;
+        min-height: inherit;
+    }
+
+    .hero-carousel .carousel-item {
+        height: auto;
+    }
+
+    .hero-carousel .hs,
+    .hero-carousel #overlayGradient {
+        height: auto;
+        min-height: 100%;
+        border-radius: 0;
+    }
+
+    /* Slide 1: text sits low over the photo, cards become one compact row */
+    .hero-carousel #overlayGradient {
+        align-content: end;
+        padding: var(--hero-top) 1.25rem var(--hero-tabs-space);
+    }
+
+    .hero-carousel #overlayGradient::after {
+        background: linear-gradient(180deg,
+                rgba(1, 9, 48, 0.55) 0%,
+                rgba(1, 9, 48, 0.1) 28%,
+                rgba(1, 9, 48, 0.6) 55%,
+                rgba(1, 9, 48, 0.94) 100%);
+    }
+
+    .hero-carousel #overlayGradient > .row {
+        --bs-gutter-y: 1.25rem;
+    }
+
+    main > .hero.hero-carousel .hero-copy h1 {
+        margin-bottom: 1rem;
+        font-size: clamp(2.3rem, 9.5vw, 3.6rem);
+    }
+
+    main > .hero.hero-carousel .hero-copy p {
+        margin-bottom: 1.5rem;
+    }
+
+    main > .hero.hero-carousel .hero-visual {
+        min-height: 0;
+    }
+
+    main > .hero.hero-carousel .metrics-grid {
+        display: grid !important;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 0.5rem;
+        margin: 0 !important;           /* beats the old "10rem 0 0 8rem !important" */
+    }
+
+    main > .hero.hero-carousel .metrics-grid > .col-5,
+    main > .hero.hero-carousel .metrics-grid > .col-5 > .row {
+        display: contents;
+    }
+
+    main > .hero.hero-carousel .metrics-grid [class*="col-"] {
+        width: auto;
+        margin: 0;
+        padding: 0;
+    }
+
+    main > .hero.hero-carousel .metric-card {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 0.2rem;
+        min-height: 0;
+        height: 100%;
+        padding: 0.7rem 0.6rem;
+        border-radius: 12px;
+    }
+
+    main > .hero.hero-carousel .metric-value {
+        font-size: 1.2rem;
+    }
+
+    main > .hero.hero-carousel .metric-label {
+        font-size: 0.62rem;
+    }
+
+
+    /* Slides 2–4: picture on top grows to fill the screen, text sits at the bottom (like Início) */
+    .hero-carousel .hs-formacao,
+    .hero-carousel .hs-eventos,
+    .hero-carousel .hs-podcast {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-carousel .hs-formacao,
+    .hero-carousel .hs-podcast {
+        grid-template-rows: minmax(var(--media-min, 260px), 1fr) auto;
+    }
+
+    .hero-carousel .hs-eventos {
+        grid-template-rows: minmax(var(--media-min, 240px), 1fr) auto auto;
+    }
+
+    .hero-carousel .hs-copy,
+    .hero-carousel .hs-info {
+        justify-content: flex-start;
+        padding: 1.5rem var(--hero-pad-x) 0;
+    }
+
+    .hero-carousel .hs > :last-child {
+        padding-bottom: var(--hero-tabs-space);
+    }
+
+    .hero-carousel .hs-title {
+        font-size: clamp(2.1rem, 8.5vw, 3.2rem);
+    }
+
+    .hero-carousel .hs-copy p {
+        margin-bottom: 1.5rem;
+    }
+
+    /* top shade so the navbar stays readable over photos */
+    .hero-carousel .hs-media::before,
+    .hero-carousel .hs-stage::before {
+        content: "";
+        position: absolute;
+        inset: 0 0 auto 0;
+        z-index: 3;
+        height: 7rem;
+        pointer-events: none;
+        background: linear-gradient(180deg, rgba(1, 9, 48, 0.7), rgba(1, 9, 48, 0));
+    }
+
+    /* Formação */
+    .hero-carousel .hs-formacao .hs-media {
+        min-height: 0;
+    }
+
+    .hero-carousel .hs-formacao .hs-copy {
+        border-left: 0;
+    }
+
+    /* Eventos: picture first, then title, then date + button */
+    .hero-carousel .hs-eventos .hs-stage {
+        --stage-pad: 2.25rem;
+        order: -1;
+        min-height: 0;
+        padding: var(--hero-top) var(--stage-pad) 0;
+    }
+
+    .hero-carousel .hs-eventos .hs-stage img,
+    .hero-carousel .hs-eventos .hs-stage video {
+        top: var(--hero-top);
+        bottom: auto;
+        height: calc(100% - var(--hero-top));
+    }
+
+    .hero-carousel .hs-blob {
+        inset: calc(var(--hero-top) - 1.75rem) 0.75rem -6% 0.75rem;
+    }
+
+    .hero-carousel .hs-eventos .hs-copy {
+        padding-right: var(--hero-pad-x);
+    }
+
+    .hero-carousel .hs-eventos .hs-copy .hs-title {
+        margin-bottom: 0.9rem;
+        font-size: clamp(1.9rem, 7.4vw, 2.8rem);
+    }
+
+    .hero-carousel .hs-eventos .hs-copy p {
+        margin-bottom: 0;
+    }
+
+    .hero-carousel .hs-info {
+        padding-top: 1.25rem;
+        padding-left: var(--hero-pad-x);
+    }
+
+    .hero-carousel .hs-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem 1.1rem;
+        margin-bottom: 1.25rem;
+        font-size: 0.82rem;
+    }
+
+    /* Podcast: diagonal becomes a slanted bottom edge */
+    .hero-carousel .hs-podcast .hs-media {
+        position: relative;
+        inset: auto;
+        min-height: 0;
+        clip-path: polygon(0 0, 100% 0, 100% 84%, 0 100%);
+    }
+
+    .hero-carousel .hs-podcast .hs-copy {
+        width: auto;
+        justify-content: flex-start;
+    }
+
+    /* Picker: full width along the bottom */
+    .hero-carousel .hero-tabs {
+        left: 1rem;
+        right: 1rem;
+        bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+    }
+
+    .hero-carousel .hero-tab {
+        flex: 1 1 0;
+        padding: 0.7rem 0.25rem 0.9rem;
+        font-size: 11.5px;
+    }
+
+    .hero-carousel .ht-bar {
+        left: 22%;
+        right: 22%;
+    }
+}
+
+@media (max-width: 767.98px) {
+    main > .hero.hero-carousel {
+        margin: 0 -0.5rem 2.5rem;      /* main's side margin is 0.5rem here */
+    }
+
+    /* keep the two buttons side by side on slides 2–4 (slide 1 keeps its stacked buttons) */
+    .hero-carousel .hs .hero-actions {
+        flex-direction: row;
+    }
+
+    .hero-carousel .hs .hero-actions .btn {
+        width: auto;
+        flex: 1 1 auto;
+    }
+}
+
+/* Tablets in portrait: wider side padding around the event video, text column not too wide */
+@media (min-width: 576px) and (max-width: 991.98px) {
+    .hero-carousel .hs-eventos .hs-stage {
+        --stage-pad: 4rem;
+    }
+
+    .hero-carousel .hs-copy,
+    .hero-carousel .hs-info {
+        max-width: 680px;
+    }
+}
+
+/* Phones: the 4 cards become a 2 × 2 grid, value and label side by side */
+@media (max-width: 575.98px) {
+    main > .hero.hero-carousel .metrics-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    main > .hero.hero-carousel .metric-card,
+    main > .hero.hero-carousel .metric-featured > div {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 0.55rem;
+    }
+
+    main > .hero.hero-carousel .metric-card {
+        padding: 0.6rem 0.75rem;
+    }
+
+    main > .hero.hero-carousel .metric-value {
+        margin: 0;
+    }
+
+    main > .hero.hero-carousel .metric-label {
+        font-size: 0.66rem;
+    }
+}
+
+/* Short phones (small screens, browser bars open): tighter, cards hidden on slide 1 */
+@media (max-width: 991.98px) and (max-height: 700px) {
+    main > .hero.hero-carousel .hero-visual {
+        display: none;
+    }
+
+    main > .hero.hero-carousel .hero-copy h1 {
+        font-size: clamp(2.1rem, 8.5vw, 2.8rem);
+    }
+
+    .hero-carousel .hs {
+        --media-min: 190px;
+    }
+
+    .hero-carousel .hs-eventos .hs-copy p {
+        display: none;
+    }
+}
+
+/* Reduced motion: no autoplay, no movement, everything visible */
+@media (prefers-reduced-motion: reduce) {
+    .hero-carousel .carousel-item {
+        transition: none;
+    }
+
+    .hero-carousel.is-ready .hs-anim,
+    .hero-carousel.is-ready .hs img {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
+    .hero-carousel .hs-blob {
+        animation: none;
+    }
+
+
+    .hero-carousel .hero-pause {
+        display: none;
+    }
+}
