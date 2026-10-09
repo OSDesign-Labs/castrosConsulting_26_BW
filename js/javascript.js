@@ -397,9 +397,11 @@ document.addEventListener("DOMContentLoaded", () => {
 /* ==========================================================
    LINKS TO THE CONTACT FORM (and other same-page anchors)
    - Contact links point at #contact-form, the form card itself.
-   - Links in the mobile menu: close the menu first, then scroll.
-     (data-bs-dismiss on an <a> makes Bootstrap cancel the link,
-     which is why the mobile "Contacto" button did nothing.)
+   - Links in the mobile menu or in a pop-up (modal): close it first,
+     then scroll. (data-bs-dismiss on an <a> makes Bootstrap cancel the
+     link, which is why the mobile "Contacto" button did nothing; and a
+     link inside an open pop-up only scrolled the page hidden behind it.)
+     A link to something inside the same pop-up scrolls normally.
    - Arriving from another page (index.html#contact-form): once
      everything has loaded, line the target up again; images and
      fonts loading above it can push it down.
@@ -422,20 +424,21 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!smooth) html.style.scrollBehavior = before;
     }
 
-    // mobile menu → same-page section
+    // mobile menu or pop-up → same-page section
     document.addEventListener("click", function (event) {
         if (event.defaultPrevented || event.button !== 0 ||
             event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-        var link = event.target.closest && event.target.closest(".offcanvas a[href*='#']");
-        if (!link || !window.bootstrap) return;
-        var menu = link.closest(".offcanvas");
+        var link = event.target.closest && event.target.closest(".offcanvas a[href*='#'], .modal a[href*='#']");
+        if (!link || !window.bootstrap || link.hasAttribute("data-event-action")) return;   // events.js runs its own
+        var menu = link.closest(".offcanvas, .modal");
+        var isModal = menu.classList.contains("modal");
         var url = new URL(link.getAttribute("href"), window.location.href);
         if (url.pathname !== window.location.pathname || url.search !== window.location.search) return;  // other page
         var target = findTarget(url.hash);
-        if (!target || !menu.classList.contains("show")) return;
+        if (!target || !menu.classList.contains("show") || menu.contains(target)) return;
 
         event.preventDefault();
-        menu.addEventListener("hidden.bs.offcanvas", function () {
+        menu.addEventListener(isModal ? "hidden.bs.modal" : "hidden.bs.offcanvas", function () {
             if (window.history && history.pushState && window.location.hash !== url.hash) {
                 history.pushState(null, "", url.hash);
                 // pushState doesn't fire hashchange; listeners (e.g. the services accordion) need it
@@ -443,7 +446,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             jumpTo(target, true);
         }, { once: true });
-        bootstrap.Offcanvas.getOrCreateInstance(menu).hide();
+        (isModal ? bootstrap.Modal : bootstrap.Offcanvas).getOrCreateInstance(menu).hide();
     });
 
     // arrived with a #hash: re-align after load, unless the visitor already scrolled
