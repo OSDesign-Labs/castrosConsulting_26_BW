@@ -3595,3 +3595,18 @@ a.topbar-item:hover {
         transition: none;
     }
 }
+
+/* cyan buttons inside the sub-page modals ("Inscrever-se", "Manifestar interesse"): the modals sit
+   outside <main>, so ".subpage main .btn-cyan" never reached them and Bootstrap's .btn made them transparent */
+.subpage .modal .btn-cyan {
+    --bs-btn-color: #02181c;
+    --bs-btn-bg: var(--sp-accent);
+    --bs-btn-border-color: var(--sp-accent);
+    --bs-btn-hover-color: #02181c;
+    --bs-btn-hover-bg: #1fd0dc;
+    --bs-btn-hover-border-color: #1fd0dc;
+    --bs-btn-active-color: #02181c;
+    --bs-btn-active-bg: #03a8b4;
+    --bs-btn-active-border-color: #03a8b4;
+    box-shadow: 0 10px 28px -10px rgba(4, 191, 205, 0.6);
+}

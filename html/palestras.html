@@ -17,12 +17,15 @@
         r.classList.add("is-loading");
       })(document.documentElement);
     </script>
+    <!-- PT/EN: ../js/i18n.js fetches ../js/translations.json -->
+    <script src="../js/i18n.js" defer></script>
     <script src="../js/site-loader.js" defer></script>
+    <script src="../js/topbar.js" defer></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Serviços — Castro's Consultoria</title>
+    <title data-i18n="meta.servicos-castro-s-consultoria">Serviços — Castro's Consultoria</title>
 
     <!-- CSS External Stylesheet Link (same file + same load order as index.html) -->
-    <link rel="stylesheet" href="../css/finalstyle.css">
+    <link rel="stylesheet" href="../css/services.css">
     <!-- BOOTSTRAP 5 CDN Link -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- AOS CDN Link -->
@@ -55,42 +58,74 @@
          a real maintenance problem. -->
     <header>
         <nav id="mainNavbar" class="main-navbar">
+            <!-- SECONDARY NAVBAR (desktop only; phones get the same info at the bottom of the menu). Folds away once
+                 the first section is scrolled past: js/topbar.js -->
+            <div class="topbar d-none d-lg-flex">
+              <div class="topbar-left">
+                <span class="topbar-item"><i class="bi bi-geo-alt" aria-hidden="true"></i><span data-i18n="topbar.maputo-mocambique">Maputo, Moçambique</span></span>
+                <span class="topbar-divider" aria-hidden="true"></span>
+                <span class="topbar-item"><i class="bi bi-clock" aria-hidden="true"></i><span data-i18n="topbar.seg-sex-08-00-17-00">Seg – Sex · 08:00 – 17:00</span></span>
+              </div>
+              <div class="topbar-right">
+                <a class="topbar-item" href="tel:+258878665180"><i class="bi bi-telephone" aria-hidden="true"></i>+258 87 866 5180</a>
+                <span class="topbar-divider" aria-hidden="true"></span>
+                <div class="topbar-social">
+                  <a href="https://www.facebook.com/" aria-label="Facebook"><i class="bi bi-facebook"></i></a> <!-- EDIT URL -->
+                  <a href="https://www.instagram.com/castros.consultoria/" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                  <a href="https://wa.me/258878665180" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+                  <a href="https://www.linkedin.com/" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a> <!-- EDIT URL -->
+                  <a href="mailto:castrosconsultoria@gmail.com" aria-label="Email"><i class="bi bi-envelope"></i></a>
+                </div>
+              </div>
+            </div>
             <div class="container-fluid">
-                <a class="navbar-brand brand-lockup" href="../index.html" aria-label="Castros Consultoria, página inicial">
+                <a class="navbar-brand brand-lockup" href="../index.html" aria-label="Castros Consultoria, página inicial" data-i18n-attr="aria-label:nav.castros-consultoria-pagina-inicial">
                     <img class="brand-mark" src="../assets/brand/castros-mark.webp" width="528" height="640" alt="">
                     <span class="brand-name-clip"><span class="brand-name">Castros Consultoria</span></span>
                 </a>
                 <div class="desktop-navbar d-none d-lg-grid">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="../index.html">Início</a>
+                            <a class="nav-link" href="../index.html" data-i18n="nav.inicio">Início</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../index.html#sobre">Sobre nós</a>
+                            <a class="nav-link" href="../index.html#sobre" data-i18n="nav.sobre-nos">Sobre nós</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle active" href="#" id="servicesDropdown" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
+                                data-bs-toggle="dropdown" aria-expanded="false" data-i18n="nav.servicos">
                                 Serviços
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="consultoria.html">Consultoria</a></li>
-                                <li><a class="dropdown-item" href="formacoes.html">Formações e Treinamento</a></li>
-                                <li><a class="dropdown-item" href="palestras.html">Palestras e Workshops</a></li>
-                                <li><a class="dropdown-item" href="../index.html#servico-espacos">Espaços e Podcasts</a></li>
+                                <li><a class="dropdown-item" href="consultoria.html" data-i18n="nav.consultoria">Consultoria</a></li>
+                                <li><a class="dropdown-item" href="formacoes.html" data-i18n="nav.formacoes-e-treinamento">Formações e Treinamento</a></li>
+                                <li><a class="dropdown-item" href="palestras.html" data-i18n="nav.palestras-e-workshops">Palestras e Workshops</a></li>
+                                <li><a class="dropdown-item" href="../index.html#servico-espacos" data-i18n="nav.espacos-e-podcasts">Espaços e Podcasts</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../index.html#eventos">Eventos</a>
+                            <a class="nav-link" href="../index.html#eventos" data-i18n="nav.eventos">Eventos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../index.html#contact-form">Contacto</a>
+                            <a class="nav-link" href="#contact-form" data-i18n="nav.contacto">Contacto</a>
                         </li>
                     </ul>
-                    <a href="../index.html#contact-form" class="btn btn-primary navbar-cta">Contacto</a>
+                    <!-- LANGUAGE + CTA -->
+                    <div class="nav-actions">
+                        <div class="lang-switch" role="group" aria-label="Idioma" data-i18n-attr="aria-label:lang.group">
+                          <button type="button" class="lang-switch__btn is-active" data-lang="pt" aria-pressed="true" lang="pt" aria-label="Português">PT</button>
+                          <button type="button" class="lang-switch__btn" data-lang="en" aria-pressed="false" lang="en" aria-label="English">EN</button>
+                        </div>
+                        <a href="#contact-form" class="btn btn-primary navbar-cta" data-i18n="nav.cta">Contacto</a>
+                    </div>
+                </div>
+                <!-- MOBILE / TABLET LANGUAGE -->
+                <div class="lang-switch lang-switch--bar d-lg-none" role="group" aria-label="Idioma" data-i18n-attr="aria-label:lang.group">
+                  <button type="button" class="lang-switch__btn is-active" data-lang="pt" aria-pressed="true" lang="pt" aria-label="Português">PT</button>
+                  <button type="button" class="lang-switch__btn" data-lang="en" aria-pressed="false" lang="en" aria-label="English">EN</button>
                 </div>
                 <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="offcanvas"
-                    data-bs-target="#mobileNavbar" aria-controls="mobileNavbar" aria-label="Abrir menu">
+                    data-bs-target="#mobileNavbar" aria-controls="mobileNavbar" aria-label="Abrir menu" data-i18n-attr="aria-label:nav.abrir-menu">
                     <span class="navbar-toggler-icon"></span>
                 </button>
             </div>
@@ -100,28 +135,41 @@
             aria-labelledby="mobileNavbarLabel">
             <div class="offcanvas-header">
                 <a href="../index.html" class="offcanvas-title" id="mobileNavbarLabel">Castros Consultoria</a>
-                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Fechar"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Fechar" data-i18n-attr="aria-label:nav.fechar"></button>
             </div>
             <div class="offcanvas-body">
                 <ul class="mobile-nav">
-                    <li class="nav-item"><a class="nav-link" href="../index.html">Início</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../index.html#sobre">Sobre nós</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../index.html" data-i18n="nav.inicio">Início</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../index.html#sobre" data-i18n="nav.sobre-nos">Sobre nós</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle active" href="#" id="mobileServicesDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">Serviços</a>
+                            data-bs-toggle="dropdown" aria-expanded="false" data-i18n="nav.servicos">Serviços</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="consultoria.html">Consultoria</a></li>
-                            <li><a class="dropdown-item" href="formacoes.html">Formações e Treinamento</a></li>
-                            <li><a class="dropdown-item" href="palestras.html">Palestras e Workshops</a></li>
-                            <li><a class="dropdown-item" href="../index.html#servico-espacos">Espaços e Podcasts</a></li>
+                            <li><a class="dropdown-item" href="consultoria.html" data-i18n="nav.consultoria">Consultoria</a></li>
+                            <li><a class="dropdown-item" href="formacoes.html" data-i18n="nav.formacoes-e-treinamento">Formações e Treinamento</a></li>
+                            <li><a class="dropdown-item" href="palestras.html" data-i18n="nav.palestras-e-workshops">Palestras e Workshops</a></li>
+                            <li><a class="dropdown-item" href="../index.html#servico-espacos" data-i18n="nav.espacos-e-podcasts">Espaços e Podcasts</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="../index.html#eventos">Eventos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../index.html#contact-form">Contacto</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../index.html#eventos" data-i18n="nav.eventos">Eventos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact-form" data-i18n="nav.contacto">Contacto</a></li>
                 </ul>
                 <div class="mobile-cta-wrapper">
-                    <a href="../index.html#contact-form" class="btn btn-primary">Contacto</a>
+                    <a href="#contact-form" class="btn btn-primary" data-i18n="nav.cta">Contacto</a>
                 </div>
+            </div>
+            <!-- Mobile info (replaces the secondary navbar on small screens) -->
+            <div class="mobile-info">
+              <span><i class="bi bi-geo-alt" aria-hidden="true"></i><span data-i18n="topbar.maputo-mocambique">Maputo, Moçambique</span></span>
+              <span><i class="bi bi-clock" aria-hidden="true"></i><span data-i18n="topbar.seg-sex-08-00-17-00">Seg – Sex · 08:00 – 17:00</span></span>
+              <a href="tel:+258878665180"><i class="bi bi-telephone" aria-hidden="true"></i>+258 87 866 5180</a>
+              <div class="mobile-social">
+                <a href="https://www.facebook.com/" aria-label="Facebook"><i class="bi bi-facebook"></i></a> <!-- EDIT URL -->
+                <a href="https://www.instagram.com/castros.consultoria/" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                <a href="https://wa.me/258878665180" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+                <a href="https://www.linkedin.com/" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a> <!-- EDIT URL -->
+                <a href="mailto:castrosconsultoria@gmail.com" aria-label="Email"><i class="bi bi-envelope"></i></a>
+              </div>
             </div>
         </div>
     </header>
@@ -129,221 +177,79 @@
     <main>
 
         <!-- HERO — simple centered header, not full-height (this is a sub-page, not the homepage) -->
-        <section class="section page-hero">
+        <section id="palestras" class="section page-hero">
             <div class="container text-center">
-                <span class="eyebrow">Consultoria</span>
-                <h1 class="mb-3">Estratégia que transforma</h1>
-                <p class="text-secondary mx-auto" style="max-width: 600px;">
-                    Ajudamos organizações e líderes a ver o que não veem. Orientação prática
-                    para transformar desafios em decisões claras.
+                <span class="eyebrow" data-i18n="palestras.hero.servicos">Serviços</span>
+                <h1 class="mb-3" data-i18n="palestras.hero.palestras-e-workshops">Palestras e Workshops</h1>
+                <p class="text-secondary mx-auto" style="max-width: 620px;" data-i18n="palestras.hero.palestras-que-mobilizam-pessoas-e-workshops">
+                    Palestras que mobilizam pessoas e workshops onde se aprende a fazer. Sessões participativas,
+                    com exemplos reais e ferramentas que se aplicam logo no dia seguinte.
                 </p>
-                <div class="d-flex flex-row gap-3 justify-content-center mt-4">
-                    <a href="#contato" class="btn btn-cyan px-4 py-2">Começar</a>
-                    <a href="#processo" class="btn btn-outline-light-c px-4 py-2">Saber mais</a>
-                </div>
             </div>
         </section>
 
-        <!-- SERVICES GRID -->
-        <section id="servicos" class="section">
+        <!-- ENTRY CARDS — each one opens its modal (same pattern as formacoes.html) -->
+        <section id="programas" class="section pt-0">
             <div class="container">
-                <div class="text-center mb-5">
-                    <span class="eyebrow">Serviços</span>
-                    <h2>O que fazemos</h2>
-                    <p class="text-secondary">Três áreas de intervenção para organizações que querem avançar.</p>
-                </div>
-
-                <div class="row g-4">
-                    <div class="col-md-6 col-lg-3">
-                        <div class="service-card h-100 d-flex flex-column">
-                            <i class="bi bi-diagram-3 icon-chip mb-4"></i>
-                            <h3 class="mb-2">Estratégia e orientação para decisões difíceis</h3>
-                            <p class="small text-secondary flex-grow-1">
-                                Analisamos o contexto, identificamos bloqueios e desenhamos caminhos
-                                práticos para a sua organização crescer com intenção.
-                            </p>
-                            <a href="#processo" class="link-arrow">
-                                Saber mais <span class="arrowRight">&gt;</span>
-                            </a>
-                        </div>
+                <div class="row g-4 justify-content-center">
+                    <div class="col-md-6 col-lg-5">
+                        <button type="button" class="fm-card" data-bs-toggle="modal" data-bs-target="#modalPalestras">
+                            <img src="../assets/events/comunicacao-com-impacto.webp" alt="" loading="lazy">
+                            <span class="fm-card-body">
+                                <span class="fm-card-title" data-i18n="palestras.programs.palestras">Palestras</span>
+                                <span class="link-arrow"><span data-i18n="palestras.programs.ver-detalhes">Ver detalhes</span> <span class="arrowRight">&gt;</span></span>
+                            </span>
+                        </button>
                     </div>
-                    <div class="col-md-6 col-lg-3">
-                        <div class="service-card h-100 d-flex flex-column">
-                            <i class="bi bi-diagram-3 icon-chip mb-4"></i>
-                            <h3 class="mb-2">Formação e desenvolvimento de equipas</h3>
-                            <p class="small text-secondary flex-grow-1">
-                                Programas práticos para líderes e equipas que precisam de ferramentas novas.
-                            </p>
-                            <a href="#processo" class="link-arrow">
-                                Mais <span class="arrowRight">&gt;</span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                        <div class="service-card h-100 d-flex flex-column">
-                            <i class="bi bi-diagram-3 icon-chip mb-4"></i>
-                            <h3 class="mb-2">Acompanhamento de processos e mudança</h3>
-                            <p class="small text-secondary flex-grow-1">
-                                Ficamos ao lado da implementação para garantir que a mudança acontece.
-                            </p>
-                            <a href="#processo" class="link-arrow">
-                                Mais <span class="arrowRight">&gt;</span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-3">
-                        <div class="service-card h-100 d-flex flex-column">
-                            <i class="bi bi-diagram-3 icon-chip mb-4"></i>
-                            <h3 class="mb-2">Três frentes de trabalho para avançar</h3>
-                            <p class="small text-secondary flex-grow-1">
-                                Intervenções diretas para organizações que precisam de clareza e movimento.
-                            </p>
-                            <a href="#processo" class="link-arrow">
-                                Saber mais <span class="arrowRight">&gt;</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Feature panel: 4 sub-items + image, same border-box pattern as Benefícios -->
-                <div class="feature-panel mt-5">
-                    <div class="row g-4">
-                        <div class="col-lg-6">
-                            <div class="row g-4">
-                                <div class="col-6">
-                                    <i class="bi bi-box icon-chip mb-3"></i>
-                                    <h4 class="mb-2">Short heading here</h4>
-                                    <p class="small text-secondary">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                </div>
-                                <div class="col-6">
-                                    <i class="bi bi-box icon-chip mb-3"></i>
-                                    <h4 class="mb-2">Short heading here</h4>
-                                    <p class="small text-secondary">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                </div>
-                                <div class="col-6">
-                                    <i class="bi bi-box icon-chip mb-3"></i>
-                                    <h4 class="mb-2">Short heading here</h4>
-                                    <p class="small text-secondary">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                </div>
-                                <div class="col-6">
-                                    <i class="bi bi-box icon-chip mb-3"></i>
-                                    <h4 class="mb-2">Short heading here</h4>
-                                    <p class="small text-secondary">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <img src="https://placehold.co/600x400" class="service-feature-img" alt="Serviços">
-                        </div>
+                    <div class="col-md-6 col-lg-5">
+                        <button type="button" class="fm-card" data-bs-toggle="modal" data-bs-target="#modalWorkshops">
+                            <img src="../assets/hero/inicio-2.webp" alt="" loading="lazy">
+                            <span class="fm-card-body">
+                                <span class="fm-card-title">Workshops</span>
+                                <span class="link-arrow"><span data-i18n="palestras.programs.ver-detalhes">Ver detalhes</span> <span class="arrowRight">&gt;</span></span>
+                            </span>
+                        </button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- PROCESS — converted from custom horizontal tabs to a standard Bootstrap accordion -->
-        <section id="processo" class="section section-band">
-            <div class="container">
-                <div class="mb-5" style="max-width: 560px;">
-                    <span class="eyebrow">Processo</span>
-                    <h2>Como funciona o nosso trabalho</h2>
-                    <p class="text-secondary">Um caminho direto da conversa inicial ao acompanhamento contínuo.</p>
-                </div>
-
-                <div class="accordion" id="processAccordion">
-                    <div class="accordion-item">
-                        <h3 class="accordion-header">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#step1">
-                                01 — Entendemos o seu contexto
-                            </button>
-                        </h3>
-                        <div id="step1" class="accordion-collapse collapse show" data-bs-parent="#processAccordion">
-                            <div class="accordion-body text-secondary">
-                                Começamos por ouvir. Compreendemos as necessidades, os objetivos e os desafios
-                                da sua organização antes de propor qualquer coisa.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h3 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#step2">
-                                02 — Diagnóstico claro do desafio
-                            </button>
-                        </h3>
-                        <div id="step2" class="accordion-collapse collapse" data-bs-parent="#processAccordion">
-                            <div class="accordion-body text-secondary">
-                                Apresentamos um diagnóstico direto dos bloqueios e das oportunidades
-                                identificadas na conversa inicial.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h3 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#step3">
-                                03 — Proposta desenhada à medida
-                            </button>
-                        </h3>
-                        <div id="step3" class="accordion-collapse collapse" data-bs-parent="#processAccordion">
-                            <div class="accordion-body text-secondary">
-                                Definimos um caminho prático, com prazos e passos claros, ajustado à
-                                realidade da sua organização.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h3 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#step4">
-                                04 — Acompanhamento contínuo
-                            </button>
-                        </h3>
-                        <div id="step4" class="accordion-collapse collapse" data-bs-parent="#processAccordion">
-                            <div class="accordion-body text-secondary">
-                                Ficamos ao lado da sua equipa durante a implementação, até a mudança
-                                acontecer de facto.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ABOUT — reuses the two-column text/image pattern from index.html's About section -->
-        <section id="sobre" class="section">
-            <div class="container">
-                <div class="row align-items-center g-5">
-                    <div class="col-lg-6">
-                        <span class="eyebrow">Sobre</span>
-                        <h2 class="mb-3">A Castros Consultoria existe para simplificar o complexo</h2>
-                        <p class="text-secondary mb-4">
-                            Somos uma consultoria que acredita em orientação prática, não em relatórios
-                            que ficam na gaveta. Trabalhamos com organizações e líderes que querem ver
-                            resultados reais, não apenas boas intenções.
-                        </p>
-                        <div class="d-flex flex-row gap-3">
-                            <a href="#contato" class="btn btn-outline-c px-4 py-2">Começar</a>
-                            <a href="#perguntas" class="link-arrow">
-                                Mais <span class="arrowRight">&gt;</span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <img src="https://placehold.co/600x450" class="about-photo w-100" alt="Sobre a Castros Consultoria">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- TESTIMONIAL — Bootstrap carousel, matching pattern used elsewhere in the site -->
+        <!-- TESTEMUNHOS — the 3 real quotes from the company profile (same as formacoes.html) -->
         <section id="depoimentos" class="section">
             <div class="container">
                 <div id="servicosTestimonial" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-inner text-center" style="max-width: 700px; margin: 0 auto;">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#servicosTestimonial" data-bs-slide-to="0" class="active"
+                            aria-current="true" aria-label="Testemunho 1" data-i18n-attr="aria-label:palestras.testimonials.testemunho-1"></button>
+                        <button type="button" data-bs-target="#servicosTestimonial" data-bs-slide-to="1"
+                            aria-label="Testemunho 2" data-i18n-attr="aria-label:palestras.testimonials.testemunho-2"></button>
+                        <button type="button" data-bs-target="#servicosTestimonial" data-bs-slide-to="2"
+                            aria-label="Testemunho 3" data-i18n-attr="aria-label:palestras.testimonials.testemunho-3"></button>
+                    </div>
+                    <div class="carousel-inner text-center pb-5" style="max-width: 700px; margin: 0 auto;">
                         <div class="carousel-item active">
-                            <p class="testi-quote mb-4">
-                                "A Castros Consultoria trouxe clareza onde havia ruído. Em poucas semanas,
-                                a equipa estava alinhada e a avançar com confiança."
+                            <p class="testi-quote mb-4" data-i18n="palestras.testimonials.depois-dos-workshops-sobre-etica-conseguimos">
+                                "Depois dos workshops sobre ética, conseguimos reduzir conflitos internos e
+                                fortalecer a confiança entre gestores e colaboradores."
                             </p>
-                            <p class="testi-name mb-0">João Pereira</p>
-                            <p class="small text-secondary">Diretor Geral, Empresa X</p>
+                            <p class="testi-name mb-0">CEO</p>
+                            <p class="small text-secondary" data-i18n="palestras.testimonials.setor-industrial">Setor industrial</p>
+                        </div>
+                        <div class="carousel-item">
+                            <p class="testi-quote mb-4" data-i18n="palestras.testimonials.o-programa-de-lideranca-etica-foi">
+                                "O programa de liderança ética foi um divisor de águas na forma como nossos
+                                gestores tomam decisões."
+                            </p>
+                            <p class="testi-name mb-0" data-i18n="palestras.testimonials.gerente-de-pessoas">Gerente de Pessoas</p>
+                            <p class="small text-secondary" data-i18n="palestras.testimonials.setor-de-tecnologia">Setor de tecnologia</p>
+                        </div>
+                        <div class="carousel-item">
+                            <p class="testi-quote mb-4" data-i18n="palestras.testimonials.a-consultoria-nos-ajudou-a-transformar">
+                                "A consultoria nos ajudou a transformar nossa cultura interna, hoje temos líderes
+                                mais conscientes e equipes mais engajadas."
+                            </p>
+                            <p class="testi-name mb-0" data-i18n="palestras.testimonials.diretora-de-rh">Diretora de RH</p>
+                            <p class="small text-secondary" data-i18n="palestras.testimonials.setor-financeiro">Setor financeiro</p>
                         </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#servicosTestimonial" data-bs-slide="prev">
@@ -353,114 +259,853 @@
                         <span class="carousel-control-next-icon"></span>
                     </button>
                 </div>
-                <!-- TODO: only one real testimonial here — add more slides once available -->
-            </div>
-        </section>
-
-        <!-- FAQ — Bootstrap accordion -->
-        <section id="perguntas" class="section section-band">
-            <div class="container">
-                <div class="text-center mb-5">
-                    <h2>Perguntas</h2>
-                    <p class="text-secondary">Respostas diretas para as dúvidas mais comuns antes de começar.</p>
-                </div>
-
-                <div class="accordion mx-auto" id="faqAccordion" style="max-width: 800px;">
-                    <div class="accordion-item">
-                        <h3 class="accordion-header">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
-                                Quem pode contratar?
-                            </button>
-                        </h3>
-                        <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body text-secondary">
-                                Empresas, organizações, líderes e equipas que enfrentam decisões difíceis ou
-                                precisam de novas ferramentas. O serviço adapta-se ao tamanho e ao setor de
-                                cada organização.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h3 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
-                                O serviço é personalizado?
-                            </button>
-                        </h3>
-                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body text-secondary">
-                                Sim. Cada intervenção começa com uma conversa para entender o seu contexto.
-                                O diagnóstico e a proposta são desenhados à medida da sua realidade.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h3 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
-                                Quanto tempo dura?
-                            </button>
-                        </h3>
-                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body text-secondary">
-                                Depende da complexidade do desafio. Alguns processos terminam em semanas,
-                                outros exigem acompanhamento contínuo. Definimos prazos claros na proposta.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h3 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
-                                Onde é realizado?
-                            </button>
-                        </h3>
-                        <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body text-secondary">
-                                Trabalhamos presencialmente na sua organização, em Maputo ou online. O
-                                formato é definido de acordo com a sua preferência e necessidade.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h3 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
-                                Como começa o processo?
-                            </button>
-                        </h3>
-                        <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body text-secondary">
-                                Com uma conversa inicial. Ouvimos o seu contexto, identificamos os bloqueios
-                                e apresentamos um caminho prático antes de qualquer compromisso.
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </section>
 
         <!-- FINAL CTA — same pattern as index.html's Promo section -->
         <section id="contato" class="section">
             <div class="text-center cta-panel">
-                <h2 class="mb-3">
+                <h2 class="mb-3" data-i18n-html="page-cta.pronto-para-transformar-a-sua-organizacao">
                     Pronto para transformar<br>a sua organização?
                 </h2>
-                <p class="text-secondary mb-4">
+                <p class="text-secondary mb-4" data-i18n="page-cta.comece-com-uma-conversa-entendemos-o">
                     Comece com uma conversa. Entendemos o seu contexto e mostramos o caminho
                     prático para avançar.
                 </p>
                 <div class="d-flex flex-row gap-3 justify-content-center">
-                    <a href="mailto:contacto@castrosconsultoria.co.mz" class="btn btn-cyan px-4 py-3">Começar</a>
-                    <a href="#processo" class="btn btn-outline-light-c px-4 py-3">Processo</a>
+                    <a href="mailto:contacto@castrosconsultoria.co.mz" class="btn btn-cyan px-4 py-3" data-i18n="page-cta.comecar">Começar</a>
+                    <a href="#processo" class="btn btn-outline-light-c px-4 py-3" data-i18n="page-cta.processo">Processo</a>
+                </div>
+            </div>
+        </section>
+   
+        <!-- FAQ — Bootstrap accordion -->
+        <section id="perguntas" class="section section-band">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 data-i18n="faq.perguntas">Perguntas</h2>
+                    <p class="text-secondary" data-i18n="faq.respostas-diretas-para-as-duvidas-mais">Respostas diretas para as dúvidas mais comuns antes de começar.</p>
+                </div>
+
+                <div class="accordion mx-auto" id="faqAccordion" style="max-width: 800px;">
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" data-i18n="faq.para-quem-sao-as-palestras-e">
+                                Para quem são as palestras e os workshops?
+                            </button>
+                        </h3>
+                        <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-secondary" data-i18n="faq.para-empresas-instituicoes-e-equipas-que">
+                                Para empresas, instituições e equipas que querem desenvolver competências ou dar energia a um evento
+                                — e também para profissionais e empreendedores que se inscrevem a título individual
+                                nos nossos workshops abertos.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" data-i18n="faq.podem-levar-uma-palestra-a-nossa">
+                                Podem levar uma palestra à nossa empresa ou evento?
+                            </button>
+                        </h3>
+                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-secondary" data-i18n="faq.sim-ajustamos-o-tema-a-duracao">
+                                Sim. Ajustamos o tema, a duração e o formato ao seu público e ao objetivo do encontro: uma
+                                conferência, uma reunião anual, um dia de equipa ou uma sessão interna.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" data-i18n="faq.que-temas-abordam">
+                                Que temas abordam?
+                            </button>
+                        </h3>
+                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-secondary" data-i18n="faq.lideranca-comunicacao-e-oratoria-atendimento-ao">
+                                Liderança, comunicação e oratória, atendimento ao cliente, ética e tomada de decisão. Se precisa
+                                de outro tema, desenhamos a sessão à medida da sua organização.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" data-i18n="faq.onde-decorrem-as-sessoes">
+                                Onde decorrem as sessões?
+                            </button>
+                        </h3>
+                        <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-secondary" data-i18n="faq.no-nosso-espaco-em-maputo-nas">
+                                No nosso espaço em Maputo, nas instalações da sua organização ou online, conforme o formato e o
+                                número de participantes.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5" data-i18n="faq.como-me-inscrevo-num-workshop-aberto">
+                                Como me inscrevo num workshop aberto?
+                            </button>
+                        </h3>
+                        <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-secondary" data-i18n="faq.cada-workshop-tem-um-formulario-de">
+                                Cada workshop tem um formulário de inscrição. Preencha os seus dados, faça o pagamento por
+                                transferência e envie o comprovativo no mesmo formulário; a vaga fica confirmada quando
+                                o recebermos. Também pode falar connosco pelo WhatsApp.
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- 03- FOOTER -->
-        <!-- Francisco's component — not duplicated here on purpose.
-             Needs the same physical copy-in treatment as the navbar once
-             his footer is built, across every page in html/. -->
+<!-- 11- CONTACT — pasted from index.html, untouched (ids and data-attributes drive js/javascript.js) -->
+        <section class="contact-section py-5" id="contact">
+            <div class="container py-lg-5">
+
+                <!-- CONTACT HEADER -->
+                <div class="row justify-content-center text-center mb-5">
+                    <div class="col-lg-8">
+                        <span class="contact-eyebrow" data-i18n="contact.contacto">Contacto</span>
+                        <h1 class="contact-title" data-i18n="contact.vamos-conversar-sobre-o-seu-proximo">Vamos conversar sobre o seu próximo passo.</h1>
+                        <p class="contact-intro" data-i18n="contact.conte-nos-um-pouco-sobre-o">
+                            Conte-nos um pouco sobre o que procura. A nossa equipa analisará a sua necessidade
+                            e entrará em contacto consigo.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- CONTACT INFORMATION -->
+                <div class="contact-information mb-5">
+                    <div class="row g-3 justify-content-center">
+
+                        <div class="col-6 col-md-4 col-lg-2">
+                            <span class="contact-info-icon"><i class="bi bi-geo-alt"></i></span>
+                            <a href="#" class="contact-info-item">
+                                <span class="contact-info-content"><small data-i18n="contact.localizacao">Localização</small><strong>Maputo</strong></span>
+                            </a>
+                        </div>
+
+                        <div class="col-6 col-md-4 col-lg-2">
+                            <span class="contact-info-icon"><i class="bi bi-envelope"></i></span>
+                            <a href="mailto:contacto@castrosconsultoria.com" class="contact-info-item">
+                                <span
+                                    class="contact-info-content"><small>Email</small><strong>castrosconsultoria@gmail.com</strong></span>
+                            </a>
+                        </div>
+
+                        <div class="col-6 col-md-4 col-lg-2">
+                            <span class="contact-info-icon"><i class="bi bi-whatsapp"></i></span>
+                            <a href="#" class="contact-info-item">
+                                <span class="contact-info-content"><small>WhatsApp</small><strong>+258 87 866 5180</strong></span>
+                            </a>
+                        </div>
+
+                        <div class="col-6 col-md-4 col-lg-2">
+                            <span class="contact-info-icon"><i class="bi bi-instagram"></i></span>
+                            <a href="https://www.instagram.com/castros.consultoria/" class="contact-info-item">
+                                <span class="contact-info-content"><small>Instagram</small><strong>castros.consultoria</strong></span>
+                            </a>
+                        </div>
+
+                        <div class="col-6 col-md-4 col-lg-2">
+                            <span class="contact-info-icon"><i class="bi bi-tiktok"></i></span>
+                            <a href="https://www.instagram.com/castros.consultoria/" class="contact-info-item">
+                                <span class="contact-info-content"><small>TikTok</small><strong>@castros.consultria.mz</strong></span>
+                            </a>
+                        </div>
+
+                        <div class="col-6 col-md-4 col-lg-2">
+                            <span class="contact-info-icon"><i class="bi bi-telephone"></i></span>
+                            <a href="tel:+258000000000" class="contact-info-item">
+                                <span class="contact-info-content"><small data-i18n="contact.telefone">Telefone</small><strong>+258 ...</strong></span>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- CONTACT MAIN AREA -->
+                <div class="row g-4 g-xl-5 align-items-stretch">
+
+                    <!-- IMAGE -->
+                    <div class="col-lg-5">
+                        <div class="contact-image-card h-100">
+                            <div class="contact-image-overlay"></div>
+                            <div class="contact-image-content">
+                                <span class="contact-image-label" data-i18n="contact.estamos-disponiveis-para-ouvir">Estamos disponíveis para ouvir.</span>
+                                <h2 data-i18n-html="contact.pessoas-reais-contextos-reais-solucoes-relevantes">Pessoas reais.<br>Contextos reais.<br>Soluções relevantes.</h2>
+                                <p data-i18n="contact.partilhe-connosco-o-desafio-ou-oportunidade">Partilhe connosco o desafio ou oportunidade que pretende desenvolver.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FORM -->
+                    <div class="col-lg-7">
+                        <div class="contact-form-card" id="contact-form">
+
+                            <!-- FORM PROGRESS -->
+                            <div class="form-progress" aria-label="Progresso do formulário" data-i18n-attr="aria-label:contact.progresso-do-formulario">
+                                <div class="progress-step active" data-progress-step="1"><span>1</span></div>
+                                <div class="progress-line"></div>
+                                <div class="progress-step" data-progress-step="2"><span>2</span></div>
+                                <div class="progress-line"></div>
+                                <div class="progress-step" data-progress-step="3"><span>3</span></div>
+                            </div>
+
+                            <div class="progress-labels">
+                                <span data-i18n="contact.informacao">Informação</span>
+                                <span data-i18n="contact.necessidade">Necessidade</span>
+                                <span data-i18n="contact.mensagem">Mensagem</span>
+                            </div>
+
+                            <form id="contactForm" novalidate>
+                                <input type="text" name="_gotcha" class="d-none" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+                                <!-- STEP 1 -->
+                                <div class="form-step active" data-form-step="1">
+                                    <div class="mb-4">
+                                        <span class="form-step-number">01</span>
+                                        <h2 class="form-step-title" data-i18n="contact.vamos-comecar">Vamos começar.</h2>
+                                        <p class="form-step-description" data-i18n="contact.diga-nos-como-podemos-entrar-em">Diga-nos como podemos entrar em contacto consigo.</p>
+                                    </div>
+
+                                    <div class="row g-3">
+                                        <div class="col-12">
+                                            <label for="name" class="form-label"><span data-i18n="contact.nome">Nome</span> <span>*</span></label>
+                                            <input type="text" class="form-control" id="name" name="name" placeholder="O seu nome completo"
+                                                autocomplete="name" required data-i18n-attr="placeholder:contact.o-seu-nome-completo">
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label for="email" class="form-label">Email <span>*</span></label>
+                                            <input type="email" class="form-control" id="email" name="email" placeholder="nome@empresa.com"
+                                                autocomplete="email" required data-i18n-attr="placeholder:contact.nome-empresa-com">
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label for="organization" class="form-label" data-i18n="contact.organizacao">Organização</label>
+                                            <input type="text" class="form-control" id="organization" name="organization"
+                                                placeholder="Empresa / Organização" autocomplete="organization" data-i18n-attr="placeholder:contact.empresa-organizacao">
+                                        </div>
+
+                                        <div class="col-12">
+                                            <label for="phone" class="form-label" data-i18n="contact.whatsapp-telefone">WhatsApp / Telefone</label>
+                                            <input type="tel" class="form-control" id="phone" name="phone" placeholder="+258 ___ ___ ___"
+                                                autocomplete="tel">
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex justify-content-end mt-4">
+                                        <button type="button" class="btn btn-contact-primary" data-next-step>
+                                            <span data-i18n="contact.continuar">Continuar</span> <i class="bi bi-arrow-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- STEP 2 -->
+                                <div class="form-step" data-form-step="2">
+                                    <div class="mb-4">
+                                        <span class="form-step-number">02</span>
+                                        <h2 class="form-step-title" data-i18n="contact.como-podemos-ajudar">Como podemos ajudar?</h2>
+                                        <p class="form-step-description" data-i18n="contact.selecione-o-servico-que-melhor-corresponde">
+                                            Selecione o serviço que melhor corresponde à sua necessidade.
+                                        </p>
+                                    </div>
+
+                                    <div class="row g-3">
+                                        <div class="col-12">
+                                            <label for="service" class="form-label"><span data-i18n="contact.servico">Serviço</span> <span>*</span></label>
+                                            <select class="form-select" id="service" name="service" required>
+                                                <option value="" selected disabled data-i18n="contact.selecione-um-servico">Selecione um serviço</option>
+                                                <option value="Consultoria" data-i18n="contact.consultoria">Consultoria</option>
+                                                <option value="Formação" data-i18n="contact.formacao">Formação</option>
+                                                <option value="Treinamento" data-i18n="contact.treinamento">Treinamento</option>
+                                                <option value="Palestras" data-i18n="contact.palestras">Palestras</option>
+                                                <option value="Eventos" data-i18n="contact.eventos">Eventos</option>
+                                                <option value="Outro" data-i18n="contact.outro">Outro</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <label for="interest" class="form-label"><span data-i18n="contact.area-de-interesse">Área de interesse</span> <span>*</span></label>
+                                            <select class="form-select" id="interest" name="interest" disabled required>
+                                                <option value="" selected disabled data-i18n="contact.primeiro-selecione-um-servico">Primeiro selecione um serviço</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex justify-content-between gap-2 mt-4">
+                                        <button type="button" class="btn btn-contact-secondary" data-prev-step>
+                                            <i class="bi bi-arrow-left"></i> <span data-i18n="contact.voltar">Voltar</span>
+                                        </button>
+                                        <button type="button" class="btn btn-contact-primary" data-next-step>
+                                            <span data-i18n="contact.continuar">Continuar</span> <i class="bi bi-arrow-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- STEP 3 -->
+                                <div class="form-step" data-form-step="3">
+                                    <div class="mb-4">
+                                        <span class="form-step-number">03</span>
+                                        <h2 class="form-step-title" data-i18n="contact.conte-nos-mais">Conte-nos mais.</h2>
+                                        <p class="form-step-description" data-i18n="contact.partilhe-brevemente-a-sua-necessidade-desafio">
+                                            Partilhe brevemente a sua necessidade, desafio ou projeto.
+                                        </p>
+                                    </div>
+
+                                    <label for="message" class="form-label"><span data-i18n="contact.mensagem">Mensagem</span> <span>*</span></label>
+                                    <textarea class="form-control message-field" id="message" name="message" rows="6"
+                                        placeholder="Conte-nos brevemente sobre a sua necessidade, desafio ou projeto..."
+                                        required data-i18n-attr="placeholder:contact.conte-nos-brevemente-sobre-a-sua"></textarea>
+
+                                    <div class="d-flex justify-content-between gap-2 mt-4">
+                                        <button type="button" class="btn btn-contact-secondary" data-prev-step>
+                                            <i class="bi bi-arrow-left"></i> <span data-i18n="contact.voltar">Voltar</span>
+                                        </button>
+
+                                        <button type="submit" class="btn btn-contact-primary" id="submitButton">
+                                            <span class="submit-label"><span data-i18n="contact.enviar-mensagem">Enviar mensagem</span> <i class="bi bi-send"></i></span>
+                                            <span class="submit-loading d-none">
+                                                <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+                                                <span data-i18n="contact.a-processar">A processar...</span>
+                                            </span>
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BOOTSTRAP ALERT -->
+            <div id="contactAlert" class="alert alert-dismissible fade contact-alert" role="alert" aria-live="polite">
+                <div class="d-flex align-items-start gap-3">
+                    <i class="bi bi-check-circle-fill contact-alert-icon"></i>
+                    <div>
+                        <strong class="d-block" id="alertTitle" data-i18n="contact.mensagem-enviada">Mensagem enviada</strong>
+                        <span id="alertMessage" data-i18n="contact.obrigado-por-contactar-a-castros-consultoria">Obrigado por contactar a Castros Consultoria.</span>
+                    </div>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar" data-i18n-attr="aria-label:contact.fechar"></button>
+            </div>
+        </section>
 
     </main>
 
+    <!-- FOOTER — pasted from index.html. Only the "Menu" link targets changed, so they work from html/ -->
+    <footer class="pt-5 pb-4">
+      <div class="container">
+        <div class="row g-4 pb-4">
+          <div class="col-lg-6">
+            <span class="navbar-brand" style="color:#fff!important">Castros</span>
+            <div class="mt-4">
+              <h5 data-i18n="footer.localizacao">Localização</h5>
+              <p class="foot-p mb-0 d-flex align-items-center gap-2"><svg class="bi">
+                  <use xlink:href="#i-geo"></use>
+                </svg>Rua do Palmar, nº 35</p>
+            </div>
+            <div class="mt-3">
+              <h5 data-i18n="footer.contacto">Contacto</h5>
+              <a class="d-flex align-items-center gap-2 mb-1" href="#"><svg class="bi">
+                  <use xlink:href="#i-phone"></use>
+                </svg>84 123 4567</a>
+              <a class="d-flex align-items-center gap-2" href="#"><svg class="bi">
+                  <use xlink:href="#i-envelope"></use>
+                </svg>email@example.com</a>
+            </div>
+            <div class="d-flex gap-3 mt-3">
+              <a class="social-ic" href="#"><svg class="bi">
+                  <use xlink:href="#i-facebook"></use>
+                </svg></a>
+              <a class="social-ic" href="#"><svg class="bi">
+                  <use xlink:href="#i-instagram"></use>
+                </svg></a>
+              <a class="social-ic" href="#"><svg class="bi">
+                  <use xlink:href="#i-x"></use>
+                </svg></a>
+              <a class="social-ic" href="#"><svg class="bi">
+                  <use xlink:href="#i-linkedin"></use>
+                </svg></a>
+              <a class="social-ic" href="#"><svg class="bi">
+                  <use xlink:href="#i-youtube"></use>
+                </svg></a>
+            </div>
+          </div>
+          <div class="col-lg-3 col-6">
+            <h5>Menu</h5>
+            <a class="d-block mb-2" href="../index.html" data-i18n="footer.inicio">Início</a>
+            <a class="d-block mb-2" href="../index.html#sobre" data-i18n="footer.sobre-nos">Sobre Nós</a>
+            <a class="d-block mb-2" href="../index.html#servicos" data-i18n="footer.servicos">Serviços</a>
+            <a class="d-block mb-2" href="../index.html#eventos" data-i18n="footer.eventos">Eventos</a>
+            <a class="d-block mb-2" href="#contact-form" data-i18n="footer.contacto">Contacto</a>
+          </div>
+          <div class="col-lg-3 col-6">
+            <h5>Legal</h5>
+            <a class="d-block mb-2" href="#" data-i18n="footer.politica-de-privacidade">Política de Privacidade</a>
+            <a class="d-block mb-2" href="#" data-i18n="footer.termos-de-servico">Termos de Serviço</a>
+            <a class="d-block mb-2" href="#" data-i18n="footer.definicoes-de-cookies">Definições de Cookies</a>
+          </div>
+        </div>
+        <p class="wordmark">Castros Consultoria</p>
+        <div class="d-flex flex-wrap justify-content-between gap-2 pt-3 foot-bottom">
+          <span data-i18n="footer.2026-castros-consultoria-todos-os-direitos">© 2026 Castros Consultoria. Todos os direitos reservados.</span>
+        </div>
+      </div>
+    </footer>
+
+    <button aria-label="Voltar ao topo" id="backTop" data-i18n-attr="aria-label:common.voltar-ao-topo">
+        <svg class="bi" style="font-size:1.2rem">
+          <use xlink:href="#i-chevronup"></use>
+        </svg>
+    </button>
+
+    <a href="https://wa.me/258848665180" target="_blank" rel="noopener" id="whatsappBtn" aria-label="Falar no WhatsApp" data-i18n-attr="aria-label:common.falar-no-whatsapp">
+        <i class="bi bi-whatsapp"></i>
+    </a>
+
+    <!-- ======================================================
+         MODAL — PALESTRAS (same structure as the Formações modal in formacoes.html)
+         left: description + topics | right: benefícios + próximas palestras
+         bottom: Bastidores gallery. Photos are stock placeholders until the client's own arrive.
+         ====================================================== -->
+    <div class="modal fade" id="modalPalestras" tabindex="-1" aria-labelledby="modalPalestrasLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="modalPalestrasLabel" data-i18n="palestras.modal-talks.palestras">Palestras</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar" data-i18n-attr="aria-label:palestras.modal-talks.fechar"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row g-5">
+                        <!-- LEFT: description + topics -->
+                        <div class="col-lg-6">
+                            <p class="fm-lede" data-i18n="palestras.modal-talks.palestras-pensadas-para-o-publico-e">
+                                Palestras pensadas para o público e para o momento certos — a abertura de uma conferência,
+                                o arranque de um projeto ou o encontro anual da equipa. Mensagens claras, exemplos reais e
+                                uma ligação direta à prática, para que a inspiração dure além do dia do evento.
+                            </p>
+                            <h4 class="mb-3" data-i18n="palestras.modal-talks.temas-que-abordamos">Temas que abordamos</h4>
+                            <ul class="course-list">
+                                <li><i class="bi bi-check2-circle"></i><span data-i18n="palestras.modal-talks.lideranca-com-proposito-e-etica">Liderança com propósito e ética</span></li>
+                                <li><i class="bi bi-check2-circle"></i><span data-i18n="palestras.modal-talks.comunicacao-e-oratoria-com-impacto">Comunicação e oratória com impacto</span></li>
+                                <li><i class="bi bi-check2-circle"></i><span data-i18n="palestras.modal-talks.atendimento-que-encanta-e-fideliza">Atendimento que encanta e fideliza</span></li>
+                            </ul>
+                        </div>
+
+                        <!-- RIGHT: benefícios + próximas palestras -->
+                        <div class="col-lg-6">
+                            <h4 class="mb-3" data-i18n="palestras.modal-talks.beneficios">Benefícios</h4>
+                            <div class="benefit-row">
+                                <div class="benefit-item">
+                                    <div class="icon-box"><svg class="bi">
+                                            <use xlink:href="#i-people"></use>
+                                        </svg></div>
+                                    <p data-i18n="palestras.modal-talks.tema-a-medida-do-publico">Tema à medida do público</p>
+                                </div>
+                                <div class="benefit-item">
+                                    <div class="icon-box"><svg class="bi">
+                                            <use xlink:href="#i-award"></use>
+                                        </svg></div>
+                                    <p data-i18n="palestras.modal-talks.oradores-com-experiencia">Oradores com experiência</p>
+                                </div>
+                                <div class="benefit-item">
+                                    <div class="icon-box"><svg class="bi">
+                                            <use xlink:href="#i-geo"></use>
+                                        </svg></div>
+                                    <p data-i18n="palestras.modal-talks.presencial-ou-online">Presencial ou online</p>
+                                </div>
+                                <div class="benefit-item">
+                                    <div class="icon-box"><svg class="bi">
+                                            <use xlink:href="#i-graph"></use>
+                                        </svg></div>
+                                    <p data-i18n="palestras.modal-talks.ideias-que-passam-a-pratica">Ideias que passam à prática</p>
+                                </div>
+                            </div>
+
+                            <div class="highlight-card mt-4">
+                                <span class="eyebrow" data-i18n="palestras.modal-talks.calendario">Calendário</span>
+                                <h4 class="mb-3" data-i18n="palestras.modal-talks.proximas-palestras">Próximas Palestras</h4>
+                                <ul class="upcoming-list">
+                                    <li>
+                                        <span class="upcoming-title" data-i18n="palestras.modal-talks.oratoria-e-comunicacao-com-impacto">Oratória e Comunicação com Impacto</span>
+                                        <span class="d-flex gap-3 event-meta">
+                                            <span class="d-flex align-items-center gap-1"><svg class="bi">
+                                                    <use xlink:href="#i-calendar"></use>
+                                                </svg><span data-i18n="palestras.modal-talks.13-out-2026">13 Out 2026</span></span>
+                                            <span class="d-flex align-items-center gap-1"><svg class="bi">
+                                                    <use xlink:href="#i-geo"></use>
+                                                </svg>Maputo</span>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span class="upcoming-title" data-i18n="palestras.modal-talks.etica-e-lideranca-organizacional">Ética e Liderança Organizacional</span>
+                                        <span class="d-flex gap-3 event-meta">
+                                            <span class="d-flex align-items-center gap-1"><svg class="bi">
+                                                    <use xlink:href="#i-calendar"></use>
+                                                </svg><span data-i18n="palestras.modal-talks.data-a-anunciar">Data a anunciar</span></span>
+                                            <span class="d-flex align-items-center gap-1"><svg class="bi">
+                                                    <use xlink:href="#i-geo"></use>
+                                                </svg>Maputo</span>
+                                        </span>
+                                    </li>
+                                </ul>
+                                <a class="link-arrow" href="#contact-form"><span data-i18n="palestras.modal-talks.inscrever-se">Inscrever-se</span> <span
+                                        class="arrowRight">&gt;</span></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BASTIDORES -->
+                    <div class="mt-5">
+                        <h4 class="mb-3" data-i18n="palestras.modal-talks.bastidores">Bastidores</h4>
+                        <div class="modal-gallery">
+                            <div class="mg-a"><img src="../assets/events/oratoria-comunicacao-impacto.webp" alt="Plateia numa palestra em auditório, com a apresentação no ecrã" loading="lazy" data-i18n-attr="alt:palestras.modal-talks.plateia-numa-palestra-em-auditorio-com"></div>
+                            <div class="mg-b"><img src="../assets/hero/formacao-poster.webp" alt="Participantes a aplaudir no fim de uma palestra" loading="lazy" data-i18n-attr="alt:palestras.modal-talks.participantes-a-aplaudir-no-fim-de"></div>
+                            <div class="mg-c"><img src="../assets/events/comunicacao-com-impacto.webp" alt="Oradora a falar em palco perante a plateia" loading="lazy" data-i18n-attr="alt:palestras.modal-talks.oradora-a-falar-em-palco-perante"></div>
+                            <div class="mg-d"><img src="../assets/hero/eventos-poster.webp" alt="Participantes sentados numa sala de conferências" loading="lazy" data-i18n-attr="alt:palestras.modal-talks.participantes-sentados-numa-sala-de-conferencias"></div>
+                            <div class="mg-e"><img src="../assets/services/espacos.webp" alt="Cadeiras alinhadas numa sala preparada para uma palestra" loading="lazy" data-i18n-attr="alt:palestras.modal-talks.cadeiras-alinhadas-numa-sala-preparada-para"></div>
+                            <div class="mg-f"><img src="../assets/events/etica-e-lideranca.webp" alt="Aperto de mão no fim de uma sessão" loading="lazy" data-i18n-attr="alt:palestras.modal-talks.aperto-de-mao-no-fim-de"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ======================================================
+         MODAL — WORKSHOPS (same structure as the Treinamento modal in formacoes.html)
+         top: media block (1 square + 2 wide) | 3 columns: Abertos / Empresas / Online
+         then Próximo Workshop banner, then Bastidores gallery. Photos are stock placeholders.
+         ====================================================== -->
+    <div class="modal fade" id="modalWorkshops" tabindex="-1" aria-labelledby="modalWorkshopsLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="modalWorkshopsLabel">Workshops</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar" data-i18n-attr="aria-label:palestras.modal-workshops.fechar"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- MEDIA FEATURE: 1 square + 2 stacked wide -->
+                    <div class="media-trio mb-5">
+                        <div class="mt-a"><img src="../assets/hero/inicio-3.webp"
+                                alt="Participantes a celebrar o fim de um exercício em equipa" loading="lazy" data-i18n-attr="alt:palestras.modal-workshops.participantes-a-celebrar-o-fim-de"></div>
+                        <div class="mt-b"><img src="../assets/morepeople.jpg"
+                                alt="Equipa a trabalhar à mesa com portáteis durante um workshop" loading="lazy" data-i18n-attr="alt:palestras.modal-workshops.equipa-a-trabalhar-a-mesa-com"></div>
+                        <div class="mt-c"><img src="../assets/events/atendimento-ao-cliente.webp"
+                                alt="Três profissionais numa sessão prática, a rever notas num tablet" loading="lazy" data-i18n-attr="alt:palestras.modal-workshops.tres-profissionais-numa-sessao-pratica-a"></div>
+                    </div>
+
+                    <!-- 3 COLUMNS -->
+                    <div class="service-columns row g-4 mb-5">
+                        <div class="col-md-4">
+                            <h4 data-i18n="palestras.modal-workshops.abertos">Abertos</h4>
+                            <p class="small text-secondary" data-i18n="palestras.modal-workshops.workshops-com-inscricao-individual-no-nosso">Workshops com inscrição individual, no nosso espaço em Maputo,
+                                para aprender uma competência concreta ao lado de outros profissionais.</p>
+                            <a class="link-arrow" href="#eventoWorkshop"><span data-i18n="palestras.modal-workshops.saber-mais">Saber mais</span> <span
+                                    class="arrowRight">&gt;</span></a>
+                        </div>
+                        <div class="col-md-4">
+                            <h4 data-i18n="palestras.modal-workshops.empresas">Empresas</h4>
+                            <p class="small text-secondary" data-i18n="palestras.modal-workshops.workshops-a-medida-da-sua-equipa">Workshops à medida da sua equipa, na sua organização ou no
+                                nosso espaço, com exercícios ligados aos desafios do dia a dia.</p>
+                            <a class="link-arrow" href="#contact-form"><span data-i18n="palestras.modal-workshops.saber-mais">Saber mais</span> <span
+                                    class="arrowRight">&gt;</span></a>
+                        </div>
+                        <div class="col-md-4">
+                            <h4>Online</h4>
+                            <p class="small text-secondary" data-i18n="palestras.modal-workshops.sessoes-em-direto-com-a-mesma">Sessões em direto, com a mesma dinâmica e os mesmos exercícios
+                                práticos, para equipas em várias cidades ou que não se podem deslocar.</p>
+                            <a class="link-arrow" href="#contact-form"><span data-i18n="palestras.modal-workshops.saber-mais">Saber mais</span> <span
+                                    class="arrowRight">&gt;</span></a>
+                        </div>
+                    </div>
+
+                    <!-- PRÓXIMO WORKSHOP -->
+                    <div class="event-banner mb-5" id="eventoWorkshop">
+                        <div>
+                            <span class="eyebrow" data-i18n="palestras.modal-workshops.proximo-workshop">Próximo Workshop</span>
+                            <h4 class="mb-1" data-i18n="palestras.modal-workshops.excelencia-no-atendimento-ao-cliente">Excelência no Atendimento ao Cliente</h4>
+                            <span class="d-flex gap-3 event-meta">
+                                <span class="d-flex align-items-center gap-1"><svg class="bi">
+                                        <use xlink:href="#i-calendar"></use>
+                                    </svg><span data-i18n="palestras.modal-workshops.data-a-anunciar">Data a anunciar</span></span>
+                                <span class="d-flex align-items-center gap-1"><svg class="bi">
+                                        <use xlink:href="#i-geo"></use>
+                                    </svg>Maputo</span>
+                            </span>
+                        </div>
+                        <a class="btn btn-cyan px-4 py-2" href="#contact-form" data-i18n="palestras.modal-workshops.manifestar-interesse">Manifestar interesse</a>
+                    </div>
+
+                    <!-- BASTIDORES -->
+                    <div>
+                        <h4 class="mb-3" data-i18n="palestras.modal-workshops.bastidores">Bastidores</h4>
+                        <div class="modal-gallery">
+                            <div class="mg-a"><img src="../assets/hero/inicio-2.webp" alt="Facilitador a orientar um grupo sentado em círculo" loading="lazy" data-i18n-attr="alt:palestras.modal-workshops.facilitador-a-orientar-um-grupo-sentado"></div>
+                            <div class="mg-b"><img src="../assets/services/formacoes-treinamentos.webp" alt="Formador a acompanhar um participante num exercício no tablet" loading="lazy" data-i18n-attr="alt:palestras.modal-workshops.formador-a-acompanhar-um-participante-num"></div>
+                            <div class="mg-c"><img src="../assets/hero/inicio-1.webp" alt="Dois participantes a trabalhar juntos num portátil" loading="lazy" data-i18n-attr="alt:palestras.modal-workshops.dois-participantes-a-trabalhar-juntos-num"></div>
+                            <div class="mg-d"><img src="../assets/events/decidir-com-clareza.webp" alt="Aperto de mão entre dois participantes" loading="lazy" data-i18n-attr="alt:palestras.modal-workshops.aperto-de-mao-entre-dois-participantes"></div>
+                            <div class="mg-e"><img src="../assets/services/consultoria.webp" alt="Conversa entre dois participantes durante uma dinâmica" loading="lazy" data-i18n-attr="alt:palestras.modal-workshops.conversa-entre-dois-participantes-durante-uma"></div>
+                            <div class="mg-f"><img src="../assets/services/espacos.webp" alt="Sala preparada para receber o workshop" loading="lazy" data-i18n-attr="alt:palestras.modal-workshops.sala-preparada-para-receber-o-workshop"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+        <symbol id="i-arrow" viewbox="0 0 16 16">
+          <path
+            d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8"
+            fill-rule="evenodd"></path>
+        </symbol>
+        <symbol id="i-chevrondown" viewbox="0 0 16 16">
+          <path
+            d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"
+            fill-rule="evenodd"></path>
+        </symbol>
+        <symbol id="i-chevronup" viewbox="0 0 16 16">
+          <path d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708z"
+            fill-rule="evenodd"></path>
+        </symbol>
+        <symbol id="i-image" viewbox="0 0 16 16">
+          <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"></path>
+          <path
+            d="M2.002 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zm12 1a1 1 0 0 1 1 1v6.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12V3a1 1 0 0 1 1-1z">
+          </path>
+        </symbol>
+        <symbol id="i-person" viewbox="0 0 16 16">
+          <path
+            d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"
+            fill-rule="evenodd"></path>
+          <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"></path>
+        </symbol>
+        <symbol id="i-linkedin" viewbox="0 0 16 16">
+          <path
+            d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z">
+          </path>
+        </symbol>
+        <symbol id="i-x" viewbox="0 0 16 16">
+          <path
+            d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z">
+          </path>
+        </symbol>
+        <symbol id="i-dribbble" viewbox="0 0 16 16">
+          <path
+            d="M8 0C3.584 0 0 3.584 0 8s3.584 8 8 8c4.408 0 8-3.584 8-8s-3.592-8-8-8m5.284 3.688a6.8 6.8 0 0 1 1.545 4.251c-.226-.043-2.482-.503-4.755-.217-.052-.112-.096-.234-.148-.355-.139-.33-.295-.668-.451-.99 2.516-1.023 3.662-2.498 3.81-2.69zM8 1.18c1.735 0 3.323.65 4.53 1.718-.122.174-1.155 1.553-3.584 2.464-1.12-2.056-2.36-3.74-2.551-4A7 7 0 0 1 8 1.18m-2.907.642A43 43 0 0 1 7.627 5.77c-3.193.85-6.013.833-6.317.833a6.87 6.87 0 0 1 3.783-4.78zM1.163 8.01V7.8c.295.01 3.61.053 7.02-.971.199.381.381.772.555 1.162l-.27.078c-3.522 1.137-5.396 4.243-5.553 4.504a6.82 6.82 0 0 1-1.752-4.564zM8 14.837a6.8 6.8 0 0 1-4.19-1.44c.12-.252 1.509-2.924 5.361-4.269.018-.009.026-.009.044-.017a28.3 28.3 0 0 1 1.457 5.18A6.7 6.7 0 0 1 8 14.837m3.81-1.171c-.07-.417-.435-2.412-1.328-4.868 2.143-.338 4.017.217 4.251.295a6.77 6.77 0 0 1-2.924 4.573z"
+            fill-rule="evenodd"></path>
+        </symbol>
+        <symbol id="i-facebook" viewbox="0 0 16 16">
+          <path
+            d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951">
+          </path>
+        </symbol>
+        <symbol id="i-instagram" viewbox="0 0 16 16">
+          <path
+            d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942.038-.853.048-1.125.048-3.299s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334">
+          </path>
+        </symbol>
+        <symbol id="i-youtube" viewbox="0 0 16 16">
+          <path
+            d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.01 2.01 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052a423 423 0 0 1-.428-.02c-1.11-.049-2.167-.128-2.654-.26a2.01 2.01 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31 31 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.01 2.01 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A100 100 0 0 1 7.858 2zM6.4 5.209v4.818l4.157-2.408z">
+          </path>
+        </symbol>
+        <symbol id="i-award" viewbox="0 0 16 16">
+          <path
+            d="m8 0 1.669.864 1.858.282.842 1.68 1.337 1.32L13.4 6l.306 1.854-1.337 1.32-.842 1.68-1.858.282L8 12l-1.669-.864-1.858-.282-.842-1.68-1.337-1.32L2.6 6l-.306-1.854 1.337-1.32.842-1.68L6.331.864z">
+          </path>
+          <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1z"></path>
+        </symbol>
+        <symbol id="i-shield" viewbox="0 0 16 16">
+          <path
+            d="M5.338 1.59a61 61 0 0 0-2.837.856.48.48 0 0 0-.328.39c-.554 4.157.726 7.19 2.253 9.188a10.7 10.7 0 0 0 2.287 2.233c.346.244.652.42.893.533q.18.085.293.118a1 1 0 0 0 .101.025 1 1 0 0 0 .1-.025q.114-.034.294-.118c.24-.113.547-.29.893-.533a10.7 10.7 0 0 0 2.287-2.233c1.527-1.997 2.807-5.031 2.253-9.188a.48.48 0 0 0-.328-.39c-.651-.213-1.75-.56-2.837-.855C9.552 1.29 8.531 1.067 8 1.067c-.53 0-1.552.223-2.662.524zM5.072.56C6.157.265 7.31 0 8 0s1.843.265 2.928.56c1.11.3 2.229.655 2.887.87a1.54 1.54 0 0 1 1.044 1.262c.596 4.477-.787 7.795-2.465 9.99a11.8 11.8 0 0 1-2.517 2.453 7 7 0 0 1-1.048.625c-.28.132-.581.24-.829.24s-.548-.108-.829-.24a7 7 0 0 1-1.048-.625 11.8 11.8 0 0 1-2.517-2.453C1.928 10.487.545 7.169 1.141 2.692A1.54 1.54 0 0 1 2.185 1.43 63 63 0 0 1 5.072.56">
+          </path>
+          <path
+            d="M10.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0">
+          </path>
+        </symbol>
+        <symbol id="i-people" viewbox="0 0 16 16">
+          <path
+            d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5">
+          </path>
+        </symbol>
+        <symbol id="i-hearts" viewbox="0 0 16 16">
+          <path
+            d="M4.931.481c1.627-1.671 5.692 1.254 0 5.015-5.692-3.76-1.626-6.686 0-5.015m6.84 1.794c1.084-1.114 3.795.836 0 3.343-3.795-2.507-1.084-4.457 0-3.343M7.84 7.642c2.71-2.786 9.486 2.09 0 8.358-9.487-6.268-2.71-11.144 0-8.358"
+            fill-rule="evenodd"></path>
+        </symbol>
+        <symbol id="i-box" viewbox="0 0 16 16">
+          <path
+            d="M15.528 2.973a.75.75 0 0 1 .472.696v8.662a.75.75 0 0 1-.472.696l-7.25 2.9a.75.75 0 0 1-.557 0l-7.25-2.9A.75.75 0 0 1 0 12.331V3.669a.75.75 0 0 1 .471-.696L7.443.184l.01-.003.268-.108a.75.75 0 0 1 .558 0l.269.108.01.003zM10.404 2 4.25 4.461 1.846 3.5 1 3.839v.4l6.5 2.6v7.922l.5.2.5-.2V6.84l6.5-2.6v-.4l-.846-.339L8 5.961 5.596 5l6.154-2.461z"
+            fill-rule="evenodd"></path>
+        </symbol>
+        <symbol id="i-mortarboard" viewbox="0 0 16 16">
+          <path
+            d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917z">
+          </path>
+          <path
+            d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466z">
+          </path>
+        </symbol>
+        <symbol id="i-graph" viewbox="0 0 16 16">
+          <path
+            d="M0 0h1v15h15v1H0zm10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4.9l-3.613 4.417a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61L13.445 4H10.5a.5.5 0 0 1-.5-.5"
+            fill-rule="evenodd"></path>
+        </symbol>
+        <symbol id="i-calendar" viewbox="0 0 16 16">
+          <path
+            d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2M1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857z">
+          </path>
+          <path
+            d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2m3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2">
+          </path>
+        </symbol>
+        <symbol id="i-geo" viewbox="0 0 16 16">
+          <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"></path>
+        </symbol>
+        <symbol id="i-phone" viewbox="0 0 16 16">
+          <path
+            d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"
+            fill-rule="evenodd"></path>
+        </symbol>
+        <symbol id="i-envelope" viewbox="0 0 16 16">
+          <path
+            d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414zM0 4.697v7.104l5.803-3.558zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586zm3.436-.586L16 11.801V4.697z">
+          </path>
+        </symbol>
+    </svg>
+
+    <script src="../js/javascript.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        /* JAVASCRIPT | Navigation, interactions and animations */
+        (function () {
+            /* NAVBAR SCROLL BEHAVIOUR */
+            const navbar = document.getElementById("mainNavbar");
+            let lastScrollPosition = window.scrollY;
+            let hideTimer = null;
+            
+            function showNavbar() {
+              if (!navbar) return;
+              navbar.classList.remove("navbar-hidden");
+              navbar.classList.add("navbar-hovered");
+            }
+        
+            function hideNavbar() {
+              if (!navbar || window.scrollY <= 40) return;
+              navbar.classList.add("navbar-hidden");
+              navbar.classList.remove("navbar-hovered");
+            }
+        
+            window.addEventListener("scroll", function () {
+              const currentScrollPosition = window.scrollY;
+            
+              if (currentScrollPosition < lastScrollPosition || currentScrollPosition <= 40) {
+                showNavbar();
+              } else if (currentScrollPosition > lastScrollPosition + 8) {
+                clearTimeout(hideTimer);
+                hideTimer = setTimeout(hideNavbar, 150);
+              }
+            
+              lastScrollPosition = currentScrollPosition;
+            
+              const backTop = document.getElementById("backTop");
+              if (backTop) backTop.classList.toggle("show", currentScrollPosition > 500);
+            }, {
+              passive: true
+            });
+        
+            if (navbar) {
+              navbar.addEventListener("mouseenter", showNavbar);
+              navbar.addEventListener("focusin", showNavbar);
+            }
+        
+            const backTop = document.getElementById("backTop");
+            if (backTop) {
+              backTop.addEventListener("click", function () {
+                window.scrollTo({
+                  top: 0,
+                  behavior: "smooth"
+                });
+              });
+            }
+        
+            /* SERVICES ACCORDION */
+            const tabsWrap = document.getElementById("servicesTabs");
+            if (tabsWrap) {
+              tabsWrap.addEventListener("click", function (event) {
+                const button = event.target.closest(".tab-item");
+                if (!button || button.classList.contains("active")) return;
+            
+                tabsWrap.querySelectorAll(".tab-item").forEach(function (tab) {
+                  tab.classList.remove("active");
+                  tab.setAttribute("aria-expanded", "false");
+                });
+            
+                button.classList.add("active");
+                button.setAttribute("aria-expanded", "true");
+              });
+            }
+        
+            /* REVEAL ANIMATIONS */
+            const revealElements = document.querySelectorAll(".reveal");
+            if ("IntersectionObserver" in window) {
+              const observer = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                  if (entry.isIntersecting) {
+                    entry.target.classList.add("is-visible");
+                    observer.unobserve(entry.target);
+                  }
+                });
+              }, {
+                threshold: 0.15
+              });
+            
+              revealElements.forEach(function (element) {
+                observer.observe(element);
+              });
+            } else {
+              revealElements.forEach(function (element) {
+                element.classList.add("is-visible");
+              });
+            }
+        
+            /* COUNTERS */
+            let counted = false;
+        
+            function animateCounters() {
+              if (counted) return;
+              counted = true;
+            
+              document.querySelectorAll("[data-count]").forEach(function (element) {
+                const target = parseInt(element.getAttribute("data-count"), 10);
+                let start = null;
+                const duration = 1300;
+            
+                function step(timestamp) {
+                  if (!start) start = timestamp;
+                
+                  const progress = Math.min((timestamp - start) / duration, 1);
+                  const eased = 1 - Math.pow(1 - progress, 3);
+                
+                  element.textContent = "+" + Math.round(eased * target);
+                
+                  if (progress < 1) requestAnimationFrame(step);
+                }
+            
+                requestAnimationFrame(step);
+              });
+            }
+        
+            setTimeout(animateCounters, 500);
+        })();
+    </script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         function startAOS() {
