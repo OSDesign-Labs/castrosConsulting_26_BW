@@ -112,6 +112,7 @@
 
     /* ---------- the end: hand over to the real nav logo ---------- */
     function finish() {
+        if (window.siteLoaderDone) return;               // runs once (the safety timer below may get here first)
         // same frame: real logo appears, loader copy disappears
         root.classList.remove("is-loading", "loader-handoff");
         loader.hidden = true;
@@ -131,6 +132,11 @@
         }
         store(KEY_SEEN, "1");
         store(KEY_HANDOFF, null);
+
+        // safety net: the arrival waits on animations, which stall if the browser stops drawing
+        // frames. Without this, "site-loader:done" never fires, so AOS (every fade-in section) and
+        // the hero carousel never start; the CSS failsafe only hides the overlay. 12 s, same as it.
+        setTimeout(finish, T.maxWait + 5000);
 
         pageReady().then(function () {
             var target = navTarget();
