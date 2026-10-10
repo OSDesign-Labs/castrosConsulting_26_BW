@@ -563,6 +563,19 @@ section {
     border-radius: 18px;
 }
 
+/* gallery: the two side photos share the height of the square photo beside them (tablet and up);
+   stacked on phones there is no height to share (they collapsed to 2px), so each gets its own shape */
+.g-side .ph {
+    flex: 1;
+}
+
+@media (max-width: 767.98px) {
+    .g-side .ph {
+        flex: none;
+        aspect-ratio: 3 / 2;
+    }
+}
+
 .team-body {
     .role {
         color: var(--cyan);
