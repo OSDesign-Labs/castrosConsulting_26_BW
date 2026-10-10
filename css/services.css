@@ -1453,7 +1453,7 @@ main>.hero #overlayGradient>[class*="col-lg-6"] {
     border-radius: 14px;
     box-shadow: inset 0 0 70px rgba(1, 9, 48, 0.12);
     pointer-events: none;
-    background-image: url(../assets/people.jpg);
+    background-image: url(../assets/people.webp);
     background-size: cover;   
     background-position: center;
     filter: contrast(1.2) grayscale(1);
@@ -3052,7 +3052,7 @@ main>.hero #overlayGradient>[class*="col-lg-6"] {
 
         .carousel-inner {
             height: 100%;
-            /* background-image: url(../assets/workshop2.jpg); */
+            /* background-image: url(../assets/workshop2.webp); */
             background-color: var(--white) !important;
             background-position: center;
             background-repeat: no-repeat;
