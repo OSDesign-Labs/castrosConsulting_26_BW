@@ -8,8 +8,10 @@
    - the line under the active tab shows the time left
    - Início's 3 background photos split its 8 s into equal parts
    - videos play only while their slide is on screen
-   Pauses on: the pause button, mouse over the hero, keyboard
-   focus inside it, and the hero being scrolled off screen.
+   Pauses on: the pause button, keyboard focus inside it, the hero
+   being scrolled off screen, and the browser tab being hidden.
+   (No pause on mouse-over: the hero fills the screen, so it froze
+   whenever the mouse rested on it, including while clicking a tab.)
    ========================================================== */
 (function () {
     "use strict";
@@ -44,7 +46,6 @@
         let elapsed = 0;            // ms spent on the current slide (only counts while running)
         let last = null;            // timestamp of the previous frame
         let userPaused = reduceMotion;
-        let hovering = false;
         let keyboardFocus = false;
         let offscreen = false;
 
@@ -53,7 +54,7 @@
         }
 
         function isRunning() {
-            return !userPaused && !hovering && !keyboardFocus && !offscreen && !document.hidden;
+            return !userPaused && !keyboardFocus && !offscreen && !document.hidden;
         }
 
         /* ---------- stagger numbers for the text animation ---------- */
@@ -179,14 +180,6 @@
                 setUserPaused(!userPaused);
             });
         }
-
-        // mouse only: a tap on a phone must not freeze the carousel
-        section.addEventListener("pointerenter", function (e) {
-            if (e.pointerType === "mouse") hovering = true;
-        });
-        section.addEventListener("pointerleave", function () {
-            hovering = false;
-        });
 
         // keyboard users get time to read; mouse clicks don't count as "focus" here
         section.addEventListener("focusin", function (e) {
