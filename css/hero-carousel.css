@@ -428,13 +428,14 @@ main > .hero.hero-carousel {
 }
 
 .hero-carousel.is-paused .hero-pause .hp-play {
-    display: inline-block;
+    display: inline-flex;
 }
 
 .hero-carousel.is-paused .hero-pause {
     color: var(--ink);
     background: var(--pearl);
 }
+
 
 /* ---------- 8) Micro-interactions ---------- */
 /* Text comes in line by line when its slide becomes active (the JS adds .is-ready and .is-current) */
@@ -808,4 +809,8 @@ main > .hero.hero-carousel {
     .hero-carousel .hero-pause {
         display: none;
     }
+}
+
+.hero-carousel .hero-pause .hp-pause {
+    display: inline-flex;
 }
