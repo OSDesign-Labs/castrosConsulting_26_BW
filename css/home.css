@@ -576,6 +576,15 @@ section {
     }
 }
 
+/* team photos fill the card's photo area; faces stay at the top if the shape changes */
+.team-photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+}
+
 .team-body {
     .role {
         color: var(--cyan);
