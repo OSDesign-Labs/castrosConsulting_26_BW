@@ -2252,7 +2252,6 @@ main>.hero #overlayGradient>[class*="col-lg-6"] {
         color: var(--deep-navy);
         background: rgba(169, 234, 228, 0.42);
         border-radius: 12px;
-        padding-bottom: 12px;
         margin: 1rem auto 0;
     }
 
@@ -3609,4 +3608,33 @@ a.topbar-item:hover {
     --bs-btn-active-bg: #03a8b4;
     --bs-btn-active-border-color: #03a8b4;
     box-shadow: 0 10px 28px -10px rgba(4, 191, 205, 0.6);
+}
+
+/* ======================================================
+       ICONS INSIDE CENTRING BOXES
+       Bootstrap Icons nudges every glyph down by 0.125em
+       (.bi::before { vertical-align: -.125em }) so it lines up
+       with running text. Inside a box that centres its content
+       (topbar, mobile-menu pills and round buttons, contact
+       squares, event badge) that nudge just makes the icon sit
+       low. display: inline-flex turns the glyph into a flex item,
+       and vertical-align does not apply to flex items, so the box
+       centres the glyph itself. Icons next to text inside a line
+       (buttons, lists) keep Bootstrap's default: that nudge is what
+       lines them up with the text.
+       ====================================================== */
+.topbar .bi,
+.mobile-info .bi,
+.contact-info-icon .bi,
+.event-status .bi {
+    display: inline-flex;
+}
+
+/* the topbar social links are icon-only: make each link a centring box too
+   (as plain inline links, the icon sat on the text line, 1px above centre) */
+.topbar-social a {
+    display: inline-flex;
+    align-items: center;
+    height: 1.5em;             /* the line height the inline link had: keeps the topbar exactly as tall as before */
+    text-decoration: none;     /* as a flex box the link's default underline shows under the icon */
 }
