@@ -81,13 +81,44 @@
   <link
     href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&amp;family=Manrope:wght@200..800&amp;family=Quicksand:wght@300..700&amp;display=swap"
     rel="stylesheet" />
+  <link rel="stylesheet" href="css/hero-carousel.css">
+  <link rel="stylesheet" href="css/events.css">
 </head>
 
 <body>
 
+  <!-- SITE LOADER -->
+  <div class="site-loader" id="siteLoader" aria-hidden="true">
+    <div class="site-loader__bg"></div>
+    <div class="brand-lockup site-loader__lockup">
+      <img class="brand-mark" src="assets/brand/castros-mark.webp" width="528" height="640" alt="">
+      <span class="brand-name-clip"><span class="brand-name">Castros Consultoria</span></span>
+    </div>
+  </div>
+
   <header>
     <!-- Navbar Section -->
     <nav class="main-navbar" id="mainNavbar">
+      <!-- SECONDARY NAVBAR (desktop only; phones get the same info at the bottom of the menu). Folds away once
+           the first section is scrolled past: js/topbar.js -->
+      <div class="topbar d-none d-lg-flex">
+        <div class="topbar-left">
+          <span class="topbar-item"><i class="bi bi-geo-alt" aria-hidden="true"></i><span data-i18n="topbar.maputo-mocambique">Maputo, Moçambique</span></span>
+          <span class="topbar-divider" aria-hidden="true"></span>
+          <span class="topbar-item"><i class="bi bi-clock" aria-hidden="true"></i><span data-i18n="topbar.seg-sex-08-00-17-00">Seg – Sex · 08:00 – 17:00</span></span>
+        </div>
+        <div class="topbar-right">
+          <a class="topbar-item" href="tel:+258878665180"><i class="bi bi-telephone" aria-hidden="true"></i>+258 87 866 5180</a>
+          <span class="topbar-divider" aria-hidden="true"></span>
+          <div class="topbar-social">
+            <a href="https://www.facebook.com/" aria-label="Facebook"><i class="bi bi-facebook"></i></a> <!-- EDIT URL -->
+            <a href="https://www.instagram.com/castros.consultoria/" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="https://wa.me/258878665180" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+            <a href="https://www.linkedin.com/" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a> <!-- EDIT URL -->
+            <a href="mailto:castrosconsultoria@gmail.com" aria-label="Email"><i class="bi bi-envelope"></i></a>
+          </div>
+        </div>
+      </div>
       <div class="container-fluid">
         <!-- LOGO -->
         <a class="navbar-brand brand-lockup" href="index.html" aria-label="Castros Consultoria, página inicial" data-i18n-attr="aria-label:nav.castros-consultoria-pagina-inicial">
@@ -113,33 +144,28 @@
             <!-- Serviços -->
             <li class="nav-item dropdown">
               <a aria-expanded="false" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#"
-                id="servicesDropdown" role="button">
+                id="servicesDropdown" role="button" data-i18n="nav.servicos">
                 Serviços
               </a>
               <ul class="dropdown-menu">
                 <li>
-                  <a class="dropdown-item" href="html/atendimento.html">
-                    Atendimento
-                  </a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="html/consultoria.html">
+                  <a class="dropdown-item" href="html/consultoria.html" data-i18n="nav.consultoria">
                     Consultoria
                   </a>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="html/formacoes.html">
-                    Formações
+                  <a class="dropdown-item" href="html/formacoes.html" data-i18n="nav.formacoes-e-treinamento">
+                    Formações e Treinamento
                   </a>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="html/palestras.html">
-                    Palestras
+                  <a class="dropdown-item" href="html/palestras.html" data-i18n="nav.palestras-e-workshops">
+                    Palestras e Workshops
                   </a>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="html/treinamento.html">
-                    Treinamento
+                  <a class="dropdown-item" href="html/espacos.html" data-i18n="nav.espacos-e-podcasts">
+                    Espaços e Podcasts
                   </a>
                 </li>
               </ul>
@@ -152,15 +178,26 @@
             </li>
             <!-- Contacto -->
             <li class="nav-item">
-              <a class="nav-link" href="#contact">
+              <a class="nav-link" href="#contact-form" data-i18n="nav.contacto">
                 Contacto
               </a>
             </li>
           </ul>
-          <!-- CTA -->
-          <a class="btn btn-primary navbar-cta" href="#contact">
-            Contato
-          </a>
+          <!-- LANGUAGE + CTA -->
+          <div class="nav-actions">
+            <div class="lang-switch" role="group" aria-label="Idioma" data-i18n-attr="aria-label:lang.group">
+              <button type="button" class="lang-switch__btn is-active" data-lang="pt" aria-pressed="true" lang="pt" aria-label="Português">PT</button>
+              <button type="button" class="lang-switch__btn" data-lang="en" aria-pressed="false" lang="en" aria-label="English">EN</button>
+            </div>
+            <a class="btn btn-primary navbar-cta" href="#contact-form" data-i18n="nav.cta">
+              Contacto
+            </a>
+          </div>
+        </div>
+        <!-- MOBILE / TABLET LANGUAGE -->
+        <div class="lang-switch lang-switch--bar d-lg-none" role="group" aria-label="Idioma" data-i18n-attr="aria-label:lang.group">
+          <button type="button" class="lang-switch__btn is-active" data-lang="pt" aria-pressed="true" lang="pt" aria-label="Português">PT</button>
+          <button type="button" class="lang-switch__btn" data-lang="en" aria-pressed="false" lang="en" aria-label="English">EN</button>
         </div>
         <!-- MOBILE / TABLET HAMBURGER  -->
         <button aria-controls="mobileNavbar" aria-label="Abrir menu" class="navbar-toggler d-lg-none"
@@ -177,7 +214,7 @@
         <!-- <a class="offcanvas-title" href="#" id="mobileNavbarLabel">
           Castros Consultoria
         </a>
-        <button aria-label="Fechar" class="btn-close" data-bs-dismiss="offcanvas" type="button"></button>
+        <button aria-label="Fechar" class="btn-close" data-bs-dismiss="offcanvas" type="button" data-i18n-attr="aria-label:nav.fechar"></button>
       </div>
       <!-- OFFCANVAS BODY -->
       <div class="offcanvas-body">
@@ -197,7 +234,7 @@
           <!-- Serviços -->
           <li class="nav-item dropdown">
             <a aria-expanded="false" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#"
-              id="servicesDropdown" role="button">
+              id="mobileServicesDropdown" role="button" data-i18n="nav.servicos">
               Serviços
             </a>
             <ul class="dropdown-menu">
@@ -243,72 +280,213 @@
           </a>
         </div>
       </div>
+      <!-- Mobile info (replaces the secondary navbar on small screens) -->
+      <div class="mobile-info">
+        <span><i class="bi bi-geo-alt" aria-hidden="true"></i><span data-i18n="topbar.maputo-mocambique">Maputo, Moçambique</span></span>
+        <span><i class="bi bi-clock" aria-hidden="true"></i><span data-i18n="topbar.seg-sex-08-00-17-00">Seg – Sex · 08:00 – 17:00</span></span>
+        <a href="tel:+258878665180"><i class="bi bi-telephone" aria-hidden="true"></i>+258 87 866 5180</a>
+        <div class="mobile-social">
+          <a href="https://www.facebook.com/" aria-label="Facebook"><i class="bi bi-facebook"></i></a> <!-- EDIT URL -->
+          <a href="https://www.instagram.com/castros.consultoria/" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+          <a href="https://wa.me/258878665180" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+          <a href="https://www.linkedin.com/" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a> <!-- EDIT URL -->
+          <a href="mailto:castrosconsultoria@gmail.com" aria-label="Email"><i class="bi bi-envelope"></i></a>
+        </div>
+      </div>
     </div>
   </header>
 
   <main>
 
-    <!-- 01.2- HERO -->
+    <!-- ======================================================
+         01.2- HERO | Carousel: Início · Formação · Eventos · Podcast
+         Replaces the whole old "01.2- HERO" <section> in index.html.
+         Keep it as the FIRST child of <main> with class "hero":
+         js/topbar.js looks for "main > .hero" (navbar topbar state).
 
-    <section class="hero">
-      <div class="container-fluid" id="overlayGradient"
-        style="background-image: url(assets/consultingnoturious.jpg); background-size: cover; border-radius: 18px !important;">
-        <div class="row align-items-center g-5">
-          <div class="col-lg-6">
-            <div class="hero-copy">
-              <h1>Desenvolvemos Pessoas Impulsionamos Organizações</h1>
-              <p>Somos uma organização dedicada ao crescimento profissional e organizacional.
-                Trabalhamos com pessoas reais, em contextos reais, para criar impacto duradouro.</p>
-              <div class="hero-actions d-flex flex-wrap gap-2">
-                <a class="btn btn-outline-light" href="#spaces">Conhecer Espaços Corporativos</a>
-                <a class="btn btn-light" href="#services">Explorar Serviços de Consultoria</a>
+         Timing lives in data-duration on each slide (milliseconds):
+         Início 8000 (its 3 background photos share those 8 s), the others 3500.
+         Lines marked EDIT are placeholder copy/links to confirm.
+         ====================================================== -->
+    <section class="hero hero-carousel" aria-roledescription="carrossel" aria-label="Destaques" data-i18n-attr="aria-label:hero.destaques;aria-roledescription:hero.carrossel">
+      <div id="heroCarousel" class="carousel slide carousel-fade">
+        <div class="carousel-inner" aria-live="off">
+
+          <!-- SLIDE 1 — Início: same content and cards, background is now 3 photos that cross-fade -->
+          <div class="carousel-item active" data-duration="8000" aria-roledescription="slide"
+            aria-label="1 de 4: Início" data-i18n-attr="aria-label:hero.1-de-4-inicio">
+            <div class="container-fluid" id="overlayGradient">
+              <!-- background photos: no buttons, no dots; the JS splits the slide's 8 s into 3 equal parts -->
+              <div class="hero-bg" aria-hidden="true">
+                <img class="is-on" src="assets/hero/inicio-1.webp" alt="" decoding="async" fetchpriority="high"
+                  width="1920" height="1080">
+                <img src="assets/hero/inicio-2.webp" alt="" decoding="async" width="1920" height="1280">
+                <img src="assets/hero/inicio-3.webp" alt="" decoding="async" width="1920" height="1440">
               </div>
-            </div>
-          </div>
-          <div class="col-lg-6 hero-visual">
-            <div class="row g-2 metrics-grid">
-              <div class="col-7">
-                <div class="metric-card metric-featured h-100">
-                  <div>
-                    <span class="metric-value">+100</span>
-                    <span class="metric-label">
-                      Empresas<br />
-                      impulsionadas
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-5">
-                <div class="row g-2 h-100">
-                  <div class="col-12">
-                    <div class="metric-card h-100">
-                      <span class="metric-value">+25</span>
-                      <span class="metric-label">
-                        Líderes<br />
-                        formados
-                      </span>
-                    </div>
-                  </div>
-                  <div class="col-12">
-                    <div class="metric-card h-100">
-                      <span class="metric-value">+15</span>
-                      <span class="metric-label">
-                        Workshops
-                      </span>
+              <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                  <div class="hero-copy">
+                    <h1 class="hs-anim" data-i18n="hero.desenvolvemos-pessoas-impulsionamos-organizacoes">Desenvolvemos Pessoas Impulsionamos Organizações</h1>
+                    <p class="hs-anim" data-i18n="hero.somos-uma-organizacao-dedicada-ao-crescimento">Somos uma organização dedicada ao crescimento profissional e organizacional.
+                      Trabalhamos com pessoas reais, em contextos reais, para criar impacto duradouro.</p>
+                    <div class="hero-actions d-flex flex-wrap gap-2 hs-anim">
+                      <a class="btn btn-outline-light" href="#spaces" data-i18n="hero.conhecer-espacos-corporativos">Conhecer Espaços Corporativos</a>
+                      <a class="btn btn-light" href="#services" data-i18n="hero.explorar-servicos-de-consultoria">Explorar Serviços de Consultoria</a>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="col-12">
-                <div class="metric-card metric-wide">
-                  <span class="metric-value">+20</span>
-                  <span class="metric-label">
-                    Colaboradores
-                  </span>
+                <div class="col-lg-6 hero-visual hs-anim">
+                  <!-- numbers count up from 0 each time this slide appears (data-count = final value) -->
+                  <div class="row g-2 metrics-grid">
+                    <div class="col-7">
+                      <div class="metric-card metric-featured h-100">
+                        <div>
+                          <span class="metric-value" data-count="15">+15</span>
+                          <span class="metric-label" data-i18n-html="hero.empresas-impulsionadas">
+                            Empresas<br />
+                            impulsionadas
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-5">
+                      <div class="row g-2 h-100">
+                        <div class="col-12">
+                          <div class="metric-card h-100">
+                            <span class="metric-value" data-count="10">+10</span>
+                            <span class="metric-label" data-i18n-html="hero.lideres-formados">
+                              Líderes<br />
+                              formados
+                            </span>
+                          </div>
+                        </div>
+                        <div class="col-12">
+                          <div class="metric-card h-100">
+                            <span class="metric-value" data-count="20">+20</span>
+                            <span class="metric-label">
+                              Workshops
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="metric-card metric-wide">
+                        <span class="metric-value" data-count="5">+5</span>
+                        <span class="metric-label" data-i18n="hero.parceiros">
+                          Parceiros
+                        </span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
+
+          <!-- SLIDE 2 — Formação: video with curved edge + pattern | title, text, 2 buttons -->
+          <div class="carousel-item" data-duration="3500" aria-roledescription="slide" aria-label="2 de 4: Formação" data-i18n-attr="aria-label:hero.2-de-4-formacao">
+            <div class="hs hs-formacao">
+              <div class="hs-media hs-pattern">
+                <!-- VIDEO (muted, loops, plays only while this slide is on screen) -->
+                <video class="hs-video" muted loop playsinline preload="metadata"
+                  poster="assets/hero/formacao-poster.webp" aria-label="Participantes a aplaudir numa formação" data-i18n-attr="aria-label:hero.participantes-a-aplaudir-numa-formacao">
+                  <source src="assets/hero/formacao.mp4" type="video/mp4">
+                  <source src="assets/hero/formacao.webm" type="video/webm"> <!-- fallback for browsers without H.264 -->
+                </video>
+                <!-- IMAGE option: delete the <video> above and uncomment this line
+                <img src="assets/hero/formacao.webp" alt="Participantes numa sessão de formação" loading="lazy"
+                  decoding="async" width="1600" height="1067">
+                -->
+              </div>
+              <div class="hs-copy hero-copy">
+                <span class="eyebrow hs-anim" data-i18n="hero.formacoes-e-treinamento">Formações e Treinamento</span>
+                <h2 class="hs-title hs-anim" data-i18n="hero.competencias-que-se-aplicam-no-dia">Competências que se aplicam no dia seguinte</h2>
+                <p class="hs-anim" data-i18n="hero.sessoes-praticas-e-dinamicas-desenhadas-para">Sessões práticas e dinâmicas, desenhadas para líderes e equipas, com orientação
+                  direta de quem já esteve no terreno.</p> <!-- EDIT -->
+                <div class="hero-actions hs-anim">
+                  <a class="btn btn-outline-light" href="html/formacoes.html" data-i18n="hero.saber-mais">Saber mais</a>
+                  <a class="btn btn-light" href="#contact-form" data-prefill-service="Formação" data-i18n="hero.inscrever-me">Inscrever-me</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SLIDE 3 — Eventos: title + text | video inside a blob | info + Inscrever (radial gradient bg) -->
+          <div class="carousel-item" data-duration="3500" aria-roledescription="slide" aria-label="3 de 4: Eventos" data-i18n-attr="aria-label:hero.3-de-4-eventos">
+            <div class="hs hs-eventos">
+              <div class="hs-copy hero-copy">
+                <span class="eyebrow hs-anim" data-i18n="hero.proximo-evento">Próximo evento</span>
+                <h2 class="hs-title hs-anim" data-i18n="hero.oratoria-e-comunicacao-com-impacto">Oratória e Comunicação com Impacto</h2> <!-- EDIT -->
+                <p class="hs-anim" data-i18n="hero.como-falar-de-forma-clara-ganhar">Como falar de forma clara, ganhar confiança em palco e mobilizar pessoas para a
+                  ação.</p> <!-- EDIT -->
+              </div>
+              <div class="hs-stage">
+                <span class="hs-blob hs-pattern" aria-hidden="true"></span>
+                <!-- VIDEO (muted, loops, plays only while this slide is on screen) -->
+                <video class="hs-video" muted loop playsinline preload="metadata"
+                  poster="assets/hero/eventos-poster.webp" aria-label="Momentos do Youth Investment Summit 2026" data-i18n-attr="aria-label:hero.momentos-do-youth-investment-summit-2026">
+                  <source src="assets/hero/eventos.mp4" type="video/mp4">
+                  <source src="assets/hero/eventos.webm" type="video/webm"> <!-- fallback for browsers without H.264 -->
+                </video>
+                <!-- IMAGE option: delete the <video> above and uncomment this line
+                <img src="assets/hero/eventos.webp" alt="Oradora em palco durante um evento" loading="lazy"
+                  decoding="async" width="1400" height="786">
+                -->
+              </div>
+              <div class="hs-info hero-copy">
+                <ul class="hs-meta hs-anim">
+                  <li><i class="bi bi-calendar-event" aria-hidden="true"></i><span data-i18n="hero.ter-13-out-2026">Ter, 13 Out 2026</span></li> <!-- EDIT -->
+                  <li><i class="bi bi-geo-alt" aria-hidden="true"></i>Maputo</li> <!-- EDIT -->
+                  <li><i class="bi bi-people" aria-hidden="true"></i><span data-i18n="hero.presencial-vagas-limitadas">Presencial · Vagas limitadas</span></li> <!-- EDIT -->
+                </ul>
+                <div class="hero-actions hs-anim">
+                  <a class="btn btn-light" href="#contact-form" data-prefill-service="Eventos" data-i18n="hero.inscrever-me">Inscrever-me</a>
+                  <a class="hs-link" href="#eventos" data-events-all><span data-i18n="hero.ver-todos-os-eventos">Ver todos os eventos</span> <i class="bi bi-arrow-right"
+                      aria-hidden="true"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SLIDE 4 — Podcast: title, text, 2 buttons | diagonal image with arc + pattern -->
+          <div class="carousel-item" data-duration="3500" aria-roledescription="slide" aria-label="4 de 4: Podcast" data-i18n-attr="aria-label:hero.4-de-4-podcast">
+            <div class="hs hs-podcast">
+              <div class="hs-media hs-pattern">
+                <span class="hs-wave" aria-hidden="true"></span>
+                <span class="hs-wave hs-wave-2" aria-hidden="true"></span>
+                <img src="assets/hero/podcast.webp" alt="Estúdio de podcast com cadeiras e microfones" loading="lazy"
+                  decoding="async" width="900" height="600" data-i18n-attr="alt:hero.estudio-de-podcast-com-cadeiras-e"> <!-- EDIT: photo of your own studio -->
+              </div>
+              <div class="hs-copy hero-copy">
+                <span class="eyebrow hs-anim">Podcast</span>
+                <h2 class="hs-title hs-anim" data-i18n="hero.conversas-que-desenvolvem-pessoas">Conversas que desenvolvem pessoas</h2> <!-- EDIT -->
+                <p class="hs-anim" data-i18n="hero.lideres-gestores-e-especialistas-partilham-o">Líderes, gestores e especialistas partilham o que funciona no dia a dia das
+                  organizações em Moçambique.</p> <!-- EDIT -->
+                <div class="hero-actions hs-anim">
+                  <a class="btn btn-light" href="#" data-i18n="hero.ouvir-episodios">Ouvir episódios</a> <!-- EDIT: Spotify / YouTube link -->
+                  <a class="btn btn-outline-light" href="#contact-form" data-i18n="hero.falar-connosco">Falar connosco</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide picker: the line under the active label is the timer -->
+        <!-- AOS only on the picker: the hero itself is never hidden waiting for AOS to load -->
+        <div class="hero-tabs" data-aos="fade-up" data-aos-offset="0" data-aos-delay="300">
+          <button type="button" class="hero-tab active" data-bs-target="#heroCarousel" data-bs-slide-to="0"
+            aria-current="true" aria-label="Início" data-i18n-attr="aria-label:hero.inicio"><span data-i18n="hero.inicio">Início</span><span class="ht-bar"><i></i></span></button>
+          <button type="button" class="hero-tab" data-bs-target="#heroCarousel" data-bs-slide-to="1"
+            aria-label="Formação" data-i18n-attr="aria-label:hero.formacao"><span data-i18n="hero.formacao">Formação</span><span class="ht-bar"><i></i></span></button>
+          <button type="button" class="hero-tab" data-bs-target="#heroCarousel" data-bs-slide-to="2"
+            aria-label="Eventos" data-i18n-attr="aria-label:hero.eventos"><span data-i18n="hero.eventos">Eventos</span><span class="ht-bar"><i></i></span></button>
+          <button type="button" class="hero-tab" data-bs-target="#heroCarousel" data-bs-slide-to="3"
+            aria-label="Podcast"><span>Podcast</span><span class="ht-bar"><i></i></span></button>
+          <button type="button" class="hero-pause" aria-label="Pausar destaques" aria-pressed="false">
+            <i class="bi bi-pause-fill hp-pause" aria-hidden="true"></i>
+            <i class="bi bi-play-fill hp-play" aria-hidden="true"></i>
+          </button>
         </div>
       </div>
     </section>
@@ -318,9 +496,9 @@
     <section class="section bg-alt-c" id="sobre">
       <div class="container-fluid">
         <div class="row g-5 align-items-center">
-          <div class="col-lg-6 reveal">
-            <span class="eyebrow">Sobre Nós</span>
-            <h2 class="mb-3" style="font-size:clamp(1.9rem,3.6vw,2.6rem);max-width:28ch; text-align: left;">Conheça a
+          <div class="col-lg-6" data-aos="fade-up">
+            <span class="eyebrow" data-i18n="about.sobre-nos">Sobre Nós</span>
+            <h2 class="mb-3" style="font-size:clamp(1.9rem,3.6vw,2.6rem);max-width:28ch; text-align: left;" data-i18n="about.conheca-a-equipa-que-impulsiona-o">Conheça a
               equipa
               que impulsiona o
               seu crescimento</h2>
@@ -816,55 +994,41 @@
           </div>
         </div>
 
+        
         <!-- CONTACT INFORMATION -->
-        <div class="contact-information mb-5">
-          <div class="row g-3 justify-content-center">
-
-            <div class="col-6 col-md-4 col-lg-2">
-              <span class="contact-info-icon"><i class="bi bi-geo-alt"></i></span>
-              <a href="#" class="contact-info-item">
-                <span class="contact-info-content"><small>Localização</small><strong>Maputo</strong></span>
-              </a>
-            </div>
-
-            <div class="col-6 col-md-4 col-lg-2">
-              <span class="contact-info-icon"><i class="bi bi-envelope"></i></span>
-              <a href="mailto:contacto@castrosconsultoria.com" class="contact-info-item">
-                <span
-                  class="contact-info-content"><small>Email</small><strong>castrosconsultoria@gmail.com</strong></span>
-              </a>
-            </div>
-
-            <div class="col-6 col-md-4 col-lg-2">
-              <span class="contact-info-icon"><i class="bi bi-whatsapp"></i></span>
-              <a href="#" class="contact-info-item">
-                <span class="contact-info-content"><small>WhatsApp</small><strong>+258 87 866 5180</strong></span>
-              </a>
-            </div>
-
-            <div class="col-6 col-md-4 col-lg-2">
-              <span class="contact-info-icon"><i class="bi bi-instagram"></i></span>
-              <a href="https://www.instagram.com/castros.consultoria/" class="contact-info-item">
-                <span class="contact-info-content"><small>Instagram</small><strong>castros.consultoria</strong></span>
-              </a>
-            </div>
-
-            <div class="col-6 col-md-4 col-lg-2">
-              <span class="contact-info-icon"><i class="bi bi-tiktok"></i></span>
-              <a href="https://www.instagram.com/castros.consultoria/" class="contact-info-item">
-                <span class="contact-info-content"><small>TikTok</small><strong>@castros.consultria.mz</strong></span>
-              </a>
-            </div>
-
-            <div class="col-6 col-md-4 col-lg-2">
-              <span class="contact-info-icon"><i class="bi bi-telephone"></i></span>
-              <a href="tel:+258000000000" class="contact-info-item">
-                <span class="contact-info-content"><small>Telefone</small><strong>+258 ...</strong></span>
-              </a>
-            </div>
-
+        <div class="contact-chips" data-aos="fade-up">
+          <div class="contact-chip" tabindex="0">
+            <span class="contact-chip-icon"><i class="bi bi-geo-alt" aria-hidden="true"></i></span>
+            <span class="contact-chip-info"><small data-i18n="contact.localizacao">Localização</small><strong>Maputo</strong></span>
           </div>
+       
+          <a class="contact-chip" href="mailto:castrosconsultoria@gmail.com" aria-label="Email">
+            <span class="contact-chip-icon"><i class="bi bi-envelope" aria-hidden="true"></i></span>
+            <span class="contact-chip-info"><small>Email</small><strong>castrosconsultoria@gmail.com</strong></span>
+          </a>
+       
+          <a class="contact-chip" href="https://wa.me/258878665180" aria-label="WhatsApp">
+            <span class="contact-chip-icon"><i class="bi bi-whatsapp" aria-hidden="true"></i></span>
+            <span class="contact-chip-info"><small>WhatsApp</small><strong>+258 87 866 5180</strong></span>
+          </a>
+       
+          <a class="contact-chip" href="https://www.instagram.com/castros.consultoria/" aria-label="Instagram">
+            <span class="contact-chip-icon"><i class="bi bi-instagram" aria-hidden="true"></i></span>
+            <span class="contact-chip-info"><small>Instagram</small><strong>castros.consultoria</strong></span>
+          </a>
+       
+          <a class="contact-chip" href="https://www.tiktok.com/@castros.consultria.mz" aria-label="TikTok"> <!-- EDIT: confirme o handle -->
+            <span class="contact-chip-icon"><i class="bi bi-tiktok" aria-hidden="true"></i></span>
+            <span class="contact-chip-info"><small>TikTok</small><strong>@castros.consultria.mz</strong></span>
+          </a>
+       
+          <a class="contact-chip" href="https://www.facebook.com/" aria-label="Facebook"> <!-- EDIT: URL real -->
+            <span class="contact-chip-icon"><i class="bi bi-facebook" aria-hidden="true"></i></span>
+            <span class="contact-chip-info"><small>Facebook</small><strong>Castros Consultoria</strong></span> <!-- EDIT -->
+          </a>
         </div>
+       
+      
 
         <!-- CONTACT MAIN AREA -->
         <div class="row g-4 g-xl-5 align-items-stretch">
@@ -1103,11 +1267,11 @@
         </div>
         <div class="col-lg-3 col-6" data-aos="fade-up" data-aos-delay="100">
           <h5>Menu</h5>
-          <a class="d-block mb-2" href="#hero">Início</a>
-          <a class="d-block mb-2" href="#sobre">Sobre Nós</a>
-          <a class="d-block mb-2" href="#servicos">Serviços</a>
-          <a class="d-block mb-2" href="#eventos">Eventos</a>
-          <a class="d-block mb-2" href="#cta">Contacto</a>
+          <a class="d-block mb-2" href="#hero" data-i18n="footer.inicio">Início</a>
+          <a class="d-block mb-2" href="#sobre" data-i18n="footer.sobre-nos">Sobre Nós</a>
+          <a class="d-block mb-2" href="#servicos" data-i18n="footer.servicos">Serviços</a>
+          <a class="d-block mb-2" href="#eventos" data-i18n="footer.eventos">Eventos</a>
+          <a class="d-block mb-2" href="#contact-form" data-i18n="footer.contacto">Contacto</a>
         </div>
         <div class="col-lg-3 col-6" data-aos="fade-up" data-aos-delay="200">
           <h5>Legal</h5>
@@ -1312,6 +1476,7 @@
   <!-- EXTERNAL JS LINK  -->
   <script src="js/javascript.js"></script>
 
+  <script src="js/hero-carousel.js"></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
 
@@ -1371,21 +1536,52 @@
         });
       }
 
-      /* SERVICES ACCORDION */
+      /* SERVICES ACCORDION
+         Desktop: horizontal, one service always open (clicking the open one does nothing).
+         Phones (< 768px, same breakpoint as the CSS): normal accordion; tap a header to
+         open it, tap it again to close it; opening one closes the others.
+         index.html#servico-espacos (e.g. from the navbar) opens that service. */
       const tabsWrap = document.getElementById("servicesTabs");
       if (tabsWrap) {
+        const items = Array.from(tabsWrap.querySelectorAll(".tab-item"));
+        const phone = window.matchMedia("(max-width: 767.98px)");
+
+        const setOpen = function (item, open) {
+          item.classList.toggle("active", open);
+          item.querySelector(".tab-strip").setAttribute("aria-expanded", String(open));
+        };
+        const openOnly = function (target) {
+          items.forEach(function (item) { setOpen(item, item === target); });
+        };
+
         tabsWrap.addEventListener("click", function (event) {
-          const button = event.target.closest(".tab-item");
-          if (!button || button.classList.contains("active")) return;
-
-          tabsWrap.querySelectorAll(".tab-item").forEach(function (tab) {
-            tab.classList.remove("active");
-            tab.setAttribute("aria-expanded", "false");
-          });
-
-          button.classList.add("active");
-          button.setAttribute("aria-expanded", "true");
+          const strip = event.target.closest(".tab-strip");
+          if (!strip) return;
+          const item = strip.closest(".tab-item");
+          if (item.classList.contains("active")) {
+            if (phone.matches) setOpen(item, false);       // phones: tap again to close
+            return;
+          }
+          openOnly(item);
         });
+
+        // back to the desktop layout with everything closed: open the first service
+        const keepOneOpen = function () {
+          if (!phone.matches && !items.some(function (i) { return i.classList.contains("active"); })) openOnly(items[0]);
+        };
+        if (phone.addEventListener) phone.addEventListener("change", keepOneOpen);
+
+        // #servico-... in the address: open that service (no animation, so the page doesn't shift while scrolling)
+        const fromHash = function () {
+          const target = window.location.hash ? document.getElementById(window.location.hash.slice(1)) : null;
+          if (!target || items.indexOf(target) === -1) return;
+          tabsWrap.classList.add("is-jumping");
+          openOnly(target);
+          void tabsWrap.offsetHeight;
+          requestAnimationFrame(function () { tabsWrap.classList.remove("is-jumping"); });
+        };
+        fromHash();
+        window.addEventListener("hashchange", fromHash);
       }
 
       /* REVEAL ANIMATIONS */
