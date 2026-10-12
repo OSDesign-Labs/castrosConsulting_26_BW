@@ -3011,7 +3011,7 @@ main>.hero #overlayGradient>[class*="col-lg-6"] {
 
 #testimonials {
     height: 60vh;
-    margin: 10rem  0 1rem;
+    margin: 10rem 0 clamp(4rem, 8vw, 7rem);   /* bottom: room before the next section */
     overflow: clip;
 
     h6.index {
@@ -3646,4 +3646,140 @@ a.topbar-item:hover {
     align-items: center;
     height: 1.5em;             /* the line height the inline link had: keeps the topbar exactly as tall as before */
     text-decoration: none;     /* as a flex box the link's default underline shows under the icon */
+}
+
+/* ======================================================
+   CONTACT CHIPS (same as css/home.css: round icons with a pop-up label)
+   ====================================================== */
+.contact-chips {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    margin: 2rem 0 2.5rem;
+}
+
+.contact-chip {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    background: rgba(169, 234, 228, 0.42);
+    color: var(--navy);
+    font-size: 1.1rem;
+    line-height: 1;
+    text-decoration: none;
+    transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact-chip:hover,
+.contact-chip:focus,
+.contact-chip:focus-visible {
+    transform: translateY(-2px);
+    background: var(--navy);
+    color: var(--white);
+    box-shadow: 0 10px 24px rgba(3, 3, 22, 0.14);
+    outline: none;
+}
+
+/* ícone centrado: o glifo deixa de ser empurrado 0.125em para baixo */
+.contact-chip-icon {
+    display: grid;
+    place-items: center;
+}
+
+.contact-chip-icon .bi {
+    display: inline-flex;
+}
+
+/* balão com a informação (escondido por defeito) */
+.contact-chip-info {
+    --tx: -50%;
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 50%;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.45rem 0.8rem;
+    border-radius: 10px;
+    background: var(--navy);
+    box-shadow: 0 12px 28px rgba(3, 3, 22, 0.25);
+    white-space: nowrap;
+    line-height: 1.25;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translate(var(--tx), 6px);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s linear 0.2s;
+}
+
+/* setinha do balão */
+.contact-chip-info::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border: 5px solid transparent;
+    border-top-color: var(--navy);
+}
+
+.contact-chip:hover .contact-chip-info,
+.contact-chip:focus .contact-chip-info,
+.contact-chip:focus-visible .contact-chip-info {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(var(--tx), 0);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s linear 0s;
+}
+
+.contact-chip-info small {
+    color: var(--pearl);
+    font-size: 0.66rem;
+    font-weight: 600;
+}
+
+.contact-chip-info strong {
+    color: var(--white);
+    font-size: 0.76rem;
+    font-weight: 700;
+}
+
+/* telemóvel: os balões das pontas alinham-se à borda, para não saírem do ecrã */
+@media (max-width: 575.98px) {
+    .contact-chip:nth-child(-n+3) .contact-chip-info {
+        --tx: 0;
+        left: 0;
+    }
+
+    .contact-chip:nth-child(-n+3) .contact-chip-info::after {
+        left: 17px;
+        margin-left: 0;
+    }
+
+    .contact-chip:nth-last-child(-n+3) .contact-chip-info {
+        --tx: 0;
+        left: auto;
+        right: 0;
+    }
+
+    .contact-chip:nth-last-child(-n+3) .contact-chip-info::after {
+        left: auto;
+        right: 17px;
+        margin-left: 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .contact-chip,
+    .contact-chip-info {
+        transition: none;
+    }
 }

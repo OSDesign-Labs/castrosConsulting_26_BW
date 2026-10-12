@@ -1,5 +1,5 @@
 /* ==========================================================
-   PATTERNS · PARALLAX · SECTION SNAP
+   PATTERNS (+ their parallax)
    Background textures from pattern.css (css/vendor/pattern.min.css),
    placed by js/patterns.js behind every section.
 
@@ -116,48 +116,7 @@
     .cc-pattern--quiet.cc-pattern--on-light { --pattern-opacity: 0.06; }
 }
 
-/* ---------- section snap ----------
-   "proximity": the page settles on the start of a section when you stop
-   scrolling close to it, but never locks you in, so sections taller than
-   the screen still scroll freely. Sections already keep 84px clear for the
-   navbar (scroll-margin-top), so they snap just below it.
-   Desktop and tablet only: on phones snapping fights the thumb flick. */
-@media (min-width: 992px) and (prefers-reduced-motion: no-preference) {
-    html {
-        scroll-snap-type: y proximity;
-    }
-
-    /* - not the first section: its snap point would sit 40px below the top of the
-         page and the page would jump there on load, hiding the info bar;
-       - not the contact section: it is taller than the screen, and Chrome would pull
-         every link to the form back to the section's edge, so the form card is its
-         snap point instead. Consultoria's 4 steps (#processo) are a link target too. */
-    main > section:not(:first-child):not(.contact-section),
-    .contact-form-card,
-    #processo {
-        scroll-snap-align: start;
-    }
-
-    /* the very top (info bar showing) and the very bottom (whole footer) are
-       snap points too, so neither can be pulled out of reach */
-    .cc-snap-top {
-        scroll-snap-align: start;
-    }
-
-    body > footer {
-        scroll-snap-align: end;
-    }
-}
-
-/* invisible marker at the top of the page (added by js/patterns.js) */
-.cc-snap-top {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 1px;
-    height: 1px;
-    pointer-events: none;
-}
+/* section snap now lives in css/motion.css */
 
 /* ---------- reduced motion: patterns stay, motion goes ---------- */
 @media (prefers-reduced-motion: reduce) {

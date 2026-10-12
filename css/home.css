@@ -21,6 +21,8 @@
     --border: rgba(112, 129, 142, 0.28);
     --shadow: 0 10px 30px -14px rgba(1, 9, 48, 0.14);
     --shadow-lg: 0 24px 60px -20px rgba(1, 9, 48, 0.22);
+    --deep-navy: #010133;         /* used by the contact form ("Continuar" button, steps) */
+    --prussian-blue: #010930;
 
 }
 
@@ -363,6 +365,7 @@ section {
         display: flex;
         align-items: center;
         gap: 0.3rem;
+
         &:hover {
             color: var(--cyan) !important;
         }
@@ -379,6 +382,7 @@ section {
         border-radius: 8px;
         font-size: 0.88rem;
         padding: 0.55rem 0.8rem;
+
         &:hover {
             background: rgba(4, 191, 205, 0.1);
             color: var(--cyan);
@@ -421,21 +425,26 @@ section {
         font-size: clamp(1.8rem, 4.4vw, 3.1rem);
         line-height: 1.06;
         letter-spacing: -0.02em;
+
         span {
             display: block;
             opacity: 0;
             transform: translateY(22px);
             animation: heroLine 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
         }
+
         span:nth-child(1) {
             animation-delay: 0.05s;
         }
+
         span:nth-child(2) {
             animation-delay: 0.16s;
         }
+
         span:nth-child(3) {
             animation-delay: 0.27s;
         }
+
         span:nth-child(4) {
             animation-delay: 0.38s;
         }
@@ -474,24 +483,30 @@ section {
         opacity: 0;
         transform: translateY(16px) scale(0.96);
         animation: statIn 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+
         &:nth-child(1) {
             animation-delay: 0.3s;
         }
+
         &:nth-child(2) {
             animation-delay: 0.42s;
         }
+
         &:nth-child(3) {
             animation-delay: 0.54s;
         }
+
         &:nth-child(4) {
             animation-delay: 0.66s;
         }
+
         .num {
             font-family: "Inter", sans-serif;
             font-weight: 800;
             font-size: 1.6rem;
             line-height: 1;
         }
+
         .label {
             font-size: 0.76rem;
             color: rgba(255, 255, 255, 0.85);
@@ -502,6 +517,7 @@ section {
     .stat-big {
         grid-column: 1;
         grid-row: 1/3;
+
         .num {
             font-size: 2.1rem;
         }
@@ -523,6 +539,7 @@ section {
         flex-direction: row;
         align-items: center;
         gap: 0.7rem;
+
         .num {
             font-size: 1.7rem;
         }
@@ -544,6 +561,7 @@ section {
         transition:
             color 0.2s ease,
             transform 0.2s ease;
+
         &:hover {
             color: var(--cyan);
             transform: translateY(-2px);
@@ -585,6 +603,21 @@ section {
     object-position: center top;
 }
 
+/* "Porque nós?" icons: accent tile on the dark section */
+.feature .icon-box {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    background: rgba(4, 191, 205, 0.14);
+    border: 1px solid rgba(4, 191, 205, 0.4);
+    color: var(--cyan);
+    font-size: 1.6rem;
+}
+
 .team-body {
     .role {
         color: var(--cyan);
@@ -618,7 +651,8 @@ section {
     align-items: stretch;
     min-height: 460px;
     overflow: hidden;
-    overflow: clip;                         /* clips the corners like hidden, but isn't a scroll container,
+    overflow: clip;
+    /* clips the corners like hidden, but isn't a scroll container,
                                                so #servico-... jumps keep their scroll-margin */
     border: 1px solid var(--border);
     border-radius: 18px;
@@ -634,7 +668,8 @@ section {
     border-right: 1px solid var(--border);
     background: var(--white);
     transition: flex-grow 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    scroll-margin-top: 110px;              /* links like #servico-espacos clear the navbar */
+    scroll-margin-top: 110px;
+    /* links like #servico-espacos clear the navbar */
 }
 
 .tabs-h .tab-item:last-child {
@@ -666,7 +701,9 @@ section {
     cursor: default;
 }
 
-@media (hover: hover) {                    /* no "stuck" hover colour after a tap on touch screens */
+@media (hover: hover) {
+
+    /* no "stuck" hover colour after a tap on touch screens */
     .tabs-h .tab-item:not(.active) .tab-strip:hover {
         background: rgba(4, 191, 205, 0.06);
     }
@@ -703,7 +740,8 @@ section {
 }
 
 .tabs-h .t-chevron {
-    display: none;                          /* phones only */
+    display: none;
+    /* phones only */
 }
 
 /* the panel */
@@ -824,11 +862,13 @@ section {
         display: block;
         min-height: 0;
         overflow: hidden;
-        padding: 0 1.25rem;                 /* no vertical padding: it would stop the panel collapsing to 0 */
+        padding: 0 1.25rem;
+        /* no vertical padding: it would stop the panel collapsing to 0 */
     }
 
     .tabs-h .tab-body h3 {
-        display: none;                      /* the header already shows the name */
+        display: none;
+        /* the header already shows the name */
     }
 
     .tabs-h .tab-body p {
@@ -848,6 +888,7 @@ section {
 }
 
 @media (prefers-reduced-motion: reduce) {
+
     .tabs-h .tab-item,
     .tabs-h .tab-full,
     .tabs-h .t-chevron {
@@ -874,6 +915,7 @@ section {
     .b-a {
         grid-column: 1/3;
         grid-row: 1/3;
+
         .ph {
             flex: 1;
             margin-top: 1rem;
@@ -887,6 +929,7 @@ section {
         flex-direction: row;
         align-items: center;
         gap: 1.4rem;
+
         .ph {
             width: 38%;
             aspect-ratio: 1/1;
@@ -898,6 +941,7 @@ section {
     .b-c {
         grid-column: 3/5;
         grid-row: 2/4;
+
         .ph {
             flex: 1;
             margin-top: 1rem;
@@ -908,6 +952,29 @@ section {
     .b-1 {
         grid-column: 1/2;
         grid-row: 3;
+    }
+
+    /* pictures in the boxes: <img class="bento-img"> in index.html (change its src to pick a photo) */
+    .bento-img {
+        display: block;
+        width: 100%;
+        height: auto;               /* ignore the photo's own size: the box decides */
+        object-fit: cover;
+        border-radius: 12px;
+    }
+
+    .b-a .bento-img,
+    .b-c .bento-img {
+        flex: 1 1 auto;
+        height: 0;                  /* takes only the space left in the card... */
+        min-height: 200px;          /* ...but never thinner than this */
+        margin-top: 1rem;
+    }
+
+    .b-b .bento-img {
+        width: 38%;
+        aspect-ratio: 1 / 1;
+        flex-shrink: 0;
     }
 
     .b-2 {
@@ -945,11 +1012,6 @@ section {
         font-size: 1.1rem;
     }
 
-    .feature .icon-box {
-        width: 42px;
-        height: 42px;
-        font-size: 1.25rem;
-    }
 }
 
 /* ======================================================
@@ -1210,6 +1272,7 @@ footer {
         grid-template-columns: 1fr auto 1fr;
         align-items: center;
         margin-left: -8rem;
+
         .navbar-nav {
             grid-column: 2;
             display: flex;
@@ -1219,6 +1282,7 @@ footer {
             gap: 0.25rem;
             margin: 0;
         }
+
         .nav-link {
             position: relative;
             padding: 0.5rem 0.75rem;
@@ -1231,13 +1295,16 @@ footer {
                 color 0.2s ease;
             color: var(--ash-soft);
         }
+
         .nav-link:hover {
             opacity: 0.85;
         }
+
         .nav-link.active {
             font-weight: 600;
             color: var(--pearl);
         }
+
         .nav-link:focus {
             color: var(--ash-soft);
         }
@@ -1272,6 +1339,7 @@ footer {
         transition:
             background-color 0.2s ease,
             color 0.2s ease;
+
         &:hover {
             background-color: #f5f5f5;
         }
@@ -1291,6 +1359,7 @@ footer {
         box-shadow: 0 8px 24px rgba(3, 3, 22, 0.14);
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
+
         &:focus {
             outline: none;
             box-shadow:
@@ -1307,6 +1376,7 @@ footer {
         background-image: none !important;
         border-top: 2px solid #030316;
         border-bottom: 2px solid #030316;
+
         &::after {
             content: "";
             position: absolute;
@@ -1324,7 +1394,7 @@ footer {
        02. HERO | Protected Structure + d545a Visual Treatment
        ====================================================== */
 
-main > .hero {
+main>.hero {
 
     main>.hero {
         position: relative;
@@ -1339,11 +1409,13 @@ main > .hero {
         margin-bottom: 4rem;
         overflow: hidden;
         color: #fff;
+
         #overlayGradient {
             position: relative;
             overflow: hidden;
             isolation: isolate;
         }
+
         #overlayGradient::before {
             content: "";
             position: absolute;
@@ -1360,6 +1432,7 @@ main > .hero {
             z-index: 0;
             pointer-events: none;
         }
+
         #overlayGradient>[class*="col-lg-6"] {
             position: relative;
             z-index: 1;
@@ -1370,6 +1443,7 @@ main > .hero {
         max-width: 650px;
         position: relative;
         z-index: 1;
+
         h1 {
             margin: 0 0 1.5rem;
             font-size: clamp(3rem, 5vw, 5.5rem);
@@ -1378,6 +1452,7 @@ main > .hero {
             letter-spacing: -0.04em;
             color: #fff;
         }
+
         p {
             max-width: 600px;
             margin: 0 0 2rem;
@@ -1392,6 +1467,7 @@ main > .hero {
         display: flex;
         flex-wrap: wrap;
         gap: 0.75rem;
+
         .btn {
             font-size: 12px;
             min-height: 30px;
@@ -1399,11 +1475,13 @@ main > .hero {
             border-radius: 0;
             font-weight: 500;
         }
+
         .btn-light {
             color: #111;
             background-color: #fff;
             border-color: #fff;
         }
+
         .btn-outline-light {
             color: #fff;
             border-color: rgba(255, 255, 255, 0.6);
@@ -1420,7 +1498,7 @@ main > .hero {
     }
 
     .metrics-grid {
-        margin: 10rem 0 0 8rem !important;
+        margin: 15rem 0 0 8rem !important;
     }
 
     .metric-card {
@@ -1439,6 +1517,7 @@ main > .hero {
             transform 0.25s ease,
             background-color 0.25s ease,
             border-color 0.25s ease;
+
         &:hover {
             transform: translateY(-4px);
             background: rgba(0, 0, 0, 0.08);
@@ -1481,6 +1560,13 @@ main > .hero {
             color: var(--cyan);
             font-weight: bold;
         }
+
+        a.btn.btn-outline-c {
+            &:hover {
+                background-color: var(--cyan);
+                color: var(--white);          /* was cyan on cyan: the text disappeared */
+            }
+        }
     }
 
     .about-img {
@@ -1492,15 +1578,16 @@ main > .hero {
                 rgba(4, 191, 205, 0.28),
                 transparent 34%),
             linear-gradient(145deg, #e4ebf4 0%, #cbd9e8 45%, #8aa9c2 100%);
+
         &::before {
             content: "";
             position: absolute;
             inset: 0;
             z-index: 2;
-            background:
-                linear-gradient(155deg, rgba(42, 67, 188, 0.15) 0%, rgba(4, 191, 205, 0.12) 28%, rgba(0, 54, 158, 0.47) 58%, rgba(0, 15, 89, 0.74) 100%), radial-gradient(circle at 18% 15%, rgba(114, 220, 220, 0.28), transparent 32%);
+            background: linear-gradient(155deg, rgba(42, 67, 188, 0.15) 0%, rgba(4, 191, 205, 0.12) 28%, rgb(0 54 158 / 2%) 58%, rgb(0 15 89 / 39%) 100%), radial-gradient(circle at 18% 15%, rgba(114, 220, 220, 0.28), transparent 32%);
             pointer-events: none;
         }
+
         &::after {
             content: "";
             position: absolute;
@@ -1510,11 +1597,12 @@ main > .hero {
             border-radius: 14px;
             box-shadow: inset 0 0 70px rgba(1, 9, 48, 0.12);
             pointer-events: none;
-            background-image: url(../assets/people.webp);
+            background-image: url(../assets/team.webp);
             background-size: cover;
             background-position: center;
             filter: contrast(1.2) grayscale(1);
         }
+
         .bi {
             position: relative;
             z-index: 3;
@@ -1552,7 +1640,8 @@ main > .hero {
 #cta {
     padding: 9rem;
     background-color: var(--white);
-    .container{
+
+    .container {
         h2.mb-3 {
             color: var(--prussian);
         }
@@ -1560,11 +1649,13 @@ main > .hero {
         p {
             color: var(--ash)
         }
+
         a.btn.btn-cyan {
             background-color: var(--cyan);
             color: whitesmoke;
             font-weight: 600;
         }
+
         a.btn.btn-outline-light-c {
             border: solid 2px var(--navy);
         }
@@ -1604,7 +1695,7 @@ a.btn-outline-c.px-4.py-2 {
 
 #testimonials {
     height: 60vh;
-    margin: 10rem  0 1rem;
+    margin: 10rem 0 clamp(4rem, 13vw, 13rem);   /* bottom: room before the contact section */
     overflow-x: clip;
 
     h6.index {
@@ -1622,7 +1713,7 @@ a.btn-outline-c.px-4.py-2 {
 
     #testCarousel {
         height: 100%;
-            
+
         .carousel-indicators {
             list-style: none;
         }
@@ -1638,10 +1729,11 @@ a.btn-outline-c.px-4.py-2 {
 
             .carousel-item {
                 height: 100%;
-                margin-top: -3rem;
+                margin-top: -6rem;
 
                 .carousel-caption {
                     color: black;
+
                     h3.comment {
                         font-family: "Manrope";
                         margin-bottom: 0;
@@ -1749,6 +1841,7 @@ a.btn-outline-c.px-4.py-2 {
         border-radius: var(--radius-md);
         box-shadow: 0 8px 25px rgba(3, 3, 22, 0.035);
         transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+
         &:hover {
             color: var(--ink);
             transform: translateY(-4px);
@@ -1777,12 +1870,14 @@ a.btn-outline-c.px-4.py-2 {
         margin: 0 auto;
         text-align: center;
         margin-top: -2rem;
+
         small {
             margin-bottom: 2px;
             color: var(--slate-grey);
             font-size: 0.68rem;
             font-weight: 600;
         }
+
         strong {
             overflow: hidden;
             color: var(--ink);
@@ -1799,8 +1894,7 @@ a.btn-outline-c.px-4.py-2 {
         overflow: hidden;
         background:
             linear-gradient(180deg, rgba(1, 9, 48, 0.02), rgba(1, 9, 48, 0.88)),
-            url("https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1200&q=85")
-            center / cover no-repeat;
+            url("https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1200&q=85") center / cover no-repeat;
         border-radius: var(--radius-lg);
         box-shadow: var(--shadow);
     }
@@ -1819,6 +1913,7 @@ a.btn-outline-c.px-4.py-2 {
         z-index: 1;
         padding: clamp(24px, 5vw, 48px);
         color: var(--white);
+
         h2 {
             max-width: 560px;
             margin: 0;
@@ -1827,6 +1922,7 @@ a.btn-outline-c.px-4.py-2 {
             font-weight: 400;
             line-height: 1.02;
         }
+
         p {
             max-width: 470px;
             margin: 18px 0 0;
@@ -1877,12 +1973,14 @@ a.btn-outline-c.px-4.py-2 {
         font-size: 0.72rem;
         font-weight: 700;
         transition: background 200ms ease, color 200ms ease, border-color 200ms ease, transform 200ms ease;
+
         &.active {
             color: var(--deep-navy);
             background: var(--icy-aqua);
             border-color: var(--icy-aqua);
             transform: scale(1.08);
         }
+
         &.completed {
             color: var(--white);
             background: var(--deep-navy);
@@ -1895,6 +1993,7 @@ a.btn-outline-c.px-4.py-2 {
         height: 1px;
         margin: 0 8px;
         background: rgba(112, 129, 142, 0.25);
+
         &.completed {
             background: var(--deep-navy);
         }
@@ -1912,6 +2011,7 @@ a.btn-outline-c.px-4.py-2 {
 
     .form-step {
         display: none;
+
         &.active {
             display: block;
             animation: formStepIn 280ms ease both;
@@ -1949,6 +2049,7 @@ a.btn-outline-c.px-4.py-2 {
         color: var(--ink);
         font-size: 0.78rem;
         font-weight: 700;
+
         span {
             color: #b3261e;
         }
@@ -1963,6 +2064,7 @@ a.btn-outline-c.px-4.py-2 {
         border-radius: 12px;
         font-size: 0.88rem;
         box-shadow: none;
+
         &:focus {
             color: var(--ink);
             background: var(--white);
@@ -1983,6 +2085,7 @@ a.btn-outline-c.px-4.py-2 {
         font-size: 0.8rem;
         font-weight: 700;
         transition: transform 180ms ease, box-shadow 180ms ease;
+
         &:focus-visible {
             color: var(--deep-navy);
             background: rgba(169, 234, 228, 0.18);
@@ -1994,6 +2097,7 @@ a.btn-outline-c.px-4.py-2 {
         color: var(--white);
         background: var(--deep-navy);
         border: 1px solid var(--deep-navy);
+
         &:focus-visible {
             color: var(--white);
             background: var(--prussian-blue);
@@ -2023,12 +2127,15 @@ a.btn-outline-c.px-4.py-2 {
         border-left: 4px solid var(--deep-navy);
         border-radius: 14px;
         box-shadow: 0 18px 45px rgba(3, 3, 22, 0.16);
+
         &:not(.show) {
             pointer-events: none;
-    }
+        }
+
         strong {
             font-size: 0.86rem;
         }
+
         span {
             display: block;
             margin-top: 3px;
@@ -2250,6 +2357,7 @@ a.btn-outline-c.px-4.py-2 {
 }
 
 @media (max-width: 991.98px) {
+
     .contact-image-card,
     .contact-form-card {
         min-height: 560px;
@@ -2368,10 +2476,13 @@ a.btn-outline-c.px-4.py-2 {
 /* ---------- Shell ---------- */
 .offcanvas.mobile-offcanvas {
     --bs-offcanvas-zindex: 1060;
-    z-index: 1060;                 /* above the fixed navbar (1050) */
-    width: 100% !important;        /* beats the old "width: 90vw !important" in the 575px media query; delete that rule, then this !important can go */
+    z-index: 1060;
+    /* above the fixed navbar (1050) */
+    width: 100% !important;
+    /* beats the old "width: 90vw !important" in the 575px media query; delete that rule, then this !important can go */
     max-width: 100%;
-    overflow-y: auto;              /* whole panel scrolls on very short screens */
+    overflow-y: auto;
+    /* whole panel scrolls on very short screens */
     padding-bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px));
     border: 0;
     color: var(--white);
@@ -2410,7 +2521,8 @@ a.btn-outline-c.px-4.py-2 {
 
 /* ---------- Body: nav + CTA, centred horizontally; margin-top:auto centres the group vertically ---------- */
 .offcanvas.mobile-offcanvas .offcanvas-body {
-    flex: 0 0 auto;                /* Bootstrap gives it flex-grow:1, which would eat the free space we want to centre with */
+    flex: 0 0 auto;
+    /* Bootstrap gives it flex-grow:1, which would eat the free space we want to centre with */
     margin-top: auto;
     display: flex;
     flex-direction: column;
@@ -2422,7 +2534,7 @@ a.btn-outline-c.px-4.py-2 {
 }
 
 /* Same column width on phones and tablets, so the group stays centred on wide screens */
-.offcanvas.mobile-offcanvas .offcanvas-body > * {
+.offcanvas.mobile-offcanvas .offcanvas-body>* {
     width: 100%;
     max-width: 420px;
 }
@@ -2443,7 +2555,8 @@ a.btn-outline-c.px-4.py-2 {
     display: block;
     padding: clamp(0.3rem, 1.3vh, 0.7rem) 0;
     font-family: "DM Serif Display", serif;
-    font-size: clamp(1.5rem, min(7vw, 4.6vh), 2.3rem);   /* scales with width AND height, so short screens don't overflow */
+    font-size: clamp(1.5rem, min(7vw, 4.6vh), 2.3rem);
+    /* scales with width AND height, so short screens don't overflow */
     line-height: 1.15;
     color: rgba(255, 255, 255, 0.85);
     text-decoration: none;
@@ -2504,20 +2617,23 @@ a.btn-outline-c.px-4.py-2 {
 .offcanvas.mobile-offcanvas .mobile-info {
     flex: 0 0 auto;
     align-self: center;
-    width: min(420px, calc(100% - 3rem));    /* same column as the nav and the CTA */
-    margin: clamp(1rem, 3.5vh, 1.75rem) 0 auto;   /* gap above; auto below = vertical centring */
+    width: min(420px, calc(100% - 3rem));
+    /* same column as the nav and the CTA */
+    margin: clamp(1rem, 3.5vh, 1.75rem) 0 auto;
+    /* gap above; auto below = vertical centring */
     padding: clamp(1rem, 3vh, 1.5rem) 0 0;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 0.5rem;
     border-top: 1px solid rgba(255, 255, 255, 0.12);
-    position: static;              /* the old "position: relative; top: -5rem" dragged this block up over the Contato button */
+    position: static;
+    /* the old "position: relative; top: -5rem" dragged this block up over the Contato button */
     top: auto;
 }
 
-.offcanvas.mobile-offcanvas .mobile-info > span,
-.offcanvas.mobile-offcanvas .mobile-info > a {
+.offcanvas.mobile-offcanvas .mobile-info>span,
+.offcanvas.mobile-offcanvas .mobile-info>a {
     display: inline-flex;
     align-items: center;
     gap: 0.45rem;
@@ -2534,7 +2650,7 @@ a.btn-outline-c.px-4.py-2 {
     color: var(--cyan);
 }
 
-.offcanvas.mobile-offcanvas .mobile-info > a:hover {
+.offcanvas.mobile-offcanvas .mobile-info>a:hover {
     color: var(--pearl);
     border-color: rgba(114, 220, 220, 0.5);
 }
@@ -2664,7 +2780,8 @@ a.btn-outline-c.px-4.py-2 {
 
 .lang-switch.is-busy {
     opacity: 0.7;
-    pointer-events: none;                  /* no double clicks while the JSON loads */
+    pointer-events: none;
+    /* no double clicks while the JSON loads */
 }
 
 /* phones / tablets: same box as the hamburger button */
@@ -2690,13 +2807,14 @@ a.btn-outline-c.px-4.py-2 {
     color: #fff;
 }
 
-.main-navbar .lang-switch--bar + .navbar-toggler {
+.main-navbar .lang-switch--bar+.navbar-toggler {
     margin-left: 0.5rem;
 }
 
 .main-navbar .lang-switch--bar,
 .main-navbar .navbar-toggler {
-    flex: none;                            /* never squeezed by a long logo */
+    flex: none;
+    /* never squeezed by a long logo */
 }
 
 /* very small phones (< 375px): logo + name, switch and menu button must share 288px */
@@ -2721,7 +2839,7 @@ a.btn-outline-c.px-4.py-2 {
         height: 42px;
     }
 
-    .main-navbar .lang-switch--bar + .navbar-toggler {
+    .main-navbar .lang-switch--bar+.navbar-toggler {
         margin-left: 0.4rem;
     }
 }
@@ -2824,7 +2942,7 @@ a.topbar-item:hover {
    with the same ~20px gap as before; its height gives that space back so it still fits the screen.
    "body" only lifts specificity above css/hero-carousel.css, which loads after this file */
 @media (min-width: 992px) {
-    body main > .hero.hero-carousel {
+    body main>.hero.hero-carousel {
         --hero-h: clamp(600px, calc(100vh - 11.25rem), 720px);
         margin-top: 7.75rem;
     }
@@ -2837,6 +2955,7 @@ a.topbar-item:hover {
 }
 
 @media (prefers-reduced-motion: reduce) {
+
     .main-navbar .topbar,
     .topbar-social a {
         transition: none;
@@ -2868,6 +2987,182 @@ a.topbar-item:hover {
 .topbar-social a {
     display: inline-flex;
     align-items: center;
-    height: 1.5em;             /* the line height the inline link had: keeps the topbar exactly as tall as before */
-    text-decoration: none;     /* as a flex box the link's default underline shows under the icon */
+    height: 1.5em;
+    /* the line height the inline link had: keeps the topbar exactly as tall as before */
+    text-decoration: none;
+    /* as a flex box the link's default underline shows under the icon */
+}
+
+/* CONTACT FORM ICONS */
+.contact-chips {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    margin: 2rem 0 2.5rem;
+}
+
+.contact-chip {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    background: rgba(169, 234, 228, 0.42);
+    color: var(--navy);
+    font-size: 1.1rem;
+    line-height: 1;
+    text-decoration: none;
+    transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact-chip:hover,
+.contact-chip:focus,
+.contact-chip:focus-visible {
+    transform: translateY(-2px);
+    background: var(--navy);
+    color: var(--white);
+    box-shadow: 0 10px 24px rgba(3, 3, 22, 0.14);
+    outline: none;
+}
+
+/* ícone centrado: o glifo deixa de ser empurrado 0.125em para baixo */
+.contact-chip-icon {
+    display: grid;
+    place-items: center;
+}
+
+.contact-chip-icon .bi {
+    display: inline-flex;
+}
+
+/* balão com a informação (escondido por defeito) */
+.contact-chip-info {
+    --tx: -50%;
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 50%;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.45rem 0.8rem;
+    border-radius: 10px;
+    background: var(--navy);
+    box-shadow: 0 12px 28px rgba(3, 3, 22, 0.25);
+    white-space: nowrap;
+    line-height: 1.25;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translate(var(--tx), 6px);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s linear 0.2s;
+}
+
+/* setinha do balão */
+.contact-chip-info::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border: 5px solid transparent;
+    border-top-color: var(--navy);
+}
+
+.contact-chip:hover .contact-chip-info,
+.contact-chip:focus .contact-chip-info,
+.contact-chip:focus-visible .contact-chip-info {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(var(--tx), 0);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s linear 0s;
+}
+
+.contact-chip-info small {
+    color: var(--pearl);
+    font-size: 0.66rem;
+    font-weight: 600;
+}
+
+.contact-chip-info strong {
+    color: var(--white);
+    font-size: 0.76rem;
+    font-weight: 700;
+}
+
+/* telemóvel: os balões das pontas alinham-se à borda, para não saírem do ecrã */
+@media (max-width: 575.98px) {
+    .contact-chip:nth-child(-n+3) .contact-chip-info {
+        --tx: 0;
+        left: 0;
+    }
+
+    .contact-chip:nth-child(-n+3) .contact-chip-info::after {
+        left: 17px;
+        margin-left: 0;
+    }
+
+    .contact-chip:nth-last-child(-n+3) .contact-chip-info {
+        --tx: 0;
+        left: auto;
+        right: 0;
+    }
+
+    .contact-chip:nth-last-child(-n+3) .contact-chip-info::after {
+        left: auto;
+        right: 17px;
+        margin-left: 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .contact-chip,
+    .contact-chip-info {
+        transition: none;
+    }
+}
+
+#overlayGradient {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+#overlayGradient::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(126deg,
+            #000d3600 0%,
+            #001a6b00 25%,
+            #00369e45 50%,
+            #123e7199 75%,
+            #1571b2 100%);
+    z-index: 2;
+    pointer-events: none;
+}
+
+#overlayGradient>[class*="col-lg-6"] {
+    position: relative;
+    z-index: 1;
+}
+
+
+#equipa {
+      .team-photo img {
+        filter: brightness(0.9) contrast(1.2) saturate(1.2) !important;
+    }
+}
+
+
+.brand-name:hover {
+    color: var(--icy-aqua);
 }
