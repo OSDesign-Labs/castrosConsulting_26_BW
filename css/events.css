@@ -1,0 +1,422 @@
+/* ==========================================================
+   EVENTOS: cards, detail modal, "Ver todos" modal
+   (markup in index.html, data + behaviour in js/events.js)
+   ========================================================== */
+
+/* ---------- card: same structure everywhere ---------- */
+.event-card {
+    position: relative;                 /* the "Ver evento" button stretches over the whole card */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.event-thumb {
+    position: relative;
+    flex: none;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    border-radius: 0 !important;        /* home.css gives .event-thumb 18px; the card already rounds it */
+    background: linear-gradient(160deg, var(--bg-alt), #e4ebf4);
+}
+
+.event-thumb img {
+    position: absolute;                 /* the frame sets the size, not the photo */
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.event-card:hover .event-thumb img {
+    transform: scale(1.045);
+}
+
+/* readable on any photo (the old pearl-on-transparent badge disappeared on light images) */
+.event-card .event-badge,
+.event-modal .event-badge {
+    background: rgba(1, 9, 48, 0.62);
+    border-color: rgba(114, 220, 220, 0.45);
+    color: var(--pearl);
+}
+
+.event-status {
+    position: absolute;
+    left: 0.8rem;
+    bottom: 0.8rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.3rem 0.7rem;
+    border-radius: 999px;
+    background: rgba(1, 9, 48, 0.72);
+    color: var(--white);
+    font-size: 0.7rem;
+    font-weight: 700;
+    backdrop-filter: blur(6px);
+}
+
+.event-card[data-status="past"] .event-thumb img {
+    filter: saturate(0.75);
+}
+
+.event-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    padding: 1.5rem;
+}
+
+.event-body .event-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 1rem;
+    margin-bottom: 0.9rem;
+}
+
+.event-meta > span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.event-meta .bi {
+    color: var(--cyan);
+}
+
+.event-title {
+    margin: 0 0 0.5rem;
+    color: var(--ink);
+    font-family: "Inter", sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.event-summary {
+    margin: 0 0 1.1rem;
+    font-size: 0.875rem;
+}
+
+/* the button always sits at the bottom of the card */
+.event-open {
+    align-self: flex-start;
+    margin-top: auto;
+    padding: 0;
+    border: 0;
+    background: none;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.event-open:focus-visible {
+    outline: 2px solid var(--cyan);
+    outline-offset: 4px;
+    border-radius: 4px;
+}
+
+/* ---------- shared modal look ---------- */
+.event-modal .modal-content,
+.events-all-modal .modal-content {
+    border: 0;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 40px 100px -30px rgba(1, 9, 48, 0.55);
+}
+
+/* ---------- detail modal ---------- */
+.event-modal-media {
+    position: relative;
+    flex: none;
+    aspect-ratio: 16 / 7;
+    max-height: 38vh;                   /* short screens: keep the text in view */
+    width: 100%;
+    background: var(--navy);
+}
+
+.event-modal-media img {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.event-modal-media::after {                     /* soft shade so the chips stay readable */
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(1, 9, 48, 0.35), transparent 35%, transparent 70%, rgba(1, 9, 48, 0.4));
+    pointer-events: none;
+}
+
+.event-modal-media .event-badge {
+    left: 1rem;
+    right: auto;
+    top: 1rem;
+    z-index: 1;
+}
+
+.event-modal-media .event-status {
+    left: 1rem;
+    bottom: 1rem;
+    z-index: 1;
+}
+
+.event-modal-close {
+    position: absolute;
+    top: 0.9rem;
+    right: 0.9rem;
+    z-index: 2;
+    width: 2.4rem;
+    height: 2.4rem;
+    padding: 0;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.92);
+    background-size: 0.8rem;
+    opacity: 1;
+    box-shadow: 0 6px 18px -6px rgba(1, 9, 48, 0.5);
+}
+
+.event-modal-close:hover {
+    background-color: #fff;
+}
+
+.event-modal .modal-body {
+    padding: 1.75rem 2rem 1.5rem;
+}
+
+.event-modal-title {
+    margin: 0 0 1.25rem;
+    color: var(--ink);
+    font-family: "DM Serif Display", serif;
+    font-size: clamp(1.6rem, 3vw, 2.15rem);
+    line-height: 1.15;
+}
+
+.event-facts {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.9rem 1.5rem;
+    margin: 0 0 1.5rem;
+    padding: 1.1rem 1.25rem;
+    list-style: none;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: var(--bg-alt);
+}
+
+.event-facts li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.7rem;
+    min-width: 0;
+}
+
+.event-facts li[hidden] {
+    display: none;
+}
+
+.event-facts .bi {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 2.1rem;
+    height: 2.1rem;
+    border-radius: 50%;
+    background: rgba(4, 191, 205, 0.12);
+    color: #037480;
+    font-size: 1rem;
+}
+
+.event-facts small {
+    display: block;
+    color: var(--slate);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.event-facts span {
+    display: block;
+    color: var(--ink);
+    font-size: 0.92rem;
+    font-weight: 600;
+    line-height: 1.35;
+}
+
+.event-modal-lead {
+    margin-bottom: 1.4rem;
+    color: var(--ash);
+}
+
+.event-modal-sub {
+    margin-bottom: 0.7rem;
+    font-family: "Manrope", sans-serif;
+    color: var(--ink);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.event-highlights {
+    display: grid;
+    gap: 0.55rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.event-highlights li {
+    display: flex;
+    gap: 0.6rem;
+    color: var(--ash);
+}
+
+.event-highlights .bi {
+    flex: none;
+    color: var(--cyan);
+    font-size: 1.05rem;
+    line-height: 1.5;
+}
+
+.event-past-note {
+    display: flex;
+    gap: 0.6rem;
+    margin: 1.4rem 0 0;
+    padding: 0.85rem 1rem;
+    border-radius: 12px;
+    background: rgba(4, 191, 205, 0.08);
+    color: var(--ash);
+    font-size: 0.875rem;
+}
+
+.event-past-note[hidden],
+[data-row][hidden] {
+    display: none !important;
+}
+
+.event-past-note .bi {
+    color: #037480;
+}
+
+.event-modal .modal-footer {
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 1rem 2rem 1.4rem;
+    border-top: 1px solid var(--border);
+}
+
+.event-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding-left: 0;
+    color: var(--ash);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.event-back:hover {
+    color: var(--cyan);
+}
+
+.event-cta {
+    margin-left: auto;
+    /* Bootstrap's .btn (loaded after home.css) resets background-color to
+       var(--bs-btn-bg), which made .btn-cyan transparent: set Bootstrap's own variables */
+    --bs-btn-bg: var(--cyan);
+    --bs-btn-color: #02181c;
+    --bs-btn-hover-bg: #05d2e1;
+    --bs-btn-hover-color: #02181c;
+    --bs-btn-active-bg: #03a9b5;
+    --bs-btn-active-color: #02181c;
+    --bs-btn-focus-shadow-rgb: 4, 191, 205;
+    --bs-btn-font-weight: 700;
+}
+
+/* ---------- "Ver todos" modal ---------- */
+.events-all-modal .modal-content {
+    background: var(--bg-alt);
+}
+
+.events-all-modal .modal-header {
+    align-items: flex-start;
+    padding: 1.6rem 2rem 1.2rem;
+    border-bottom: 1px solid var(--border);
+    background: var(--white);
+}
+
+.events-all-modal .modal-title {
+    margin: 0;
+    color: var(--ink);
+    font-family: "DM Serif Display", serif;
+    font-size: clamp(1.6rem, 3vw, 2.1rem);
+    line-height: 1.15;
+}
+
+.events-all-modal .modal-header .eyebrow {
+    margin-bottom: 0.3rem;
+}
+
+.events-all-modal .modal-body {
+    padding: 2rem;
+}
+
+/* cards come in one after another each time the modal opens */
+.events-all-modal.show .event-col {
+    animation: eventIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: calc(var(--i, 0) * 70ms + 80ms);
+}
+
+@keyframes eventIn {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: none; }
+}
+
+/* ---------- small screens ---------- */
+@media (max-width: 575.98px) {
+    .event-modal .modal-content,
+    .events-all-modal .modal-content {
+        border-radius: 0;
+    }
+
+    .event-modal .modal-body {
+        padding: 1.4rem 1.25rem;
+    }
+
+    .event-facts {
+        grid-template-columns: 1fr;
+    }
+
+    .event-modal .modal-footer {
+        padding: 0.9rem 1.25rem 1.1rem;
+    }
+
+    .events-all-modal .modal-header,
+    .events-all-modal .modal-body {
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .events-all-modal .modal-content {
+        border-radius: 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .events-all-modal.show .event-col {
+        animation: none;
+    }
+
+    .event-thumb img {
+        transition: none;
+    }
+}

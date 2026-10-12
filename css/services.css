@@ -942,6 +942,10 @@ footer {
         margin-top: 0.5rem;
     }
 
+    a {
+        color: var(--ash-soft);
+    }
+
     h5 {
         color: var(--pearl);
         font-size: 0.72rem;
@@ -1400,7 +1404,7 @@ main>.hero #overlayGradient>[class*="col-lg-6"] {
     border-radius: 14px;
     box-shadow: inset 0 0 70px rgba(1, 9, 48, 0.12);
     pointer-events: none;
-    background-image: url(../assets/people.jpg);
+    background-image: url(../assets/people.webp);
     background-size: cover;   
     background-position: center;
     filter: contrast(1.2) grayscale(1);
@@ -2073,7 +2077,6 @@ main>.hero #overlayGradient>[class*="col-lg-6"] {
         color: var(--deep-navy);
         background: rgba(169, 234, 228, 0.42);
         border-radius: 12px;
-        padding-bottom: 12px;
         margin: 1rem auto 0;
     }
 
@@ -2822,9 +2825,505 @@ main>.hero #overlayGradient>[class*="col-lg-6"] {
     transform: translateX(4px);
 }
 
+/* the hidden contact alert must not catch clicks */
+.contact-alert:not(.show) {
+    pointer-events: none;
+}
 
 /* ======================================================
-   SECONDARY NAVBAR
+       11. TESTEMUNHOS | Final Section
+       ====================================================== */
+
+#testimonials {
+    height: 60vh;
+    margin: 10rem  0 1rem;
+    overflow: clip;
+
+    h6.index {
+        font-family: "Manrope";
+        text-align: center !important;
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--cyan);
+        margin-bottom: 0.7rem;
+        display: block;
+
+    }
+    
+    h3 {
+        color: rgb(0, 0, 0);
+        font-family: "DM Serif Display", serif;
+        font-weight: 500;
+        letter-spacing: -0.269425px;
+    }
+
+    h6 {
+        color: var(--ink);
+        font-family: "Manrope";
+    }
+
+    p {
+        line-height: 21px;
+    }
+    #testCarousel {
+        height: 100%;
+            
+        .carousel-indicators {
+            list-style: none;
+        }
+
+        .carousel-inner {
+            height: 100%;
+            /* background-image: url(../assets/workshop2.webp); */
+            background-color: var(--white) !important;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            filter: contrast(1.2) !important;
+
+            .carousel-item {
+                height: 100%;
+                margin-top: -3rem;
+
+                .carousel-caption {
+                    color: black;
+                    h3.comment {
+                        font-family: "Manrope";
+                        margin-bottom: 0;
+                        padding-bottom: 0;
+                        filter: brightness(1) !important;
+                    }
+
+                    img.d-block {
+                        width: 115px !important;
+                        height: 115px;
+                        object-fit: cover;
+                        margin: 2rem auto 5px;
+                        border-radius: 150px;
+                    }
+
+                    h6.name {
+                        font-family: "DM Serif Display";
+                        font-weight: 600;
+                    }
+
+                    p.local {
+                        font-size: 14px;
+                        font-family: "Manrope";
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* ======================================================
+   MOBILE OFFCANVAS | Fullscreen, centred, responsive
+   Replaces the whole old "MOBILE OFFCANVAS | Fullscreen" section
+   (from that comment banner down to the end of home.css,
+   i.e. through `.mobile-offcanvas .mobile-social a:hover`).
+
+   Works with the markup as it is today, no HTML edits:
+
+     .offcanvas.mobile-offcanvas
+       ├─ .offcanvas-header      (close button, + brand on subpages)
+       ├─ .offcanvas-body        (.mobile-nav + .mobile-cta-wrapper)
+       └─ .mobile-info           (pills + .mobile-social)   <- sibling of the body, not inside it
+
+   The panel itself is the flex column: body gets margin-top:auto,
+   .mobile-info gets margin-bottom:auto, so nav + CTA + pills + social
+   centre as ONE group in the space under the header. If the group is
+   taller than the screen the margins collapse to 0 and the panel scrolls.
+
+   Two-class selectors (.offcanvas.mobile-offcanvas) are deliberate:
+   Bootstrap loads AFTER this file, so a single-class rule ties with
+   Bootstrap's own and loses.
+   ====================================================== */
+
+/* ---------- Shell ---------- */
+.offcanvas.mobile-offcanvas {
+    --bs-offcanvas-zindex: 1060;
+    z-index: 1060;                 /* above the fixed navbar (1050) */
+    width: 100% !important;        /* beats the old "width: 90vw !important" in the 575px media query; delete that rule, then this !important can go */
+    max-width: 100%;
+    overflow-y: auto;              /* whole panel scrolls on very short screens */
+    padding-bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px));
+    border: 0;
+    color: var(--white);
+    background:
+        radial-gradient(120% 90% at 80% 0%, #123a55 0%, #0a2138 45%, #04101f 100%);
+}
+
+/* ---------- Header: close button always on the right (brand, when present, on the left) ---------- */
+.offcanvas.mobile-offcanvas .offcanvas-header {
+    flex: 0 0 auto;
+    justify-content: space-between;
+    padding: calc(0.9rem + env(safe-area-inset-top, 0px)) 1.5rem 0.9rem;
+}
+
+.offcanvas.mobile-offcanvas .offcanvas-title {
+    font-family: "DM Serif Display", serif;
+    font-style: italic;
+    font-size: 1.35rem;
+    color: var(--white);
+    text-decoration: none;
+}
+
+/* 44px tap target. The invert filter turns the black X white. */
+.offcanvas.mobile-offcanvas .btn-close {
+    box-sizing: border-box;
+    width: 44px;
+    height: 44px;
+    margin: 0 0 0 auto;
+    padding: 0;
+    opacity: 1;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.2);
+    background-size: 14px;
+    filter: invert(1) grayscale(1) brightness(2);
+}
+
+/* ---------- Body: nav + CTA, centred horizontally; margin-top:auto centres the group vertically ---------- */
+.offcanvas.mobile-offcanvas .offcanvas-body {
+    flex: 0 0 auto;                /* Bootstrap gives it flex-grow:1, which would eat the free space we want to centre with */
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(1rem, 3.5vh, 1.75rem);
+    padding: 0.5rem 1.5rem 0;
+    overflow: visible;
+    text-align: center;
+}
+
+/* Same column width on phones and tablets, so the group stays centred on wide screens */
+.offcanvas.mobile-offcanvas .offcanvas-body > * {
+    width: 100%;
+    max-width: 420px;
+}
+
+/* Pages with no .mobile-info (subpages today): the body is the last child, so it takes the bottom auto margin and still centres */
+.offcanvas.mobile-offcanvas .offcanvas-body:last-child {
+    margin-bottom: auto;
+}
+
+/* ---------- Links ---------- */
+.offcanvas.mobile-offcanvas .mobile-nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.offcanvas.mobile-offcanvas .mobile-nav .nav-link {
+    display: block;
+    padding: clamp(0.3rem, 1.3vh, 0.7rem) 0;
+    font-family: "DM Serif Display", serif;
+    font-size: clamp(1.5rem, min(7vw, 4.6vh), 2.3rem);   /* scales with width AND height, so short screens don't overflow */
+    line-height: 1.15;
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.offcanvas.mobile-offcanvas .mobile-nav .nav-link:hover,
+.offcanvas.mobile-offcanvas .mobile-nav .nav-link.active {
+    color: var(--pearl);
+}
+
+/* Serviços opens in place, centred */
+.offcanvas.mobile-offcanvas .mobile-nav .dropdown-menu {
+    position: static !important;
+    transform: none !important;
+    margin: 0 0 0.6rem;
+    padding: 0;
+    text-align: center;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+}
+
+.offcanvas.mobile-offcanvas .mobile-nav .dropdown-item {
+    padding: 0.5rem 0;
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    background: transparent;
+}
+
+.offcanvas.mobile-offcanvas .mobile-nav .dropdown-item:hover {
+    color: var(--cyan);
+}
+
+/* ---------- CTA button ---------- */
+.offcanvas.mobile-offcanvas .mobile-cta-wrapper {
+    margin: 0;
+}
+
+.offcanvas.mobile-offcanvas .mobile-cta-wrapper .btn {
+    display: block;
+    width: 100%;
+    padding: 0.9rem 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--white);
+    text-align: center;
+    text-decoration: none;
+    border: 0;
+    border-radius: 18px;
+    background-image: linear-gradient(109.6deg,
+            rgba(34, 211, 238, 1) 11.2%,
+            rgba(79, 57, 246, 1) 100.2%);
+}
+
+/* ---------- Info pills + social (sibling of .offcanvas-body) ---------- */
+.offcanvas.mobile-offcanvas .mobile-info {
+    flex: 0 0 auto;
+    align-self: center;
+    width: min(420px, calc(100% - 3rem));    /* same column as the nav and the CTA */
+    margin: clamp(1rem, 3.5vh, 1.75rem) 0 auto;   /* gap above; auto below = vertical centring */
+    padding: clamp(1rem, 3vh, 1.5rem) 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    position: static;              /* the old "position: relative; top: -5rem" dragged this block up over the Contato button */
+    top: auto;
+}
+
+.offcanvas.mobile-offcanvas .mobile-info > span,
+.offcanvas.mobile-offcanvas .mobile-info > a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.45rem 0.9rem;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 999px;
+}
+
+.offcanvas.mobile-offcanvas .mobile-info .bi {
+    color: var(--cyan);
+}
+
+.offcanvas.mobile-offcanvas .mobile-info > a:hover {
+    color: var(--pearl);
+    border-color: rgba(114, 220, 220, 0.5);
+}
+
+.offcanvas.mobile-offcanvas .mobile-social {
+    justify-content: center;
+    width: 100%;
+    margin-top: 0.6rem;
+}
+
+.offcanvas.mobile-offcanvas .mobile-social a {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    font-size: 1.1rem;
+    color: var(--white);
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 50%;
+    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.offcanvas.mobile-offcanvas .mobile-social a:hover {
+    color: var(--ink);
+    background: var(--pearl);
+    transform: translateY(-2px);
+}
+
+/* ---------- Short screens (small phones with browser toolbars, landscape): tighter, scrolls if still too tall ---------- */
+@media (max-height: 640px) {
+    .offcanvas.mobile-offcanvas .offcanvas-header {
+        padding-top: calc(0.5rem + env(safe-area-inset-top, 0px));
+        padding-bottom: 0.25rem;
+    }
+
+    .offcanvas.mobile-offcanvas .offcanvas-body {
+        gap: 0.75rem;
+        padding-top: 0;
+    }
+
+    .offcanvas.mobile-offcanvas .mobile-nav .nav-link {
+        padding: 0.2rem 0;
+    }
+
+    .offcanvas.mobile-offcanvas .mobile-cta-wrapper .btn {
+        padding: 0.7rem 1rem;
+    }
+
+    .offcanvas.mobile-offcanvas .mobile-info {
+        margin-top: 0.75rem;
+        padding-top: 0.75rem;
+    }
+
+    .offcanvas.mobile-offcanvas .mobile-social {
+        margin-top: 0.3rem;
+    }
+
+    .offcanvas.mobile-offcanvas .mobile-social a {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+
+/* ======================================================
+       CONTACT LINKS land on the form card itself
+       (clear of the fixed navbar)
+   ====================================================== */
+.contact-form-card {
+    scroll-margin-top: 96px;
+}
+
+
+/* ======================================================
+       LANGUAGE SWITCH (PT / EN) | behaviour: js/i18n.js
+       Desktop: next to the CTA. Phones/tablets: top bar.
+       Same block as css/home.css (sub-pages load this file instead).
+   ====================================================== */
+.main-navbar .nav-actions {
+    grid-column: 3;
+    justify-self: end;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.lang-switch {
+    display: inline-flex;
+    flex: none;
+    align-items: center;
+    gap: 2px;
+    padding: 3px;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 999px;
+    background: rgba(1, 9, 48, 0.45);
+    backdrop-filter: blur(8px);
+}
+
+.lang-switch__btn {
+    min-width: 2.4rem;
+    height: 1.9rem;
+    padding: 0 0.55rem;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.78);
+    font: 700 0.75rem/1 "Manrope", sans-serif;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.lang-switch__btn:hover {
+    color: #fff;
+}
+
+.lang-switch__btn.is-active {
+    background: var(--cyan);
+    color: #02181c;
+    cursor: default;
+}
+
+.lang-switch__btn:focus-visible {
+    outline: 2px solid var(--pearl);
+    outline-offset: 2px;
+}
+
+.lang-switch.is-busy {
+    opacity: 0.7;
+    pointer-events: none;                  /* no double clicks while the JSON loads */
+}
+
+/* phones / tablets: same box as the hamburger button */
+.main-navbar .lang-switch--bar {
+    height: 46px;
+    margin-left: auto;
+    padding: 4px;
+    border: 1px solid rgba(3, 3, 22, 0.18);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: 0 8px 24px rgba(3, 3, 22, 0.14);
+}
+
+.main-navbar .lang-switch--bar .lang-switch__btn {
+    height: 36px;
+    min-width: 2.5rem;
+    border-radius: 8px;
+    color: var(--ash);
+}
+
+.main-navbar .lang-switch--bar .lang-switch__btn.is-active {
+    background: var(--navy);
+    color: #fff;
+}
+
+.main-navbar .lang-switch--bar + .navbar-toggler {
+    margin-left: 0.5rem;
+}
+
+.main-navbar .lang-switch--bar,
+.main-navbar .navbar-toggler {
+    flex: none;                            /* never squeezed by a long logo */
+}
+
+/* very small phones (< 375px): logo + name, switch and menu button must share 288px */
+@media (max-width: 374.98px) {
+    .main-navbar .navbar-brand.brand-lockup {
+        font-size: 0.8rem;
+    }
+
+    .main-navbar .lang-switch--bar {
+        height: 42px;
+        padding: 3px;
+    }
+
+    .main-navbar .lang-switch--bar .lang-switch__btn {
+        height: 34px;
+        min-width: 2.1rem;
+        padding: 0 0.4rem;
+    }
+
+    .main-navbar .navbar-toggler {
+        width: 42px;
+        height: 42px;
+    }
+
+    .main-navbar .lang-switch--bar + .navbar-toggler {
+        margin-left: 0.4rem;
+    }
+}
+
+/* the "message sent" alert opens under the navbar (max ~77px tall),
+   so it never covers the language switch or the CTA */
+.contact-section .contact-alert {
+    top: 88px;
+}
+
+/* tablets (768-991px): the Training modal is 500px wide, so its three columns are ~135px:
+   one-word headings ("Atendimento", "Programmes") must still fit */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .subpage .modal-body .service-columns h4 {
+        font-size: 1.2rem;
+    }
+}
+
+/* ======================================================
+       SECONDARY NAVBAR (top bar) | from Francisco's branch
+       Desktop only (.d-lg-flex in the HTML). Folds away once the
+       first section is scrolled past: js/topbar.js adds
+       .topbar-collapsed to the navbar.
    ====================================================== */
 .main-navbar .topbar {
     max-width: 1600px;
@@ -2846,13 +3345,13 @@ main>.hero #overlayGradient>[class*="col-lg-6"] {
         border-color 0.4s ease;
 }
 
-/* Collapsed once the hero is scrolled past */
 .main-navbar.topbar-collapsed .topbar {
     max-height: 0;
     opacity: 0;
     margin-bottom: 0;
     padding-bottom: 0;
     border-color: transparent;
+    border-bottom-width: 0;
 }
 
 .topbar-left,
@@ -2868,6 +3367,7 @@ main>.hero #overlayGradient>[class*="col-lg-6"] {
     gap: 0.4rem;
     color: inherit;
     white-space: nowrap;
+    text-decoration: none;
 }
 
 .topbar-item .bi {
@@ -2901,468 +3401,65 @@ a.topbar-item:hover {
     transform: translateY(-2px);
 }
 
-/* Hero must clear the taller navbar (desktop only, the bar is hidden below lg) */
-@media (min-width: 992px) {
-    main>.hero {
-        margin-top: 7rem;
-    }
+.topbar a:focus-visible {
+    outline: 2px solid var(--pearl);
+    outline-offset: 3px;
+    border-radius: 4px;
 }
 
-/* Mobile menu info block */
-.mobile-info {
-    display: grid;
-    gap: 0.6rem;
-    margin-top: 1.5rem;
-    padding-top: 1.25rem;
-    border-top: 1px solid var(--border);
-    font-size: 0.85rem;
-    color: var(--ash);
-}
-
-.mobile-info span,
-.mobile-info a {
+/* phone menu: the social icons sit in one row */
+.offcanvas.mobile-offcanvas .mobile-social {
     display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    color: inherit;
-}
-
-.mobile-info .bi {
-    color: var(--cyan);
-}
-
-.mobile-info a:hover {
-    color: var(--cyan);
-}
-
-.mobile-social {
-    display: flex !important;
-    gap: 1rem !important;
-    margin-top: 0.3rem;
-    font-size: 1.15rem;
-}
-
-
-
-/* ======================================================
-   CONTACT CHIPS (hover to reveal)
-   ====================================================== */
-.contact-section .contact-chips {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.9rem;
-}
-
-.contact-section .contact-chip {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.35rem;
-    color: var(--ink);
-    background: rgba(255, 255, 255, 0.72);
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-}
-
-.contact-section .contact-chip:hover,
-.contact-section .contact-chip:focus-visible {
-    transform: translateY(-2px);
-    background: var(--white);
-    border-color: rgba(169, 234, 228, 0.9);
-    box-shadow: 0 10px 24px rgba(3, 3, 22, 0.08);
-    outline: none;
-}
-
-.contact-chip-icon {
-    display: grid;
-    flex: 0 0 38px;
-    width: 38px;
-    height: 38px;
-    place-items: center;
-    color: var(--navy);
-    background: rgba(169, 234, 228, 0.42);
-    border-radius: 50%;
-    font-size: 1rem;
-
-    i {
-        position: relative;
-        top: -4px;
-    }
-}
-
-.contact-chip-info {
-    display: flex;
-    flex-direction: column;
-    max-width: 0;
-    opacity: 0;
-    overflow: hidden;
-    white-space: nowrap;
-    line-height: 1.25;
-    transition: max-width 0.35s ease, opacity 0.25s ease, margin 0.35s ease;
-}
-
-.contact-chip:hover .contact-chip-info,
-.contact-chip:focus-visible .contact-chip-info {
-    max-width: 240px;
-    opacity: 1;
-    margin: 0 0.8rem 0 0.7rem;
-}
-
-.contact-chip-info small {
-    color: var(--slate-grey);
-    font-size: 0.66rem;
-    font-weight: 600;
-}
-
-.contact-chip-info strong {
-    color: var(--ink);
-    font-size: 0.76rem;
-    font-weight: 700;
-}
-
-/* Touch screens have no hover, so keep the details visible there */
-@media (hover: none) {
-    .contact-chip-info {
-        max-width: 240px;
-        opacity: 1;
-        margin: 0 0.8rem 0 0.7rem;
-    }
-}
-
-
-/* ======================================================
-   MOBILE OFFCANVAS | Fullscreen
-   ====================================================== */
-.mobile-offcanvas {
-    --bs-offcanvas-width: 100vw;
-    width: 100vw !important;       /* overrides the old 90vw rule */
-    max-width: 100%;
-    z-index: 1060;                 /* above the navbar */
-    background:
-        radial-gradient(120% 90% at 80% 0%, #123a55 0%, #0a2138 45%, #04101f 100%);
-    color: var(--white);
-}
-
-.mobile-offcanvas .offcanvas-header {
-    padding: 1rem 1.5rem;
-    justify-content: space-between;
-}
-
-.mobile-offcanvas .offcanvas-title {
-    font-family: "DM Serif Display", serif;
-    font-style: italic;
-    font-size: 1.35rem;
-    color: var(--white);
-    text-decoration: none;
-}
-
-.mobile-offcanvas .btn-close {
-    opacity: 1;
-    padding: 0.9rem;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.1);
-    filter: invert(1) grayscale(1) brightness(2);
-}
-
-.mobile-offcanvas .offcanvas-body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 0.5rem 1.5rem 2rem;
-}
-
-.mobile-offcanvas .mobile-nav {
-    list-style: none;
-    margin: 4rem 0 0;              /* auto top margin centres nav + button vertically */
-    padding: 0;
-    width: 100%;
-}
-
-.mobile-offcanvas .mobile-nav .nav-link {
-    display: block;
-    padding: 0.7rem 0;
-    font-family: "DM Serif Display", serif;
-    font-size: clamp(1.7rem, 7vw, 2.4rem);
-    line-height: 1.15;
-    color: rgba(255, 255, 255, 0.85);
-    text-decoration: none;
-    transition: color 0.2s ease;
-}
-
-.mobile-offcanvas .mobile-nav .nav-link:hover,
-.mobile-offcanvas .mobile-nav .nav-link.active {
-    color: var(--pearl);
-}
-
-/* Services dropdown opens in place, centred */
-.mobile-offcanvas .mobile-nav .dropdown-menu {
-    position: static !important;
-    transform: none !important;
-    background: transparent;
-    border: 0;
-    box-shadow: none;
-    padding: 0;
-    margin: 0 0 0.6rem;
-    text-align: center;
-}
-
-.mobile-offcanvas .mobile-nav .dropdown-item {
-    padding: 0.5rem 0;
-    font-size: 1.05rem;
-    color: rgba(255, 255, 255, 0.7);
-    background: transparent;
-    text-decoration: none;
-}
-
-.mobile-offcanvas .mobile-nav .dropdown-item:hover {
-    color: var(--cyan);
-}
-
-
-.mobile-offcanvas .mobile-cta-wrapper {
-    width: 100%;
-    margin-top: 1.5rem;
-}
-
-.mobile-offcanvas .mobile-cta-wrapper .btn {
-    display: block;
-    width: 100%;
-    padding: 0.9rem 1rem;
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--white);
-    text-align: center;
-    text-decoration: none;
-    border: 0;
-    border-radius: 18px;
-    background-image: linear-gradient(109.6deg,
-            rgba(34, 211, 238, 1) 11.2%,
-            rgba(79, 57, 246, 1) 100.2%);
-}
-
-.mobile-offcanvas .mobile-info {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.5rem;
-    width: 100%;
-    margin-top: auto;              /* pushes the block to the bottom */
-    padding-top: 1.5rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.12);
-    position: relative;
-    top: -5rem;
-}
-
-
-.mobile-offcanvas .mobile-info > span,
-.mobile-offcanvas .mobile-info > a {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.45rem;
-    padding: 0.45rem 0.9rem;
-    font-size: 0.8rem;
-    color: rgba(255, 255, 255, 0.85);
-    text-decoration: none;
-    background: rgba(255, 255, 255, 0.07);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 999px;
-}
-
-.mobile-offcanvas .mobile-info .bi {
-    color: var(--cyan);
-}
-
-.mobile-offcanvas .mobile-info > a:hover {
-    color: var(--pearl);
-    border-color: rgba(114, 220, 220, 0.5);
-}
-
-.mobile-offcanvas .mobile-social {
-    display: flex;
-    justify-content: center;
     gap: 0.75rem;
-    width: 100%;
-    margin-top: 0.6rem;
 }
 
-.mobile-offcanvas .mobile-social a {
-    display: grid;
-    place-items: center;
-    width: 44px;
-    height: 44px;
-    font-size: 1.1rem;
-    color: var(--white);
-    text-decoration: none;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.16);
-    border-radius: 50%;
-    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
-}
-
-.mobile-offcanvas .mobile-social a:hover {
-    color: var(--ink);
-    background: var(--pearl);
-    transform: translateY(-2px);
-}
-
-/* NAVBAR BASE COMPONENT */
-.navbar-c {
-    position: sticky;
-    top: 0;
-    z-index: 1050;
-    background: rgba(255, 255, 255, 0.86);
-    backdrop-filter: blur(14px);
-    border-bottom: 1px solid var(--border);
-    transition:
-        box-shadow 0.3s ease,
-        padding 0.3s ease;
-
-    &.scrolled {
-        box-shadow: 0 8px 24px -16px rgba(1, 9, 48, 0.25);
-    }
-
-    .navbar-brand {
-        font-family: "DM Serif Display", serif;
-        font-style: italic;
-        font-weight: 700;
-        color: var(--ink) !important;
-        font-size: 1.4rem;
-    }
-
-    .nav-link {
-        color: var(--ash) !important;
-        font-weight: 500;
-        font-size: 0.9rem;
-        display: flex;
-        align-items: center;
-        gap: 0.3rem;
-
-        &:hover {
-            color: var(--cyan) !important;
-        }
-    }
-
-    .dropdown-menu {
-        border: 1px solid var(--border);
-        border-radius: 12px;
-        box-shadow: var(--shadow-lg);
-        padding: 0.5rem;
-    }
-
-    .dropdown-item {
-        border-radius: 8px;
-        font-size: 0.88rem;
-        padding: 0.55rem 0.8rem;
-
-        &:hover {
-            background: rgba(4, 191, 205, 0.1);
-            color: var(--cyan);
-        }
+@media (prefers-reduced-motion: reduce) {
+    .main-navbar .topbar,
+    .topbar-social a {
+        transition: none;
     }
 }
 
-/* SERVICES CARDS */
-/* First Service */
-#formacoes {
-    padding-top: clamp(5rem, 10vw, 10.5rem);
-
-
+/* cyan buttons inside the sub-page modals ("Inscrever-se", "Manifestar interesse"): the modals sit
+   outside <main>, so ".subpage main .btn-cyan" never reached them and Bootstrap's .btn made them transparent */
+.subpage .modal .btn-cyan {
+    --bs-btn-color: #02181c;
+    --bs-btn-bg: var(--sp-accent);
+    --bs-btn-border-color: var(--sp-accent);
+    --bs-btn-hover-color: #02181c;
+    --bs-btn-hover-bg: #1fd0dc;
+    --bs-btn-hover-border-color: #1fd0dc;
+    --bs-btn-active-color: #02181c;
+    --bs-btn-active-bg: #03a8b4;
+    --bs-btn-active-border-color: #03a8b4;
+    box-shadow: 0 10px 28px -10px rgba(4, 191, 205, 0.6);
 }
-
-
 
 /* ======================================================
-       11. TESTEMUNHOS | Final Section
+       ICONS INSIDE CENTRING BOXES
+       Bootstrap Icons nudges every glyph down by 0.125em
+       (.bi::before { vertical-align: -.125em }) so it lines up
+       with running text. Inside a box that centres its content
+       (topbar, mobile-menu pills and round buttons, contact
+       squares, event badge) that nudge just makes the icon sit
+       low. display: inline-flex turns the glyph into a flex item,
+       and vertical-align does not apply to flex items, so the box
+       centres the glyph itself. Icons next to text inside a line
+       (buttons, lists) keep Bootstrap's default: that nudge is what
+       lines them up with the text.
        ====================================================== */
-
-#testimonials {
-    height: 60vh;
-    margin: 5rem 0;
-
-    h6.index {
-        font-family: "Manrope";
-        text-align: center !important;
-        font-size: 0.8rem;
-        font-weight: 700;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        color: var(--cyan);
-        margin-bottom: 0.7rem;
-        display: block;
-
-    }
-
-    #testCarousel {
-        height: 100%;
-
-        .carousel-indicators {
-            list-style: none;
-        }
-
-        .carousel-inner {
-            height: 100%;
-            /* background-image: url(../assets/workshop2.jpg); */
-            background-color: var(--white) !important;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            filter: contrast(1.2) !important;
-
-            .carousel-item {
-                height: 100%;
-                margin-top: -3rem;
-
-                .carousel-caption {
-                    color: black;
-
-                    h3.comment {
-                        font-family: "Manrope";
-                        margin-bottom: 0;
-                        padding-bottom: 0;
-                        filter: brightness(1) !important;
-                    }
-
-                    img.d-block {
-                        width: 115px !important;
-                        height: 115px;
-                        object-fit: cover;
-                        margin: 2rem auto 5px;
-                        border-radius: 150px;
-                    }
-
-                    h6.name {
-                        font-family: "DM Serif Display";
-                        font-weight: 600;
-                    }
-
-                    p.local {
-                        font-size: 14px;
-                        font-family: "Manrope";
-                    }
-                }
-            }
-        }
-    }
+.topbar .bi,
+.mobile-info .bi,
+.contact-info-icon .bi,
+.event-status .bi {
+    display: inline-flex;
 }
 
-
-
-
-
-.carousel-caption.d-md-block {
-
-    h3,
-    h6 {
-        color: var(--ink-black);
-    }
-}
-
-p { 
-    font-family: "Poppins";
-}
-
-.accordion-button.collapsed {
-    color: var(--ink) !important;
+/* the topbar social links are icon-only: make each link a centring box too
+   (as plain inline links, the icon sat on the text line, 1px above centre) */
+.topbar-social a {
+    display: inline-flex;
+    align-items: center;
+    height: 1.5em;             /* the line height the inline link had: keeps the topbar exactly as tall as before */
+    text-decoration: none;     /* as a flex box the link's default underline shows under the icon */
 }

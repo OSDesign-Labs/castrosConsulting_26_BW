@@ -1,0 +1,92 @@
+{
+  "_readme": [
+    "One source of truth for the SEO tags. Edit this file, then run from the repo root: python3 tools/seo.py",
+    "python3 tools/seo.py --check changes nothing and fails if a page is out of date or a rule is broken (run it before committing).",
+    "site_url: leave empty until the domain is live, then set it, e.g. https://castrosconsultoria.co.mz (no trailing slash) and run seo.py again. That adds canonical, og:url, og:image, the WebSite data, sitemap.xml and robots.txt.",
+    "Titles: 30-60 characters (Google cuts longer ones). Descriptions: 70-160 characters. Portuguese is what Google sees; title.en only feeds the browser tab when the visitor switches to EN.",
+    "business.telephone / business.email: empty on purpose. The site shows +258 87 866 5180 and +258 84 866 5180, and three different email addresses; fill these in once the client confirms which ones are right.",
+    "business.same_as: only real profile URLs (the Facebook and LinkedIn links on the site are still placeholders)."
+  ],
+  "site_url": "",
+  "locale": "pt_MZ",
+  "business": {
+    "type": "ProfessionalService",
+    "name": "Castros Consultoria",
+    "alternate_name": "Castro's Consultoria",
+    "telephone": "",
+    "email": "",
+    "locality": "Maputo",
+    "country": "MZ",
+    "hours": {
+      "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "08:00",
+      "closes": "17:00"
+    },
+    "same_as": ["https://www.instagram.com/castros.consultoria/"],
+    "logo": "assets/brand/castros-mark.webp"
+  },
+  "share_image": {
+    "path": "assets/brand/share-1200x630.png",
+    "width": 1200,
+    "height": 630,
+    "alt": "Castros Consultoria, Maputo"
+  },
+  "icons": {
+    "ico": "favicon.ico",
+    "png192": "assets/brand/icon-192.png",
+    "apple": "assets/brand/apple-touch-icon.png"
+  },
+  "pages": [
+    {
+      "file": "index.html",
+      "url_path": "/",
+      "key": "index",
+      "business_data": true,
+      "title": {
+        "pt": "Castros Consultoria · Consultoria e Formação em Maputo",
+        "en": "Castros Consultoria · Consulting and Training in Maputo"
+      },
+      "description": "Consultoria, formações, palestras, workshops e espaço para eventos em Maputo. Trabalhamos com pessoas reais, em contextos reais, para criar impacto duradouro."
+    },
+    {
+      "file": "html/consultoria.html",
+      "url_path": "/html/consultoria.html",
+      "key": "consultoria",
+      "title": {
+        "pt": "Consultoria Empresarial em Maputo · Castros Consultoria",
+        "en": "Business Consulting in Maputo · Castros Consultoria"
+      },
+      "description": "Consultoria empresarial em Maputo. Ajudamos organizações e líderes a ver o que não veem, com orientação prática para transformar desafios em decisões claras."
+    },
+    {
+      "file": "html/formacoes.html",
+      "url_path": "/html/formacoes.html",
+      "key": "formacoes",
+      "title": {
+        "pt": "Formações e Treinamento Corporativo · Castros Consultoria",
+        "en": "Courses and Corporate Training · Castros Consultoria"
+      },
+      "description": "Formações e treinamento corporativo em Maputo: sessões práticas e dinâmicas para líderes e equipas, com competências que se aplicam desde o primeiro dia."
+    },
+    {
+      "file": "html/palestras.html",
+      "url_path": "/html/palestras.html",
+      "key": "palestras",
+      "title": {
+        "pt": "Palestras e Workshops em Maputo · Castros Consultoria",
+        "en": "Talks and Workshops in Maputo · Castros Consultoria"
+      },
+      "description": "Palestras que mobilizam pessoas e workshops onde se aprende a fazer, em Maputo. Sessões participativas, com exemplos reais e ferramentas para o dia seguinte."
+    },
+    {
+      "file": "html/espacos.html",
+      "url_path": "/html/espacos.html",
+      "key": "espacos",
+      "title": {
+        "pt": "Espaços e Podcasts em Maputo · Castros Consultoria",
+        "en": "Spaces and Podcasts in Maputo · Castros Consultoria"
+      },
+      "description": "Espaço em Maputo para formações, reuniões, workshops e eventos, e para gravar podcasts. Com equipamento e o apoio da nossa equipa, do início ao fim."
+    }
+  ]
+}
