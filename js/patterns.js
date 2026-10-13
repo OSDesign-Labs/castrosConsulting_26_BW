@@ -26,6 +26,7 @@
     var CORNERS = ["tr", "bl", "br", "tl"];                    // preferred order when two corners tie
     var SPEED = { tr: 0.14, bl: -0.1, br: 0.18, tl: -0.12 };   // parallax: share of the scroll the patch moves by
     var SKIP = ".hero-carousel, #testimonials, [data-pattern='none']";
+    // a section can name its own pattern and corner: data-pattern="pattern-grid-lg tr" (all footers use it)
     var MIN_HEIGHT = 260;                                      // px: thinner strips have no room for a patch
     var QUIET_AT = 4000;                                       // px² of text still under the best corner: show it at half strength
 
@@ -39,27 +40,22 @@
         return lum < 0.45 ? "dark" : "light";
     }
 
-    /* ---------- section snap: a snap point at the very top of the page ----------
-       (css/patterns.css turns snapping on). Without it, a layout change near the top
-       (fonts, the English text arriving) pulls the page down to the second section. */
-    var topEdge = document.createElement("div");
-    topEdge.className = "cc-snap-top";
-    topEdge.setAttribute("aria-hidden", "true");
-    document.body.appendChild(topEdge);
-
     /* ---------- build one patch per section ---------- */
     var items = [];
     document.querySelectorAll("main > section, body > footer").forEach(function (section) {
         if (section.matches(SKIP) || section.offsetHeight < MIN_HEIGHT) return;
         var i = items.length;
+        var own = (section.getAttribute("data-pattern") || "").split(/\s+/);
+        var ownPattern = own.filter(function (t) { return /^pattern-/.test(t); })[0];
+        var ownCorner = own.filter(function (t) { return /^(tr|tl|br|bl)$/.test(t); })[0];
         var wrap = document.createElement("div");
         wrap.className = "cc-pattern cc-pattern--on-" + tone(section) + (i % 2 ? " cc-pattern--slow" : "");
         wrap.setAttribute("aria-hidden", "true");
         wrap.innerHTML = '<div class="cc-pattern__layer"><div class="cc-pattern__reveal">' +
-            '<div class="cc-pattern__tile ' + PATTERNS[(i + Math.floor(i / 4)) % 4] + '"></div></div></div>';
+            '<div class="cc-pattern__tile ' + (ownPattern || PATTERNS[(i + Math.floor(i / 4)) % 4]) + '"></div></div></div>';
         section.classList.add("has-pattern");
         section.insertBefore(wrap, section.firstChild);
-        items.push({ section: section, wrap: wrap, layer: wrap.firstChild, corner: null, visible: false });
+        items.push({ section: section, wrap: wrap, layer: wrap.firstChild, corner: null, fixedCorner: ownCorner || null, visible: false });
     });
     if (!items.length) return;
 
@@ -91,10 +87,11 @@
             var s = it.section.getBoundingClientRect();
             var best = null, bestScore = Infinity;
             for (var c = 0; c < 4; c++) {
-                var corner = CORNERS[(i + c) % 4];                 // rotate the tie-break order section by section
+                var corner = it.fixedCorner || CORNERS[(i + c) % 4];   // rotate the tie-break order section by section
+                if (it.fixedCorner && c > 0) break;                // corner named in data-pattern: just measure it
                 // never the top of the same side where the section above ends with a patch
-                if (prev === "bl" && corner === "tl") continue;
-                if (prev === "br" && corner === "tr") continue;
+                if (!it.fixedCorner && prev === "bl" && corner === "tl") continue;
+                if (!it.fixedCorner && prev === "br" && corner === "tr") continue;
                 it.wrap.classList.remove("cc-pattern--" + it.corner);
                 it.wrap.classList.add("cc-pattern--" + corner);
                 it.corner = corner;

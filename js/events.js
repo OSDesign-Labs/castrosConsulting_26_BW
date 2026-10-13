@@ -17,21 +17,23 @@
    English: js/translations.json, keys "events.item.<id>.<field>"
    (title, category, city, format, summary, description, highlights).
    A field without an English key shows the Portuguese below.
+   After adding or editing an event, run: python3 tools/i18n_sync.py
+   (it translates what is new or changed and drops removed events).
    ========================================================== */
 (function () {
     "use strict";
 
     var EVENTS = [
         {
-            id: "lideranca-pratica",
+            id: "course-oratoria-comunicacao-eficaz",
             featured: true,
-            title: "Liderança prática",
+            title: "Oratoria e Comunicação Eficaz",
             category: "Liderança",
-            date: "2026-03-09",
+            date: "2026-10-13",
             time: null,
             city: "Maputo",
             format: "Presencial",
-            image: "assets/events/lideranca-pratica.webp",
+            image: "assets/images/flyers/outcourse.webp",
             summary: "Um dia intensivo para líderes que querem equipas mais fortes e autónomas.",
             description: "Um dia intensivo e prático para líderes que querem construir equipas mais fortes, " +
                 "autónomas e comprometidas. Trabalhamos situações reais do dia a dia da liderança, com " +
@@ -43,15 +45,15 @@
             ]
         },
         {
-            id: "comunicacao-com-impacto",
+            id: "workshop-elas",
             featured: true,
-            title: "Comunicação com impacto",
+            title: "Parcerias Estrategicas de Vida e Negocio",
             category: "Comunicação",
-            date: "2026-02-12",
+            date: "2026-10-01",
             time: null,
-            city: "Beira",
+            city: "Maputo",
             format: "Presencial",
-            image: "assets/events/comunicacao-com-impacto.webp",
+            image: "assets/images/flyers/elas.webp",
             summary: "Como falar de forma clara e mobilizar pessoas para a ação.",
             description: "Uma sessão sobre como comunicar de forma clara, estruturar a mensagem e mobilizar " +
                 "pessoas para a ação, em reuniões, apresentações e conversas difíceis.",       // EDIT
@@ -62,15 +64,15 @@
             ]
         },
         {
-            id: "decidir-com-clareza",
+            id: "workshop-arte",
             featured: true,
-            title: "Decidir com clareza",
+            title: "A Arte de Encantar e Fidelizar Clientes",
             category: "Estratégia",
-            date: "2026-02-11",
+            date: "2026-09-19",
             time: null,
-            city: "Online",
-            format: "Sessão online",
-            image: "assets/events/decidir-com-clareza.webp",
+            city: "Maputo",
+            format: "Presencial",
+            image: "assets/images/flyers/setwork.webp",
             summary: "Ferramentas simples para tomar decisões difíceis com dados e convicção.",
             description: "Ferramentas simples para tomar decisões difíceis com base em dados e com convicção, " +
                 "mesmo em contextos de incerteza.",                                              // EDIT
