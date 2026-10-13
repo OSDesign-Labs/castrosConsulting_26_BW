@@ -2,7 +2,8 @@
    SITE LOADER
    1. The loader (logo centred, large) is on screen from the first
       paint. A tiny inline script in <head> adds html.is-loading.
-   2. When the page has fully loaded (window load + web fonts),
+   2. When what the visitor sees first is ready (the page's main
+      photo: any <img fetchpriority="high">, plus the web fonts),
       "Castros Consultoria" slides out from behind the logo (and
       the lockup shrinks to fit narrow screens).
    3. Logo + name fly to the navbar and land exactly on the real
@@ -39,7 +40,7 @@
     /* timings (ms), tune here */
     var T = {
         minShow: 700,      // loader stays at least this long after navigation start (no "flash")
-        maxWait: 7000,     // a slow image/video never holds the page longer than this
+        maxWait: 4000,     // a slow connection never holds the page longer than this
         reveal: 650,       // "Castros" sliding out from behind the logo
         hold: 250,         // pause with the full lockup centred
         flight: 850,       // centre → navbar
@@ -85,10 +86,16 @@
     }
 
     function pageReady() {
-        var loaded = new Promise(function (resolve) {
-            if (document.readyState === "complete") resolve();
-            else window.addEventListener("load", resolve, { once: true });
-        });
+        // the main photo(s) on screen, not every image further down the page (waiting for the whole
+        // page, i.e. window "load", kept visitors on the logo whenever any picture below was heavy)
+        var critical = Array.prototype.slice.call(document.querySelectorAll('img[fetchpriority="high"]'));
+        var loaded = Promise.all(critical.map(function (img) {
+            if (img.complete) return Promise.resolve();
+            return new Promise(function (resolve) {
+                img.addEventListener("load", resolve, { once: true });
+                img.addEventListener("error", resolve, { once: true });   // a missing photo never blocks the page
+            });
+        }));
         var fonts = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
         var minimum = wait(Math.max(0, T.minShow - performance.now()));
         // a visitor who chose English: keep the logo up until the page is translated (js/i18n.js)
