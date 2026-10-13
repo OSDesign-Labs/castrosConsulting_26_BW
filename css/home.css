@@ -21,7 +21,8 @@
     --border: rgba(112, 129, 142, 0.28);
     --shadow: 0 10px 30px -14px rgba(1, 9, 48, 0.14);
     --shadow-lg: 0 24px 60px -20px rgba(1, 9, 48, 0.22);
-    --deep-navy: #010133;         /* used by the contact form ("Continuar" button, steps) */
+    --deep-navy: #010133;
+    /* used by the contact form ("Continuar" button, steps) */
     --prussian-blue: #010930;
 
 }
@@ -958,7 +959,8 @@ section {
     .bento-img {
         display: block;
         width: 100%;
-        height: auto;               /* ignore the photo's own size: the box decides */
+        height: auto;
+        /* ignore the photo's own size: the box decides */
         object-fit: cover;
         border-radius: 12px;
     }
@@ -966,8 +968,10 @@ section {
     .b-a .bento-img,
     .b-c .bento-img {
         flex: 1 1 auto;
-        height: 0;                  /* takes only the space left in the card... */
-        min-height: 200px;          /* ...but never thinner than this */
+        height: 0;
+        /* takes only the space left in the card... */
+        min-height: 200px;
+        /* ...but never thinner than this */
         margin-top: 1rem;
     }
 
@@ -1564,7 +1568,8 @@ main>.hero {
         a.btn.btn-outline-c {
             &:hover {
                 background-color: var(--cyan);
-                color: var(--white);          /* was cyan on cyan: the text disappeared */
+                color: var(--white);
+                /* was cyan on cyan: the text disappeared */
             }
         }
     }
@@ -1695,7 +1700,8 @@ a.btn-outline-c.px-4.py-2 {
 
 #testimonials {
     height: 60vh;
-    margin: 10rem 0 clamp(4rem, 13vw, 13rem);   /* bottom: room before the contact section */
+    margin: 10rem 0 clamp(4rem, 13vw, 13rem);
+    /* bottom: room before the contact section */
     overflow-x: clip;
 
     h6.index {
@@ -3157,7 +3163,7 @@ a.topbar-item:hover {
 
 
 #equipa {
-      .team-photo img {
+    .team-photo img {
         filter: brightness(0.9) contrast(1.2) saturate(1.2) !important;
     }
 }
@@ -3165,4 +3171,17 @@ a.topbar-item:hover {
 
 .brand-name:hover {
     color: var(--icy-aqua);
+}
+
+
+.codebox {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    background-color: #d6d7d782;
+    right: 70px;
+    bottom: 118px;
+    background-image: url(https://upload.wikimedia.org/wikipedia/commons/d/d0/QR_code_for_mobile_English_Wikipedia.svg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original);
+    background-size: cover;
+    border-radius: 10px;
 }

@@ -89,9 +89,6 @@
   <link rel="stylesheet" href="css/vendor/pattern.min.css">
   <link rel="stylesheet" href="css/patterns.css">
   <script src="js/patterns.js" defer></script>
-  <!-- scroll animations (AOS) tuning + section snap + parallax between sections -->
-  <link rel="stylesheet" href="css/motion.css">
-  <script src="js/motion.js" defer></script>
 </head>
 
 <body>
@@ -540,7 +537,7 @@
     <section class="section bg-alt-c" id="sobre">
       <div class="container-fluid">
         <div class="row g-5 align-items-center">
-          <div class="col-lg-6" data-aos="fade-right">
+          <div class="col-lg-6" data-aos="fade-up">
             <span class="eyebrow" data-i18n="about.sobre-nos">Sobre Nós</span>
             <h2 class="mb-3" style="font-size:clamp(1.9rem,3.6vw,2.6rem);max-width:28ch; text-align: left;"
               data-i18n="about.conheca-a-equipa-que-impulsiona-o">Conheça a
@@ -576,7 +573,7 @@
                 </svg></a>
             </div>
           </div>
-          <div class="col-lg-6" data-aos="fade-left" data-aos-delay="100">
+          <div class="col-lg-6" data-aos="fade-up">
             <div class="ph about-img" style="aspect-ratio:1/1"></div>
           </div>
         </div>
@@ -639,7 +636,7 @@
 
     <!-- 03- MARCAS / PARCEIROS -->
     <section class="bg-alt-c py-5">
-      <div class="container d-flex flex-wrap justify-content-between align-items-center gap-4" data-aos="fade">
+      <div class="container d-flex flex-wrap justify-content-between align-items-center gap-4" data-aos="fade-up">
         <p class="mb-0 fw-medium" style="max-width:24ch;color:var(--black)"
           data-i18n="partners.marcas-que-escolheram-crescer-com-a">Marcas que escolheram crescer com a
           nossa
@@ -771,8 +768,8 @@
           <p class="mt-3" data-i18n="benefits.resultados-reais-para-pessoas-e-organizacoes">Resultados reais para
             pessoas e organizações que querem crescer.</p>
         </div>
-        <div class="bento mt-5">
-          <div class="card-c b-a" data-aos="fade-right">
+        <div class="bento mt-5" data-aos="fade-up">
+          <div class="card-c b-a">
             <span class="tag" data-i18n="benefits.crescimento">Crescimento</span>
             <h3 data-i18n="benefits.desenvolvimento-profissional">Desenvolvimento profissional</h3>
             <p class="small" data-i18n="benefits.crescer-exige-metodo-pratica-e-as">Crescer exige método, prática e as
@@ -784,7 +781,7 @@
             <!-- PICTURE: change the src to any photo in assets/images/ (use the .webp version, they are light) -->
             <img class="bento-img" src="assets/images/workshop-3.webp" alt="" width="1600" height="1067" loading="lazy" decoding="async">
           </div>
-          <div class="card-c b-b" data-aos="fade-left" data-aos-delay="100">
+          <div class="card-c b-b">
             <!-- PICTURE: change the src to any photo in assets/images/ (use the .webp version, they are light) -->
             <img class="bento-img" src="assets/images/entrance.webp" alt="" width="1600" height="1067" loading="lazy" decoding="async">
             <div>
@@ -797,7 +794,7 @@
                 </svg></a>
             </div>
           </div>
-          <div class="card-c b-c" data-aos="fade-left" data-aos-delay="200">
+          <div class="card-c b-c">
             <span class="tag" data-i18n="benefits.resultados">Resultados</span>
             <h3 data-i18n="benefits.resultados-que-ficam">Resultados que ficam</h3>
             <p class="small" data-i18n="benefits.mudancas-que-permanecem-muito-depois-de">Mudanças que permanecem muito
@@ -809,7 +806,7 @@
             <!-- PICTURE: change the src to any photo in assets/images/ (use the .webp version, they are light) -->
             <img class="bento-img" src="assets/images/workshop-5.webp" alt="" width="1600" height="1067" loading="lazy" decoding="async">
           </div>
-          <div class="card-c b-1" data-aos="zoom-in-up" data-aos-delay="100">
+          <div class="card-c b-1">
             <div class="icon-box"><svg class="bi">
                 <use xlink:href="#i-box"></use>
               </svg></div>
@@ -821,7 +818,7 @@
                 <use xlink:href="#i-arrow"></use>
               </svg></a>
           </div>
-          <div class="card-c b-2" data-aos="zoom-in-up" data-aos-delay="200">
+          <div class="card-c b-2">
             <div class="icon-box"><svg class="bi">
                 <use xlink:href="#i-mortarboard"></use>
               </svg></div>
@@ -961,7 +958,7 @@
       <div id="testCarousel" class="carousel carousel-dark slide" data-bs-ride="carousel" data-aos="zoom-in"
         data-aos-delay="100">
         <div class="glow glow-cyan"
-          style="width:38rem;height:24rem;top:-4rem;left:50%;transform:translateX(-50%);animation:pulseGlow 5s ease-in-out infinite">
+          style="width:38rem;height:22rem;top:-4rem;left:50%;transform:translateX(-50%);animation:pulseGlow 5s ease-in-out infinite">
         </div>
         <ul class="carousel-indicators">
           <li data-bs-target="#testCarousel" data-bs-slide-to="0" class="active" aria-current="true"
@@ -1068,7 +1065,7 @@
         <div class="row g-4 g-xl-5 align-items-stretch">
 
           <!-- IMAGE -->
-          <div class="col-lg-5" data-aos="fade-right">
+          <div class="col-lg-5" data-aos="fade-up">
             <div class="contact-image-card h-100">
               <div class="contact-image-overlay"></div>
               <div class="contact-image-content">
@@ -1260,12 +1257,12 @@
             serviços.</p>
         </div>
         <div class="row g-3">
-          <div class="col-md-7" data-aos="zoom-out">
+          <div class="col-md-7" data-aos="fade-up">
             <div class="ph g-main"
               style="aspect-ratio:1/1; background-image: url(assets/workshop2.webp); background-size: cover; background-position: center;">
             </div>
           </div>
-          <div class="col-md-5 g-side d-flex flex-column gap-3" data-aos="fade-left" data-aos-delay="150">
+          <div class="col-md-5 g-side d-flex flex-column gap-3" data-aos="fade-up" data-aos-delay="150">
             <div class="ph"
               style="background-image: url(assets/morepeople.jpg); background-size: cover; background-position: center;">
             </div>
@@ -1327,7 +1324,7 @@
           <a class="d-block mb-2" href="#" data-i18n="footer.definicoes-de-cookies">Definições de Cookies</a>
         </div>
       </div>
-      <p class="wordmark" data-aos="zoom-in" data-aos-offset="0">Castros Consultoria</p>
+      <p class="wordmark" data-aos="fade-up" data-aos-offset="0">Castros Consultoria</p>
       <div class="d-flex flex-wrap justify-content-between gap-2 pt-3 foot-bottom">
         <span data-i18n="footer.2026-castros-consultoria-todos-os-direitos">© 2026 Castros Consultoria. Todos os
           direitos reservados.</span>
@@ -1349,6 +1346,7 @@
             data-i18n-attr="aria-label:events.fechar"></button>
         </div>
         <div class="modal-body">
+          <div class="codebox"></div>
           <h2 class="event-modal-title" id="eventModalTitle" data-field="title"></h2>
           <ul class="event-facts">
             <li><i class="bi bi-calendar-event" aria-hidden="true"></i>
@@ -1721,7 +1719,7 @@
         duration: 800,
         offset: 80,
         easing: "ease-out-cubic",
-        once: false, // replay each time a block comes back into view (short, gentle moves: css/motion.css)
+        once: false, // animate on the way in, don't replay on every scroll
         disable: function () { // respect "reduce motion"
           return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
         }
