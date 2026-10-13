@@ -17,6 +17,8 @@
    English: js/translations.json, keys "events.item.<id>.<field>"
    (title, category, city, format, summary, description, highlights).
    A field without an English key shows the Portuguese below.
+   After adding or editing an event, run: python3 tools/i18n_sync.py
+   (it translates what is new or changed and drops removed events).
    ========================================================== */
 (function () {
     "use strict";
