@@ -83,6 +83,10 @@
     rel="stylesheet" />
   <link rel="stylesheet" href="css/hero-carousel.css">
   <link rel="stylesheet" href="css/events.css">
+  <!-- background patterns (pattern.css) + parallax + section snap -->
+  <link rel="stylesheet" href="css/vendor/pattern.min.css">
+  <link rel="stylesheet" href="css/patterns.css">
+  <script src="js/patterns.js" defer></script>
 </head>
 
 <body>
@@ -111,10 +115,9 @@
           <a class="topbar-item" href="tel:+258878665180"><i class="bi bi-telephone" aria-hidden="true"></i>+258 87 866 5180</a>
           <span class="topbar-divider" aria-hidden="true"></span>
           <div class="topbar-social">
-            <a href="https://www.facebook.com/" aria-label="Facebook"><i class="bi bi-facebook"></i></a> <!-- EDIT URL -->
+            <a href="https://www.facebook.com/castros.consultoria" aria-label="Facebook"><i class="bi bi-facebook"></i></a> <!-- handle from their banner: @castros.consultoria -->
             <a href="https://www.instagram.com/castros.consultoria/" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
             <a href="https://wa.me/258878665180" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
-            <a href="https://www.linkedin.com/" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a> <!-- EDIT URL -->
             <a href="mailto:castrosconsultoria@gmail.com" aria-label="Email"><i class="bi bi-envelope"></i></a>
           </div>
         </div>
@@ -286,10 +289,9 @@
         <span><i class="bi bi-clock" aria-hidden="true"></i><span data-i18n="topbar.seg-sex-08-00-17-00">Seg – Sex · 08:00 – 17:00</span></span>
         <a href="tel:+258878665180"><i class="bi bi-telephone" aria-hidden="true"></i>+258 87 866 5180</a>
         <div class="mobile-social">
-          <a href="https://www.facebook.com/" aria-label="Facebook"><i class="bi bi-facebook"></i></a> <!-- EDIT URL -->
+          <a href="https://www.facebook.com/castros.consultoria" aria-label="Facebook"><i class="bi bi-facebook"></i></a> <!-- handle from their banner: @castros.consultoria -->
           <a href="https://www.instagram.com/castros.consultoria/" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
           <a href="https://wa.me/258878665180" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
-          <a href="https://www.linkedin.com/" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a> <!-- EDIT URL -->
           <a href="mailto:castrosconsultoria@gmail.com" aria-label="Email"><i class="bi bi-envelope"></i></a>
         </div>
       </div>
@@ -330,8 +332,8 @@
                     <p class="hs-anim" data-i18n="hero.somos-uma-organizacao-dedicada-ao-crescimento">Somos uma organização dedicada ao crescimento profissional e organizacional.
                       Trabalhamos com pessoas reais, em contextos reais, para criar impacto duradouro.</p>
                     <div class="hero-actions d-flex flex-wrap gap-2 hs-anim">
-                      <a class="btn btn-outline-light" href="#spaces" data-i18n="hero.conhecer-espacos-corporativos">Conhecer Espaços Corporativos</a>
-                      <a class="btn btn-light" href="#services" data-i18n="hero.explorar-servicos-de-consultoria">Explorar Serviços de Consultoria</a>
+                      <a class="btn btn-outline-light" href="html/espacos.html" data-i18n="hero.conhecer-espacos-corporativos">Conhecer Espaços Corporativos</a>
+                      <a class="btn btn-light" href="html/consultoria.html" data-i18n="hero.explorar-servicos-de-consultoria">Explorar Serviços de Consultoria</a>
                     </div>
                   </div>
                 </div>
@@ -464,7 +466,7 @@
                 <p class="hs-anim" data-i18n="hero.lideres-gestores-e-especialistas-partilham-o">Líderes, gestores e especialistas partilham o que funciona no dia a dia das
                   organizações em Moçambique.</p> <!-- EDIT -->
                 <div class="hero-actions hs-anim">
-                  <a class="btn btn-light" href="#" data-i18n="hero.ouvir-episodios">Ouvir episódios</a> <!-- EDIT: Spotify / YouTube link -->
+                  <a class="btn btn-light" href="html/espacos.html" data-i18n="about.saber-mais">Saber mais</a> <!-- EDIT: "Ouvir episódios" + Spotify / YouTube link once episodes exist -->
                   <a class="btn btn-outline-light" href="#contact-form" data-i18n="hero.falar-connosco">Falar connosco</a>
                 </div>
               </div>
@@ -522,7 +524,7 @@
               </div>
             </div>
             <div class="d-flex align-items-center gap-4">
-              <a class="btn btn-outline-c px-4 py-2" href="https://wa.me/848665180" data-i18n="about.saber-mais">Saber mais</a>
+              <a class="btn btn-outline-c px-4 py-2" href="#servicos" data-i18n="about.saber-mais">Saber mais</a>
               <a class="link-arrow" href="#equipa"><span data-i18n="about.equipa">Equipa</span> <svg class="bi">
                   <use xlink:href="#i-arrow"></use>
                 </svg></a>
@@ -545,82 +547,39 @@
           </p>
         </div>
         <div class="row g-4 mt-4">
-          <div class="col-md-4" data-aos="fade-up" data-aos-delay="0">
+          <div class="col-md-4 order-md-2" data-aos="fade-up" data-aos-delay="100">
             <div class="card-c h-100 overflow-hidden">
-              <div class="ph team-photo" style="aspect-ratio:4/3;border-radius:0"><svg class="bi"
-                  style="font-size:2.6rem">
-                  <use xlink:href="#i-person"></use>
-                </svg></div>
+              <div class="team-photo" style="aspect-ratio:4/5;border-radius:0">
+                <img src="assets/team/elizabeth-castro.webp" alt="" width="600" height="750" loading="lazy" decoding="async">
+              </div>
               <div class="p-4 text-center">
-                <h3 class="h5 fw-bold mb-0" style="color:var(--ink);font-family:'Inter',sans-serif">Elizabeth Castros
-                </h3>
-                <p class="role" data-i18n="team.fundadora">Fundadora</p>
-                <p class="small mb-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim
-                  in
-                  eros.</p>
-                <div class="d-flex justify-content-center gap-3">
-                  <a class="social-ic" href="#"><svg class="bi" style="font-size:1.1rem">
-                      <use xlink:href="#i-linkedin"></use>
-                    </svg></a>
-                  <a class="social-ic" href="#"><svg class="bi" style="font-size:1.1rem">
-                      <use xlink:href="#i-x"></use>
-                    </svg></a>
-                  <a class="social-ic" href="#"><svg class="bi" style="font-size:1.1rem">
-                      <use xlink:href="#i-dribbble"></use>
-                    </svg></a>
-                </div>
+                <h3 class="h5 fw-bold mb-0" style="color:var(--ink);font-family:'Inter',sans-serif">Elizabeth Castro</h3>
+                <p class="role" data-i18n="team.directora-geral">Directora Geral</p>
+                <p class="small mb-0" data-i18n="team.responsavel-pela-lideranca-estrategica-institucional">Responsável pela liderança estratégica, institucional e operacional da Castro's.</p>
               </div>
             </div>
           </div>
-          <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="col-md-4 order-md-1" data-aos="fade-up" data-aos-delay="0">
             <div class="card-c h-100 overflow-hidden">
-              <div class="ph team-photo" style="aspect-ratio:4/3;border-radius:0"><svg class="bi"
-                  style="font-size:2.6rem">
-                  <use xlink:href="#i-person"></use>
-                </svg></div>
+              <div class="team-photo" style="aspect-ratio:4/5;border-radius:0">
+                <img src="assets/team/milena-pondja.webp" alt="" width="600" height="750" loading="lazy" decoding="async">
+              </div>
               <div class="p-4 text-center">
-                <h3 class="h5 fw-bold mb-0" style="color:var(--ink);font-family:'Inter',sans-serif">Cleyber Mendes</h3>
-                <p class="role" data-i18n="team.consultor-senior">Consultor Senior</p>
-                <p class="small mb-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim
-                  in
-                  eros.</p>
-                <div class="d-flex justify-content-center gap-3">
-                  <a class="social-ic" href="#"><svg class="bi" style="font-size:1.1rem">
-                      <use xlink:href="#i-linkedin"></use>
-                    </svg></a>
-                  <a class="social-ic" href="#"><svg class="bi" style="font-size:1.1rem">
-                      <use xlink:href="#i-x"></use>
-                    </svg></a>
-                  <a class="social-ic" href="#"><svg class="bi" style="font-size:1.1rem">
-                      <use xlink:href="#i-dribbble"></use>
-                    </svg></a>
-                </div>
+                <h3 class="h5 fw-bold mb-0" style="color:var(--ink);font-family:'Inter',sans-serif">Milena Pondja</h3>
+                <p class="role" data-i18n="team.assistente-de-prospeccao">Assistente de Prospecção</p>
+                <p class="small mb-0" data-i18n="team.responsavel-pelo-apoio-a-identificacao">Responsável pelo apoio à identificação e desenvolvimento de oportunidades de clientes.</p>
               </div>
             </div>
           </div>
-          <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="col-md-4 order-md-3" data-aos="fade-up" data-aos-delay="200">
             <div class="card-c h-100 overflow-hidden">
-              <div class="ph team-photo" style="aspect-ratio:4/3;border-radius:0"><svg class="bi"
-                  style="font-size:2.6rem">
-                  <use xlink:href="#i-person"></use>
-                </svg></div>
+              <div class="team-photo" style="aspect-ratio:4/5;border-radius:0">
+                <img src="assets/team/cleiber-tinga.webp" alt="" width="600" height="750" loading="lazy" decoding="async">
+              </div>
               <div class="p-4 text-center">
-                <h3 class="h5 fw-bold mb-0" style="color:var(--ink);font-family:'Inter',sans-serif">Carlos Mendes</h3>
-                <p class="role" data-i18n="team.formador">Formador</p>
-                <p class="small mb-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim
-                  in
-                  eros.</p>
-                <div class="d-flex justify-content-center gap-3">
-                  <a class="social-ic" href="#"><svg class="bi" style="font-size:1.1rem">
-                      <use xlink:href="#i-linkedin"></use>
-                    </svg></a>
-                  <a class="social-ic" href="#"><svg class="bi" style="font-size:1.1rem">
-                      <use xlink:href="#i-x"></use>
-                    </svg></a>
-                  <a class="social-ic" href="#"><svg class="bi" style="font-size:1.1rem">
-                      <use xlink:href="#i-dribbble"></use>
-                    </svg></a>
-                </div>
+                <h3 class="h5 fw-bold mb-0" style="color:var(--ink);font-family:'Inter',sans-serif">Cleiber Tinga</h3>
+                <p class="role" data-i18n="team.marketeer-e-gestor-de-conteudos-digitais">Marketeer e Gestor de Conteúdos Digitais</p>
+                <p class="small mb-0" data-i18n="team.responsavel-pelo-desenvolvimento-e-execucao">Responsável pelo desenvolvimento e execução da estratégia de marketing e comunicação digital da Castro's.</p>
               </div>
             </div>
           </div>
@@ -755,7 +714,7 @@
             <span class="tag" data-i18n="benefits.crescimento">Crescimento</span>
             <h3 data-i18n="benefits.desenvolvimento-profissional">Desenvolvimento profissional</h3>
             <p class="small" data-i18n="benefits.crescer-exige-metodo-pratica-e-as">Crescer exige método, prática e as pessoas certas ao lado. É isso que oferecemos.</p>
-            <a class="link-arrow" href="#"><span data-i18n="benefits.comecar-agora">Começar agora</span> <svg class="bi">
+            <a class="link-arrow" href="html/formacoes.html"><span data-i18n="benefits.comecar-agora">Começar agora</span> <svg class="bi">
                 <use xlink:href="#i-arrow"></use>
               </svg></a>
             <div class="ph"><svg class="bi">
@@ -770,7 +729,7 @@
               <span class="tag">Networking</span>
               <h3 data-i18n="benefits.ligacoes-que-importam">Ligações que importam</h3>
               <p class="small" data-i18n="benefits.ligacoes-reais-com-pessoas-e-organizacoes">Ligações reais com pessoas e organizações que fazem acontecer.</p>
-              <a class="link-arrow" href="#"><span data-i18n="benefits.conectar">Conectar</span> <svg class="bi">
+              <a class="link-arrow" href="#eventos"><span data-i18n="benefits.conectar">Conectar</span> <svg class="bi">
                   <use xlink:href="#i-arrow"></use>
                 </svg></a>
             </div>
@@ -779,7 +738,7 @@
             <span class="tag" data-i18n="benefits.resultados">Resultados</span>
             <h3 data-i18n="benefits.resultados-que-ficam">Resultados que ficam</h3>
             <p class="small" data-i18n="benefits.mudancas-que-permanecem-muito-depois-de">Mudanças que permanecem muito depois de terminarmos o trabalho. Sem fórmulas vazias.</p>
-            <a class="link-arrow" href="#"><span data-i18n="benefits.saber-mais">Saber mais</span> <svg class="bi">
+            <a class="link-arrow" href="html/consultoria.html"><span data-i18n="benefits.saber-mais">Saber mais</span> <svg class="bi">
                 <use xlink:href="#i-arrow"></use>
               </svg></a>
             <div class="ph"><svg class="bi">
@@ -792,7 +751,7 @@
               </svg></div>
             <h3 data-i18n="benefits.conhecimento-pratico">Conhecimento Prático</h3>
             <p class="small" data-i18n="benefits.competencias-que-se-usam-no-dia">Competências que se usam no dia seguinte, não em teoria.</p>
-            <a class="link-arrow" href="#"><span data-i18n="benefits.saber-mais">Saber mais</span> <svg class="bi">
+            <a class="link-arrow" href="html/palestras.html"><span data-i18n="benefits.saber-mais">Saber mais</span> <svg class="bi">
                 <use xlink:href="#i-arrow"></use>
               </svg></a>
           </div>
@@ -802,7 +761,7 @@
               </svg></div>
             <h3 data-i18n="benefits.orientacao-especializada">Orientação especializada</h3>
             <p class="small" data-i18n="benefits.orientacao-direta-de-quem-ja-esteve">Orientação direta de quem já esteve no terreno.</p>
-            <a class="link-arrow" href="#"><span data-i18n="benefits.comecar-agora">Começar agora</span> <svg class="bi">
+            <a class="link-arrow" href="#contact-form"><span data-i18n="benefits.comecar-agora">Começar agora</span> <svg class="bi">
                 <use xlink:href="#i-arrow"></use>
               </svg></a>
           </div>
@@ -930,39 +889,23 @@
         <div class="carousel-inner">
           <div data-bs-interval="10000" class="carousel-item active">
             <div class="carousel-caption d-md-block">
-              <h3 data-i18n="testimonials.a-qualidade-do-produto-que-adquiri">"A qualidade do produto que adquiri superou as minhas expectativas, e a entrega foi rápida e sem
-                complicações!"</h3>
-              <img src="assets/testimonial3.webp" class="w-100 d-block" alt="Fotografia do testemunho"  data-i18n-attr="alt:testimonials.fotografia-do-testemunho"/>
-              <h6 class="name">
-                Marcos Terra
-              </h6>
-              <p class="local">
-                Maputo, Sommerchield II
-              </p>
+              <h3 data-i18n="testimonials.a-consultoria-nos-ajudou-a-transformar">"A consultoria nos ajudou a transformar nossa cultura interna, hoje temos líderes mais conscientes e equipes mais engajadas."</h3>
+              <h6 class="name" data-i18n="testimonials.diretora-de-rh">Diretora de RH</h6>
+              <p class="local" data-i18n="testimonials.setor-financeiro">Setor financeiro</p>
             </div>
           </div>
           <div data-bs-interval="10000" class="carousel-item">
             <div class="carousel-caption d-md-block">
-              <h3 data-i18n="testimonials.continuo-a-recorrer-a-selfxpress-sempre">"Continuo a recorrer à SelfXpress sempre que preciso de algo para os meus AirBnBs"</h3>
-              <img src="assets/testimonial5.webp" class="w-100 d-block" alt="" />
-              <h6 class="name">
-                Camila Tesouro
-              </h6>
-              <p class="local">
-                Matola, Matola Rio
-              </p>
+              <h3 data-i18n="testimonials.depois-dos-workshops-sobre-etica-conseguimos">"Depois dos workshops sobre ética, conseguimos reduzir conflitos internos e fortalecer a confiança entre gestores e colaboradores."</h3>
+              <h6 class="name">CEO</h6>
+              <p class="local" data-i18n="testimonials.setor-industrial">Setor industrial</p>
             </div>
           </div>
           <div data-bs-interval="10000" class="carousel-item">
             <div class="carousel-caption d-md-block">
-              <h3 data-i18n="testimonials.os-meus-amigos-recomendaram-me-a">"Os meus amigos recomendaram-me a SelfXpress e, desde então, é a quem recorro sempre."</h3>
-              <img src="assets/testimonial-2.webp" class="w-100 d-block" alt="" />
-              <h6 class="name">
-                José BaCosta
-              </h6>
-              <p class="local">
-                Maputo, Xinamanquila - Bairro C
-              </p>
+              <h3 data-i18n="testimonials.o-programa-de-lideranca-etica-foi">"O programa de liderança ética foi um divisor de águas na forma como nossos gestores tomam decisões."</h3>
+              <h6 class="name" data-i18n="testimonials.gerente-de-pessoas">Gerente de Pessoas</h6>
+              <p class="local" data-i18n="testimonials.setor-de-tecnologia">Setor de tecnologia</p>
             </div>
           </div>
         </div>
@@ -996,10 +939,52 @@
 
         
         <!-- CONTACT INFORMATION -->
-        <div class="contact-chips" data-aos="fade-up">
-          <div class="contact-chip" tabindex="0">
-            <span class="contact-chip-icon"><i class="bi bi-geo-alt" aria-hidden="true"></i></span>
-            <span class="contact-chip-info"><small data-i18n="contact.localizacao">Localização</small><strong>Maputo</strong></span>
+        <div class="contact-information mb-5">
+          <div class="row g-3 justify-content-center">
+
+            <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="0">
+              <span class="contact-info-icon"><i class="bi bi-geo-alt"></i></span>
+              <a class="contact-info-item"> <!-- becomes a Google Maps link once the address is confirmed -->
+                <span class="contact-info-content"><small data-i18n="contact.localizacao">Localização</small><strong>Maputo</strong></span>
+              </a>
+            </div>
+
+            <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="60">
+              <span class="contact-info-icon"><i class="bi bi-envelope"></i></span>
+              <a href="mailto:contacto@castrosconsultoria.com" class="contact-info-item">
+                <span
+                  class="contact-info-content"><small>Email</small><strong>castrosconsultoria@gmail.com</strong></span>
+              </a>
+            </div>
+
+            <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="120">
+              <span class="contact-info-icon"><i class="bi bi-whatsapp"></i></span>
+              <a href="https://wa.me/258878665180" class="contact-info-item">
+                <span class="contact-info-content"><small>WhatsApp</small><strong>+258 87 866 5180</strong></span>
+              </a>
+            </div>
+
+            <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="180">
+              <span class="contact-info-icon"><i class="bi bi-instagram"></i></span>
+              <a href="https://www.instagram.com/castros.consultoria/" class="contact-info-item">
+                <span class="contact-info-content"><small>Instagram</small><strong>castros.consultoria</strong></span>
+              </a>
+            </div>
+
+            <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="240">
+              <span class="contact-info-icon"><i class="bi bi-tiktok"></i></span>
+              <a href="https://www.instagram.com/castros.consultoria/" class="contact-info-item">
+                <span class="contact-info-content"><small>TikTok</small><strong>@castros.consultria.mz</strong></span>
+              </a>
+            </div>
+
+            <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="300">
+              <span class="contact-info-icon"><i class="bi bi-telephone"></i></span>
+              <a href="tel:+258000000000" class="contact-info-item">
+                <span class="contact-info-content"><small data-i18n="contact.telefone">Telefone</small><strong>+258 ...</strong></span>
+              </a>
+            </div>
+
           </div>
        
           <a class="contact-chip" href="mailto:castrosconsultoria@gmail.com" aria-label="Email">
@@ -1240,34 +1225,25 @@
           </div>
           <div class="mt-3">
             <h5 data-i18n="footer.contacto">Contacto</h5>
-            <a class="d-flex align-items-center gap-2 mb-1" href="#"><svg class="bi">
+            <a class="d-flex align-items-center gap-2 mb-1" href="tel:+258878665180"><svg class="bi">
                 <use xlink:href="#i-phone"></use>
-              </svg>84 123 4567</a>
-            <a class="d-flex align-items-center gap-2" href="#"><svg class="bi">
+              </svg>+258 87 866 5180</a>
+            <a class="d-flex align-items-center gap-2" href="mailto:castrosconsultoria@gmail.com"><svg class="bi">
                 <use xlink:href="#i-envelope"></use>
-              </svg>email@example.com</a>
+              </svg>castrosconsultoria@gmail.com</a>
           </div>
           <div class="d-flex gap-3 mt-3">
-            <a class="social-ic" href="#"><svg class="bi">
+            <a class="social-ic" href="https://www.facebook.com/castros.consultoria" aria-label="Facebook"><svg class="bi">
                 <use xlink:href="#i-facebook"></use>
               </svg></a>
-            <a class="social-ic" href="#"><svg class="bi">
+            <a class="social-ic" href="https://www.instagram.com/castros.consultoria/" aria-label="Instagram"><svg class="bi">
                 <use xlink:href="#i-instagram"></use>
-              </svg></a>
-            <a class="social-ic" href="#"><svg class="bi">
-                <use xlink:href="#i-x"></use>
-              </svg></a>
-            <a class="social-ic" href="#"><svg class="bi">
-                <use xlink:href="#i-linkedin"></use>
-              </svg></a>
-            <a class="social-ic" href="#"><svg class="bi">
-                <use xlink:href="#i-youtube"></use>
               </svg></a>
           </div>
         </div>
         <div class="col-lg-3 col-6" data-aos="fade-up" data-aos-delay="100">
           <h5>Menu</h5>
-          <a class="d-block mb-2" href="#hero" data-i18n="footer.inicio">Início</a>
+          <a class="d-block mb-2" href="#top" data-i18n="footer.inicio">Início</a>
           <a class="d-block mb-2" href="#sobre" data-i18n="footer.sobre-nos">Sobre Nós</a>
           <a class="d-block mb-2" href="#servicos" data-i18n="footer.servicos">Serviços</a>
           <a class="d-block mb-2" href="#eventos" data-i18n="footer.eventos">Eventos</a>

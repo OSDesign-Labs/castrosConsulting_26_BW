@@ -2896,17 +2896,21 @@ main>.hero #overlayGradient>[class*="col-lg-6"] {
                         filter: brightness(1) !important;
                     }
 
-                    img.d-block {
-                        width: 115px !important;
-                        height: 115px;
-                        object-fit: cover;
-                        margin: 2rem auto 5px;
-                        border-radius: 150px;
+                    /* quote mark above the text, same as the service pages' testimonials */
+                    &::before {
+                        content: "\201C";
+                        display: block;
+                        font-family: "DM Serif Display", serif;
+                        font-size: 4.5rem;
+                        line-height: 1;
+                        height: 2.6rem;
+                        color: var(--cyan);
                     }
 
                     h6.name {
                         font-family: "DM Serif Display";
                         font-weight: 600;
+                        margin-top: 1.5rem;
                     }
 
                     p.local {
@@ -3183,6 +3187,11 @@ main>.hero #overlayGradient>[class*="col-lg-6"] {
        (clear of the fixed navbar)
    ====================================================== */
 .contact-form-card {
+    scroll-margin-top: 96px;
+}
+
+/* Consultoria: "Saber mais" / "Processo" links land on the 4-step block, clear of the navbar */
+#processo {
     scroll-margin-top: 96px;
 }
 

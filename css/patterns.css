@@ -1,0 +1,172 @@
+/* ==========================================================
+   PATTERNS · PARALLAX · SECTION SNAP
+   Background textures from pattern.css (css/vendor/pattern.min.css),
+   placed by js/patterns.js behind every section.
+
+   Rules that keep them away from the copy:
+   - they sit BEHIND the content (z-index -1 inside the section),
+     never on top of text, photos or buttons, and never take clicks;
+   - each one is a soft patch in the corner of its section with the
+     least text (js/patterns.js measures it), fading out towards the
+     middle (the mask), at low opacity;
+   - neighbouring sections use different corners, so patches never
+     meet across a section edge.
+
+   Motion: a patch fades in when its section comes into view, drifts
+   very slowly, and moves at its own speed on scroll (parallax).
+   All of it is switched off for visitors who ask for reduced motion.
+   ========================================================== */
+
+/* the section the patch lives in: the patch paints above the section's
+   own background but below everything inside it */
+.has-pattern {
+    position: relative;
+    isolation: isolate;
+}
+
+.cc-pattern {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+/* the patch: moved by js/patterns.js on scroll (parallax) */
+.cc-pattern__layer {
+    position: absolute;
+    width: clamp(280px, 42vw, 680px);
+    height: clamp(280px, 85%, 640px);
+    will-change: transform;
+}
+
+.cc-pattern--tr .cc-pattern__layer { top: -14%;    right: -10%; }
+.cc-pattern--tl .cc-pattern__layer { top: -14%;    left: -10%; }
+.cc-pattern--br .cc-pattern__layer { bottom: -14%; right: -10%; }
+.cc-pattern--bl .cc-pattern__layer { bottom: -14%; left: -10%; }
+
+/* soft edges + the fade-in when the section appears */
+.cc-pattern__reveal {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transform: scale(0.9);
+    transition:
+        opacity 1.6s ease,
+        transform 1.8s cubic-bezier(0.22, 1, 0.36, 1);
+    -webkit-mask-image: radial-gradient(closest-side, #000 30%, rgba(0, 0, 0, 0.55) 62%, transparent 100%);
+            mask-image: radial-gradient(closest-side, #000 30%, rgba(0, 0, 0, 0.55) 62%, transparent 100%);
+}
+
+.cc-pattern--tr .cc-pattern__reveal { transform-origin: top right; }
+.cc-pattern--tl .cc-pattern__reveal { transform-origin: top left; }
+.cc-pattern--br .cc-pattern__reveal { transform-origin: bottom right; }
+.cc-pattern--bl .cc-pattern__reveal { transform-origin: bottom left; }
+
+.cc-pattern.is-in .cc-pattern__reveal {
+    opacity: var(--pattern-opacity);
+    transform: none;
+}
+
+/* colour of the lines/dots (pattern.css draws them in currentColor) */
+.cc-pattern--on-dark {
+    color: #04bfcd;               /* brand cyan */
+    --pattern-opacity: 0.34;
+}
+
+.cc-pattern--on-light {
+    color: #010930;               /* brand navy */
+    --pattern-opacity: 0.16;
+}
+
+/* every corner of the section has text: half strength (js/patterns.js decides) */
+.cc-pattern--quiet.cc-pattern--on-dark  { --pattern-opacity: 0.17; }
+.cc-pattern--quiet.cc-pattern--on-light { --pattern-opacity: 0.08; }
+
+/* the texture itself, a little larger than the patch so it can drift
+   without showing an edge (300px = a whole number of tiles for every
+   pattern size used, so the loop is seamless) */
+.cc-pattern__tile {
+    position: absolute;
+    inset: -300px 0 0 -300px;
+    animation: cc-pattern-drift 90s linear infinite;
+}
+
+.cc-pattern--slow .cc-pattern__tile {
+    animation-duration: 130s;
+    animation-direction: reverse;
+}
+
+@keyframes cc-pattern-drift {
+    to {
+        transform: translate3d(300px, 300px, 0);
+    }
+}
+
+/* phones: smaller, quieter patches */
+@media (max-width: 767.98px) {
+    .cc-pattern__layer {
+        width: 78vw;
+        height: clamp(220px, 55%, 420px);
+    }
+
+    .cc-pattern--on-dark  { --pattern-opacity: 0.26; }
+    .cc-pattern--on-light { --pattern-opacity: 0.12; }
+    .cc-pattern--quiet.cc-pattern--on-dark  { --pattern-opacity: 0.13; }
+    .cc-pattern--quiet.cc-pattern--on-light { --pattern-opacity: 0.06; }
+}
+
+/* ---------- section snap ----------
+   "proximity": the page settles on the start of a section when you stop
+   scrolling close to it, but never locks you in, so sections taller than
+   the screen still scroll freely. Sections already keep 84px clear for the
+   navbar (scroll-margin-top), so they snap just below it.
+   Desktop and tablet only: on phones snapping fights the thumb flick. */
+@media (min-width: 992px) and (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-snap-type: y proximity;
+    }
+
+    /* - not the first section: its snap point would sit 40px below the top of the
+         page and the page would jump there on load, hiding the info bar;
+       - not the contact section: it is taller than the screen, and Chrome would pull
+         every link to the form back to the section's edge, so the form card is its
+         snap point instead. Consultoria's 4 steps (#processo) are a link target too. */
+    main > section:not(:first-child):not(.contact-section),
+    .contact-form-card,
+    #processo {
+        scroll-snap-align: start;
+    }
+
+    /* the very top (info bar showing) and the very bottom (whole footer) are
+       snap points too, so neither can be pulled out of reach */
+    .cc-snap-top {
+        scroll-snap-align: start;
+    }
+
+    body > footer {
+        scroll-snap-align: end;
+    }
+}
+
+/* invisible marker at the top of the page (added by js/patterns.js) */
+.cc-snap-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 1px;
+    pointer-events: none;
+}
+
+/* ---------- reduced motion: patterns stay, motion goes ---------- */
+@media (prefers-reduced-motion: reduce) {
+    .cc-pattern__reveal {
+        transition: none;
+        transform: none;
+    }
+
+    .cc-pattern__tile {
+        animation: none;
+    }
+}

@@ -593,6 +593,15 @@ section {
     }
 }
 
+/* team photos fill the card's photo area; faces stay at the top if the shape changes */
+.team-photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+}
+
 .team-body {
     .role {
         color: var(--cyan);
@@ -1684,17 +1693,21 @@ a.btn-outline-c.px-4.py-2 {
                         filter: brightness(1) !important;
                     }
 
-                    img.d-block {
-                        width: 115px !important;
-                        height: 115px;
-                        object-fit: cover;
-                        margin: 2rem auto 5px;
-                        border-radius: 150px;
+                    /* quote mark above the text, same as the service pages' testimonials */
+                    &::before {
+                        content: "\201C";
+                        display: block;
+                        font-family: "DM Serif Display", serif;
+                        font-size: 4.5rem;
+                        line-height: 1;
+                        height: 2.6rem;
+                        color: var(--cyan);
                     }
 
                     h6.name {
                         font-family: "DM Serif Display";
                         font-weight: 600;
+                        margin-top: 1.5rem;
                     }
 
                     p.local {
