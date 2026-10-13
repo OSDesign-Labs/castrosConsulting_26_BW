@@ -78,8 +78,8 @@
   <!-- Bootstrap Icons CDN Link -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
   <!-- Google FOnts CDN Link -->
-  <link href="https://fonts.googleapis.com" rel="preconnect" />
-  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&amp;family=Manrope:wght@200..800&amp;family=Quicksand:wght@300..700&amp;display=swap"
     rel="stylesheet" />
@@ -228,7 +228,7 @@
       tabindex="-1">
       <!-- OFFCANVAS HEADER -->
       <div class="offcanvas-header">
-        <a class="offcanvas-title" href="#" id="mobileNavbarLabel">
+        <!-- <a class="offcanvas-title" href="#" id="mobileNavbarLabel">
           Castros Consultoria
         </a>
         <button aria-label="Fechar" class="btn-close" data-bs-dismiss="offcanvas" type="button"
@@ -404,7 +404,7 @@
           </div>
 
           <!-- SLIDE 2 — Formação: video with curved edge + pattern | title, text, 2 buttons -->
-          <div class="carousel-item" data-duration="3500" aria-roledescription="slide" aria-label="2 de 4: Formação"
+          <div class="carousel-item" data-duration="5000" aria-roledescription="slide" aria-label="2 de 4: Formação"
             data-i18n-attr="aria-label:hero.2-de-4-formacao">
             <div class="hs hs-formacao">
               <div class="hs-media hs-pattern">
@@ -436,7 +436,7 @@
           </div>
 
           <!-- SLIDE 3 — Eventos: title + text | video inside a blob | info + Inscrever (radial gradient bg) -->
-          <div class="carousel-item" data-duration="3500" aria-roledescription="slide" aria-label="3 de 4: Eventos"
+          <div class="carousel-item" data-duration="5000" aria-roledescription="slide" aria-label="3 de 4: Eventos"
             data-i18n-attr="aria-label:hero.3-de-4-eventos">
             <div class="hs hs-eventos">
               <div class="hs-copy hero-copy">
@@ -479,7 +479,7 @@
           </div>
 
           <!-- SLIDE 4 — Podcast: title, text, 2 buttons | diagonal image with arc + pattern -->
-          <div class="carousel-item" data-duration="3500" aria-roledescription="slide" aria-label="4 de 4: Podcast"
+          <div class="carousel-item" data-duration="5000" aria-roledescription="slide" aria-label="4 de 4: Podcast"
             data-i18n-attr="aria-label:hero.4-de-4-podcast">
             <div class="hs hs-podcast">
               <div class="hs-media hs-pattern">
@@ -534,7 +534,7 @@
     <section class="section bg-alt-c" id="sobre">
       <div class="container-fluid">
         <div class="row g-5 align-items-center">
-          <div class="col-lg-6" data-aos="fade-up">
+          <div class="col-lg-6" data-aos="fade-up" data-aos-duration="3000">
             <span class="eyebrow" data-i18n="about.sobre-nos">Sobre Nós</span>
             <h2 class="mb-3" style="font-size:clamp(1.9rem,3.6vw,2.6rem);max-width:28ch; text-align: left;"
               data-i18n="about.conheca-a-equipa-que-impulsiona-o">Conheça a
@@ -570,7 +570,7 @@
                 </svg></a>
             </div>
           </div>
-          <div class="col-lg-6" data-aos="fade-up">
+          <div class="col-lg-6" data-aos="fade-lef" data-aos-duration="4000">
             <div class="ph about-img" style="aspect-ratio:1/1"></div>
           </div>
         </div>
@@ -614,7 +614,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-4 order-md-3" data-aos="fade-rights" data-aos-delay="200">
+          <div class="col-md-4 order-md-3" data-aos="fade-right" data-aos-delay="200">
             <div class="card-c h-100 overflow-hidden">
               <div class="team-photo" style="aspect-ratio:4/5;border-radius:0">
                 <img src="assets/team/cleiber-tinga.webp" alt="" width="600" height="750" loading="lazy"
@@ -633,7 +633,7 @@
 
     <!-- 03- MARCAS / PARCEIROS -->
     <section class="bg-alt-c py-5">
-      <div class="container d-flex flex-wrap justify-content-between align-items-center gap-4" data-aos="fade-up">
+      <div class="container d-flex flex-wrap justify-content-between align-items-center gap-4" data-aos="zomm-in" data-aos-delay="200">
         <p class="mb-0 fw-medium" style="max-width:24ch;color:var(--black)"
           data-i18n="partners.marcas-que-escolheram-crescer-com-a">Marcas que escolheram crescer com a
           nossa
@@ -932,7 +932,7 @@
     </section>
 
     <!-- 08- EVENTOS  -->
-    <section class="section" id="eventos">
+    <section class="section" id="events">
       <div class="container">
         <div class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-5" data-aos="fade-up">
           <div>
@@ -1021,6 +1021,7 @@
           </div>
         </div>
 
+        
         <!-- CONTACT INFORMATION -->
         <div class="contact-chips" data-aos="fade-up">
           <div class="contact-chip" tabindex="0">
@@ -1029,6 +1030,68 @@
                 data-i18n="contact.localizacao">Localização</small><strong>Maputo</strong></span>
           </div>
 
+            <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="60">
+              <span class="contact-info-icon"><i class="bi bi-envelope"></i></span>
+              <a href="mailto:contacto@castrosconsultoria.com" class="contact-info-item">
+                <span
+                  class="contact-info-content"><small>Email</small><strong>castrosconsultoria@gmail.com</strong></span>
+              </a>
+            </div>
+
+            <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="120">
+              <span class="contact-info-icon"><i class="bi bi-whatsapp"></i></span>
+              <a href="https://wa.me/258878665180" class="contact-info-item">
+                <span class="contact-info-content"><small>WhatsApp</small><strong>+258 87 866 5180</strong></span>
+              </a>
+            </div>
+
+            <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="180">
+              <span class="contact-info-icon"><i class="bi bi-instagram"></i></span>
+              <a href="https://www.instagram.com/castros.consultoria/" class="contact-info-item">
+                <span class="contact-info-content"><small>Instagram</small><strong>castros.consultoria</strong></span>
+              </a>
+            </div>
+
+            <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="240">
+              <span class="contact-info-icon"><i class="bi bi-tiktok"></i></span>
+              <a href="https://www.instagram.com/castros.consultoria/" class="contact-info-item">
+                <span class="contact-info-content"><small>TikTok</small><strong>@castros.consultria.mz</strong></span>
+              </a>
+            </div>
+
+            <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="300">
+              <span class="contact-info-icon"><i class="bi bi-telephone"></i></span>
+              <a href="tel:+258000000000" class="contact-info-item">
+                <span class="contact-info-content"><small data-i18n="contact.telefone">Telefone</small><strong>+258 ...</strong></span>
+              </a>
+            </div>
+
+          </div>
+       
+          <a class="contact-chip" href="mailto:castrosconsultoria@gmail.com" aria-label="Email">
+            <span class="contact-chip-icon"><i class="bi bi-envelope" aria-hidden="true"></i></span>
+            <span class="contact-chip-info"><small>Email</small><strong>castrosconsultoria@gmail.com</strong></span>
+          </a>
+       
+          <a class="contact-chip" href="https://wa.me/258878665180" aria-label="WhatsApp">
+            <span class="contact-chip-icon"><i class="bi bi-whatsapp" aria-hidden="true"></i></span>
+            <span class="contact-chip-info"><small>WhatsApp</small><strong>+258 87 866 5180</strong></span>
+          </a>
+       
+          <a class="contact-chip" href="https://www.instagram.com/castros.consultoria/" aria-label="Instagram">
+            <span class="contact-chip-icon"><i class="bi bi-instagram" aria-hidden="true"></i></span>
+            <span class="contact-chip-info"><small>Instagram</small><strong>castros.consultoria</strong></span>
+          </a>
+       
+          <a class="contact-chip" href="https://www.tiktok.com/@castros.consultria.mz" aria-label="TikTok"> <!-- EDIT: confirme o handle -->
+            <span class="contact-chip-icon"><i class="bi bi-tiktok" aria-hidden="true"></i></span>
+            <span class="contact-chip-info"><small>TikTok</small><strong>@castros.consultria.mz</strong></span>
+          </a>
+       
+          <a class="contact-chip" href="https://www.facebook.com/" aria-label="Facebook"> <!-- EDIT: URL real -->
+            <span class="contact-chip-icon"><i class="bi bi-facebook" aria-hidden="true"></i></span>
+            <span class="contact-chip-info"><small>Facebook</small><strong>Castros Consultoria</strong></span> <!-- EDIT -->
+          </a>
           <a class="contact-chip" href="mailto:castrosconsultoria@gmail.com" aria-label="Email">
             <span class="contact-chip-icon"><i class="bi bi-envelope" aria-hidden="true"></i></span>
             <span class="contact-chip-info"><small>Email</small><strong>castrosconsultoria@gmail.com</strong></span>
@@ -1057,6 +1120,8 @@
             <!-- EDIT -->
           </a>
         </div>
+       
+      
 
         <!-- CONTACT MAIN AREA -->
         <div class="row g-4 g-xl-5 align-items-stretch">

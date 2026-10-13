@@ -1,3 +1,152 @@
+/* INTERNAL TYPEFACES */
+/* ---------- Poppins ---------- */
+@font-face {
+  font-family: "Poppins";
+  src: url("../fonts/Poppins/web/Poppins-Thin.woff2") format("woff2");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+ 
+@font-face {
+  font-family: "Poppins";
+  src: url("../fonts/Poppins/web/Poppins-ExtraLight.woff2") format("woff2");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+ 
+@font-face {
+  font-family: "Poppins";
+  src: url("../fonts/Poppins/web/Poppins-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+ 
+@font-face {
+  font-family: "Poppins";
+  src: url("../fonts/Poppins/web/Poppins-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+ 
+@font-face {
+  font-family: "Poppins";
+  src: url("../fonts/Poppins/web/Poppins-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+ 
+@font-face {
+  font-family: "Poppins";
+  src: url("../fonts/Poppins/web/Poppins-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+ 
+@font-face {
+  font-family: "Poppins";
+  src: url("../fonts/Poppins/web/Poppins-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+ 
+@font-face {
+  font-family: "Poppins";
+  src: url("../fonts/Poppins/web/Poppins-ExtraBold.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+ 
+@font-face {
+  font-family: "Poppins";
+  src: url("../fonts/Poppins/web/Poppins-Black.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+ 
+/* ---------- Montserrat ---------- */
+/* Assume a mesma estrutura: Montserrat/web/*.woff2 */
+@font-face {
+  font-family: "Montserrat";
+  src: url("../fonts/Montserrat/web/Montserrat-Thin.woff2") format("woff2");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+ 
+@font-face {
+  font-family: "Montserrat";
+  src: url("../fonts/Montserrat/web/Montserrat-ExtraLight.woff2") format("woff2");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+ 
+@font-face {
+  font-family: "Montserrat";
+  src: url("../fonts/Montserrat/web/Montserrat-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+ 
+@font-face {
+  font-family: "Montserrat";
+  src: url("../fonts/Montserrat/web/Montserrat-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+ 
+@font-face {
+  font-family: "Montserrat";
+  src: url("../fonts/Montserrat/web/Montserrat-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+ 
+@font-face {
+  font-family: "Montserrat";
+  src: url("../fonts/Montserrat/web/Montserrat-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+ 
+@font-face {
+  font-family: "Montserrat";
+  src: url("../fonts/Montserrat/web/Montserrat-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+ 
+@font-face {
+  font-family: "Montserrat";
+  src: url("../fonts/Montserrat/web/Montserrat-ExtraBold.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+ 
+@font-face {
+  font-family: "Montserrat";
+  src: url("../fonts/Montserrat/web/Montserrat-Black.woff2") format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+
 :root {
     --white: #ffffff;
     --bg-alt: #f1f5fa;
@@ -39,7 +188,7 @@ body {
     margin: 0;
     background: var(--white);
     color: var(--ash);
-    font-family: "Manrope", sans-serif;
+    font-family: "Poppins", sans-serif;
     line-height: 1.65;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
@@ -55,7 +204,7 @@ body {
 h1,
 h2,
 h3 {
-    font-family: "DM Serif Display", serif;
+    font-family: "Montserrat", serif;
     margin: 0;
     color: var(--ink);
     letter-spacing: -0.01em;
@@ -352,7 +501,7 @@ section {
     }
 
     .navbar-brand {
-        font-family: "DM Serif Display", serif;
+        font-family: "Montserrat", serif;
         font-style: italic;
         font-weight: 700;
         color: var(--ink) !important;
@@ -1052,7 +1201,7 @@ section {
     }
 
     blockquote {
-        font-family: "DM Serif Display", serif;
+        font-family: "Montserrat", serif;
         font-size: clamp(1.25rem, 2.4vw, 1.7rem);
         color: var(--ink);
         font-style: italic;
@@ -1123,7 +1272,7 @@ footer {
     background: var(--navy);
 
     .wordmark {
-        font-family: "DM Serif Display", serif;
+        font-family: "Montserrat", serif;
         font-weight: 900;
         font-size: clamp(2.6rem, 9vw, 8.2rem);
         color: var(--white);
@@ -1380,7 +1529,7 @@ footer {
         background-image: none !important;
         border-top: 2px solid #030316;
         border-bottom: 2px solid #030316;
-
+npm
         &::after {
             content: "";
             position: absolute;
@@ -1751,7 +1900,7 @@ a.btn-outline-c.px-4.py-2 {
                     &::before {
                         content: "\201C";
                         display: block;
-                        font-family: "DM Serif Display", serif;
+                        font-family: "Montserrat", serif;
                         font-size: 4.5rem;
                         line-height: 1;
                         height: 2.6rem;
@@ -1759,7 +1908,7 @@ a.btn-outline-c.px-4.py-2 {
                     }
 
                     h6.name {
-                        font-family: "DM Serif Display";
+                        font-family: "Montserrat";
                         font-weight: 600;
                         margin-top: 1.5rem;
                     }
@@ -1813,7 +1962,7 @@ a.btn-outline-c.px-4.py-2 {
         max-width: 850px;
         margin: 0 auto;
         color: var(--ink);
-        font-family: "DM Serif Display", serif;
+        font-family: "Montserrat", serif;
         font-size: clamp(2.25rem, 5vw, 4.4rem);
         font-weight: 400;
         line-height: 1.05;
@@ -1923,7 +2072,7 @@ a.btn-outline-c.px-4.py-2 {
         h2 {
             max-width: 560px;
             margin: 0;
-            font-family: "DM Serif Display", serif;
+            font-family: "Montserrat", serif;
             font-size: clamp(2rem, 4vw, 3.4rem);
             font-weight: 400;
             line-height: 1.02;
@@ -2036,7 +2185,7 @@ a.btn-outline-c.px-4.py-2 {
     .form-step-title {
         margin: 0;
         color: var(--ink);
-        font-family: "DM Serif Display", serif;
+        font-family: "Montserrat", serif;
         font-size: clamp(1.8rem, 3vw, 2.6rem);
         font-weight: 400;
         line-height: 1.05;
@@ -2504,7 +2653,7 @@ a.btn-outline-c.px-4.py-2 {
 }
 
 .offcanvas.mobile-offcanvas .offcanvas-title {
-    font-family: "DM Serif Display", serif;
+    font-family: "Montserrat", serif;
     font-style: italic;
     font-size: 1.35rem;
     color: var(--white);
@@ -2560,7 +2709,7 @@ a.btn-outline-c.px-4.py-2 {
 .offcanvas.mobile-offcanvas .mobile-nav .nav-link {
     display: block;
     padding: clamp(0.3rem, 1.3vh, 0.7rem) 0;
-    font-family: "DM Serif Display", serif;
+    font-family: "Montserrat", serif;
     font-size: clamp(1.5rem, min(7vw, 4.6vh), 2.3rem);
     /* scales with width AND height, so short screens don't overflow */
     line-height: 1.15;

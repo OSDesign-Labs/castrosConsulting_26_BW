@@ -74,10 +74,6 @@
     </div>
 
     <!-- 01.1- NAVBAR -->
-    <!-- Copied verbatim from index.html — Francisco's Section.
-         Static multi-page site has no include system, so this must be
-         kept in sync by hand across every page. Flag if that becomes
-         a real maintenance problem. -->
     <header>
         <nav id="mainNavbar" class="main-navbar">
             <!-- SECONDARY NAVBAR (desktop only; phones get the same info at the bottom of the menu). Folds away once
@@ -112,14 +108,19 @@
                     <img class="brand-mark" src="../assets/brand/castros-mark.webp" width="528" height="640" alt="">
                     <span class="brand-name-clip"><span class="brand-name">Castros Consultoria</span></span>
                 </a>
+                <!-- DESKTOP NAVIGATION -->
                 <div class="desktop-navbar d-none d-lg-grid">
+                    <!-- Navigation -->
                     <ul class="navbar-nav">
+                        <!-- Início -->
                         <li class="nav-item">
                             <a class="nav-link" href="../index.html" data-i18n="nav.inicio">Início</a>
                         </li>
+                        <!-- Sobre -->
                         <li class="nav-item">
                             <a class="nav-link" href="../index.html#sobre" data-i18n="nav.sobre-nos">Sobre nós</a>
                         </li>
+                        <!-- Serviços -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle active" href="#" id="servicesDropdown" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false" data-i18n="nav.servicos">
@@ -136,9 +137,11 @@
                                         data-i18n="nav.espacos-e-podcasts">Espaços e Podcasts</a></li>
                             </ul>
                         </li>
+                        <!-- Eventos -->
                         <li class="nav-item">
                             <a class="nav-link" href="../index.html#eventos" data-i18n="nav.eventos">Eventos</a>
                         </li>
+                        <!-- Contacto -->
                         <li class="nav-item">
                             <a class="nav-link" href="#contact-form" data-i18n="nav.contacto">Contacto</a>
                         </li>
@@ -170,14 +173,16 @@
                 </button>
             </div>
         </nav>
-
-        <div class="offcanvas offcanvas-end mobile-offcanvas" tabindex="-1" id="mobileNavbar"
-            aria-labelledby="mobileNavbarLabel">
+        <!-- Mobile / Tablet Offcanvas -->
+        <div aria-labelledby="mobileNavbarLabel" class="offcanvas offcanvas-end mobile-offcanvas" id="mobileNavbar"
+            tabindex="-1">
+            <!-- OFFCANVAS HEADER -->
             <div class="offcanvas-header">
                 <a href="../index.html" class="offcanvas-title" id="mobileNavbarLabel">Castros Consultoria</a>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Fechar"
                     data-i18n-attr="aria-label:nav.fechar"></button>
             </div>
+            <!-- OFFCANVAS BODY -->
             <div class="offcanvas-body">
                 <ul class="mobile-nav">
                     <li class="nav-item"><a class="nav-link" href="../index.html" data-i18n="nav.inicio">Início</a></li>
@@ -202,6 +207,7 @@
                     <li class="nav-item"><a class="nav-link" href="#contact-form" data-i18n="nav.contacto">Contacto</a>
                     </li>
                 </ul>
+                <!-- Mobile CTA -->
                 <div class="mobile-cta-wrapper">
                     <a href="#contact-form" class="btn btn-primary" data-i18n="nav.cta">Contacto</a>
                 </div>
@@ -227,7 +233,7 @@
 
     <main>
 
-        <!-- HERO — simple centered header, not full-height (this is a sub-page, not the homepage) -->
+        <!-- HERO -->
         <section id="formacoes" class="section page-hero">
             <div class="container text-center">
                 <span class="eyebrow" data-i18n="formacoes.hero.servicos">Serviços</span>
@@ -319,6 +325,8 @@
                                 de tecnologia</p>
                         </div>
                     </div>
+<<<<<<< HEAD
+=======
                     <button class="carousel-control-prev" type="button" data-bs-target="#servicosTestimonial"
                         data-bs-slide="prev">
                         <span class="carousel-control-prev-icon"></span>
@@ -327,7 +335,16 @@
                         data-bs-slide="next">
                         <span class="carousel-control-next-icon"></span>
                     </button>
+>>>>>>> origin/marcos
                 </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#testCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#testCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
             </div>
         </section>
 
@@ -440,7 +457,11 @@
             </div>
         </section>
 
+<<<<<<< HEAD
+        <!-- 11- CONTACT  -->
+=======
         <!-- 11- CONTACT — pasted from index.html, untouched (ids and data-attributes drive js/javascript.js) -->
+>>>>>>> origin/marcos
         <section class="contact-section py-5" id="contact">
             <div class="container py-lg-5">
 
@@ -713,6 +734,19 @@
 
     </main>
 
+<<<<<<< HEAD
+    <!-- FOOTER — pasted from index.html. Only the "Menu" link targets changed, so they work from  -->
+    <footer class="pt-5 pb-4">
+      <div class="container">
+        <div class="row g-4 pb-4">
+          <div class="col-lg-6" data-aos="fade-up">
+            <span class="navbar-brand" style="color:#fff!important">Castros</span>
+            <div class="mt-4">
+              <h5 data-i18n="footer.localizacao">Localização</h5>
+              <p class="foot-p mb-0 d-flex align-items-center gap-2"><svg class="bi">
+                  <use xlink:href="#i-geo"></use>
+                </svg>Rua do Palmar, nº 35</p>
+=======
     <!-- FOOTER — pasted from index.html. Only the "Menu" link targets changed, so they work from html/ -->
     <footer class="pt-5 pb-4" data-pattern="pattern-grid-lg tr">
         <div class="container">
@@ -768,6 +802,7 @@
                     <a class="d-block mb-2" href="#" data-i18n="footer.termos-de-servico">Termos de Serviço</a>
                     <a class="d-block mb-2" href="privacidade.html#cookies" data-i18n="footer.definicoes-de-cookies">Definições de Cookies</a>
                 </div>
+>>>>>>> origin/marcos
             </div>
             <p class="wordmark" data-aos="zoom-in" data-aos-offset="0">Castros Consultoria</p>
             <div class="d-flex flex-wrap justify-content-between gap-2 pt-3 foot-bottom">
@@ -1080,11 +1115,14 @@
                 d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"
                 fill-rule="evenodd"></path>
             <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"></path>
+<<<<<<< HEAD
+=======
         </symbol>
         <symbol id="i-tiktok" viewbox="0 0 16 16">
             <path
                 d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3z">
             </path>
+>>>>>>> origin/marcos
         </symbol>
         <symbol id="i-linkedin" viewbox="0 0 16 16">
             <path
