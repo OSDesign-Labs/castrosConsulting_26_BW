@@ -81,6 +81,29 @@ main {
         scroll-snap-align: start;
     }
 
+    /* every section the page stops on fills the window, with its content in the
+       middle: it lands with its top at the top of the screen (the navbar hides when
+       you scroll down) and is at least one screen tall. A section taller than the
+       screen keeps its height and you scroll through it as before.
+       Grid, not flex: the content keeps its full width and its own centring. */
+    main > section:not(:first-child) {
+        min-height: 100vh;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        align-content: center;
+        scroll-margin-top: 0;
+        /* same space above and below, or "centred" would sit off-centre
+           (some sections had none on top and 6rem at the bottom) */
+        padding-top: 6rem;
+        padding-bottom: 6rem;
+    }
+
+    /* the cards right under a page's header have "pt-0" (no top space) so they hug
+       the header; as a full screen of their own they need the same space as the rest */
+    main > section.pt-0:not(:first-child) {
+        padding-top: 6rem !important;
+    }
+
     /* the very top (info bar showing) and the very bottom (whole footer) are
        stops too, so neither can be pulled out of reach. The top one has to exist
        before any script runs, or the page would jump to the second section while

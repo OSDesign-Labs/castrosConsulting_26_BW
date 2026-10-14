@@ -1,68 +1,122 @@
 /* JAVASCRIPT | Navigation, interactions and animations */
 (function () {
     /* ==========================================================
-       NAVBAR AUTO-HIDE (after 4s of inactivity)
+       NAVBAR: SHOW ON SCROLL UP, HIDE ON SCROLL DOWN
+       (the only script that hides/shows the navbar; the pages'
+       inline scripts used to do it too and the two fought)
+       - Inside the hero (the home carousel, or a sub-page's header):
+         always visible, exactly as before.
+       - Past the hero:
+           scrolling down  -> hides at once and stays hidden;
+           scrolling up    -> shows, then hides again after 4s
+                              without scrolling up / using it.
+       - Never hides while it is in use: phone menu or dropdown
+         open, pointer over it, keyboard focus inside it.
+       - Direction comes from what the visitor does (wheel, finger,
+         keys). When the page settles on a section by itself (section
+         snap), that small move is ignored, so it can't flash the
+         navbar back in or out.
        ========================================================== */
     const navbar = document.getElementById("mainNavbar");
     const offcanvasEl = document.getElementById("mobileNavbar");
     const backTop = document.getElementById("backTop");
-    const HIDE_DELAY = 4000;
+    const IDLE_HIDE = 4000;     // ms visible after a scroll up
+    const MIN_MOVE = 6;         // px: smaller moves are jitter
+    const INTENT_MS = 900;      // ms a wheel/finger/key gesture counts for
     let hideTimer = null;
+    let inHero = true;
+    let lastY = window.scrollY;
+    let intent = { dir: 0, t: 0 };     // last gesture: 1 = down, -1 = up
+    const canHover = window.matchMedia("(hover: hover)");
 
-    let inHero = true; // true while the hero is on screen
-    
-    // True when the user is interacting with the navbar / menus
     function isBusy() {
-        if (!navbar) return false;
         return Boolean(
-            inHero ||                                                  // keep navbar visible inside the hero
-            (offcanvasEl && offcanvasEl.classList.contains("show")) || // mobile menu open
-            navbar.querySelector(".dropdown-menu.show") ||             // dropdown open
-            navbar.matches(":hover") ||                                // pointer over navbar
-            navbar.contains(document.activeElement)                    // keyboard focus inside
+            (offcanvasEl && offcanvasEl.classList.contains("show")) ||
+            navbar.querySelector(".dropdown-menu.show") ||
+            (canHover.matches && navbar.matches(":hover")) ||   // phones: a tap leaves a "sticky" hover behind
+            navbar.querySelector(":focus-visible")          // keyboard focus (not a link just clicked)
         );
     }
 
-    function hideNavbar() {
-        if (!navbar) return;
-        navbar.classList.add("navbar-hidden");
+    function setHidden(hidden) {
+        navbar.classList.toggle("navbar-hidden", hidden);
+        navbar.classList.remove("navbar-hovered");   // the loader's "keep visible" flag would block hiding
     }
 
-    function startHideTimer() {
+    function hide() {
         clearTimeout(hideTimer);
+        if (inHero || isBusy()) return;
+        setHidden(true);
+    }
+
+    function show() {
+        setHidden(false);
+        clearTimeout(hideTimer);
+        if (inHero) return;                           // the hero keeps it up for good
         hideTimer = setTimeout(function check() {
-            if (isBusy()) {
-                hideTimer = setTimeout(check, 1000); // check again in 1s
-                return;
-            }
-            hideNavbar();
-        }, HIDE_DELAY);
+            if (inHero) return;
+            if (isBusy()) { hideTimer = setTimeout(check, 1000); return; }
+            setHidden(true);
+        }, IDLE_HIDE);
     }
 
-    function showNavbar() {
-        if (!navbar) return;
-        navbar.classList.remove("navbar-hidden");
-        startHideTimer();
+    if (navbar) {
+        const now = function () { return performance.now(); };
+        const gesture = function (dir) { intent = { dir: dir, t: now() }; };
+
+        window.addEventListener("wheel", function (e) {
+            if (e.deltaY) gesture(e.deltaY > 0 ? 1 : -1);
+        }, { passive: true });
+
+        let touchY = null;
+        window.addEventListener("touchstart", function (e) { touchY = e.touches[0].clientY; }, { passive: true });
+        window.addEventListener("touchmove", function (e) {
+            if (touchY === null) return;
+            const y = e.touches[0].clientY;
+            if (Math.abs(y - touchY) > MIN_MOVE) { gesture(y < touchY ? 1 : -1); touchY = y; }
+        }, { passive: true });
+
+        window.addEventListener("keydown", function (e) {
+            if (/^(ArrowDown|PageDown|End| )$/.test(e.key)) gesture(1);
+            else if (/^(ArrowUp|PageUp|Home)$/.test(e.key)) gesture(-1);
+        });
+
+        window.addEventListener("scroll", function () {
+            const y = window.scrollY;
+            const delta = y - lastY;
+            if (Math.abs(delta) < MIN_MOVE) return;
+            lastY = y;
+            if (inHero) return;
+            const dir = delta > 0 ? 1 : -1;
+            const recent = now() - intent.t < INTENT_MS;
+            // the page moving against the visitor's last gesture = snap settling / momentum: ignore
+            if (recent && intent.dir && dir !== intent.dir) return;
+            if (dir > 0) hide(); else show();
+        }, { passive: true });
+
+        // using the navbar keeps it up; leaving it starts the 4s again
+        navbar.addEventListener("mouseenter", function () { if (canHover.matches) { clearTimeout(hideTimer); setHidden(false); } });
+        navbar.addEventListener("mouseleave", function () { if (canHover.matches && !navbar.classList.contains("navbar-hidden")) show(); });
+        navbar.addEventListener("focusin", function () {
+            if (navbar.querySelector(":focus-visible")) { clearTimeout(hideTimer); setHidden(false); }
+        });
     }
 
-    // Any activity shows the navbar and restarts the 4s countdown
-    ["mousemove", "touchstart", "keydown", "click", "scroll"].forEach(function (evt) {
-        window.addEventListener(evt, showNavbar, { passive: true });
-    });
-
-    showNavbar(); // start the timer on page load
-
-    /* SECONDARY NAVBAR + HERO STATE */
-    const heroSection = document.querySelector("main > .hero");
+    /* HERO STATE: the home carousel, or the header of a sub-page */
+    const heroSection = document.querySelector("main > .hero, main > .page-hero");
     if (navbar && heroSection && "IntersectionObserver" in window) {
-      new IntersectionObserver(function (entries) {
-        inHero = entries[0].isIntersecting;
-        navbar.classList.toggle("topbar-collapsed", !inHero);
-        if (inHero) showNavbar(); // make sure it is visible when you scroll back into the hero
-      }, { rootMargin: "-110px 0px 0px 0px", threshold: 0 }).observe(heroSection);
+        let first = true;
+        new IntersectionObserver(function (entries) {
+            inHero = entries[0].isIntersecting;
+            if (inHero) { clearTimeout(hideTimer); setHidden(false); }
+            else if (first) show();                  // page opened below the hero: visible, then the 4s rule
+            else hide();                             // just scrolled down out of the hero
+            first = false;
+        }, { rootMargin: "-110px 0px 0px 0px", threshold: 0 }).observe(heroSection);
+    } else {
+        inHero = false;
     }
 
-    
     /* ==========================================================
        BACK TO TOP
        ========================================================== */
@@ -157,6 +211,7 @@ document.addEventListener("DOMContentLoaded", () => {
     /* FORM REFERENCES */
 
     const form = document.getElementById("contactForm");
+    if (!form) return;                      // pages without the contact form (privacy policy)
     const formSteps = [...document.querySelectorAll("[data-form-step]")];
     const progressSteps = [...document.querySelectorAll("[data-progress-step]")];
     const progressLines = [...document.querySelectorAll(".progress-line")];

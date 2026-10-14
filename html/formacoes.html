@@ -770,10 +770,9 @@
                     <a class="d-block mb-2" href="privacidade.html" data-i18n="footer.politica-de-privacidade">Política de
                         Privacidade</a>
                     <a class="d-block mb-2" href="#" data-i18n="footer.termos-de-servico">Termos de Serviço</a>
-                    <a class="d-block mb-2" href="privacidade.html#cookies" data-i18n="footer.definicoes-de-cookies">Definições de Cookies</a>
                 </div>
             </div>
-            <p class="wordmark" data-aos="zoom-in" data-aos-offset="0">Castros Consultoria</p>
+            <p class="wordmark" data-aos="fade-up" data-aos-offset="0">Castros Consultoria</p>
             <div class="d-flex flex-wrap justify-content-between gap-2 pt-3 foot-bottom">
                 <span data-i18n="footer.2026-castros-consultoria-todos-os-direitos">© 2026 Castros Consultoria. Todos os
                     direitos reservados.</span>
@@ -833,7 +832,10 @@
                         </div>
 
                         <!-- RIGHT: benefícios + próximas formações -->
-                        <div class="col-lg-6">
+                        <div class="col-lg-6 benefits-col has-modal-pattern">
+                            <!-- decoration: soft blob (desktop) + pattern.css patch behind Benefícios -->
+                            <span class="benefit-blob" aria-hidden="true"></span>
+                            <span class="modal-pattern modal-pattern--tr" aria-hidden="true"><span class="pattern-dots-md"></span></span>
                             <h4 class="mb-3" data-i18n="formacoes.modal-courses.beneficios">Benefícios</h4>
                             <div class="benefit-row">
                                 <div class="benefit-item">
@@ -906,26 +908,23 @@
                     </div>
 
                     <!-- BASTIDORES -->
-                    <div class="mt-5">
+                    <div class="mt-5 has-modal-pattern">
+                        <span class="modal-pattern modal-pattern--tl" aria-hidden="true"><span class="pattern-diagonal-lines-sm"></span></span>
                         <h4 class="mb-3" data-i18n="formacoes.modal-courses.bastidores">Bastidores</h4>
                         <div class="modal-gallery">
-                            <div class="mg-a"><img src="../assets/workshop.webp" alt="Sessão de formação em grupo"
-                                    loading="lazy"
-                                    data-i18n-attr="alt:formacoes.modal-courses.sessao-de-formacao-em-grupo"></div>
-                            <div class="mg-b"><img src="../assets/oradora.webp"
-                                    alt="Formadora a conduzir uma sessão de oratória" loading="lazy"
-                                    data-i18n-attr="alt:formacoes.modal-courses.formadora-a-conduzir-uma-sessao-de">
+                            <div class="mg-a"><img src="../assets/images/ora.webp" alt="Elizabeth Castro a apresentar numa formação" loading="lazy"
+                                    data-i18n-attr="alt:formacoes.modal-courses.elizabeth-castro-a-apresentar-numa-formacao"></div>
+                            <div class="mg-b"><img src="../assets/images/workshop-3.webp" alt="Participantes atentos à apresentação" loading="lazy"
+                                    data-i18n-attr="alt:formacoes.modal-courses.participantes-atentos-a-apresentacao">
                             </div>
                             <div class="mg-c"><img src="../assets/flyerteam.webp" alt="Equipa reunida numa formação"
                                     loading="lazy"
                                     data-i18n-attr="alt:formacoes.modal-courses.equipa-reunida-numa-formacao"></div>
-                            <div class="mg-d"><img src="../assets/people.webp" alt="Participantes em dinâmica de grupo"
-                                    loading="lazy"
-                                    data-i18n-attr="alt:formacoes.modal-courses.participantes-em-dinamica-de-grupo">
+                            <div class="mg-d"><img src="../assets/images/workshop-2.webp" alt="Participantes durante a formação" loading="lazy"
+                                    data-i18n-attr="alt:formacoes.modal-courses.participantes-durante-a-formacao">
                             </div>
-                            <div class="mg-e"><img src="../assets/meeting.webp"
-                                    alt="Discussão em grupo durante a formação" loading="lazy"
-                                    data-i18n-attr="alt:formacoes.modal-courses.discussao-em-grupo-durante-a-formacao">
+                            <div class="mg-e"><img src="../assets/images/workshop-5.webp" alt="Participantes numa sessão de formação" loading="lazy"
+                                    data-i18n-attr="alt:formacoes.modal-courses.participantes-numa-sessao-de-formacao">
                             </div>
                             <div class="mg-f"><img src="../assets/workshop2.webp"
                                     alt="Momento de prática durante o workshop" loading="lazy"
@@ -957,20 +956,19 @@
                 <div class="modal-body">
                     <!-- MEDIA FEATURE: 1 square + 2 stacked wide -->
                     <div class="media-trio mb-5">
-                        <div class="mt-a"><img src="../assets/office.webp" alt="Sessão de treinamento corporativo"
-                                loading="lazy"
-                                data-i18n-attr="alt:formacoes.modal-training.sessao-de-treinamento-corporativo"></div>
+                        <div class="mt-a"><img src="../assets/images/officework.webp" alt="Elizabeth Castro a receber a equipa na sala de formação" loading="lazy"
+                                    data-i18n-attr="alt:formacoes.modal-training.elizabeth-castro-a-receber-a-equipa"></div>
                         <div class="mt-b"><img src="../assets/atendimento.webp" alt="Equipa em formação de atendimento"
                                 loading="lazy"
                                 data-i18n-attr="alt:formacoes.modal-training.equipa-em-formacao-de-atendimento"></div>
-                        <div class="mt-c"><img src="../assets/blackconslt.webp"
-                                alt="Consultor a apresentar numa sessão corporativa" loading="lazy"
-                                data-i18n-attr="alt:formacoes.modal-training.consultor-a-apresentar-numa-sessao-corporativa">
+                        <div class="mt-c"><img src="../assets/images/workshop-4.webp" alt="Formação em curso na sala da Castros" loading="lazy"
+                                    data-i18n-attr="alt:formacoes.modal-training.formacao-em-curso-na-sala-da-castros">
                         </div>
                     </div>
 
                     <!-- 3 COLUMNS -->
-                    <div class="service-columns row g-4 mb-5">
+                    <div class="service-columns row g-4 mb-5 has-modal-pattern">
+                        <span class="modal-pattern modal-pattern--tr" aria-hidden="true"><span class="pattern-cross-dots-md"></span></span>
                         <div class="col-md-4">
                             <h4 data-i18n="formacoes.modal-training.atendimento">Atendimento</h4>
                             <p class="small text-secondary"
@@ -1004,7 +1002,8 @@
                     </div>
 
                     <!-- PRÓXIMO EVENTO -->
-                    <div class="event-banner mb-5" id="eventoTreinamento">
+                    <div class="event-banner has-modal-pattern mb-5" id="eventoTreinamento">
+                        <span class="modal-pattern modal-pattern--br modal-pattern--on-dark" aria-hidden="true"><span class="pattern-grid-md"></span></span>
                         <div>
                             <span class="eyebrow" data-i18n="formacoes.modal-training.proximo-evento">Próximo
                                 Evento</span>
@@ -1026,12 +1025,12 @@
                     </div>
 
                     <!-- BASTIDORES -->
-                    <div>
+                    <div class="has-modal-pattern">
+                        <span class="modal-pattern modal-pattern--tl" aria-hidden="true"><span class="pattern-dots-md"></span></span>
                         <h4 class="mb-3" data-i18n="formacoes.modal-training.bastidores">Bastidores</h4>
                         <div class="modal-gallery">
-                            <div class="mg-a"><img src="../assets/chairs.webp" alt="Sala preparada para o treinamento"
-                                    loading="lazy"
-                                    data-i18n-attr="alt:formacoes.modal-training.sala-preparada-para-o-treinamento">
+                            <div class="mg-a"><img src="../assets/images/entrancesmile.webp" alt="Boas-vindas a uma participante" loading="lazy"
+                                    data-i18n-attr="alt:formacoes.modal-training.boas-vindas-a-uma-participante">
                             </div>
                             <div class="mg-b"><img src="../assets/consultingnoturious.webp"
                                     alt="Sessão de treinamento em curso" loading="lazy"
@@ -1039,13 +1038,11 @@
                             <div class="mg-c"><img src="../assets/handshake.webp"
                                     alt="Aperto de mão entre consultor e participante" loading="lazy"
                                     data-i18n-attr="alt:formacoes.modal-training.aperto-de-mao-entre-consultor-e"></div>
-                            <div class="mg-d"><img src="../assets/morepeople.webp"
-                                    alt="Grupo de participantes do treinamento" loading="lazy"
-                                    data-i18n-attr="alt:formacoes.modal-training.grupo-de-participantes-do-treinamento">
+                            <div class="mg-d"><img src="../assets/images/workshop-1.webp" alt="Participantes numa sessão de treinamento" loading="lazy"
+                                    data-i18n-attr="alt:formacoes.modal-training.participantes-numa-sessao-de-treinamento">
                             </div>
-                            <div class="mg-e"><img src="../assets/persons.webp"
-                                    alt="Equipa durante dinâmica corporativa" loading="lazy"
-                                    data-i18n-attr="alt:formacoes.modal-training.equipa-durante-dinamica-corporativa">
+                            <div class="mg-e"><img src="../assets/images/entrance-1.webp" alt="Banner da Castros Consultoria: Liderar com ética" loading="lazy"
+                                    data-i18n-attr="alt:formacoes.modal-training.banner-da-castros-consultoria-liderar-com">
                             </div>
                             <div class="mg-f"><img src="../assets/team.webp" alt="Equipa reunida após o treinamento"
                                     loading="lazy"
@@ -1190,55 +1187,7 @@
     <script>
         /* JAVASCRIPT | Navigation, interactions and animations */
         (function () {
-            /* NAVBAR SCROLL BEHAVIOUR */
-            const navbar = document.getElementById("mainNavbar");
-            let lastScrollPosition = window.scrollY;
-            let hideTimer = null;
-
-            function showNavbar() {
-                if (!navbar) return;
-                navbar.classList.remove("navbar-hidden");
-                navbar.classList.add("navbar-hovered");
-            }
-
-            function hideNavbar() {
-                if (!navbar || window.scrollY <= 40) return;
-                navbar.classList.add("navbar-hidden");
-                navbar.classList.remove("navbar-hovered");
-            }
-
-            window.addEventListener("scroll", function () {
-                const currentScrollPosition = window.scrollY;
-
-                if (currentScrollPosition < lastScrollPosition || currentScrollPosition <= 40) {
-                    showNavbar();
-                } else if (currentScrollPosition > lastScrollPosition + 8) {
-                    clearTimeout(hideTimer);
-                    hideTimer = setTimeout(hideNavbar, 150);
-                }
-
-                lastScrollPosition = currentScrollPosition;
-
-                const backTop = document.getElementById("backTop");
-                if (backTop) backTop.classList.toggle("show", currentScrollPosition > 500);
-            }, {
-                passive: true
-            });
-
-            if (navbar) {
-                navbar.addEventListener("mouseenter", showNavbar);
-                navbar.addEventListener("focusin", showNavbar);
-            }
-
-            const backTop = document.getElementById("backTop");
-            if (backTop) {
-                backTop.addEventListener("click", function () {
-                    window.scrollTo({
-                        top: 0,
-                        behavior: "smooth"
-                    });
-                });
-            }
+            /* navbar show/hide and back-to-top: js/javascript.js */
 
             /* SERVICES ACCORDION */
             const tabsWrap = document.getElementById("servicesTabs");
@@ -1314,11 +1263,11 @@
     <script>
         function startAOS() {
             if (!window.AOS) return;
-            AOS.init({ // same settings as index.html
-                duration: 800,
-                offset: 80,
+            AOS.init({ // phones/tablets (< 992px): quicker, fire sooner, play once (see css: short durations there)
+                duration: window.innerWidth < 992 ? 500 : 800,
+                offset: window.innerWidth < 992 ? 30 : 80,
                 easing: "ease-out-cubic",
-                once: false, // replay each time a block comes back into view (short, gentle moves: css/motion.css)
+                once: window.innerWidth < 992, // desktop: replays when a block comes back into view
                 disable: function () { // respect "reduce motion"
                     return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
                 }

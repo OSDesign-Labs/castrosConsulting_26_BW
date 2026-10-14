@@ -1207,10 +1207,20 @@ section {
 footer {
     background: var(--navy);
 
+    /* the wordmark sits on ONE line on every screen and fills the footer's width:
+       "Castros Consultoria" in Montserrat Black is 10.25em wide, so the type size is
+       the container's width / 10.6 (a little slack). The container is a size
+       container for this (cqi = 1% of its width); older browsers use the window width. */
+    .container {
+        container-type: inline-size;
+    }
+
     .wordmark {
         font-family: "Montserrat", serif;
         font-weight: 900;
-        font-size: clamp(2.6rem, 9vw, 8.2rem);
+        font-size: calc((100vw - 3rem) / 10.6);
+        font-size: calc(100cqi / 10.6);
+        white-space: nowrap;
         color: var(--white);
         line-height: 1;
         letter-spacing: -0.02em;
@@ -3259,14 +3269,54 @@ a.topbar-item:hover {
 }
 
 
-.codebox {
-    width: 100px;
-    height: 100px;
+/* QR code in the event pop-up: inside the facts card (Data / Horário / Local / Formato),
+   at its right end and centred top to bottom, whatever the number of rows.
+   EDIT: the image is a placeholder (Wikipedia's sample QR) - swap in the real one. */
+.event-facts.has-qr {
+    position: relative;
+    padding-right: calc(1.25rem + var(--qr) + 1.25rem);
+    min-height: calc(var(--qr) + 2.2rem);
+    --qr: 100px;
+}
+
+.event-facts .codebox {
     position: absolute;
+    top: 50%;
+    right: 1.25rem;
+    width: var(--qr);
+    height: var(--qr);
+    transform: translateY(-50%);
     background-color: #d6d7d782;
-    right: 70px;
-    bottom: 118px;
     background-image: url(https://upload.wikimedia.org/wikipedia/commons/d/d0/QR_code_for_mobile_English_Wikipedia.svg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original);
     background-size: cover;
     border-radius: 10px;
+}
+
+@media (max-width: 575.98px) {
+    .event-facts.has-qr {
+        --qr: 76px;
+    }
+}
+/* ---------- phones and tablets: quick entrance animations ----------
+   In one column, blocks cross the screen quickly, so below 992px every
+   scroll animation is short and starts at once, whatever the HTML asks
+   for (a 3000ms fade, or a 300ms stagger delay, meant a block only became
+   visible once it had nearly scrolled away). Desktop keeps the timings set
+   in the HTML. The AOS settings for phones (fire earlier, don't replay)
+   are in each page's AOS.init. */
+@media (max-width: 991.98px) {
+    body [data-aos][data-aos][data-aos] {
+        transition-duration: 0.5s;
+    }
+
+    body [data-aos][data-aos][data-aos][data-aos-delay].aos-animate {
+        transition-delay: 0s;
+    }
+}
+
+/* tablets (768-991px): the hero's video/wave decoration reached 64px past the
+   right edge and the whole page could be dragged sideways. "clip" trims it at
+   the screen edge without turning <main> into a scroll box (same as the other pages). */
+main {
+    overflow-x: clip;
 }

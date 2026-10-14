@@ -488,7 +488,11 @@ main > .hero.hero-carousel {
         --hero-tabs-space: calc(5.25rem + env(safe-area-inset-bottom, 0px));
         --hero-top: calc(5rem + env(safe-area-inset-top, 0px));    /* clears the fixed navbar */
 
-        height: auto;
+        /* exactly one screen tall: "svh" is the screen with the browser's address bar
+           showing, so the whole hero (slide picker included) is visible on load and the
+           hero never grows taller than the screen. Very short screens: see below. */
+        height: 100vh;
+        height: 100svh;
         min-height: 100vh;
         min-height: 100svh;
         margin: 0 -1rem 3rem;           /* cancels main's side margin → edge to edge */
@@ -766,6 +770,14 @@ main > .hero.hero-carousel {
 
     main > .hero.hero-carousel .metric-label {
         font-size: 0.66rem;
+    }
+}
+
+/* Very short screens (phones held sideways, 320x568): the slide can't fit in one
+   screen, so the hero grows to its content instead of cutting the slide picker off */
+@media (max-width: 991.98px) and (max-height: 600px) {
+    main > .hero.hero-carousel {
+        height: auto;
     }
 }
 

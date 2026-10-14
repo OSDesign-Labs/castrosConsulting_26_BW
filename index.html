@@ -533,7 +533,7 @@
     <section class="section bg-alt-c" id="sobre">
       <div class="container-fluid">
         <div class="row g-5 align-items-center">
-          <div class="col-lg-6" data-aos="fade-up" data-aos-duration="3000">
+          <div class="col-lg-6" data-aos="fade-right">
             <span class="eyebrow" data-i18n="about.sobre-nos">Sobre Nós</span>
             <h2 class="mb-3" style="font-size:clamp(1.9rem,3.6vw,2.6rem);max-width:28ch; text-align: left;"
               data-i18n="about.conheca-a-equipa-que-impulsiona-o">Conheça a
@@ -569,7 +569,7 @@
                 </svg></a>
             </div>
           </div>
-          <div class="col-lg-6" data-aos="fade-left" data-aos-duration="3000">
+          <div class="col-lg-6" data-aos="fade-left" data-aos-delay="150">
             <div class="ph about-img" style="aspect-ratio:1/1"></div>
           </div>
         </div>
@@ -632,7 +632,7 @@
 
     <!-- 03- MARCAS / PARCEIROS -->
     <section class="bg-alt-c py-5">
-      <div class="container d-flex flex-wrap justify-content-between align-items-center gap-4" data-aos="zoom-in" data-aos-delay="200">
+      <div class="container d-flex flex-wrap justify-content-between align-items-center gap-4" data-aos="zoom-in" data-aos-delay="200" data-aos-duration="1200" data-aos-easing="ease-out-back">
         <p class="mb-0 fw-medium" style="max-width:24ch;color:var(--black)"
           data-i18n="partners.marcas-que-escolheram-crescer-com-a">Marcas que escolheram crescer com a
           nossa
@@ -667,7 +667,7 @@
              Phones (< 768px): normal accordion, tap a header to open/close.
              Behaviour: "SERVICES ACCORDION" in the script at the end of the page.
              Each item has an id (servico-...) so links can open it: index.html#servico-espacos -->
-        <div class="tabs-h" data-aos="fade" id="servicesTabs">
+        <div class="tabs-h" data-aos="fade-up" data-aos-duration="1000" id="servicesTabs">
           <!-- 01 Consultoria -->
           <div class="tab-item active" id="servico-consultoria">
             <button type="button" class="tab-strip" id="svc-btn-1" aria-expanded="true" aria-controls="svc-panel-1">
@@ -764,8 +764,8 @@
           <p class="mt-3" data-i18n="benefits.resultados-reais-para-pessoas-e-organizacoes">Resultados reais para
             pessoas e organizações que querem crescer.</p>
         </div>
-        <div class="bento mt-5" data-aos="fade-up">
-          <div class="card-c b-a">
+        <div class="bento mt-5">
+          <div class="card-c b-a" data-aos="fade-left" data-aos-duration="1000">
             <span class="tag" data-i18n="benefits.crescimento">Crescimento</span>
             <h3 data-i18n="benefits.desenvolvimento-profissional">Desenvolvimento profissional</h3>
             <p class="small" data-i18n="benefits.crescer-exige-metodo-pratica-e-as">Crescer exige método, prática e as
@@ -777,7 +777,7 @@
             <!-- PICTURE: change the src to any photo in assets/images/ (use the .webp version, they are light) -->
             <img class="bento-img" src="assets/images/workshop-3.webp" alt="" width="1600" height="1067" loading="lazy" decoding="async">
           </div>
-          <div class="card-c b-b">
+          <div class="card-c b-b" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="150">
             <!-- PICTURE: change the src to any photo in assets/images/ (use the .webp version, they are light) -->
             <img class="bento-img" src="assets/images/entrance.webp" alt="" width="1600" height="1067" loading="lazy" decoding="async">
             <div>
@@ -790,7 +790,7 @@
                 </svg></a>
             </div>
           </div>
-          <div class="card-c b-c">
+          <div class="card-c b-c" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
             <span class="tag" data-i18n="benefits.resultados">Resultados</span>
             <h3 data-i18n="benefits.resultados-que-ficam">Resultados que ficam</h3>
             <p class="small" data-i18n="benefits.mudancas-que-permanecem-muito-depois-de">Mudanças que permanecem muito
@@ -802,7 +802,7 @@
             <!-- PICTURE: change the src to any photo in assets/images/ (use the .webp version, they are light) -->
             <img class="bento-img" src="assets/images/workshop-5.webp" alt="" width="1600" height="1067" loading="lazy" decoding="async">
           </div>
-          <div class="card-c b-1">
+          <div class="card-c b-1" data-aos="fade-down" data-aos-anchor=".b-a" data-aos-duration="900" data-aos-delay="600">
             <div class="icon-box"><svg class="bi">
                 <use xlink:href="#i-box"></use>
               </svg></div>
@@ -814,7 +814,7 @@
                 <use xlink:href="#i-arrow"></use>
               </svg></a>
           </div>
-          <div class="card-c b-2">
+          <div class="card-c b-2" data-aos="fade-down" data-aos-anchor=".b-a" data-aos-duration="900" data-aos-delay="850">
             <div class="icon-box"><svg class="bi">
                 <use xlink:href="#i-mortarboard"></use>
               </svg></div>
@@ -851,7 +851,7 @@
           </div>
         </div>
         <div class="row g-4 mt-3">
-          <div class="col-6 col-lg-3 feature" data-aos="fade-up" data-aos-delay="0">
+          <div class="col-6 col-lg-3 feature" data-aos="zoom-in-up" data-aos-duration="800" data-aos-delay="0" data-aos-easing="ease-out-back">
             <div class="icon-box"><svg class="bi">
                 <use xlink:href="#i-award"></use>
               </svg></div>
@@ -862,7 +862,7 @@
               trabalho no terreno com organizações de diferentes
               setores e dimensões.</p>
           </div>
-          <div class="col-6 col-lg-3 feature" data-aos="fade-up" data-aos-delay="100">
+          <div class="col-6 col-lg-3 feature" data-aos="zoom-in-up" data-aos-duration="800" data-aos-delay="120" data-aos-easing="ease-out-back">
             <div class="icon-box"><svg class="bi">
                 <use xlink:href="#i-shield"></use>
               </svg></div>
@@ -873,7 +873,7 @@
               Rigor, pontualidade e transparência em todas as fases do
               projeto.</p>
           </div>
-          <div class="col-6 col-lg-3 feature" data-aos="fade-up" data-aos-delay="200">
+          <div class="col-6 col-lg-3 feature" data-aos="zoom-in-up" data-aos-duration="800" data-aos-delay="240" data-aos-easing="ease-out-back">
             <div class="icon-box"><svg class="bi">
                 <use xlink:href="#i-people"></use>
               </svg></div>
@@ -884,7 +884,7 @@
               organização é única. O nosso trabalho reflete essa
               singularidade.</p>
           </div>
-          <div class="col-6 col-lg-3 feature" data-aos="fade-up" data-aos-delay="300">
+          <div class="col-6 col-lg-3 feature" data-aos="zoom-in-up" data-aos-duration="800" data-aos-delay="360" data-aos-easing="ease-out-back">
             <div class="icon-box"><svg class="bi">
                 <use xlink:href="#i-hearts"></use>
               </svg></div>
@@ -897,7 +897,7 @@
               pelas pessoas.</p>
           </div>
         </div>
-        <div class="d-flex align-items-center gap-4 mt-4" data-aos="fade-up">
+        <div class="d-flex align-items-center gap-4 mt-4" data-aos="fade-up" data-aos-duration="800">
           <a class="btn btn-outline-c px-4 py-2" href="#contact-form" style="border: cyan solid 2px; color: var(--cyan)"
             data-i18n="why.conectar">Conectar</a>
           <a class="link-arrow" href="#equipa"><span data-i18n="why.equipa">Equipa</span> <svg class="bi">
@@ -951,8 +951,8 @@
     <!-- 09- TESTEMUNHO -->
     <section id="testimonials">
       <h6 class="index" data-aos="fade-up" data-i18n="testimonials.testemunhos">Testemunhos</h6>
-      <div id="testCarousel" class="carousel carousel-dark slide" data-bs-ride="carousel" data-aos="zoom-in"
-        data-aos-delay="100">
+      <div id="testCarousel" class="carousel carousel-dark slide" data-bs-ride="carousel" data-aos="zoom-in" data-aos-duration="1000" data-aos-easing="ease-out-quart"
+      data-aos-delay="150">
         <div class="glow glow-cyan"
           style="width:38rem;height:22rem;top:-4rem;left:50%;transform:translateX(-50%);animation:pulseGlow 5s ease-in-out infinite">
         </div>
@@ -1317,7 +1317,6 @@
           <h5>Legal</h5>
           <a class="d-block mb-2" href="html/privacidade.html" data-i18n="footer.politica-de-privacidade">Política de Privacidade</a>
           <a class="d-block mb-2" href="#" data-i18n="footer.termos-de-servico">Termos de Serviço</a>
-          <a class="d-block mb-2" href="html/privacidade.html#cookies" data-i18n="footer.definicoes-de-cookies">Definições de Cookies</a>
         </div>
       </div>
       <p class="wordmark" data-aos="fade-up" data-aos-offset="0">Castros Consultoria</p>
@@ -1342,9 +1341,10 @@
             data-i18n-attr="aria-label:events.fechar"></button>
         </div>
         <div class="modal-body">
-          <div class="codebox"></div>
           <h2 class="event-modal-title" id="eventModalTitle" data-field="title"></h2>
-          <ul class="event-facts">
+          <ul class="event-facts has-qr">
+            <!-- QR code: sits at the end of this card, centred top to bottom (css/home.css .codebox) -->
+            <li class="codebox" aria-hidden="true"></li>
             <li><i class="bi bi-calendar-event" aria-hidden="true"></i>
               <div><small data-i18n="events.data">Data</small><span data-field="date"></span></div>
             </li>
@@ -1547,55 +1547,7 @@
   <script>
     /* JAVASCRIPT | Navigation, interactions and animations */
     (function () {
-      /* NAVBAR SCROLL BEHAVIOUR */
-      const navbar = document.getElementById("mainNavbar");
-      let lastScrollPosition = window.scrollY;
-      let hideTimer = null;
-
-      function showNavbar() {
-        if (!navbar) return;
-        navbar.classList.remove("navbar-hidden");
-        navbar.classList.add("navbar-hovered");
-      }
-
-      function hideNavbar() {
-        if (!navbar || window.scrollY <= 40) return;
-        navbar.classList.add("navbar-hidden");
-        navbar.classList.remove("navbar-hovered");
-      }
-
-      window.addEventListener("scroll", function () {
-        const currentScrollPosition = window.scrollY;
-
-        if (currentScrollPosition < lastScrollPosition || currentScrollPosition <= 40) {
-          showNavbar();
-        } else if (currentScrollPosition > lastScrollPosition + 8) {
-          clearTimeout(hideTimer);
-          hideTimer = setTimeout(hideNavbar, 150);
-        }
-
-        lastScrollPosition = currentScrollPosition;
-
-        const backTop = document.getElementById("backTop");
-        if (backTop) backTop.classList.toggle("show", currentScrollPosition > 500);
-      }, {
-        passive: true
-      });
-
-      if (navbar) {
-        navbar.addEventListener("mouseenter", showNavbar);
-        navbar.addEventListener("focusin", showNavbar);
-      }
-
-      const backTop = document.getElementById("backTop");
-      if (backTop) {
-        backTop.addEventListener("click", function () {
-          window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-          });
-        });
-      }
+      /* navbar show/hide and back-to-top: js/javascript.js */
 
       /* SERVICES ACCORDION
          Desktop: horizontal, one service always open (clicking the open one does nothing).
@@ -1711,11 +1663,11 @@
     /* AOS INITIALIZATION */
     function startAOS() {
       if (!window.AOS) return;
-      AOS.init({
-        duration: 800,
-        offset: 80,
+      AOS.init({ // phones/tablets (< 992px): quicker, fire sooner, play once (see css: short durations there)
+        duration: window.innerWidth < 992 ? 500 : 800,
+        offset: window.innerWidth < 992 ? 30 : 80,
         easing: "ease-out-cubic",
-        once: false, // animate on the way in, don't replay on every scroll
+        once: window.innerWidth < 992, // desktop: replays when a block comes back into view
         disable: function () { // respect "reduce motion"
           return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
         }
