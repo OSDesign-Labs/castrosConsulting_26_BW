@@ -254,8 +254,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         updateProgress(step);
 
-        if (!shouldFocus) return;   // <-- no focus on initial load
-
         const activeStep = document.querySelector(`[data-form-step="${step}"]`);
         const firstField = activeStep?.querySelector("input, select, textarea");
 

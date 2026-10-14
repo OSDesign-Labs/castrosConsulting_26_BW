@@ -1,8 +1,9 @@
 /* INTERNAL TYPEFACES */
 /* ---------- Poppins ---------- */
+/* Latin-only web fonts (~8 KB each) made from assets/Typeface/Poppins/Poppins-web.zip */
 @font-face {
   font-family: "Poppins";
-  src: url("../fonts/Poppins/web/Poppins-Thin.woff2") format("woff2");
+  src: url("../assets/Typeface/Poppins/web/Poppins-Thin.woff2") format("woff2");
   font-weight: 100;
   font-style: normal;
   font-display: swap;
@@ -10,7 +11,7 @@
  
 @font-face {
   font-family: "Poppins";
-  src: url("../fonts/Poppins/web/Poppins-ExtraLight.woff2") format("woff2");
+  src: url("../assets/Typeface/Poppins/web/Poppins-ExtraLight.woff2") format("woff2");
   font-weight: 200;
   font-style: normal;
   font-display: swap;
@@ -18,7 +19,7 @@
  
 @font-face {
   font-family: "Poppins";
-  src: url("../fonts/Poppins/web/Poppins-Light.woff2") format("woff2");
+  src: url("../assets/Typeface/Poppins/web/Poppins-Light.woff2") format("woff2");
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -26,7 +27,7 @@
  
 @font-face {
   font-family: "Poppins";
-  src: url("../fonts/Poppins/web/Poppins-Regular.woff2") format("woff2");
+  src: url("../assets/Typeface/Poppins/web/Poppins-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -34,7 +35,7 @@
  
 @font-face {
   font-family: "Poppins";
-  src: url("../fonts/Poppins/web/Poppins-Medium.woff2") format("woff2");
+  src: url("../assets/Typeface/Poppins/web/Poppins-Medium.woff2") format("woff2");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -42,7 +43,7 @@
  
 @font-face {
   font-family: "Poppins";
-  src: url("../fonts/Poppins/web/Poppins-SemiBold.woff2") format("woff2");
+  src: url("../assets/Typeface/Poppins/web/Poppins-SemiBold.woff2") format("woff2");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -50,7 +51,7 @@
  
 @font-face {
   font-family: "Poppins";
-  src: url("../fonts/Poppins/web/Poppins-Bold.woff2") format("woff2");
+  src: url("../assets/Typeface/Poppins/web/Poppins-Bold.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -58,7 +59,7 @@
  
 @font-face {
   font-family: "Poppins";
-  src: url("../fonts/Poppins/web/Poppins-ExtraBold.woff2") format("woff2");
+  src: url("../assets/Typeface/Poppins/web/Poppins-ExtraBold.woff2") format("woff2");
   font-weight: 800;
   font-style: normal;
   font-display: swap;
@@ -66,86 +67,21 @@
  
 @font-face {
   font-family: "Poppins";
-  src: url("../fonts/Poppins/web/Poppins-Black.woff2") format("woff2");
+  src: url("../assets/Typeface/Poppins/web/Poppins-Black.woff2") format("woff2");
   font-weight: 900;
   font-style: normal;
   font-display: swap;
 }
  
 /* ---------- Montserrat ---------- */
-/* Assume a mesma estrutura: Montserrat/web/*.woff2 */
+/* One variable file covers every weight (100-900); the loader already preloads it. */
 @font-face {
   font-family: "Montserrat";
-  src: url("../fonts/Montserrat/web/Montserrat-Thin.woff2") format("woff2");
-  font-weight: 100;
+  src: url("../assets/Typeface/Montserrat/web/Montserrat-latin-var.woff2") format("woff2");
+  font-weight: 100 900;
   font-style: normal;
   font-display: swap;
 }
- 
-@font-face {
-  font-family: "Montserrat";
-  src: url("../fonts/Montserrat/web/Montserrat-ExtraLight.woff2") format("woff2");
-  font-weight: 200;
-  font-style: normal;
-  font-display: swap;
-}
- 
-@font-face {
-  font-family: "Montserrat";
-  src: url("../fonts/Montserrat/web/Montserrat-Light.woff2") format("woff2");
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
- 
-@font-face {
-  font-family: "Montserrat";
-  src: url("../fonts/Montserrat/web/Montserrat-Regular.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
- 
-@font-face {
-  font-family: "Montserrat";
-  src: url("../fonts/Montserrat/web/Montserrat-Medium.woff2") format("woff2");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
- 
-@font-face {
-  font-family: "Montserrat";
-  src: url("../fonts/Montserrat/web/Montserrat-SemiBold.woff2") format("woff2");
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
- 
-@font-face {
-  font-family: "Montserrat";
-  src: url("../fonts/Montserrat/web/Montserrat-Bold.woff2") format("woff2");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
- 
-@font-face {
-  font-family: "Montserrat";
-  src: url("../fonts/Montserrat/web/Montserrat-ExtraBold.woff2") format("woff2");
-  font-weight: 800;
-  font-style: normal;
-  font-display: swap;
-}
- 
-@font-face {
-  font-family: "Montserrat";
-  src: url("../fonts/Montserrat/web/Montserrat-Black.woff2") format("woff2");
-  font-weight: 900;
-  font-style: normal;
-  font-display: swap;
-}
-
 
 :root {
     --white: #ffffff;
