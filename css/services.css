@@ -2929,13 +2929,15 @@ main>.hero #overlayGradient>[class*="col-lg-6"] {
        11. TESTEMUNHOS | Final Section
        ====================================================== */
 
+/* identical to the block in css/home.css: every page shows the same testimonials */
 #testimonials {
     height: 60vh;
-    margin: 10rem 0 clamp(4rem, 8vw, 7rem);   /* bottom: room before the next section */
-    overflow: clip;
+    margin: 10rem 0 clamp(4rem, 13vw, 13rem);
+    /* bottom: room before the contact section */
+    overflow-x: clip;
 
     h6.index {
-        font-family: "Poppins";
+        font-family: "Manrope";
         text-align: center !important;
         font-size: 0.8rem;
         font-weight: 700;
@@ -2946,25 +2948,10 @@ main>.hero #overlayGradient>[class*="col-lg-6"] {
         display: block;
 
     }
-    
-    h3 {
-        color: rgb(0, 0, 0);
-        font-family: "Montserrat", serif;
-        font-weight: 500;
-        letter-spacing: -0.269425px;
-    }
 
-    h6 {
-        color: var(--ink);
-        font-family: "Poppins";
-    }
-
-    p {
-        line-height: 21px;
-    }
     #testCarousel {
         height: 100%;
-            
+
         .carousel-indicators {
             list-style: none;
         }
@@ -2980,12 +2967,13 @@ main>.hero #overlayGradient>[class*="col-lg-6"] {
 
             .carousel-item {
                 height: 100%;
-                margin-top: -3rem;
+                margin-top: -6rem;
 
                 .carousel-caption {
                     color: black;
+
                     h3.comment {
-                        font-family: "Poppins";
+                        font-family: "Manrope";
                         margin-bottom: 0;
                         padding-bottom: 0;
                         filter: brightness(1) !important;
@@ -3010,7 +2998,7 @@ main>.hero #overlayGradient>[class*="col-lg-6"] {
 
                     p.local {
                         font-size: 14px;
-                        font-family: "Poppins";
+                        font-family: "Manrope";
                     }
                 }
             }
@@ -3842,4 +3830,16 @@ a.topbar-item:hover {
     .modal-body .benefit-blob {
         animation: none;
     }
+}
+
+/* testimonials: the service pages colour every heading white (dark theme);
+   on the white testimonial panel they must be black, exactly as on the home page */
+.subpage main #testimonials .carousel-caption h3,
+.subpage main #testimonials .carousel-caption h6,
+.subpage main #testimonials .carousel-caption p {
+    color: #000000;
+}
+
+.subpage main #testimonials .carousel-caption p {
+    line-height: 21px;
 }

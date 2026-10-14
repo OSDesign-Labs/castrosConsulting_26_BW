@@ -98,6 +98,20 @@ main {
         padding-bottom: 6rem;
     }
 
+    /* the testimonials panel is sized as a share of the window (height: 100% of a
+       60vh section); in a grid that "100%" has nothing to measure against and the
+       panel collapsed to nothing. Give it its height directly and centre it. */
+    main > section#testimonials {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    main > section#testimonials #testCarousel {
+        height: 60vh;
+        flex: none;
+    }
+
     /* the cards right under a page's header have "pt-0" (no top space) so they hug
        the header; as a full screen of their own they need the same space as the rest */
     main > section.pt-0:not(:first-child) {
