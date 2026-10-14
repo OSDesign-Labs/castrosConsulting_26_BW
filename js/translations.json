@@ -1183,26 +1183,6 @@
       "Managing nerves before and during",
       "Holding attention from start to finish"
     ],
-    "events.item.atendimento-ao-cliente.title": "Customer Service Excellence",
-    "events.item.atendimento-ao-cliente.category": "Customer Service",
-    "events.item.atendimento-ao-cliente.format": "In-person workshop",
-    "events.item.atendimento-ao-cliente.summary": "Practices that turn every customer contact into an experience that builds trust.",
-    "events.item.atendimento-ao-cliente.description": "A workshop for front-line teams: active listening, complaint handling and service standards that turn satisfied customers into loyal ones.",
-    "events.item.atendimento-ao-cliente.highlights": [
-      "Listening before responding",
-      "Turning a complaint into an opportunity",
-      "Setting service standards for the whole team"
-    ],
-    "events.item.etica-e-lideranca.title": "Ethics and Organisational Leadership",
-    "events.item.etica-e-lideranca.category": "Leadership",
-    "events.item.etica-e-lideranca.format": "Conference",
-    "events.item.etica-e-lideranca.summary": "Values, integrity and the role of leadership in building strong organisations.",
-    "events.item.etica-e-lideranca.description": "An open conversation about values, integrity and difficult decisions, and about how leadership sets the example in building strong, trustworthy organisations.",
-    "events.item.etica-e-lideranca.highlights": [
-      "Turning values into everyday behaviour",
-      "Deciding when the right thing and the easy thing differ",
-      "Building a culture of trust"
-    ],
     "events.item.course-oratoria-comunicacao-eficaz.title": "Public Speaking and Effective Communication",
     "events.item.course-oratoria-comunicacao-eficaz.summary": "An intensive day for leaders who want stronger, more autonomous teams.",
     "events.item.course-oratoria-comunicacao-eficaz.description": "An intensive, hands-on day for leaders who want to build stronger, more autonomous and committed teams. We work through real, everyday leadership situations, with tools you can apply the very next week.",
@@ -1349,6 +1329,30 @@
     "espacos.modal-spaces.sala-de-formacao-com-participantes": "Training room with participants",
     "espacos.modal-spaces.rececao-do-espaco-castros": "Reception at the Castros space",
     "espacos.modal-spaces.entrada-do-espaco-com-os-servicos": "Entrance with the Castros services banner",
-    "formacoes.modal-training.formacao-em-curso-na-sala-da-castros": "Training session under way in the Castros room"
+    "formacoes.modal-training.formacao-em-curso-na-sala-da-castros": "Training session under way in the Castros room",
+    "events.item.curso-atendimento-ao-cliente-2025.title": "Course: Customer Service",
+    "events.item.curso-atendimento-ao-cliente-2025.category": "Customer Service",
+    "events.item.curso-atendimento-ao-cliente-2025.city": "Maputo",
+    "events.item.curso-atendimento-ao-cliente-2025.format": "In person · Certificate + snack",
+    "events.item.curso-atendimento-ao-cliente-2025.summary": "Two days to raise your service standard, from the first impression to handling complaints.",
+    "events.item.curso-atendimento-ao-cliente-2025.description": "A two-day course (27 and 28 November 2025) for entrepreneurs, managers, shops and front-line and back-office teams who want to improve how they serve customers. Venue: NuLimit, Av. Tomás Nduda no. 1050 R/C, Polana, Maputo. Fee: 2,500 MT, certificate and snack included.",
+    "events.item.curso-atendimento-ao-cliente-2025.highlights": [
+      "The impact of the first impression",
+      "Professional behaviour and brand image",
+      "Practical communication and empathy techniques",
+      "The customer as a partner, not just a consumer",
+      "Handling complaints and dissatisfied customers"
+    ],
+    "events.item.masterclass-codigos-da-lideranca-2025.title": "Master Class: The Codes of Leadership",
+    "events.item.masterclass-codigos-da-lideranca-2025.category": "Leadership",
+    "events.item.masterclass-codigos-da-lideranca-2025.city": "Hotel Afrin, Maputo",
+    "events.item.masterclass-codigos-da-lideranca-2025.format": "In person · Open to exhibitors",
+    "events.item.masterclass-codigos-da-lideranca-2025.summary": "A gathering of leaders, entrepreneurs and leading professionals, with space for exhibitors.",
+    "events.item.masterclass-codigos-da-lideranca-2025.description": "If you want to give your brand or business visibility and connect with leaders, entrepreneurs and leading professionals, this is your opportunity. The “Codes of Leadership” Master Class brings together visionary minds, transformative energy and real networking opportunities. Exhibitor participation: 1,500 MT. Ticket: 1,000 MT (e-Mola or M-Pesa).",
+    "events.item.masterclass-codigos-da-lideranca-2025.highlights": [
+      "Give your brand or business visibility",
+      "Network with leaders, entrepreneurs and leading professionals",
+      "Show your products and services in a high-impact setting"
+    ]
   }
 }

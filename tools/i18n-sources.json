@@ -1,14 +1,4 @@
 {
-  "events.item.atendimento-ao-cliente.category": "Atendimento",
-  "events.item.atendimento-ao-cliente.description": "Um workshop para equipas de linha da frente: escuta ativa, gestão de reclamações e padrões de serviço que transformam clientes satisfeitos em clientes fiéis.",
-  "events.item.atendimento-ao-cliente.format": "Workshop presencial",
-  "events.item.atendimento-ao-cliente.highlights": [
-    "Escutar antes de responder",
-    "Transformar uma reclamação numa oportunidade",
-    "Definir padrões de serviço para toda a equipa"
-  ],
-  "events.item.atendimento-ao-cliente.summary": "Práticas para transformar cada contacto com o cliente numa experiência que gera confiança.",
-  "events.item.atendimento-ao-cliente.title": "Excelência no Atendimento ao Cliente",
   "events.item.course-oratoria-comunicacao-eficaz.category": "Liderança",
   "events.item.course-oratoria-comunicacao-eficaz.description": "Um dia intensivo e prático para líderes que querem construir equipas mais fortes, autónomas e comprometidas. Trabalhamos situações reais do dia a dia da liderança, com ferramentas que pode aplicar logo na semana seguinte.",
   "events.item.course-oratoria-comunicacao-eficaz.format": "Presencial",
@@ -19,16 +9,6 @@
   ],
   "events.item.course-oratoria-comunicacao-eficaz.summary": "Um dia intensivo para líderes que querem equipas mais fortes e autónomas.",
   "events.item.course-oratoria-comunicacao-eficaz.title": "Oratoria e Comunicação Eficaz",
-  "events.item.etica-e-lideranca.category": "Liderança",
-  "events.item.etica-e-lideranca.description": "Uma conversa aberta sobre valores, integridade e decisões difíceis, e sobre como a liderança dá o exemplo na construção de organizações sólidas e de confiança.",
-  "events.item.etica-e-lideranca.format": "Conferência",
-  "events.item.etica-e-lideranca.highlights": [
-    "Traduzir valores em comportamentos do dia a dia",
-    "Decidir quando o certo e o fácil não coincidem",
-    "Construir uma cultura de confiança"
-  ],
-  "events.item.etica-e-lideranca.summary": "Valores, integridade e o papel da liderança na construção de organizações sólidas.",
-  "events.item.etica-e-lideranca.title": "Ética e Liderança Organizacional",
   "events.item.oratoria-comunicacao-impacto.category": "Comunicação",
   "events.item.oratoria-comunicacao-impacto.description": "Para quem precisa de falar em público com segurança: preparar a mensagem, controlar o nervosismo, usar a voz e o corpo a seu favor e terminar com um apelo que leva as pessoas a agir.",
   "events.item.oratoria-comunicacao-impacto.format": "Presencial · Vagas limitadas",
@@ -58,5 +38,29 @@
     "Adaptar a comunicação a cada público"
   ],
   "events.item.workshop-elas.summary": "Como falar de forma clara e mobilizar pessoas para a ação.",
-  "events.item.workshop-elas.title": "Parcerias Estrategicas de Vida e Negocio"
+  "events.item.workshop-elas.title": "Parcerias Estrategicas de Vida e Negocio",
+  "events.item.curso-atendimento-ao-cliente-2025.title": "Curso: Atendimento ao Cliente",
+  "events.item.curso-atendimento-ao-cliente-2025.category": "Atendimento",
+  "events.item.curso-atendimento-ao-cliente-2025.city": "Maputo",
+  "events.item.curso-atendimento-ao-cliente-2025.format": "Presencial · Certificado + lanche",
+  "events.item.curso-atendimento-ao-cliente-2025.summary": "Dois dias para elevar o padrão de atendimento, da primeira impressão à gestão de reclamações.",
+  "events.item.curso-atendimento-ao-cliente-2025.description": "Curso de dois dias (27 e 28 de novembro de 2025) para empreendedores, gestores, estabelecimentos comerciais e equipas de front line e back office que querem melhorar a sua performance de atendimento. Local: NuLimit, Av. Tomás Nduda n.º 1050 R/C, Polana, Maputo. Valor: 2.500 MT, com certificado e lanche incluídos.",
+  "events.item.curso-atendimento-ao-cliente-2025.highlights": [
+    "O impacto da primeira impressão",
+    "Comportamento profissional e imagem da marca",
+    "Técnicas práticas de comunicação e empatia",
+    "O cliente como parceiro, não apenas como consumidor",
+    "Gestão de reclamações e de clientes insatisfeitos"
+  ],
+  "events.item.masterclass-codigos-da-lideranca-2025.title": "Master Class: Códigos da Liderança",
+  "events.item.masterclass-codigos-da-lideranca-2025.category": "Liderança",
+  "events.item.masterclass-codigos-da-lideranca-2025.city": "Hotel Afrin, Maputo",
+  "events.item.masterclass-codigos-da-lideranca-2025.format": "Presencial · Aberto a expositores",
+  "events.item.masterclass-codigos-da-lideranca-2025.summary": "Um encontro de líderes, empreendedores e profissionais de referência, com espaço para expositores.",
+  "events.item.masterclass-codigos-da-lideranca-2025.description": "Se pretende dar visibilidade à sua marca ou negócio e conectar-se com líderes, empreendedores e profissionais de referência, esta é a sua oportunidade. A Master Class “Códigos da Liderança” reúne mentes visionárias, energia transformadora e oportunidades reais de networking. Participação como expositor: 1.500 MT. Bilhete: 1.000 MT (e-Mola ou M-Pesa).",
+  "events.item.masterclass-codigos-da-lideranca-2025.highlights": [
+    "Dar visibilidade à sua marca ou negócio",
+    "Networking com líderes, empreendedores e profissionais de referência",
+    "Mostrar os seus produtos e serviços num ambiente de alto impacto"
+  ]
 }

@@ -104,43 +104,50 @@
             ]
         },
         {
-            // EDIT: provisional event (content and date to be confirmed)
-            id: "atendimento-ao-cliente",
+            // real course (flyer: assets/images/flyers/curso-atendimento-2025.webp)
+            id: "curso-atendimento-ao-cliente-2025",
             featured: false,
-            title: "Excelência no Atendimento ao Cliente",
+            title: "Curso: Atendimento ao Cliente",
             category: "Atendimento",
-            date: null,
-            time: null,
+            date: "2025-11-27",                       // 27 e 28 de novembro de 2025 (quinta e sexta)
+            time: "17:00 – 19:00",
             city: "Maputo",
-            format: "Workshop presencial",
-            image: "assets/events/atendimento-ao-cliente.webp",
-            summary: "Práticas para transformar cada contacto com o cliente numa experiência que gera confiança.",
-            description: "Um workshop para equipas de linha da frente: escuta ativa, gestão de reclamações e " +
-                "padrões de serviço que transformam clientes satisfeitos em clientes fiéis.",
+            format: "Presencial · Certificado + lanche",
+            image: "assets/images/flyers/curso-atendimento-2025.webp",
+            summary: "Dois dias para elevar o padrão de atendimento, da primeira impressão à gestão de reclamações.",
+            description: "Curso de dois dias (27 e 28 de novembro de 2025) para empreendedores, gestores, " +
+                "estabelecimentos comerciais e equipas de front line e back office que querem melhorar a " +
+                "sua performance de atendimento. Local: NuLimit, Av. Tomás Nduda n.º 1050 R/C, Polana, " +
+                "Maputo. Valor: 2.500 MT, com certificado e lanche incluídos.",
             highlights: [
-                "Escutar antes de responder",
-                "Transformar uma reclamação numa oportunidade",
-                "Definir padrões de serviço para toda a equipa"
+                "O impacto da primeira impressão",
+                "Comportamento profissional e imagem da marca",
+                "Técnicas práticas de comunicação e empatia",
+                "O cliente como parceiro, não apenas como consumidor",
+                "Gestão de reclamações e de clientes insatisfeitos"
             ]
         },
         {
-            // EDIT: provisional event (content and date to be confirmed)
-            id: "etica-e-lideranca",
+            // real event (flyer: assets/images/flyers/masterclass-codigos-lideranca-2025.webp)
+            id: "masterclass-codigos-da-lideranca-2025",
             featured: false,
-            title: "Ética e Liderança Organizacional",
+            title: "Master Class: Códigos da Liderança",
             category: "Liderança",
-            date: null,
-            time: null,
-            city: "Maputo",
-            format: "Conferência",
-            image: "assets/events/etica-e-lideranca.webp",
-            summary: "Valores, integridade e o papel da liderança na construção de organizações sólidas.",
-            description: "Uma conversa aberta sobre valores, integridade e decisões difíceis, e sobre como " +
-                "a liderança dá o exemplo na construção de organizações sólidas e de confiança.",
+            date: "2025-11-22",
+            time: "09:00 – 13:00",
+            city: "Hotel Afrin, Maputo",
+            format: "Presencial · Aberto a expositores",
+            image: "assets/images/flyers/masterclass-codigos-lideranca-2025.webp",
+            summary: "Um encontro de líderes, empreendedores e profissionais de referência, com espaço para expositores.",
+            description: "Se pretende dar visibilidade à sua marca ou negócio e conectar-se com líderes, " +
+                "empreendedores e profissionais de referência, esta é a sua oportunidade. A Master Class " +
+                "\u201cCódigos da Liderança\u201d reúne mentes visionárias, energia transformadora e oportunidades " +
+                "reais de networking. Participação como expositor: 1.500 MT. Bilhete: 1.000 MT " +
+                "(e-Mola ou M-Pesa).",
             highlights: [
-                "Traduzir valores em comportamentos do dia a dia",
-                "Decidir quando o certo e o fácil não coincidem",
-                "Construir uma cultura de confiança"
+                "Dar visibilidade à sua marca ou negócio",
+                "Networking com líderes, empreendedores e profissionais de referência",
+                "Mostrar os seus produtos e serviços num ambiente de alto impacto"
             ]
         }
     ];
