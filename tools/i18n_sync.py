@@ -50,7 +50,7 @@ CONFIG = ROOT / "tools" / "i18n.config.json"
 
 VOID = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "param", "source", "track", "wbr"}
 SKIP_TAGS = {"script", "style", "svg", "noscript", "template", "head", "code", "pre"}
-INLINE_MARKUP = {"br", "strong", "em", "b", "u", "small", "mark", "sup", "sub"}
+INLINE_MARKUP = {"br", "strong", "em", "b", "u", "small", "mark", "sup", "sub", "a", "code"}   # a sentence with a link stays one piece
 ATTRS = ["placeholder", "aria-label", "title", "alt", "aria-roledescription"]
 
 

@@ -87,6 +87,16 @@
         "en": "Spaces and Podcasts in Maputo · Castros Consultoria"
       },
       "description": "Espaço em Maputo para formações, reuniões, workshops e eventos, e para gravar podcasts. Com equipamento e o apoio da nossa equipa, do início ao fim."
+    },
+    {
+      "file": "html/privacidade.html",
+      "url_path": "/html/privacidade.html",
+      "key": "privacidade",
+      "title": {
+        "pt": "Política de Privacidade · Castros Consultoria",
+        "en": "Privacy Policy · Castros Consultoria"
+      },
+      "description": "Que dados pessoais o site da Castros Consultoria recolhe, para quê, com que serviços são partilhados e como pode pedir para os ver, corrigir ou apagar."
     }
   ]
 }
