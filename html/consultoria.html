@@ -703,10 +703,9 @@
             <h5>Legal</h5>
             <a class="d-block mb-2" href="privacidade.html" data-i18n="footer.politica-de-privacidade">Política de Privacidade</a>
             <a class="d-block mb-2" href="#" data-i18n="footer.termos-de-servico">Termos de Serviço</a>
-            <a class="d-block mb-2" href="privacidade.html#cookies" data-i18n="footer.definicoes-de-cookies">Definições de Cookies</a>
           </div>
         </div>
-        <p class="wordmark" data-aos="zoom-in" data-aos-offset="0">Castros Consultoria</p>
+        <p class="wordmark" data-aos="fade-up" data-aos-offset="0">Castros Consultoria</p>
         <div class="d-flex flex-wrap justify-content-between gap-2 pt-3 foot-bottom">
           <span data-i18n="footer.2026-castros-consultoria-todos-os-direitos">© 2026 Castros Consultoria. Todos os direitos reservados.</span>
         </div>
@@ -851,56 +850,8 @@
         <script>
         /* JAVASCRIPT | Navigation, interactions and animations */
         (function () {
-            /* NAVBAR SCROLL BEHAVIOUR */
-            const navbar = document.getElementById("mainNavbar");
-            let lastScrollPosition = window.scrollY;
-            let hideTimer = null;
-            
-            function showNavbar() {
-              if (!navbar) return;
-              navbar.classList.remove("navbar-hidden");
-              navbar.classList.add("navbar-hovered");
-            }
-        
-            function hideNavbar() {
-              if (!navbar || window.scrollY <= 40) return;
-              navbar.classList.add("navbar-hidden");
-              navbar.classList.remove("navbar-hovered");
-            }
-        
-            window.addEventListener("scroll", function () {
-              const currentScrollPosition = window.scrollY;
-            
-              if (currentScrollPosition < lastScrollPosition || currentScrollPosition <= 40) {
-                showNavbar();
-              } else if (currentScrollPosition > lastScrollPosition + 8) {
-                clearTimeout(hideTimer);
-                hideTimer = setTimeout(hideNavbar, 150);
-              }
-            
-              lastScrollPosition = currentScrollPosition;
-            
-              const backTop = document.getElementById("backTop");
-              if (backTop) backTop.classList.toggle("show", currentScrollPosition > 500);
-            }, {
-              passive: true
-            });
-        
-            if (navbar) {
-              navbar.addEventListener("mouseenter", showNavbar);
-              navbar.addEventListener("focusin", showNavbar);
-            }
-        
-            const backTop = document.getElementById("backTop");
-            if (backTop) {
-              backTop.addEventListener("click", function () {
-                window.scrollTo({
-                  top: 0,
-                  behavior: "smooth"
-                });
-              });
-            }
-        
+            /* navbar show/hide and back-to-top: js/javascript.js */
+
             /* SERVICES ACCORDION */
             const tabsWrap = document.getElementById("servicesTabs");
             if (tabsWrap) {
@@ -975,11 +926,11 @@
     <script>
         function startAOS() {
             if (!window.AOS) return;
-            AOS.init({                                        // same settings as index.html
-                duration: 800,
-                offset: 80,
+            AOS.init({ // phones/tablets (< 992px): quicker, fire sooner, play once (see css: short durations there)
+                duration: window.innerWidth < 992 ? 500 : 800,
+                offset: window.innerWidth < 992 ? 30 : 80,
                 easing: "ease-out-cubic",
-                once: false,                                  // replay each time a block comes back into view (short, gentle moves: css/motion.css)
+                once: window.innerWidth < 992, // desktop: replays when a block comes back into view
                 disable: function () {                        // respect "reduce motion"
                     return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
                 }

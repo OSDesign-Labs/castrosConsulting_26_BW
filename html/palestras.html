@@ -643,10 +643,9 @@
             <h5>Legal</h5>
             <a class="d-block mb-2" href="privacidade.html" data-i18n="footer.politica-de-privacidade">Política de Privacidade</a>
             <a class="d-block mb-2" href="#" data-i18n="footer.termos-de-servico">Termos de Serviço</a>
-            <a class="d-block mb-2" href="privacidade.html#cookies" data-i18n="footer.definicoes-de-cookies">Definições de Cookies</a>
           </div>
         </div>
-        <p class="wordmark" data-aos="zoom-in" data-aos-offset="0">Castros Consultoria</p>
+        <p class="wordmark" data-aos="fade-up" data-aos-offset="0">Castros Consultoria</p>
         <div class="d-flex flex-wrap justify-content-between gap-2 pt-3 foot-bottom">
           <span data-i18n="footer.2026-castros-consultoria-todos-os-direitos">© 2026 Castros Consultoria. Todos os direitos reservados.</span>
         </div>
@@ -693,7 +692,10 @@
                         </div>
 
                         <!-- RIGHT: benefícios + próximas palestras -->
-                        <div class="col-lg-6">
+                        <div class="col-lg-6 benefits-col has-modal-pattern">
+                            <!-- decoration: soft blob (desktop) + pattern.css patch behind Benefícios -->
+                            <span class="benefit-blob" aria-hidden="true"></span>
+                            <span class="modal-pattern modal-pattern--tr" aria-hidden="true"><span class="pattern-dots-md"></span></span>
                             <h4 class="mb-3" data-i18n="palestras.modal-talks.beneficios">Benefícios</h4>
                             <div class="benefit-row">
                                 <div class="benefit-item">
@@ -755,14 +757,18 @@
                     </div>
 
                     <!-- BASTIDORES -->
-                    <div class="mt-5">
+                    <div class="mt-5 has-modal-pattern">
+                        <span class="modal-pattern modal-pattern--tl" aria-hidden="true"><span class="pattern-diagonal-lines-sm"></span></span>
                         <h4 class="mb-3" data-i18n="palestras.modal-talks.bastidores">Bastidores</h4>
                         <div class="modal-gallery">
-                            <div class="mg-a"><img src="../assets/events/oratoria-comunicacao-impacto.webp" alt="Plateia numa palestra em auditório, com a apresentação no ecrã" loading="lazy" data-i18n-attr="alt:palestras.modal-talks.plateia-numa-palestra-em-auditorio-com"></div>
+                            <div class="mg-a"><img src="../assets/images/workshop-6.webp" alt="Oradora a conduzir uma palestra" loading="lazy"
+                                    data-i18n-attr="alt:palestras.modal-talks.oradora-a-conduzir-uma-palestra"></div>
                             <div class="mg-b"><img src="../assets/hero/formacao-poster.webp" alt="Participantes a aplaudir no fim de uma palestra" loading="lazy" data-i18n-attr="alt:palestras.modal-talks.participantes-a-aplaudir-no-fim-de"></div>
-                            <div class="mg-c"><img src="../assets/events/comunicacao-com-impacto.webp" alt="Oradora a falar em palco perante a plateia" loading="lazy" data-i18n-attr="alt:palestras.modal-talks.oradora-a-falar-em-palco-perante"></div>
+                            <div class="mg-c"><img src="../assets/images/workshop-4.webp" alt="Público durante uma palestra" loading="lazy"
+                                    data-i18n-attr="alt:palestras.modal-talks.publico-durante-uma-palestra"></div>
                             <div class="mg-d"><img src="../assets/hero/eventos-poster.webp" alt="Participantes sentados numa sala de conferências" loading="lazy" data-i18n-attr="alt:palestras.modal-talks.participantes-sentados-numa-sala-de-conferencias"></div>
-                            <div class="mg-e"><img src="../assets/services/espacos.webp" alt="Cadeiras alinhadas numa sala preparada para uma palestra" loading="lazy" data-i18n-attr="alt:palestras.modal-talks.cadeiras-alinhadas-numa-sala-preparada-para"></div>
+                            <div class="mg-e"><img src="../assets/images/workshop-1.webp" alt="Participantes a ouvir a palestra" loading="lazy"
+                                    data-i18n-attr="alt:palestras.modal-talks.participantes-a-ouvir-a-palestra"></div>
                             <div class="mg-f"><img src="../assets/events/etica-e-lideranca.webp" alt="Aperto de mão no fim de uma sessão" loading="lazy" data-i18n-attr="alt:palestras.modal-talks.aperto-de-mao-no-fim-de"></div>
                         </div>
                     </div>
@@ -787,16 +793,17 @@
                 <div class="modal-body">
                     <!-- MEDIA FEATURE: 1 square + 2 stacked wide -->
                     <div class="media-trio mb-5">
-                        <div class="mt-a"><img src="../assets/hero/inicio-3.webp"
-                                alt="Participantes a celebrar o fim de um exercício em equipa" loading="lazy" data-i18n-attr="alt:palestras.modal-workshops.participantes-a-celebrar-o-fim-de"></div>
+                        <div class="mt-a"><img src="../assets/images/workshop-3.webp" alt="Workshop em curso" loading="lazy"
+                                    data-i18n-attr="alt:palestras.modal-workshops.workshop-em-curso"></div>
                         <div class="mt-b"><img src="../assets/morepeople.webp"
                                 alt="Equipa a trabalhar à mesa com portáteis durante um workshop" loading="lazy" data-i18n-attr="alt:palestras.modal-workshops.equipa-a-trabalhar-a-mesa-com"></div>
-                        <div class="mt-c"><img src="../assets/events/atendimento-ao-cliente.webp"
-                                alt="Três profissionais numa sessão prática, a rever notas num tablet" loading="lazy" data-i18n-attr="alt:palestras.modal-workshops.tres-profissionais-numa-sessao-pratica-a"></div>
+                        <div class="mt-c"><img src="../assets/images/workshop-5.webp" alt="Participantes num workshop" loading="lazy"
+                                    data-i18n-attr="alt:palestras.modal-workshops.participantes-num-workshop"></div>
                     </div>
 
                     <!-- 3 COLUMNS -->
-                    <div class="service-columns row g-4 mb-5">
+                    <div class="service-columns row g-4 mb-5 has-modal-pattern">
+                        <span class="modal-pattern modal-pattern--tr" aria-hidden="true"><span class="pattern-cross-dots-md"></span></span>
                         <div class="col-md-4">
                             <h4 data-i18n="palestras.modal-workshops.abertos">Abertos</h4>
                             <p class="small text-secondary" data-i18n="palestras.modal-workshops.workshops-com-inscricao-individual-no-nosso">Workshops com inscrição individual, no nosso espaço em Maputo,
@@ -821,7 +828,8 @@
                     </div>
 
                     <!-- PRÓXIMO WORKSHOP -->
-                    <div class="event-banner mb-5" id="eventoWorkshop">
+                    <div class="event-banner has-modal-pattern mb-5" id="eventoWorkshop">
+                        <span class="modal-pattern modal-pattern--br modal-pattern--on-dark" aria-hidden="true"><span class="pattern-grid-md"></span></span>
                         <div>
                             <span class="eyebrow" data-i18n="palestras.modal-workshops.proximo-workshop">Próximo Workshop</span>
                             <h4 class="mb-1" data-i18n="palestras.modal-workshops.excelencia-no-atendimento-ao-cliente">Excelência no Atendimento ao Cliente</h4>
@@ -838,12 +846,15 @@
                     </div>
 
                     <!-- BASTIDORES -->
-                    <div>
+                    <div class="has-modal-pattern">
+                        <span class="modal-pattern modal-pattern--tl" aria-hidden="true"><span class="pattern-dots-md"></span></span>
                         <h4 class="mb-3" data-i18n="palestras.modal-workshops.bastidores">Bastidores</h4>
                         <div class="modal-gallery">
-                            <div class="mg-a"><img src="../assets/hero/inicio-2.webp" alt="Facilitador a orientar um grupo sentado em círculo" loading="lazy" data-i18n-attr="alt:palestras.modal-workshops.facilitador-a-orientar-um-grupo-sentado"></div>
+                            <div class="mg-a"><img src="../assets/images/ora.webp" alt="Elizabeth Castro a conduzir um workshop" loading="lazy"
+                                    data-i18n-attr="alt:palestras.modal-workshops.elizabeth-castro-a-conduzir-um-workshop"></div>
                             <div class="mg-b"><img src="../assets/services/formacoes-treinamentos.webp" alt="Formador a acompanhar um participante num exercício no tablet" loading="lazy" data-i18n-attr="alt:palestras.modal-workshops.formador-a-acompanhar-um-participante-num"></div>
-                            <div class="mg-c"><img src="../assets/hero/inicio-1.webp" alt="Dois participantes a trabalhar juntos num portátil" loading="lazy" data-i18n-attr="alt:palestras.modal-workshops.dois-participantes-a-trabalhar-juntos-num"></div>
+                            <div class="mg-c"><img src="../assets/images/workshop-2.webp" alt="Participantes atentos durante o workshop" loading="lazy"
+                                    data-i18n-attr="alt:palestras.modal-workshops.participantes-atentos-durante-o-workshop"></div>
                             <div class="mg-d"><img src="../assets/events/decidir-com-clareza.webp" alt="Aperto de mão entre dois participantes" loading="lazy" data-i18n-attr="alt:palestras.modal-workshops.aperto-de-mao-entre-dois-participantes"></div>
                             <div class="mg-e"><img src="../assets/services/consultoria.webp" alt="Conversa entre dois participantes durante uma dinâmica" loading="lazy" data-i18n-attr="alt:palestras.modal-workshops.conversa-entre-dois-participantes-durante-uma"></div>
                             <div class="mg-f"><img src="../assets/services/espacos.webp" alt="Sala preparada para receber o workshop" loading="lazy" data-i18n-attr="alt:palestras.modal-workshops.sala-preparada-para-receber-o-workshop"></div>
@@ -982,56 +993,8 @@
     <script>
         /* JAVASCRIPT | Navigation, interactions and animations */
         (function () {
-            /* NAVBAR SCROLL BEHAVIOUR */
-            const navbar = document.getElementById("mainNavbar");
-            let lastScrollPosition = window.scrollY;
-            let hideTimer = null;
-            
-            function showNavbar() {
-              if (!navbar) return;
-              navbar.classList.remove("navbar-hidden");
-              navbar.classList.add("navbar-hovered");
-            }
-        
-            function hideNavbar() {
-              if (!navbar || window.scrollY <= 40) return;
-              navbar.classList.add("navbar-hidden");
-              navbar.classList.remove("navbar-hovered");
-            }
-        
-            window.addEventListener("scroll", function () {
-              const currentScrollPosition = window.scrollY;
-            
-              if (currentScrollPosition < lastScrollPosition || currentScrollPosition <= 40) {
-                showNavbar();
-              } else if (currentScrollPosition > lastScrollPosition + 8) {
-                clearTimeout(hideTimer);
-                hideTimer = setTimeout(hideNavbar, 150);
-              }
-            
-              lastScrollPosition = currentScrollPosition;
-            
-              const backTop = document.getElementById("backTop");
-              if (backTop) backTop.classList.toggle("show", currentScrollPosition > 500);
-            }, {
-              passive: true
-            });
-        
-            if (navbar) {
-              navbar.addEventListener("mouseenter", showNavbar);
-              navbar.addEventListener("focusin", showNavbar);
-            }
-        
-            const backTop = document.getElementById("backTop");
-            if (backTop) {
-              backTop.addEventListener("click", function () {
-                window.scrollTo({
-                  top: 0,
-                  behavior: "smooth"
-                });
-              });
-            }
-        
+            /* navbar show/hide and back-to-top: js/javascript.js */
+
             /* SERVICES ACCORDION */
             const tabsWrap = document.getElementById("servicesTabs");
             if (tabsWrap) {
@@ -1106,11 +1069,11 @@
     <script>
         function startAOS() {
             if (!window.AOS) return;
-            AOS.init({                                        // same settings as index.html
-                duration: 800,
-                offset: 80,
+            AOS.init({ // phones/tablets (< 992px): quicker, fire sooner, play once (see css: short durations there)
+                duration: window.innerWidth < 992 ? 500 : 800,
+                offset: window.innerWidth < 992 ? 30 : 80,
                 easing: "ease-out-cubic",
-                once: false,                                  // replay each time a block comes back into view (short, gentle moves: css/motion.css)
+                once: window.innerWidth < 992, // desktop: replays when a block comes back into view
                 disable: function () {                        // respect "reduce motion"
                     return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
                 }

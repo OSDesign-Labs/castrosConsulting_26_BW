@@ -640,10 +640,9 @@
             <h5>Legal</h5>
             <a class="d-block mb-2" href="privacidade.html" data-i18n="footer.politica-de-privacidade">Política de Privacidade</a>
             <a class="d-block mb-2" href="#" data-i18n="footer.termos-de-servico">Termos de Serviço</a>
-            <a class="d-block mb-2" href="privacidade.html#cookies" data-i18n="footer.definicoes-de-cookies">Definições de Cookies</a>
           </div>
         </div>
-        <p class="wordmark" data-aos="zoom-in" data-aos-offset="0">Castros Consultoria</p>
+        <p class="wordmark" data-aos="fade-up" data-aos-offset="0">Castros Consultoria</p>
         <div class="d-flex flex-wrap justify-content-between gap-2 pt-3 foot-bottom">
           <span data-i18n="footer.2026-castros-consultoria-todos-os-direitos">© 2026 Castros Consultoria. Todos os direitos reservados.</span>
         </div>
@@ -690,7 +689,10 @@
                         </div>
 
                         <!-- RIGHT: benefícios + highlight card -->
-                        <div class="col-lg-6">
+                        <div class="col-lg-6 benefits-col has-modal-pattern">
+                            <!-- decoration: soft blob (desktop) + pattern.css patch behind Benefícios -->
+                            <span class="benefit-blob" aria-hidden="true"></span>
+                            <span class="modal-pattern modal-pattern--tr" aria-hidden="true"><span class="pattern-dots-md"></span></span>
                             <h4 class="mb-3" data-i18n="espacos.modal-spaces.beneficios">Benefícios</h4>
                             <div class="benefit-row">
                                 <div class="benefit-item">
@@ -737,14 +739,19 @@
                     </div>
 
                     <!-- BASTIDORES -->
-                    <div class="mt-5">
+                    <div class="mt-5 has-modal-pattern">
+                        <span class="modal-pattern modal-pattern--tl" aria-hidden="true"><span class="pattern-diagonal-lines-sm"></span></span>
                         <h4 class="mb-3" data-i18n="espacos.modal-spaces.bastidores">Bastidores</h4>
                         <div class="modal-gallery">
-                            <div class="mg-a"><img src="../assets/hero/inicio-2.webp" alt="Sala de formação luminosa, com participantes sentados em círculo" loading="lazy" data-i18n-attr="alt:espacos.modal-spaces.sala-de-formacao-luminosa-com-participantes"></div>
+                            <div class="mg-a"><img src="../assets/images/officesetup.webp" alt="Sala preparada para uma formação" loading="lazy"
+                                    data-i18n-attr="alt:espacos.modal-spaces.sala-preparada-para-uma-formacao"></div>
                             <div class="mg-b"><img src="../assets/services/espacos.webp" alt="Cadeiras alinhadas numa sala preparada para um evento" loading="lazy" data-i18n-attr="alt:espacos.modal-spaces.cadeiras-alinhadas-numa-sala-preparada-para"></div>
-                            <div class="mg-c"><img src="../assets/events/oratoria-comunicacao-impacto.webp" alt="Auditório com plateia e apresentação no ecrã" loading="lazy" data-i18n-attr="alt:espacos.modal-spaces.auditorio-com-plateia-e-apresentacao-no"></div>
-                            <div class="mg-d"><img src="../assets/hero/eventos-poster.webp" alt="Sala de conferências com mesas e participantes" loading="lazy" data-i18n-attr="alt:espacos.modal-spaces.sala-de-conferencias-com-mesas-e"></div>
-                            <div class="mg-e"><img src="../assets/hero/podcast.webp" alt="Estúdio de podcast com dois cadeirões e microfones" loading="lazy" data-i18n-attr="alt:espacos.modal-spaces.estudio-de-podcast-com-dois-cadeiroes"></div>
+                            <div class="mg-c"><img src="../assets/images/officework.webp" alt="Sala de formação com participantes" loading="lazy"
+                                    data-i18n-attr="alt:espacos.modal-spaces.sala-de-formacao-com-participantes"></div>
+                            <div class="mg-d"><img src="../assets/images/entrance.webp" alt="Receção do espaço Castros" loading="lazy"
+                                    data-i18n-attr="alt:espacos.modal-spaces.rececao-do-espaco-castros"></div>
+                            <div class="mg-e"><img src="../assets/images/emp1.webp" alt="Entrada do espaço com os serviços da Castros" loading="lazy"
+                                    data-i18n-attr="alt:espacos.modal-spaces.entrada-do-espaco-com-os-servicos"></div>
                             <div class="mg-f"><img src="../assets/morepeople.webp" alt="Reunião de equipa à mesa, com portáteis" loading="lazy" data-i18n-attr="alt:espacos.modal-spaces.reuniao-de-equipa-a-mesa-com"></div>
                         </div>
                     </div>
@@ -778,7 +785,8 @@
                     </div>
 
                     <!-- 3 COLUMNS -->
-                    <div class="service-columns row g-4 mb-5">
+                    <div class="service-columns row g-4 mb-5 has-modal-pattern">
+                        <span class="modal-pattern modal-pattern--tr" aria-hidden="true"><span class="pattern-cross-dots-md"></span></span>
                         <div class="col-md-4">
                             <h4 data-i18n="espacos.modal-podcasts.grave-connosco">Grave connosco</h4>
                             <p class="small text-secondary" data-i18n="espacos.modal-podcasts.um-espaco-preparado-para-gravar-o">Um espaço preparado para gravar o seu podcast, entrevistas ou conversas em vídeo,
@@ -803,7 +811,8 @@
                     </div>
 
                     <!-- BANNER -->
-                    <div class="event-banner mb-5" id="eventoPodcast">
+                    <div class="event-banner has-modal-pattern mb-5" id="eventoPodcast">
+                        <span class="modal-pattern modal-pattern--br modal-pattern--on-dark" aria-hidden="true"><span class="pattern-grid-md"></span></span>
                         <div>
                             <span class="eyebrow" data-i18n="espacos.modal-podcasts.reservas">Reservas</span>
                             <h4 class="mb-1" data-i18n="espacos.modal-podcasts.grave-o-seu-podcast-no-nosso">Grave o seu podcast no nosso espaço</h4>
@@ -820,7 +829,8 @@
                     </div>
 
                     <!-- BASTIDORES -->
-                    <div>
+                    <div class="has-modal-pattern">
+                        <span class="modal-pattern modal-pattern--tl" aria-hidden="true"><span class="pattern-dots-md"></span></span>
                         <h4 class="mb-3" data-i18n="espacos.modal-podcasts.bastidores">Bastidores</h4>
                         <div class="modal-gallery">
                             <div class="mg-a"><img src="../assets/events/atendimento-ao-cliente.webp" alt="Três profissionais em conversa, um deles com um tablet" loading="lazy" data-i18n-attr="alt:espacos.modal-podcasts.tres-profissionais-em-conversa-um-deles"></div>
@@ -964,56 +974,8 @@
     <script>
         /* JAVASCRIPT | Navigation, interactions and animations */
         (function () {
-            /* NAVBAR SCROLL BEHAVIOUR */
-            const navbar = document.getElementById("mainNavbar");
-            let lastScrollPosition = window.scrollY;
-            let hideTimer = null;
-            
-            function showNavbar() {
-              if (!navbar) return;
-              navbar.classList.remove("navbar-hidden");
-              navbar.classList.add("navbar-hovered");
-            }
-        
-            function hideNavbar() {
-              if (!navbar || window.scrollY <= 40) return;
-              navbar.classList.add("navbar-hidden");
-              navbar.classList.remove("navbar-hovered");
-            }
-        
-            window.addEventListener("scroll", function () {
-              const currentScrollPosition = window.scrollY;
-            
-              if (currentScrollPosition < lastScrollPosition || currentScrollPosition <= 40) {
-                showNavbar();
-              } else if (currentScrollPosition > lastScrollPosition + 8) {
-                clearTimeout(hideTimer);
-                hideTimer = setTimeout(hideNavbar, 150);
-              }
-            
-              lastScrollPosition = currentScrollPosition;
-            
-              const backTop = document.getElementById("backTop");
-              if (backTop) backTop.classList.toggle("show", currentScrollPosition > 500);
-            }, {
-              passive: true
-            });
-        
-            if (navbar) {
-              navbar.addEventListener("mouseenter", showNavbar);
-              navbar.addEventListener("focusin", showNavbar);
-            }
-        
-            const backTop = document.getElementById("backTop");
-            if (backTop) {
-              backTop.addEventListener("click", function () {
-                window.scrollTo({
-                  top: 0,
-                  behavior: "smooth"
-                });
-              });
-            }
-        
+            /* navbar show/hide and back-to-top: js/javascript.js */
+
             /* SERVICES ACCORDION */
             const tabsWrap = document.getElementById("servicesTabs");
             if (tabsWrap) {
@@ -1088,11 +1050,11 @@
     <script>
         function startAOS() {
             if (!window.AOS) return;
-            AOS.init({                                        // same settings as index.html
-                duration: 800,
-                offset: 80,
+            AOS.init({ // phones/tablets (< 992px): quicker, fire sooner, play once (see css: short durations there)
+                duration: window.innerWidth < 992 ? 500 : 800,
+                offset: window.innerWidth < 992 ? 30 : 80,
                 easing: "ease-out-cubic",
-                once: false,                                  // replay each time a block comes back into view (short, gentle moves: css/motion.css)
+                once: window.innerWidth < 992, // desktop: replays when a block comes back into view
                 disable: function () {                        // respect "reduce motion"
                     return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
                 }
