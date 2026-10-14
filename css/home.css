@@ -3329,7 +3329,7 @@ a.topbar-item:hover {
     position: absolute;
     background-color: #d6d7d782;
     right: 70px;
-    bottom: 118px;
+    bottom: 125px; 
     background-image: url(https://upload.wikimedia.org/wikipedia/commons/d/d0/QR_code_for_mobile_English_Wikipedia.svg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original);
     background-size: cover;
     border-radius: 10px;
