@@ -652,7 +652,10 @@
     "espacos.modal-spaces.sala-de-formacao-com-participantes": "Sala de formação com participantes",
     "espacos.modal-spaces.rececao-do-espaco-castros": "Receção do espaço Castros",
     "espacos.modal-spaces.entrada-do-espaco-com-os-servicos": "Entrada do espaço com os serviços da Castros",
-    "formacoes.modal-training.formacao-em-curso-na-sala-da-castros": "Formação em curso na sala da Castros"
+    "formacoes.modal-training.formacao-em-curso-na-sala-da-castros": "Formação em curso na sala da Castros",
+    "events.qr-label": "Inscreva-se pelo telemóvel",
+    "events.qr-msg.upcoming": "Inscrever-me: {title}",
+    "events.qr-msg.other": "Mais info: {title}"
   },
   "en": {
     "nav.castros-consultoria-pagina-inicial": "Castros Consultoria, home page",
@@ -1353,6 +1356,9 @@
       "Give your brand or business visibility",
       "Network with leaders, entrepreneurs and leading professionals",
       "Show your products and services in a high-impact setting"
-    ]
+    ],
+    "events.qr-label": "Sign up from your phone",
+    "events.qr-msg.upcoming": "Sign up: {title}",
+    "events.qr-msg.other": "More info: {title}"
   }
 }

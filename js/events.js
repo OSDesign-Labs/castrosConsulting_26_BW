@@ -353,6 +353,45 @@
             { title: F(e, "title"), date: shortDate(e._date), city: F(e, "city") });
     }
 
+    /* ---------- QR code: sign up from your phone (computers only, see css/home.css .event-qr) ----------
+       Scanning it opens WhatsApp on the visitor's phone, in a chat with Elizabeth, with the
+       same message the "Inscrever-me" button puts in the contact form (event name, date, city). */
+    var WHATSAPP = "258848665180";       // EDIT: Elizabeth's WhatsApp (the number on the flyers)
+    function drawQr(e) {
+        var box = field("qr");
+        if (!box) return;
+        var item = box.closest(".event-qr");
+        if (typeof window.qrcode !== "function") { if (item) item.hidden = true; return; }
+        // short message = fewer, bigger squares = scans easily off a screen
+        // short on purpose: a longer message makes a denser code that won't fit the facts box
+        var msg = e._status === "upcoming"
+            ? T("events.qr-msg.upcoming", "Inscrever-me: {title}", { title: F(e, "title") })
+            : T("events.qr-msg.other", "Mais info: {title}", { title: F(e, "title") });
+        var url = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(msg);
+        var qr = window.qrcode(0, "L");       // size picked automatically; "L" keeps the code as simple as possible
+        qr.addData(url);
+        qr.make();
+        box.innerHTML = qr.createSvgTag({ cellSize: 4, margin: 8, scalable: true });   // margin is in svg units: 8 = two squares of white edge, which scanners need
+        if (item) { item.hidden = false; item.setAttribute("data-url", url); }
+        // every square a whole number of screen pixels: blurry half-pixel edges are what make
+        // a small on-screen QR hard to scan. Sized once the pop-up is laid out.
+        box.setAttribute("data-modules", qr.getModuleCount() + 4);
+        var svg = box.querySelector("svg");
+        if (svg) svg.setAttribute("shape-rendering", "crispEdges");
+        sizeQr();
+    }
+    function sizeQr() {
+        var box = field("qr");
+        var svg = box && box.querySelector("svg");
+        if (!svg) return;
+        svg.style.width = svg.style.height = "";              // let the CSS size it first
+        var room = box.clientHeight, modules = +box.getAttribute("data-modules");
+        if (!room || !modules) return;                         // pop-up not on screen yet
+        var dpr = window.devicePixelRatio || 1;
+        var px = Math.max(2, Math.floor(room * dpr / modules));   // device pixels per square
+        svg.style.width = svg.style.height = (px * modules / dpr) + "px";
+    }
+
     function fill(e) {
         current = e;
         var img = field("image");
@@ -375,6 +414,7 @@
         row("highlights").hidden = !highlights.length;
         row("pastNote").hidden = e._status !== "past";
         field("cta").textContent = ctaLabel(e);
+        drawQr(e);
         detailEl.setAttribute("data-status", e._status);
     }
 
@@ -430,6 +470,7 @@
     }
 
     allEl.addEventListener("shown.bs.modal", function () { equalize(allGrid); });
+    detailEl.addEventListener("shown.bs.modal", sizeQr);
     allEl.addEventListener("hidden.bs.modal", function () {
         var run = next; next = null;
         if (run) run(); else refocus(allTrigger);

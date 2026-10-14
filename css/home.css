@@ -3269,34 +3269,62 @@ a.topbar-item:hover {
 }
 
 
-/* QR code in the event pop-up: inside the facts card (Data / Horário / Local / Formato),
-   at its right end and centred top to bottom, whatever the number of rows.
-   EDIT: the image is a placeholder (Wikipedia's sample QR) - swap in the real one. */
-.event-facts.has-qr {
-    position: relative;
-    padding-right: calc(1.25rem + var(--qr) + 1.25rem);
-    min-height: calc(var(--qr) + 2.2rem);
-    --qr: 100px;
+/* QR code in the event pop-up (computers only).
+   Scanning it opens WhatsApp on the visitor's phone with a sign-up message for that
+   event (js/events.js draws it). It sits inside the facts card (Data / Horário / Local /
+   Formato), at its right end, centred top to bottom. Phones and tablets can't scan their
+   own screen, so there it is hidden and the button below does the job. */
+.event-facts .event-qr {
+    display: none;
 }
 
-.event-facts .codebox {
-    position: absolute;
-    top: 50%;
-    right: 1.25rem;
-    width: var(--qr);
-    height: var(--qr);
-    transform: translateY(-50%);
-    background-color: #d6d7d782;
-    background-image: url(https://upload.wikimedia.org/wikipedia/commons/d/d0/QR_code_for_mobile_English_Wikipedia.svg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original);
-    background-size: cover;
-    border-radius: 10px;
-}
-
-@media (max-width: 575.98px) {
+@media (min-width: 992px) and (pointer: fine) {
+    /* a third column for the QR. The facts alone decide the box's height; the QR and its
+       label shrink to fit it: top level with Data, label's bottom level with Formato */
     .event-facts.has-qr {
-        --qr: 76px;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) 140px;
+        grid-template-rows: auto auto;
+    }
+
+    .event-facts .event-qr:not([hidden]) {
+        grid-column: 3;
+        grid-row: 1 / -1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.2rem;
+        contain: size;                     /* adds no height of its own: never grows the box */
+    }
+
+    .event-facts .event-qr-code {
+        flex: 1 1 0;
+        min-height: 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    .event-facts .event-qr-code svg {
+        display: block;
+        height: 100%;
+        width: auto;
+        aspect-ratio: 1;
+        padding: 0;
+        background: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 0 0 1px var(--border);
+    }
+
+    .event-facts .event-qr-label {
+        flex: none;
+        font-size: 0.65rem;
+        white-space: nowrap;               /* one line, so the code keeps the height */
+        font-weight: 700;
+        line-height: 1.1;
+        text-align: center;
+        color: var(--slate);
     }
 }
+
 /* ---------- phones and tablets: quick entrance animations ----------
    In one column, blocks cross the screen quickly, so below 992px every
    scroll animation is short and starts at once, whatever the HTML asks

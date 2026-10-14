@@ -1343,8 +1343,12 @@
         <div class="modal-body">
           <h2 class="event-modal-title" id="eventModalTitle" data-field="title"></h2>
           <ul class="event-facts has-qr">
-            <!-- QR code: sits at the end of this card, centred top to bottom (css/home.css .codebox) -->
-            <li class="codebox" aria-hidden="true"></li>
+            <!-- QR code (computers only): opens a WhatsApp chat with Elizabeth on the visitor's phone, with a
+                 sign-up message for THIS event already written. Drawn by js/events.js; styles: css/home.css .event-qr -->
+            <li class="event-qr" aria-hidden="true">
+              <span class="event-qr-code" data-field="qr"></span>
+              <span class="event-qr-label" data-i18n="events.qr-label">Inscreva-se pelo telemóvel</span>
+            </li>
             <li><i class="bi bi-calendar-event" aria-hidden="true"></i>
               <div><small data-i18n="events.data">Data</small><span data-field="date"></span></div>
             </li>
@@ -1541,7 +1545,8 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Eventos: cards + modals (must run before AOS starts) -->
+  <!-- Eventos: cards + modals (must run before AOS starts); qrcode.min.js draws the WhatsApp QR (MIT, Kazuhiko Arase) -->
+  <script src="js/vendor/qrcode.min.js"></script>
   <script src="js/events.js"></script>
 
   <script>
