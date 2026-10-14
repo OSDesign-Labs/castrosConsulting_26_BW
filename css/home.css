@@ -3320,3 +3320,53 @@ a.topbar-item:hover {
 main {
     overflow-x: clip;
 }
+
+/* ---------- testimonials: the quote sits in the middle of the white panel ----------
+   (same block in css/home.css and css/services.css)
+   The quote used Bootstrap's caption placement (pinned to the bottom, pulled up by
+   -6rem). Longer text on a phone grew upwards out of the panel: the quote mark was
+   cut off at the top, the arrows sat on the words and the bottom half stayed empty.
+   Now the quote is centred in the panel, with room left for the arrows and dots. */
+#testimonials #testCarousel .carousel-inner .carousel-item {
+    margin-top: 0;
+}
+
+#testimonials #testCarousel .carousel-inner .carousel-item.active,
+#testimonials #testCarousel .carousel-inner .carousel-item-next,
+#testimonials #testCarousel .carousel-inner .carousel-item-prev {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#testimonials #testCarousel .carousel-inner .carousel-item .carousel-caption {
+    position: static;
+    width: 100%;
+    padding: 2.5rem 15% 3.5rem;   /* sides: the arrows; bottom: the dots */
+}
+
+/* phones: the panel grows with the quote instead of cutting it */
+@media (max-width: 767.98px) {
+    #testimonials {
+        height: auto;
+        margin: 4rem 0;
+    }
+
+    #testimonials #testCarousel,
+    #testimonials #testCarousel .carousel-inner {
+        height: auto;
+    }
+
+    #testimonials #testCarousel .carousel-inner .carousel-item {
+        min-height: 60vh;
+    }
+
+    #testimonials #testCarousel .carousel-inner .carousel-item .carousel-caption {
+        padding: 2.5rem 16% 3.75rem;
+    }
+
+    #testimonials #testCarousel .carousel-caption h3 {
+        font-size: 1.2rem;
+        line-height: 1.4;
+    }
+}
