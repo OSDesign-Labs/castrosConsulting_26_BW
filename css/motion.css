@@ -105,6 +105,10 @@ main {
         display: flex;
         flex-direction: column;
         justify-content: center;
+        /* its 10rem / 13rem outside margins left dead bands between screens: a scroll
+           that ended in one snapped back to the section before, so the page got stuck */
+        margin-top: 0;
+        margin-bottom: 0;
     }
 
     main > section#testimonials #testCarousel {
