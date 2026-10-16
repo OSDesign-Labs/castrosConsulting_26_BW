@@ -101,6 +101,14 @@ main {
     /* the testimonials panel is sized as a share of the window (height: 100% of a
        60vh section); in a grid that "100%" has nothing to measure against and the
        panel collapsed to nothing. Give it its height directly and centre it. */
+    /* the partner logos are one slim strip: not a screen of their own, and not a stop */
+    main > section.partners {
+        min-height: 0;
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+        scroll-snap-align: none;
+    }
+
     main > section#testimonials {
         display: flex;
         flex-direction: column;

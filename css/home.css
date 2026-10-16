@@ -3398,3 +3398,76 @@ main {
         line-height: 1.4;
     }
 }
+
+/* ======================================================
+       PARCEIROS E APOIANTES | logo strip under the team
+       ====================================================== */
+/* each logo sits on a white card of the same height, so logos that come with a
+   white background (most of them) look deliberate instead of pasted in */
+.partners .partner-logos {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.9rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.partners .partners-title {
+    margin: 0 0 1.25rem;
+    text-align: center;
+    font-family: "Manrope", sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--slate);
+}
+
+.partners .partner-logos li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 64px;
+    padding: 0.45rem 0.8rem;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 0 0 1px rgba(15, 30, 60, 0.06), 0 6px 18px -12px rgba(15, 30, 60, 0.35);
+}
+
+.partners .partner-logos img {
+    display: block;
+    width: auto;
+    height: auto;
+    max-height: 100%;
+    max-width: 140px;
+}
+
+/* the two logos that are full square tiles fill their card edge to edge */
+.partners .partner-logos li.tile {
+    padding: 0;
+    overflow: hidden;
+    aspect-ratio: 1;
+}
+
+.partners .partner-logos li.tile img {
+    height: 100%;
+    max-width: none;
+}
+
+@media (max-width: 575.98px) {
+    .partners .partner-logos {
+        gap: 0.6rem;
+    }
+
+    .partners .partner-logos li {
+        height: 58px;
+        padding: 0.4rem 0.6rem;
+    }
+
+    .partners .partner-logos img {
+        max-width: 112px;
+    }
+}
