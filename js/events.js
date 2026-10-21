@@ -12,6 +12,9 @@
      an event whose date has passed is shown as "Realizado".
 
    Dates: "YYYY-MM-DD", or null for "Data a anunciar".
+   Only the months are known (e.g. "novembro – dezembro")? Set date to the first day,
+   dateEnd to the last day and monthsOnly: true: the card shows "Nov – Dez 2026" and the
+   event counts as upcoming until dateEnd has passed.
    Anything marked EDIT is provisional text: confirm before launch.
 
    English: js/translations.json, keys "events.item.<id>.<field>"
@@ -25,82 +28,119 @@
 
     var EVENTS = [
         {
-            id: "course-oratoria-comunicacao-eficaz",
+            // flyer: assets/images/recent/flyer-outubro-rosa-2026.webp (same event as the "Próximo evento" hero slide)
+            id: "workshop-outubro-rosa-2026",
             featured: true,
-            title: "Oratoria e Comunicação Eficaz",
-            category: "Liderança",
-            date: "2026-10-13",
-            time: null,
-            city: "Maputo",
+            title: "Workshop Outubro Rosa",
+            category: "Saúde e bem-estar",
+            date: "2026-10-28",
+            time: "11:00 – 14:00",
+            city: "Auditório da Universidade Joaquim Chissano",
             format: "Presencial",
-            image: "assets/images/flyers/outcourse.webp",
-            summary: "Um dia intensivo para líderes que querem equipas mais fortes e autónomas.",
-            description: "Um dia intensivo e prático para líderes que querem construir equipas mais fortes, " +
-                "autónomas e comprometidas. Trabalhamos situações reais do dia a dia da liderança, com " +
-                "ferramentas que pode aplicar logo na semana seguinte.",                          // EDIT
-            highlights: [                                                                         // EDIT
-                "Delegar com confiança e acompanhar sem microgerir",
-                "Dar feedback que faz a equipa crescer",
-                "Criar autonomia e responsabilidade partilhada"
+            image: "assets/images/recent/flyer-outubro-rosa-2026.webp",
+            summary: "Saúde, autocuidado e a importância da prevenção do cancro da mama.",
+            description: "Venha fazer parte: um workshop para falar sobre saúde, autocuidado e a importância " +
+                "da prevenção do cancro da mama, com a oradora confirmada Verônica Carlos Nunes, especialista " +
+                "em saúde materno-infantil. Em parceria com a Associação dos Estudantes da Universidade " +
+                "Joaquim Chissano. Porque a prevenção é vida!",
+            highlights: [
+                "Saúde e autocuidado no dia a dia",
+                "A importância da prevenção do cancro da mama",
+                "Conversa com Verônica Carlos Nunes, especialista em saúde materno-infantil"
             ]
         },
         {
+            // flyer: assets/images/recent/flyer-comunicacao-oratoria-2-edicao.webp
+            // the flyer gives months only (novembro – dezembro, 30 dias): date/dateEnd span the two months
+            // and the card shows "Nov – Dez 2026". EDIT: put the real start day in "date" once it is set.
+            id: "formacao-comunicacao-oratoria-2-edicao",
+            featured: true,
+            title: "Formação em Comunicação e Oratória (2.ª edição)",
+            category: "Comunicação",
+            date: "2026-11-01",
+            dateEnd: "2026-12-31",
+            monthsOnly: true,
+            time: null,
+            city: "Rua da Tchamba n.º 113, Maputo",
+            format: "Presencial · 30 dias",
+            image: "assets/images/recent/flyer-comunicacao-oratoria-2-edicao.webp",
+            summary: "30 dias para comunicar de forma assertiva, eficaz e profissional.",
+            description: "Segunda edição da formação em Comunicação e Oratória: expressão oral e oratória, " +
+                "comunicação assertiva e comunicação eficaz e profissional, ao longo de 30 dias, entre " +
+                "novembro e dezembro. Local: Rua da Tchamba n.º 113, Maputo, próximo da Maternidade do HCM.",
+            highlights: [
+                "Técnicas para falar em público",
+                "Voz, dicção e linguagem corporal",
+                "Autoconfiança e gestão do medo",
+                "Apresentações com impacto"
+            ]
+        },
+        {
+            // flyer: assets/images/flyers/outcourse.webp
+            id: "course-oratoria-comunicacao-eficaz",
+            featured: false,
+            title: "Curso de Oratória e Comunicação Eficaz",
+            category: "Comunicação",
+            date: "2026-10-13",
+            time: "Ter. e Qui. 17:00 – 19:00 · Sáb. 09:00 – 13:00",
+            city: "Rua da Tchamba n.º 113, Maputo",
+            format: "Presencial · 1 mês",
+            image: "assets/images/flyers/outcourse.webp",
+            summary: "A arte de falar bem transforma ideias em impacto.",
+            description: "Curso de um mês, presencial, para quem quer falar em público com confiança e " +
+                "comunicar com clareza. Investimento: 1.200 MT (300 MT de inscrição e 900 MT de certificado). " +
+                "Local: Rua da Tchamba n.º 113, Maputo, próximo da Maternidade do Hospital Central.",
+            highlights: [
+                "Comunicação eficaz e assertiva",
+                "Técnicas de oratória e expressão verbal",
+                "Linguagem corporal e presença",
+                "Organização e estrutura de discursos",
+                "Como falar em público com confiança"
+            ]
+        },
+        {
+            // flyer: assets/images/flyers/elas.webp
             id: "workshop-elas",
             featured: true,
-            title: "Parcerias Estrategicas de Vida e Negocio",
-            category: "Comunicação",
+            title: "Workshop entre Elas: Parcerias Estratégicas de Vida e Negócio",
+            category: "Liderança",
             date: "2026-10-01",
-            time: null,
-            city: "Maputo",
-            format: "Presencial",
+            time: "09:00 – 13:30",
+            city: "Access Bank Sede, Maputo",
+            format: "Presencial · Fórum GBNA e ELAS",
             image: "assets/images/flyers/elas.webp",
-            summary: "Como falar de forma clara e mobilizar pessoas para a ação.",
-            description: "Uma sessão sobre como comunicar de forma clara, estruturar a mensagem e mobilizar " +
-                "pessoas para a ação, em reuniões, apresentações e conversas difíceis.",       // EDIT
-            highlights: [                                                                         // EDIT
-                "Estruturar uma mensagem clara em poucos minutos",
-                "Falar com confiança perante um grupo",
-                "Adaptar a comunicação a cada público"
+            summary: "Masterclass com Elizabeth Castro: conectar pessoas, ideias e oportunidades.",
+            description: "A GBNA (Global Business Network Africa Agency) e a plataforma ELAS apresentaram o " +
+                "Workshop entre Elas, com Elizabeth Castro como oradora confirmada. Tema do masterclass: " +
+                "Parcerias Estratégicas de Vida e Negócio, conectando pessoas, ideias e oportunidades para um " +
+                "futuro mais próspero. Sala Corporativa da sede do Access Bank, em Maputo. Fórum exclusivo " +
+                "para membros da GBNA e da plataforma ELAS.",
+            highlights: [
+                "Finanças pessoais e empresariais",
+                "Parcerias estratégicas de vida",
+                "Vendas pessoais e empresariais",
+                "Network: conexões que geram oportunidades"
             ]
         },
         {
+            // flyer: assets/images/flyers/setwork.webp
             id: "workshop-arte",
-            featured: true,
-            title: "A Arte de Encantar e Fidelizar Clientes",
-            category: "Estratégia",
+            featured: false,
+            title: "Workshop: A Arte de Encantar e Fidelizar",
+            category: "Atendimento",
             date: "2026-09-19",
             time: null,
             city: "Maputo",
             format: "Presencial",
             image: "assets/images/flyers/setwork.webp",
-            summary: "Ferramentas simples para tomar decisões difíceis com dados e convicção.",
-            description: "Ferramentas simples para tomar decisões difíceis com base em dados e com convicção, " +
-                "mesmo em contextos de incerteza.",                                              // EDIT
-            highlights: [                                                                         // EDIT
-                "Separar factos, suposições e opiniões",
-                "Comparar opções com critérios claros",
-                "Comunicar a decisão e assumir o compromisso"
-            ]
-        },
-        {
-            // same event as the "Próximo evento" slide in the hero
-            id: "oratoria-comunicacao-impacto",
-            featured: false,
-            title: "Oratória e Comunicação com Impacto",
-            category: "Comunicação",
-            date: "2026-10-13",
-            time: null,
-            city: "Maputo",
-            format: "Presencial · Vagas limitadas",
-            image: "assets/events/oratoria-comunicacao-impacto.webp",
-            summary: "Como falar de forma clara, ganhar confiança em palco e mobilizar pessoas para a ação.",
-            description: "Para quem precisa de falar em público com segurança: preparar a mensagem, controlar " +
-                "o nervosismo, usar a voz e o corpo a seu favor e terminar com um apelo que leva as " +
-                "pessoas a agir.",                                                                 // EDIT
-            highlights: [                                                                         // EDIT
-                "Preparar e ensaiar uma intervenção curta",
-                "Gerir o nervosismo antes e durante",
-                "Prender a atenção do início ao fim"
+            summary: "Como o início do atendimento determina a venda e a satisfação final.",
+            description: "Workshop com Elizabeth Castro sobre o momento que decide tudo no atendimento: " +
+                "o início. Como os primeiros minutos com o cliente determinam a venda e a satisfação final, " +
+                "e o que fazer para encantar e fidelizar.",
+            highlights: [
+                "Porque o início do atendimento decide a venda",
+                "Encantar o cliente desde o primeiro contacto",
+                "Da satisfação à fidelização"
             ]
         },
         {
@@ -194,9 +234,27 @@
     var today = new Date();
     today.setHours(0, 0, 0, 0);
 
+    // months only: "Nov – Dez 2026" / "Novembro – Dezembro de 2026"
+    function monthSpan(e, long) {
+        var a = e._date, b = e._end || e._date;
+        if (long) {
+            var locale = window.CastrosI18n ? window.CastrosI18n.locale : "pt-PT";
+            var m = new Intl.DateTimeFormat(locale, { month: "long" });
+            var s = m.format(a) + (b.getMonth() !== a.getMonth() ? " – " + m.format(b) : "");
+            s = s.charAt(0).toUpperCase() + s.slice(1);
+            return s + (locale.indexOf("pt") === 0 ? " de " : " ") + b.getFullYear();
+        }
+        var months = T("events.months", MONTHS);
+        return months[a.getMonth()] + (b.getMonth() !== a.getMonth() ? " – " + months[b.getMonth()] : "") +
+            " " + b.getFullYear();
+    }
+    function cardDate(e) { return e.monthsOnly && e._date ? monthSpan(e, false) : shortDate(e._date); }
+    function fullDate(e) { return e.monthsOnly && e._date ? monthSpan(e, true) : longDate(e._date); }
+
     EVENTS.forEach(function (e) {
         e._date = parseDate(e.date);
-        e._status = !e._date ? "tbd" : (e._date < today ? "past" : "upcoming");
+        e._end = parseDate(e.dateEnd);
+        e._status = !e._date ? "tbd" : ((e._end || e._date) < today ? "past" : "upcoming");
     });
 
     function byId(id) {
@@ -222,7 +280,7 @@
 
     /* ---------- the card template (home section AND "Ver todos") ---------- */
     function dateHTML(e) {
-        return e._date ? '<time datetime="' + e.date + '">' + shortDate(e._date) + '</time>' : esc(tbd());
+        return e._date ? '<time datetime="' + e.date + '">' + cardDate(e) + '</time>' : esc(tbd());
     }
 
     function cardHTML(e, i, opts) {
@@ -350,7 +408,7 @@
     function ctaLabel(e) { return T("events.cta." + e._status, CTA[e._status].label); }
     function ctaMessage(e) {
         return T("events.msg." + e._status, CTA[e._status].msg,
-            { title: F(e, "title"), date: shortDate(e._date), city: F(e, "city") });
+            { title: F(e, "title"), date: cardDate(e), city: F(e, "city") });
     }
 
     /* ---------- QR code: sign up from your phone (computers only, see css/home.css .event-qr) ----------
@@ -400,7 +458,7 @@
         var highlights = F(e, "highlights") || [];
         field("category").textContent = F(e, "category");
         field("title").textContent = F(e, "title");
-        field("date").textContent = longDate(e._date);
+        field("date").textContent = fullDate(e);
         field("time").textContent = e.time || "";
         field("city").textContent = F(e, "city");
         field("format").textContent = e.format ? F(e, "format") : "";

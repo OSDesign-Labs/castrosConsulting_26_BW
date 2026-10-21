@@ -210,7 +210,11 @@
                 <div class="row g-4 justify-content-center">
                     <div class="col-md-6 col-lg-5" data-aos="fade-right" data-aos-delay="0">
                         <button type="button" class="fm-card" data-bs-toggle="modal" data-bs-target="#modalEspacos">
-                            <img src="../assets/services/espacos.webp" alt="" loading="lazy">
+                            <video class="fm-card-media" muted loop playsinline preload="none" data-inview-play aria-hidden="true"
+                                poster="../assets/video/svc-espacos-poster.webp">
+                                <source src="../assets/video/svc-espacos.webm" type="video/webm">
+                                <source src="../assets/video/svc-espacos.mp4" type="video/mp4">
+                            </video>
                             <span class="fm-card-body">
                                 <span class="fm-card-title" data-i18n="espacos.programs.espacos">Espaços</span>
                                 <span class="link-arrow"><span data-i18n="espacos.programs.ver-detalhes">Ver detalhes</span> <span class="arrowRight">&gt;</span></span>
@@ -219,7 +223,11 @@
                     </div>
                     <div class="col-md-6 col-lg-5" data-aos="fade-left" data-aos-delay="150">
                         <button type="button" class="fm-card" data-bs-toggle="modal" data-bs-target="#modalPodcasts">
-                            <img src="../assets/hero/podcast.webp" alt="" loading="lazy">
+                            <video class="fm-card-media" muted loop playsinline preload="none" data-inview-play aria-hidden="true" style="object-position: center 100%"
+                                poster="../assets/video/svc-podcast-poster.webp">
+                                <source src="../assets/video/svc-podcast.webm" type="video/webm">
+                                <source src="../assets/video/svc-podcast.mp4" type="video/mp4">
+                            </video>
                             <span class="fm-card-body">
                                 <span class="fm-card-title">Podcasts</span>
                                 <span class="link-arrow"><span data-i18n="espacos.programs.ver-detalhes">Ver detalhes</span> <span class="arrowRight">&gt;</span></span>
@@ -669,7 +677,7 @@
     <!-- ======================================================
          MODAL — ESPAÇOS (same structure as the Formações modal in formacoes.html)
          left: description + what it's for | right: benefícios + how to book
-         bottom: Bastidores gallery. Photos are stock placeholders until the client's own arrive.
+         bottom: Bastidores gallery. Photos: the client's own (assets/images/recent/).
          ====================================================== -->
     <div class="modal fade" id="modalEspacos" tabindex="-1" aria-labelledby="modalEspacosLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
@@ -751,16 +759,20 @@
                         <span class="modal-pattern modal-pattern--tl" aria-hidden="true"><span class="pattern-diagonal-lines-sm"></span></span>
                         <h4 class="mb-3" data-i18n="espacos.modal-spaces.bastidores">Bastidores</h4>
                         <div class="modal-gallery">
-                            <div class="mg-a"><img src="../assets/images/officesetup.webp" alt="Sala preparada para uma formação" loading="lazy"
-                                    data-i18n-attr="alt:espacos.modal-spaces.sala-preparada-para-uma-formacao"></div>
-                            <div class="mg-b"><img src="../assets/services/espacos.webp" alt="Cadeiras alinhadas numa sala preparada para um evento" loading="lazy" data-i18n-attr="alt:espacos.modal-spaces.cadeiras-alinhadas-numa-sala-preparada-para"></div>
-                            <div class="mg-c"><img src="../assets/images/officework.webp" alt="Sala de formação com participantes" loading="lazy"
-                                    data-i18n-attr="alt:espacos.modal-spaces.sala-de-formacao-com-participantes"></div>
-                            <div class="mg-d"><img src="../assets/images/entrance.webp" alt="Receção do espaço Castros" loading="lazy"
-                                    data-i18n-attr="alt:espacos.modal-spaces.rececao-do-espaco-castros"></div>
-                            <div class="mg-e"><img src="../assets/images/emp1.webp" alt="Entrada do espaço com os serviços da Castros" loading="lazy"
-                                    data-i18n-attr="alt:espacos.modal-spaces.entrada-do-espaco-com-os-servicos"></div>
-                            <div class="mg-f"><img src="../assets/morepeople.webp" alt="Reunião de equipa à mesa, com portáteis" loading="lazy" data-i18n-attr="alt:espacos.modal-spaces.reuniao-de-equipa-a-mesa-com"></div>
+                            <div class="mg-a"><video muted loop playsinline preload="none" data-inview-play aria-hidden="true"
+                                style="object-position: 22% 54%" poster="../assets/video/bastidores/e-v-sessao-poster.webp">
+                                <source src="../assets/video/bastidores/e-v-sessao.webm" type="video/webm">
+                                <source src="../assets/video/bastidores/e-v-sessao.mp4" type="video/mp4">
+                            </video></div>
+                            <div class="mg-b"><img src="../assets/images/officesetup.webp" alt="Sala preparada para uma formação" loading="lazy" style="object-position: 36% 36%" data-i18n-attr="alt:espacos.modal-spaces.sala-preparada-para-uma-formacao"></div>
+                            <div class="mg-c"><img src="../assets/flyerteam.webp" alt="Equipa da Castros junto ao banner no espaço" loading="lazy" style="object-position: 50% 26%" data-i18n-attr="alt:espacos.modal-spaces.equipa-da-castros-junto-ao-banner"></div>
+                            <div class="mg-d"><img src="../assets/images/emp1.webp" alt="Entrada do espaço com os serviços da Castros" loading="lazy" style="object-position: 32% 32%" data-i18n-attr="alt:espacos.modal-spaces.entrada-do-espaco-com-os-servicos"></div>
+                            <div class="mg-e"><img src="../assets/images/entrance.webp" alt="Receção do espaço Castros" loading="lazy" style="object-position: 32% 42%" data-i18n-attr="alt:espacos.modal-spaces.rececao-do-espaco-castros"></div>
+                            <div class="mg-f"><video muted loop playsinline preload="none" data-inview-play aria-hidden="true"
+                                style="object-position: 36% 50%" poster="../assets/video/bastidores/e-v-lanche-poster.webp">
+                                <source src="../assets/video/bastidores/e-v-lanche.webm" type="video/webm">
+                                <source src="../assets/video/bastidores/e-v-lanche.mp4" type="video/mp4">
+                            </video></div>
                         </div>
                     </div>
                 </div>
@@ -771,7 +783,7 @@
     <!-- ======================================================
          MODAL — PODCASTS (same structure as the Treinamento modal in formacoes.html)
          top: media block (1 square + 2 wide) | 3 columns: Grave connosco / Conversas / Convidados
-         then Reservas banner, then Bastidores gallery. Photos are stock placeholders.
+         then Reservas banner, then Bastidores gallery. Photos: the client's own (assets/images/recent/).
          ====================================================== -->
     <div class="modal fade" id="modalPodcasts" tabindex="-1" aria-labelledby="modalPodcastsLabel"
         aria-hidden="true">
@@ -784,12 +796,9 @@
                 <div class="modal-body">
                     <!-- MEDIA FEATURE: 1 square + 2 stacked wide -->
                     <div class="media-trio mb-5">
-                        <div class="mt-a"><img src="../assets/hero/podcast.webp"
-                                alt="Estúdio de podcast com dois cadeirões, microfones e um ecrã" loading="lazy" data-i18n-attr="alt:espacos.modal-podcasts.estudio-de-podcast-com-dois-cadeiroes"></div>
-                        <div class="mt-b"><img src="../assets/hero/inicio-1.webp"
-                                alt="Duas pessoas em conversa à frente de um portátil" loading="lazy" data-i18n-attr="alt:espacos.modal-podcasts.duas-pessoas-em-conversa-a-frente"></div>
-                        <div class="mt-c"><img src="../assets/services/consultoria.webp"
-                                alt="Conversa entre dois profissionais num sofá" loading="lazy" data-i18n-attr="alt:espacos.modal-podcasts.conversa-entre-dois-profissionais-num-sofa"></div>
+                        <div class="mt-a"><img src="../assets/images/bastidores/c-conversa.webp" alt="Elizabeth Castro numa conversa em palco" loading="lazy" style="object-position: 44% 50%" data-i18n-attr="alt:espacos.modal-podcasts.elizabeth-castro-numa-conversa-em-palco"></div>
+                        <div class="mt-b"><img src="../assets/images/bastidores/c-tv-tres.webp" alt="Elizabeth Castro no programa de televisão Manhãs Alegres" loading="lazy" style="object-position: 44% 50%" data-i18n-attr="alt:espacos.modal-podcasts.elizabeth-castro-no-programa-de-televisao"></div>
+                        <div class="mt-c"><img src="../assets/images/bastidores/c-elas-perto.webp" alt="Elizabeth Castro ao microfone numa conversa sobre liderança" loading="lazy" style="object-position: 52% 50%" data-i18n-attr="alt:espacos.modal-podcasts.elizabeth-castro-ao-microfone-numa-conversa"></div>
                     </div>
 
                     <!-- 3 COLUMNS -->
@@ -841,12 +850,20 @@
                         <span class="modal-pattern modal-pattern--tl" aria-hidden="true"><span class="pattern-dots-md"></span></span>
                         <h4 class="mb-3" data-i18n="espacos.modal-podcasts.bastidores">Bastidores</h4>
                         <div class="modal-gallery">
-                            <div class="mg-a"><img src="../assets/events/atendimento-ao-cliente.webp" alt="Três profissionais em conversa, um deles com um tablet" loading="lazy" data-i18n-attr="alt:espacos.modal-podcasts.tres-profissionais-em-conversa-um-deles"></div>
-                            <div class="mg-b"><img src="../assets/services/formacoes-treinamentos.webp" alt="Dois profissionais a rever notas num tablet" loading="lazy" data-i18n-attr="alt:espacos.modal-podcasts.dois-profissionais-a-rever-notas-num"></div>
-                            <div class="mg-c"><img src="../assets/events/comunicacao-com-impacto.webp" alt="Oradora a falar em palco perante a plateia" loading="lazy" data-i18n-attr="alt:espacos.modal-podcasts.oradora-a-falar-em-palco-perante"></div>
-                            <div class="mg-d"><img src="../assets/events/decidir-com-clareza.webp" alt="Aperto de mão entre dois profissionais" loading="lazy" data-i18n-attr="alt:espacos.modal-podcasts.aperto-de-mao-entre-dois-profissionais"></div>
-                            <div class="mg-e"><img src="../assets/hero/inicio-3.webp" alt="Equipa a celebrar em conjunto" loading="lazy" data-i18n-attr="alt:espacos.modal-podcasts.equipa-a-celebrar-em-conjunto"></div>
-                            <div class="mg-f"><img src="../assets/hero/formacao-poster.webp" alt="Participantes a aplaudir no fim de uma sessão" loading="lazy" data-i18n-attr="alt:espacos.modal-podcasts.participantes-a-aplaudir-no-fim-de"></div>
+                            <div class="mg-a"><video muted loop playsinline preload="none" data-inview-play aria-hidden="true"
+                                style="object-position: 44% 44%" poster="../assets/video/bastidores/c-v-tv-poster.webp">
+                                <source src="../assets/video/bastidores/c-v-tv.webm" type="video/webm">
+                                <source src="../assets/video/bastidores/c-v-tv.mp4" type="video/mp4">
+                            </video></div>
+                            <div class="mg-b"><img src="../assets/images/bastidores/c-tv-dupla.webp" alt="Elizabeth Castro no estúdio do programa Manhãs Alegres" loading="lazy" style="object-position: 50% 40%" data-i18n-attr="alt:espacos.modal-podcasts.elizabeth-castro-no-estudio-do-programa"></div>
+                            <div class="mg-c"><img src="../assets/images/bastidores/c-corredor-uj.webp" alt="Participantes a chegar à sala" loading="lazy" style="object-position: 62% 68%" data-i18n-attr="alt:espacos.modal-podcasts.participantes-a-chegar-a-sala"></div>
+                            <div class="mg-d"><img src="../assets/images/bastidores/c-palco.webp" alt="Elizabeth Castro a falar sobre parcerias estratégicas" loading="lazy" style="object-position: 26% 52%" data-i18n-attr="alt:espacos.modal-podcasts.elizabeth-castro-a-falar-sobre-parcerias"></div>
+                            <div class="mg-e"><img src="../assets/images/bastidores/c-bastidores-uj.webp" alt="Elizabeth Castro nos bastidores de um evento" loading="lazy" style="object-position: 4% 50%" data-i18n-attr="alt:espacos.modal-podcasts.elizabeth-castro-nos-bastidores-de-um"></div>
+                            <div class="mg-f"><video muted loop playsinline preload="none" data-inview-play aria-hidden="true"
+                                style="object-position: 38% 50%" poster="../assets/video/bastidores/c-v-conversa-poster.webp">
+                                <source src="../assets/video/bastidores/c-v-conversa.webm" type="video/webm">
+                                <source src="../assets/video/bastidores/c-v-conversa.mp4" type="video/mp4">
+                            </video></div>
                         </div>
                     </div>
                 </div>
@@ -979,6 +996,8 @@
 
     <script src="../js/javascript.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Card videos: play only while on screen -->
+    <script src="../js/inview-video.js" defer></script>
     <script>
         /* JAVASCRIPT | Navigation, interactions and animations */
         (function () {

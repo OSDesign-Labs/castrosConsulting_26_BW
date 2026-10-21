@@ -250,7 +250,11 @@
                 <div class="row g-4 justify-content-center">
                     <div class="col-md-6 col-lg-5" data-aos="fade-right" data-aos-delay="0">
                         <button type="button" class="fm-card" data-bs-toggle="modal" data-bs-target="#modalFormacoes">
-                            <img src="../assets/workshop.webp" alt="" loading="lazy">
+                            <video class="fm-card-media" muted loop playsinline preload="none" data-inview-play aria-hidden="true"
+                                poster="../assets/video/svc-formacoes-cards-poster.webp">
+                                <source src="../assets/video/svc-formacoes-cards.webm" type="video/webm">
+                                <source src="../assets/video/svc-formacoes-cards.mp4" type="video/mp4">
+                            </video>
                             <span class="fm-card-body">
                                 <span class="fm-card-title" data-i18n="formacoes.programs.formacoes">Formações</span>
                                 <span class="link-arrow"><span data-i18n="formacoes.programs.ver-detalhes">Ver
@@ -260,7 +264,11 @@
                     </div>
                     <div class="col-md-6 col-lg-5" data-aos="fade-left" data-aos-delay="150">
                         <button type="button" class="fm-card" data-bs-toggle="modal" data-bs-target="#modalTreinamento">
-                            <img src="../assets/office.webp" alt="" loading="lazy">
+                            <video class="fm-card-media" muted loop playsinline preload="none" data-inview-play aria-hidden="true"
+                                poster="../assets/video/svc-treinamento-poster.webp">
+                                <source src="../assets/video/svc-treinamento.webm" type="video/webm">
+                                <source src="../assets/video/svc-treinamento.mp4" type="video/mp4">
+                            </video>
                             <span class="fm-card-body">
                                 <span class="fm-card-title"
                                     data-i18n="formacoes.programs.treinamento">Treinamento</span>
@@ -868,30 +876,16 @@
                                 <ul class="upcoming-list">
                                     <li>
                                         <span class="upcoming-title"
-                                            data-i18n="formacoes.modal-courses.oratoria-e-comunicacao-com-impacto-2">Oratória
-                                            e Comunicação com Impacto</span>
+                                            data-i18n="formacoes.modal-courses.formacao-em-comunicacao-e-oratoria-2-edicao">Formação
+                                            em Comunicação e Oratória (2.ª edição)</span>
                                         <span class="d-flex gap-3 event-meta">
                                             <span class="d-flex align-items-center gap-1"><svg class="bi">
                                                     <use xlink:href="#i-calendar"></use>
-                                                </svg><span data-i18n="formacoes.modal-courses.14-mar-2026">14 Mar
+                                                </svg><span data-i18n="formacoes.modal-courses.nov-dez-2026">Nov – Dez
                                                     2026</span></span>
                                             <span class="d-flex align-items-center gap-1"><svg class="bi">
                                                     <use xlink:href="#i-geo"></use>
                                                 </svg>Maputo</span>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span class="upcoming-title"
-                                            data-i18n="formacoes.modal-courses.lideranca-etica-e-tomada-de-decisao-2">Liderança
-                                            Ética e Tomada de Decisão</span>
-                                        <span class="d-flex gap-3 event-meta">
-                                            <span class="d-flex align-items-center gap-1"><svg class="bi">
-                                                    <use xlink:href="#i-calendar"></use>
-                                                </svg><span data-i18n="formacoes.modal-courses.28-mar-2026">28 Mar
-                                                    2026</span></span>
-                                            <span class="d-flex align-items-center gap-1"><svg class="bi">
-                                                    <use xlink:href="#i-geo"></use>
-                                                </svg>Online</span>
                                         </span>
                                     </li>
                                 </ul>
@@ -906,24 +900,20 @@
                         <span class="modal-pattern modal-pattern--tl" aria-hidden="true"><span class="pattern-diagonal-lines-sm"></span></span>
                         <h4 class="mb-3" data-i18n="formacoes.modal-courses.bastidores">Bastidores</h4>
                         <div class="modal-gallery">
-                            <div class="mg-a"><img src="../assets/images/ora.webp" alt="Elizabeth Castro a apresentar numa formação" loading="lazy"
-                                    data-i18n-attr="alt:formacoes.modal-courses.elizabeth-castro-a-apresentar-numa-formacao"></div>
-                            <div class="mg-b"><img src="../assets/images/workshop-3.webp" alt="Participantes atentos à apresentação" loading="lazy"
-                                    data-i18n-attr="alt:formacoes.modal-courses.participantes-atentos-a-apresentacao">
-                            </div>
-                            <div class="mg-c"><img src="../assets/flyerteam.webp" alt="Equipa reunida numa formação"
-                                    loading="lazy"
-                                    data-i18n-attr="alt:formacoes.modal-courses.equipa-reunida-numa-formacao"></div>
-                            <div class="mg-d"><img src="../assets/images/workshop-2.webp" alt="Participantes durante a formação" loading="lazy"
-                                    data-i18n-attr="alt:formacoes.modal-courses.participantes-durante-a-formacao">
-                            </div>
-                            <div class="mg-e"><img src="../assets/images/workshop-5.webp" alt="Participantes numa sessão de formação" loading="lazy"
-                                    data-i18n-attr="alt:formacoes.modal-courses.participantes-numa-sessao-de-formacao">
-                            </div>
-                            <div class="mg-f"><img src="../assets/workshop2.webp"
-                                    alt="Momento de prática durante o workshop" loading="lazy"
-                                    data-i18n-attr="alt:formacoes.modal-courses.momento-de-pratica-durante-o-workshop">
-                            </div>
+                            <div class="mg-a"><video muted loop playsinline preload="none" data-inview-play aria-hidden="true"
+                                style="object-position: 58% 50%" poster="../assets/video/bastidores/f-v-curso-poster.webp">
+                                <source src="../assets/video/bastidores/f-v-curso.webm" type="video/webm">
+                                <source src="../assets/video/bastidores/f-v-curso.mp4" type="video/mp4">
+                            </video></div>
+                            <div class="mg-b"><img src="../assets/images/workshop-3.webp" alt="Participantes atentos à apresentação" loading="lazy" style="object-position: 60% 36%" data-i18n-attr="alt:formacoes.modal-courses.participantes-atentos-a-apresentacao"></div>
+                            <div class="mg-c"><img src="../assets/images/bastidores/f-apresentacao-ecra.webp" alt="Formanda a apresentar junto ao ecrã" loading="lazy" style="object-position: 66% 50%" data-i18n-attr="alt:formacoes.modal-courses.formanda-a-apresentar-junto-ao-ecra"></div>
+                            <div class="mg-d"><img src="../assets/images/ora.webp" alt="Elizabeth Castro a apresentar numa formação" loading="lazy" style="object-position: 60% 32%" data-i18n-attr="alt:formacoes.modal-courses.elizabeth-castro-a-apresentar-numa-formacao"></div>
+                            <div class="mg-e"><img src="../assets/images/workshop-4.webp" alt="Participantes durante uma formação na sala da Castros" loading="lazy" style="object-position: 70% 44%" data-i18n-attr="alt:formacoes.modal-courses.participantes-durante-uma-formacao-na-sala"></div>
+                            <div class="mg-f"><video muted loop playsinline preload="none" data-inview-play aria-hidden="true"
+                                style="object-position: 56% 50%" poster="../assets/video/bastidores/f-v-certificados-poster.webp">
+                                <source src="../assets/video/bastidores/f-v-certificados.webm" type="video/webm">
+                                <source src="../assets/video/bastidores/f-v-certificados.mp4" type="video/mp4">
+                            </video></div>
                         </div>
                     </div>
                 </div>
@@ -950,14 +940,12 @@
                 <div class="modal-body">
                     <!-- MEDIA FEATURE: 1 square + 2 stacked wide -->
                     <div class="media-trio mb-5">
-                        <div class="mt-a"><img src="../assets/images/officework.webp" alt="Elizabeth Castro a receber a equipa na sala de formação" loading="lazy"
+                        <div class="mt-a"><img style="object-position: 40% 24%" src="../assets/images/officework.webp" alt="Elizabeth Castro a receber a equipa na sala de formação" loading="lazy"
                                     data-i18n-attr="alt:formacoes.modal-training.elizabeth-castro-a-receber-a-equipa"></div>
-                        <div class="mt-b"><img src="../assets/atendimento.webp" alt="Equipa em formação de atendimento"
+                        <div class="mt-b"><img style="object-position: 50% 50%" src="../assets/atendimento.webp" alt="Equipa em formação de atendimento"
                                 loading="lazy"
                                 data-i18n-attr="alt:formacoes.modal-training.equipa-em-formacao-de-atendimento"></div>
-                        <div class="mt-c"><img src="../assets/images/workshop-4.webp" alt="Formação em curso na sala da Castros" loading="lazy"
-                                    data-i18n-attr="alt:formacoes.modal-training.formacao-em-curso-na-sala-da-castros">
-                        </div>
+                        <div class="mt-c"><img src="../assets/images/bastidores/t-sala-uj.webp" alt="Sala de formação com participantes e apresentação no ecrã" loading="lazy" style="object-position: 52% 50%" data-i18n-attr="alt:formacoes.modal-training.sala-de-formacao-com-participantes-e"></div>
                     </div>
 
                     <!-- 3 COLUMNS -->
@@ -1002,12 +990,12 @@
                             <span class="eyebrow" data-i18n="formacoes.modal-training.proximo-evento">Próximo
                                 Evento</span>
                             <h4 class="mb-1"
-                                data-i18n="formacoes.modal-training.treinamento-corporativo-atendimento-com-proposito">
-                                Treinamento Corporativo: Atendimento com Propósito</h4>
+                                data-i18n="formacoes.modal-training.formacao-em-comunicacao-e-oratoria-2-edicao">
+                                Formação em Comunicação e Oratória (2.ª edição)</h4>
                             <span class="d-flex gap-3 event-meta">
                                 <span class="d-flex align-items-center gap-1"><svg class="bi">
                                         <use xlink:href="#i-calendar"></use>
-                                    </svg><span data-i18n="formacoes.modal-training.09-abr-2026">09 Abr
+                                    </svg><span data-i18n="formacoes.modal-training.nov-dez-2026">Nov – Dez
                                         2026</span></span>
                                 <span class="d-flex align-items-center gap-1"><svg class="bi">
                                         <use xlink:href="#i-geo"></use>
@@ -1023,25 +1011,26 @@
                         <span class="modal-pattern modal-pattern--tl" aria-hidden="true"><span class="pattern-dots-md"></span></span>
                         <h4 class="mb-3" data-i18n="formacoes.modal-training.bastidores">Bastidores</h4>
                         <div class="modal-gallery">
-                            <div class="mg-a"><img src="../assets/images/entrancesmile.webp" alt="Boas-vindas a uma participante" loading="lazy"
+                            <div class="mg-a"><img style="object-position: 46% 46%" src="../assets/images/entrancesmile.webp" alt="Boas-vindas a uma participante" loading="lazy"
                                     data-i18n-attr="alt:formacoes.modal-training.boas-vindas-a-uma-participante">
                             </div>
-                            <div class="mg-b"><img src="../assets/consultingnoturious.webp"
-                                    alt="Sessão de treinamento em curso" loading="lazy"
-                                    data-i18n-attr="alt:formacoes.modal-training.sessao-de-treinamento-em-curso"></div>
-                            <div class="mg-c"><img src="../assets/handshake.webp"
-                                    alt="Aperto de mão entre consultor e participante" loading="lazy"
-                                    data-i18n-attr="alt:formacoes.modal-training.aperto-de-mao-entre-consultor-e"></div>
-                            <div class="mg-d"><img src="../assets/images/workshop-1.webp" alt="Participantes numa sessão de treinamento" loading="lazy"
+                            <div class="mg-b"><video muted loop playsinline preload="none" data-inview-play aria-hidden="true"
+                                style="object-position: 56% 50%" poster="../assets/video/bastidores/t-v-elas-poster.webp">
+                                <source src="../assets/video/bastidores/t-v-elas.webm" type="video/webm">
+                                <source src="../assets/video/bastidores/t-v-elas.mp4" type="video/mp4">
+                            </video></div>
+                            <div class="mg-c"><img src="../assets/images/bastidores/t-chegada.webp" alt="Elizabeth Castro a chegar para a sessão" loading="lazy" style="object-position: 44% 50%" data-i18n-attr="alt:formacoes.modal-training.elizabeth-castro-a-chegar-para-a"></div>
+                            <div class="mg-d"><img style="object-position: 8% 58%" src="../assets/images/workshop-1.webp" alt="Participantes numa sessão de treinamento" loading="lazy"
                                     data-i18n-attr="alt:formacoes.modal-training.participantes-numa-sessao-de-treinamento">
                             </div>
-                            <div class="mg-e"><img src="../assets/images/entrance-1.webp" alt="Banner da Castros Consultoria: Liderar com ética" loading="lazy"
+                            <div class="mg-e"><img style="object-position: 50% 50%" src="../assets/images/entrance-1.webp" alt="Banner da Castros Consultoria: Liderar com ética" loading="lazy"
                                     data-i18n-attr="alt:formacoes.modal-training.banner-da-castros-consultoria-liderar-com">
                             </div>
-                            <div class="mg-f"><img src="../assets/team.webp" alt="Equipa reunida após o treinamento"
-                                    loading="lazy"
-                                    data-i18n-attr="alt:formacoes.modal-training.equipa-reunida-apos-o-treinamento">
-                            </div>
+                            <div class="mg-f"><video muted loop playsinline preload="none" data-inview-play aria-hidden="true"
+                                style="object-position: 28% 38%" poster="../assets/video/bastidores/t-v-palco-poster.webp">
+                                <source src="../assets/video/bastidores/t-v-palco.webm" type="video/webm">
+                                <source src="../assets/video/bastidores/t-v-palco.mp4" type="video/mp4">
+                            </video></div>
                         </div>
                     </div>
                 </div>
@@ -1178,6 +1167,8 @@
 
     <script src="../js/javascript.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Card videos: play only while on screen -->
+    <script src="../js/inview-video.js" defer></script>
     <script>
         /* JAVASCRIPT | Navigation, interactions and animations */
         (function () {

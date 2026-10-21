@@ -1,50 +1,20 @@
 {
-  "events.item.course-oratoria-comunicacao-eficaz.category": "Liderança",
-  "events.item.course-oratoria-comunicacao-eficaz.description": "Um dia intensivo e prático para líderes que querem construir equipas mais fortes, autónomas e comprometidas. Trabalhamos situações reais do dia a dia da liderança, com ferramentas que pode aplicar logo na semana seguinte.",
-  "events.item.course-oratoria-comunicacao-eficaz.format": "Presencial",
+  "events.item.course-oratoria-comunicacao-eficaz.category": "Comunicação",
+  "events.item.course-oratoria-comunicacao-eficaz.city": "Rua da Tchamba n.º 113, Maputo",
+  "events.item.course-oratoria-comunicacao-eficaz.description": "Curso de um mês, presencial, para quem quer falar em público com confiança e comunicar com clareza. Investimento: 1.200 MT (300 MT de inscrição e 900 MT de certificado). Local: Rua da Tchamba n.º 113, Maputo, próximo da Maternidade do Hospital Central.",
+  "events.item.course-oratoria-comunicacao-eficaz.format": "Presencial · 1 mês",
   "events.item.course-oratoria-comunicacao-eficaz.highlights": [
-    "Delegar com confiança e acompanhar sem microgerir",
-    "Dar feedback que faz a equipa crescer",
-    "Criar autonomia e responsabilidade partilhada"
+    "Comunicação eficaz e assertiva",
+    "Técnicas de oratória e expressão verbal",
+    "Linguagem corporal e presença",
+    "Organização e estrutura de discursos",
+    "Como falar em público com confiança"
   ],
-  "events.item.course-oratoria-comunicacao-eficaz.summary": "Um dia intensivo para líderes que querem equipas mais fortes e autónomas.",
-  "events.item.course-oratoria-comunicacao-eficaz.title": "Oratoria e Comunicação Eficaz",
-  "events.item.oratoria-comunicacao-impacto.category": "Comunicação",
-  "events.item.oratoria-comunicacao-impacto.description": "Para quem precisa de falar em público com segurança: preparar a mensagem, controlar o nervosismo, usar a voz e o corpo a seu favor e terminar com um apelo que leva as pessoas a agir.",
-  "events.item.oratoria-comunicacao-impacto.format": "Presencial · Vagas limitadas",
-  "events.item.oratoria-comunicacao-impacto.highlights": [
-    "Preparar e ensaiar uma intervenção curta",
-    "Gerir o nervosismo antes e durante",
-    "Prender a atenção do início ao fim"
-  ],
-  "events.item.oratoria-comunicacao-impacto.summary": "Como falar de forma clara, ganhar confiança em palco e mobilizar pessoas para a ação.",
-  "events.item.oratoria-comunicacao-impacto.title": "Oratória e Comunicação com Impacto",
-  "events.item.workshop-arte.category": "Estratégia",
-  "events.item.workshop-arte.description": "Ferramentas simples para tomar decisões difíceis com base em dados e com convicção, mesmo em contextos de incerteza.",
-  "events.item.workshop-arte.format": "Presencial",
-  "events.item.workshop-arte.highlights": [
-    "Separar factos, suposições e opiniões",
-    "Comparar opções com critérios claros",
-    "Comunicar a decisão e assumir o compromisso"
-  ],
-  "events.item.workshop-arte.summary": "Ferramentas simples para tomar decisões difíceis com dados e convicção.",
-  "events.item.workshop-arte.title": "A Arte de Encantar e Fidelizar Clientes",
-  "events.item.workshop-elas.category": "Comunicação",
-  "events.item.workshop-elas.description": "Uma sessão sobre como comunicar de forma clara, estruturar a mensagem e mobilizar pessoas para a ação, em reuniões, apresentações e conversas difíceis.",
-  "events.item.workshop-elas.format": "Presencial",
-  "events.item.workshop-elas.highlights": [
-    "Estruturar uma mensagem clara em poucos minutos",
-    "Falar com confiança perante um grupo",
-    "Adaptar a comunicação a cada público"
-  ],
-  "events.item.workshop-elas.summary": "Como falar de forma clara e mobilizar pessoas para a ação.",
-  "events.item.workshop-elas.title": "Parcerias Estrategicas de Vida e Negocio",
-  "events.item.curso-atendimento-ao-cliente-2025.title": "Curso: Atendimento ao Cliente",
+  "events.item.course-oratoria-comunicacao-eficaz.summary": "A arte de falar bem transforma ideias em impacto.",
+  "events.item.course-oratoria-comunicacao-eficaz.title": "Curso de Oratória e Comunicação Eficaz",
   "events.item.curso-atendimento-ao-cliente-2025.category": "Atendimento",
-  "events.item.curso-atendimento-ao-cliente-2025.city": "Maputo",
-  "events.item.curso-atendimento-ao-cliente-2025.format": "Presencial · Certificado + lanche",
-  "events.item.curso-atendimento-ao-cliente-2025.summary": "Dois dias para elevar o padrão de atendimento, da primeira impressão à gestão de reclamações.",
   "events.item.curso-atendimento-ao-cliente-2025.description": "Curso de dois dias (27 e 28 de novembro de 2025) para empreendedores, gestores, estabelecimentos comerciais e equipas de front line e back office que querem melhorar a sua performance de atendimento. Local: NuLimit, Av. Tomás Nduda n.º 1050 R/C, Polana, Maputo. Valor: 2.500 MT, com certificado e lanche incluídos.",
+  "events.item.curso-atendimento-ao-cliente-2025.format": "Presencial · Certificado + lanche",
   "events.item.curso-atendimento-ao-cliente-2025.highlights": [
     "O impacto da primeira impressão",
     "Comportamento profissional e imagem da marca",
@@ -52,15 +22,62 @@
     "O cliente como parceiro, não apenas como consumidor",
     "Gestão de reclamações e de clientes insatisfeitos"
   ],
-  "events.item.masterclass-codigos-da-lideranca-2025.title": "Master Class: Códigos da Liderança",
+  "events.item.curso-atendimento-ao-cliente-2025.summary": "Dois dias para elevar o padrão de atendimento, da primeira impressão à gestão de reclamações.",
+  "events.item.curso-atendimento-ao-cliente-2025.title": "Curso: Atendimento ao Cliente",
+  "events.item.formacao-comunicacao-oratoria-2-edicao.category": "Comunicação",
+  "events.item.formacao-comunicacao-oratoria-2-edicao.city": "Rua da Tchamba n.º 113, Maputo",
+  "events.item.formacao-comunicacao-oratoria-2-edicao.description": "Segunda edição da formação em Comunicação e Oratória: expressão oral e oratória, comunicação assertiva e comunicação eficaz e profissional, ao longo de 30 dias, entre novembro e dezembro. Local: Rua da Tchamba n.º 113, Maputo, próximo da Maternidade do HCM.",
+  "events.item.formacao-comunicacao-oratoria-2-edicao.format": "Presencial · 30 dias",
+  "events.item.formacao-comunicacao-oratoria-2-edicao.highlights": [
+    "Técnicas para falar em público",
+    "Voz, dicção e linguagem corporal",
+    "Autoconfiança e gestão do medo",
+    "Apresentações com impacto"
+  ],
+  "events.item.formacao-comunicacao-oratoria-2-edicao.summary": "30 dias para comunicar de forma assertiva, eficaz e profissional.",
+  "events.item.formacao-comunicacao-oratoria-2-edicao.title": "Formação em Comunicação e Oratória (2.ª edição)",
   "events.item.masterclass-codigos-da-lideranca-2025.category": "Liderança",
   "events.item.masterclass-codigos-da-lideranca-2025.city": "Hotel Afrin, Maputo",
-  "events.item.masterclass-codigos-da-lideranca-2025.format": "Presencial · Aberto a expositores",
-  "events.item.masterclass-codigos-da-lideranca-2025.summary": "Um encontro de líderes, empreendedores e profissionais de referência, com espaço para expositores.",
   "events.item.masterclass-codigos-da-lideranca-2025.description": "Se pretende dar visibilidade à sua marca ou negócio e conectar-se com líderes, empreendedores e profissionais de referência, esta é a sua oportunidade. A Master Class “Códigos da Liderança” reúne mentes visionárias, energia transformadora e oportunidades reais de networking. Participação como expositor: 1.500 MT. Bilhete: 1.000 MT (e-Mola ou M-Pesa).",
+  "events.item.masterclass-codigos-da-lideranca-2025.format": "Presencial · Aberto a expositores",
   "events.item.masterclass-codigos-da-lideranca-2025.highlights": [
     "Dar visibilidade à sua marca ou negócio",
     "Networking com líderes, empreendedores e profissionais de referência",
     "Mostrar os seus produtos e serviços num ambiente de alto impacto"
-  ]
+  ],
+  "events.item.masterclass-codigos-da-lideranca-2025.summary": "Um encontro de líderes, empreendedores e profissionais de referência, com espaço para expositores.",
+  "events.item.masterclass-codigos-da-lideranca-2025.title": "Master Class: Códigos da Liderança",
+  "events.item.workshop-arte.category": "Atendimento",
+  "events.item.workshop-arte.description": "Workshop com Elizabeth Castro sobre o momento que decide tudo no atendimento: o início. Como os primeiros minutos com o cliente determinam a venda e a satisfação final, e o que fazer para encantar e fidelizar.",
+  "events.item.workshop-arte.format": "Presencial",
+  "events.item.workshop-arte.highlights": [
+    "Porque o início do atendimento decide a venda",
+    "Encantar o cliente desde o primeiro contacto",
+    "Da satisfação à fidelização"
+  ],
+  "events.item.workshop-arte.summary": "Como o início do atendimento determina a venda e a satisfação final.",
+  "events.item.workshop-arte.title": "Workshop: A Arte de Encantar e Fidelizar",
+  "events.item.workshop-elas.category": "Liderança",
+  "events.item.workshop-elas.city": "Access Bank Sede, Maputo",
+  "events.item.workshop-elas.description": "A GBNA (Global Business Network Africa Agency) e a plataforma ELAS apresentaram o Workshop entre Elas, com Elizabeth Castro como oradora confirmada. Tema do masterclass: Parcerias Estratégicas de Vida e Negócio, conectando pessoas, ideias e oportunidades para um futuro mais próspero. Sala Corporativa da sede do Access Bank, em Maputo. Fórum exclusivo para membros da GBNA e da plataforma ELAS.",
+  "events.item.workshop-elas.format": "Presencial · Fórum GBNA e ELAS",
+  "events.item.workshop-elas.highlights": [
+    "Finanças pessoais e empresariais",
+    "Parcerias estratégicas de vida",
+    "Vendas pessoais e empresariais",
+    "Network: conexões que geram oportunidades"
+  ],
+  "events.item.workshop-elas.summary": "Masterclass com Elizabeth Castro: conectar pessoas, ideias e oportunidades.",
+  "events.item.workshop-elas.title": "Workshop entre Elas: Parcerias Estratégicas de Vida e Negócio",
+  "events.item.workshop-outubro-rosa-2026.category": "Saúde e bem-estar",
+  "events.item.workshop-outubro-rosa-2026.city": "Auditório da Universidade Joaquim Chissano",
+  "events.item.workshop-outubro-rosa-2026.description": "Venha fazer parte: um workshop para falar sobre saúde, autocuidado e a importância da prevenção do cancro da mama, com a oradora confirmada Verônica Carlos Nunes, especialista em saúde materno-infantil. Em parceria com a Associação dos Estudantes da Universidade Joaquim Chissano. Porque a prevenção é vida!",
+  "events.item.workshop-outubro-rosa-2026.format": "Presencial",
+  "events.item.workshop-outubro-rosa-2026.highlights": [
+    "Saúde e autocuidado no dia a dia",
+    "A importância da prevenção do cancro da mama",
+    "Conversa com Verônica Carlos Nunes, especialista em saúde materno-infantil"
+  ],
+  "events.item.workshop-outubro-rosa-2026.summary": "Saúde, autocuidado e a importância da prevenção do cancro da mama.",
+  "events.item.workshop-outubro-rosa-2026.title": "Workshop Outubro Rosa"
 }

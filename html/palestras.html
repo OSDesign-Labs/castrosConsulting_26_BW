@@ -210,7 +210,11 @@
                 <div class="row g-4 justify-content-center">
                     <div class="col-md-6 col-lg-5" data-aos="fade-right" data-aos-delay="0">
                         <button type="button" class="fm-card" data-bs-toggle="modal" data-bs-target="#modalPalestras">
-                            <img src="../assets/events/comunicacao-com-impacto.webp" alt="" loading="lazy">
+                            <video class="fm-card-media" muted loop playsinline preload="none" data-inview-play aria-hidden="true"
+                                poster="../assets/video/svc-palestras-poster.webp">
+                                <source src="../assets/video/svc-palestras.webm" type="video/webm">
+                                <source src="../assets/video/svc-palestras.mp4" type="video/mp4">
+                            </video>
                             <span class="fm-card-body">
                                 <span class="fm-card-title" data-i18n="palestras.programs.palestras">Palestras</span>
                                 <span class="link-arrow"><span data-i18n="palestras.programs.ver-detalhes">Ver detalhes</span> <span class="arrowRight">&gt;</span></span>
@@ -219,7 +223,11 @@
                     </div>
                     <div class="col-md-6 col-lg-5" data-aos="fade-left" data-aos-delay="150">
                         <button type="button" class="fm-card" data-bs-toggle="modal" data-bs-target="#modalWorkshops">
-                            <img src="../assets/hero/inicio-2.webp" alt="" loading="lazy">
+                            <video class="fm-card-media" muted loop playsinline preload="none" data-inview-play aria-hidden="true"
+                                poster="../assets/video/svc-workshops-poster.webp">
+                                <source src="../assets/video/svc-workshops.webm" type="video/webm">
+                                <source src="../assets/video/svc-workshops.mp4" type="video/mp4">
+                            </video>
                             <span class="fm-card-body">
                                 <span class="fm-card-title">Workshops</span>
                                 <span class="link-arrow"><span data-i18n="palestras.programs.ver-detalhes">Ver detalhes</span> <span class="arrowRight">&gt;</span></span>
@@ -672,7 +680,7 @@
     <!-- ======================================================
          MODAL — PALESTRAS (same structure as the Formações modal in formacoes.html)
          left: description + topics | right: benefícios + próximas palestras
-         bottom: Bastidores gallery. Photos are stock placeholders until the client's own arrive.
+         bottom: Bastidores gallery. Photos: the client's own (assets/images/recent/).
          ====================================================== -->
     <div class="modal fade" id="modalPalestras" tabindex="-1" aria-labelledby="modalPalestrasLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
@@ -735,17 +743,7 @@
                                 <span class="eyebrow" data-i18n="palestras.modal-talks.calendario">Calendário</span>
                                 <h4 class="mb-3" data-i18n="palestras.modal-talks.proximas-palestras">Próximas Palestras</h4>
                                 <ul class="upcoming-list">
-                                    <li>
-                                        <span class="upcoming-title" data-i18n="palestras.modal-talks.oratoria-e-comunicacao-com-impacto">Oratória e Comunicação com Impacto</span>
-                                        <span class="d-flex gap-3 event-meta">
-                                            <span class="d-flex align-items-center gap-1"><svg class="bi">
-                                                    <use xlink:href="#i-calendar"></use>
-                                                </svg><span data-i18n="palestras.modal-talks.13-out-2026">13 Out 2026</span></span>
-                                            <span class="d-flex align-items-center gap-1"><svg class="bi">
-                                                    <use xlink:href="#i-geo"></use>
-                                                </svg>Maputo</span>
-                                        </span>
-                                    </li>
+                                    
                                     <li>
                                         <span class="upcoming-title" data-i18n="palestras.modal-talks.etica-e-lideranca-organizacional">Ética e Liderança Organizacional</span>
                                         <span class="d-flex gap-3 event-meta">
@@ -768,15 +766,21 @@
                         <span class="modal-pattern modal-pattern--tl" aria-hidden="true"><span class="pattern-diagonal-lines-sm"></span></span>
                         <h4 class="mb-3" data-i18n="palestras.modal-talks.bastidores">Bastidores</h4>
                         <div class="modal-gallery">
-                            <div class="mg-a"><img src="../assets/images/workshop-6.webp" alt="Oradora a conduzir uma palestra" loading="lazy"
+                            <div class="mg-a"><img style="object-position: 50% 42%" src="../assets/images/workshop-6.webp" alt="Oradora a conduzir uma palestra" loading="lazy"
                                     data-i18n-attr="alt:palestras.modal-talks.oradora-a-conduzir-uma-palestra"></div>
-                            <div class="mg-b"><img src="../assets/hero/formacao-poster.webp" alt="Participantes a aplaudir no fim de uma palestra" loading="lazy" data-i18n-attr="alt:palestras.modal-talks.participantes-a-aplaudir-no-fim-de"></div>
-                            <div class="mg-c"><img src="../assets/images/workshop-4.webp" alt="Público durante uma palestra" loading="lazy"
-                                    data-i18n-attr="alt:palestras.modal-talks.publico-durante-uma-palestra"></div>
-                            <div class="mg-d"><img src="../assets/hero/eventos-poster.webp" alt="Participantes sentados numa sala de conferências" loading="lazy" data-i18n-attr="alt:palestras.modal-talks.participantes-sentados-numa-sala-de-conferencias"></div>
-                            <div class="mg-e"><img src="../assets/images/workshop-1.webp" alt="Participantes a ouvir a palestra" loading="lazy"
-                                    data-i18n-attr="alt:palestras.modal-talks.participantes-a-ouvir-a-palestra"></div>
-                            <div class="mg-f"><img src="../assets/events/etica-e-lideranca.webp" alt="Aperto de mão no fim de uma sessão" loading="lazy" data-i18n-attr="alt:palestras.modal-talks.aperto-de-mao-no-fim-de"></div>
+                            <div class="mg-b"><img src="../assets/images/bastidores/p-sala-uj.webp" alt="Elizabeth Castro na sala antes da palestra" loading="lazy" style="object-position: 0% 50%" data-i18n-attr="alt:palestras.modal-talks.elizabeth-castro-na-sala-antes-da"></div>
+                            <div class="mg-c"><img src="../assets/images/bastidores/p-slides.webp" alt="Elizabeth Castro a apresentar com diapositivos" loading="lazy" style="object-position: 54% 50%" data-i18n-attr="alt:palestras.modal-talks.elizabeth-castro-a-apresentar-com-diapositivos"></div>
+                            <div class="mg-d"><video muted loop playsinline preload="none" data-inview-play aria-hidden="true"
+                                style="object-position: 44% 50%" poster="../assets/video/bastidores/p-v-painel-poster.webp">
+                                <source src="../assets/video/bastidores/p-v-painel.webm" type="video/webm">
+                                <source src="../assets/video/bastidores/p-v-painel.mp4" type="video/mp4">
+                            </video></div>
+                            <div class="mg-e"><img src="../assets/images/bastidores/p-elas-microfone.webp" alt="Elizabeth Castro ao microfone no Workshop entre Elas" loading="lazy" style="object-position: 50% 50%" data-i18n-attr="alt:palestras.modal-talks.elizabeth-castro-ao-microfone-no-workshop"></div>
+                            <div class="mg-f"><video muted loop playsinline preload="none" data-inview-play aria-hidden="true"
+                                style="object-position: 48% 84%" poster="../assets/video/bastidores/p-v-elas-poster.webp">
+                                <source src="../assets/video/bastidores/p-v-elas.webm" type="video/webm">
+                                <source src="../assets/video/bastidores/p-v-elas.mp4" type="video/mp4">
+                            </video></div>
                         </div>
                     </div>
                 </div>
@@ -787,7 +791,7 @@
     <!-- ======================================================
          MODAL — WORKSHOPS (same structure as the Treinamento modal in formacoes.html)
          top: media block (1 square + 2 wide) | 3 columns: Abertos / Empresas / Online
-         then Próximo Workshop banner, then Bastidores gallery. Photos are stock placeholders.
+         then Próximo Workshop banner, then Bastidores gallery. Photos: the client's own (assets/images/recent/).
          ====================================================== -->
     <div class="modal fade" id="modalWorkshops" tabindex="-1" aria-labelledby="modalWorkshopsLabel"
         aria-hidden="true">
@@ -800,12 +804,9 @@
                 <div class="modal-body">
                     <!-- MEDIA FEATURE: 1 square + 2 stacked wide -->
                     <div class="media-trio mb-5">
-                        <div class="mt-a"><img src="../assets/images/workshop-3.webp" alt="Workshop em curso" loading="lazy"
-                                    data-i18n-attr="alt:palestras.modal-workshops.workshop-em-curso"></div>
-                        <div class="mt-b"><img src="../assets/morepeople.webp"
-                                alt="Equipa a trabalhar à mesa com portáteis durante um workshop" loading="lazy" data-i18n-attr="alt:palestras.modal-workshops.equipa-a-trabalhar-a-mesa-com"></div>
-                        <div class="mt-c"><img src="../assets/images/workshop-5.webp" alt="Participantes num workshop" loading="lazy"
-                                    data-i18n-attr="alt:palestras.modal-workshops.participantes-num-workshop"></div>
+                        <div class="mt-a"><img src="../assets/images/bastidores/w-chegada.webp" alt="Elizabeth Castro a chegar ao workshop" loading="lazy" style="object-position: 52% 50%" data-i18n-attr="alt:palestras.modal-workshops.elizabeth-castro-a-chegar-ao-workshop"></div>
+                        <div class="mt-b"><img src="../assets/images/bastidores/w-conversa.webp" alt="Participantes em conversa durante o workshop" loading="lazy" style="object-position: 24% 50%" data-i18n-attr="alt:palestras.modal-workshops.participantes-em-conversa-durante-o"></div>
+                        <div class="mt-c"><img src="../assets/images/bastidores/w-elas-sala.webp" alt="Elizabeth Castro no Workshop entre Elas" loading="lazy" style="object-position: 46% 50%" data-i18n-attr="alt:palestras.modal-workshops.elizabeth-castro-no-workshop-entre-elas"></div>
                     </div>
 
                     <!-- 3 COLUMNS -->
@@ -839,17 +840,17 @@
                         <span class="modal-pattern modal-pattern--br modal-pattern--on-dark" aria-hidden="true"><span class="pattern-grid-md"></span></span>
                         <div>
                             <span class="eyebrow" data-i18n="palestras.modal-workshops.proximo-workshop">Próximo Workshop</span>
-                            <h4 class="mb-1" data-i18n="palestras.modal-workshops.excelencia-no-atendimento-ao-cliente">Excelência no Atendimento ao Cliente</h4>
+                            <h4 class="mb-1" data-i18n="palestras.modal-workshops.workshop-outubro-rosa">Workshop Outubro Rosa</h4>
                             <span class="d-flex gap-3 event-meta">
                                 <span class="d-flex align-items-center gap-1"><svg class="bi">
                                         <use xlink:href="#i-calendar"></use>
-                                    </svg><span data-i18n="palestras.modal-workshops.data-a-anunciar">Data a anunciar</span></span>
+                                    </svg><span data-i18n="palestras.modal-workshops.28-out-2026">28 Out 2026 · 11h–14h</span></span>
                                 <span class="d-flex align-items-center gap-1"><svg class="bi">
                                         <use xlink:href="#i-geo"></use>
-                                    </svg>Maputo</span>
+                                    </svg><span data-i18n="palestras.modal-workshops.universidade-joaquim-chissano">Universidade Joaquim Chissano</span></span>
                             </span>
                         </div>
-                        <a class="btn btn-cyan px-4 py-2" href="#contact-form" data-i18n="palestras.modal-workshops.manifestar-interesse">Manifestar interesse</a>
+                        <a class="btn btn-cyan px-4 py-2" href="#contact-form" data-i18n="palestras.modal-workshops.inscrever-se">Inscrever-se</a>
                     </div>
 
                     <!-- BASTIDORES -->
@@ -857,14 +858,21 @@
                         <span class="modal-pattern modal-pattern--tl" aria-hidden="true"><span class="pattern-dots-md"></span></span>
                         <h4 class="mb-3" data-i18n="palestras.modal-workshops.bastidores">Bastidores</h4>
                         <div class="modal-gallery">
-                            <div class="mg-a"><img src="../assets/images/ora.webp" alt="Elizabeth Castro a conduzir um workshop" loading="lazy"
-                                    data-i18n-attr="alt:palestras.modal-workshops.elizabeth-castro-a-conduzir-um-workshop"></div>
-                            <div class="mg-b"><img src="../assets/services/formacoes-treinamentos.webp" alt="Formador a acompanhar um participante num exercício no tablet" loading="lazy" data-i18n-attr="alt:palestras.modal-workshops.formador-a-acompanhar-um-participante-num"></div>
-                            <div class="mg-c"><img src="../assets/images/workshop-2.webp" alt="Participantes atentos durante o workshop" loading="lazy"
+                            <div class="mg-a"><video muted loop playsinline preload="none" data-inview-play aria-hidden="true"
+                                style="object-position: 40% 50%" poster="../assets/video/bastidores/w-v-apresentacao-poster.webp">
+                                <source src="../assets/video/bastidores/w-v-apresentacao.webm" type="video/webm">
+                                <source src="../assets/video/bastidores/w-v-apresentacao.mp4" type="video/mp4">
+                            </video></div>
+                            <div class="mg-b"><img src="../assets/images/bastidores/w-rececao-wide.webp" alt="Receção dos participantes no workshop" loading="lazy" style="object-position: 6% 50%" data-i18n-attr="alt:palestras.modal-workshops.rececao-dos-participantes-no-workshop"></div>
+                            <div class="mg-c"><img style="object-position: 58% 42%" src="../assets/images/workshop-2.webp" alt="Participantes atentos durante o workshop" loading="lazy"
                                     data-i18n-attr="alt:palestras.modal-workshops.participantes-atentos-durante-o-workshop"></div>
-                            <div class="mg-d"><img src="../assets/events/decidir-com-clareza.webp" alt="Aperto de mão entre dois participantes" loading="lazy" data-i18n-attr="alt:palestras.modal-workshops.aperto-de-mao-entre-dois-participantes"></div>
-                            <div class="mg-e"><img src="../assets/services/consultoria.webp" alt="Conversa entre dois participantes durante uma dinâmica" loading="lazy" data-i18n-attr="alt:palestras.modal-workshops.conversa-entre-dois-participantes-durante-uma"></div>
-                            <div class="mg-f"><img src="../assets/services/espacos.webp" alt="Sala preparada para receber o workshop" loading="lazy" data-i18n-attr="alt:palestras.modal-workshops.sala-preparada-para-receber-o-workshop"></div>
+                            <div class="mg-d"><img src="../assets/images/bastidores/w-turma-sala.webp" alt="Turma reunida num workshop da Castros" loading="lazy" style="object-position: 48% 44%" data-i18n-attr="alt:palestras.modal-workshops.turma-reunida-num-workshop-da-castros"></div>
+                            <div class="mg-e"><img src="../assets/images/bastidores/w-chegada-uj.webp" alt="Participantes a chegar ao local do workshop" loading="lazy" style="object-position: 42% 50%" data-i18n-attr="alt:palestras.modal-workshops.participantes-a-chegar-ao-local-do"></div>
+                            <div class="mg-f"><video muted loop playsinline preload="none" data-inview-play aria-hidden="true"
+                                style="object-position: 60% 50%" poster="../assets/video/bastidores/w-v-elizabeth-poster.webp">
+                                <source src="../assets/video/bastidores/w-v-elizabeth.webm" type="video/webm">
+                                <source src="../assets/video/bastidores/w-v-elizabeth.mp4" type="video/mp4">
+                            </video></div>
                         </div>
                     </div>
                 </div>
@@ -997,6 +1005,8 @@
 
     <script src="../js/javascript.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Card videos: play only while on screen -->
+    <script src="../js/inview-video.js" defer></script>
     <script>
         /* JAVASCRIPT | Navigation, interactions and animations */
         (function () {

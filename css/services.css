@@ -1499,9 +1499,7 @@ main>.hero #overlayGradient>[class*="col-lg-6"] {
     border-radius: 14px;
     box-shadow: inset 0 0 70px rgba(1, 9, 48, 0.12);
     pointer-events: none;
-    background-image: url(../assets/people.webp);
-    background-size: cover;   
-    background-position: center;
+    /* background-image: url(../assets/people.webp);  stock photo removed */
     filter: contrast(1.2) grayscale(1);
 }
 
@@ -2602,7 +2600,8 @@ main>.hero #overlayGradient>[class*="col-lg-6"] {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.subpage main .fm-card img {
+.subpage main .fm-card img,
+.subpage main .fm-card .fm-card-media {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -2641,7 +2640,8 @@ main>.hero #overlayGradient>[class*="col-lg-6"] {
     transform: translateY(-5px);
 }
 
-.subpage main .fm-card:hover img {
+.subpage main .fm-card:hover img,
+.subpage main .fm-card:hover .fm-card-media {
     transform: scale(1.04);
 }
 
@@ -2764,7 +2764,8 @@ main>.hero #overlayGradient>[class*="col-lg-6"] {
     border-radius: 12px;
 }
 
-.modal-gallery img {
+.modal-gallery img,
+.modal-gallery video {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -2814,7 +2815,8 @@ main>.hero #overlayGradient>[class*="col-lg-6"] {
     border-radius: 14px;
 }
 
-.media-trio img {
+.media-trio img,
+.media-trio video {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -2867,6 +2869,42 @@ main>.hero #overlayGradient>[class*="col-lg-6"] {
 
 .event-banner .event-meta {
     color: var(--ash-soft);
+}
+
+/* tablets: the 6-column Bastidores grid and the 1 + 2 media block become thin portrait
+   slivers between 768 and 991 px, so they switch to the phone layout, with taller rows */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .modal-gallery {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 170px;
+    }
+
+    .mg-a,
+    .mg-b,
+    .mg-c,
+    .mg-d,
+    .mg-e,
+    .mg-f {
+        grid-column: auto;
+        grid-row: auto;
+    }
+
+    .mg-a {
+        grid-column: 1 / 3;
+        grid-row: span 2;
+    }
+
+    .media-trio {
+        grid-template-columns: 1fr;
+        grid-template-rows: 300px 170px 170px;
+    }
+
+    .mt-a,
+    .mt-b,
+    .mt-c {
+        grid-column: 1;
+        grid-row: auto;
+    }
 }
 
 @media (max-width: 767.98px) {
