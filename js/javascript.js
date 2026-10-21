@@ -132,9 +132,11 @@
 
     /* ==========================================================
        SERVICES ACCORDION
+       The home page has its own (phones: tap again to close), marked
+       data-accordion="inline"; running both made a tap open and close at once.
        ========================================================== */
     const tabsWrap = document.getElementById("servicesTabs");
-    if (tabsWrap) {
+    if (tabsWrap && tabsWrap.dataset.accordion !== "inline") {
         tabsWrap.addEventListener("click", function (event) {
             const button = event.target.closest(".tab-item");
             if (!button || button.classList.contains("active")) return;
