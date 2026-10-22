@@ -422,9 +422,13 @@
         if (typeof window.qrcode !== "function") { if (item) item.hidden = true; return; }
         // short message = fewer, bigger squares = scans easily off a screen
         // short on purpose: a longer message makes a denser code that won't fit the facts box
-        var msg = e._status === "upcoming"
-            ? T("events.qr-msg.upcoming", "Inscrever-me: {title}", { title: F(e, "title") })
-            : T("events.qr-msg.other", "Mais info: {title}", { title: F(e, "title") });
+        // same intent as the button for each status (CTA above)
+        var QR_MSG = {
+            upcoming: "Olá! Quero inscrever-me: {title}",
+            tbd:      "Olá! Tenho interesse: {title}",
+            past:     "Olá! Quero a próxima edição: {title}"
+        };
+        var msg = T("events.qr-msg." + e._status, QR_MSG[e._status], { title: F(e, "title") });
         var url = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(msg);
         var qr = window.qrcode(0, "L");       // size picked automatically; "L" keeps the code as simple as possible
         qr.addData(url);
