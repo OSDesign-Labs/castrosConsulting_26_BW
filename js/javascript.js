@@ -265,15 +265,22 @@ document.addEventListener("DOMContentLoaded", () => {
             "Outro"
         ],
 
-        Palestras: [
+        "Palestras e Workshops": [
             "Liderança",
             "Desenvolvimento Profissional",
             "Motivação e Pessoas",
+            "Workshop",
+            "Outro"
+        ],
+
+        "Espaços e Podcasts": [
+            "Reserva do Espaço",
+            "Gravação de Podcast",
+            "Convidado de Podcast",
             "Outro"
         ],
 
         Eventos: [
-            "Workshop",
             "Conferência",
             "Evento Corporativo",
             "Team Building",
