@@ -85,7 +85,7 @@
                 <span class="topbar-item"><i class="bi bi-clock" aria-hidden="true"></i><span data-i18n="topbar.seg-sex-08-00-17-00">Seg – Sex · 08:00 – 17:00</span></span>
               </div>
               <div class="topbar-right">
-                <a class="topbar-item" href="tel:+258878665180"><i class="bi bi-telephone" aria-hidden="true"></i>+258 87 866 5180</a>
+                <span class="topbar-item topbar-phones"><i class="bi bi-telephone" aria-hidden="true"></i><a href="tel:+258848665180">+258 84 866 5180</a><span class="phone-sep" aria-hidden="true">/</span><a href="tel:+258878665180">+258 87 866 5180</a></span>
                 <span class="topbar-divider" aria-hidden="true"></span>
                 <div class="topbar-social">
                   <a href="https://www.facebook.com/castros.consultoria" aria-label="Facebook"><i class="bi bi-facebook"></i></a> <!-- handle from their banner: @castros.consultoria -->
@@ -179,6 +179,7 @@
             <div class="mobile-info">
               <span><i class="bi bi-geo-alt" aria-hidden="true"></i><span data-i18n="topbar.maputo-mocambique">Maputo, Moçambique</span></span>
               <span><i class="bi bi-clock" aria-hidden="true"></i><span data-i18n="topbar.seg-sex-08-00-17-00">Seg – Sex · 08:00 – 17:00</span></span>
+              <a href="tel:+258848665180"><i class="bi bi-telephone" aria-hidden="true"></i>+258 84 866 5180</a>
               <a href="tel:+258878665180"><i class="bi bi-telephone" aria-hidden="true"></i>+258 87 866 5180</a>
               <div class="mobile-social">
                 <a href="https://www.facebook.com/castros.consultoria" aria-label="Facebook"><i class="bi bi-facebook"></i></a> <!-- handle from their banner: @castros.consultoria -->
@@ -628,6 +629,9 @@
             </div>
             <div class="mt-3">
               <h5 data-i18n="footer.contacto">Contacto</h5>
+              <a class="d-flex align-items-center gap-2 mb-1" href="tel:+258848665180"><svg class="bi">
+                  <use xlink:href="#i-phone"></use>
+                </svg>+258 84 866 5180</a>
               <a class="d-flex align-items-center gap-2 mb-1" href="tel:+258878665180"><svg class="bi">
                   <use xlink:href="#i-phone"></use>
                 </svg>+258 87 866 5180</a>
@@ -673,7 +677,7 @@
         </svg>
     </button>
 
-    <a href="https://wa.me/258848665180" target="_blank" rel="noopener" id="whatsappBtn" aria-label="Falar no WhatsApp" data-i18n-attr="aria-label:common.falar-no-whatsapp">
+    <a href="https://wa.me/258878665180" target="_blank" rel="noopener" id="whatsappBtn" aria-label="Falar no WhatsApp" data-i18n-attr="aria-label:common.falar-no-whatsapp">
         <i class="bi bi-whatsapp"></i>
     </a>
 
@@ -756,7 +760,7 @@
                                         </span>
                                     </li>
                                 </ul>
-                                <a class="link-arrow" href="#contact-form"><span data-i18n="palestras.modal-talks.manifestar-interesse">Manifestar interesse</span> <span
+                                <a class="link-arrow" href="#contact-form" data-contact-service="Palestras e Workshops" data-contact-interest="Liderança" data-contact-msg="Olá! Tenho interesse na palestra &quot;Ética e Liderança Organizacional&quot; (Maputo, data a anunciar). Avisem-me, por favor, quando a data for anunciada." data-contact-msg-en="Hello! I am interested in the talk &quot;Ethics and Organisational Leadership&quot; (Maputo, date to be announced). Please let me know when the date is announced."><span data-i18n="palestras.modal-talks.manifestar-interesse">Manifestar interesse</span> <span
                                         class="arrowRight">&gt;</span></a>
                             </div>
                     </div>
@@ -823,14 +827,14 @@
                             <h4 data-i18n="palestras.modal-workshops.empresas">Empresas</h4>
                             <p class="small text-secondary" data-i18n="palestras.modal-workshops.workshops-a-medida-da-sua-equipa">Workshops à medida da sua equipa, na sua organização ou no
                                 nosso espaço, com exercícios ligados aos desafios do dia a dia.</p>
-                            <a class="link-arrow" href="#contact-form"><span data-i18n="palestras.modal-workshops.saber-mais">Saber mais</span> <span
+                            <a class="link-arrow" href="#contact-form" data-contact-service="Palestras e Workshops" data-contact-interest="Workshop" data-contact-msg="Olá! Gostaria de saber mais sobre os workshops à medida para a minha equipa (na nossa organização ou no vosso espaço)." data-contact-msg-en="Hello! I would like to know more about tailored workshops for my team (at our organisation or in your space)."><span data-i18n="palestras.modal-workshops.saber-mais">Saber mais</span> <span
                                     class="arrowRight">&gt;</span></a>
                         </div>
                         <div class="col-md-4">
                             <h4>Online</h4>
                             <p class="small text-secondary" data-i18n="palestras.modal-workshops.sessoes-em-direto-com-a-mesma">Sessões em direto, com a mesma dinâmica e os mesmos exercícios
                                 práticos, para equipas em várias cidades ou que não se podem deslocar.</p>
-                            <a class="link-arrow" href="#contact-form"><span data-i18n="palestras.modal-workshops.saber-mais">Saber mais</span> <span
+                            <a class="link-arrow" href="#contact-form" data-contact-service="Palestras e Workshops" data-contact-interest="Workshop" data-contact-msg="Olá! Gostaria de saber mais sobre os workshops online em direto para a nossa equipa, que está em várias cidades." data-contact-msg-en="Hello! I would like to know more about live online workshops for our team, which is spread across several cities."><span data-i18n="palestras.modal-workshops.saber-mais">Saber mais</span> <span
                                     class="arrowRight">&gt;</span></a>
                         </div>
                     </div>
@@ -850,7 +854,7 @@
                                     </svg><span data-i18n="palestras.modal-workshops.universidade-joaquim-chissano">Universidade Joaquim Chissano</span></span>
                             </span>
                         </div>
-                        <a class="btn btn-cyan px-4 py-2" href="#contact-form" data-i18n="palestras.modal-workshops.inscrever-se">Inscrever-se</a>
+                        <a class="btn btn-cyan px-4 py-2" href="#contact-form" data-contact-service="Palestras e Workshops" data-contact-interest="Workshop" data-contact-msg="Olá! Gostaria de me inscrever no &quot;Workshop Outubro Rosa&quot; (28 Out 2026, 11h–14h, Universidade Joaquim Chissano)." data-contact-msg-en="Hello! I would like to sign up for the &quot;Pink October Workshop&quot; (28 Oct 2026, 11am–2pm, Joaquim Chissano University)." data-i18n="palestras.modal-workshops.inscrever-se">Inscrever-se</a>
                     </div>
 
                     <!-- BASTIDORES -->

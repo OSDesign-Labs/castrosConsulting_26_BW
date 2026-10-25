@@ -85,7 +85,7 @@
                 <span class="topbar-item"><i class="bi bi-clock" aria-hidden="true"></i><span data-i18n="topbar.seg-sex-08-00-17-00">Seg – Sex · 08:00 – 17:00</span></span>
               </div>
               <div class="topbar-right">
-                <a class="topbar-item" href="tel:+258878665180"><i class="bi bi-telephone" aria-hidden="true"></i>+258 87 866 5180</a>
+                <span class="topbar-item topbar-phones"><i class="bi bi-telephone" aria-hidden="true"></i><a href="tel:+258848665180">+258 84 866 5180</a><span class="phone-sep" aria-hidden="true">/</span><a href="tel:+258878665180">+258 87 866 5180</a></span>
                 <span class="topbar-divider" aria-hidden="true"></span>
                 <div class="topbar-social">
                   <a href="https://www.facebook.com/castros.consultoria" aria-label="Facebook"><i class="bi bi-facebook"></i></a> <!-- handle from their banner: @castros.consultoria -->
@@ -179,6 +179,7 @@
             <div class="mobile-info">
               <span><i class="bi bi-geo-alt" aria-hidden="true"></i><span data-i18n="topbar.maputo-mocambique">Maputo, Moçambique</span></span>
               <span><i class="bi bi-clock" aria-hidden="true"></i><span data-i18n="topbar.seg-sex-08-00-17-00">Seg – Sex · 08:00 – 17:00</span></span>
+              <a href="tel:+258848665180"><i class="bi bi-telephone" aria-hidden="true"></i>+258 84 866 5180</a>
               <a href="tel:+258878665180"><i class="bi bi-telephone" aria-hidden="true"></i>+258 87 866 5180</a>
               <div class="mobile-social">
                 <a href="https://www.facebook.com/castros.consultoria" aria-label="Facebook"><i class="bi bi-facebook"></i></a> <!-- handle from their banner: @castros.consultoria -->
@@ -625,6 +626,9 @@
             </div>
             <div class="mt-3">
               <h5 data-i18n="footer.contacto">Contacto</h5>
+              <a class="d-flex align-items-center gap-2 mb-1" href="tel:+258848665180"><svg class="bi">
+                  <use xlink:href="#i-phone"></use>
+                </svg>+258 84 866 5180</a>
               <a class="d-flex align-items-center gap-2 mb-1" href="tel:+258878665180"><svg class="bi">
                   <use xlink:href="#i-phone"></use>
                 </svg>+258 87 866 5180</a>
@@ -670,7 +674,7 @@
         </svg>
     </button>
 
-    <a href="https://wa.me/258848665180" target="_blank" rel="noopener" id="whatsappBtn" aria-label="Falar no WhatsApp" data-i18n-attr="aria-label:common.falar-no-whatsapp">
+    <a href="https://wa.me/258878665180" target="_blank" rel="noopener" id="whatsappBtn" aria-label="Falar no WhatsApp" data-i18n-attr="aria-label:common.falar-no-whatsapp">
         <i class="bi bi-whatsapp"></i>
     </a>
 
@@ -749,7 +753,7 @@
                                         <span class="upcoming-title" data-i18n="espacos.modal-spaces.confirmamos-a-disponibilidade-e-enviamos-o">Confirmamos a disponibilidade e enviamos o orçamento</span>
                                     </li>
                                 </ul>
-                                <a class="link-arrow" href="#contact-form"><span data-i18n="espacos.modal-spaces.pedir-disponibilidade">Pedir disponibilidade</span> <span
+                                <a class="link-arrow" href="#contact-form" data-contact-service="Espaços e Podcasts" data-contact-interest="Reserva do Espaço" data-contact-msg="Olá! Gostaria de pedir disponibilidade para reservar o espaço.&#10;Data pretendida: &#10;Horário: &#10;Número de participantes: " data-contact-msg-en="Hello! I would like to check availability to book the space.&#10;Preferred date: &#10;Time: &#10;Number of participants: "><span data-i18n="espacos.modal-spaces.pedir-disponibilidade">Pedir disponibilidade</span> <span
                                         class="arrowRight">&gt;</span></a>
                             </div>
                     </div>
@@ -815,14 +819,14 @@
                             <h4 data-i18n="espacos.modal-podcasts.conversas">Conversas</h4>
                             <p class="small text-secondary" data-i18n="espacos.modal-podcasts.conversas-com-lideres-gestores-e-especialistas">Conversas com líderes, gestores e especialistas sobre o que funciona no dia a dia das
                                 organizações em Moçambique.</p>
-                            <a class="link-arrow" href="#contact-form"><span data-i18n="espacos.modal-podcasts.saber-mais">Saber mais</span> <span
+                            <a class="link-arrow" href="#contact-form" data-contact-service="Espaços e Podcasts" data-contact-interest="Outro" data-contact-msg="Olá! Gostaria de saber mais sobre as Conversas — os episódios com líderes, gestores e especialistas sobre o dia a dia das organizações em Moçambique." data-contact-msg-en="Hello! I would like to know more about the Conversations series — episodes with leaders, managers and experts on day-to-day life in Mozambican organisations."><span data-i18n="espacos.modal-podcasts.saber-mais">Saber mais</span> <span
                                     class="arrowRight">&gt;</span></a>
                         </div>
                         <div class="col-md-4">
                             <h4 data-i18n="espacos.modal-podcasts.convidados">Convidados</h4>
                             <p class="small text-secondary" data-i18n="espacos.modal-podcasts.tem-uma-experiencia-que-vale-a">Tem uma experiência que vale a pena partilhar? Proponha-se como convidado de uma
                                 próxima conversa.</p>
-                            <a class="link-arrow" href="#contact-form"><span data-i18n="espacos.modal-podcasts.saber-mais">Saber mais</span> <span
+                            <a class="link-arrow" href="#contact-form" data-contact-service="Espaços e Podcasts" data-contact-interest="Convidado de Podcast" data-contact-msg="Olá! Gostaria de me propor como convidado(a) de uma próxima conversa. O tema/experiência que gostaria de partilhar é: " data-contact-msg-en="Hello! I would like to put myself forward as a guest for an upcoming conversation. The topic/experience I would like to share is: "><span data-i18n="espacos.modal-podcasts.saber-mais">Saber mais</span> <span
                                     class="arrowRight">&gt;</span></a>
                         </div>
                     </div>
@@ -842,7 +846,7 @@
                                     </svg>Maputo</span>
                             </span>
                         </div>
-                        <a class="btn btn-cyan px-4 py-2" href="#contact-form" data-i18n="espacos.modal-podcasts.pedir-disponibilidade">Pedir disponibilidade</a>
+                        <a class="btn btn-cyan px-4 py-2" href="#contact-form" data-contact-service="Espaços e Podcasts" data-contact-interest="Gravação de Podcast" data-contact-msg="Olá! Gostaria de pedir disponibilidade para gravar o meu podcast no vosso espaço.&#10;Data pretendida: &#10;Horário: &#10;Formato (áudio/vídeo): " data-contact-msg-en="Hello! I would like to check availability to record my podcast in your space.&#10;Preferred date: &#10;Time: &#10;Format (audio/video): " data-i18n="espacos.modal-podcasts.pedir-disponibilidade">Pedir disponibilidade</a>
                     </div>
 
                     <!-- BASTIDORES -->

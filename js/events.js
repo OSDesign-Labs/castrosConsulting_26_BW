@@ -414,7 +414,7 @@
     /* ---------- QR code: sign up from your phone (computers only, see css/home.css .event-qr) ----------
        Scanning it opens WhatsApp on the visitor's phone, in a chat with Elizabeth, with the
        same message the "Inscrever-me" button puts in the contact form (event name, date, city). */
-    var WHATSAPP = "258848665180";       // EDIT: Elizabeth's WhatsApp (the number on the flyers)
+    var WHATSAPP = "258878665180";       // the one WhatsApp number used across the site (+258 87 866 5180)
     function drawQr(e) {
         var box = field("qr");
         if (!box) return;

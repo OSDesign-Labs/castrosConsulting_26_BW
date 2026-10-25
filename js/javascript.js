@@ -596,6 +596,63 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
+    /* PRE-FILL FROM A LINK
+       Links to the form inside the service pop-ups ("Saber mais", "Inscrever-se", ...) carry
+       what they are about:
+         data-contact-service   option of #service       (step 2)
+         data-contact-interest  option of #interest      (step 2)
+         data-contact-msg       ready-made message, PT   (step 3)
+         data-contact-msg-en    same message in English
+       Clicking one selects the service and area and writes the message, so the visitor only
+       adds their details. A message they typed themselves is never overwritten. */
+    const messageField = document.getElementById("message");
+    let prefillLink = null;
+
+    function prefillMessage(link) {
+        if (!messageField) return;
+        const lang = window.CastrosI18n ? window.CastrosI18n.lang : "pt";
+        const text = (lang === "en" && link.dataset.contactMsgEn) || link.dataset.contactMsg;
+        if (!text) return;
+        if (messageField.value.trim() && messageField.dataset.prefilled !== "1") return;
+        messageField.value = text;
+        messageField.dataset.prefilled = "1";
+        messageField.classList.remove("is-invalid");
+    }
+
+    function prefillFrom(link) {
+        const service = link.dataset.contactService;
+        if (service && interests[service]) {
+            serviceSelect.value = service;
+            serviceSelect.dispatchEvent(new Event("change", { bubbles: true }));   // rebuilds the interest list
+            serviceSelect.classList.remove("is-invalid");
+            const interest = link.dataset.contactInterest;
+            if (interest && interests[service].includes(interest)) {
+                interestSelect.value = interest;
+                interestSelect.classList.remove("is-invalid");
+            }
+        }
+        prefillMessage(link);
+        prefillLink = link;
+        // a visitor already past step 1 sees the chosen service straight away
+        if (currentStep === 3) showStep(2, false);
+    }
+
+    // capture phase: runs before the pop-up closes and the page scrolls to the form
+    document.addEventListener("click", (event) => {
+        const link = event.target.closest && event.target.closest("a[data-contact-service], a[data-contact-msg]");
+        if (link && !successShown) prefillFrom(link);
+    }, true);
+
+    // typing makes the message theirs
+    if (messageField) {
+        messageField.addEventListener("input", () => { delete messageField.dataset.prefilled; });
+    }
+
+    // language switched while the ready-made message is still untouched: swap it
+    document.addEventListener("i18n:change", () => {
+        if (prefillLink && messageField && messageField.dataset.prefilled === "1") prefillMessage(prefillLink);
+    });
+
     /* INITIAL STATE */
     showStep(1, false);
 });

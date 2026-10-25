@@ -3471,3 +3471,25 @@ main {
         max-width: 112px;
     }
 }
+
+/* topbar: both phone numbers, one icon (84 / 87) */
+.topbar-phones a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.topbar-phones a:hover {
+    color: var(--pearl);
+}
+
+.topbar-phones .phone-sep {
+    opacity: 0.45;
+}
+
+/* a partner logo that links to the partner's page */
+.partners .partner-logos li > a {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
