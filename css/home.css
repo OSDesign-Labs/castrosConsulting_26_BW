@@ -3487,9 +3487,36 @@ main {
     opacity: 0.45;
 }
 
-/* a partner logo that links to the partner's page */
+/* a partner logo that links to the partner's page: no link colour (Bootstrap's blue), sits inside the card */
 .partners .partner-logos li > a {
     display: flex;
     align-items: center;
+    justify-content: center;
     height: 100%;
+    max-height: 100%;
+    color: inherit;
+    text-decoration: none;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.partners .partner-logos li > a:focus-visible {
+    outline: 2px solid var(--slate);
+    outline-offset: 4px;
+    border-radius: 8px;
+}
+
+/* OS Design logo is a tall mark + name: keep it inside its card like the others */
+.partners .partner-logos img.logo-osdesign {
+    width: auto;
+    height: auto;
+    max-height: 100%;
+    max-width: 56px;
+}
+
+@media (min-width: 992px) {
+    .partners .partner-logos img.logo-osdesign,
+    main > section.partners .partner-logos img.logo-osdesign {
+        max-width: 75px;
+    }
 }
