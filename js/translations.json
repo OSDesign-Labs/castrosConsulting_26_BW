@@ -499,6 +499,12 @@
     "hero.auditorio-da-universidade-joaquim-chissano": "Auditório da Universidade Joaquim Chissano",
     "hero.presencial-venha-fazer-parte": "Presencial · Venha fazer parte",
     "hero.elizabeth-castro-no-estudio-do-podcast": "Elizabeth Castro no estúdio do podcast Coach",
+    "hero.women-investment-forum": "Women Investment Fórum",
+    "hero.elizabeth-castro-e-oradora-confirmada-na": "Elizabeth Castro é oradora confirmada na 2.ª edição do fórum da Global Business Network África: a mulher como pilar económico do desenvolvimento de África.",
+    "hero.flyer-do-women-investment-forum-com": "Flyer do Women Investment Fórum, com Elizabeth Castro como oradora confirmada, 28 de outubro, Auditório do BCI",
+    "hero.qua-28-out-2026-forum": "Qua, 28 Out 2026",
+    "hero.auditorio-do-bci-maputo": "Auditório do BCI, Maputo",
+    "hero.oradora-elizabeth-castro": "Oradora: Elizabeth Castro",
     "events.view": "Ver evento",
     "events.view-aria": "Ver evento: {title}",
     "events.tbd": "Data a anunciar",
@@ -1227,6 +1233,12 @@
     "hero.auditorio-da-universidade-joaquim-chissano": "Joaquim Chissano University Auditorium",
     "hero.presencial-venha-fazer-parte": "In person · Come and join us",
     "hero.elizabeth-castro-no-estudio-do-podcast": "Elizabeth Castro in the Coach podcast studio",
+    "hero.women-investment-forum": "Women Investment Forum",
+    "hero.elizabeth-castro-e-oradora-confirmada-na": "Elizabeth Castro is a confirmed speaker at the 2nd edition of the Global Business Network Africa forum: women as an economic pillar of Africa's development.",
+    "hero.flyer-do-women-investment-forum-com": "Women Investment Forum flyer, with Elizabeth Castro as a confirmed speaker, 28 October, BCI Auditorium",
+    "hero.qua-28-out-2026-forum": "Wed, 28 Oct 2026",
+    "hero.auditorio-do-bci-maputo": "BCI Auditorium, Maputo",
+    "hero.oradora-elizabeth-castro": "Speaker: Elizabeth Castro",
     "events.view": "View event",
     "events.view-aria": "View event: {title}",
     "events.tbd": "Date to be announced",
@@ -1553,6 +1565,17 @@
     "espacos.modal-events.participantes-a-entrar-na-sala": "Participants entering the room",
     "espacos.modal-events.fechar": "Close",
     "espacos.modal-events.beneficios": "Benefits",
-    "espacos.modal-events.bastidores": "Behind the scenes"
+    "espacos.modal-events.bastidores": "Behind the scenes",
+    "events.item.women-investment-forum-2026.title": "Women Investment Forum (2nd edition)",
+    "events.item.women-investment-forum-2026.city": "BCI Auditorium, Maputo",
+    "events.item.women-investment-forum-2026.format": "In person · Global Business Network Africa",
+    "events.item.women-investment-forum-2026.summary": "Women as an economic pillar of Africa's development, with Elizabeth Castro as a confirmed speaker.",
+    "events.item.women-investment-forum-2026.description": "The second edition of the Women Investment Forum, by Global Business Network Africa, focused on women as an economic pillar of Africa's development. Elizabeth Castro, businesswoman, MBA in Business Management and specialist in Ethics and Organisational Leadership, is a confirmed speaker.",
+    "events.item.women-investment-forum-2026.highlights": [
+      "Women as an economic pillar of Africa's development",
+      "A talk by Elizabeth Castro, confirmed speaker",
+      "2nd edition of the Global Business Network Africa forum"
+    ],
+    "events.item.women-investment-forum-2026.category": "Leadership"
   }
 }

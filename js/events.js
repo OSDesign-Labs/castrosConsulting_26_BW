@@ -28,7 +28,29 @@
 
     var EVENTS = [
         {
-            // flyer: assets/images/recent/flyer-outubro-rosa-2026.webp (same event as the "Próximo evento" hero slide)
+            // flyer: assets/images/recent/flyer-women-investment-forum-2026.webp (same event as the "Próximo evento" hero slide)
+            // same day as the Workshop Outubro Rosa below: two separate events. EDIT: the flyer gives no time.
+            id: "women-investment-forum-2026",
+            featured: true,
+            title: "Women Investment Fórum (2.ª edição)",
+            category: "Liderança",
+            date: "2026-10-28",
+            time: null,
+            city: "Auditório do BCI, Maputo",
+            format: "Presencial · Global Business Network África",
+            image: "assets/images/recent/flyer-women-investment-forum-2026.webp",
+            summary: "A mulher como pilar económico do desenvolvimento de África, com Elizabeth Castro como oradora confirmada.",
+            description: "Segunda edição do Women Investment Fórum, da Global Business Network África, dedicada à " +
+                "mulher como pilar económico do desenvolvimento de África. Elizabeth Castro, empresária, MBA em " +
+                "Gestão de Empresas e especialista em Ética e Liderança Organizacional, é oradora confirmada.",
+            highlights: [
+                "A mulher como pilar económico do desenvolvimento de África",
+                "Intervenção de Elizabeth Castro, oradora confirmada",
+                "2.ª edição do fórum da Global Business Network África"
+            ]
+        },
+        {
+            // flyer: assets/images/recent/flyer-outubro-rosa-2026.webp
             id: "workshop-outubro-rosa-2026",
             featured: true,
             title: "Workshop Outubro Rosa",
@@ -101,7 +123,7 @@
         {
             // flyer: assets/images/flyers/elas.webp
             id: "workshop-elas",
-            featured: true,
+            featured: false,
             title: "Workshop entre Elas: Parcerias Estratégicas de Vida e Negócio",
             category: "Liderança",
             date: "2026-10-01",
