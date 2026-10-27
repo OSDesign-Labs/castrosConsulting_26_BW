@@ -2785,6 +2785,7 @@ main>.hero #overlayGradient>[class*="col-lg-6"] {
 }
 
 .mg-b {
+    object-position: 60% 48% !important;
     grid-column: 3 / 5;
     grid-row: 1 / 2;
 }
@@ -2800,6 +2801,7 @@ main>.hero #overlayGradient>[class*="col-lg-6"] {
 }
 
 .mg-e {
+    object-position: 40% 61%;
     grid-column: 4 / 6;
     grid-row: 2 / 3;
 }
@@ -2836,11 +2838,13 @@ main>.hero #overlayGradient>[class*="col-lg-6"] {
 }
 
 .mt-b {
+    object-position: 50% 20%;
     grid-column: 2;
     grid-row: 1;
 }
 
 .mt-c {
+    object-position: 50% 83%;
     grid-column: 2;
     grid-row: 2;
 }
