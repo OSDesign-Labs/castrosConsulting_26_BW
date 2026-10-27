@@ -2649,6 +2649,13 @@ main>.hero #overlayGradient>[class*="col-lg-6"] {
     transform: translateX(4px);
 }
 
+/* wide banner card spanning both columns (Organização de Eventos on espacos.html); phones keep 4/5 */
+@media (min-width: 768px) {
+    .subpage main .fm-card--wide {
+        aspect-ratio: 21 / 6;
+    }
+}
+
 /* ---------- 5) Modal content — Formações & Treinamento ---------- */
 .subpage .modal-content {
     border: 0;

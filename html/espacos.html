@@ -118,6 +118,7 @@
                                 <li><a class="dropdown-item" href="formacoes.html" data-i18n="nav.formacoes-e-treinamento">Formações e Treinamento</a></li>
                                 <li><a class="dropdown-item" href="palestras.html" data-i18n="nav.palestras-e-workshops">Palestras e Workshops</a></li>
                                 <li><a class="dropdown-item" href="espacos.html" data-i18n="nav.espacos-e-podcasts">Espaços e Podcasts</a></li>
+                                <li><a class="dropdown-item" href="espacos.html#modalEventos" data-i18n="nav.organizacao-de-eventos">Organização de Eventos</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -166,6 +167,7 @@
                             <li><a class="dropdown-item" href="formacoes.html" data-i18n="nav.formacoes-e-treinamento">Formações e Treinamento</a></li>
                             <li><a class="dropdown-item" href="palestras.html" data-i18n="nav.palestras-e-workshops">Palestras e Workshops</a></li>
                             <li><a class="dropdown-item" href="espacos.html" data-i18n="nav.espacos-e-podcasts">Espaços e Podcasts</a></li>
+                            <li><a class="dropdown-item" href="espacos.html#modalEventos" data-i18n="nav.organizacao-de-eventos">Organização de Eventos</a></li>
                         </ul>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="../index.html#eventos" data-i18n="nav.eventos">Eventos</a></li>
@@ -231,6 +233,20 @@
                             </video>
                             <span class="fm-card-body">
                                 <span class="fm-card-title">Podcasts</span>
+                                <span class="link-arrow"><span data-i18n="espacos.programs.ver-detalhes">Ver detalhes</span> <span class="arrowRight">&gt;</span></span>
+                            </span>
+                        </button>
+                    </div>
+                    <!-- third card: a wide banner under the other two (also opened from the nav: espacos.html#modalEventos) -->
+                    <div class="col-lg-10" data-aos="fade-up" data-aos-delay="300">
+                        <button type="button" class="fm-card fm-card--wide" data-bs-toggle="modal" data-bs-target="#modalEventos">
+                            <video class="fm-card-media" muted loop playsinline preload="none" data-inview-play aria-hidden="true"
+                                poster="../assets/video/bastidores/p-v-painel-poster.webp">
+                                <source src="../assets/video/bastidores/p-v-painel.webm" type="video/webm">
+                                <source src="../assets/video/bastidores/p-v-painel.mp4" type="video/mp4">
+                            </video>
+                            <span class="fm-card-body">
+                                <span class="fm-card-title" data-i18n="espacos.programs.organizacao-de-eventos">Organização de Eventos</span>
                                 <span class="link-arrow"><span data-i18n="espacos.programs.ver-detalhes">Ver detalhes</span> <span class="arrowRight">&gt;</span></span>
                             </span>
                         </button>
@@ -867,6 +883,113 @@
                                 style="object-position: 38% 50%" poster="../assets/video/bastidores/c-v-conversa-poster.webp">
                                 <source src="../assets/video/bastidores/c-v-conversa.webm" type="video/webm">
                                 <source src="../assets/video/bastidores/c-v-conversa.mp4" type="video/mp4">
+                            </video></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ======================================================
+         MODAL — ORGANIZAÇÃO DE EVENTOS (same structure as the Espaços modal above)
+         left: description + what we organise | right: benefícios + how to ask for a proposal
+         bottom: Bastidores gallery. Opens on its own at espacos.html#modalEventos (nav link).
+         ====================================================== -->
+    <div class="modal fade" id="modalEventos" tabindex="-1" aria-labelledby="modalEventosLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="modalEventosLabel" data-i18n="espacos.modal-events.organizacao-de-eventos">Organização de Eventos</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar" data-i18n-attr="aria-label:espacos.modal-events.fechar"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row g-5">
+                        <!-- LEFT: description + list -->
+                        <div class="col-lg-6">
+                            <p class="fm-lede" data-i18n="espacos.modal-events.planeamos-e-coordenamos-o-seu-evento">
+                                Planeamos e coordenamos o seu evento, da ideia ao encerramento: protocolo, logística,
+                                receção dos convidados e apoio da nossa equipa em cada momento. Trate dos seus
+                                convidados — nós tratamos do resto.
+                            </p>
+                            <h4 class="mb-3" data-i18n="espacos.modal-events.organizamos">Organizamos</h4>
+                            <ul class="course-list">
+                                <li><i class="bi bi-check2-circle"></i><span data-i18n="espacos.modal-events.conferencias-e-seminarios">Conferências e seminários</span></li>
+                                <li><i class="bi bi-check2-circle"></i><span data-i18n="espacos.modal-events.eventos-corporativos-e-lancamentos">Eventos corporativos e lançamentos</span></li>
+                                <li><i class="bi bi-check2-circle"></i><span data-i18n="espacos.modal-events.cerimonias-e-protocolo">Cerimónias e protocolo</span></li>
+                                <li><i class="bi bi-check2-circle"></i><span data-i18n="espacos.modal-events.team-building">Team building</span></li>
+                            </ul>
+                        </div>
+
+                        <!-- RIGHT: benefícios -->
+                        <div class="col-lg-6 benefits-col has-modal-pattern">
+                            <span class="benefit-blob" aria-hidden="true"></span>
+                            <span class="modal-pattern modal-pattern--tr" aria-hidden="true"><span class="pattern-cross-dots-md"></span></span>
+                            <h4 class="mb-3" data-i18n="espacos.modal-events.beneficios">Benefícios</h4>
+                            <div class="benefit-row">
+                                <div class="benefit-item">
+                                    <div class="icon-box"><svg class="bi">
+                                            <use xlink:href="#i-calendar"></use>
+                                        </svg></div>
+                                    <p data-i18n="espacos.modal-events.planeamento-do-inicio-ao-fim">Planeamento do início ao fim</p>
+                                </div>
+                                <div class="benefit-item">
+                                    <div class="icon-box"><svg class="bi">
+                                            <use xlink:href="#i-people"></use>
+                                        </svg></div>
+                                    <p data-i18n="espacos.modal-events.protocolo-e-rececao-de-convidados">Protocolo e receção de convidados</p>
+                                </div>
+                                <div class="benefit-item">
+                                    <div class="icon-box"><svg class="bi">
+                                            <use xlink:href="#i-box"></use>
+                                        </svg></div>
+                                    <p data-i18n="espacos.modal-events.logistica-e-equipamento">Logística e equipamento</p>
+                                </div>
+                                <div class="benefit-item">
+                                    <div class="icon-box"><svg class="bi">
+                                            <use xlink:href="#i-geo"></use>
+                                        </svg></div>
+                                    <p data-i18n="espacos.modal-events.no-nosso-espaco-ou-no-seu">No nosso espaço ou no seu</p>
+                                </div>
+                            </div>
+                        </div>
+                            <div class="highlight-card mt-4">
+                                <span class="eyebrow" data-i18n="espacos.modal-events.pedidos">Pedidos</span>
+                                <h4 class="mb-3" data-i18n="espacos.modal-events.como-funciona">Como funciona</h4>
+                                <ul class="upcoming-list">
+                                    <li>
+                                        <span class="upcoming-title" data-i18n="espacos.modal-events.conte-nos-o-tipo-de-evento">Conte-nos o tipo de evento, a data e o número de convidados</span>
+                                    </li>
+                                    <li>
+                                        <span class="upcoming-title" data-i18n="espacos.modal-events.enviamos-uma-proposta-com-o-plano">Enviamos uma proposta com o plano e o orçamento</span>
+                                    </li>
+                                    <li>
+                                        <span class="upcoming-title" data-i18n="espacos.modal-events.no-dia-coordenamos-tudo-do-acolhimento">No dia, coordenamos tudo, do acolhimento ao encerramento</span>
+                                    </li>
+                                </ul>
+                                <a class="link-arrow" href="#contact-form" data-contact-service="Eventos" data-contact-msg="Olá! Gostaria de pedir uma proposta para a organização de um evento.&#10;Tipo de evento: &#10;Data pretendida: &#10;Número de convidados: " data-contact-msg-en="Hello! I would like to request a proposal for organising an event.&#10;Type of event: &#10;Preferred date: &#10;Number of guests: "><span data-i18n="espacos.modal-events.pedir-proposta">Pedir proposta</span> <span
+                                        class="arrowRight">&gt;</span></a>
+                            </div>
+                    </div>
+
+                    <!-- BASTIDORES -->
+                    <div class="mt-5 has-modal-pattern">
+                        <span class="modal-pattern modal-pattern--tl" aria-hidden="true"><span class="pattern-diagonal-lines-sm"></span></span>
+                        <h4 class="mb-3" data-i18n="espacos.modal-events.bastidores">Bastidores</h4>
+                        <div class="modal-gallery">
+                            <div class="mg-a"><video muted loop playsinline preload="none" data-inview-play aria-hidden="true"
+                                style="object-position: 50% 40%" poster="../assets/video/bastidores/t-v-palco-poster.webp">
+                                <source src="../assets/video/bastidores/t-v-palco.webm" type="video/webm">
+                                <source src="../assets/video/bastidores/t-v-palco.mp4" type="video/mp4">
+                            </video></div>
+                            <div class="mg-b"><img src="../assets/images/bastidores/w-rececao-wide.webp" alt="Elizabeth Castro a receber os convidados à entrada" loading="lazy" style="object-position: 0% 40%" data-i18n-attr="alt:espacos.modal-events.elizabeth-castro-a-receber-os-convidados"></div>
+                            <div class="mg-c"><img src="../assets/images/bastidores/w-chegada-uj.webp" alt="Convidados a chegar ao evento" loading="lazy" style="object-position: 40% 40%" data-i18n-attr="alt:espacos.modal-events.convidados-a-chegar-ao-evento"></div>
+                            <div class="mg-d"><img src="../assets/images/bastidores/p-sala-uj.webp" alt="Acolhimento dos participantes junto ao banner da Castros" loading="lazy" style="object-position: 30% 50%" data-i18n-attr="alt:espacos.modal-events.acolhimento-dos-participantes-junto-ao-banner"></div>
+                            <div class="mg-e"><img src="../assets/images/bastidores/c-corredor-uj.webp" alt="Participantes a entrar na sala" loading="lazy" style="object-position: 50% 60%" data-i18n-attr="alt:espacos.modal-events.participantes-a-entrar-na-sala"></div>
+                            <div class="mg-f"><video muted loop playsinline preload="none" data-inview-play aria-hidden="true"
+                                style="object-position: 40% 50%" poster="../assets/video/bastidores/e-v-lanche-poster.webp">
+                                <source src="../assets/video/bastidores/e-v-lanche.webm" type="video/webm">
+                                <source src="../assets/video/bastidores/e-v-lanche.mp4" type="video/mp4">
                             </video></div>
                         </div>
                     </div>
