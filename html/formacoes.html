@@ -85,8 +85,7 @@
                             data-i18n="topbar.seg-sex-08-00-17-00">Seg – Sex · 08:00 – 17:00</span></span>
                 </div>
                 <div class="topbar-right">
-                    <a class="topbar-item" href="tel:+258878665180"><i class="bi bi-telephone"
-                            aria-hidden="true"></i>+258 87 866 5180</a>
+                    <span class="topbar-item topbar-phones"><i class="bi bi-telephone" aria-hidden="true"></i><a href="tel:+258848665180">+258 84 866 5180</a><span class="phone-sep" aria-hidden="true">/</span><a href="tel:+258878665180">+258 87 866 5180</a></span>
                     <span class="topbar-divider" aria-hidden="true"></span>
                     <div class="topbar-social">
                         <a href="https://www.facebook.com/castros.consultoria" aria-label="Facebook"><i
@@ -133,6 +132,8 @@
                                         data-i18n="nav.palestras-e-workshops">Palestras e Workshops</a></li>
                                 <li><a class="dropdown-item" href="espacos.html"
                                         data-i18n="nav.espacos-e-podcasts">Espaços e Podcasts</a></li>
+                                <li><a class="dropdown-item" href="espacos.html#modalEventos"
+                                        data-i18n="nav.organizacao-de-eventos">Organização de Eventos</a></li>
                             </ul>
                         </li>
                         <!-- Eventos -->
@@ -198,6 +199,8 @@
                                     data-i18n="nav.palestras-e-workshops">Palestras e Workshops</a></li>
                             <li><a class="dropdown-item" href="espacos.html" data-i18n="nav.espacos-e-podcasts">Espaços
                                     e Podcasts</a></li>
+                            <li><a class="dropdown-item" href="espacos.html#modalEventos"
+                                    data-i18n="nav.organizacao-de-eventos">Organização de Eventos</a></li>
                         </ul>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="../index.html#eventos"
@@ -216,6 +219,7 @@
                         Moçambique</span></span>
                 <span><i class="bi bi-clock" aria-hidden="true"></i><span data-i18n="topbar.seg-sex-08-00-17-00">Seg –
                         Sex · 08:00 – 17:00</span></span>
+                <a href="tel:+258848665180"><i class="bi bi-telephone" aria-hidden="true"></i>+258 84 866 5180</a>
                 <a href="tel:+258878665180"><i class="bi bi-telephone" aria-hidden="true"></i>+258 87 866 5180</a>
                 <div class="mobile-social">
                     <a href="https://www.facebook.com/castros.consultoria" aria-label="Facebook"><i
@@ -250,7 +254,11 @@
                 <div class="row g-4 justify-content-center">
                     <div class="col-md-6 col-lg-5" data-aos="fade-right" data-aos-delay="0">
                         <button type="button" class="fm-card" data-bs-toggle="modal" data-bs-target="#modalFormacoes">
-                            <img src="../assets/workshop.webp" alt="" loading="lazy">
+                            <video class="fm-card-media" muted loop playsinline preload="none" data-inview-play aria-hidden="true"
+                                poster="../assets/video/svc-formacoes-cards-poster.webp">
+                                <source src="../assets/video/svc-formacoes-cards.webm" type="video/webm">
+                                <source src="../assets/video/svc-formacoes-cards.mp4" type="video/mp4">
+                            </video>
                             <span class="fm-card-body">
                                 <span class="fm-card-title" data-i18n="formacoes.programs.formacoes">Formações</span>
                                 <span class="link-arrow"><span data-i18n="formacoes.programs.ver-detalhes">Ver
@@ -260,7 +268,11 @@
                     </div>
                     <div class="col-md-6 col-lg-5" data-aos="fade-left" data-aos-delay="150">
                         <button type="button" class="fm-card" data-bs-toggle="modal" data-bs-target="#modalTreinamento">
-                            <img src="../assets/office.webp" alt="" loading="lazy">
+                            <video class="fm-card-media" muted loop playsinline preload="none" data-inview-play aria-hidden="true"
+                                poster="../assets/video/svc-treinamento-poster.webp">
+                                <source src="../assets/video/svc-treinamento.webm" type="video/webm">
+                                <source src="../assets/video/svc-treinamento.mp4" type="video/mp4">
+                            </video>
                             <span class="fm-card-body">
                                 <span class="fm-card-title"
                                     data-i18n="formacoes.programs.treinamento">Treinamento</span>
@@ -275,75 +287,68 @@
 
         <!-- TESTEMUNHOS — this page's existing carousel (styled in services.css #depoimentos),
              now with the 3 real quotes from the company profile PDF instead of the placeholder -->
-        <section id="depoimentos" class="section">
-            <div class="container">
-                <div id="servicosTestimonial" class="carousel slide" data-bs-ride="carousel" data-aos="zoom-in">
-                    <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#servicosTestimonial" data-bs-slide-to="0" class="active"
-                            aria-current="true" aria-label="Testemunho 1"
-                            data-i18n-attr="aria-label:formacoes.testimonials.testemunho-1"></button>
-                        <button type="button" data-bs-target="#servicosTestimonial" data-bs-slide-to="1"
-                            aria-label="Testemunho 2"
-                            data-i18n-attr="aria-label:formacoes.testimonials.testemunho-2"></button>
-                        <button type="button" data-bs-target="#servicosTestimonial" data-bs-slide-to="2"
-                            aria-label="Testemunho 3"
-                            data-i18n-attr="aria-label:formacoes.testimonials.testemunho-3"></button>
-                    </div>
-                    <div class="carousel-inner text-center pb-5" style="max-width: 700px; margin: 0 auto;">
-                        <div class="carousel-item active">
-                            <p class="testi-quote mb-4"
-                                data-i18n="formacoes.testimonials.a-consultoria-nos-ajudou-a-transformar">
-                                "A consultoria nos ajudou a transformar nossa cultura interna, hoje temos líderes
-                                mais conscientes e equipes mais engajadas."
-                            </p>
-                            <p class="testi-name mb-0" data-i18n="formacoes.testimonials.diretora-de-rh">Diretora de RH
-                            </p>
-                            <p class="small text-secondary" data-i18n="formacoes.testimonials.setor-financeiro">Setor
-                                financeiro</p>
-                        </div>
-                        <div class="carousel-item">
-                            <p class="testi-quote mb-4"
-                                data-i18n="formacoes.testimonials.depois-dos-workshops-sobre-etica-conseguimos">
-                                "Depois dos workshops sobre ética, conseguimos reduzir conflitos internos e
-                                fortalecer a confiança entre gestores e colaboradores."
-                            </p>
-                            <p class="testi-name mb-0">CEO</p>
-                            <p class="small text-secondary" data-i18n="formacoes.testimonials.setor-industrial">Setor
-                                industrial</p>
-                        </div>
-                        <div class="carousel-item">
-                            <p class="testi-quote mb-4"
-                                data-i18n="formacoes.testimonials.o-programa-de-lideranca-etica-foi">
-                                "O programa de liderança ética foi um divisor de águas na forma como nossos
-                                gestores tomam decisões."
-                            </p>
-                            <p class="testi-name mb-0" data-i18n="formacoes.testimonials.gerente-de-pessoas">Gerente de
-                                Pessoas</p>
-                            <p class="small text-secondary" data-i18n="formacoes.testimonials.setor-de-tecnologia">Setor
-                                de tecnologia</p>
-                        </div>
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#servicosTestimonial"
-                        data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon"></span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#servicosTestimonial"
-                        data-bs-slide="next">
-                        <span class="carousel-control-next-icon"></span>
-                    </button>
-                </div>
+        <section id="testimonials">
+          <h6 class="index" data-aos="fade-up" data-i18n="testimonials.testemunhos">Testemunhos</h6>
+          <div id="testCarousel" class="carousel carousel-dark slide" data-bs-ride="carousel" data-aos="zoom-in" data-aos-duration="1000" data-aos-easing="ease-out-quart"
+          data-aos-delay="150">
+            <div class="glow glow-cyan"
+              style="width:38rem;height:22rem;top:-4rem;left:50%;transform:translateX(-50%);animation:pulseGlow 5s ease-in-out infinite">
             </div>
+            <ul class="carousel-indicators">
+              <li data-bs-target="#testCarousel" data-bs-slide-to="0" class="active" aria-current="true"
+                aria-label="Testemunho 1" data-i18n-attr="aria-label:testimonials.testemunho-1"></li>
+              <li data-bs-target="#testCarousel" data-bs-slide-to="1" aria-label="Testemunho 2"
+                data-i18n-attr="aria-label:testimonials.testemunho-2"></li>
+              <li data-bs-target="#testCarousel" data-bs-slide-to="2" aria-label="Testemunho 3"
+                data-i18n-attr="aria-label:testimonials.testemunho-3"></li>
+            </ul>
+            <div class="carousel-inner">
+              <div data-bs-interval="10000" class="carousel-item active">
+                <div class="carousel-caption d-md-block">
+                  <h3 data-i18n="testimonials.a-consultoria-nos-ajudou-a-transformar">"A consultoria ajudou-nos a
+                    transformar a nossa cultura interna. Hoje temos líderes mais conscientes e equipas mais envolvidas."</h3>
+                  <h6 class="name" data-i18n="testimonials.diretora-de-rh">Diretora de RH</h6>
+                  <p class="local" data-i18n="testimonials.setor-financeiro">Setor financeiro</p>
+                </div>
+              </div>
+              <div data-bs-interval="10000" class="carousel-item">
+                <div class="carousel-caption d-md-block">
+                  <h3 data-i18n="testimonials.depois-dos-workshops-sobre-etica-conseguimos">"Depois dos workshops sobre
+                    ética, conseguimos reduzir conflitos internos e fortalecer a confiança entre gestores e colaboradores."
+                  </h3>
+                  <h6 class="name">CEO</h6>
+                  <p class="local" data-i18n="testimonials.setor-industrial">Setor industrial</p>
+                </div>
+              </div>
+              <div data-bs-interval="10000" class="carousel-item">
+                <div class="carousel-caption d-md-block">
+                  <h3 data-i18n="testimonials.o-programa-de-lideranca-etica-foi">"O programa de liderança ética foi um
+                    ponto de viragem na forma como os nossos gestores tomam decisões."</h3>
+                  <h6 class="name" data-i18n="testimonials.gerente-de-pessoas">Gerente de Pessoas</h6>
+                  <p class="local" data-i18n="testimonials.setor-de-tecnologia">Setor de tecnologia</p>
+                </div>
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#testCarousel" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden" data-i18n="testimonials.anterior">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#testCarousel" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden" data-i18n="testimonials.seguinte">Seguinte</span>
+            </button>
+          </div>
+
         </section>
 
         <!-- FINAL CTA — same pattern as index.html's Promo section -->
         <section id="contato" class="section">
             <div class="text-center cta-panel" data-aos="zoom-in">
-                <h2 class="mb-3" data-i18n-html="page-cta.pronto-para-transformar-a-sua-organizacao">
-                    Pronto para transformar<br>a sua organização?
+                <h2 class="mb-3" data-i18n-html="formacoes.page-cta.pronto-para-preparar-a-sua-equipa">
+                    Pronto para preparar<br>a sua equipa?
                 </h2>
-                <p class="text-secondary mb-4" data-i18n="page-cta.comece-com-uma-conversa-entendemos-o">
-                    Comece com uma conversa. Entendemos o seu contexto e mostramos o caminho
-                    prático para avançar.
+                <p class="text-secondary mb-4" data-i18n="formacoes.page-cta.diga-nos-o-que-a-sua-equipa">
+                    Diga-nos o que a sua equipa precisa de aprender e desenhamos a formação certa para ela.
                 </p>
                 <div class="d-flex flex-row gap-3 justify-content-center">
                     <a href="#contact-form" class="btn btn-cyan px-4 py-3" data-i18n="page-cta.comecar">Começar</a>
@@ -487,11 +492,11 @@
                             class="contact-chip-info"><small>Instagram</small><strong>castros.consultoria</strong></span>
                     </a>
 
-                    <a class="contact-chip" href="https://www.tiktok.com/@castros.consultria.mz" aria-label="TikTok">
+                    <a class="contact-chip" href="https://www.tiktok.com/@castros.consultoria.mz" aria-label="TikTok">
                         <!-- EDIT: confirme o handle -->
                         <span class="contact-chip-icon"><i class="bi bi-tiktok" aria-hidden="true"></i></span>
                         <span
-                            class="contact-chip-info"><small>TikTok</small><strong>@castros.consultria.mz</strong></span>
+                            class="contact-chip-info"><small>TikTok</small><strong>@castros.consultoria.mz</strong></span>
                     </a>
 
                     <a class="contact-chip" href="https://www.facebook.com/" aria-label="Facebook">
@@ -551,7 +556,7 @@
                                 <div class="form-step active" data-form-step="1">
                                     <div class="mb-4">
                                         <span class="form-step-number">01</span>
-                                        <h2 class="form-step-title" data-i18n="contact.vamos-comecar">Vamos começar.
+                                        <h2 class="form-step-title" data-i18n="contact.os-seus-dados">Os seus dados.
                                         </h2>
                                         <p class="form-step-description"
                                             data-i18n="contact.diga-nos-como-podemos-entrar-em">Diga-nos como podemos
@@ -624,8 +629,8 @@
                                                 <option value="Formação" data-i18n="contact.formacao">Formação</option>
                                                 <option value="Treinamento" data-i18n="contact.treinamento">Treinamento
                                                 </option>
-                                                <option value="Palestras" data-i18n="contact.palestras">Palestras
-                                                </option>
+                                                <option value="Palestras e Workshops" data-i18n="contact.palestras-e-workshops">Palestras e Workshops</option>
+                                                <option value="Espaços e Podcasts" data-i18n="contact.espacos-e-podcasts">Espaços e Podcasts</option>
                                                 <option value="Eventos" data-i18n="contact.eventos">Eventos</option>
                                                 <option value="Outro" data-i18n="contact.outro">Outro</option>
                                             </select>
@@ -727,10 +732,13 @@
                         <h5 data-i18n="footer.localizacao">Localização</h5>
                         <p class="foot-p mb-0 d-flex align-items-center gap-2"><svg class="bi">
                                 <use xlink:href="#i-geo"></use>
-                            </svg>Rua do Palmar, nº 35</p>
+                            </svg>Rua da Tchamba, nº 113</p>
                     </div>
                     <div class="mt-3">
                         <h5 data-i18n="footer.contacto">Contacto</h5>
+                        <a class="d-flex align-items-center gap-2 mb-1" href="tel:+258848665180"><svg class="bi">
+                                <use xlink:href="#i-phone"></use>
+                            </svg>+258 84 866 5180</a>
                         <a class="d-flex align-items-center gap-2 mb-1" href="tel:+258878665180"><svg class="bi">
                                 <use xlink:href="#i-phone"></use>
                             </svg>+258 87 866 5180</a>
@@ -748,10 +756,10 @@
                             aria-label="Instagram"><svg class="bi">
                                 <use xlink:href="#i-instagram"></use>
                             </svg></a>
-                        <a class="social-ic" href="https://www.tiktok.com/@castros.consultria.mz"
+                        <a class="social-ic" href="https://www.tiktok.com/@castros.consultoria.mz"
                             aria-label="TikTok"><svg class="bi">
                                 <use xlink:href="#i-tiktok"></use>
-                            </svg></a> <!-- EDIT: confirm the TikTok handle -->
+                            </svg></a>
                         <a class="social-ic" href="https://www.linkedin.com/" aria-label="LinkedIn"><svg class="bi">
                                 <use xlink:href="#i-linkedin"></use>
                             </svg></a> <!-- EDIT: their LinkedIn page URL -->
@@ -786,7 +794,7 @@
         </svg>
     </button>
 
-    <a href="https://wa.me/258848665180" target="_blank" rel="noopener" id="whatsappBtn" aria-label="Falar no WhatsApp"
+    <a href="https://wa.me/258878665180" target="_blank" rel="noopener" id="whatsappBtn" aria-label="Falar no WhatsApp"
         data-i18n-attr="aria-label:common.falar-no-whatsapp">
         <i class="bi bi-whatsapp"></i>
     </a>
@@ -874,34 +882,20 @@
                                 <ul class="upcoming-list">
                                     <li>
                                         <span class="upcoming-title"
-                                            data-i18n="formacoes.modal-courses.oratoria-e-comunicacao-com-impacto-2">Oratória
-                                            e Comunicação com Impacto</span>
+                                            data-i18n="formacoes.modal-courses.formacao-em-comunicacao-e-oratoria-2-edicao">Formação
+                                            em Comunicação e Oratória (2.ª edição)</span>
                                         <span class="d-flex gap-3 event-meta">
                                             <span class="d-flex align-items-center gap-1"><svg class="bi">
                                                     <use xlink:href="#i-calendar"></use>
-                                                </svg><span data-i18n="formacoes.modal-courses.14-mar-2026">14 Mar
+                                                </svg><span data-i18n="formacoes.modal-courses.nov-dez-2026">Nov – Dez
                                                     2026</span></span>
                                             <span class="d-flex align-items-center gap-1"><svg class="bi">
                                                     <use xlink:href="#i-geo"></use>
                                                 </svg>Maputo</span>
                                         </span>
                                     </li>
-                                    <li>
-                                        <span class="upcoming-title"
-                                            data-i18n="formacoes.modal-courses.lideranca-etica-e-tomada-de-decisao-2">Liderança
-                                            Ética e Tomada de Decisão</span>
-                                        <span class="d-flex gap-3 event-meta">
-                                            <span class="d-flex align-items-center gap-1"><svg class="bi">
-                                                    <use xlink:href="#i-calendar"></use>
-                                                </svg><span data-i18n="formacoes.modal-courses.28-mar-2026">28 Mar
-                                                    2026</span></span>
-                                            <span class="d-flex align-items-center gap-1"><svg class="bi">
-                                                    <use xlink:href="#i-geo"></use>
-                                                </svg>Online</span>
-                                        </span>
-                                    </li>
                                 </ul>
-                                <a class="link-arrow" href="#contact-form"><span
+                                <a class="link-arrow" href="#contact-form" data-contact-service="Formação" data-contact-interest="Competências Profissionais" data-contact-msg="Olá! Gostaria de me inscrever na &quot;Formação em Comunicação e Oratória (2.ª edição)&quot; (Nov – Dez 2026, Maputo). Podem enviar-me mais informações sobre datas, horário e valores?" data-contact-msg-en="Hello! I would like to sign up for the &quot;Communication and Public Speaking Course (2nd edition)&quot; (Nov – Dec 2026, Maputo). Could you send me more details on dates, schedule and fees?"><span
                                         data-i18n="formacoes.modal-courses.inscrever-se">Inscrever-se</span> <span
                                         class="arrowRight">&gt;</span></a>
                             </div>
@@ -912,24 +906,20 @@
                         <span class="modal-pattern modal-pattern--tl" aria-hidden="true"><span class="pattern-diagonal-lines-sm"></span></span>
                         <h4 class="mb-3" data-i18n="formacoes.modal-courses.bastidores">Bastidores</h4>
                         <div class="modal-gallery">
-                            <div class="mg-a"><img src="../assets/images/ora.webp" alt="Elizabeth Castro a apresentar numa formação" loading="lazy"
-                                    data-i18n-attr="alt:formacoes.modal-courses.elizabeth-castro-a-apresentar-numa-formacao"></div>
-                            <div class="mg-b"><img src="../assets/images/workshop-3.webp" alt="Participantes atentos à apresentação" loading="lazy"
-                                    data-i18n-attr="alt:formacoes.modal-courses.participantes-atentos-a-apresentacao">
-                            </div>
-                            <div class="mg-c"><img src="../assets/flyerteam.webp" alt="Equipa reunida numa formação"
-                                    loading="lazy"
-                                    data-i18n-attr="alt:formacoes.modal-courses.equipa-reunida-numa-formacao"></div>
-                            <div class="mg-d"><img src="../assets/images/workshop-2.webp" alt="Participantes durante a formação" loading="lazy"
-                                    data-i18n-attr="alt:formacoes.modal-courses.participantes-durante-a-formacao">
-                            </div>
-                            <div class="mg-e"><img src="../assets/images/workshop-5.webp" alt="Participantes numa sessão de formação" loading="lazy"
-                                    data-i18n-attr="alt:formacoes.modal-courses.participantes-numa-sessao-de-formacao">
-                            </div>
-                            <div class="mg-f"><img src="../assets/workshop2.webp"
-                                    alt="Momento de prática durante o workshop" loading="lazy"
-                                    data-i18n-attr="alt:formacoes.modal-courses.momento-de-pratica-durante-o-workshop">
-                            </div>
+                            <div class="mg-a"><video muted loop playsinline preload="none" data-inview-play aria-hidden="true"
+                                style="object-position: 58% 50%" poster="../assets/video/bastidores/f-v-curso-poster.webp">
+                                <source src="../assets/video/bastidores/f-v-curso.webm" type="video/webm">
+                                <source src="../assets/video/bastidores/f-v-curso.mp4" type="video/mp4">
+                            </video></div>
+                            <div class="mg-b"><img src="../assets/images/workshop-3.webp" alt="Participantes atentos à apresentação" loading="lazy" style="object-position: 60% 36%" data-i18n-attr="alt:formacoes.modal-courses.participantes-atentos-a-apresentacao"></div>
+                            <div class="mg-c"><img src="../assets/images/bastidores/f-apresentacao-ecra.webp" alt="Formanda a apresentar junto ao ecrã" loading="lazy" style="object-position: 66% 50%" data-i18n-attr="alt:formacoes.modal-courses.formanda-a-apresentar-junto-ao-ecra"></div>
+                            <div class="mg-d"><img src="../assets/images/ora.webp" alt="Elizabeth Castro a apresentar numa formação" loading="lazy" style="object-position: 60% 32%" data-i18n-attr="alt:formacoes.modal-courses.elizabeth-castro-a-apresentar-numa-formacao"></div>
+                            <div class="mg-e"><img src="../assets/images/workshop-4.webp" alt="Participantes durante uma formação na sala da Castros" loading="lazy" style="object-position: 70% 44%" data-i18n-attr="alt:formacoes.modal-courses.participantes-durante-uma-formacao-na-sala"></div>
+                            <div class="mg-f"><video muted loop playsinline preload="none" data-inview-play aria-hidden="true"
+                                style="object-position: 56% 50%" poster="../assets/video/bastidores/f-v-certificados-poster.webp">
+                                <source src="../assets/video/bastidores/f-v-certificados.webm" type="video/webm">
+                                <source src="../assets/video/bastidores/f-v-certificados.mp4" type="video/mp4">
+                            </video></div>
                         </div>
                     </div>
                 </div>
@@ -956,14 +946,12 @@
                 <div class="modal-body">
                     <!-- MEDIA FEATURE: 1 square + 2 stacked wide -->
                     <div class="media-trio mb-5">
-                        <div class="mt-a"><img src="../assets/images/officework.webp" alt="Elizabeth Castro a receber a equipa na sala de formação" loading="lazy"
+                        <div class="mt-a"><img style="object-position: 40% 24%" src="../assets/images/officework.webp" alt="Elizabeth Castro a receber a equipa na sala de formação" loading="lazy"
                                     data-i18n-attr="alt:formacoes.modal-training.elizabeth-castro-a-receber-a-equipa"></div>
-                        <div class="mt-b"><img src="../assets/atendimento.webp" alt="Equipa em formação de atendimento"
+                        <div class="mt-b"><img style="object-position: 50% 14%" src="../assets/images/ujc-class.webp" alt="Turma em formação, com Elizabeth Castro a apresentar"
                                 loading="lazy"
-                                data-i18n-attr="alt:formacoes.modal-training.equipa-em-formacao-de-atendimento"></div>
-                        <div class="mt-c"><img src="../assets/images/workshop-4.webp" alt="Formação em curso na sala da Castros" loading="lazy"
-                                    data-i18n-attr="alt:formacoes.modal-training.formacao-em-curso-na-sala-da-castros">
-                        </div>
+                                data-i18n-attr="alt:formacoes.modal-training.turma-em-formacao-com-elizabeth-castro"></div>
+                        <div class="mt-c"><img src="../assets/images/bastidores/t-sala-uj.webp" alt="Sala de formação com participantes e apresentação no ecrã" loading="lazy" style="object-position: 52% 100%" data-i18n-attr="alt:formacoes.modal-training.sala-de-formacao-com-participantes-e"></div>
                     </div>
 
                     <!-- 3 COLUMNS -->
@@ -975,7 +963,7 @@
                                 data-i18n="formacoes.modal-training.equipas-preparadas-para-um-atendimento-atento">
                                 Equipas preparadas para um atendimento atento,
                                 consistente e alinhado com a imagem da sua organização.</p>
-                            <a class="link-arrow" href="#contact-form"><span
+                            <a class="link-arrow" href="#contact-form" data-contact-service="Treinamento" data-contact-interest="Capacitação de Equipas" data-contact-msg="Olá! Gostaria de saber mais sobre o treinamento em Atendimento para preparar a minha equipa para um atendimento atento e consistente." data-contact-msg-en="Hello! I would like to know more about the Customer Service training to prepare my team for attentive, consistent service."><span
                                     data-i18n="formacoes.modal-training.saber-mais">Saber mais</span> <span
                                     class="arrowRight">&gt;</span></a>
                         </div>
@@ -985,7 +973,7 @@
                                 data-i18n="formacoes.modal-training.programas-a-medida-para-empresas-que">Programas à
                                 medida para empresas que querem desenvolver
                                 lideranças e fortalecer a cultura interna.</p>
-                            <a class="link-arrow" href="#contact-form"><span
+                            <a class="link-arrow" href="#contact-form" data-contact-service="Treinamento" data-contact-interest="Treinamento Corporativo" data-contact-msg="Olá! Gostaria de saber mais sobre os programas Corporate à medida, para desenvolver lideranças e fortalecer a cultura interna da nossa organização." data-contact-msg-en="Hello! I would like to know more about your tailored Corporate programmes, to develop leaders and strengthen our organisation&#x27;s internal culture."><span
                                     data-i18n="formacoes.modal-training.saber-mais">Saber mais</span> <span
                                     class="arrowRight">&gt;</span></a>
                         </div>
@@ -1008,19 +996,19 @@
                             <span class="eyebrow" data-i18n="formacoes.modal-training.proximo-evento">Próximo
                                 Evento</span>
                             <h4 class="mb-1"
-                                data-i18n="formacoes.modal-training.treinamento-corporativo-atendimento-com-proposito">
-                                Treinamento Corporativo: Atendimento com Propósito</h4>
+                                data-i18n="formacoes.modal-training.formacao-em-comunicacao-e-oratoria-2-edicao">
+                                Formação em Comunicação e Oratória (2.ª edição)</h4>
                             <span class="d-flex gap-3 event-meta">
                                 <span class="d-flex align-items-center gap-1"><svg class="bi">
                                         <use xlink:href="#i-calendar"></use>
-                                    </svg><span data-i18n="formacoes.modal-training.09-abr-2026">09 Abr
+                                    </svg><span data-i18n="formacoes.modal-training.nov-dez-2026">Nov – Dez
                                         2026</span></span>
                                 <span class="d-flex align-items-center gap-1"><svg class="bi">
                                         <use xlink:href="#i-geo"></use>
                                     </svg>Maputo</span>
                             </span>
                         </div>
-                        <a class="btn btn-cyan px-4 py-2" href="#contact-form"
+                        <a class="btn btn-cyan px-4 py-2" href="#contact-form" data-contact-service="Formação" data-contact-interest="Competências Profissionais" data-contact-msg="Olá! Gostaria de me inscrever na &quot;Formação em Comunicação e Oratória (2.ª edição)&quot; (Nov – Dez 2026, Maputo). Podem enviar-me mais informações sobre datas, horário e valores?" data-contact-msg-en="Hello! I would like to sign up for the &quot;Communication and Public Speaking Course (2nd edition)&quot; (Nov – Dec 2026, Maputo). Could you send me more details on dates, schedule and fees?"
                             data-i18n="formacoes.modal-training.inscrever-se">Inscrever-se</a>
                     </div>
 
@@ -1029,25 +1017,26 @@
                         <span class="modal-pattern modal-pattern--tl" aria-hidden="true"><span class="pattern-dots-md"></span></span>
                         <h4 class="mb-3" data-i18n="formacoes.modal-training.bastidores">Bastidores</h4>
                         <div class="modal-gallery">
-                            <div class="mg-a"><img src="../assets/images/entrancesmile.webp" alt="Boas-vindas a uma participante" loading="lazy"
+                            <div class="mg-a"><img style="object-position: 46% 46%" src="../assets/images/entrancesmile.webp" alt="Boas-vindas a uma participante" loading="lazy"
                                     data-i18n-attr="alt:formacoes.modal-training.boas-vindas-a-uma-participante">
                             </div>
-                            <div class="mg-b"><img src="../assets/consultingnoturious.webp"
-                                    alt="Sessão de treinamento em curso" loading="lazy"
-                                    data-i18n-attr="alt:formacoes.modal-training.sessao-de-treinamento-em-curso"></div>
-                            <div class="mg-c"><img src="../assets/handshake.webp"
-                                    alt="Aperto de mão entre consultor e participante" loading="lazy"
-                                    data-i18n-attr="alt:formacoes.modal-training.aperto-de-mao-entre-consultor-e"></div>
-                            <div class="mg-d"><img src="../assets/images/workshop-1.webp" alt="Participantes numa sessão de treinamento" loading="lazy"
+                            <div class="mg-b"><video muted loop playsinline preload="none" data-inview-play aria-hidden="true"
+                                style="object-position: 56% 50%" poster="../assets/video/bastidores/t-v-elas-poster.webp">
+                                <source src="../assets/video/bastidores/t-v-elas.webm" type="video/webm">
+                                <source src="../assets/video/bastidores/t-v-elas.mp4" type="video/mp4">
+                            </video></div>
+                            <div class="mg-c"><img src="../assets/images/bastidores/t-chegada.webp" alt="Elizabeth Castro a chegar para a sessão" loading="lazy" style="object-position: 44% 50%" data-i18n-attr="alt:formacoes.modal-training.elizabeth-castro-a-chegar-para-a"></div>
+                            <div class="mg-d"><img style="object-position: 8% 58%" src="../assets/images/workshop-1.webp" alt="Participantes numa sessão de treinamento" loading="lazy"
                                     data-i18n-attr="alt:formacoes.modal-training.participantes-numa-sessao-de-treinamento">
                             </div>
-                            <div class="mg-e"><img src="../assets/images/entrance-1.webp" alt="Banner da Castros Consultoria: Liderar com ética" loading="lazy"
+                            <div class="mg-e"><img style="object-position: 50% 50%" src="../assets/images/entrance-1.webp" alt="Banner da Castros Consultoria: Liderar com ética" loading="lazy"
                                     data-i18n-attr="alt:formacoes.modal-training.banner-da-castros-consultoria-liderar-com">
                             </div>
-                            <div class="mg-f"><img src="../assets/team.webp" alt="Equipa reunida após o treinamento"
-                                    loading="lazy"
-                                    data-i18n-attr="alt:formacoes.modal-training.equipa-reunida-apos-o-treinamento">
-                            </div>
+                            <div class="mg-f"><video muted loop playsinline preload="none" data-inview-play aria-hidden="true"
+                                style="object-position: 28% 38%" poster="../assets/video/bastidores/t-v-palco-poster.webp">
+                                <source src="../assets/video/bastidores/t-v-palco.webm" type="video/webm">
+                                <source src="../assets/video/bastidores/t-v-palco.mp4" type="video/mp4">
+                            </video></div>
                         </div>
                     </div>
                 </div>
@@ -1184,6 +1173,8 @@
 
     <script src="../js/javascript.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Card videos: play only while on screen -->
+    <script src="../js/inview-video.js" defer></script>
     <script>
         /* JAVASCRIPT | Navigation, interactions and animations */
         (function () {

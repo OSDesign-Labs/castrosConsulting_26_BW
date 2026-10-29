@@ -89,6 +89,9 @@
   <link rel="stylesheet" href="css/vendor/pattern.min.css">
   <link rel="stylesheet" href="css/patterns.css">
   <script src="js/patterns.js" defer></script>
+  <!-- scroll animations (AOS) tuning + section snap + parallax between sections -->
+  <link rel="stylesheet" href="css/motion.css">
+  <script src="js/motion.js" defer></script>
 </head>
 
 <body>
@@ -116,8 +119,7 @@
               data-i18n="topbar.seg-sex-08-00-17-00">Seg – Sex · 08:00 – 17:00</span></span>
         </div>
         <div class="topbar-right">
-          <a class="topbar-item" href="tel:+258878665180"><i class="bi bi-telephone" aria-hidden="true"></i>+258 87 866
-            5180</a>
+          <span class="topbar-item topbar-phones"><i class="bi bi-telephone" aria-hidden="true"></i><a href="tel:+258848665180">+258 84 866 5180</a><span class="phone-sep" aria-hidden="true">/</span><a href="tel:+258878665180">+258 87 866 5180</a></span>
           <span class="topbar-divider" aria-hidden="true"></span>
           <div class="topbar-social">
             <a href="https://www.facebook.com/castros.consultoria" aria-label="Facebook"><i
@@ -177,6 +179,11 @@
                 <li>
                   <a class="dropdown-item" href="html/espacos.html" data-i18n="nav.espacos-e-podcasts">
                     Espaços e Podcasts
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="html/espacos.html#modalEventos" data-i18n="nav.organizacao-de-eventos">
+                    Organização de Eventos
                   </a>
                 </li>
               </ul>
@@ -275,6 +282,11 @@
                   Espaços e Podcasts
                 </a>
               </li>
+              <li>
+                <a class="dropdown-item" href="html/espacos.html#modalEventos" data-i18n="nav.organizacao-de-eventos">
+                  Organização de Eventos
+                </a>
+              </li>
             </ul>
           </li>
           <!-- Eventos -->
@@ -303,6 +315,7 @@
             Moçambique</span></span>
         <span><i class="bi bi-clock" aria-hidden="true"></i><span data-i18n="topbar.seg-sex-08-00-17-00">Seg – Sex ·
             08:00 – 17:00</span></span>
+        <a href="tel:+258848665180"><i class="bi bi-telephone" aria-hidden="true"></i>+258 84 866 5180</a>
         <a href="tel:+258878665180"><i class="bi bi-telephone" aria-hidden="true"></i>+258 87 866 5180</a>
         <div class="mobile-social">
           <a href="https://www.facebook.com/castros.consultoria" aria-label="Facebook"><i
@@ -414,8 +427,8 @@
                   <source src="assets/hero/formacao.webm" type="video/webm">
                 </video>
                 <!-- IMAGE option: delete the <video> above and uncomment this line
-                <img src="assets/hero/formacao.webp" alt="Participantes numa sessão de formação" loading="lazy"
-                  decoding="async" width="1600" height="1067">
+                <img src="assets/hero/formacao-poster.webp" alt="Participantes a aplaudir numa formação" loading="lazy"
+                  decoding="async">
                 -->
               </div>
               <div class="hs-copy hero-copy">
@@ -440,32 +453,36 @@
             <div class="hs hs-eventos">
               <div class="hs-copy hero-copy">
                 <span class="eyebrow hs-anim" data-i18n="hero.proximo-evento">Próximo evento</span>
-                <h2 class="hs-title hs-anim" data-i18n="hero.oratoria-e-comunicacao-com-impacto">Oratória e Comunicação
-                  com Impacto</h2> <!-- EDIT -->
-                <p class="hs-anim" data-i18n="hero.como-falar-de-forma-clara-ganhar">Como falar de forma clara, ganhar
-                  confiança em palco e mobilizar pessoas para a
-                  ação.</p> <!-- EDIT -->
+                <h2 class="hs-title hs-anim" data-i18n="hero.women-investment-forum">Women Investment Fórum</h2>
+                <p class="hs-anim" data-i18n="hero.elizabeth-castro-e-oradora-confirmada-na">Elizabeth Castro é
+                  oradora confirmada na 2.ª edição do fórum da Global Business Network África: a mulher como
+                  pilar económico do desenvolvimento de África.</p>
               </div>
               <div class="hs-stage">
                 <span class="hs-blob hs-pattern" aria-hidden="true"></span>
-                <!-- VIDEO (muted, loops, plays only while this slide is on screen) -->
+                <!-- IMAGE: flyer of the next event (Women Investment Fórum, 28 Out 2026) -->
+                <img src="assets/images/recent/flyer-women-investment-forum-2026.webp"
+                  alt="Flyer do Women Investment Fórum, com Elizabeth Castro como oradora confirmada, 28 de outubro, Auditório do BCI"
+                  data-i18n-attr="alt:hero.flyer-do-women-investment-forum-com"
+                  loading="lazy" decoding="async" width="1122" height="1402">
+                <!-- VIDEO option: delete the <img> above and uncomment this (first 5 s of castros recent/home/wwv1.mp4, looped)
                 <video class="hs-video" muted loop playsinline preload="metadata"
-                  poster="assets/hero/eventos-poster.webp" aria-label="Momentos do Youth Investment Summit 2026"
-                  data-i18n-attr="aria-label:hero.momentos-do-youth-investment-summit-2026">
-                  <source src="assets/hero/eventos.webm" type="video/webm">
+                  poster="assets/video/proximo-evento-poster.webp"
+                  aria-label="Chegada dos participantes à Universidade Joaquim Chissano"
+                  data-i18n-attr="aria-label:hero.chegada-dos-participantes-a-universidade-joaquim">
+                  <source src="assets/video/proximo-evento.webm" type="video/webm">
+                  <source src="assets/video/proximo-evento.mp4" type="video/mp4">
                 </video>
-                <!-- IMAGE option: delete the <video> above and uncomment this line
-                <img src="assets/hero/eventos.webp" alt="Oradora em palco durante um evento" loading="lazy"
-                  decoding="async" width="1400" height="786">
                 -->
               </div>
               <div class="hs-info hero-copy">
                 <ul class="hs-meta hs-anim">
-                  <li><i class="bi bi-calendar-event" aria-hidden="true"></i><span data-i18n="hero.ter-13-out-2026">Ter,
-                      13 Out 2026</span></li> <!-- EDIT -->
-                  <li><i class="bi bi-geo-alt" aria-hidden="true"></i>Maputo</li> <!-- EDIT -->
-                  <li><i class="bi bi-people" aria-hidden="true"></i><span
-                      data-i18n="hero.presencial-vagas-limitadas">Presencial · Vagas limitadas</span></li> <!-- EDIT -->
+                  <li><i class="bi bi-calendar-event" aria-hidden="true"></i><span data-i18n="hero.qua-28-out-2026-forum">Qua,
+                      28 Out 2026</span></li>
+                  <li><i class="bi bi-geo-alt" aria-hidden="true"></i><span
+                      data-i18n="hero.auditorio-do-bci-maputo">Auditório do BCI, Maputo</span></li>
+                  <li><i class="bi bi-mic" aria-hidden="true"></i><span
+                      data-i18n="hero.oradora-elizabeth-castro">Oradora: Elizabeth Castro</span></li>
                 </ul>
                 <div class="hero-actions hs-anim">
                   <a class="btn btn-light" href="#contact-form" data-prefill-service="Eventos"
@@ -484,9 +501,13 @@
               <div class="hs-media hs-pattern">
                 <span class="hs-wave" aria-hidden="true"></span>
                 <span class="hs-wave hs-wave-2" aria-hidden="true"></span>
-                <img src="assets/chairs.webp" alt="Estúdio de podcast com cadeiras e microfones" loading="lazy"
-                  decoding="async" width="900" height="600" data-i18n-attr="alt:hero.estudio-de-podcast-com-cadeiras-e">
-                <!-- EDIT: photo of your own studio -->
+                <!-- VIDEO: Elizabeth Castro as a guest on "Conversas Sobre Carreira" (muted, loops, plays only while this slide is on screen) -->
+                <video class="hs-video" muted loop playsinline preload="metadata"
+                  poster="assets/hero/podcast-poster.webp" aria-label="Elizabeth Castro como convidada num podcast"
+                  data-i18n-attr="aria-label:hero.elizabeth-castro-convidada-num-podcast">
+                  <source src="assets/hero/podcast.webm" type="video/webm">
+                </video>
+                <!-- EDIT: replace with footage of your own studio when available -->
               </div>
               <div class="hs-copy hero-copy">
                 <span class="eyebrow hs-anim">Podcast</span>
@@ -630,25 +651,25 @@
       </div>
     </section>
 
-    <!-- 03- MARCAS / PARCEIROS -->
-    <section class="bg-alt-c py-5">
-      <div class="container d-flex flex-wrap justify-content-between align-items-center gap-4" data-aos="zoom-in" data-aos-delay="200" data-aos-duration="1200" data-aos-easing="ease-out-back">
-        <p class="mb-0 fw-medium" style="max-width:24ch;color:var(--black)"
-          data-i18n="partners.marcas-que-escolheram-crescer-com-a">Marcas que escolheram crescer com a
-          nossa
-          estratégia e espaços</p>
-        <div class="d-flex flex-wrap gap-5 align-items-center">
-          <span class="d-flex align-items-center gap-2 fw-bold"
-            style="color:var(--slate);opacity:.85">Business.Creator</span>
-          <span class="d-flex align-items-center gap-2 fw-bold" style="color:var(--slate);opacity:.85">Xiluva
-            Mulher</span>
-          <span class="d-flex align-items-center gap-2 fw-bold" style="color:var(--slate);opacity:.85">WH Impact</span>
-          <span class="d-flex align-items-center gap-2 fw-bold" style="color:var(--slate);opacity:.85">AEESJ</span>
-          <span class="d-flex align-items-center gap-2 fw-bold" style="color:var(--slate);opacity:.85">Business Touch
-            Holding</span>
-          <span class="d-flex align-items-center gap-2 fw-bold" style="color:var(--slate);opacity:.85">MoneyMakers Forex
-            Academy</span>
-        </div>
+    <!-- 03- PARCEIROS E APOIANTES
+         Logos cut from the Master Class flyer (Nov 2025): low resolution. EDIT: replace each file in
+         assets/partners/ with the partner's own logo (PNG/SVG) when Elizabeth sends them, and confirm
+         every partner is happy to be shown. "Mirsava" is read off a blurry logo: confirm the spelling. -->
+    <section class="bg-alt-c py-5 partners">
+      <div class="container" data-aos="zoom-in" data-aos-delay="200" data-aos-duration="1200" data-aos-easing="ease-out-back">
+        <p class="partners-title" data-i18n="partners.parceiros-e-apoiantes">Parceiros e apoiantes</p>
+        <ul class="partner-logos" aria-label="Parceiros e apoiantes" data-i18n-attr="aria-label:partners.parceiros-e-apoiantes">
+          <li><img translate="no" src="assets/partners/wh-impact.webp" alt="WH Impact" width="194" height="62" loading="lazy" decoding="async"></li>
+          <li><img translate="no" src="assets/partners/ventura-services.webp" alt="Ventura Services" width="185" height="56" loading="lazy" decoding="async"></li>
+          <li><img translate="no" src="assets/partners/la-holding.webp" alt="LA Holding" width="59" height="75" loading="lazy" decoding="async"></li>
+          <li><img translate="no" src="assets/partners/mirsava.webp" alt="Mirsava Cosméticos Naturais" width="126" height="50" loading="lazy" decoding="async"></li>
+          <li><img translate="no" src="assets/partners/just-bloom.webp" alt="Just Bloom Events &amp; Workshops" width="119" height="66" loading="lazy" decoding="async"></li>
+          <li><img translate="no" src="assets/partners/fpn.webp" alt="FPN" width="139" height="34" loading="lazy" decoding="async"></li>
+          <li class="tile"><img translate="no" src="assets/partners/ppi-lodge.webp" alt="PPI-Lodge Ponta do Ouro" width="115" height="116" loading="lazy" decoding="async"></li>
+          <li class="tile"><img translate="no" src="assets/partners/baco-baco.webp" alt="baco.baco" width="118" height="116" loading="lazy" decoding="async"></li>
+          <li><img translate="no" src="assets/partners/mj-consulting.webp" alt="MJ Consulting" width="79" height="84" loading="lazy" decoding="async"></li>
+          <li><a href="https://www.instagram.com/os.design.mz/" target="_blank" rel="noopener" aria-label="OS Design"><img class="logo-osdesign" translate="no" src="assets/partners/os-design.webp" alt="OS Design" width="70" height="84" loading="lazy" decoding="async"></a></li>
+        </ul>
       </div>
     </section>
 
@@ -667,7 +688,7 @@
              Phones (< 768px): normal accordion, tap a header to open/close.
              Behaviour: "SERVICES ACCORDION" in the script at the end of the page.
              Each item has an id (servico-...) so links can open it: index.html#servico-espacos -->
-        <div class="tabs-h" data-aos="fade-up" data-aos-duration="1000" id="servicesTabs">
+        <div class="tabs-h" data-aos="fade-up" data-aos-duration="1000" id="servicesTabs" data-accordion="inline">
           <!-- 01 Consultoria -->
           <div class="tab-item active" id="servico-consultoria">
             <button type="button" class="tab-strip" id="svc-btn-1" aria-expanded="true" aria-controls="svc-panel-1">
@@ -967,8 +988,8 @@
         <div class="carousel-inner">
           <div data-bs-interval="10000" class="carousel-item active">
             <div class="carousel-caption d-md-block">
-              <h3 data-i18n="testimonials.a-consultoria-nos-ajudou-a-transformar">"A consultoria nos ajudou a
-                transformar nossa cultura interna, hoje temos líderes mais conscientes e equipes mais engajadas."</h3>
+              <h3 data-i18n="testimonials.a-consultoria-nos-ajudou-a-transformar">"A consultoria ajudou-nos a
+                transformar a nossa cultura interna. Hoje temos líderes mais conscientes e equipas mais envolvidas."</h3>
               <h6 class="name" data-i18n="testimonials.diretora-de-rh">Diretora de RH</h6>
               <p class="local" data-i18n="testimonials.setor-financeiro">Setor financeiro</p>
             </div>
@@ -985,7 +1006,7 @@
           <div data-bs-interval="10000" class="carousel-item">
             <div class="carousel-caption d-md-block">
               <h3 data-i18n="testimonials.o-programa-de-lideranca-etica-foi">"O programa de liderança ética foi um
-                divisor de águas na forma como nossos gestores tomam decisões."</h3>
+                ponto de viragem na forma como os nossos gestores tomam decisões."</h3>
               <h6 class="name" data-i18n="testimonials.gerente-de-pessoas">Gerente de Pessoas</h6>
               <p class="local" data-i18n="testimonials.setor-de-tecnologia">Setor de tecnologia</p>
             </div>
@@ -1043,10 +1064,10 @@
             <span class="contact-chip-info"><small>Instagram</small><strong>castros.consultoria</strong></span>
           </a>
 
-          <a class="contact-chip" href="https://www.tiktok.com/@castros.consultria.mz" aria-label="TikTok">
+          <a class="contact-chip" href="https://www.tiktok.com/@castros.consultoria.mz" aria-label="TikTok">
             <!-- EDIT: confirme o handle -->
             <span class="contact-chip-icon"><i class="bi bi-tiktok" aria-hidden="true"></i></span>
-            <span class="contact-chip-info"><small>TikTok</small><strong>@castros.consultria.mz</strong></span>
+            <span class="contact-chip-info"><small>TikTok</small><strong>@castros.consultoria.mz</strong></span>
           </a>
 
           <a class="contact-chip" href="https://www.facebook.com/" aria-label="Facebook">
@@ -1103,7 +1124,7 @@
                 <div class="form-step active" data-form-step="1">
                   <div class="mb-4">
                     <span class="form-step-number">01</span>
-                    <h2 class="form-step-title" data-i18n="contact.vamos-comecar">Vamos começar.</h2>
+                    <h2 class="form-step-title" data-i18n="contact.os-seus-dados">Os seus dados.</h2>
                     <p class="form-step-description" data-i18n="contact.diga-nos-como-podemos-entrar-em">Diga-nos como
                       podemos entrar em contacto consigo.</p>
                   </div>
@@ -1164,7 +1185,8 @@
                         <option value="Consultoria" data-i18n="contact.consultoria">Consultoria</option>
                         <option value="Formação" data-i18n="contact.formacao">Formação</option>
                         <option value="Treinamento" data-i18n="contact.treinamento">Treinamento</option>
-                        <option value="Palestras" data-i18n="contact.palestras">Palestras</option>
+                        <option value="Palestras e Workshops" data-i18n="contact.palestras-e-workshops">Palestras e Workshops</option>
+                        <option value="Espaços e Podcasts" data-i18n="contact.espacos-e-podcasts">Espaços e Podcasts</option>
                         <option value="Eventos" data-i18n="contact.eventos">Eventos</option>
                         <option value="Outro" data-i18n="contact.outro">Outro</option>
                       </select>
@@ -1255,15 +1277,15 @@
         <div class="row g-3">
           <div class="col-md-7" data-aos="fade-up">
             <div class="ph g-main"
-              style="aspect-ratio:1/1; background-image: url(assets/workshop2.webp); background-size: cover; background-position: center;">
+              style="aspect-ratio:1/1; background-image: url(assets/images/recent/galeria-grupo.webp); background-size: cover; background-position: center;">
             </div>
           </div>
           <div class="col-md-5 g-side d-flex flex-column gap-3" data-aos="fade-up" data-aos-delay="150">
             <div class="ph"
-              style="background-image: url(assets/morepeople.webp); background-size: cover; background-position: center;">
+              style="background-image: url(assets/images/recent/galeria-workshop-grupo.webp); background-size: cover; background-position: center 40%;">
             </div>
             <div class="ph"
-              style="background-image: url(assets/chairs.webp); background-size: cover; background-position: center;">
+              style="background-image: url(assets/images/recent/pc-manhas-alegres.webp); background-size: cover; background-position: center 40%;">
             </div>
           </div>
         </div>
@@ -1281,10 +1303,13 @@
             <h5 data-i18n="footer.localizacao">Localização</h5>
             <p class="foot-p mb-0 d-flex align-items-center gap-2"><svg class="bi">
                 <use xlink:href="#i-geo"></use>
-              </svg>Rua do Palmar, nº 35</p>
+              </svg>Rua da Tchamba, nº 113</p>
           </div>
           <div class="mt-3">
             <h5 data-i18n="footer.contacto">Contacto</h5>
+            <a class="d-flex align-items-center gap-2 mb-1" href="tel:+258848665180"><svg class="bi">
+                <use xlink:href="#i-phone"></use>
+              </svg>+258 84 866 5180</a>
             <a class="d-flex align-items-center gap-2 mb-1" href="tel:+258878665180"><svg class="bi">
                 <use xlink:href="#i-phone"></use>
               </svg>+258 87 866 5180</a>
@@ -1301,7 +1326,7 @@
                 class="bi">
                 <use xlink:href="#i-instagram"></use>
               </svg></a>
-            <a class="social-ic" href="https://www.tiktok.com/@castros.consultria.mz" aria-label="TikTok"><svg class="bi"><use xlink:href="#i-tiktok"></use></svg></a> <!-- EDIT: confirm the TikTok handle -->
+            <a class="social-ic" href="https://www.tiktok.com/@castros.consultoria.mz" aria-label="TikTok"><svg class="bi"><use xlink:href="#i-tiktok"></use></svg></a>
             <a class="social-ic" href="https://www.linkedin.com/" aria-label="LinkedIn"><svg class="bi"><use xlink:href="#i-linkedin"></use></svg></a> <!-- EDIT: their LinkedIn page URL -->
           </div>
         </div>
@@ -1343,8 +1368,12 @@
         <div class="modal-body">
           <h2 class="event-modal-title" id="eventModalTitle" data-field="title"></h2>
           <ul class="event-facts has-qr">
-            <!-- QR code: sits at the end of this card, centred top to bottom (css/home.css .codebox) -->
-            <li class="codebox" aria-hidden="true"></li>
+            <!-- QR code (computers only): opens a WhatsApp chat with Elizabeth on the visitor's phone, with a
+                 sign-up message for THIS event already written. Drawn by js/events.js; styles: css/home.css .event-qr -->
+            <li class="event-qr" aria-hidden="true">
+              <span class="event-qr-code" data-field="qr"></span>
+              <span class="event-qr-label" data-i18n="events.qr-label">Inscreva-se pelo telemóvel</span>
+            </li>
             <li><i class="bi bi-calendar-event" aria-hidden="true"></i>
               <div><small data-i18n="events.data">Data</small><span data-field="date"></span></div>
             </li>
@@ -1405,7 +1434,7 @@
     </svg>
   </button>
 
-  <a href="https://wa.me/258848665180" target="_blank" rel="noopener" id="whatsappBtn" aria-label="Falar no WhatsApp"
+  <a href="https://wa.me/258878665180" target="_blank" rel="noopener" id="whatsappBtn" aria-label="Falar no WhatsApp"
     data-i18n-attr="aria-label:common.falar-no-whatsapp">
     <i class="bi bi-whatsapp"></i>
   </a>
@@ -1541,7 +1570,8 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Eventos: cards + modals (must run before AOS starts) -->
+  <!-- Eventos: cards + modals (must run before AOS starts); qrcode.min.js draws the WhatsApp QR (MIT, Kazuhiko Arase) -->
+  <script src="js/vendor/qrcode.min.js"></script>
   <script src="js/events.js"></script>
 
   <script>

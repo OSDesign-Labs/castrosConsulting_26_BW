@@ -132,9 +132,11 @@
 
     /* ==========================================================
        SERVICES ACCORDION
+       The home page has its own (phones: tap again to close), marked
+       data-accordion="inline"; running both made a tap open and close at once.
        ========================================================== */
     const tabsWrap = document.getElementById("servicesTabs");
-    if (tabsWrap) {
+    if (tabsWrap && tabsWrap.dataset.accordion !== "inline") {
         tabsWrap.addEventListener("click", function (event) {
             const button = event.target.closest(".tab-item");
             if (!button || button.classList.contains("active")) return;
@@ -263,15 +265,22 @@ document.addEventListener("DOMContentLoaded", () => {
             "Outro"
         ],
 
-        Palestras: [
+        "Palestras e Workshops": [
             "Liderança",
             "Desenvolvimento Profissional",
             "Motivação e Pessoas",
+            "Workshop",
+            "Outro"
+        ],
+
+        "Espaços e Podcasts": [
+            "Reserva do Espaço",
+            "Gravação de Podcast",
+            "Convidado de Podcast",
             "Outro"
         ],
 
         Eventos: [
-            "Workshop",
             "Conferência",
             "Evento Corporativo",
             "Team Building",
@@ -587,6 +596,63 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
+    /* PRE-FILL FROM A LINK
+       Links to the form inside the service pop-ups ("Saber mais", "Inscrever-se", ...) carry
+       what they are about:
+         data-contact-service   option of #service       (step 2)
+         data-contact-interest  option of #interest      (step 2)
+         data-contact-msg       ready-made message, PT   (step 3)
+         data-contact-msg-en    same message in English
+       Clicking one selects the service and area and writes the message, so the visitor only
+       adds their details. A message they typed themselves is never overwritten. */
+    const messageField = document.getElementById("message");
+    let prefillLink = null;
+
+    function prefillMessage(link) {
+        if (!messageField) return;
+        const lang = window.CastrosI18n ? window.CastrosI18n.lang : "pt";
+        const text = (lang === "en" && link.dataset.contactMsgEn) || link.dataset.contactMsg;
+        if (!text) return;
+        if (messageField.value.trim() && messageField.dataset.prefilled !== "1") return;
+        messageField.value = text;
+        messageField.dataset.prefilled = "1";
+        messageField.classList.remove("is-invalid");
+    }
+
+    function prefillFrom(link) {
+        const service = link.dataset.contactService;
+        if (service && interests[service]) {
+            serviceSelect.value = service;
+            serviceSelect.dispatchEvent(new Event("change", { bubbles: true }));   // rebuilds the interest list
+            serviceSelect.classList.remove("is-invalid");
+            const interest = link.dataset.contactInterest;
+            if (interest && interests[service].includes(interest)) {
+                interestSelect.value = interest;
+                interestSelect.classList.remove("is-invalid");
+            }
+        }
+        prefillMessage(link);
+        prefillLink = link;
+        // a visitor already past step 1 sees the chosen service straight away
+        if (currentStep === 3) showStep(2, false);
+    }
+
+    // capture phase: runs before the pop-up closes and the page scrolls to the form
+    document.addEventListener("click", (event) => {
+        const link = event.target.closest && event.target.closest("a[data-contact-service], a[data-contact-msg]");
+        if (link && !successShown) prefillFrom(link);
+    }, true);
+
+    // typing makes the message theirs
+    if (messageField) {
+        messageField.addEventListener("input", () => { delete messageField.dataset.prefilled; });
+    }
+
+    // language switched while the ready-made message is still untouched: swap it
+    document.addEventListener("i18n:change", () => {
+        if (prefillLink && messageField && messageField.dataset.prefilled === "1") prefillMessage(prefillLink);
+    });
+
     /* INITIAL STATE */
     showStep(1, false);
 });
@@ -642,7 +708,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 // pushState doesn't fire hashchange; listeners (e.g. the services accordion) need it
                 window.dispatchEvent(new HashChangeEvent("hashchange"));
             }
-            jumpTo(target, true);
+            if (!target.classList.contains("modal")) jumpTo(target, true);   // a pop-up opens itself (below)
         }, { once: true });
         (isModal ? bootstrap.Modal : bootstrap.Offcanvas).getOrCreateInstance(menu).hide();
     });
@@ -655,7 +721,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function realign() {
         var target = findTarget(window.location.hash);
-        if (!target || userScrolled) return;
+        if (!target || userScrolled || target.classList.contains("modal")) return;
         var margin = parseFloat(getComputedStyle(target).scrollMarginTop) || 0;
         if (Math.abs(target.getBoundingClientRect().top - margin) > 2) jumpTo(target, false);
     }
@@ -664,4 +730,20 @@ document.addEventListener("DOMContentLoaded", () => {
         realign();
         if (document.fonts && document.fonts.ready) document.fonts.ready.then(realign);
     }, { once: true });
+
+    /* A #hash that names a pop-up opens it (the nav's "Organização de Eventos" → espacos.html#modalEventos).
+       Closing it drops the hash, so the same nav link opens it again. */
+    function openModalFromHash() {
+        var target = findTarget(window.location.hash);
+        if (!target || !target.classList.contains("modal") || !window.bootstrap) return;
+        bootstrap.Modal.getOrCreateInstance(target).show();
+    }
+    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", openModalFromHash);   // Bootstrap loads after this file
+    else openModalFromHash();
+    window.addEventListener("hashchange", openModalFromHash);
+    document.addEventListener("hidden.bs.modal", function (event) {
+        if (window.location.hash === "#" + event.target.id && window.history && history.replaceState) {
+            history.replaceState(null, "", window.location.pathname + window.location.search);
+        }
+    });
 })();

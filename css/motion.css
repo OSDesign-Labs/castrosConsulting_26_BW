@@ -98,6 +98,51 @@ main {
         padding-bottom: 6rem;
     }
 
+    /* the testimonials panel is sized as a share of the window (height: 100% of a
+       60vh section); in a grid that "100%" has nothing to measure against and the
+       panel collapsed to nothing. Give it its height directly and centre it. */
+    /* the partners get a screen of their own like every other section (so the page
+       stops on them), with the logos sized up to fill it */
+    main > section.partners .partners-title {
+        margin-bottom: 2.25rem;
+        font-size: 0.95rem;
+    }
+
+    main > section.partners .partner-logos {
+        gap: 1.25rem;
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+
+    main > section.partners .partner-logos li {
+        height: 112px;
+        padding: 0.8rem 1.4rem;
+        border-radius: 16px;
+    }
+
+    main > section.partners .partner-logos li.tile {
+        padding: 0;
+    }
+
+    main > section.partners .partner-logos img {
+        max-width: 220px;
+    }
+
+    main > section#testimonials {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        /* its 10rem / 13rem outside margins left dead bands between screens: a scroll
+           that ended in one snapped back to the section before, so the page got stuck */
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    main > section#testimonials #testCarousel {
+        height: 60vh;
+        flex: none;
+    }
+
     /* the cards right under a page's header have "pt-0" (no top space) so they hug
        the header; as a full screen of their own they need the same space as the rest */
     main > section.pt-0:not(:first-child) {

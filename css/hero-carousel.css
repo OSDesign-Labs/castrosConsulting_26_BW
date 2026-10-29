@@ -308,8 +308,10 @@ main > .hero.hero-carousel {
 }
 
 /* The photo's top edge is one wide arc; the pattern shows above it */
-.hero-carousel .hs-podcast .hs-media img {
+.hero-carousel .hs-podcast .hs-media img,
+.hero-carousel .hs-podcast .hs-media video {
     position: absolute;
+    object-position: 75% 50%;   /* keeps Elizabeth (right of frame) inside the diagonal */
     inset: 0;
     width: 100%;
     height: 100%;

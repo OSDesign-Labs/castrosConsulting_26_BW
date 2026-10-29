@@ -1499,9 +1499,7 @@ main>.hero #overlayGradient>[class*="col-lg-6"] {
     border-radius: 14px;
     box-shadow: inset 0 0 70px rgba(1, 9, 48, 0.12);
     pointer-events: none;
-    background-image: url(../assets/people.webp);
-    background-size: cover;   
-    background-position: center;
+    /* background-image: url(../assets/people.webp);  stock photo removed */
     filter: contrast(1.2) grayscale(1);
 }
 
@@ -2602,7 +2600,8 @@ main>.hero #overlayGradient>[class*="col-lg-6"] {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.subpage main .fm-card img {
+.subpage main .fm-card img,
+.subpage main .fm-card .fm-card-media {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -2641,12 +2640,20 @@ main>.hero #overlayGradient>[class*="col-lg-6"] {
     transform: translateY(-5px);
 }
 
-.subpage main .fm-card:hover img {
+.subpage main .fm-card:hover img,
+.subpage main .fm-card:hover .fm-card-media {
     transform: scale(1.04);
 }
 
 .subpage main .fm-card:hover .arrowRight {
     transform: translateX(4px);
+}
+
+/* wide banner card spanning both columns (Organização de Eventos on espacos.html); phones keep 4/5 */
+@media (min-width: 768px) {
+    .subpage main .fm-card--wide {
+        aspect-ratio: 21 / 6;
+    }
 }
 
 /* ---------- 5) Modal content — Formações & Treinamento ---------- */
@@ -2764,7 +2771,8 @@ main>.hero #overlayGradient>[class*="col-lg-6"] {
     border-radius: 12px;
 }
 
-.modal-gallery img {
+.modal-gallery img,
+.modal-gallery video {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -2777,6 +2785,7 @@ main>.hero #overlayGradient>[class*="col-lg-6"] {
 }
 
 .mg-b {
+    object-position: 60% 48% !important;
     grid-column: 3 / 5;
     grid-row: 1 / 2;
 }
@@ -2792,6 +2801,7 @@ main>.hero #overlayGradient>[class*="col-lg-6"] {
 }
 
 .mg-e {
+    object-position: 40% 61%;
     grid-column: 4 / 6;
     grid-row: 2 / 3;
 }
@@ -2814,7 +2824,8 @@ main>.hero #overlayGradient>[class*="col-lg-6"] {
     border-radius: 14px;
 }
 
-.media-trio img {
+.media-trio img,
+.media-trio video {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -2827,11 +2838,13 @@ main>.hero #overlayGradient>[class*="col-lg-6"] {
 }
 
 .mt-b {
+    object-position: 50% 20%;
     grid-column: 2;
     grid-row: 1;
 }
 
 .mt-c {
+    object-position: 50% 83%;
     grid-column: 2;
     grid-row: 2;
 }
@@ -2867,6 +2880,42 @@ main>.hero #overlayGradient>[class*="col-lg-6"] {
 
 .event-banner .event-meta {
     color: var(--ash-soft);
+}
+
+/* tablets: the 6-column Bastidores grid and the 1 + 2 media block become thin portrait
+   slivers between 768 and 991 px, so they switch to the phone layout, with taller rows */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .modal-gallery {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 170px;
+    }
+
+    .mg-a,
+    .mg-b,
+    .mg-c,
+    .mg-d,
+    .mg-e,
+    .mg-f {
+        grid-column: auto;
+        grid-row: auto;
+    }
+
+    .mg-a {
+        grid-column: 1 / 3;
+        grid-row: span 2;
+    }
+
+    .media-trio {
+        grid-template-columns: 1fr;
+        grid-template-rows: 300px 170px 170px;
+    }
+
+    .mt-a,
+    .mt-b,
+    .mt-c {
+        grid-column: 1;
+        grid-row: auto;
+    }
 }
 
 @media (max-width: 767.98px) {
@@ -2929,13 +2978,15 @@ main>.hero #overlayGradient>[class*="col-lg-6"] {
        11. TESTEMUNHOS | Final Section
        ====================================================== */
 
+/* identical to the block in css/home.css: every page shows the same testimonials */
 #testimonials {
     height: 60vh;
-    margin: 10rem 0 clamp(4rem, 8vw, 7rem);   /* bottom: room before the next section */
-    overflow: clip;
+    margin: 10rem 0 clamp(4rem, 13vw, 13rem);
+    /* bottom: room before the contact section */
+    overflow-x: clip;
 
     h6.index {
-        font-family: "Poppins";
+        font-family: "Manrope";
         text-align: center !important;
         font-size: 0.8rem;
         font-weight: 700;
@@ -2946,25 +2997,10 @@ main>.hero #overlayGradient>[class*="col-lg-6"] {
         display: block;
 
     }
-    
-    h3 {
-        color: rgb(0, 0, 0);
-        font-family: "Montserrat", serif;
-        font-weight: 500;
-        letter-spacing: -0.269425px;
-    }
 
-    h6 {
-        color: var(--ink);
-        font-family: "Poppins";
-    }
-
-    p {
-        line-height: 21px;
-    }
     #testCarousel {
         height: 100%;
-            
+
         .carousel-indicators {
             list-style: none;
         }
@@ -2980,12 +3016,13 @@ main>.hero #overlayGradient>[class*="col-lg-6"] {
 
             .carousel-item {
                 height: 100%;
-                margin-top: -3rem;
+                margin-top: -6rem;
 
                 .carousel-caption {
                     color: black;
+
                     h3.comment {
-                        font-family: "Poppins";
+                        font-family: "Manrope";
                         margin-bottom: 0;
                         padding-bottom: 0;
                         filter: brightness(1) !important;
@@ -3010,7 +3047,7 @@ main>.hero #overlayGradient>[class*="col-lg-6"] {
 
                     p.local {
                         font-size: 14px;
-                        font-family: "Poppins";
+                        font-family: "Manrope";
                     }
                 }
             }
@@ -3842,4 +3879,81 @@ a.topbar-item:hover {
     .modal-body .benefit-blob {
         animation: none;
     }
+}
+
+/* testimonials: the service pages colour every heading white (dark theme);
+   on the white testimonial panel they must be black, exactly as on the home page */
+.subpage main #testimonials .carousel-caption h3,
+.subpage main #testimonials .carousel-caption h6,
+.subpage main #testimonials .carousel-caption p {
+    color: #000000;
+}
+
+.subpage main #testimonials .carousel-caption p {
+    line-height: 21px;
+}
+
+/* ---------- testimonials: the quote sits in the middle of the white panel ----------
+   (same block in css/home.css and css/services.css)
+   The quote used Bootstrap's caption placement (pinned to the bottom, pulled up by
+   -6rem). Longer text on a phone grew upwards out of the panel: the quote mark was
+   cut off at the top, the arrows sat on the words and the bottom half stayed empty.
+   Now the quote is centred in the panel, with room left for the arrows and dots. */
+#testimonials #testCarousel .carousel-inner .carousel-item {
+    margin-top: 0;
+}
+
+#testimonials #testCarousel .carousel-inner .carousel-item.active,
+#testimonials #testCarousel .carousel-inner .carousel-item-next,
+#testimonials #testCarousel .carousel-inner .carousel-item-prev {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#testimonials #testCarousel .carousel-inner .carousel-item .carousel-caption {
+    position: static;
+    width: 100%;
+    padding: 2.5rem 15% 3.5rem;   /* sides: the arrows; bottom: the dots */
+}
+
+/* phones: the panel grows with the quote instead of cutting it */
+@media (max-width: 767.98px) {
+    #testimonials {
+        height: auto;
+        margin: 4rem 0;
+    }
+
+    #testimonials #testCarousel,
+    #testimonials #testCarousel .carousel-inner {
+        height: auto;
+    }
+
+    #testimonials #testCarousel .carousel-inner .carousel-item {
+        min-height: 60vh;
+    }
+
+    #testimonials #testCarousel .carousel-inner .carousel-item .carousel-caption {
+        padding: 2.5rem 16% 3.75rem;
+    }
+
+    #testimonials #testCarousel .carousel-caption h3 {
+        font-size: 1.2rem;
+        line-height: 1.4;
+    }
+}
+
+/* topbar: both phone numbers, one icon (84 / 87) */
+.topbar-phones a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.topbar-phones a:hover {
+    color: var(--pearl);
+}
+
+.topbar-phones .phone-sep {
+    opacity: 0.45;
 }
