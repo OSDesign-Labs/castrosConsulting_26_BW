@@ -97,6 +97,16 @@
         "en": "Privacy Policy · Castros Consultoria"
       },
       "description": "Que dados pessoais o site da Castros Consultoria recolhe, para quê e com que serviços são partilhados."
+    },
+    {
+      "file": "html/contacto.html",
+      "url_path": "/html/contacto.html",
+      "key": "contacto",
+      "title": {
+        "pt": "Contacto e Inscrições · Castros Consultoria",
+        "en": "Contact and Registration · Castros Consultoria"
+      },
+      "description": "Inscreva-se nos eventos da Castros Consultoria, marque consultoria, formações, palestras ou o espaço, e pague por M-Pesa ou e-Mola. Tudo num só pedido."
     }
   ]
 }
