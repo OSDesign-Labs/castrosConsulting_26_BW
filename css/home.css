@@ -680,6 +680,81 @@ section {
     }
 }
 
+/* gallery: one full-width row of photos, tilted ±2° in turn, drifting left forever.
+   4 photos across on desktop, 3 on tablet, 1 plus the edges of its neighbours on phones. */
+.g-marquee {
+    overflow: hidden;
+    padding-block: 2.5rem;   /* room for the tilt and the hover zoom */
+    margin-block: -1rem;
+}
+
+.g-track {
+    display: flex;
+    width: max-content;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    animation: g-drift var(--g-dur, 60s) linear infinite;
+}
+
+.g-marquee:hover .g-track,
+.g-marquee:focus-within .g-track {
+    animation-play-state: paused;
+}
+
+@keyframes g-drift {
+    to { transform: translate3d(-50%, 0, 0); }   /* the track holds the photos twice */
+}
+
+.g-item {
+    flex: 0 0 auto;
+    width: 25vw;
+    padding-inline: clamp(0.9rem, 1.8vw, 2rem);
+}
+
+.g-item img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 18px;
+    transform: rotate(2deg);
+    box-shadow: 0 18px 40px -18px rgba(0, 0, 0, 0.55);
+    transition: transform 0.3s ease;
+}
+
+.g-item:nth-child(even) img {
+    transform: rotate(-2deg);
+}
+
+.g-item:hover img {
+    transform: rotate(0deg) scale(1.08);
+}
+
+@media (max-width: 1199.98px) {
+    .g-item { width: 33.333vw; }
+}
+
+@media (max-width: 767.98px) {
+    .g-item {
+        width: 60vw;          /* one photo in the middle, the next ones peek in at the sides */
+        padding-inline: 0.9rem;
+    }
+
+    .g-item img {
+        aspect-ratio: 1 / 1;
+        border-radius: 14px;
+    }
+}
+
+/* reduced motion: no drift; the row can be swiped / scrolled by hand instead */
+@media (prefers-reduced-motion: reduce) {
+    .g-marquee { overflow-x: auto; }
+    .g-track { animation: none; }
+    .g-track [aria-hidden="true"] { display: none; }
+    .g-item img { transition: none; }
+}
+
 /* team photos fill the card's photo area; faces stay at the top if the shape changes */
 .team-photo img {
     display: block;

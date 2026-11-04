@@ -1274,21 +1274,26 @@
             Momentos reais de trabalho, aprendizagem e partilha de nossos
             serviços.</p>
         </div>
-        <div class="row g-3">
-          <div class="col-md-7" data-aos="fade-up">
-            <div class="ph g-main"
-              style="aspect-ratio:1/1; background-image: url(assets/images/recent/galeria-grupo.webp); background-size: cover; background-position: center;">
-            </div>
-          </div>
-          <div class="col-md-5 g-side d-flex flex-column gap-3" data-aos="fade-up" data-aos-delay="150">
-            <div class="ph"
-              style="background-image: url(assets/images/recent/galeria-workshop-grupo.webp); background-size: cover; background-position: center 40%;">
-            </div>
-            <div class="ph"
-              style="background-image: url(assets/images/recent/pc-manhas-alegres.webp); background-size: cover; background-position: center 40%;">
-            </div>
-          </div>
-        </div>
+      </div>
+      <!-- full width: a row of slightly tilted photos that drifts left on its own and loops
+           (js/gallery.js copies the row once so the loop has no gap); hover or focus pauses it -->
+      <div class="g-marquee" data-aos="fade-up">
+        <ul class="g-track">
+          <li class="g-item"><img src="assets/images/recent/galeria-grupo.webp" alt="Grupo de participantes numa formação da Castros" data-i18n-attr="alt:gallery.grupo-de-participantes-numa-formacao" style="object-position: center" loading="lazy" decoding="async"></li>
+          <li class="g-item"><img src="assets/images/ujc-zimpeto/ujc-certificado.webp" alt="Elizabeth Castro entrega um certificado na UJC" data-i18n-attr="alt:gallery.elizabeth-castro-entrega-um-certificado" style="object-position: center 35%" loading="lazy" decoding="async"></li>
+          <li class="g-item"><img src="assets/images/ujc-zimpeto/ujc-plateia.webp" alt="Plateia no auditório da UJC" data-i18n-attr="alt:gallery.plateia-no-auditorio-da-ujc" style="object-position: center" loading="lazy" decoding="async"></li>
+          <li class="g-item"><img src="assets/images/recent/galeria-workshop-grupo.webp" alt="Grupo de um workshop da Castros" data-i18n-attr="alt:gallery.grupo-de-um-workshop-da-castros" style="object-position: center 40%" loading="lazy" decoding="async"></li>
+          <li class="g-item"><img src="assets/images/ujc-zimpeto/ujc-painel.webp" alt="Painel de conversa na UJC" data-i18n-attr="alt:gallery.painel-de-conversa-na-ujc" style="object-position: center 55%" loading="lazy" decoding="async"></li>
+          <li class="g-item"><img src="assets/images/ujc-zimpeto/ujc-oradora.webp" alt="Participante fala ao microfone" data-i18n-attr="alt:gallery.participante-fala-ao-microfone" style="object-position: center 30%" loading="lazy" decoding="async"></li>
+          <li class="g-item"><img src="assets/images/recent/pc-manhas-alegres.webp" alt="Elizabeth Castro no programa Manhãs Alegres" data-i18n-attr="alt:gallery.elizabeth-castro-no-programa-manhas-alegres" style="object-position: center 40%" loading="lazy" decoding="async"></li>
+          <li class="g-item"><img src="assets/images/ujc-zimpeto/ujc-plateia-elizabeth.webp" alt="Elizabeth Castro na plateia" data-i18n-attr="alt:gallery.elizabeth-castro-na-plateia" style="object-position: center 40%" loading="lazy" decoding="async"></li>
+          <li class="g-item"><img src="assets/images/ujc-zimpeto/ujc-certificado-2.webp" alt="Entrega de certificado a um estudante" data-i18n-attr="alt:gallery.entrega-de-certificado-a-um-estudante" style="object-position: center 35%" loading="lazy" decoding="async"></li>
+          <li class="g-item"><img src="assets/images/ujc-zimpeto/ujc-painel-moderador.webp" alt="Moderador conduz o painel" data-i18n-attr="alt:gallery.moderador-conduz-o-painel" style="object-position: center 55%" loading="lazy" decoding="async"></li>
+          <li class="g-item"><img src="assets/images/ujc-zimpeto/ujc-estudantes.webp" alt="Estudantes atentos à sessão" data-i18n-attr="alt:gallery.estudantes-atentos-a-sessao" style="object-position: center 40%" loading="lazy" decoding="async"></li>
+          <li class="g-item"><img src="assets/images/ujc-zimpeto/ujc-participante.webp" alt="Participante faz uma pergunta" data-i18n-attr="alt:gallery.participante-faz-uma-pergunta" style="object-position: center 25%" loading="lazy" decoding="async"></li>
+          <li class="g-item"><img src="assets/images/ujc-zimpeto/ujc-oradora-palco.webp" alt="Convidada fala em palco" data-i18n-attr="alt:gallery.convidada-fala-em-palco" style="object-position: center 30%" loading="lazy" decoding="async"></li>
+          <li class="g-item"><img src="assets/images/ujc-zimpeto/ujc-oradora-sentada.webp" alt="Convidada responde ao público" data-i18n-attr="alt:gallery.convidada-responde-ao-publico" style="object-position: center 30%" loading="lazy" decoding="async"></li>
+        </ul>
       </div>
     </section>
   </main>
@@ -1569,6 +1574,7 @@
   <script src="js/hero-carousel.js"></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+  <script src="js/gallery.js"></script>
 
   <!-- Eventos: cards + modals (must run before AOS starts); qrcode.min.js draws the WhatsApp QR (MIT, Kazuhiko Arase) -->
   <script src="js/vendor/qrcode.min.js"></script>
