@@ -698,7 +698,7 @@ section {
 }
 
 .g-marquee:hover .g-track,
-.g-marquee:focus-within .g-track {
+.g-marquee:has(:focus-visible) .g-track {   /* keyboard focus only: a mouse click must not freeze it */
     animation-play-state: paused;
 }
 
@@ -745,6 +745,83 @@ section {
         aspect-ratio: 1 / 1;
         border-radius: 14px;
     }
+}
+
+.g-marquee.is-held .g-track {
+    animation-play-state: paused;   /* a photo is open in full view */
+}
+
+/* each photo is a button that opens it in full view (js/gallery.js) */
+.g-open {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background: none;
+    border-radius: 18px;
+    cursor: zoom-in;
+
+    &:focus-visible {
+        outline: none;
+
+        img {
+            outline: 3px solid var(--cyan);
+            outline-offset: 4px;
+        }
+    }
+}
+
+/* full view: the photo grows out of the row to the middle of the screen */
+.g-lb-back {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    background: rgba(1, 3, 22, 0.88);
+    backdrop-filter: blur(6px);
+    cursor: zoom-out;
+}
+
+.g-lb {
+    position: fixed;
+    z-index: 2001;
+    overflow: hidden;
+    box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.7);
+    cursor: zoom-out;
+
+    img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+.g-lb-close {
+    position: fixed;
+    top: max(16px, env(safe-area-inset-top));
+    right: 16px;
+    z-index: 2002;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+    font-size: 1.1rem;
+    display: grid;
+    place-items: center;
+    transition: background 0.2s ease;
+
+    &:hover { background: var(--cyan); }
+
+    &:focus-visible {
+        outline: 2px solid var(--cyan);
+        outline-offset: 3px;
+    }
+}
+
+html.g-lb-on {
+    overflow: hidden;   /* no page scroll behind the open photo */
 }
 
 /* reduced motion: no drift; the row can be swiped / scrolled by hand instead */
