@@ -382,6 +382,9 @@
                       </div>
                     </div>
                   </div>
+                  <!-- honeypot: hidden from people, bots fill it, Formspree drops those submissions -->
+                  <input type="text" id="f-hp" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+                  <p class="cp-step-error" id="sendError" role="alert" tabindex="-1" hidden></p>
                   <div class="cp-actions">
                     <button type="button" class="btn btn-contact-secondary" data-prev-step><i class="bi bi-arrow-left"></i> <span data-t="btn.back">Voltar</span></button>
                     <button type="submit" class="btn btn-contact-primary" id="submitBtn">
@@ -394,7 +397,6 @@
 
               <!-- SUCCESS (replaces the form after sending) -->
               <div class="cp-success" id="successBox" hidden tabindex="-1"></div>
-              <p class="cp-preview-note"><i class="bi bi-eye" aria-hidden="true"></i> <span data-t="preview">Pré-visualização: este formulário não envia dados.</span></p>
             </div>
           </div>
         </div>

@@ -11,18 +11,19 @@
    Elizabeth before launch (prices, payment numbers, the busy agenda).
 
    Why services are NOT paid in step 3: a static site cannot see the team's
-   real calendar. The page checks the slot against the BUSY list below
-   (which OS Design keeps up to date, like the events list) and sends a
-   pre-booking; the team confirms on WhatsApp, and only then is a price
-   and payment requested. Taking money for a slot that might clash would
-   mean refunds.
+   real calendar. The page only checks the fixed rules (opening hours,
+   2 working days ahead, holidays, no clash inside the same request) and
+   sends the chosen time as a REQUEST; the team checks the agenda and
+   confirms on WhatsApp, and only then is a price and payment requested.
+   Nothing is reserved by the page. Real calendar sync is a later upgrade
+   (n8n or Apps Script reading Google Calendar → fill BUSY from it).
    ========================================================== */
 (function () {
     "use strict";
 
     /* ---------------------------------------------------------- CONFIG */
-    var PREVIEW = true;                                   // true: nothing is sent (demo for the client)
-    var FORMSPREE_ENDPOINT = "https://formspree.io/f/mwlpzyva";   // the site's existing form
+    var PREVIEW = false;                                  // true: nothing is sent (demo mode, logs the payload to the console)
+    var FORMSPREE_ENDPOINT = "https://formspree.io/f/mwlpzyva";   // EDIT before launch: still delivers to the OS Design email; point it at castrosconsultoria@gmail.com (or swap for an n8n webhook URL)
     var WHATSAPP = "258878665180";                        // the one WhatsApp number used across the site
     var WHATSAPP_SHOWN = "+258 87 866 5180";
     var PAY = {                                           // EDIT: confirm wallets + account holder name
@@ -39,36 +40,12 @@
         "2027-02-03": { pt: "Dia dos Heróis Moçambicanos", en: "Heroes' Day" }
     };
 
-    /* Castros' agenda. EDIT: sample data. r = resources it takes:
-       "equipa" (the team) and/or "espaco" (the room at Rua da Tchamba).
-       Private bookings never show who booked them; only pub: true entries show a name. */
-    var BUSY = [
-        { d: "2026-11-03", s: "09:00", e: "11:00", r: ["equipa"] },
-        { d: "2026-11-04", s: "13:00", e: "17:00", r: ["espaco"] },
-        { d: "2026-11-05", s: "08:00", e: "12:00", r: ["equipa"] },
-        { d: "2026-11-06", s: "08:00", e: "17:00", r: ["equipa"] },
-        { d: "2026-11-10", s: "10:00", e: "12:00", r: ["equipa"] },
-        { d: "2026-11-11", s: "08:00", e: "17:00", r: ["espaco"] },
-        { d: "2026-11-12", s: "14:00", e: "16:00", r: ["equipa"] },
-        { d: "2026-11-13", s: "08:00", e: "10:00", r: ["equipa"] },
-        { d: "2026-11-13", s: "13:00", e: "17:00", r: ["espaco"] },
-        { d: "2026-11-17", s: "08:00", e: "17:00", r: ["equipa", "espaco"] },
-        { d: "2026-11-18", s: "09:00", e: "12:00", r: ["espaco"] },
-        { d: "2026-11-19", s: "13:00", e: "15:00", r: ["equipa"] },
-        { d: "2026-11-24", s: "08:00", e: "12:00", r: ["equipa"] },
-        { d: "2026-11-25", s: "14:00", e: "17:00", r: ["espaco"] },
-        { d: "2026-11-26", s: "10:00", e: "11:00", r: ["equipa"] },
-        { d: "2026-12-01", s: "08:00", e: "17:00", r: ["equipa"] },
-        { d: "2026-12-02", s: "09:00", e: "13:00", r: ["espaco"] },
-        { d: "2026-12-08", s: "08:00", e: "12:00", r: ["equipa"] },
-        { d: "2026-12-10", s: "13:00", e: "17:00", r: ["espaco"] },
-        { d: "2026-12-15", s: "08:00", e: "17:00", r: ["equipa", "espaco"] }
-    ];
-    // weekly blocks. EDIT: the 2.ª edição timetable is assumed to match the 1.ª (Ter/Qui 17–19, Sáb 09–13)
-    var RECURRING = [
-        { from: "2026-11-03", to: "2026-12-19", dow: [2, 4], s: "17:00", e: "19:00", r: ["espaco", "equipa"], pub: "formacao-comunicacao-oratoria-2-edicao" },
-        { from: "2026-11-07", to: "2026-12-19", dow: [6], s: "09:00", e: "13:00", r: ["espaco", "equipa"], pub: "formacao-comunicacao-oratoria-2-edicao" }
-    ];
+    /* Castros' agenda: empty on purpose. The page cannot see the real calendar, so it does not
+       pretend to; the team checks availability when the request arrives. When calendar sync exists,
+       fill these from it. Format: BUSY { d: "2026-11-03", s: "09:00", e: "11:00", r: ["equipa"|"espaco"] },
+       RECURRING { from, to, dow: [0-6], s, e, r, pub: event id }. Private entries never show who booked. */
+    var BUSY = [];
+    var RECURRING = [];
 
     /* ---------------------------------------------------------- TEXT */
     function L(pt, en) { return { pt: pt, en: en }; }
@@ -99,9 +76,9 @@
             "err.consent": "Marque esta caixa para enviar o pedido.", "err.required": "Escolha uma opção.",
             "err.none": "Escolha pelo menos um evento ou serviço para continuar.",
             "err.fix": "Faltam respostas em {n}. Estão assinaladas a vermelho.",
-            "err.verify": "Verifique a disponibilidade do horário de {n} antes de continuar.",
-            "err.conflictNow": "O horário de {n} deixou de estar livre. Escolha outro e verifique de novo.",
-            "s2.title": "O que procura.", "s2.desc": "Cada evento e serviço tem as suas perguntas. Para serviços com marcação, escolha um horário e verificamos a disponibilidade.",
+            "err.verify": "Confirme o horário pretendido de {n} antes de continuar.",
+            "err.conflictNow": "O horário de {n} deixou de ser possível. Escolha outro e confirme de novo.",
+            "s2.title": "O que procura.", "s2.desc": "Cada evento e serviço tem as suas perguntas. Para serviços com marcação, escolha o horário pretendido; a equipa confirma a disponibilidade por WhatsApp.",
             "s2.picker": "Adicionar ao pedido",
             "s2.empty": "Ainda não escolheu nada. Toque num evento ou serviço acima.",
             "s3.title": "Confirmar e pagar.", "s3.titleB": "Confirmar o pedido.",
@@ -111,6 +88,7 @@
             "f.consent": "Aceito que a Castros Consultoria use estes dados para tratar o meu pedido, conforme a <a href=\"privacidade.html\" class=\"cp-link\">Política de Privacidade</a>.",
             "btn.next": "Continuar", "btn.back": "Voltar", "btn.submitPay": "Enviar inscrição", "btn.submit": "Enviar pedido", "btn.sending": "A enviar...",
             "preview": "Pré-visualização: este formulário não envia dados.",
+            "err.send": "Não foi possível enviar o pedido. Verifique a ligação e tente de novo, ou envie-o pelo WhatsApp.", "err.sendWa": "Enviar pelo WhatsApp",
             "foot.loc": "Localização", "foot.contact": "Contacto", "foot.privacy": "Política de Privacidade", "foot.terms": "Termos de Serviço",
             "foot.rights": "© 2026 Castros Consultoria. Todos os direitos reservados.",
             "kind.event": "Evento", "kind.service": "Com marcação", "example": "Exemplo",
@@ -127,7 +105,7 @@
             "sched.busy": "Ocupado", "sched.mine": "No seu pedido",
             "sched.multiDay": "Para formações de vários dias, escolha o primeiro dia; o resto combinamos consigo.",
             "sched.picked": "Horário escolhido", "sched.none": "Nenhum horário escolhido",
-            "verify": "Verificar disponibilidade", "verify.again": "Verificar de novo", "verifying": "A verificar...",
+            "verify": "Confirmar horário pretendido", "verify.again": "Confirmar de novo", "verifying": "A verificar...",
             "chk.hours": "Dentro do horário de funcionamento", "chk.lead": "Com pelo menos 2 dias úteis de antecedência",
             "chk.agenda.equipa": "Equipa Castros livre", "chk.agenda.espaco": "Espaço da Rua da Tchamba livre",
             "chk.agenda.both": "Equipa e espaço livres",
@@ -135,12 +113,12 @@
             "chk.busyPub": "Coincide com: {n}", "chk.busyPriv": "Já existe uma marcação nesse horário.",
             "chk.cartHit": "Coincide com {n}, que também está no seu pedido.",
             "chk.closed": "Fechado nesse horário.", "chk.holiday": "Feriado: {n}.", "chk.tooSoon": "Precisamos de pelo menos 2 dias úteis.",
-            "res.ok": "Horário disponível. Fica pré-reservado.",
-            "res.okSub": "A equipa confirma por WhatsApp em até 24 horas úteis.",
-            "res.bad": "Este horário não está disponível.", "res.alts": "Horários livres mais próximos:",
+            "res.ok": "Horário pretendido registado. Ainda não está reservado.",
+            "res.okSub": "Depois de enviar o pedido, a equipa verifica a agenda e confirma por WhatsApp em até 24 horas úteis.",
+            "res.bad": "Este horário não é possível.", "res.alts": "Horários possíveis mais próximos:",
             "res.noAlts": "Não há horários livres próximos. Escolha outra semana.",
             "res.changed": "Mudou a duração ou o local: escolha e verifique o horário de novo.",
-            "st.pay": "Pagar agora", "st.pending": "A confirmar", "st.verified": "Pré-reservado",
+            "st.pay": "Pagar agora", "st.pending": "A confirmar", "st.verified": "Horário pretendido",
             "sum.total": "Total a pagar agora", "sum.nothing": "Nada a pagar agora",
             "sum.note": "Serviços com marcação: a equipa confirma o horário e envia o orçamento por WhatsApp. Só paga depois disso.",
             "pay.title": "Como pagar", "pay.send": "Envie {v} por {m} para o número:", "pay.holder": "Em nome de {n}",
@@ -189,9 +167,9 @@
             "err.consent": "Tick this box to send the request.", "err.required": "Choose an option.",
             "err.none": "Choose at least one event or service to continue.",
             "err.fix": "Some answers are missing in {n}. They are marked in red.",
-            "err.verify": "Check availability for {n} before continuing.",
-            "err.conflictNow": "The time for {n} is no longer free. Pick another one and check again.",
-            "s2.title": "What you need.", "s2.desc": "Each event and service has its own questions. For services with a booking, pick a time and we check availability.",
+            "err.verify": "Confirm your preferred time for {n} before continuing.",
+            "err.conflictNow": "The time for {n} is no longer possible. Pick another one and confirm again.",
+            "s2.title": "What you need.", "s2.desc": "Each event and service has its own questions. For services with a booking, pick your preferred time; the team confirms availability on WhatsApp.",
             "s2.picker": "Add to the request",
             "s2.empty": "Nothing chosen yet. Tap an event or service above.",
             "s3.title": "Confirm and pay.", "s3.titleB": "Confirm the request.",
@@ -201,6 +179,7 @@
             "f.consent": "I agree that Castros Consultoria may use this data to handle my request, as set out in the <a href=\"privacidade.html\" class=\"cp-link\">Privacy Policy</a>.",
             "btn.next": "Continue", "btn.back": "Back", "btn.submitPay": "Send sign-up", "btn.submit": "Send request", "btn.sending": "Sending...",
             "preview": "Preview: this form does not send any data.",
+            "err.send": "We could not send your request. Check your connection and try again, or send it on WhatsApp.", "err.sendWa": "Send on WhatsApp",
             "foot.loc": "Location", "foot.contact": "Contact", "foot.privacy": "Privacy Policy", "foot.terms": "Terms of Service",
             "foot.rights": "© 2026 Castros Consultoria. All rights reserved.",
             "kind.event": "Event", "kind.service": "By booking", "example": "Example",
@@ -217,7 +196,7 @@
             "sched.busy": "Booked", "sched.mine": "In your request",
             "sched.multiDay": "For multi-day training, pick the first day; we will arrange the rest with you.",
             "sched.picked": "Chosen time", "sched.none": "No time chosen",
-            "verify": "Check availability", "verify.again": "Check again", "verifying": "Checking...",
+            "verify": "Confirm preferred time", "verify.again": "Confirm again", "verifying": "Checking...",
             "chk.hours": "Within opening hours", "chk.lead": "At least 2 working days ahead",
             "chk.agenda.equipa": "Castros team free", "chk.agenda.espaco": "Rua da Tchamba space free",
             "chk.agenda.both": "Team and space free",
@@ -225,12 +204,12 @@
             "chk.busyPub": "Clashes with: {n}", "chk.busyPriv": "There is already a booking at that time.",
             "chk.cartHit": "Clashes with {n}, which is also in your request.",
             "chk.closed": "Closed at that time.", "chk.holiday": "Public holiday: {n}.", "chk.tooSoon": "We need at least 2 working days.",
-            "res.ok": "Time available. It is now pre-booked.",
-            "res.okSub": "The team confirms on WhatsApp within 24 working hours.",
-            "res.bad": "This time is not available.", "res.alts": "Nearest free times:",
+            "res.ok": "Preferred time noted. It is not booked yet.",
+            "res.okSub": "Once you send the request, the team checks the agenda and confirms on WhatsApp within 24 working hours.",
+            "res.bad": "This time is not possible.", "res.alts": "Nearest possible times:",
             "res.noAlts": "No free times nearby. Try another week.",
             "res.changed": "The duration or place changed: pick a time and check it again.",
-            "st.pay": "Pay now", "st.pending": "To confirm", "st.verified": "Pre-booked",
+            "st.pay": "Pay now", "st.pending": "To confirm", "st.verified": "Preferred time",
             "sum.total": "Total to pay now", "sum.nothing": "Nothing to pay now",
             "sum.note": "Booked services: the team confirms the time and sends a quote on WhatsApp. You only pay after that.",
             "pay.title": "How to pay", "pay.send": "Send {v} with {m} to:", "pay.holder": "Account name: {n}",
@@ -610,8 +589,10 @@
         var hit = castrosBusy(b.date).filter(function (x) {
             return x.r.some(function (r) { return res.indexOf(r) > -1; }) && overlaps(slot, x);
         })[0];
-        var agendaKey = res.length > 1 ? "chk.agenda.both" : "chk.agenda." + res[0];
-        checks.push({ k: agendaKey, ok: !hit, why: hit ? (hit.pub ? t("chk.busyPub", { n: tx(BY_ID[hit.pub].title) }) : t("chk.busyPriv")) : "" });
+        if (BUSY.length || RECURRING.length) {   // only claim "free" when there is an agenda to check against
+            var agendaKey = res.length > 1 ? "chk.agenda.both" : "chk.agenda." + res[0];
+            checks.push({ k: agendaKey, ok: !hit, why: hit ? (hit.pub ? t("chk.busyPub", { n: tx(BY_ID[hit.pub].title) }) : t("chk.busyPriv")) : "" });
+        }
         var mine = cartBusy(b.date, it.id).filter(function (x) { return overlaps(slot, x); })[0];
         checks.push({ k: "chk.cart", ok: !mine, why: mine ? t("chk.cartHit", { n: tx(BY_ID[mine.id].title) }) : "" });
         return checks;
@@ -1162,9 +1143,39 @@
             if (top < 0) window.scrollTo({ top: window.scrollY + top - 96, behavior: reduced ? "auto" : "smooth" });
         };
         if (PREVIEW) { console.info("[contacto] payload (preview, not sent):", payload); setTimeout(done, 1100); return; }
+        var se = $("#sendError"); if (se) se.hidden = true;
         fetch(FORMSPREE_ENDPOINT, { method: "POST", headers: { Accept: "application/json", "Content-Type": "application/json" }, body: JSON.stringify(payload) })
             .then(function (r) { if (!r.ok) throw new Error(r.status); done(); })
-            .catch(function () { btn.disabled = false; $(".submit-label", btn).hidden = false; $(".submit-loading", btn).hidden = true; });
+            .catch(function (err) {
+                console.error("[contacto] send failed:", err);
+                btn.disabled = false; $(".submit-label", btn).hidden = false; $(".submit-loading", btn).hidden = true;
+                if (se) {   // never fail silently: offer WhatsApp with the whole request in the message
+                    se.innerHTML = esc(t("err.send")) + ' <a class="cp-wa-btn" href="' + waUrl(payload.resumo) + '" target="_blank" rel="noopener"><i class="bi bi-whatsapp" aria-hidden="true"></i>' + esc(t("err.sendWa")) + "</a>";
+                    se.hidden = false; se.focus && se.focus();
+                }
+            });
+    }
+
+    // one readable text block: easy to read in the notification email, and the WhatsApp fallback message
+    function plainSummary() {
+        var tt = totals(), L2 = [];
+        L2.push("Pedido " + state.ref + " · " + $("#f-name").value.trim());
+        L2.push("Email: " + $("#f-email").value.trim() + " · Tel: " + $("#f-phone").value.trim());
+        if ($("#f-org").value.trim()) L2.push("Organização: " + $("#f-org").value.trim());
+        state.selected.forEach(function (id) {
+            var it = BY_ID[id], line = "- " + it.title.pt;
+            if (it.kind === "event") line += " · " + (state.qty[id] || 1) + " participante(s) · " + mt((state.qty[id] || 1) * it.price);
+            else { var b = state.book[id]; if (b && b.date && b.s != null) line += " · pretendido " + b.date + " " + hm(b.s) + "–" + hm(b.e) + " (a confirmar)"; }
+            var ans = state.answers[id] || {};
+            Object.keys(ans).forEach(function (k) {
+                var v = ans[k]; if (v === "" || v == null || (Array.isArray(v) && !v.length)) return;
+                line += "\n    " + k + ": " + (Array.isArray(v) ? v.join(", ") : v);
+            });
+            L2.push(line);
+        });
+        if (tt.pay) L2.push("Total a pagar: " + mt(tt.pay) + " por " + PAY[state.method].name);
+        if ($("#f-msg").value.trim()) L2.push("Mensagem: " + $("#f-msg").value.trim());
+        return L2.join("\n");
     }
 
     function buildPayload() {
@@ -1178,12 +1189,14 @@
             itens: state.selected.map(function (id) {
                 var it = BY_ID[id], o = { id: id, titulo: it.title.pt, tipo: it.kind === "event" ? "evento" : "servico", respostas: state.answers[id] || {} };
                 if (it.kind === "event") { o.participantes = state.qty[id] || 1; o.valor = (state.qty[id] || 1) * it.price; }
-                else { var b = state.book[id]; o.marcacao = b.date + " " + hm(b.s) + "–" + hm(b.e); o.estado = "pré-reservado, a confirmar"; }
+                else { var b = state.book[id]; o.marcacao = b.date + " " + hm(b.s) + "–" + hm(b.e); o.estado = "horário pretendido, a confirmar"; }
                 return o;
             }),
             total_a_pagar: tt.pay, metodo: tt.pay ? PAY[state.method].name : "",
             codigo_transaccao: ($("#f-txn") || {}).value || "",
-            mensagem: $("#f-msg").value.trim(), idioma: state.lang, _gotcha: ""
+            mensagem: $("#f-msg").value.trim(), idioma: state.lang,
+            resumo: plainSummary(),
+            _gotcha: ($("#f-hp") || {}).value || ""   // Formspree drops the submission if a bot fills this
         };
     }
 
