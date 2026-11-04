@@ -1266,7 +1266,7 @@
     </section>
 
     <!-- 10- GALERIA -->
-    <section class="section">
+    <section class="section g-section">
       <div class="container">
         <div class="text-center mx-auto mb-5" data-aos="fade-up" style="max-width:640px">
           <h2 style="font-size:clamp(1.9rem,3.6vw,2.6rem); color: var(--white)" data-i18n="gallery.galeria">Galeria</h2>
@@ -1275,8 +1275,12 @@
             serviços.</p>
         </div>
       </div>
+      <!-- soft light blobs behind the photos, right of centre -->
+      <span class="g-blob g-blob-1" aria-hidden="true"></span>
+      <span class="g-blob g-blob-2" aria-hidden="true"></span>
       <!-- full width: a row of slightly tilted photos that drifts left on its own and loops
-           (js/gallery.js copies the row once so the loop has no gap); hover or focus pauses it -->
+           (js/gallery.js copies the row once so the loop has no gap); hover or keyboard focus pauses it,
+           the buttons below slide it 3 photos left or right -->
       <div class="g-marquee" data-aos="fade-up">
         <ul class="g-track">
           <li class="g-item"><img src="assets/images/recent/galeria-grupo.webp" alt="Grupo de participantes numa formação da Castros" data-i18n-attr="alt:gallery.grupo-de-participantes-numa-formacao" style="object-position: center" loading="lazy" decoding="async"></li>
@@ -1294,6 +1298,16 @@
           <li class="g-item"><img src="assets/images/ujc-zimpeto/ujc-oradora-palco.webp" alt="Convidada fala em palco" data-i18n-attr="alt:gallery.convidada-fala-em-palco" style="object-position: center 30%" loading="lazy" decoding="async"></li>
           <li class="g-item"><img src="assets/images/ujc-zimpeto/ujc-oradora-sentada.webp" alt="Convidada responde ao público" data-i18n-attr="alt:gallery.convidada-responde-ao-publico" style="object-position: center 30%" loading="lazy" decoding="async"></li>
         </ul>
+      </div>
+      <div class="g-controls" data-aos="fade-up">
+        <button type="button" class="btn btn-outline-light-c g-btn" data-g-dir="-1"
+          aria-label="Deslizar para a esquerda" data-i18n-attr="aria-label:gallery.deslizar-para-a-esquerda">
+          <i class="bi bi-arrow-left" aria-hidden="true"></i>
+        </button>
+        <button type="button" class="btn btn-outline-light-c g-btn" data-g-dir="1"
+          aria-label="Deslizar para a direita" data-i18n-attr="aria-label:gallery.deslizar-para-a-direita">
+          <i class="bi bi-arrow-right" aria-hidden="true"></i>
+        </button>
       </div>
     </section>
   </main>

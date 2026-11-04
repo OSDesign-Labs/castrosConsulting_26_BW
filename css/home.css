@@ -680,12 +680,61 @@ section {
     }
 }
 
-/* gallery: one full-width row of photos, tilted ±2° in turn, drifting left forever.
-   4 photos across on desktop, 3 on tablet, 1 plus the edges of its neighbours on phones. */
+/* gallery: one full-width row of photos, tilted ±2° in turn, drifting left forever
+   (moved by js/gallery.js). About 3 photos across on desktop, a bit bigger on TVs,
+   3 on tablet, 1 plus the edges of its neighbours on phones. */
+.g-section {
+    position: relative;
+    overflow: hidden;   /* keeps the blobs inside the section */
+}
+
+/* soft light blobs behind the photos, right of centre. Soft edges come from the gradient
+   itself (no blur filter) and they only move / scale, so they cost nothing to animate */
+.g-blob {
+    position: absolute;
+    z-index: 0;
+    pointer-events: none;
+    border-radius: 50%;
+    background: radial-gradient(closest-side,
+            rgba(169, 234, 228, 0.30) 0%,
+            rgba(4, 191, 205, 0.16) 45%,
+            rgba(4, 191, 205, 0) 100%);
+    animation: g-blob 18s ease-in-out infinite alternate;
+    will-change: transform;
+}
+
+.g-blob-1 {
+    width: min(52vw, 760px);
+    aspect-ratio: 1.35;
+    right: 10%;
+    bottom: 3rem;
+}
+
+.g-blob-2 {
+    width: min(26vw, 380px);
+    aspect-ratio: 1;
+    right: 4%;
+    bottom: 12rem;
+    opacity: 0.85;
+    animation-duration: 22s;
+    animation-direction: alternate-reverse;
+}
+
+@keyframes g-blob {
+    0%   { transform: translate3d(0, 0, 0) rotate(0deg) scale(1, 1); }
+    50%  { transform: translate3d(-3%, 2%, 0) rotate(8deg) scale(1.06, 0.96); }
+    100% { transform: translate3d(2%, -2%, 0) rotate(-6deg) scale(0.96, 1.04); }
+}
+
 .g-marquee {
+    position: relative;
+    z-index: 1;
     overflow: hidden;
-    padding-block: 2.5rem;   /* room for the tilt and the hover zoom */
-    margin-block: -1rem;
+    /* room for the tilt, the hover zoom and the hover glow: overflow is hidden, so anything
+       outside this padding is cut off in a straight line. The extra bottom room is taken back
+       with the negative margin so the buttons stay where they were */
+    padding-block: 2.5rem 5rem;
+    margin-block: -1rem -3.5rem;
 }
 
 .g-track {
@@ -694,45 +743,110 @@ section {
     margin: 0;
     padding: 0;
     list-style: none;
-    animation: g-drift var(--g-dur, 60s) linear infinite;
-}
-
-.g-marquee:hover .g-track,
-.g-marquee:has(:focus-visible) .g-track {   /* keyboard focus only: a mouse click must not freeze it */
-    animation-play-state: paused;
-}
-
-@keyframes g-drift {
-    to { transform: translate3d(-50%, 0, 0); }   /* the track holds the photos twice */
+    will-change: transform;
 }
 
 .g-item {
     flex: 0 0 auto;
-    width: 25vw;
+    width: 33.333vw;
     padding-inline: clamp(0.9rem, 1.8vw, 2rem);
 }
 
-.g-item img {
+/* the card: tilted, rounded, with a soft navy overlay (as on the hero) so bright photos sit calmly */
+.g-open {
+    position: relative;
     display: block;
     width: 100%;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
+    padding: 0;
+    border: 0;
+    background: none;
+    overflow: hidden;
     border-radius: 18px;
+    cursor: zoom-in;
     transform: rotate(2deg);
     box-shadow: 0 18px 40px -18px rgba(0, 0, 0, 0.55);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background: linear-gradient(180deg, rgba(1, 9, 48, 0.12) 0%, rgba(1, 9, 48, 0.30) 100%);
+        transition: opacity 0.3s ease;
+    }
+
+    img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+    }
+
+    &:focus-visible {
+        outline: 3px solid var(--cyan);
+        outline-offset: 4px;
+    }
 }
 
-.g-item:nth-child(even) img {
+.g-item:nth-child(even) .g-open {
     transform: rotate(-2deg);
 }
 
-.g-item:hover img {
-    transform: rotate(0deg) scale(1.08);
+.g-item:hover .g-open {
+    transform: rotate(0deg) scale(1.06);
+    box-shadow: 0 22px 48px -14px rgba(4, 191, 205, 0.6);   /* accent glow */
+
+    &::after { opacity: 0.35; }
 }
 
-@media (max-width: 1199.98px) {
-    .g-item { width: 33.333vw; }
+/* the two buttons under the row */
+.g-controls {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+}
+
+/* .btn.g-btn inside .g-controls: Bootstrap loads after this file, so a plain .g-btn
+   would lose to its .btn rule (dark text, no border, small padding) */
+.g-controls .btn.g-btn {
+    padding: 0.375rem 1.5rem;   /* Bootstrap's medium button height, wider sides */
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    border-radius: 50rem;
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--white);
+    font-size: 1.1rem;
+    line-height: 1.5;
+    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+
+    &:hover,
+    &:focus-visible {
+        background: var(--cyan);
+        border-color: var(--cyan);
+        color: #02181c;
+        box-shadow: 0 10px 24px -10px rgba(4, 191, 205, 0.65);
+        transform: translateY(-2px);
+    }
+
+    &:active {
+        transform: translateY(0);
+    }
+
+    &:focus-visible {
+        outline: 2px solid var(--white);
+        outline-offset: 3px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .g-item { width: 35vw; }
+}
+
+@media (min-width: 1920px) {
+    .g-item { width: 38vw; }   /* TVs and very large screens */
 }
 
 @media (max-width: 767.98px) {
@@ -741,34 +855,19 @@ section {
         padding-inline: 0.9rem;
     }
 
-    .g-item img {
-        aspect-ratio: 1 / 1;
+    .g-open {
         border-radius: 14px;
+
+        img { aspect-ratio: 1 / 1; }
     }
-}
 
-.g-marquee.is-held .g-track {
-    animation-play-state: paused;   /* a photo is open in full view */
-}
-
-/* each photo is a button that opens it in full view (js/gallery.js) */
-.g-open {
-    display: block;
-    width: 100%;
-    padding: 0;
-    border: 0;
-    background: none;
-    border-radius: 18px;
-    cursor: zoom-in;
-
-    &:focus-visible {
-        outline: none;
-
-        img {
-            outline: 3px solid var(--cyan);
-            outline-offset: 4px;
-        }
+    .g-blob-1 {
+        width: 80vw;
+        right: -10%;
+        bottom: 5rem;
     }
+
+    .g-blob-2 { display: none; }
 }
 
 /* full view: the photo grows out of the row to the middle of the screen */
@@ -824,12 +923,10 @@ html.g-lb-on {
     overflow: hidden;   /* no page scroll behind the open photo */
 }
 
-/* reduced motion: no drift; the row can be swiped / scrolled by hand instead */
+/* reduced motion: no drift and no blob movement; the buttons still slide the row */
 @media (prefers-reduced-motion: reduce) {
-    .g-marquee { overflow-x: auto; }
-    .g-track { animation: none; }
-    .g-track [aria-hidden="true"] { display: none; }
-    .g-item img { transition: none; }
+    .g-blob { animation: none; }
+    .g-open, .g-open::after { transition: none; }
 }
 
 /* team photos fill the card's photo area; faces stay at the top if the shape changes */
