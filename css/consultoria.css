@@ -80,6 +80,13 @@
     background: var(--cs-band);
 }
 
+/* video testimonials (css/testimonials.css) keep this page's blue band:
+   the shared block spaces itself with margin, which would leave dark gaps around the band */
+.subpage main #testimonials.tv.cs-band {
+    margin: 0;
+    padding: clamp(72px, 9vw, 112px) 1.25rem;
+}
+
 .subpage main .cs-head {
     max-width: 640px;
 }

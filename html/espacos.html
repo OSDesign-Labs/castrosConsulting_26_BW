@@ -51,6 +51,7 @@
     <script src="../js/patterns.js" defer></script>
     <!-- scroll animations (AOS) tuning + section snap + parallax between sections -->
     <link rel="stylesheet" href="../css/motion.css">
+    <link rel="stylesheet" href="../css/testimonials.css">
     <script src="../js/motion.js" defer></script>
     <!-- Google Fonts CDN Link (DM Serif Display + Manrope, same as index.html) -->
     <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -257,59 +258,67 @@
             </div>
         </section>
 
-        <!-- TESTEMUNHOS — the 3 real quotes from the company profile (same as formacoes.html) -->
-        <section id="testimonials">
-          <h6 class="index" data-aos="fade-up" data-i18n="testimonials.testemunhos">Testemunhos</h6>
-          <div id="testCarousel" class="carousel carousel-dark slide" data-bs-ride="carousel" data-aos="zoom-in" data-aos-duration="1000" data-aos-easing="ease-out-quart"
-          data-aos-delay="150">
-            <div class="glow glow-cyan"
-              style="width:38rem;height:22rem;top:-4rem;left:50%;transform:translateX(-50%);animation:pulseGlow 5s ease-in-out infinite">
+        <!-- TESTEMUNHOS EM VÍDEO: css/testimonials.css + js/testimonials.js.
+             Each person is one <li>: change the name and role here (same block on index, espaços, formações, palestras and consultoria). -->
+        <section id="testimonials" class="tv">
+          <div class="tv-wrap">
+            <div class="tv-head" data-aos="fade-up">
+              <h6 class="index" data-i18n="testimonials.testemunhos">Testemunhos</h6>
+              <h2 data-i18n="testimonials.na-primeira-pessoa">Na primeira pessoa</h2>
+              <p data-i18n="testimonials.ouca-quem-ja-trabalhou">Ouça quem já trabalhou com a Castros.</p>
             </div>
-            <ul class="carousel-indicators">
-              <li data-bs-target="#testCarousel" data-bs-slide-to="0" class="active" aria-current="true"
-                aria-label="Testemunho 1" data-i18n-attr="aria-label:testimonials.testemunho-1"></li>
-              <li data-bs-target="#testCarousel" data-bs-slide-to="1" aria-label="Testemunho 2"
-                data-i18n-attr="aria-label:testimonials.testemunho-2"></li>
-              <li data-bs-target="#testCarousel" data-bs-slide-to="2" aria-label="Testemunho 3"
-                data-i18n-attr="aria-label:testimonials.testemunho-3"></li>
-            </ul>
-            <div class="carousel-inner">
-              <div data-bs-interval="10000" class="carousel-item active">
-                <div class="carousel-caption d-md-block">
-                  <h3 data-i18n="testimonials.a-consultoria-nos-ajudou-a-transformar">"A consultoria ajudou-nos a
-                    transformar a nossa cultura interna. Hoje temos líderes mais conscientes e equipas mais envolvidas."</h3>
-                  <h6 class="name" data-i18n="testimonials.diretora-de-rh">Diretora de RH</h6>
-                  <p class="local" data-i18n="testimonials.setor-financeiro">Setor financeiro</p>
-                </div>
+            <div class="tv-panel" data-aos="fade-up" data-aos-delay="120">
+              <div class="tv-stage">
+                <video playsinline preload="none" poster="../assets/testemunhos/testemunho-1.webp" src="../assets/testemunhos/testemunho-1.mp4"></video>
+                <button type="button" class="tv-play" aria-label="Reproduzir o testemunho" data-i18n-attr="aria-label:testimonials.reproduzir-o-testemunho">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6 3.5v17l14-8.5z"/></svg>
+                </button>
+                <div class="tv-caption"><span class="tv-name" translate="no"></span><span class="tv-role"></span></div>
               </div>
-              <div data-bs-interval="10000" class="carousel-item">
-                <div class="carousel-caption d-md-block">
-                  <h3 data-i18n="testimonials.depois-dos-workshops-sobre-etica-conseguimos">"Depois dos workshops sobre
-                    ética, conseguimos reduzir conflitos internos e fortalecer a confiança entre gestores e colaboradores."
-                  </h3>
-                  <h6 class="name">CEO</h6>
-                  <p class="local" data-i18n="testimonials.setor-industrial">Setor industrial</p>
-                </div>
-              </div>
-              <div data-bs-interval="10000" class="carousel-item">
-                <div class="carousel-caption d-md-block">
-                  <h3 data-i18n="testimonials.o-programa-de-lideranca-etica-foi">"O programa de liderança ética foi um
-                    ponto de viragem na forma como os nossos gestores tomam decisões."</h3>
-                  <h6 class="name" data-i18n="testimonials.gerente-de-pessoas">Gerente de Pessoas</h6>
-                  <p class="local" data-i18n="testimonials.setor-de-tecnologia">Setor de tecnologia</p>
-                </div>
-              </div>
+              <ol class="tv-list">
+                  <li>
+                    <button type="button" class="tv-item" aria-pressed="true" data-src="../assets/testemunhos/testemunho-1.mp4" data-poster="../assets/testemunhos/testemunho-1.webp">
+                      <span class="tv-thumb"><img src="../assets/testemunhos/testemunho-1.webp" alt="" width="960" height="540" loading="lazy" decoding="async"></span>
+                      <span class="tv-meta">
+                        <span class="tv-name" translate="no">Whitney Cumbucane</span>
+                        <span class="tv-role" data-i18n="testimonials.cargo-1">Cargo, Empresa 1</span>
+                      </span>
+                      <span class="tv-time">0:45</span>
+                    </button>
+                  </li>
+                  <li>
+                    <button type="button" class="tv-item" aria-pressed="false" data-src="../assets/testemunhos/testemunho-2.mp4" data-poster="../assets/testemunhos/testemunho-2.webp">
+                      <span class="tv-thumb"><img src="../assets/testemunhos/testemunho-2.webp" alt="" width="960" height="540" loading="lazy" decoding="async"></span>
+                      <span class="tv-meta">
+                        <span class="tv-name" translate="no">Lurdes Tame</span>
+                        <span class="tv-role" data-i18n="testimonials.cargo-2">Cargo, Empresa 2</span>
+                      </span>
+                      <span class="tv-time">0:56</span>
+                    </button>
+                  </li>
+                  <li>
+                    <button type="button" class="tv-item" aria-pressed="false" data-src="../assets/testemunhos/testemunho-3.mp4" data-poster="../assets/testemunhos/testemunho-3.webp">
+                      <span class="tv-thumb"><img src="../assets/testemunhos/testemunho-3.webp" alt="" width="960" height="540" loading="lazy" decoding="async"></span>
+                      <span class="tv-meta">
+                        <span class="tv-name" translate="no">Shelly Lucete</span>
+                        <span class="tv-role" data-i18n="testimonials.cargo-3">Cargo, Empresa 3</span>
+                      </span>
+                      <span class="tv-time">0:58</span>
+                    </button>
+                  </li>
+                  <li>
+                    <button type="button" class="tv-item" aria-pressed="false" data-src="../assets/testemunhos/testemunho-4.mp4" data-poster="../assets/testemunhos/testemunho-4.webp">
+                      <span class="tv-thumb"><img src="../assets/testemunhos/testemunho-4.webp" alt="" width="960" height="540" loading="lazy" decoding="async"></span>
+                      <span class="tv-meta">
+                        <span class="tv-name" translate="no">Rosita Jahane</span>
+                        <span class="tv-role" data-i18n="testimonials.cargo-4">Cargo, Empresa 4</span>
+                      </span>
+                      <span class="tv-time">0:29</span>
+                    </button>
+                  </li>
+              </ol>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#testCarousel" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden" data-i18n="testimonials.anterior">Anterior</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#testCarousel" data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden" data-i18n="testimonials.seguinte">Seguinte</span>
-            </button>
           </div>
-
         </section>
 
         <!-- FINAL CTA — same pattern as index.html's Promo section -->
@@ -1164,6 +1173,7 @@
         if (window.siteLoaderDone || !document.documentElement.classList.contains("is-loading")) startAOS();
         else document.addEventListener("site-loader:done", startAOS, { once: true });
     </script>
+  <script src="../js/testimonials.js" defer></script>
 </body>
 
 </html>

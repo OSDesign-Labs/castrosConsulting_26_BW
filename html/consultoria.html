@@ -53,6 +53,7 @@
     <script src="../js/patterns.js" defer></script>
     <!-- scroll animations (AOS) tuning + section snap + parallax between sections -->
     <link rel="stylesheet" href="../css/motion.css">
+    <link rel="stylesheet" href="../css/testimonials.css">
     <script src="../js/motion.js" defer></script>
     <!-- Google Fonts CDN Link (DM Serif Display + Manrope, same as index.html) -->
     <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -310,37 +311,67 @@
             </div>
         </section>
 
-        <!-- TESTIMONIALS — 3 cards; on narrow screens they scroll sideways and the arrows move them -->
-        <section id="testemunhos" class="cs-section cs-band">
-            <div class="container">
-                <div class="cs-head-row">
-                    <header class="cs-head" data-aos="fade-up">
-                        <span class="eyebrow" data-i18n="testimonials.testemunhos">Testemunhos</span>
-                        <h2 data-i18n="consultoria.testimonials.o-que-dizem-as-organizacoes">O que dizem as organizações</h2>
-                    </header>
-                    <div class="cs-arrows" data-cs-arrows>
-                        <button type="button" class="cs-arrow" data-cs-prev aria-label="Anterior" data-i18n-attr="aria-label:testimonials.anterior"><i class="bi bi-chevron-left" aria-hidden="true"></i></button>
-                        <button type="button" class="cs-arrow is-solid" data-cs-next aria-label="Seguinte" data-i18n-attr="aria-label:testimonials.seguinte"><i class="bi bi-chevron-right" aria-hidden="true"></i></button>
-                    </div>
-                </div>
-                <div class="cs-quotes" data-cs-track tabindex="0" aria-label="Testemunhos" data-i18n-attr="aria-label:testimonials.testemunhos">
-                    <figure class="cs-quote">
-                        <i class="bi bi-quote" aria-hidden="true"></i>
-                        <blockquote data-i18n="testimonials.a-consultoria-nos-ajudou-a-transformar">"A consultoria ajudou-nos a transformar a nossa cultura interna. Hoje temos líderes mais conscientes e equipas mais envolvidas."</blockquote>
-                        <figcaption><b data-i18n="testimonials.diretora-de-rh">Diretora de RH</b><span data-i18n="testimonials.setor-financeiro">Setor financeiro</span></figcaption>
-                    </figure>
-                    <figure class="cs-quote">
-                        <i class="bi bi-quote" aria-hidden="true"></i>
-                        <blockquote data-i18n="testimonials.depois-dos-workshops-sobre-etica-conseguimos">"Depois dos workshops sobre ética, conseguimos reduzir conflitos internos e fortalecer a confiança entre gestores e colaboradores."</blockquote>
-                        <figcaption><b>CEO</b><span data-i18n="testimonials.setor-industrial">Setor industrial</span></figcaption>
-                    </figure>
-                    <figure class="cs-quote">
-                        <i class="bi bi-quote" aria-hidden="true"></i>
-                        <blockquote data-i18n="testimonials.o-programa-de-lideranca-etica-foi">"O programa de liderança ética foi um ponto de viragem na forma como os nossos gestores tomam decisões."</blockquote>
-                        <figcaption><b data-i18n="testimonials.gerente-de-pessoas">Gerente de Pessoas</b><span data-i18n="testimonials.setor-de-tecnologia">Setor de tecnologia</span></figcaption>
-                    </figure>
-                </div>
+        <!-- TESTEMUNHOS EM VÍDEO: css/testimonials.css + js/testimonials.js.
+             Each person is one <li>: change the name and role here (same block on index, espaços, formações, palestras and consultoria). -->
+        <section id="testimonials" class="tv cs-band">
+          <div class="tv-wrap">
+            <div class="tv-head" data-aos="fade-up">
+              <h6 class="index" data-i18n="testimonials.testemunhos">Testemunhos</h6>
+              <h2 data-i18n="testimonials.na-primeira-pessoa">Na primeira pessoa</h2>
+              <p data-i18n="testimonials.ouca-quem-ja-trabalhou">Ouça quem já trabalhou com a Castros.</p>
             </div>
+            <div class="tv-panel" data-aos="fade-up" data-aos-delay="120">
+              <div class="tv-stage">
+                <video playsinline preload="none" poster="../assets/testemunhos/testemunho-1.webp" src="../assets/testemunhos/testemunho-1.mp4"></video>
+                <button type="button" class="tv-play" aria-label="Reproduzir o testemunho" data-i18n-attr="aria-label:testimonials.reproduzir-o-testemunho">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6 3.5v17l14-8.5z"/></svg>
+                </button>
+                <div class="tv-caption"><span class="tv-name" translate="no"></span><span class="tv-role"></span></div>
+              </div>
+              <ol class="tv-list">
+                  <li>
+                    <button type="button" class="tv-item" aria-pressed="true" data-src="../assets/testemunhos/testemunho-1.mp4" data-poster="../assets/testemunhos/testemunho-1.webp">
+                      <span class="tv-thumb"><img src="../assets/testemunhos/testemunho-1.webp" alt="" width="960" height="540" loading="lazy" decoding="async"></span>
+                      <span class="tv-meta">
+                        <span class="tv-name" translate="no">Whitney Cumbucane</span>
+                        <span class="tv-role" data-i18n="testimonials.cargo-1">Cargo, Empresa 1</span>
+                      </span>
+                      <span class="tv-time">0:45</span>
+                    </button>
+                  </li>
+                  <li>
+                    <button type="button" class="tv-item" aria-pressed="false" data-src="../assets/testemunhos/testemunho-2.mp4" data-poster="../assets/testemunhos/testemunho-2.webp">
+                      <span class="tv-thumb"><img src="../assets/testemunhos/testemunho-2.webp" alt="" width="960" height="540" loading="lazy" decoding="async"></span>
+                      <span class="tv-meta">
+                        <span class="tv-name" translate="no">Lurdes Tame</span>
+                        <span class="tv-role" data-i18n="testimonials.cargo-2">Cargo, Empresa 2</span>
+                      </span>
+                      <span class="tv-time">0:56</span>
+                    </button>
+                  </li>
+                  <li>
+                    <button type="button" class="tv-item" aria-pressed="false" data-src="../assets/testemunhos/testemunho-3.mp4" data-poster="../assets/testemunhos/testemunho-3.webp">
+                      <span class="tv-thumb"><img src="../assets/testemunhos/testemunho-3.webp" alt="" width="960" height="540" loading="lazy" decoding="async"></span>
+                      <span class="tv-meta">
+                        <span class="tv-name" translate="no">Shelly Lucete</span>
+                        <span class="tv-role" data-i18n="testimonials.cargo-3">Cargo, Empresa 3</span>
+                      </span>
+                      <span class="tv-time">0:58</span>
+                    </button>
+                  </li>
+                  <li>
+                    <button type="button" class="tv-item" aria-pressed="false" data-src="../assets/testemunhos/testemunho-4.mp4" data-poster="../assets/testemunhos/testemunho-4.webp">
+                      <span class="tv-thumb"><img src="../assets/testemunhos/testemunho-4.webp" alt="" width="960" height="540" loading="lazy" decoding="async"></span>
+                      <span class="tv-meta">
+                        <span class="tv-name" translate="no">Rosita Jahane</span>
+                        <span class="tv-role" data-i18n="testimonials.cargo-4">Cargo, Empresa 4</span>
+                      </span>
+                      <span class="tv-time">0:29</span>
+                    </button>
+                  </li>
+              </ol>
+            </div>
+          </div>
         </section>
 
         <!-- FAQ — Bootstrap accordion -->
@@ -422,8 +453,8 @@
             </div>
         </section>
 
-        <!-- FINAL CTA — same pattern as index.html's Promo section -->
-        <section id="contato" class="section">
+        <!-- FINAL CTA — same pattern as index.html's Promo section; .cs-night puts back the blue background the other pages show behind it (this page's <main> is near-black) -->
+        <section id="contato" class="section cs-night">
             <div class="text-center cta-panel" data-aos="zoom-in">
                 <h2 class="mb-3" data-i18n-html="page-cta.pronto-para-transformar-a-sua-organizacao">
                     Pronto para transformar<br>a sua organização?
@@ -895,6 +926,7 @@
         if (window.siteLoaderDone || !document.documentElement.classList.contains("is-loading")) startAOS();
         else document.addEventListener("site-loader:done", startAOS, { once: true });
     </script>
+  <script src="../js/testimonials.js" defer></script>
 </body>
 
 </html>

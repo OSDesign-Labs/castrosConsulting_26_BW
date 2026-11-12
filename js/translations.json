@@ -781,7 +781,14 @@
     "consultoria.process.sobre": "Sobre",
     "consultoria.process.a-castros-existe-para-simplificar-o": "A Castros existe para simplificar o complexo, com orientação prática, não relatórios que ficam na gaveta.",
     "consultoria.process.processo": "Processo",
-    "consultoria.testimonials.o-que-dizem-as-organizacoes": "O que dizem as organizações"
+    "consultoria.testimonials.o-que-dizem-as-organizacoes": "O que dizem as organizações",
+    "testimonials.na-primeira-pessoa": "Na primeira pessoa",
+    "testimonials.ouca-quem-ja-trabalhou": "Ouça quem já trabalhou com a Castros.",
+    "testimonials.reproduzir-o-testemunho": "Reproduzir o testemunho",
+    "testimonials.cargo-1": "Cargo, Empresa 1",
+    "testimonials.cargo-2": "Cargo, Empresa 2",
+    "testimonials.cargo-3": "Cargo, Empresa 3",
+    "testimonials.cargo-4": "Cargo, Empresa 4"
   },
   "en": {
     "nav.castros-consultoria-pagina-inicial": "Castros Consultoria, home page",
@@ -1640,6 +1647,13 @@
     "consultoria.process.sobre": "About",
     "consultoria.process.a-castros-existe-para-simplificar-o": "Castros exists to make the complex simple, with practical guidance, not reports that end up in a drawer.",
     "consultoria.process.processo": "Our process",
-    "consultoria.testimonials.o-que-dizem-as-organizacoes": "What organisations say"
+    "consultoria.testimonials.o-que-dizem-as-organizacoes": "What organisations say",
+    "testimonials.na-primeira-pessoa": "In their own words",
+    "testimonials.ouca-quem-ja-trabalhou": "Hear from people who have worked with Castros.",
+    "testimonials.reproduzir-o-testemunho": "Play the testimonial",
+    "testimonials.cargo-1": "Role, Company 1",
+    "testimonials.cargo-2": "Role, Company 2",
+    "testimonials.cargo-3": "Role, Company 3",
+    "testimonials.cargo-4": "Role, Company 4"
   }
 }
