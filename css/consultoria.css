@@ -1,0 +1,547 @@
+/* ==========================================================
+   CONSULTORIA PAGE (html/consultoria.html)
+   Layout from the "07 Consultoria — desktop" design: split hero
+   with photo collage, service cards, numbered process and
+   testimonial cards. Loaded after services.css + contacto.css.
+
+   Typography and buttons are the site's own (services.css:
+   Montserrat 400 headings, Poppins text, .eyebrow, .btn-cyan /
+   .btn-outline-light-c, .link-arrow): this file only lays things
+   out and sets sizes that match the same pieces on the other pages.
+   The FAQ, the final CTA and the contact form are the shared
+   sections, untouched.
+   ========================================================== */
+
+.subpage main.cs-page {
+    --cs-bg: #030316;
+    --cs-band: #010133;
+    --cs-surface: #010930;
+    --cs-border: rgba(112, 129, 142, 0.32);
+    --cs-muted: #71858a;
+    --cs-accent: #04bfcd;
+    --cs-accent-2: #72dcdc;
+    --cs-aqua: #a9eae4;
+    --cs-on-accent: #02181c;
+    --cs-radius: 18px;
+    --cs-radius-xl: 24px;
+    background: var(--cs-bg);
+}
+
+.subpage main .cs-hl {
+    color: var(--cs-aqua);
+}
+
+/* ---------- shared pieces ---------- */
+.subpage main .cs-night {
+    background:
+        linear-gradient(100deg, rgba(1, 9, 48, 0.92) 0%, rgba(1, 9, 48, 0.55) 38%, rgba(4, 60, 90, 0.25) 62%, rgba(4, 191, 205, 0.28) 100%),
+        radial-gradient(120% 130% at 75% 15%, #123a55 0%, #0a2138 42%, #04101f 100%);
+}
+
+/* same glass as the home page's .metric-card */
+.subpage main .cs-glass {
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 16px;
+    background: rgba(245, 245, 245, 0.09);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+}
+
+.subpage main .cs-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.subpage main .cs-icon {
+    flex: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+    font-size: 20px;
+    background: rgba(4, 191, 205, 0.12);
+    color: var(--cs-accent);
+    border: 1px solid rgba(4, 191, 205, 0.28);
+}
+
+.subpage main .cs-section {
+    padding: clamp(72px, 9vw, 112px) 0;
+    background: var(--cs-bg);
+}
+
+.subpage main .cs-section > .container {
+    display: grid;
+    gap: 44px;
+}
+
+.subpage main .cs-band {
+    background: var(--cs-band);
+}
+
+.subpage main .cs-head {
+    max-width: 640px;
+}
+
+.subpage main .cs-head p {
+    margin: 0;
+}
+
+/* ---------- 1. HERO ---------- */
+.subpage main .cs-hero {
+    padding-top: clamp(8rem, 14vw, 10.5rem);   /* same as .page-hero: room for the fixed navbar */
+    padding-bottom: clamp(64px, 8vw, 96px);
+}
+
+.subpage main .cs-hero-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 56px;
+    align-items: center;
+}
+
+.subpage main .cs-hero-copy {
+    flex: 1 1 460px;
+    min-width: 0;
+}
+
+/* size of the other service pages' hero titles */
+.subpage main .cs-hero h1 {
+    margin-bottom: 1rem;
+    font-size: clamp(2.5rem, 6vw, 4.25rem);
+    line-height: 1.04;
+    letter-spacing: -0.02em;
+}
+
+.subpage main .cs-lead {
+    max-width: 50ch;
+    margin-bottom: 1.75rem;
+    font-size: 1.05rem;
+}
+
+.subpage main .cs-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 2rem;
+}
+
+/* as the home page's .metric-card / .metric-value / .metric-label */
+.subpage main .cs-stat {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    min-height: 96px;
+    min-width: 230px;
+    padding: 1.25rem;
+    color: #fff;
+}
+
+.subpage main .cs-stat b {
+    font-size: 2rem;
+    line-height: 1;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+}
+
+.subpage main .cs-stat span {
+    font-size: 0.8rem;
+    line-height: 1.3;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.subpage main .cs-collage {
+    flex: 1 1 440px;
+    position: relative;
+    min-height: 520px;
+}
+
+.subpage main .cs-collage img {
+    position: absolute;
+    object-fit: cover;
+    border-radius: var(--cs-radius-xl);
+}
+
+.subpage main .cs-collage-main {
+    right: 0;
+    top: 0;
+    width: 82%;
+    height: 78%;
+    object-position: 62% center;
+}
+
+.subpage main .cs-collage-side {
+    left: 0;
+    bottom: 0;
+    width: 52%;
+    height: 48%;
+    border: 6px solid var(--cs-bg);
+}
+
+.subpage main .cs-badge-round {
+    position: absolute;
+    right: 24px;
+    bottom: 40px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    padding: 16px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1.3;
+    background: var(--cs-accent);
+    color: var(--cs-on-accent);
+    box-shadow: 0 18px 40px -16px rgba(4, 191, 205, 0.7);
+    transition: transform 0.25s ease, background-color 0.25s ease;
+}
+
+.subpage main .cs-badge-round:hover,
+.subpage main .cs-badge-round:focus-visible {
+    color: var(--cs-on-accent);
+    background: var(--cs-accent-2);
+    transform: rotate(-6deg) scale(1.04);
+}
+
+/* ---------- 2. SERVICES ---------- */
+.subpage main .cs-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.subpage main .cs-card {
+    display: grid;
+    gap: 12px;
+    align-content: start;
+    grid-template-rows: auto auto 1fr auto;
+    padding: 28px;
+    background: var(--cs-surface);
+    border: 1px solid var(--cs-border);
+    border-radius: var(--cs-radius);
+    transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.subpage main .cs-card:hover {
+    border-color: rgba(4, 191, 205, 0.55);
+    transform: translateY(-4px);
+    box-shadow: 0 24px 56px -26px rgba(4, 191, 205, 0.45);
+}
+
+/* as .service-card h3 on the other pages */
+.subpage main .cs-card h3 {
+    margin: 0.5rem 0 0;
+    font-size: 1.05rem;
+    line-height: 1.35;
+}
+
+.subpage main .cs-card p,
+.subpage main .cs-steps p {
+    margin: 0;
+    font-size: 0.875rem;   /* .small */
+}
+
+.subpage main .cs-card .link-arrow {
+    justify-self: start;
+    margin-top: 0.4rem;
+}
+
+/* ---------- 3. PROCESS ---------- */
+.subpage main .cs-section .cs-split {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 64px;
+    align-items: center;
+}
+
+.subpage main .cs-split-main {
+    flex: 1 1 460px;
+    display: grid;
+    gap: 28px;
+    min-width: 0;
+}
+
+.subpage main .cs-steps {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+}
+
+.subpage main .cs-steps li {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 18px;
+    padding: 22px 0;
+    border-top: 1px solid var(--cs-border);
+}
+
+.subpage main .cs-step-n {
+    font-family: "Montserrat", serif;
+    font-size: 1.75rem;
+    line-height: 1.1;
+    color: var(--cs-accent);
+}
+
+.subpage main .cs-steps h3 {
+    margin: 0 0 0.35rem;
+    font-size: 1.05rem;
+    line-height: 1.35;
+}
+
+.subpage main .cs-photo {
+    flex: 1 1 420px;
+    position: relative;
+    margin: 0;
+}
+
+.subpage main .cs-photo img {
+    display: block;
+    width: 100%;
+    height: auto;   /* the width/height attributes would otherwise beat aspect-ratio */
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    border-radius: var(--cs-radius-xl);
+}
+
+.subpage main .cs-photo figcaption {
+    position: absolute;
+    left: 24px;
+    right: 24px;
+    bottom: 24px;
+    padding: 22px;
+    color: #fff;
+    background: rgba(1, 9, 48, 0.55);   /* darker than the plain glass: the photo is bright */
+}
+
+.subpage main .cs-photo figcaption .eyebrow {
+    margin-bottom: 0.4rem;
+}
+
+.subpage main .cs-photo figcaption p {
+    margin: 0;
+    font-family: "Montserrat", serif;
+    font-size: 1.1rem;
+    line-height: 1.45;
+}
+
+/* ---------- 4. TESTIMONIALS ---------- */
+.subpage main .cs-head-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: end;
+    gap: 24px;
+}
+
+.subpage main .cs-arrows {
+    display: flex;
+    gap: 10px;
+}
+
+.subpage main .cs-arrows[hidden] {
+    display: none;
+}
+
+.subpage main .cs-arrow {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 18px;
+    color: #fff;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: background-color 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
+}
+
+.subpage main .cs-arrow.is-solid {
+    border-color: transparent;
+    background: var(--cs-accent);
+    color: var(--cs-on-accent);
+}
+
+.subpage main .cs-arrow:hover:not(:disabled) {
+    box-shadow: 0 10px 24px -10px rgba(4, 191, 205, 0.7);
+}
+
+.subpage main .cs-arrow:disabled {
+    opacity: 0.35;
+    cursor: default;
+}
+
+.subpage main .cs-quotes {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(300px, 1fr);
+    gap: 20px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    outline: none;
+}
+
+.subpage main .cs-quotes::-webkit-scrollbar {
+    display: none;
+}
+
+.subpage main .cs-quotes:focus-visible {
+    outline: 2px solid var(--cs-accent);
+    outline-offset: 4px;
+    border-radius: var(--cs-radius);
+}
+
+.subpage main .cs-quote {
+    scroll-snap-align: start;
+    margin: 0;
+    display: grid;
+    gap: 18px;
+    align-content: space-between;
+    padding: 30px;
+    background: var(--cs-surface);
+    border: 1px solid var(--cs-border);
+    border-radius: var(--cs-radius);
+}
+
+.subpage main .cs-quote > .bi {
+    font-size: 36px;
+    line-height: 1;
+    color: var(--cs-accent);
+}
+
+.subpage main .cs-quote blockquote {
+    margin: 0;
+    font-family: "Montserrat", serif;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: #fff;
+}
+
+.subpage main .cs-quote figcaption {
+    font-size: 0.875rem;
+}
+
+.subpage main .cs-quote figcaption b {
+    display: block;
+    color: #fff;
+    font-weight: 600;
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 991.98px) {
+    .subpage main .cs-hero-grid {
+        gap: 40px;
+    }
+
+    .subpage main .cs-collage {
+        min-height: 440px;
+    }
+
+    .subpage main .cs-section .cs-split {
+        gap: 40px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .subpage main .cs-hero-copy,
+    .subpage main .cs-split-main,
+    .subpage main .cs-photo,
+    .subpage main .cs-collage {
+        flex-basis: 100%;
+    }
+
+    .subpage main .cs-stat {
+        min-width: 0;
+        flex: 1 1 140px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        min-height: 0;
+        padding: 16px 18px;
+    }
+
+    .subpage main .cs-stat span br {
+        display: none;
+    }
+
+    .subpage main .cs-collage {
+        min-height: 340px;
+    }
+
+    .subpage main .cs-collage-main {
+        width: 88%;
+        height: 74%;
+    }
+
+    .subpage main .cs-collage-side {
+        width: 58%;
+        height: 44%;
+        border-width: 4px;
+    }
+
+    .subpage main .cs-badge-round {
+        width: 96px;
+        height: 96px;
+        right: 8px;
+        bottom: 16px;
+        font-size: 0.66rem;
+        padding: 12px;
+    }
+
+    .subpage main .cs-card,
+    .subpage main .cs-quote {
+        padding: 24px;
+    }
+
+    .subpage main .cs-quotes {
+        grid-auto-columns: 86%;
+        gap: 14px;
+    }
+
+    .subpage main .cs-steps li {
+        grid-template-columns: 44px 1fr;
+        gap: 12px;
+    }
+
+    .subpage main .cs-step-n {
+        font-size: 1.5rem;
+    }
+
+    .subpage main .cs-photo img {
+        aspect-ratio: 4 / 3;
+    }
+
+    /* phones: the caption sits under the photo so it doesn't cover the people */
+    .subpage main .cs-photo figcaption {
+        position: static;
+        margin-top: 12px;
+        padding: 16px 18px;
+        background: var(--cs-surface);
+        border-color: var(--cs-border);
+    }
+
+    .subpage main .cs-actions .btn {
+        flex: 1 1 auto;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .subpage main .cs-card,
+    .subpage main .cs-badge-round {
+        transition: none;
+    }
+
+    .subpage main .cs-card:hover {
+        transform: none;
+    }
+
+    .subpage main .cs-quotes {
+        scroll-behavior: auto;
+    }
+}

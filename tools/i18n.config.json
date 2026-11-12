@@ -26,7 +26,8 @@
   "engine": "auto",
   "claude_model": "claude-haiku-5-5",
   "skip_ids": [
-    "siteLoader"
+    "siteLoader",
+    "cpContact"
   ],
   "skip_classes": [
     "lang-switch",

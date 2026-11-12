@@ -22,6 +22,12 @@
     "use strict";
 
     /* ---------------------------------------------------------- CONFIG */
+    /* the site root, worked out from this script's own URL, so the item images load from
+       index.html (root) as well as from html/*.html */
+    var ROOT = (function () {
+        var src = document.currentScript && document.currentScript.src;
+        return src ? src.replace(/js\/contacto\.js(\?.*)?$/, "") : "../";
+    })();
     var PREVIEW = false;                                  // true: nothing is sent (demo mode, logs the payload to the console)
     /*var FORMSPREE_ENDPOINT = "https://formspree.io/f/mwlpzyva";   // EDIT before launch: still delivers to the OS Design email; point it at castrosconsultoria@gmail.com (or swap for an n8n webhook URL) */
     var FORMSPREE_ENDPOINT = "https://osdesign.duckdns.org/webhook/castros-pedido";
@@ -351,7 +357,7 @@
     var ITEMS = [
         {
             id: "formacao-comunicacao-oratoria-2-edicao", kind: "event", theme: "oratoria",
-            img: "../assets/images/recent/flyer-comunicacao-oratoria-2-edicao.webp", imgPos: "center 20%",
+            img: ROOT + "assets/images/recent/flyer-comunicacao-oratoria-2-edicao.webp", imgPos: "center 20%",
             cat: L("Comunicação", "Communication"),
             title: L("Formação em Comunicação e Oratória (2.ª edição)", "Communication and Public Speaking Course (2nd edition)"),
             summary: L("30 dias para comunicar de forma assertiva, eficaz e profissional.", "30 days to communicate assertively, effectively and professionally."),
@@ -361,7 +367,7 @@
         },
         {
             id: "consultoria", kind: "service", theme: "consultoria",
-            img: "../assets/images/contacto/sv-consultoria.webp", imgPos: "center 40%",
+            img: ROOT + "assets/images/contacto/sv-consultoria.webp", imgPos: "center 40%",
             cat: L("Consultoria", "Consulting"),
             title: L("Reunião de diagnóstico", "Diagnostic meeting"),
             summary: L("Uma hora para entender o seu desafio e propor um caminho.", "One hour to understand your challenge and propose a way forward."),
@@ -370,7 +376,7 @@
         },
         {
             id: "formacoes", kind: "service", theme: "formacoes",
-            img: "../assets/images/contacto/sv-formacoes.webp", imgPos: "center 30%",
+            img: ROOT + "assets/images/contacto/sv-formacoes.webp", imgPos: "center 30%",
             cat: L("Formações e treinamento", "Training"),
             title: L("Formação para a sua equipa", "Training for your team"),
             summary: L("Programas à medida, no nosso espaço, na sua empresa ou online.", "Tailored programmes at our space, your company or online."),
@@ -380,7 +386,7 @@
         },
         {
             id: "palestras", kind: "service", theme: "palestras",
-            img: "../assets/images/contacto/sv-palestras.webp", imgPos: "center 30%",
+            img: ROOT + "assets/images/contacto/sv-palestras.webp", imgPos: "center 30%",
             cat: L("Palestras e workshops", "Talks and workshops"),
             title: L("Palestra para o seu evento", "A talk for your event"),
             summary: L("Elizabeth Castro como oradora no seu evento, escola ou empresa.", "Elizabeth Castro as a speaker at your event, school or company."),
@@ -389,7 +395,7 @@
         },
         {
             id: "espacos", kind: "service", theme: "espacos",
-            img: "../assets/images/contacto/sv-espacos.webp", imgPos: "center 45%",
+            img: ROOT + "assets/images/contacto/sv-espacos.webp", imgPos: "center 45%",
             cat: L("Espaços e podcasts", "Spaces and podcasts"),
             title: L("Aluguer do espaço", "Rent the space"),
             summary: L("Sala para workshops, reuniões e gravação de podcasts na Rua da Tchamba.", "A room for workshops, meetings and podcast recording on Rua da Tchamba."),
@@ -399,7 +405,7 @@
         },
         {
             id: "eventos", kind: "service", theme: "eventos",
-            img: "../assets/images/contacto/sv-eventos.webp", imgPos: "center 35%",
+            img: ROOT + "assets/images/contacto/sv-eventos.webp", imgPos: "center 35%",
             cat: L("Organização de eventos", "Event planning"),
             title: L("Organizar um evento", "Plan an event"),
             summary: L("Conferências, eventos corporativos e team building, do plano ao dia.", "Conferences, corporate events and team building, from plan to day."),
@@ -421,6 +427,7 @@
         qty: {},
         book: {},
         method: "mpesa",
+        autoPick: "",                                       // the page's own service, picked on load (data-cp-preselect)
         ref: "",
         sent: false
     };
@@ -617,6 +624,7 @@
 
     function renderCards() {
         var box = $("#dashCards");
+        if (!box) return;                                   // pages without the dashboard (consultoria.html)
         box.innerHTML = ITEMS.filter(isShown).map(function (it) {
             var sel = state.selected.indexOf(it.id) > -1;
             var meta = it.kind === "event"
@@ -656,6 +664,7 @@
 
     function renderTray() {
         var n = state.selected.length, tt = totals(), tray = $("#dashTray");
+        if (!tray) return;
         tray.classList.toggle("has-items", n > 0);
         $("#trayCount").textContent = n === 0 ? t("tray.none") : n === 1 ? t("tray.one") : t("tray.many", { n: n });
         var bits = [];
@@ -1238,6 +1247,7 @@
         document.addEventListener("click", function (e) {
             var el;
             if ((el = e.target.closest("[data-toggle]"))) { toggleItem(el.getAttribute("data-toggle")); return; }
+            if ((el = e.target.closest("a[data-cp-area]"))) { presetArea(el.getAttribute("data-cp-area")); return; }   // consultoria.html cards
             if ((el = e.target.closest("[data-remove]"))) { toggleItem(el.getAttribute("data-remove"), false); return; }
             if ((el = e.target.closest("[data-filter]"))) {
                 state.filter = el.getAttribute("data-filter");
@@ -1331,12 +1341,62 @@
         });
 
         $("#cpForm").addEventListener("submit", submit);
-        $("#trayGo").addEventListener("click", function (e) {
+        if ($("#trayGo")) $("#trayGo").addEventListener("click", function (e) {
             e.preventDefault();
             var card = $("#contact-form");
             window.scrollTo({ top: window.scrollY + card.getBoundingClientRect().top - 96, behavior: reduced ? "auto" : "smooth" });
             var f = state.step === 1 ? $("#f-name") : null; if (f) setTimeout(function () { f.focus({ preventScroll: true }); }, 500);
         });
+    }
+
+    /* Links elsewhere on the page ("Saber mais" on consultoria.html) can pick the Consultoria
+       item and answer its "Em que área precisa de apoio?" question; the visitor can change it. */
+    function presetArea(value) {
+        var id = "consultoria";
+        if (!BY_ID[id]) return;
+        if (state.selected.indexOf(id) < 0) toggleItem(id, true);
+        (state.answers[id] || (state.answers[id] = {})).area = value;
+        if (state.step === 2) renderPanels();
+    }
+
+    /* Links in the service pages' pop-ups ("Saber mais", "Inscrever-se", ...) say what they are about:
+         data-cp-item          item id to pick (e.g. the oratória event)
+         data-contact-service  the service, mapped to an item below
+         data-contact-msg      ready-made message for step 3 (data-contact-msg-en in English)
+       The item is picked (replacing the page's own service if the visitor has not touched it yet)
+       and the message is written, unless the visitor typed one of their own. */
+    var SERVICE_ITEM = {
+        "Formação": "formacoes", "Treinamento": "formacoes",
+        "Palestras e Workshops": "palestras",
+        "Espaços e Podcasts": "espacos",
+        "Eventos": "eventos",
+        "Consultoria": "consultoria"
+    };
+    var prefillLink = null;
+
+    function prefillMessage(link) {
+        var box = $("#f-msg"); if (!box) return;
+        var text = (state.lang === "en" && link.getAttribute("data-contact-msg-en")) || link.getAttribute("data-contact-msg");
+        if (!text) return;
+        if (box.value.trim() && box.dataset.prefilled !== "1") return;
+        box.value = text;
+        box.dataset.prefilled = "1";
+    }
+
+    function prefillFrom(link) {
+        if (state.sent) return;
+        var id = link.getAttribute("data-cp-item") || SERVICE_ITEM[link.getAttribute("data-contact-service")];
+        if (BY_ID[id] && isShown(BY_ID[id])) {
+            var auto = state.autoPick;
+            if (auto && auto !== id && state.selected.indexOf(auto) > -1 && !Object.keys(state.answers[auto] || {}).length && !state.book[auto]) {
+                toggleItem(auto, false);                    // the visitor chose something more specific
+            }
+            state.autoPick = "";
+            if (state.selected.indexOf(id) < 0) toggleItem(id, true);
+            if (state.step === 3) { goTo(2, true); renderPicker(); renderPanels(); }   // show the new choice and its questions
+        }
+        prefillMessage(link);
+        prefillLink = link;
     }
 
     function copy(btn) {
@@ -1357,6 +1417,7 @@
        Here it only gets a navy background once past the hero (the form below is light). */
     function navbar() {
         var nav = $("#mainNavbar"), hero = $(".page-hero");
+        if (!$("#dashCards")) return;                       // contacto.html only; the other pages keep their navbar as it is
         if (!nav || !hero || !("IntersectionObserver" in window)) return;
         new IntersectionObserver(function (en) {
             nav.classList.toggle("is-solid", !en[0].isIntersecting);
@@ -1374,7 +1435,19 @@
         applyStatic();
         renderProfile(); renderCards(); renderTray(); renderPicker();
         if (BY_ID[h] && isShown(BY_ID[h])) toggleItem(h, true);   // e.g. #espacos pre-selects a card
+        var pre = $("[data-cp-preselect]"), pid = pre && pre.getAttribute("data-cp-preselect");
+        if (BY_ID[pid] && state.selected.indexOf(pid) < 0) { toggleItem(pid, true); state.autoPick = pid; }   // service pages: their own service
         bind(); navbar();
+        // capture phase: runs before a pop-up closes and the page scrolls to the form
+        document.addEventListener("click", function (e) {
+            var link = e.target.closest && e.target.closest("a[data-contact-service], a[data-contact-msg], a[data-cp-item]");
+            if (link) prefillFrom(link);
+        }, true);
+        var msg = $("#f-msg");
+        if (msg) msg.addEventListener("input", function () { delete msg.dataset.prefilled; });   // typing makes it theirs
+        document.addEventListener("i18n:change", function () {
+            if (prefillLink && msg && msg.dataset.prefilled === "1") setTimeout(function () { prefillMessage(prefillLink); }, 0);
+        });
     }
     if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start); else start();
 })();

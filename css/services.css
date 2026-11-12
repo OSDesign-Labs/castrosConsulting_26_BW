@@ -1848,8 +1848,9 @@ main>.hero #overlayGradient>[class*="col-lg-6"] {
     position: relative;
 }
 
+/* only the FAQ (#perguntas) uses it: Ink Black, the same dark as consultoria.html */
 .subpage main .section-band {
-    background: var(--sp-section);
+    background: var(--sp-bg);
     border-top: 1px solid rgba(112, 129, 142, 0.14);
     border-bottom: 1px solid rgba(112, 129, 142, 0.14);
 }

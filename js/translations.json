@@ -243,6 +243,12 @@
     "consultoria.hero.ajudamos-organizacoes-e-lideres-a-ver": "Ajudamos organizações e líderes a ver o que não veem. Orientação prática para transformar desafios em decisões claras.",
     "consultoria.hero.comecar": "Começar",
     "consultoria.hero.saber-mais": "Saber mais",
+    "consultoria.hero.estrategia-que-transforma-destaque": "Estratégia que <span class=\"cs-hl\">transforma</span>.",
+    "consultoria.hero.passos-da-conversa-ao-acompanhamento": "Passos, da conversa<br>ao acompanhamento",
+    "consultoria.hero.elizabeth-castro-numa-sessao-de-consultoria": "Elizabeth Castro numa sessão de consultoria",
+    "consultoria.hero.rececao-de-clientes-na-castros": "Recepção de clientes na Castros",
+    "consultoria.hero.tudo-comeca-numa-conversa": "Tudo começa numa conversa",
+    "consultoria.hero.como-funciona": "Como funciona",
     "consultoria.services.servicos": "Serviços",
     "consultoria.services.o-que-fazemos": "O que fazemos",
     "consultoria.services.estrategia-e-orientacao-para-decisoes-dificeis": "Estratégia e orientação para decisões difíceis",
@@ -766,7 +772,14 @@
     "espacos.modal-events.participantes-a-entrar-na-sala": "Participantes a entrar na sala",
     "espacos.modal-events.fechar": "Fechar",
     "espacos.modal-events.beneficios": "Benefícios",
-    "espacos.modal-events.bastidores": "Bastidores"
+    "espacos.modal-events.bastidores": "Bastidores",
+    "consultoria.process.como-funciona-o-nosso-trabalho": "Como funciona o nosso trabalho",
+    "consultoria.process.um-caminho-direto-da-conversa-inicial": "Um caminho direto da conversa inicial ao acompanhamento contínuo.",
+    "consultoria.process.sala-de-formacao-da-castros": "Sala de formação da Castros",
+    "consultoria.process.sobre": "Sobre",
+    "consultoria.process.a-castros-existe-para-simplificar-o": "A Castros existe para simplificar o complexo, com orientação prática, não relatórios que ficam na gaveta.",
+    "consultoria.process.processo": "Processo",
+    "consultoria.testimonials.o-que-dizem-as-organizacoes": "O que dizem as organizações"
   },
   "en": {
     "nav.castros-consultoria-pagina-inicial": "Castros Consultoria, home page",
@@ -994,6 +1007,12 @@
     "consultoria.hero.ajudamos-organizacoes-e-lideres-a-ver": "We help organisations and leaders see what they have been missing. Practical guidance to turn challenges into clear decisions.",
     "consultoria.hero.comecar": "Get started",
     "consultoria.hero.saber-mais": "Learn more",
+    "consultoria.hero.estrategia-que-transforma-destaque": "Strategy that <span class=\"cs-hl\">transforms</span>.",
+    "consultoria.hero.passos-da-conversa-ao-acompanhamento": "Steps, from first conversation<br>to ongoing support",
+    "consultoria.hero.elizabeth-castro-numa-sessao-de-consultoria": "Elizabeth Castro in a consulting session",
+    "consultoria.hero.rececao-de-clientes-na-castros": "Welcoming clients at Castros",
+    "consultoria.hero.tudo-comeca-numa-conversa": "It all starts with a conversation",
+    "consultoria.hero.como-funciona": "How it works",
     "consultoria.services.servicos": "Services",
     "consultoria.services.o-que-fazemos": "What we do",
     "consultoria.services.estrategia-e-orientacao-para-decisoes-dificeis": "Strategy and guidance for difficult decisions",
@@ -1610,6 +1629,13 @@
       "A talk by Elizabeth Castro, confirmed speaker",
       "2nd edition of the Global Business Network Africa forum"
     ],
-    "events.item.women-investment-forum-2026.category": "Leadership"
+    "events.item.women-investment-forum-2026.category": "Leadership",
+    "consultoria.process.como-funciona-o-nosso-trabalho": "How we work",
+    "consultoria.process.um-caminho-direto-da-conversa-inicial": "A direct path from the first conversation to ongoing support.",
+    "consultoria.process.sala-de-formacao-da-castros": "Castros training room",
+    "consultoria.process.sobre": "About",
+    "consultoria.process.a-castros-existe-para-simplificar-o": "Castros exists to make the complex simple, with practical guidance, not reports that end up in a drawer.",
+    "consultoria.process.processo": "Our process",
+    "consultoria.testimonials.o-que-dizem-as-organizacoes": "What organisations say"
   }
 }
