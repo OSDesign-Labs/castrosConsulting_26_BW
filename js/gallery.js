@@ -12,6 +12,7 @@
    3. Clicking a photo opens it full view: it grows from where it sits in
       the row (tilt and crop included) to the whole picture in the middle of
       the screen. Closing (click anywhere, ×, or Esc) shrinks it back.
+      The page stays exactly where it was while a photo is open, and after.
    ========================================================== */
 (function () {
     "use strict";
@@ -103,6 +104,26 @@
 
     /* ---------- full view ---------- */
     var open = null;
+
+    // page held still while a photo is open (wheel, touch, keys, scrollbar), without touching
+    // the page's overflow: removing and restoring it made the page snap and roll back on close
+    var lockY = 0;
+    var SCROLL_KEYS = /^(ArrowUp|ArrowDown|PageUp|PageDown|Home|End| )$/;
+    function stopScroll(e) { e.preventDefault(); }
+    function holdPage() {
+        if (Math.abs(window.scrollY - lockY) > 0.5) window.scrollTo({ top: lockY, left: window.scrollX, behavior: "instant" });
+    }
+    function lockPage() {
+        lockY = window.scrollY;
+        window.addEventListener("wheel", stopScroll, { passive: false });
+        window.addEventListener("touchmove", stopScroll, { passive: false });
+        window.addEventListener("scroll", holdPage);
+    }
+    function unlockPage() {
+        window.removeEventListener("wheel", stopScroll, { passive: false });
+        window.removeEventListener("touchmove", stopScroll, { passive: false });
+        window.removeEventListener("scroll", holdPage);
+    }
     var EASE = "cubic-bezier(0.2, 0.8, 0.2, 1)";
     var OPEN_MS = 260, CLOSE_MS = 220;
 
@@ -174,6 +195,7 @@
         big.style.objectPosition = to.pos;
         card.style.visibility = "hidden";             // the photo "lifts out" of the row
         document.documentElement.classList.add("g-lb-on");
+        lockPage();
 
         var t = reduced.matches ? 0 : OPEN_MS;
         box.animate([frame(from), frame(to)], { duration: t, easing: EASE });
@@ -198,6 +220,7 @@
             o.card.style.visibility = "";
             o.box.remove(); o.back.remove();
             document.documentElement.classList.remove("g-lb-on");
+            unlockPage();
             held = false;
             if (o.kb) o.card.focus({ preventScroll: true });   // keyboard users land back on the photo
             open = null;
@@ -214,6 +237,7 @@
     document.addEventListener("keydown", function (e) {
         if (!open) return;
         if (e.key === "Escape") { e.preventDefault(); closePhoto(); }
+        else if (SCROLL_KEYS.test(e.key) && !(e.key === " " && e.target.closest("button"))) e.preventDefault();   // no page scroll (Space still presses ×)
         else if (e.key === "Tab" && !open.closing) { e.preventDefault(); open.closeBtn.focus(); }   // keep focus in the full view
     });
     window.addEventListener("resize", function () {

@@ -2032,13 +2032,25 @@ fieldset.cp-step {
     height: 44px;
 }
 
-/* the site's navbar is transparent; over this long light form it gets a navy glass once past the hero */
-.main-navbar.is-solid {
-    background: rgba(1, 9, 48, 0.86);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    padding-bottom: 0.75rem;
-    box-shadow: 0 10px 30px -18px rgba(0, 0, 0, 0.6);
+/* the navbar stays transparent here too, same rules as every page (shown in the hero, hidden on
+   scroll down, back on scroll up / pointer at the top). Over the light form only its text turns
+   dark so it stays readable: .on-light is set by js/contacto.js while the navbar sits over it. */
+.main-navbar .navbar-brand,
+.main-navbar .desktop-navbar .nav-link {
+    transition: color 0.3s ease, opacity 0.2s ease;
+}
+
+.main-navbar.on-light .navbar-brand {
+    color: var(--navy);
+}
+
+.main-navbar.on-light .desktop-navbar .nav-link,
+.main-navbar.on-light .desktop-navbar .nav-link:focus {
+    color: #3d4b57;
+}
+
+.main-navbar.on-light .desktop-navbar .nav-link.active {
+    color: #03838d;
 }
 
 .cp-panels {

@@ -10,6 +10,8 @@
            scrolling down  -> hides at once and stays hidden;
            scrolling up    -> shows, then hides again after 4s
                               without scrolling up / using it.
+           pointer at the top edge of the window (computers) -> shows,
+                              same as scrolling up.
        - Never hides while it is in use: phone menu or dropdown
          open, pointer over it, keyboard focus inside it.
        - Direction comes from what the visitor does (wheel, finger,
@@ -92,6 +94,17 @@
             // the page moving against the visitor's last gesture = snap settling / momentum: ignore
             if (recent && intent.dir && dir !== intent.dir) return;
             if (dir > 0) hide(); else show();
+        }, { passive: true });
+
+        // pointer at the very top of the window (computers): the hidden navbar comes back,
+        // like scrolling up; it stays while the pointer is on it and hides 4s after it leaves
+        const REVEAL_ZONE = 24;     // px from the top edge
+        document.addEventListener("mousemove", function (e) {
+            if (!canHover.matches || inHero || e.clientY > REVEAL_ZONE) return;
+            if (!navbar.classList.contains("navbar-hidden")) return;
+            if (document.body.classList.contains("modal-open") ||
+                document.documentElement.classList.contains("g-lb-on")) return;   // not over an open pop-up or photo
+            show();
         }, { passive: true });
 
         // using the navbar keeps it up; leaving it starts the 4s again

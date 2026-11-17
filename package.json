@@ -1,8 +1,17 @@
 {
+  "name": "castros-consulting-26-bw",
+  "private": true,
+  "scripts": {
+    "dev": "vite --host --open",
+    "preview": "vite preview --host"
+  },
   "dependencies": {
     "aos": "^2.3.4",
     "bootstrap": "^5.3.8",
     "bootstrap-icons": "^1.13.2",
     "pattern.css": "^1.0.0"
+  },
+  "devDependencies": {
+    "vite": "^8.3.8"
   }
 }

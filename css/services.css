@@ -3958,3 +3958,64 @@ a.topbar-item:hover {
 .topbar-phones .phone-sep {
     opacity: 0.45;
 }
+
+/* ======================================================
+   ONGOING COURSES SIDE BY SIDE (Formações + Treinamento modals)
+   ====================================================== */
+/* Próximas Formações: two courses next to each other, each with its own "Inscrever-se" */
+.upcoming-list--pair {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem 1.4rem;
+    margin-bottom: 0;
+}
+
+.upcoming-list--pair li,
+.upcoming-list--pair li:last-child {
+    padding: 0 0 0 1.4rem;
+    border-bottom: 0;
+    border-left: 1px solid var(--border);
+}
+
+.upcoming-list--pair li:first-child {
+    padding-left: 0;
+    border-left: 0;
+}
+
+.upcoming-list--pair .link-arrow {
+    margin-top: auto;
+    padding-top: 0.5rem;
+    align-self: flex-start;
+}
+
+/* Próximo Evento: two dark banners side by side; inside each, text above the button */
+.event-banner-pair {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.event-banner-pair .event-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+@media (max-width: 575.98px) {
+    .upcoming-list--pair,
+    .event-banner-pair {
+        grid-template-columns: 1fr;
+    }
+
+    .upcoming-list--pair li,
+    .upcoming-list--pair li:last-child {
+        padding: 1rem 0 0;
+        border-left: 0;
+        border-top: 1px solid var(--border);
+    }
+
+    .upcoming-list--pair li:first-child {
+        padding-top: 0;
+        border-top: 0;
+    }
+}

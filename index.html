@@ -657,12 +657,17 @@
     <!-- 03- PARCEIROS E APOIANTES
          Logos cut from the Master Class flyer (Nov 2025): low resolution. EDIT: replace each file in
          assets/partners/ with the partner's own logo (PNG/SVG) when Elizabeth sends them, and confirm
-         every partner is happy to be shown. "Mirsava" is read off a blurry logo: confirm the spelling. -->
+         every partner is happy to be shown. "Mirsava" is read off a blurry logo: confirm the spelling.
+         Links: a partner with a known social page is wrapped in <a> (same markup as OS Design). Verified:
+         WH Impact and MJ Consulting (Instagram, from their Lionesses of Africa profiles), Digi (its own
+         site, digi.co.mz, as printed on the logo). EDIT: ask Elizabeth for the Instagram/Facebook of
+         Ventura Services, LA Holding, Mirsava, Just Bloom, FPN, PPI-Lodge and baco.baco, then wrap each
+         <img> the same way. -->
     <section class="bg-alt-c py-5 partners">
       <div class="container" data-aos="zoom-in" data-aos-delay="200" data-aos-duration="1200" data-aos-easing="ease-out-back">
         <p class="partners-title" data-i18n="partners.parceiros-e-apoiantes">Parceiros e apoiantes</p>
         <ul class="partner-logos" aria-label="Parceiros e apoiantes" data-i18n-attr="aria-label:partners.parceiros-e-apoiantes">
-          <li><img translate="no" src="assets/partners/wh-impact.webp" alt="WH Impact" width="194" height="62" loading="lazy" decoding="async"></li>
+          <li><a href="https://www.instagram.com/wh_impact/" target="_blank" rel="noopener" aria-label="WH Impact no Instagram" data-i18n-attr="aria-label:partners.wh-impact-instagram"><img translate="no" src="assets/partners/wh-impact.webp" alt="WH Impact" width="194" height="62" loading="lazy" decoding="async"></a></li>
           <li><img translate="no" src="assets/partners/ventura-services.webp" alt="Ventura Services" width="185" height="56" loading="lazy" decoding="async"></li>
           <li><img translate="no" src="assets/partners/la-holding.webp" alt="LA Holding" width="59" height="75" loading="lazy" decoding="async"></li>
           <li><img translate="no" src="assets/partners/mirsava.webp" alt="Mirsava Cosméticos Naturais" width="126" height="50" loading="lazy" decoding="async"></li>
@@ -670,7 +675,8 @@
           <li><img translate="no" src="assets/partners/fpn.webp" alt="FPN" width="139" height="34" loading="lazy" decoding="async"></li>
           <li class="tile"><img translate="no" src="assets/partners/ppi-lodge.webp" alt="PPI-Lodge Ponta do Ouro" width="115" height="116" loading="lazy" decoding="async"></li>
           <li class="tile"><img translate="no" src="assets/partners/baco-baco.webp" alt="baco.baco" width="118" height="116" loading="lazy" decoding="async"></li>
-          <li><img translate="no" src="assets/partners/mj-consulting.webp" alt="MJ Consulting" width="79" height="84" loading="lazy" decoding="async"></li>
+          <li><a href="https://www.instagram.com/mjconsultinglda/" target="_blank" rel="noopener" aria-label="MJ Consulting no Instagram" data-i18n-attr="aria-label:partners.mj-consulting-instagram"><img translate="no" src="assets/partners/mj-consulting.webp" alt="MJ Consulting" width="79" height="84" loading="lazy" decoding="async"></a></li>
+          <li><a href="https://digi.co.mz/" target="_blank" rel="noopener" aria-label="Digi (digi.co.mz)"><img translate="no" src="assets/partners/digi.webp" alt="Digi" width="142" height="62" loading="lazy" decoding="async"></a></li>
           <li><a href="https://www.instagram.com/os.design.mz/" target="_blank" rel="noopener" aria-label="OS Design"><img class="logo-osdesign" translate="no" src="assets/partners/os-design.webp" alt="OS Design" width="70" height="84" loading="lazy" decoding="async"></a></li>
         </ul>
       </div>
@@ -1012,7 +1018,7 @@
                   <span class="tv-thumb"><img src="assets/testemunhos/testemunho-1.webp" alt="" width="960" height="540" loading="lazy" decoding="async"></span>
                   <span class="tv-meta">
                     <span class="tv-name" translate="no">Whitney Cumbucane</span>
-                    <span class="tv-role" data-i18n="testimonials.cargo-1">Cargo, Empresa 1</span>
+                    <span class="tv-role" data-i18n="testimonials.cargo-1">Mentorada · Comunicação e Oratória</span>
                   </span>
                   <span class="tv-time">0:45</span>
                 </button>
@@ -1022,7 +1028,7 @@
                   <span class="tv-thumb"><img src="assets/testemunhos/testemunho-2.webp" alt="" width="960" height="540" loading="lazy" decoding="async"></span>
                   <span class="tv-meta">
                     <span class="tv-name" translate="no">Lurdes Tame</span>
-                    <span class="tv-role" data-i18n="testimonials.cargo-2">Cargo, Empresa 2</span>
+                    <span class="tv-role" data-i18n="testimonials.cargo-2">Mentorada · Comunicação e Oratória</span>
                   </span>
                   <span class="tv-time">0:56</span>
                 </button>
@@ -1032,7 +1038,7 @@
                   <span class="tv-thumb"><img src="assets/testemunhos/testemunho-3.webp" alt="" width="960" height="540" loading="lazy" decoding="async"></span>
                   <span class="tv-meta">
                     <span class="tv-name" translate="no">Shelly Lucete</span>
-                    <span class="tv-role" data-i18n="testimonials.cargo-3">Cargo, Empresa 3</span>
+                    <span class="tv-role" data-i18n="testimonials.cargo-3">Mentorada · Comunicação e Oratória</span>
                   </span>
                   <span class="tv-time">0:58</span>
                 </button>
@@ -1042,7 +1048,7 @@
                   <span class="tv-thumb"><img src="assets/testemunhos/testemunho-4.webp" alt="" width="960" height="540" loading="lazy" decoding="async"></span>
                   <span class="tv-meta">
                     <span class="tv-name" translate="no">Rosita Jahane</span>
-                    <span class="tv-role" data-i18n="testimonials.cargo-4">Cargo, Empresa 4</span>
+                    <span class="tv-role" data-i18n="testimonials.cargo-4">Mentorada · Comunicação e Oratória</span>
                   </span>
                   <span class="tv-time">0:29</span>
                 </button>

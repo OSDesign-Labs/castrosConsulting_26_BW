@@ -919,8 +919,12 @@ section {
     }
 }
 
+/* no page scroll behind the open photo: js/gallery.js holds the page still instead of
+   "overflow: hidden" here. Taking the page's scrollbar away and giving it back made the
+   section snap (css/motion.css) re-settle with smooth scrolling on close, so the page
+   visibly rolled back to the gallery (Firefox / Zen). */
 html.g-lb-on {
-    overflow: hidden;   /* no page scroll behind the open photo */
+    overscroll-behavior: none;
 }
 
 /* reduced motion: no drift and no blob movement; the buttons still slide the row */
@@ -3767,5 +3771,23 @@ main {
     .partners .partner-logos img.logo-osdesign,
     main > section.partners .partner-logos img.logo-osdesign {
         max-width: 75px;
+    }
+}
+
+/* partner cards that link to the partner's page: a small lift on hover so they read as clickable */
+.partners .partner-logos li:has(> a) {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.partners .partner-logos li:has(> a):hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 0 1px rgba(15, 30, 60, 0.1), 0 10px 22px -12px rgba(15, 30, 60, 0.45);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .partners .partner-logos li:has(> a),
+    .partners .partner-logos li:has(> a):hover {
+        transition: none;
+        transform: none;
     }
 }

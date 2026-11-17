@@ -101,6 +101,7 @@
             "kind.event": "Evento", "kind.service": "Com marcação", "example": "Exemplo",
             "add": "Adicionar", "added": "Adicionado", "remove": "Remover {n} do pedido",
             "quote": "Sob orçamento", "perPerson": "por pessoa", "afterConfirm": "pago após confirmação",
+            "tbd": "Data a anunciar", "open": "Inscrições abertas", "priceTbd": "Preço a confirmar", "priceTbdSmall": "enviamos o valor por WhatsApp",
             "tray.none": "Nenhum item escolhido", "tray.one": "1 item no pedido", "tray.many": "{n} itens no pedido",
             "tray.hint": "Toque nos cartões para juntar ao pedido.",
             "tray.payNow": "Pagar agora: {v}", "tray.toConfirm": "{n} a confirmar",
@@ -128,6 +129,7 @@
             "st.pay": "Pagar agora", "st.pending": "A confirmar", "st.verified": "Horário pretendido",
             "sum.total": "Total a pagar agora", "sum.nothing": "Nada a pagar agora",
             "sum.note": "Serviços com marcação: a equipa confirma o horário e envia o orçamento por WhatsApp. Só paga depois disso.",
+            "sum.noteEvt": "Eventos com data ou preço por anunciar: a equipa envia os detalhes por WhatsApp e reserva o seu lugar. Só paga depois disso.",
             "pay.title": "Como pagar", "pay.send": "Envie {v} por {m} para o número:", "pay.holder": "Em nome de {n}",
             "pay.ref": "Escreva esta referência na descrição, se a sua app permitir:",
             "pay.proof": "Guarde o SMS de confirmação e envie a captura pelo WhatsApp.",
@@ -192,6 +194,7 @@
             "kind.event": "Event", "kind.service": "By booking", "example": "Example",
             "add": "Add", "added": "Added", "remove": "Remove {n} from the request",
             "quote": "On request", "perPerson": "per person", "afterConfirm": "paid after confirmation",
+            "tbd": "Date to be announced", "open": "Enrolment open", "priceTbd": "Price to be confirmed", "priceTbdSmall": "we send the price on WhatsApp",
             "tray.none": "Nothing chosen", "tray.one": "1 item in the request", "tray.many": "{n} items in the request",
             "tray.hint": "Tap the cards to add them to the request.",
             "tray.payNow": "Pay now: {v}", "tray.toConfirm": "{n} to confirm",
@@ -219,6 +222,7 @@
             "st.pay": "Pay now", "st.pending": "To confirm", "st.verified": "Preferred time",
             "sum.total": "Total to pay now", "sum.nothing": "Nothing to pay now",
             "sum.note": "Booked services: the team confirms the time and sends a quote on WhatsApp. You only pay after that.",
+            "sum.noteEvt": "Events with the date or price still to be announced: the team sends the details on WhatsApp and holds your place. You only pay after that.",
             "pay.title": "How to pay", "pay.send": "Send {v} with {m} to:", "pay.holder": "Account name: {n}",
             "pay.ref": "Write this reference in the description, if your app allows it:",
             "pay.proof": "Keep the confirmation SMS and send a screenshot on WhatsApp.",
@@ -283,6 +287,19 @@
                     O("Linguagem corporal", "Body language"), O("Prender a atenção", "Holding attention")] },
             { id: "objectivo", type: "text", wide: true, label: L("O que quer conseguir no fim dos 30 dias?", "What do you want to achieve by the end of the 30 days?"),
                 ph: L("Ex.: apresentar o meu negócio a investidores", "E.g. pitch my business to investors") }
+        ],
+        maquilhagem: [
+            { id: "nivel", type: "chips", req: true, label: L("Qual é a sua experiência com maquilhagem?", "What is your make-up experience?"),
+                opts: [O("Nenhuma, quero começar do zero", "None, starting from scratch"), O("Faço a minha própria maquilhagem", "I do my own make-up"),
+                    O("Já maquilho outras pessoas", "I already do other people's make-up"), O("Sou profissional", "I'm a professional")] },
+            { id: "objectivo", type: "chips", req: true, wide: true, label: L("Qual é o seu objectivo com o curso?", "What do you want from the course?"),
+                opts: [O("Uso pessoal", "Personal use"), O("Trabalhar como maquilhadora", "Work as a make-up artist"),
+                    O("Abrir o meu próprio negócio", "Start my own business"), O("Melhorar o que já faço", "Improve what I already do")] },
+            { id: "interesse", type: "multi", wide: true, label: L("O que mais quer aprender?", "What do you most want to learn?"),
+                hint: L("Pode escolher várias.", "You can choose several."),
+                opts: [O("Preparação da pele", "Skin preparation"), O("Base, corretivo e contorno", "Foundation, concealer and contour"),
+                    O("Olhos", "Eyes"), O("Lábios", "Lips"), O("Noivas", "Brides"), O("Pele negra", "Dark skin"),
+                    O("Maquilhagem social", "Event make-up"), O("Empreendedorismo", "Starting a business")] }
         ],
         lideranca: [
             { id: "funcao", type: "chips", req: true, wide: true, label: L("Qual é a sua função?", "What is your role?"),
@@ -361,9 +378,21 @@
             cat: L("Comunicação", "Communication"),
             title: L("Formação em Comunicação e Oratória (2.ª edição)", "Communication and Public Speaking Course (2nd edition)"),
             summary: L("30 dias para comunicar de forma assertiva, eficaz e profissional.", "30 days to communicate assertively, effectively and professionally."),
-            date: "2026-11-01", dateEnd: "2026-12-31", monthsOnly: true, time: null,
+            date: null, time: null, ongoing: true,   // ongoing course: no end date, only the editions change
             place: L("Rua da Tchamba n.º 113, Maputo", "Rua da Tchamba no. 113, Maputo"),
             price: 1200   // EDIT: the 1.ª edição cost 1.200 MT; confirm the 2.ª edição price
+        },
+        {
+            // same course as js/events.js "curso-maquilhagem" (flyer: assets/images/flyers/curso-maquilhagem.webp)
+            // ongoing course: no end date, only the editions change ("Inscrições abertas").
+            id: "curso-maquilhagem", kind: "event", theme: "maquilhagem",
+            img: ROOT + "assets/images/flyers/curso-maquilhagem.webp", imgPos: "center 30%",
+            cat: L("Beleza e estética", "Beauty"),
+            title: L("Curso de Maquilhagem", "Make-up Course"),
+            summary: L("5 dias, da preparação da pele às técnicas avançadas, com certificado.", "5 days, from skin prep to advanced techniques, with a certificate."),
+            date: null, time: null, ongoing: true,
+            place: L("Rua da Tchamba n.º 113, Maputo", "Rua da Tchamba no. 113, Maputo"),
+            price: 5000
         },
         {
             id: "consultoria", kind: "service", theme: "consultoria",
@@ -486,7 +515,12 @@
             ? WDLONG.pt[d.getDay()] + ", " + d.getDate() + " de " + MONTHS.pt[d.getMonth()]
             : WDLONG.en[d.getDay()] + ", " + d.getDate() + " " + MONTHS.en[d.getMonth()];
     }
+    // events whose date or price is not set yet (date: null / price: null); ongoing: true = a course
+    // with no end date ("Inscrições abertas"), always shown
+    function hasPrice(it) { return it.kind === "event" && typeof it.price === "number"; }
     function eventWhen(it) {
+        if (it.ongoing) return t("open");
+        if (!it.date) return t("tbd");
         if (it.monthsOnly) {
             var a = pd(it.date), b = pd(it.dateEnd);
             return MON3[state.lang][a.getMonth()] + " – " + MON3[state.lang][b.getMonth()] + " " + b.getFullYear();
@@ -503,7 +537,7 @@
     })();
     var LAST_DAY = (function () { var d = new Date(TODAY); d.setMonth(d.getMonth() + MONTHS_AHEAD + 1, 0); return d; })();
 
-    function isUpcoming(it) { return pd(it.dateEnd || it.date) >= TODAY; }
+    function isUpcoming(it) { return it.ongoing || !it.date || pd(it.dateEnd || it.date) >= TODAY; }
     function overlaps(a, b) { return a.s < b.e && b.s < a.e; }
 
     /* ---------------------------------------------------------- AGENDA */
@@ -618,6 +652,7 @@
 
     /* ---------------------------------------------------------- DASHBOARD */
     function priceHTML(it) {
+        if (it.kind === "event" && !hasPrice(it)) return '<span class="cp-price cp-price--quote">' + esc(t("priceTbd")) + "<small>" + esc(t("priceTbdSmall")) + "</small></span>";
         if (it.kind === "event") return '<span class="cp-price">' + mt(it.price) + "<small>" + esc(t("perPerson")) + "</small></span>";
         return '<span class="cp-price cp-price--quote">' + esc(t("quote")) + "<small>" + esc(t("afterConfirm")) + "</small></span>";
     }
@@ -654,12 +689,14 @@
     function isShown(it) { return it.kind === "service" || isUpcoming(it); }
 
     function totals() {
-        var pay = 0, nPay = 0, nConfirm = 0;
+        var pay = 0, nPay = 0, nConfirm = 0, nEvtTbd = 0;
         state.selected.forEach(function (id) {
             var it = BY_ID[id];
-            if (it.kind === "event") { pay += it.price * (state.qty[id] || 1); nPay++; } else nConfirm++;
+            if (hasPrice(it)) { pay += it.price * (state.qty[id] || 1); nPay++; }
+            else if (it.kind === "event") nEvtTbd++;
+            else nConfirm++;
         });
-        return { pay: pay, nPay: nPay, nConfirm: nConfirm };
+        return { pay: pay, nPay: nPay, nConfirm: nConfirm, nEvtTbd: nEvtTbd };
     }
 
     function renderTray() {
@@ -669,7 +706,7 @@
         $("#trayCount").textContent = n === 0 ? t("tray.none") : n === 1 ? t("tray.one") : t("tray.many", { n: n });
         var bits = [];
         if (tt.pay) bits.push(t("tray.payNow", { v: mt(tt.pay) }));
-        if (tt.nConfirm) bits.push(t("tray.toConfirm", { n: tt.nConfirm }));
+        if (tt.nConfirm + tt.nEvtTbd) bits.push(t("tray.toConfirm", { n: tt.nConfirm + tt.nEvtTbd }));
         $("#traySub").textContent = n ? bits.join(" · ") : t("tray.hint");
     }
 
@@ -772,7 +809,7 @@
         var h = '<section class="cp-panel" data-panel="' + it.id + '" aria-label="' + esc(tx(it.title)) + '">' +
             '<header class="cp-panel-head"><img src="' + it.img + '" alt="" style="object-position:' + (it.imgPos || "center") + '">' +
             '<div class="cp-panel-title"><h4>' + esc(tx(it.title)) + "</h4><p>" + sub + "</p>" +
-            '<span class="cp-status ' + (it.kind === "event" ? "cp-status--pay" : "cp-status--pending") + '" data-panel-status="' + it.id + '">' + statusText(it) + "</span></div>" +
+            '<span class="cp-status ' + (hasPrice(it) ? "cp-status--pay" : "cp-status--pending") + '" data-panel-status="' + it.id + '">' + statusText(it) + "</span></div>" +
             '<button type="button" class="cp-remove" data-remove="' + it.id + '" aria-label="' + esc(t("remove", { n: tx(it.title) })) + '"><i class="bi bi-x-lg" aria-hidden="true"></i></button></header>' +
             '<div class="cp-panel-body"><div class="cp-qgrid">' + Q[it.theme].map(function (q) { return questionHTML(it, q); }).join("") + "</div>";
         if (it.kind === "event") {
@@ -780,7 +817,9 @@
             h += '<div class="cp-qgrid"><div class="cp-q"><span class="form-label">' + esc(t("qty")) + '</span><span class="cp-hint">' + esc(t("qtyHint")) + "</span>" +
                 '<div class="cp-qty"><button type="button" data-qty="-1" data-for="' + it.id + '" aria-label="−"' + (q <= 1 ? " disabled" : "") + '><i class="bi bi-dash"></i></button>' +
                 '<output aria-live="polite">' + q + '</output><button type="button" data-qty="1" data-for="' + it.id + '" aria-label="+"' + (q >= 10 ? " disabled" : "") + '><i class="bi bi-plus"></i></button></div></div>' +
-                '<div class="cp-q" style="align-self:end"><div class="cp-line-total"><span>' + esc(t("lineTotal", { q: q, p: mt(it.price) })) + "</span><strong>" + mt(q * it.price) + "</strong></div></div></div>";
+                '<div class="cp-q" style="align-self:end"><div class="cp-line-total">' + (hasPrice(it)
+                    ? "<span>" + esc(t("lineTotal", { q: q, p: mt(it.price) })) + "</span><strong>" + mt(q * it.price) + "</strong>"
+                    : "<span>" + esc(t("priceTbdSmall")) + "</span><strong>" + esc(t("priceTbd")) + "</strong>") + "</div></div></div>";
         } else {
             h += '<div class="cp-sched" data-sched="' + it.id + '">' + schedHTML(it) + "</div>";
         }
@@ -788,7 +827,7 @@
     }
 
     function statusText(it) {
-        if (it.kind === "event") return esc(t("st.pay"));
+        if (it.kind === "event") return esc(t(hasPrice(it) ? "st.pay" : "st.pending"));
         var b = state.book[it.id];
         return esc(t(b && b.status === "ok" ? "st.verified" : "st.pending"));
     }
@@ -1000,6 +1039,10 @@
             if (it.kind === "event") {
                 var q = state.qty[id] || 1;
                 line = esc(eventWhen(it)) + (it.time ? " · " + esc(it.time) : "") + " · " + esc(tx(it.place));
+                if (!hasPrice(it)) {
+                    amt = esc(t("priceTbd")) + "<small>" + esc(t("priceTbdSmall")) + "</small>";
+                    return row(it, line, amt, '<span class="cp-status cp-status--pending"><i class="bi bi-hourglass-split" aria-hidden="true"></i>' + esc(t("st.pending")) + "</span>");
+                }
                 amt = mt(q * it.price) + "<small>" + esc(t("lineTotal", { q: q, p: mt(it.price) })) + "</small>";
                 return row(it, line, amt, '<span class="cp-status cp-status--pay"><i class="bi bi-wallet2" aria-hidden="true"></i>' + esc(t("st.pay")) + "</span>");
             }
@@ -1014,6 +1057,7 @@
         }
         $("#summaryBox").innerHTML = '<div class="cp-summary">' + rows +
             (tt.nConfirm ? '<div class="cp-sum-note"><i class="bi bi-info-circle" aria-hidden="true"></i><span>' + esc(t("sum.note")) + "</span></div>" : "") +
+            (tt.nEvtTbd ? '<div class="cp-sum-note"><i class="bi bi-info-circle" aria-hidden="true"></i><span>' + esc(t("sum.noteEvt")) + "</span></div>" : "") +
             '<div class="cp-sum-total"><span>' + esc(t(tt.pay ? "sum.total" : "sum.nothing")) + "</span><strong>" + mt(tt.pay) + "</strong></div></div>";
         renderPay();
     }
@@ -1174,7 +1218,7 @@
         if ($("#f-org").value.trim()) L2.push("Organização: " + $("#f-org").value.trim());
         state.selected.forEach(function (id) {
             var it = BY_ID[id], line = "- " + it.title.pt;
-            if (it.kind === "event") line += " · " + (state.qty[id] || 1) + " participante(s) · " + mt((state.qty[id] || 1) * it.price);
+            if (it.kind === "event") line += " · " + (state.qty[id] || 1) + " participante(s) · " + (hasPrice(it) ? mt((state.qty[id] || 1) * it.price) : "preço a confirmar");
             else { var b = state.book[id]; if (b && b.date && b.s != null) line += " · pretendido " + b.date + " " + hm(b.s) + "–" + hm(b.e) + " (a confirmar)"; }
             var ans = state.answers[id] || {};
             Object.keys(ans).forEach(function (k) {
@@ -1198,7 +1242,7 @@
             area: $("#f-sector").value,
             itens: state.selected.map(function (id) {
                 var it = BY_ID[id], o = { id: id, titulo: it.title.pt, tipo: it.kind === "event" ? "evento" : "servico", respostas: state.answers[id] || {} };
-                if (it.kind === "event") { o.participantes = state.qty[id] || 1; o.valor = (state.qty[id] || 1) * it.price; }
+                if (it.kind === "event") { o.participantes = state.qty[id] || 1; o.valor = hasPrice(it) ? (state.qty[id] || 1) * it.price : null; }
                 else { var b = state.book[id]; o.marcacao = b.date + " " + hm(b.s) + "–" + hm(b.e); o.estado = "horário pretendido, a confirmar"; }
                 return o;
             }),
@@ -1413,15 +1457,22 @@
     }
 
     /* ---------------------------------------------------------- NAVBAR
-       show/hide and the topbar: js/javascript.js + js/topbar.js, as on every page.
-       Here it only gets a navy background once past the hero (the form below is light). */
+       show/hide and the topbar: js/javascript.js + js/topbar.js, as on every page (transparent,
+       no background of its own). Here its text only turns dark while it sits over the light
+       contact form (.on-light, css/contacto.css), so it stays readable. */
     function navbar() {
-        var nav = $("#mainNavbar"), hero = $(".page-hero");
+        var nav = $("#mainNavbar"), light = $("#contact");
         if (!$("#dashCards")) return;                       // contacto.html only; the other pages keep their navbar as it is
-        if (!nav || !hero || !("IntersectionObserver" in window)) return;
-        new IntersectionObserver(function (en) {
-            nav.classList.toggle("is-solid", !en[0].isIntersecting);
-        }, { rootMargin: "-110px 0px 0px 0px" }).observe(hero);
+        if (!nav || !light) return;
+        var ticking = false;
+        function check() {
+            ticking = false;
+            var r = light.getBoundingClientRect(), line = nav.offsetHeight / 2;   // the navbar's middle line
+            nav.classList.toggle("on-light", r.top <= line && r.bottom >= line);
+        }
+        window.addEventListener("scroll", function () { if (!ticking) { ticking = true; requestAnimationFrame(check); } }, { passive: true });
+        window.addEventListener("resize", check);
+        check();
     }
 
     /* ---------------------------------------------------------- START */
