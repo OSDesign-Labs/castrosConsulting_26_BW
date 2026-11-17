@@ -11,18 +11,26 @@
    Elizabeth before launch (prices, payment numbers, the busy agenda).
 
    Why services are NOT paid in step 3: a static site cannot see the team's
-   real calendar. The page checks the slot against the BUSY list below
-   (which OS Design keeps up to date, like the events list) and sends a
-   pre-booking; the team confirms on WhatsApp, and only then is a price
-   and payment requested. Taking money for a slot that might clash would
-   mean refunds.
+   real calendar. The page only checks the fixed rules (opening hours,
+   2 working days ahead, holidays, no clash inside the same request) and
+   sends the chosen time as a REQUEST; the team checks the agenda and
+   confirms on WhatsApp, and only then is a price and payment requested.
+   Nothing is reserved by the page. Real calendar sync is a later upgrade
+   (n8n or Apps Script reading Google Calendar → fill BUSY from it).
    ========================================================== */
 (function () {
     "use strict";
 
     /* ---------------------------------------------------------- CONFIG */
-    var PREVIEW = true;                                   // true: nothing is sent (demo for the client)
-    var FORMSPREE_ENDPOINT = "https://formspree.io/f/mwlpzyva";   // the site's existing form
+    /* the site root, worked out from this script's own URL, so the item images load from
+       index.html (root) as well as from html/*.html */
+    var ROOT = (function () {
+        var src = document.currentScript && document.currentScript.src;
+        return src ? src.replace(/js\/contacto\.js(\?.*)?$/, "") : "../";
+    })();
+    var PREVIEW = false;                                  // true: nothing is sent (demo mode, logs the payload to the console)
+    /*var FORMSPREE_ENDPOINT = "https://formspree.io/f/mwlpzyva";   // EDIT before launch: still delivers to the OS Design email; point it at castrosconsultoria@gmail.com (or swap for an n8n webhook URL) */
+    var FORMSPREE_ENDPOINT = "https://osdesign.duckdns.org/webhook/castros-pedido";
     var WHATSAPP = "258878665180";                        // the one WhatsApp number used across the site
     var WHATSAPP_SHOWN = "+258 87 866 5180";
     var PAY = {                                           // EDIT: confirm wallets + account holder name
@@ -39,36 +47,12 @@
         "2027-02-03": { pt: "Dia dos Heróis Moçambicanos", en: "Heroes' Day" }
     };
 
-    /* Castros' agenda. EDIT: sample data. r = resources it takes:
-       "equipa" (the team) and/or "espaco" (the room at Rua da Tchamba).
-       Private bookings never show who booked them; only pub: true entries show a name. */
-    var BUSY = [
-        { d: "2026-11-03", s: "09:00", e: "11:00", r: ["equipa"] },
-        { d: "2026-11-04", s: "13:00", e: "17:00", r: ["espaco"] },
-        { d: "2026-11-05", s: "08:00", e: "12:00", r: ["equipa"] },
-        { d: "2026-11-06", s: "08:00", e: "17:00", r: ["equipa"] },
-        { d: "2026-11-10", s: "10:00", e: "12:00", r: ["equipa"] },
-        { d: "2026-11-11", s: "08:00", e: "17:00", r: ["espaco"] },
-        { d: "2026-11-12", s: "14:00", e: "16:00", r: ["equipa"] },
-        { d: "2026-11-13", s: "08:00", e: "10:00", r: ["equipa"] },
-        { d: "2026-11-13", s: "13:00", e: "17:00", r: ["espaco"] },
-        { d: "2026-11-17", s: "08:00", e: "17:00", r: ["equipa", "espaco"] },
-        { d: "2026-11-18", s: "09:00", e: "12:00", r: ["espaco"] },
-        { d: "2026-11-19", s: "13:00", e: "15:00", r: ["equipa"] },
-        { d: "2026-11-24", s: "08:00", e: "12:00", r: ["equipa"] },
-        { d: "2026-11-25", s: "14:00", e: "17:00", r: ["espaco"] },
-        { d: "2026-11-26", s: "10:00", e: "11:00", r: ["equipa"] },
-        { d: "2026-12-01", s: "08:00", e: "17:00", r: ["equipa"] },
-        { d: "2026-12-02", s: "09:00", e: "13:00", r: ["espaco"] },
-        { d: "2026-12-08", s: "08:00", e: "12:00", r: ["equipa"] },
-        { d: "2026-12-10", s: "13:00", e: "17:00", r: ["espaco"] },
-        { d: "2026-12-15", s: "08:00", e: "17:00", r: ["equipa", "espaco"] }
-    ];
-    // weekly blocks. EDIT: the 2.ª edição timetable is assumed to match the 1.ª (Ter/Qui 17–19, Sáb 09–13)
-    var RECURRING = [
-        { from: "2026-11-03", to: "2026-12-19", dow: [2, 4], s: "17:00", e: "19:00", r: ["espaco", "equipa"], pub: "formacao-comunicacao-oratoria-2-edicao" },
-        { from: "2026-11-07", to: "2026-12-19", dow: [6], s: "09:00", e: "13:00", r: ["espaco", "equipa"], pub: "formacao-comunicacao-oratoria-2-edicao" }
-    ];
+    /* Castros' agenda: empty on purpose. The page cannot see the real calendar, so it does not
+       pretend to; the team checks availability when the request arrives. When calendar sync exists,
+       fill these from it. Format: BUSY { d: "2026-11-03", s: "09:00", e: "11:00", r: ["equipa"|"espaco"] },
+       RECURRING { from, to, dow: [0-6], s, e, r, pub: event id }. Private entries never show who booked. */
+    var BUSY = [];
+    var RECURRING = [];
 
     /* ---------------------------------------------------------- TEXT */
     function L(pt, en) { return { pt: pt, en: en }; }
@@ -99,18 +83,19 @@
             "err.consent": "Marque esta caixa para enviar o pedido.", "err.required": "Escolha uma opção.",
             "err.none": "Escolha pelo menos um evento ou serviço para continuar.",
             "err.fix": "Faltam respostas em {n}. Estão assinaladas a vermelho.",
-            "err.verify": "Verifique a disponibilidade do horário de {n} antes de continuar.",
-            "err.conflictNow": "O horário de {n} deixou de estar livre. Escolha outro e verifique de novo.",
-            "s2.title": "O que procura.", "s2.desc": "Cada evento e serviço tem as suas perguntas. Para serviços com marcação, escolha um horário e verificamos a disponibilidade.",
+            "err.verify": "Confirme o horário pretendido de {n} antes de continuar.",
+            "err.conflictNow": "O horário de {n} deixou de ser possível. Escolha outro e confirme de novo.",
+            "s2.title": "O que procura.", "s2.desc": "Cada evento e serviço tem as suas perguntas. Para serviços com marcação, escolha o horário pretendido; a equipa confirma a disponibilidade por WhatsApp.",
             "s2.picker": "Adicionar ao pedido",
             "s2.empty": "Ainda não escolheu nada. Toque num evento ou serviço acima.",
             "s3.title": "Confirmar e pagar.", "s3.titleB": "Confirmar o pedido.",
             "s3.desc": "Reveja o pedido. Os eventos pagam-se já; os serviços com marcação só depois de a equipa confirmar o horário.",
             "s3.descB": "Reveja o pedido. Não há nada a pagar agora: a equipa confirma os horários e envia o orçamento por WhatsApp.",
             "f.msg": "Mensagem (opcional)", "f.msgPh": "Alguma coisa que devamos saber antes de confirmar?",
-            "f.consent": "Aceito que a Castros Consultoria use estes dados para tratar o meu pedido, conforme a <a href=\"#\" class=\"cp-link\">Política de Privacidade</a>.",
+            "f.consent": "Aceito que a Castros Consultoria use estes dados para tratar o meu pedido, conforme a <a href=\"privacidade.html\" class=\"cp-link\">Política de Privacidade</a>.",
             "btn.next": "Continuar", "btn.back": "Voltar", "btn.submitPay": "Enviar inscrição", "btn.submit": "Enviar pedido", "btn.sending": "A enviar...",
             "preview": "Pré-visualização: este formulário não envia dados.",
+            "err.send": "Não foi possível enviar o pedido. Verifique a ligação e tente de novo, ou envie-o pelo WhatsApp.", "err.sendWa": "Enviar pelo WhatsApp",
             "foot.loc": "Localização", "foot.contact": "Contacto", "foot.privacy": "Política de Privacidade", "foot.terms": "Termos de Serviço",
             "foot.rights": "© 2026 Castros Consultoria. Todos os direitos reservados.",
             "kind.event": "Evento", "kind.service": "Com marcação", "example": "Exemplo",
@@ -127,7 +112,7 @@
             "sched.busy": "Ocupado", "sched.mine": "No seu pedido",
             "sched.multiDay": "Para formações de vários dias, escolha o primeiro dia; o resto combinamos consigo.",
             "sched.picked": "Horário escolhido", "sched.none": "Nenhum horário escolhido",
-            "verify": "Verificar disponibilidade", "verify.again": "Verificar de novo", "verifying": "A verificar...",
+            "verify": "Confirmar horário pretendido", "verify.again": "Confirmar de novo", "verifying": "A verificar...",
             "chk.hours": "Dentro do horário de funcionamento", "chk.lead": "Com pelo menos 2 dias úteis de antecedência",
             "chk.agenda.equipa": "Equipa Castros livre", "chk.agenda.espaco": "Espaço da Rua da Tchamba livre",
             "chk.agenda.both": "Equipa e espaço livres",
@@ -135,12 +120,12 @@
             "chk.busyPub": "Coincide com: {n}", "chk.busyPriv": "Já existe uma marcação nesse horário.",
             "chk.cartHit": "Coincide com {n}, que também está no seu pedido.",
             "chk.closed": "Fechado nesse horário.", "chk.holiday": "Feriado: {n}.", "chk.tooSoon": "Precisamos de pelo menos 2 dias úteis.",
-            "res.ok": "Horário disponível. Fica pré-reservado.",
-            "res.okSub": "A equipa confirma por WhatsApp em até 24 horas úteis.",
-            "res.bad": "Este horário não está disponível.", "res.alts": "Horários livres mais próximos:",
+            "res.ok": "Horário pretendido registado. Ainda não está reservado.",
+            "res.okSub": "Depois de enviar o pedido, a equipa verifica a agenda e confirma por WhatsApp em até 24 horas úteis.",
+            "res.bad": "Este horário não é possível.", "res.alts": "Horários possíveis mais próximos:",
             "res.noAlts": "Não há horários livres próximos. Escolha outra semana.",
             "res.changed": "Mudou a duração ou o local: escolha e verifique o horário de novo.",
-            "st.pay": "Pagar agora", "st.pending": "A confirmar", "st.verified": "Pré-reservado",
+            "st.pay": "Pagar agora", "st.pending": "A confirmar", "st.verified": "Horário pretendido",
             "sum.total": "Total a pagar agora", "sum.nothing": "Nada a pagar agora",
             "sum.note": "Serviços com marcação: a equipa confirma o horário e envia o orçamento por WhatsApp. Só paga depois disso.",
             "pay.title": "Como pagar", "pay.send": "Envie {v} por {m} para o número:", "pay.holder": "Em nome de {n}",
@@ -189,18 +174,19 @@
             "err.consent": "Tick this box to send the request.", "err.required": "Choose an option.",
             "err.none": "Choose at least one event or service to continue.",
             "err.fix": "Some answers are missing in {n}. They are marked in red.",
-            "err.verify": "Check availability for {n} before continuing.",
-            "err.conflictNow": "The time for {n} is no longer free. Pick another one and check again.",
-            "s2.title": "What you need.", "s2.desc": "Each event and service has its own questions. For services with a booking, pick a time and we check availability.",
+            "err.verify": "Confirm your preferred time for {n} before continuing.",
+            "err.conflictNow": "The time for {n} is no longer possible. Pick another one and confirm again.",
+            "s2.title": "What you need.", "s2.desc": "Each event and service has its own questions. For services with a booking, pick your preferred time; the team confirms availability on WhatsApp.",
             "s2.picker": "Add to the request",
             "s2.empty": "Nothing chosen yet. Tap an event or service above.",
             "s3.title": "Confirm and pay.", "s3.titleB": "Confirm the request.",
             "s3.desc": "Review your request. Events are paid now; booked services only after the team confirms the time.",
             "s3.descB": "Review your request. Nothing to pay now: the team confirms the times and sends a quote on WhatsApp.",
             "f.msg": "Message (optional)", "f.msgPh": "Anything we should know before confirming?",
-            "f.consent": "I agree that Castros Consultoria may use this data to handle my request, as set out in the <a href=\"#\" class=\"cp-link\">Privacy Policy</a>.",
+            "f.consent": "I agree that Castros Consultoria may use this data to handle my request, as set out in the <a href=\"privacidade.html\" class=\"cp-link\">Privacy Policy</a>.",
             "btn.next": "Continue", "btn.back": "Back", "btn.submitPay": "Send sign-up", "btn.submit": "Send request", "btn.sending": "Sending...",
             "preview": "Preview: this form does not send any data.",
+            "err.send": "We could not send your request. Check your connection and try again, or send it on WhatsApp.", "err.sendWa": "Send on WhatsApp",
             "foot.loc": "Location", "foot.contact": "Contact", "foot.privacy": "Privacy Policy", "foot.terms": "Terms of Service",
             "foot.rights": "© 2026 Castros Consultoria. All rights reserved.",
             "kind.event": "Event", "kind.service": "By booking", "example": "Example",
@@ -217,7 +203,7 @@
             "sched.busy": "Booked", "sched.mine": "In your request",
             "sched.multiDay": "For multi-day training, pick the first day; we will arrange the rest with you.",
             "sched.picked": "Chosen time", "sched.none": "No time chosen",
-            "verify": "Check availability", "verify.again": "Check again", "verifying": "Checking...",
+            "verify": "Confirm preferred time", "verify.again": "Confirm again", "verifying": "Checking...",
             "chk.hours": "Within opening hours", "chk.lead": "At least 2 working days ahead",
             "chk.agenda.equipa": "Castros team free", "chk.agenda.espaco": "Rua da Tchamba space free",
             "chk.agenda.both": "Team and space free",
@@ -225,12 +211,12 @@
             "chk.busyPub": "Clashes with: {n}", "chk.busyPriv": "There is already a booking at that time.",
             "chk.cartHit": "Clashes with {n}, which is also in your request.",
             "chk.closed": "Closed at that time.", "chk.holiday": "Public holiday: {n}.", "chk.tooSoon": "We need at least 2 working days.",
-            "res.ok": "Time available. It is now pre-booked.",
-            "res.okSub": "The team confirms on WhatsApp within 24 working hours.",
-            "res.bad": "This time is not available.", "res.alts": "Nearest free times:",
+            "res.ok": "Preferred time noted. It is not booked yet.",
+            "res.okSub": "Once you send the request, the team checks the agenda and confirms on WhatsApp within 24 working hours.",
+            "res.bad": "This time is not possible.", "res.alts": "Nearest possible times:",
             "res.noAlts": "No free times nearby. Try another week.",
             "res.changed": "The duration or place changed: pick a time and check it again.",
-            "st.pay": "Pay now", "st.pending": "To confirm", "st.verified": "Pre-booked",
+            "st.pay": "Pay now", "st.pending": "To confirm", "st.verified": "Preferred time",
             "sum.total": "Total to pay now", "sum.nothing": "Nothing to pay now",
             "sum.note": "Booked services: the team confirms the time and sends a quote on WhatsApp. You only pay after that.",
             "pay.title": "How to pay", "pay.send": "Send {v} with {m} to:", "pay.holder": "Account name: {n}",
@@ -364,43 +350,24 @@
     };
 
     /* ---------------------------------------------------------- ITEMS (dashboard cards)
-       events: fixed date, paid in step 3. services: booked on the calendar, confirmed by the team. */
+       events: fixed date, paid in step 3. services: booked on the calendar, confirmed by the team.
+       Events: only the upcoming ones from js/events.js (same id, title, dates, place and flyer as the
+       home page). Add one here when it is added there; a past one hides itself (isUpcoming).
+       theme = which question set in Q it uses (atendimento and lideranca are ready for the next editions). */
     var ITEMS = [
         {
             id: "formacao-comunicacao-oratoria-2-edicao", kind: "event", theme: "oratoria",
-            img: "assets/img/ev-oratoria.webp", imgPos: "center 20%",
+            img: ROOT + "assets/images/recent/flyer-comunicacao-oratoria-2-edicao.webp", imgPos: "center 20%",
             cat: L("Comunicação", "Communication"),
             title: L("Formação em Comunicação e Oratória (2.ª edição)", "Communication and Public Speaking Course (2nd edition)"),
-            summary: L("30 dias para comunicar de forma assertiva, eficaz e profissional.", "30 days to speak assertively, clearly and professionally."),
+            summary: L("30 dias para comunicar de forma assertiva, eficaz e profissional.", "30 days to communicate assertively, effectively and professionally."),
             date: "2026-11-01", dateEnd: "2026-12-31", monthsOnly: true, time: null,
-            place: L("Rua da Tchamba, n.º 113", "Rua da Tchamba, no. 113"),
+            place: L("Rua da Tchamba n.º 113, Maputo", "Rua da Tchamba no. 113, Maputo"),
             price: 1200   // EDIT: the 1.ª edição cost 1.200 MT; confirm the 2.ª edição price
         },
         {
-            id: "workshop-atendimento-nova-edicao", kind: "event", theme: "atendimento", example: true,   // EDIT: example date
-            img: "assets/img/ev-atendimento.webp", imgPos: "center 35%",
-            cat: L("Atendimento", "Customer service"),
-            title: L("Workshop Atendimento ao Cliente: Arte que Encanta e Fideliza", "Customer Service Workshop: the Art of Delighting and Keeping Customers"),
-            summary: L("Técnicas práticas para encantar, lidar com reclamações e fidelizar clientes.", "Practical techniques to delight customers, handle complaints and build loyalty."),
-            date: "2026-11-21", time: "10:00–14:00",
-            place: L("Rua da Tchamba, n.º 113", "Rua da Tchamba, no. 113"),
-            price: 500,   // the September edition's price (Google Form)
-            busy: ["espaco", "equipa"]
-        },
-        {
-            id: "masterclass-lideranca-dezembro", kind: "event", theme: "lideranca", example: true,       // EDIT: example date + price
-            img: "assets/img/ev-lideranca.webp", imgPos: "center 30%",
-            cat: L("Liderança", "Leadership"),
-            title: L("Master Class: Códigos da Liderança", "Master Class: Codes of Leadership"),
-            summary: L("Uma manhã com Elizabeth Castro sobre ética, decisão e liderança de equipas.", "A morning with Elizabeth Castro on ethics, decision-making and leading teams."),
-            date: "2026-12-05", time: "09:00–13:00",
-            place: L("Rua da Tchamba, n.º 113", "Rua da Tchamba, no. 113"),
-            price: 1000,
-            busy: ["espaco", "equipa"]
-        },
-        {
             id: "consultoria", kind: "service", theme: "consultoria",
-            img: "assets/img/sv-consultoria.webp", imgPos: "center 40%",
+            img: ROOT + "assets/images/contacto/sv-consultoria.webp", imgPos: "center 40%",
             cat: L("Consultoria", "Consulting"),
             title: L("Reunião de diagnóstico", "Diagnostic meeting"),
             summary: L("Uma hora para entender o seu desafio e propor um caminho.", "One hour to understand your challenge and propose a way forward."),
@@ -409,7 +376,7 @@
         },
         {
             id: "formacoes", kind: "service", theme: "formacoes",
-            img: "assets/img/sv-formacoes.webp", imgPos: "center 30%",
+            img: ROOT + "assets/images/contacto/sv-formacoes.webp", imgPos: "center 30%",
             cat: L("Formações e treinamento", "Training"),
             title: L("Formação para a sua equipa", "Training for your team"),
             summary: L("Programas à medida, no nosso espaço, na sua empresa ou online.", "Tailored programmes at our space, your company or online."),
@@ -419,7 +386,7 @@
         },
         {
             id: "palestras", kind: "service", theme: "palestras",
-            img: "assets/img/sv-palestras.webp", imgPos: "center 30%",
+            img: ROOT + "assets/images/contacto/sv-palestras.webp", imgPos: "center 30%",
             cat: L("Palestras e workshops", "Talks and workshops"),
             title: L("Palestra para o seu evento", "A talk for your event"),
             summary: L("Elizabeth Castro como oradora no seu evento, escola ou empresa.", "Elizabeth Castro as a speaker at your event, school or company."),
@@ -428,7 +395,7 @@
         },
         {
             id: "espacos", kind: "service", theme: "espacos",
-            img: "assets/img/sv-espacos.webp", imgPos: "center 45%",
+            img: ROOT + "assets/images/contacto/sv-espacos.webp", imgPos: "center 45%",
             cat: L("Espaços e podcasts", "Spaces and podcasts"),
             title: L("Aluguer do espaço", "Rent the space"),
             summary: L("Sala para workshops, reuniões e gravação de podcasts na Rua da Tchamba.", "A room for workshops, meetings and podcast recording on Rua da Tchamba."),
@@ -438,7 +405,7 @@
         },
         {
             id: "eventos", kind: "service", theme: "eventos",
-            img: "assets/img/sv-eventos.webp", imgPos: "center 35%",
+            img: ROOT + "assets/images/contacto/sv-eventos.webp", imgPos: "center 35%",
             cat: L("Organização de eventos", "Event planning"),
             title: L("Organizar um evento", "Plan an event"),
             summary: L("Conferências, eventos corporativos e team building, do plano ao dia.", "Conferences, corporate events and team building, from plan to day."),
@@ -460,6 +427,7 @@
         qty: {},
         book: {},
         method: "mpesa",
+        autoPick: "",                                       // the page's own service, picked on load (data-cp-preselect)
         ref: "",
         sent: false
     };
@@ -629,8 +597,10 @@
         var hit = castrosBusy(b.date).filter(function (x) {
             return x.r.some(function (r) { return res.indexOf(r) > -1; }) && overlaps(slot, x);
         })[0];
-        var agendaKey = res.length > 1 ? "chk.agenda.both" : "chk.agenda." + res[0];
-        checks.push({ k: agendaKey, ok: !hit, why: hit ? (hit.pub ? t("chk.busyPub", { n: tx(BY_ID[hit.pub].title) }) : t("chk.busyPriv")) : "" });
+        if (BUSY.length || RECURRING.length) {   // only claim "free" when there is an agenda to check against
+            var agendaKey = res.length > 1 ? "chk.agenda.both" : "chk.agenda." + res[0];
+            checks.push({ k: agendaKey, ok: !hit, why: hit ? (hit.pub ? t("chk.busyPub", { n: tx(BY_ID[hit.pub].title) }) : t("chk.busyPriv")) : "" });
+        }
         var mine = cartBusy(b.date, it.id).filter(function (x) { return overlaps(slot, x); })[0];
         checks.push({ k: "chk.cart", ok: !mine, why: mine ? t("chk.cartHit", { n: tx(BY_ID[mine.id].title) }) : "" });
         return checks;
@@ -654,6 +624,7 @@
 
     function renderCards() {
         var box = $("#dashCards");
+        if (!box) return;                                   // pages without the dashboard (consultoria.html)
         box.innerHTML = ITEMS.filter(isShown).map(function (it) {
             var sel = state.selected.indexOf(it.id) > -1;
             var meta = it.kind === "event"
@@ -675,8 +646,8 @@
                 '<i class="bi ' + (sel ? "bi-check2" : "bi-plus-lg") + '" aria-hidden="true"></i><span>' + esc(t(sel ? "added" : "add")) + "</span></button>" +
                 "</div></div></article>";
         }).join("");
-        $$("[data-count]").forEach(function (b) {
-            var k = b.getAttribute("data-count");
+        $$("[data-tally]").forEach(function (b) {
+            var k = b.getAttribute("data-tally");
             b.textContent = ITEMS.filter(function (it) { return isShown(it) && (k === "all" || it.kind === k); }).length;
         });
     }
@@ -693,6 +664,7 @@
 
     function renderTray() {
         var n = state.selected.length, tt = totals(), tray = $("#dashTray");
+        if (!tray) return;
         tray.classList.toggle("has-items", n > 0);
         $("#trayCount").textContent = n === 0 ? t("tray.none") : n === 1 ? t("tray.one") : t("tray.many", { n: n });
         var bits = [];
@@ -1181,9 +1153,39 @@
             if (top < 0) window.scrollTo({ top: window.scrollY + top - 96, behavior: reduced ? "auto" : "smooth" });
         };
         if (PREVIEW) { console.info("[contacto] payload (preview, not sent):", payload); setTimeout(done, 1100); return; }
+        var se = $("#sendError"); if (se) se.hidden = true;
         fetch(FORMSPREE_ENDPOINT, { method: "POST", headers: { Accept: "application/json", "Content-Type": "application/json" }, body: JSON.stringify(payload) })
             .then(function (r) { if (!r.ok) throw new Error(r.status); done(); })
-            .catch(function () { btn.disabled = false; $(".submit-label", btn).hidden = false; $(".submit-loading", btn).hidden = true; });
+            .catch(function (err) {
+                console.error("[contacto] send failed:", err);
+                btn.disabled = false; $(".submit-label", btn).hidden = false; $(".submit-loading", btn).hidden = true;
+                if (se) {   // never fail silently: offer WhatsApp with the whole request in the message
+                    se.innerHTML = esc(t("err.send")) + ' <a class="cp-wa-btn" href="' + waUrl(payload.resumo) + '" target="_blank" rel="noopener"><i class="bi bi-whatsapp" aria-hidden="true"></i>' + esc(t("err.sendWa")) + "</a>";
+                    se.hidden = false; se.focus && se.focus();
+                }
+            });
+    }
+
+    // one readable text block: easy to read in the notification email, and the WhatsApp fallback message
+    function plainSummary() {
+        var tt = totals(), L2 = [];
+        L2.push("Pedido " + state.ref + " · " + $("#f-name").value.trim());
+        L2.push("Email: " + $("#f-email").value.trim() + " · Tel: " + $("#f-phone").value.trim());
+        if ($("#f-org").value.trim()) L2.push("Organização: " + $("#f-org").value.trim());
+        state.selected.forEach(function (id) {
+            var it = BY_ID[id], line = "- " + it.title.pt;
+            if (it.kind === "event") line += " · " + (state.qty[id] || 1) + " participante(s) · " + mt((state.qty[id] || 1) * it.price);
+            else { var b = state.book[id]; if (b && b.date && b.s != null) line += " · pretendido " + b.date + " " + hm(b.s) + "–" + hm(b.e) + " (a confirmar)"; }
+            var ans = state.answers[id] || {};
+            Object.keys(ans).forEach(function (k) {
+                var v = ans[k]; if (v === "" || v == null || (Array.isArray(v) && !v.length)) return;
+                line += "\n    " + k + ": " + (Array.isArray(v) ? v.join(", ") : v);
+            });
+            L2.push(line);
+        });
+        if (tt.pay) L2.push("Total a pagar: " + mt(tt.pay) + " por " + PAY[state.method].name);
+        if ($("#f-msg").value.trim()) L2.push("Mensagem: " + $("#f-msg").value.trim());
+        return L2.join("\n");
     }
 
     function buildPayload() {
@@ -1197,12 +1199,14 @@
             itens: state.selected.map(function (id) {
                 var it = BY_ID[id], o = { id: id, titulo: it.title.pt, tipo: it.kind === "event" ? "evento" : "servico", respostas: state.answers[id] || {} };
                 if (it.kind === "event") { o.participantes = state.qty[id] || 1; o.valor = (state.qty[id] || 1) * it.price; }
-                else { var b = state.book[id]; o.marcacao = b.date + " " + hm(b.s) + "–" + hm(b.e); o.estado = "pré-reservado, a confirmar"; }
+                else { var b = state.book[id]; o.marcacao = b.date + " " + hm(b.s) + "–" + hm(b.e); o.estado = "horário pretendido, a confirmar"; }
                 return o;
             }),
             total_a_pagar: tt.pay, metodo: tt.pay ? PAY[state.method].name : "",
             codigo_transaccao: ($("#f-txn") || {}).value || "",
-            mensagem: $("#f-msg").value.trim(), idioma: state.lang, _gotcha: ""
+            mensagem: $("#f-msg").value.trim(), idioma: state.lang,
+            resumo: plainSummary(),
+            _gotcha: ($("#f-hp") || {}).value || ""   // Formspree drops the submission if a bot fills this
         };
     }
 
@@ -1219,15 +1223,11 @@
     }
 
     /* ---------------------------------------------------------- LANGUAGE */
+    // the page's own text (data-t). The navbar, footer and <html lang> belong to js/i18n.js
     function applyStatic() {
-        document.documentElement.lang = state.lang === "pt" ? "pt-MZ" : "en";
         $$("[data-t]").forEach(function (el) { el.textContent = t(el.getAttribute("data-t")); });
         $$("[data-t-html]").forEach(function (el) { el.innerHTML = t(el.getAttribute("data-t-html")); });
         $$("[data-tp]").forEach(function (el) { el.placeholder = t(el.getAttribute("data-tp")); });
-        $$(".lang-switch__btn").forEach(function (b) {
-            var on = b.getAttribute("data-lang") === state.lang;
-            b.classList.toggle("is-active", on); b.setAttribute("aria-pressed", String(on));
-        });
     }
 
     function setLang(l) {
@@ -1247,13 +1247,13 @@
         document.addEventListener("click", function (e) {
             var el;
             if ((el = e.target.closest("[data-toggle]"))) { toggleItem(el.getAttribute("data-toggle")); return; }
+            if ((el = e.target.closest("a[data-cp-area]"))) { presetArea(el.getAttribute("data-cp-area")); return; }   // consultoria.html cards
             if ((el = e.target.closest("[data-remove]"))) { toggleItem(el.getAttribute("data-remove"), false); return; }
             if ((el = e.target.closest("[data-filter]"))) {
                 state.filter = el.getAttribute("data-filter");
                 $$("[data-filter]").forEach(function (b) { var on = b === el; b.classList.toggle("is-active", on); b.setAttribute("aria-selected", String(on)); });
                 renderCards(); return;
             }
-            if ((el = e.target.closest(".lang-switch__btn"))) { setLang(el.getAttribute("data-lang")); return; }
             if (e.target.closest("[data-next-step]")) { next(); return; }
             if (e.target.closest("[data-prev-step]")) { prev(); return; }
             if ((el = e.target.closest("[data-qty]"))) {
@@ -1341,12 +1341,62 @@
         });
 
         $("#cpForm").addEventListener("submit", submit);
-        $("#trayGo").addEventListener("click", function (e) {
+        if ($("#trayGo")) $("#trayGo").addEventListener("click", function (e) {
             e.preventDefault();
             var card = $("#contact-form");
             window.scrollTo({ top: window.scrollY + card.getBoundingClientRect().top - 96, behavior: reduced ? "auto" : "smooth" });
             var f = state.step === 1 ? $("#f-name") : null; if (f) setTimeout(function () { f.focus({ preventScroll: true }); }, 500);
         });
+    }
+
+    /* Links elsewhere on the page ("Saber mais" on consultoria.html) can pick the Consultoria
+       item and answer its "Em que área precisa de apoio?" question; the visitor can change it. */
+    function presetArea(value) {
+        var id = "consultoria";
+        if (!BY_ID[id]) return;
+        if (state.selected.indexOf(id) < 0) toggleItem(id, true);
+        (state.answers[id] || (state.answers[id] = {})).area = value;
+        if (state.step === 2) renderPanels();
+    }
+
+    /* Links in the service pages' pop-ups ("Saber mais", "Inscrever-se", ...) say what they are about:
+         data-cp-item          item id to pick (e.g. the oratória event)
+         data-contact-service  the service, mapped to an item below
+         data-contact-msg      ready-made message for step 3 (data-contact-msg-en in English)
+       The item is picked (replacing the page's own service if the visitor has not touched it yet)
+       and the message is written, unless the visitor typed one of their own. */
+    var SERVICE_ITEM = {
+        "Formação": "formacoes", "Treinamento": "formacoes",
+        "Palestras e Workshops": "palestras",
+        "Espaços e Podcasts": "espacos",
+        "Eventos": "eventos",
+        "Consultoria": "consultoria"
+    };
+    var prefillLink = null;
+
+    function prefillMessage(link) {
+        var box = $("#f-msg"); if (!box) return;
+        var text = (state.lang === "en" && link.getAttribute("data-contact-msg-en")) || link.getAttribute("data-contact-msg");
+        if (!text) return;
+        if (box.value.trim() && box.dataset.prefilled !== "1") return;
+        box.value = text;
+        box.dataset.prefilled = "1";
+    }
+
+    function prefillFrom(link) {
+        if (state.sent) return;
+        var id = link.getAttribute("data-cp-item") || SERVICE_ITEM[link.getAttribute("data-contact-service")];
+        if (BY_ID[id] && isShown(BY_ID[id])) {
+            var auto = state.autoPick;
+            if (auto && auto !== id && state.selected.indexOf(auto) > -1 && !Object.keys(state.answers[auto] || {}).length && !state.book[auto]) {
+                toggleItem(auto, false);                    // the visitor chose something more specific
+            }
+            state.autoPick = "";
+            if (state.selected.indexOf(id) < 0) toggleItem(id, true);
+            if (state.step === 3) { goTo(2, true); renderPicker(); renderPanels(); }   // show the new choice and its questions
+        }
+        prefillMessage(link);
+        prefillLink = link;
     }
 
     function copy(btn) {
@@ -1362,32 +1412,42 @@
         try { navigator.clipboard.writeText(text).then(ok, fallback); } catch (err) { fallback(); }
     }
 
-    /* ---------------------------------------------------------- NAVBAR (same behaviour as the site, simplified) */
+    /* ---------------------------------------------------------- NAVBAR
+       show/hide and the topbar: js/javascript.js + js/topbar.js, as on every page.
+       Here it only gets a navy background once past the hero (the form below is light). */
     function navbar() {
-        var nav = $("#mainNavbar"), hero = $(".page-hero"), inHero = true, lastY = scrollY;
+        var nav = $("#mainNavbar"), hero = $(".page-hero");
+        if (!$("#dashCards")) return;                       // contacto.html only; the other pages keep their navbar as it is
         if (!nav || !hero || !("IntersectionObserver" in window)) return;
         new IntersectionObserver(function (en) {
-            inHero = en[0].isIntersecting;
-            nav.classList.toggle("topbar-collapsed", !inHero);
-            nav.classList.toggle("is-solid", !inHero);
-            if (inHero) nav.classList.remove("navbar-hidden");
+            nav.classList.toggle("is-solid", !en[0].isIntersecting);
         }, { rootMargin: "-110px 0px 0px 0px" }).observe(hero);
-        addEventListener("scroll", function () {
-            var y = scrollY, d = y - lastY;
-            if (Math.abs(d) < 6) return;
-            lastY = y;
-            if (!inHero) nav.classList.toggle("navbar-hidden", d > 0 && !nav.matches(":focus-within"));
-        }, { passive: true });
     }
 
     /* ---------------------------------------------------------- START */
     function start() {
-        var h = (location.hash || "").slice(1);
-        if (h === "en") state.lang = "en";
+        var h = (location.hash || "").slice(1), i18n = window.CastrosI18n;
+        if (i18n) {
+            state.lang = i18n.lang;
+            i18n.ready.then(function (l) { if (l !== state.lang) setLang(l); });   // saved choice / ?lang=en
+            document.addEventListener("i18n:change", function (e) { setLang(e.detail.lang); });
+        }
         applyStatic();
         renderProfile(); renderCards(); renderTray(); renderPicker();
         if (BY_ID[h] && isShown(BY_ID[h])) toggleItem(h, true);   // e.g. #espacos pre-selects a card
+        var pre = $("[data-cp-preselect]"), pid = pre && pre.getAttribute("data-cp-preselect");
+        if (BY_ID[pid] && state.selected.indexOf(pid) < 0) { toggleItem(pid, true); state.autoPick = pid; }   // service pages: their own service
         bind(); navbar();
+        // capture phase: runs before a pop-up closes and the page scrolls to the form
+        document.addEventListener("click", function (e) {
+            var link = e.target.closest && e.target.closest("a[data-contact-service], a[data-contact-msg], a[data-cp-item]");
+            if (link) prefillFrom(link);
+        }, true);
+        var msg = $("#f-msg");
+        if (msg) msg.addEventListener("input", function () { delete msg.dataset.prefilled; });   // typing makes it theirs
+        document.addEventListener("i18n:change", function () {
+            if (prefillLink && msg && msg.dataset.prefilled === "1") setTimeout(function () { prefillMessage(prefillLink); }, 0);
+        });
     }
     if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start); else start();
 })();
