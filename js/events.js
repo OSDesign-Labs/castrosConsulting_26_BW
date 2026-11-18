@@ -12,6 +12,8 @@
      an event whose date has passed is shown as "Realizado".
 
    Dates: "YYYY-MM-DD", or null for "Data a anunciar".
+   A course with no end date (only the editions change): ongoing: true and date: null.
+   It shows "Inscrições abertas", comes first in "Ver todos" and never turns "Realizado".
    Only the months are known (e.g. "novembro – dezembro")? Set date to the first day,
    dateEnd to the last day and monthsOnly: true: the card shows "Nov – Dez 2026" and the
    event counts as upcoming until dateEnd has passed.
@@ -52,7 +54,7 @@
         {
             // flyer: assets/images/recent/flyer-outubro-rosa-2026.webp
             id: "workshop-outubro-rosa-2026",
-            featured: true,
+            featured: false,                          // made way for the Curso de Maquilhagem on the home page (3 cards per row)
             title: "Workshop Outubro Rosa",
             category: "Saúde e bem-estar",
             date: "2026-10-28",
@@ -73,15 +75,14 @@
         },
         {
             // flyer: assets/images/recent/flyer-comunicacao-oratoria-2-edicao.webp
-            // the flyer gives months only (novembro – dezembro, 30 dias): date/dateEnd span the two months
-            // and the card shows "Nov – Dez 2026". EDIT: put the real start day in "date" once it is set.
+            // a course with no end date (ongoing: true): it shows "Inscrições abertas" and never
+            // becomes "Realizado"; only the editions change (update the title and flyer per edition).
             id: "formacao-comunicacao-oratoria-2-edicao",
             featured: true,
+            ongoing: true,
             title: "Formação em Comunicação e Oratória (2.ª edição)",
             category: "Comunicação",
-            date: "2026-11-01",
-            dateEnd: "2026-12-31",
-            monthsOnly: true,
+            date: null,
             time: null,
             city: "Rua da Tchamba n.º 113, Maputo",
             format: "Presencial · 30 dias",
@@ -95,6 +96,34 @@
                 "Voz, dicção e linguagem corporal",
                 "Autoconfiança e gestão do medo",
                 "Apresentações com impacto"
+            ]
+        },
+        {
+            // flyer: assets/images/flyers/curso-maquilhagem.webp
+            // a course with no end date (ongoing: true): it shows "Inscrições abertas" and never
+            // becomes "Realizado"; only the editions change. Price (5.000 MT): js/contacto.js.
+            id: "curso-maquilhagem",
+            featured: true,
+            ongoing: true,
+            title: "Curso de Maquilhagem",
+            category: "Beleza e estética",
+            date: null,
+            time: null,
+            city: "Rua da Tchamba n.º 113, Maputo",
+            format: "Presencial · 5 dias · Certificado",
+            image: "assets/images/flyers/curso-maquilhagem.webp",
+            summary: "Realce a sua beleza, desenvolva o seu talento.",
+            description: "Curso presencial de maquilhagem, em 5 dias, da preparação da pele às técnicas " +
+                "avançadas para noivas, pele negra e maquilhagem social, com dicas de empreendedorismo para " +
+                "quem quer começar o seu próprio negócio. Inclui certificado de participação. Local: Rua da " +
+                "Tchamba n.º 113, Maputo, próximo da Maternidade do HCM.",
+            highlights: [
+                "Preparação da pele: limpeza, hidratação e primário",
+                "Técnicas de aplicação: base, corretivo, pó e contorno",
+                "Maquilhagem dos olhos: sombras, delineados e pestanas",
+                "Maquilhagem dos lábios: técnicas e acabamentos",
+                "Técnicas avançadas: noivas, pele negra e maquilhagem social",
+                "Dicas de empreendedorismo: como iniciar o seu negócio"
             ]
         },
         {
@@ -230,6 +259,7 @@
     var DAYS = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"];
     var MONTHS = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"];
     function tbd() { return T("events.tbd", "Data a anunciar"); }
+    function openLabel() { return T("events.open", "Inscrições abertas"); }   // ongoing courses
 
     function parseDate(iso) {
         if (!iso) return null;
@@ -270,13 +300,13 @@
         return months[a.getMonth()] + (b.getMonth() !== a.getMonth() ? " – " + months[b.getMonth()] : "") +
             " " + b.getFullYear();
     }
-    function cardDate(e) { return e.monthsOnly && e._date ? monthSpan(e, false) : shortDate(e._date); }
-    function fullDate(e) { return e.monthsOnly && e._date ? monthSpan(e, true) : longDate(e._date); }
+    function cardDate(e) { return e.ongoing ? openLabel() : e.monthsOnly && e._date ? monthSpan(e, false) : shortDate(e._date); }
+    function fullDate(e) { return e.ongoing ? openLabel() : e.monthsOnly && e._date ? monthSpan(e, true) : longDate(e._date); }
 
     EVENTS.forEach(function (e) {
         e._date = parseDate(e.date);
         e._end = parseDate(e.dateEnd);
-        e._status = !e._date ? "tbd" : ((e._end || e._date) < today ? "past" : "upcoming");
+        e._status = e.ongoing ? "open" : !e._date ? "tbd" : ((e._end || e._date) < today ? "past" : "upcoming");
     });
 
     function byId(id) {
@@ -285,7 +315,7 @@
     }
 
     function sortedAll() {
-        var rank = { upcoming: 0, tbd: 1, past: 2 };
+        var rank = { open: 0, upcoming: 1, tbd: 2, past: 3 };
         return EVENTS.slice().sort(function (a, b) {
             if (rank[a._status] !== rank[b._status]) return rank[a._status] - rank[b._status];
             if (a._status === "upcoming") return a._date - b._date;     // soonest first
@@ -302,6 +332,7 @@
 
     /* ---------- the card template (home section AND "Ver todos") ---------- */
     function dateHTML(e) {
+        if (e.ongoing) return esc(openLabel());
         return e._date ? '<time datetime="' + e.date + '">' + cardDate(e) + '</time>' : esc(tbd());
     }
 
@@ -420,6 +451,8 @@
 
     // button label and pre-filled message, per status (English in translations.json)
     var CTA = {
+        open:     { label: "Inscrever-me",
+                    msg: 'Olá! Gostaria de me inscrever no curso "{title}" ({city}).' },
         upcoming: { label: "Inscrever-me",
                     msg: 'Olá! Gostaria de me inscrever no evento "{title}" ({date}, {city}).' },
         tbd:      { label: "Manifestar interesse",
@@ -446,6 +479,7 @@
         // short on purpose: a longer message makes a denser code that won't fit the facts box
         // same intent as the button for each status (CTA above)
         var QR_MSG = {
+            open:     "Olá! Quero inscrever-me: {title}",
             upcoming: "Olá! Quero inscrever-me: {title}",
             tbd:      "Olá! Tenho interesse: {title}",
             past:     "Olá! Quero a próxima edição: {title}"
