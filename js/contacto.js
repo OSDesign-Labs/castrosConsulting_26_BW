@@ -29,7 +29,7 @@
         return src ? src.replace(/js\/contacto\.js(\?.*)?$/, "") : "../";
     })();
     var PREVIEW = false;                                  // true: nothing is sent (demo mode, logs the payload to the console)
-    /*var FORMSPREE_ENDPOINT = "https://formspree.io/f/mwlpzyva";   // EDIT before launch: still delivers to the OS Design email; point it at castrosconsultoria@gmail.com (or swap for an n8n webhook URL) */
+    // n8n webhook on OS Design's server: saves the request to the leads sheet and sends the confirmation emails
     var FORMSPREE_ENDPOINT = "https://osdesign.duckdns.org/webhook/castros-pedido";
     var WHATSAPP = "258878665180";                        // the one WhatsApp number used across the site
     var WHATSAPP_SHOWN = "+258 87 866 5180";
