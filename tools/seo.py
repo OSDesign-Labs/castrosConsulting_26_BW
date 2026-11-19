@@ -55,13 +55,17 @@ def business_jsonld(cfg, page):
         "alternateName": b["alternate_name"],
         "description": page["description"],
         "address": {"@type": "PostalAddress", "addressLocality": b["locality"], "addressCountry": b["country"]},
+    }
+    if b.get("street"):
+        org["address"]["streetAddress"] = b["street"]
+    org.update({
         "openingHoursSpecification": [{
             "@type": "OpeningHoursSpecification",
             "dayOfWeek": b["hours"]["days"],
             "opens": b["hours"]["opens"],
             "closes": b["hours"]["closes"],
         }],
-    }
+    })
     if b.get("telephone"):
         org["telephone"] = b["telephone"]
     if b.get("email"):
