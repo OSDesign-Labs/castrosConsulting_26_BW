@@ -215,7 +215,7 @@
 
         <!-- POLICY TEXT
              Facts checked against the code on 13 Oct 2026: the only form is the contact form (Formspree);
-             no cookies, no analytics, no ads; the browser keeps cc-lang (localStorage) and
+             no cookies, no ads; visit statistics via Cloudflare Web Analytics (cookieless, since 26 Nov 2026); the browser keeps cc-lang (localStorage) and
              cc-loader-seen / cc-loader-handoff (sessionStorage). If any of that changes, update this page.
              English: js/translations.json (run python3 tools/i18n_sync.py after editing this text). -->
         <section id="politica" class="section pt-0">
@@ -226,7 +226,7 @@
                         <h2 id="legal-summary-title" data-i18n="privacidade.resumo.em-resumo">Em resumo</h2>
                         <ul>
                             <li data-i18n="privacidade.resumo.so-recolhemos-os-dados-que-nos">Só recolhemos os dados que nos envia pelo formulário de contacto, e apenas para lhe responder.</li>
-                            <li data-i18n="privacidade.resumo.nao-usamos-cookies-estatisticas-de-visitas">Não usamos cookies, estatísticas de visitas, publicidade nem pixels de rastreio.</li>
+                            <li data-i18n="privacidade.resumo.nao-usamos-cookies-estatisticas-de-visitas">Não usamos cookies, publicidade nem pixels de rastreio. Contamos as visitas de forma anónima, sem cookies.</li>
                             <li data-i18n="privacidade.resumo.nao-vendemos-nem-alugamos-os-seus">Não vendemos nem alugamos os seus dados.</li>
                         </ul>
                     </aside>
@@ -292,7 +292,7 @@
                             <li data-i18n-html="privacidade.cookies.cc-lang-lembra-o-idioma-que"><code>cc-lang</code>: lembra o idioma que escolheu (PT ou EN). Fica guardado até limpar os dados do navegador.</li>
                             <li data-i18n-html="privacidade.cookies.cc-loader-seen-e-cc-loader"><code>cc-loader-seen</code> e <code>cc-loader-handoff</code>: servem para a animação de abertura entre páginas. São apagados quando fecha o separador.</li>
                         </ul>
-                        <p data-i18n="privacidade.cookies.como-nao-ha-cookies-de-estatisticas">Como não há cookies de estatísticas nem de publicidade, não há nada para aceitar ou recusar. Pode apagar estas informações a qualquer momento nas definições do seu navegador; o site continua a funcionar, apenas volta a abrir em português.</p>
+                        <p data-i18n="privacidade.cookies.como-nao-ha-cookies-de-estatisticas">Como não há cookies de estatísticas nem de publicidade, não há nada para aceitar ou recusar. As estatísticas de visitas (ver Cloudflare Web Analytics, abaixo) funcionam sem cookies e sem guardar nada no seu navegador. Pode apagar estas informações a qualquer momento nas definições do seu navegador; o site continua a funcionar, apenas volta a abrir em português.</p>
                     </section>
 
                     <section id="servicos-externos" class="legal-block">
@@ -328,6 +328,12 @@
                                 <p class="legal-service-who" data-i18n="privacidade.servicos-externos.cloudflare-inc-estados-unidos">Cloudflare, Inc. · Estados Unidos</p>
                                 <p data-i18n-html="privacidade.servicos-externos.para-que-serve-faz-o-endereco"><strong>Para que serve:</strong> faz o endereço castrosconsultoria.co.mz apontar para o site e para o email.</p>
                                 <p data-i18n-html="privacidade.servicos-externos.o-que-recebe-apenas-os-pedidos"><strong>O que recebe:</strong> apenas os pedidos técnicos para encontrar o site. Não recebe o conteúdo das páginas nem do formulário.</p>
+                            </div>
+                            <div class="legal-service">
+                                <h3><a href="https://www.cloudflare.com/web-analytics/" target="_blank" rel="noopener" data-i18n="privacidade.servicos-externos.cloudflare-web-analytics">Cloudflare Web Analytics</a></h3>
+                                <p class="legal-service-who" data-i18n="privacidade.servicos-externos.cloudflare-inc-estados-unidos">Cloudflare, Inc. · Estados Unidos</p>
+                                <p data-i18n-html="privacidade.servicos-externos.para-que-serve-contar-as-visitas"><strong>Para que serve:</strong> contar as visitas ao site (quantas pessoas, que páginas, de que país e com que tipo de aparelho) e medir a velocidade das páginas.</p>
+                                <p data-i18n-html="privacidade.servicos-externos.o-que-recebe-o-endereco-da"><strong>O que recebe:</strong> o endereço da página visitada, a página de onde veio, o tipo de navegador e aparelho e o tempo de carregamento. Não usa cookies, não guarda nada no seu navegador e não cria um perfil seu. Vemos apenas totais, nunca visitantes individuais.</p>
                             </div>
                             <div class="legal-service">
                                 <h3><a href="https://policies.google.com/privacy" target="_blank" rel="noopener" data-i18n="privacidade.servicos-externos.google-fonts">Google Fonts</a></h3>
@@ -682,6 +688,8 @@
         if (window.siteLoaderDone || !document.documentElement.classList.contains("is-loading")) startAOS();
         else document.addEventListener("site-loader:done", startAOS, { once: true });
     </script>
+  <!-- Cloudflare Web Analytics: visit counts without cookies (account: Castros' Cloudflare). Listed in html/privacidade.html -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "233d74690c984feab622880e5f615aed"}'></script>
 </body>
 
 </html>
